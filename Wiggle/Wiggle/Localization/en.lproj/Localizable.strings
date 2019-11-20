@@ -14,5 +14,17 @@
 "sms_login_title" = "SMS Login";
 
 "continue_button" = "Continue";
+"ok_button" = "OK";
+"cancel_button" = "Cancel";
+"date_picker_title" = "Select Date";
+"skip_button" = "Skip";
 
 "enter_sms_verification" = "Please enter your 4-digit verification code";
+
+"birthday_top_label" = "My birthday is on";
+
+"take_photo" = "Take photo";
+"camera_roll" = "Camera roll";
+"photo_library" = "Photo library";
+
+

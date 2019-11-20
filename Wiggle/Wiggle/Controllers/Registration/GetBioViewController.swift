@@ -13,6 +13,7 @@ class GetBioViewController: UIViewController {
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var bioTextView: UITextView!
     @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var skipButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +25,18 @@ class GetBioViewController: UIViewController {
         bioTextView.layer.borderColor = UIColor.systemGray.cgColor
         bioTextView.layer.borderWidth = 0.5
         bioTextView.layer.cornerRadius = 12.0
-        
+        skipButton.setTitle(Localize.Common.SkipButton, for: .normal)
     }
+    
     @IBAction func continueAction(_ sender: Any) {
-        
+        moveToPickImageViewController(navigationController: self.navigationController ?? UINavigationController())
+    }
+    @IBAction func skipAction(_ sender: UIButton) {
+        moveToPickImageViewController(navigationController: self.navigationController ?? UINavigationController())
+    }
+    
+    @IBAction func backAction(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

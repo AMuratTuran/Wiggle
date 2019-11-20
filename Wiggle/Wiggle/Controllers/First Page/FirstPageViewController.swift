@@ -13,7 +13,7 @@ import Parse
 
 class FirstPageViewController: UIViewController {
 
-    @IBOutlet weak var facebookLoginButton: UIButton!
+    @IBOutlet weak var facebookLoginButton: FBLoginButton!
     @IBOutlet weak var phoneLoginButton: UIButton!
     @IBOutlet weak var acceptTermsLabel: UILabel!
     
@@ -23,7 +23,7 @@ class FirstPageViewController: UIViewController {
         acceptTermsLabel.text = Localize.LoginSignup.AcceptTerms
         facebookLoginButton.setTitle(Localize.LoginSignup.FacebookButton, for: .normal)
         phoneLoginButton.setTitle(Localize.LoginSignup.PhoneButton, for: .normal)
-        
+        facebookLoginButton.layer.cornerRadius = 12.0
     }
     
     override func viewWillAppear(_ animated: Bool) {

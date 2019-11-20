@@ -14,5 +14,15 @@
 "sms_login_title" = "SMS ile Giriş";
 
 "continue_button" = "Devam";
+"ok_button" = "Tamam";
+"cancel_button" = "Vazgeç";
+"date_picker_title" = "Tarih Seçiniz";
+"skip_button" = "Geç";
 
 "enter_sms_verification" = "Lutfen SMS ile gonderilen 4 haneli dogrulama kodunu giriniz.";
+
+"birthday_top_label" = "Doğum Günüm";
+
+"take_photo" = "Fotoğraf Çek";
+"camera_roll" = "Kamera Rulosu";
+"photo_library" = "Kütüphane";

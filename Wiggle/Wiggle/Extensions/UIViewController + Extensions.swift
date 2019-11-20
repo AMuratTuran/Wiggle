@@ -30,12 +30,47 @@ extension UIViewController {
         destinationViewController.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
+    
+    func moveToGetBioViewController(navigationController: UINavigationController) {
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "GetBioViewController") as! GetBioViewController
+        destinationViewController.modalPresentationStyle = .fullScreen
+        navigationController.pushViewController(destinationViewController, animated: true)
+    }
+    
+    func moveToPickImageViewController(navigationController: UINavigationController) {
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "PickImageViewController") as! PickImageViewController
+        destinationViewController.modalPresentationStyle = .fullScreen
+        navigationController.pushViewController(destinationViewController, animated: true)
+    }
+    
+    func moveToBirthdayViewController(navigationController: UINavigationController) {
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "BirthdayViewController") as! BirthdayViewController
+        destinationViewController.modalPresentationStyle = .fullScreen
+        navigationController.pushViewController(destinationViewController, animated: true)
+    }
+    
+    func moveToEnableLocationViewController(navigationController: UINavigationController) {
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "EnableLocationViewController") as! EnableLocationViewController
+        destinationViewController.modalPresentationStyle = .fullScreen
+        navigationController.pushViewController(destinationViewController, animated: true)
+    }
+    
+    func moveToEnableNotificationsViewController(navigationController: UINavigationController) {
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "EnableNotificationsViewController") as! EnableNotificationsViewController
+        destinationViewController.modalPresentationStyle = .fullScreen
+        navigationController.pushViewController(destinationViewController, animated: true)
+    }
 }
 
 
 extension UIViewController {
     func getCountryPhoneCode(_ country : String) -> String{
-        var countryDictionary  = ["AF":"93",
+        let countryDictionary  = ["AF":"93",
                                   "AL":"355",
                                   "DZ":"213",
                                   "AS":"1",

@@ -37,6 +37,7 @@ class GetNameViewController: UIViewController {
         let firstname = nameTextField.text
         let lastname = lastnameTextField.text
         WiggleUser.user?["firstName"] = firstname!
+        moveToGetBioViewController(navigationController: self.navigationController ?? UINavigationController())
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

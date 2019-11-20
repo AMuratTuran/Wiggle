@@ -19,5 +19,23 @@ struct Localize {
     
     struct Common {
         static var ContinueButton: String { return NSLocalizedString("continue_button", comment: "Common") }
+        static var OKButton: String { return NSLocalizedString("ok_button", comment: "Common") }
+        static var CancelButton: String { return NSLocalizedString("cancel_button", comment: "Common") }
+        static var SkipButton: String { return NSLocalizedString("skip_button", comment: "Common") }
+        
+    }
+    
+    struct DatePicker {
+        static var PickDate: String { return NSLocalizedString("date_picker_title", comment: "DatePicker") }
+    }
+    
+    struct BirthdayPicker {
+        static var TopLabel: String { return NSLocalizedString("birthday_top_label", comment: "BirthdayPicker") }
+    }
+    
+    struct Camera {
+        static var TakePhoto: String { return NSLocalizedString("take_photo", comment: "Camera") }
+        static var CameraRoll: String { return NSLocalizedString("camera_roll", comment: "Camera") }
+        static var PhotoLibrary: String { return NSLocalizedString("photo_library", comment: "Camera") }
     }
 }
