@@ -1,0 +1,75 @@
+PODS:
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
+  - FacebookCore (0.9.0):
+    - FBSDKCoreKit (~> 5.0)
+  - FacebookLogin (0.9.0):
+    - FacebookCore (~> 0.9.0)
+    - FBSDKCoreKit (~> 5.0)
+    - FBSDKLoginKit (~> 5.0)
+  - FacebookShare (0.9.0):
+    - FacebookCore (~> 0.9.0)
+    - FBSDKCoreKit (~> 5.0)
+    - FBSDKShareKit (~> 5.0)
+  - FBSDKCoreKit (5.11.0):
+    - FBSDKCoreKit/Basics (= 5.11.0)
+    - FBSDKCoreKit/Core (= 5.11.0)
+  - FBSDKCoreKit/Basics (5.11.0)
+  - FBSDKCoreKit/Core (5.11.0):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (5.11.0):
+    - FBSDKLoginKit/Login (= 5.11.0)
+  - FBSDKLoginKit/Login (5.11.0):
+    - FBSDKCoreKit (~> 5.0)
+  - FBSDKShareKit (5.11.0):
+    - FBSDKShareKit/Share (= 5.11.0)
+  - FBSDKShareKit/Share (5.11.0):
+    - FBSDKCoreKit (~> 5.0)
+  - Parse (1.17.3):
+    - Parse/Core (= 1.17.3)
+  - Parse/Core (1.17.3):
+    - Bolts/Tasks (~> 1.9)
+  - Parse/FacebookUtils (1.17.3):
+    - Bolts (~> 1.9)
+    - FBSDKLoginKit (~> 5.x)
+    - Parse/Core
+  - RLBAlertsPickers (1.1.2)
+
+DEPENDENCIES:
+  - FacebookCore
+  - FacebookLogin
+  - FacebookShare
+  - Parse
+  - Parse/FacebookUtils
+  - RLBAlertsPickers (~> 1.1.1)
+
+SPEC REPOS:
+  trunk:
+    - Bolts
+    - FacebookCore
+    - FacebookLogin
+    - FacebookShare
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
+    - Parse
+    - RLBAlertsPickers
+
+SPEC CHECKSUMS:
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
+  FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
+  FacebookShare: 85968ad1b1606c4944fb154924e425fd29184ea5
+  FBSDKCoreKit: 9fbfb5b0022d34861bfa6b79f56f8e2ddcd8170b
+  FBSDKLoginKit: 0e976e0c91ee69dd5dc69062c095205146f1dd9f
+  FBSDKShareKit: 6f8781da6fca79fe64830fd3404add0660d9f139
+  Parse: c1ad2a04d2cab2b54b6fb7da05f741abf2cf57d1
+  RLBAlertsPickers: 2548943b0cb16620904cbd926a645362d1b43963
+
+PODFILE CHECKSUM: 7507b00bdaa7b6ac46c26238d44b2b5d80ad3460
+
+COCOAPODS: 1.8.3

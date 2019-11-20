@@ -1,0 +1,600 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A6B8A42AC3E4C0E8C384C2E7 /* Pods_Wiggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5526736EFB884D70162BB41 /* Pods_Wiggle.framework */; };
+		F1585AD82384064F0062A681 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1585AD72384064F0062A681 /* AppDelegate.swift */; };
+		F1585ADA2384064F0062A681 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1585AD92384064F0062A681 /* SceneDelegate.swift */; };
+		F1585ADF2384064F0062A681 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1585ADD2384064F0062A681 /* Main.storyboard */; };
+		F1585AE1238406560062A681 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1585AE0238406560062A681 /* Assets.xcassets */; };
+		F1585AE4238406560062A681 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1585AE2238406560062A681 /* LaunchScreen.storyboard */; };
+		F1585AF6238407430062A681 /* FirstPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1585AF5238407430062A681 /* FirstPageViewController.swift */; };
+		F1585AF8238407680062A681 /* EnterPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1585AF7238407680062A681 /* EnterPhoneViewController.swift */; };
+		F1585AFA2384077A0062A681 /* EnterVerificationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1585AF92384077A0062A681 /* EnterVerificationCodeViewController.swift */; };
+		F1585AFC238407A30062A681 /* UIViewController + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1585AFB238407A30062A681 /* UIViewController + Extensions.swift */; };
+		F159C7B323848CB70091AB05 /* PhoneAuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C7B223848CB70091AB05 /* PhoneAuthRequest.swift */; };
+		F159C7B7238493100091AB05 /* WiggleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C7B6238493100091AB05 /* WiggleUser.swift */; };
+		F159C7BA2384991E0091AB05 /* GetNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C7B92384991E0091AB05 /* GetNameViewController.swift */; };
+		F159C7BC2385240D0091AB05 /* GetBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C7BB2385240D0091AB05 /* GetBioViewController.swift */; };
+		F1645687238409CE00FC0694 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1645689238409CE00FC0694 /* Localizable.strings */; };
+		F164568C23840A0600FC0694 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164568B23840A0600FC0694 /* Localize.swift */; };
+		F164568E2384157D00FC0694 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164568D2384157D00FC0694 /* NetworkManager.swift */; };
+		F16456912384160A00FC0694 /* SMSCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16456902384160A00FC0694 /* SMSCodeRequest.swift */; };
+		F16456932384170100FC0694 /* Dictionary + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16456922384170100FC0694 /* Dictionary + Extensions.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		44BB3C201FFEF9A359F53C04 /* Pods-Wiggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.debug.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.debug.xcconfig"; sourceTree = "<group>"; };
+		4E39BF0A09E61170AE4D6F33 /* Pods-Wiggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.release.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.release.xcconfig"; sourceTree = "<group>"; };
+		F1585AD42384064F0062A681 /* Wiggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wiggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1585AD72384064F0062A681 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F1585AD92384064F0062A681 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F1585ADE2384064F0062A681 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F1585AE0238406560062A681 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F1585AE3238406560062A681 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F1585AE5238406560062A681 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1585AF5238407430062A681 /* FirstPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewController.swift; sourceTree = "<group>"; };
+		F1585AF7238407680062A681 /* EnterPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPhoneViewController.swift; sourceTree = "<group>"; };
+		F1585AF92384077A0062A681 /* EnterVerificationCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterVerificationCodeViewController.swift; sourceTree = "<group>"; };
+		F1585AFB238407A30062A681 /* UIViewController + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extensions.swift"; sourceTree = "<group>"; };
+		F159C7B223848CB70091AB05 /* PhoneAuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneAuthRequest.swift; sourceTree = "<group>"; };
+		F159C7B6238493100091AB05 /* WiggleUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiggleUser.swift; sourceTree = "<group>"; };
+		F159C7B92384991E0091AB05 /* GetNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNameViewController.swift; sourceTree = "<group>"; };
+		F159C7BB2385240D0091AB05 /* GetBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBioViewController.swift; sourceTree = "<group>"; };
+		F16456822384098700FC0694 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
+		F16456832384098700FC0694 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		F1645688238409CE00FC0694 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F164568A238409D100FC0694 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F164568B23840A0600FC0694 /* Localize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
+		F164568D2384157D00FC0694 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F16456902384160A00FC0694 /* SMSCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeRequest.swift; sourceTree = "<group>"; };
+		F16456922384170100FC0694 /* Dictionary + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary + Extensions.swift"; sourceTree = "<group>"; };
+		F5526736EFB884D70162BB41 /* Pods_Wiggle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wiggle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F1585AD12384064F0062A681 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6B8A42AC3E4C0E8C384C2E7 /* Pods_Wiggle.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0C3CC6E3D46A87DDA8F56F4D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F5526736EFB884D70162BB41 /* Pods_Wiggle.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C0A7BAAFF9D38BFEDD116339 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				44BB3C201FFEF9A359F53C04 /* Pods-Wiggle.debug.xcconfig */,
+				4E39BF0A09E61170AE4D6F33 /* Pods-Wiggle.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F1585ACB2384064F0062A681 = {
+			isa = PBXGroup;
+			children = (
+				F1585AD62384064F0062A681 /* Wiggle */,
+				F1585AD52384064F0062A681 /* Products */,
+				C0A7BAAFF9D38BFEDD116339 /* Pods */,
+				0C3CC6E3D46A87DDA8F56F4D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F1585AD52384064F0062A681 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F1585AD42384064F0062A681 /* Wiggle.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F1585AD62384064F0062A681 /* Wiggle */ = {
+			isa = PBXGroup;
+			children = (
+				F16456842384099000FC0694 /* Localization */,
+				F1585AF1238406F60062A681 /* Extensions */,
+				F1585AF0238406F10062A681 /* Managers */,
+				F1585AEF238406DD0062A681 /* Storyboards */,
+				F1585AEE238406D50062A681 /* Settings */,
+				F1585AED238406D00062A681 /* Views */,
+				F1585AEC238406CB0062A681 /* Models */,
+				F1585AEB238406C50062A681 /* Controllers */,
+				F1585AD72384064F0062A681 /* AppDelegate.swift */,
+				F1585AD92384064F0062A681 /* SceneDelegate.swift */,
+				F1585AE0238406560062A681 /* Assets.xcassets */,
+				F1585AE2238406560062A681 /* LaunchScreen.storyboard */,
+				F1585AE5238406560062A681 /* Info.plist */,
+			);
+			path = Wiggle;
+			sourceTree = "<group>";
+		};
+		F1585AEB238406C50062A681 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F159C7B8238498E70091AB05 /* Registration */,
+				F1585AF32384071A0062A681 /* Splash */,
+				F1585AF2238407100062A681 /* First Page */,
+				F1585AF42384071F0062A681 /* SMS Login */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F1585AEC238406CB0062A681 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F159C7B5238492F90091AB05 /* User */,
+				F159C7B423848CBC0091AB05 /* Phone Auth  */,
+				F164568F238415F900FC0694 /* SMS Code */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F1585AED238406D00062A681 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F1585AEE238406D50062A681 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		F1585AEF238406DD0062A681 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F1585ADD2384064F0062A681 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		F1585AF0238406F10062A681 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F164568D2384157D00FC0694 /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		F1585AF1238406F60062A681 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F1585AFB238407A30062A681 /* UIViewController + Extensions.swift */,
+				F16456922384170100FC0694 /* Dictionary + Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F1585AF2238407100062A681 /* First Page */ = {
+			isa = PBXGroup;
+			children = (
+				F1585AF5238407430062A681 /* FirstPageViewController.swift */,
+			);
+			path = "First Page";
+			sourceTree = "<group>";
+		};
+		F1585AF32384071A0062A681 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		F1585AF42384071F0062A681 /* SMS Login */ = {
+			isa = PBXGroup;
+			children = (
+				F1585AF7238407680062A681 /* EnterPhoneViewController.swift */,
+				F1585AF92384077A0062A681 /* EnterVerificationCodeViewController.swift */,
+			);
+			path = "SMS Login";
+			sourceTree = "<group>";
+		};
+		F159C7B423848CBC0091AB05 /* Phone Auth  */ = {
+			isa = PBXGroup;
+			children = (
+				F159C7B223848CB70091AB05 /* PhoneAuthRequest.swift */,
+			);
+			path = "Phone Auth ";
+			sourceTree = "<group>";
+		};
+		F159C7B5238492F90091AB05 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				F159C7B6238493100091AB05 /* WiggleUser.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		F159C7B8238498E70091AB05 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				F159C7B92384991E0091AB05 /* GetNameViewController.swift */,
+				F159C7BB2385240D0091AB05 /* GetBioViewController.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		F16456842384099000FC0694 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				F1645689238409CE00FC0694 /* Localizable.strings */,
+				F164568B23840A0600FC0694 /* Localize.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		F164568F238415F900FC0694 /* SMS Code */ = {
+			isa = PBXGroup;
+			children = (
+				F16456902384160A00FC0694 /* SMSCodeRequest.swift */,
+			);
+			path = "SMS Code";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F1585AD32384064F0062A681 /* Wiggle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1585AE8238406560062A681 /* Build configuration list for PBXNativeTarget "Wiggle" */;
+			buildPhases = (
+				81A9FF01FEE22C9A73B83D9A /* [CP] Check Pods Manifest.lock */,
+				F1585AD02384064F0062A681 /* Sources */,
+				F1585AD12384064F0062A681 /* Frameworks */,
+				F1585AD22384064F0062A681 /* Resources */,
+				DE4CD51BC3893089951A3495 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Wiggle;
+			productName = Wiggle;
+			productReference = F1585AD42384064F0062A681 /* Wiggle.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F1585ACC2384064F0062A681 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = "Murat Turan";
+				TargetAttributes = {
+					F1585AD32384064F0062A681 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+				};
+			};
+			buildConfigurationList = F1585ACF2384064F0062A681 /* Build configuration list for PBXProject "Wiggle" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				tr,
+			);
+			mainGroup = F1585ACB2384064F0062A681;
+			productRefGroup = F1585AD52384064F0062A681 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F1585AD32384064F0062A681 /* Wiggle */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F1585AD22384064F0062A681 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1585AE4238406560062A681 /* LaunchScreen.storyboard in Resources */,
+				F1645687238409CE00FC0694 /* Localizable.strings in Resources */,
+				F1585AE1238406560062A681 /* Assets.xcassets in Resources */,
+				F1585ADF2384064F0062A681 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		81A9FF01FEE22C9A73B83D9A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Wiggle-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE4CD51BC3893089951A3495 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wiggle/Pods-Wiggle-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wiggle/Pods-Wiggle-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wiggle/Pods-Wiggle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F1585AD02384064F0062A681 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1585AF6238407430062A681 /* FirstPageViewController.swift in Sources */,
+				F16456932384170100FC0694 /* Dictionary + Extensions.swift in Sources */,
+				F1585AFA2384077A0062A681 /* EnterVerificationCodeViewController.swift in Sources */,
+				F16456912384160A00FC0694 /* SMSCodeRequest.swift in Sources */,
+				F159C7BC2385240D0091AB05 /* GetBioViewController.swift in Sources */,
+				F1585AF8238407680062A681 /* EnterPhoneViewController.swift in Sources */,
+				F1585AFC238407A30062A681 /* UIViewController + Extensions.swift in Sources */,
+				F164568E2384157D00FC0694 /* NetworkManager.swift in Sources */,
+				F164568C23840A0600FC0694 /* Localize.swift in Sources */,
+				F1585AD82384064F0062A681 /* AppDelegate.swift in Sources */,
+				F159C7B7238493100091AB05 /* WiggleUser.swift in Sources */,
+				F1585ADA2384064F0062A681 /* SceneDelegate.swift in Sources */,
+				F159C7B323848CB70091AB05 /* PhoneAuthRequest.swift in Sources */,
+				F159C7BA2384991E0091AB05 /* GetNameViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F1585ADD2384064F0062A681 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1585ADE2384064F0062A681 /* Base */,
+				F16456822384098700FC0694 /* tr */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F1585AE2238406560062A681 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1585AE3238406560062A681 /* Base */,
+				F16456832384098700FC0694 /* tr */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		F1645689238409CE00FC0694 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1645688238409CE00FC0694 /* en */,
+				F164568A238409D100FC0694 /* tr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F1585AE6238406560062A681 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F1585AE7238406560062A681 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F1585AE9238406560062A681 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44BB3C201FFEF9A359F53C04 /* Pods-Wiggle.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BSS286Y93W;
+				INFOPLIST_FILE = Wiggle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wiggle.Wiggle;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		F1585AEA238406560062A681 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E39BF0A09E61170AE4D6F33 /* Pods-Wiggle.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BSS286Y93W;
+				INFOPLIST_FILE = Wiggle/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wiggle.Wiggle;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F1585ACF2384064F0062A681 /* Build configuration list for PBXProject "Wiggle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1585AE6238406560062A681 /* Debug */,
+				F1585AE7238406560062A681 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1585AE8238406560062A681 /* Build configuration list for PBXNativeTarget "Wiggle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1585AE9238406560062A681 /* Debug */,
+				F1585AEA238406560062A681 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F1585ACC2384064F0062A681 /* Project object */;
+}

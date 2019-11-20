@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  Wiggle
+
+  Created by Murat Turan on 19.11.2019.
+  Copyright © 2019 Murat Turan. All rights reserved.
+*/
+
+
+"login_accept_terms" = "Giriş yaparak kullanıcı sözleşmemizi ve gizlilik politikamızı kabul etmiş olursunuz.";
+"facebook_button" = "Facebook ile giriş yap";
+"phone_button" = "Telefon ile giriş yap";
+
+"sms_login_title" = "SMS ile Giriş";
+
+"continue_button" = "Devam";
+
+"enter_sms_verification" = "Lutfen SMS ile gonderilen 4 haneli dogrulama kodunu giriniz.";

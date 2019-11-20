@@ -1,0 +1,6 @@
+framework module Pods_Wiggle {
+  umbrella header "Pods-Wiggle-umbrella.h"
+
+  export *
+  module * { export * }
+}
