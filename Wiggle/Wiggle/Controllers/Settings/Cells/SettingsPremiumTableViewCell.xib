@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="KGk-i7-Jjw" customClass="SettingsPremiumTableViewCell" customModule="Wiggle" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="370" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="370" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nnP-RP-9FK">
+                        <rect key="frame" x="10" y="0.0" width="350" height="60"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flame.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="A5S-rj-rBS">
+                                <rect key="frame" x="84.5" y="4.5" width="25" height="25.5"/>
+                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="fct-xk-qzc"/>
+                                    <constraint firstAttribute="width" constant="25" id="gj1-l1-3fg"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flame.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jWA-Af-4AA">
+                                <rect key="frame" x="241" y="4.5" width="25" height="25.5"/>
+                                <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="CaX-Zb-kVL"/>
+                                    <constraint firstAttribute="width" constant="25" id="QyG-kt-cSy"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wiggle Gold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojg-A1-cac">
+                                <rect key="frame" x="117.5" y="6" width="115.5" height="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earn exclusive features" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ywx-td-jvm">
+                                <rect key="frame" x="87" y="35" width="176" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ojg-A1-cac" firstAttribute="centerX" secondItem="nnP-RP-9FK" secondAttribute="centerX" id="18X-Fp-Occ"/>
+                            <constraint firstItem="jWA-Af-4AA" firstAttribute="leading" secondItem="ojg-A1-cac" secondAttribute="trailing" constant="8" id="F8e-Ck-OkM"/>
+                            <constraint firstItem="Ywx-td-jvm" firstAttribute="centerX" secondItem="nnP-RP-9FK" secondAttribute="centerX" id="G7B-Wp-d7Q"/>
+                            <constraint firstItem="jWA-Af-4AA" firstAttribute="centerY" secondItem="ojg-A1-cac" secondAttribute="centerY" id="SLH-Cv-xyw"/>
+                            <constraint firstAttribute="height" constant="60" id="VNn-k1-qgk"/>
+                            <constraint firstAttribute="bottom" secondItem="Ywx-td-jvm" secondAttribute="bottom" constant="4" id="eSw-4x-PsD"/>
+                            <constraint firstItem="A5S-rj-rBS" firstAttribute="centerY" secondItem="ojg-A1-cac" secondAttribute="centerY" id="gIj-x3-RAa"/>
+                            <constraint firstItem="Ywx-td-jvm" firstAttribute="top" secondItem="ojg-A1-cac" secondAttribute="bottom" constant="5" id="pWX-AU-RMm"/>
+                            <constraint firstItem="ojg-A1-cac" firstAttribute="leading" secondItem="A5S-rj-rBS" secondAttribute="trailing" constant="8" id="wmh-Mk-j0f"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="nnP-RP-9FK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="3IL-UK-d4m"/>
+                    <constraint firstAttribute="trailing" secondItem="nnP-RP-9FK" secondAttribute="trailing" constant="10" id="vYQ-81-QhZ"/>
+                    <constraint firstItem="nnP-RP-9FK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="yMc-eJ-ZTw"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bottomLabel" destination="Ywx-td-jvm" id="Pt1-pg-SiK"/>
+                <outlet property="containerView" destination="nnP-RP-9FK" id="Tzb-GT-U19"/>
+                <outlet property="leftFlame" destination="A5S-rj-rBS" id="D4H-Fj-rqw"/>
+                <outlet property="rightFlame" destination="jWA-Af-4AA" id="tq8-Na-BS1"/>
+                <outlet property="topLabel" destination="ojg-A1-cac" id="726-I4-8Qv"/>
+            </connections>
+            <point key="canvasLocation" x="173.91304347826087" y="150"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="flame.fill" catalog="system" width="54" height="64"/>
+    </resources>
+</document>

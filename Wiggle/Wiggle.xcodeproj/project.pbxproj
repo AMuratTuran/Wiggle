@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A6B8A42AC3E4C0E8C384C2E7 /* Pods_Wiggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5526736EFB884D70162BB41 /* Pods_Wiggle.framework */; };
+		F152170323885C0B0027C6D4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F152170223885C0B0027C6D4 /* SettingsViewController.swift */; };
+		F152170623885CC50027C6D4 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F152170523885CC50027C6D4 /* Settings.storyboard */; };
+		F152170A23885D5F0027C6D4 /* SettingsPremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F152170823885D5F0027C6D4 /* SettingsPremiumTableViewCell.swift */; };
+		F152170B23885D5F0027C6D4 /* SettingsPremiumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F152170923885D5F0027C6D4 /* SettingsPremiumTableViewCell.xib */; };
 		F1585AD82384064F0062A681 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1585AD72384064F0062A681 /* AppDelegate.swift */; };
 		F1585ADA2384064F0062A681 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1585AD92384064F0062A681 /* SceneDelegate.swift */; };
 		F1585ADF2384064F0062A681 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1585ADD2384064F0062A681 /* Main.storyboard */; };
@@ -36,6 +40,10 @@
 /* Begin PBXFileReference section */
 		44BB3C201FFEF9A359F53C04 /* Pods-Wiggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.debug.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.debug.xcconfig"; sourceTree = "<group>"; };
 		4E39BF0A09E61170AE4D6F33 /* Pods-Wiggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.release.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.release.xcconfig"; sourceTree = "<group>"; };
+		F152170223885C0B0027C6D4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F152170523885CC50027C6D4 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		F152170823885D5F0027C6D4 /* SettingsPremiumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPremiumTableViewCell.swift; sourceTree = "<group>"; };
+		F152170923885D5F0027C6D4 /* SettingsPremiumTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsPremiumTableViewCell.xib; sourceTree = "<group>"; };
 		F1585AD42384064F0062A681 /* Wiggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wiggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1585AD72384064F0062A681 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1585AD92384064F0062A681 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +104,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F152170123885BDC0027C6D4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F152170723885D400027C6D4 /* Cells */,
+				F152170223885C0B0027C6D4 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		F152170723885D400027C6D4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F152170823885D5F0027C6D4 /* SettingsPremiumTableViewCell.swift */,
+				F152170923885D5F0027C6D4 /* SettingsPremiumTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		F1585ACB2384064F0062A681 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +164,7 @@
 		F1585AEB238406C50062A681 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F152170123885BDC0027C6D4 /* Settings */,
 				F159C7B8238498E70091AB05 /* Registration */,
 				F1585AF32384071A0062A681 /* Splash */,
 				F1585AF2238407100062A681 /* First Page */,
@@ -174,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				F1585ADD2384064F0062A681 /* Main.storyboard */,
+				F152170523885CC50027C6D4 /* Settings.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -338,6 +366,8 @@
 				F1645687238409CE00FC0694 /* Localizable.strings in Resources */,
 				F1585AE1238406560062A681 /* Assets.xcassets in Resources */,
 				F1585ADF2384064F0062A681 /* Main.storyboard in Resources */,
+				F152170B23885D5F0027C6D4 /* SettingsPremiumTableViewCell.xib in Resources */,
+				F152170623885CC50027C6D4 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,10 +423,12 @@
 				F1585AF6238407430062A681 /* FirstPageViewController.swift in Sources */,
 				F16456932384170100FC0694 /* Dictionary + Extensions.swift in Sources */,
 				F1585AFA2384077A0062A681 /* EnterVerificationCodeViewController.swift in Sources */,
+				F152170323885C0B0027C6D4 /* SettingsViewController.swift in Sources */,
 				F16456912384160A00FC0694 /* SMSCodeRequest.swift in Sources */,
 				F159C7BC2385240D0091AB05 /* GetBioViewController.swift in Sources */,
 				F159C8CE2385AB330091AB05 /* BirthdayViewController.swift in Sources */,
 				F1585AF8238407680062A681 /* EnterPhoneViewController.swift in Sources */,
+				F152170A23885D5F0027C6D4 /* SettingsPremiumTableViewCell.swift in Sources */,
 				F1585AFC238407A30062A681 /* UIViewController + Extensions.swift in Sources */,
 				F159C8D32385CA460091AB05 /* PickImageViewController.swift in Sources */,
 				F164568E2384157D00FC0694 /* NetworkManager.swift in Sources */,
