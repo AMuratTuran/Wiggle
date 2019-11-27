@@ -22,7 +22,8 @@ struct Localize {
         static var OKButton: String { return NSLocalizedString("ok_button", comment: "Common") }
         static var CancelButton: String { return NSLocalizedString("cancel_button", comment: "Common") }
         static var SkipButton: String { return NSLocalizedString("skip_button", comment: "Common") }
-        
+        static var Error: String { return NSLocalizedString("error", comment: "Common") }
+        static var PhoneCodes: String { return NSLocalizedString("phone_codes", comment: "Common") }
     }
     
     struct DatePicker {

@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Parse
 
 class PickImageViewController: UIViewController {
-
+    
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var pickImageButton: UIButton!
@@ -20,6 +21,7 @@ class PickImageViewController: UIViewController {
     @IBOutlet weak var skipButton: UIButton!
     
     var imagePicker: ImagePicker!
+    var selectedImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +40,32 @@ class PickImageViewController: UIViewController {
         self.imagePicker.present(from: sender)
     }
     @IBAction func continueAction(_ sender: UIButton) {
-        moveToBirthdayViewController(navigationController: self.navigationController ?? UINavigationController())
+        startAnimating(self.view, startAnimate: true)
+        if let image = selectedImage {
+            do {
+                let imageData: NSData = image.jpegData(compressionQuality: 1.0)! as NSData
+                let imageFile: PFFileObject = PFFileObject(name:"image.jpg", data:imageData as Data)!
+                try imageFile.save()
+                
+                let user = PFUser.current()
+                user?.setObject(imageFile, forKey: "photo")
+                user?.saveInBackground { (success, error) -> Void in
+                    self.startAnimating(self.view, startAnimate: false)
+                    if error != nil {
+                        self.displayError(message: error?.localizedDescription ?? "")
+                    }else {
+                        self.moveToBirthdayViewController(navigationController: self.navigationController ?? UINavigationController())
+                    }
+                }
+            }catch {
+                
+            }
+        }else {
+            self.startAnimating(self.view, startAnimate: false)
+            print("Empty Image")
+        }
     }
+    
     @IBAction func skipButton(_ sender: UIButton) {
         moveToBirthdayViewController(navigationController: self.navigationController ?? UINavigationController())
     }
@@ -74,10 +100,11 @@ class PickImageViewController: UIViewController {
 }
 
 extension PickImageViewController: ImagePickerDelegate {
-
+    
     func didSelect(image: UIImage?) {
         if let image = image {
             self.pickImageButton.setBackgroundImage(image, for: .normal)
+            self.selectedImage = image
             roundButton()
         }else {
             resetButtonFrame()

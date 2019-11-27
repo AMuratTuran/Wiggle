@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import Parse
 
 class EnableLocationViewController: UIViewController {
 
@@ -30,12 +31,12 @@ class EnableLocationViewController: UIViewController {
     }
     
     @IBAction func enableLocation(_ sender: UIButton) {
+        startAnimating(self.view, startAnimate: true)
         locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
-            moveToEnableNotificationsViewController(navigationController: self.navigationController ?? UINavigationController())
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
+            locationManager.requestLocation()
         }
     }
 }
@@ -43,6 +44,20 @@ class EnableLocationViewController: UIViewController {
 extension EnableLocationViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue:CLLocationCoordinate2D = manager.location?.coordinate ?? CLLocationCoordinate2D()
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        let point = PFGeoPoint(latitude: locValue.latitude, longitude: locValue.longitude)
+        PFUser.current()?.setValue(point, forKey: "location")
+        PFUser.current()?.saveInBackground(block: { (result, error) in
+            self.startAnimating(self.view, startAnimate: false)
+            if error != nil {
+                self.displayError(message: error?.localizedDescription ?? "")
+            }else {
+                self.moveToEnableNotificationsViewController(navigationController: self.navigationController ?? UINavigationController())
+            }
+        })
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        self.startAnimating(self.view, startAnimate: false)
+        print(error.localizedDescription)
     }
 }

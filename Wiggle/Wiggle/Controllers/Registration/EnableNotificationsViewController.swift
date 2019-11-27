@@ -21,7 +21,9 @@ class EnableNotificationsViewController: UIViewController {
    
     @IBAction func enableNotificationsAction(_ sender: UIButton) {
         center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            
+            DispatchQueue.main.async {
+                self.moveToHomeViewController(navigationController: self.navigationController ?? UINavigationController())
+            }
         }
     }
     

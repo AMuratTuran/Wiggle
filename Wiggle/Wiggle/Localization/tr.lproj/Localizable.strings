@@ -18,6 +18,8 @@
 "cancel_button" = "Vazgeç";
 "date_picker_title" = "Tarih Seçiniz";
 "skip_button" = "Geç";
+"error" = "Hata";
+"phone_codes" = "Ülke Kodları";
 
 "enter_sms_verification" = "Lutfen SMS ile gonderilen 4 haneli dogrulama kodunu giriniz.";
 

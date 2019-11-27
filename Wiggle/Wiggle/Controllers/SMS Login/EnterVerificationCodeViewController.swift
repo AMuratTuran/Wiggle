@@ -7,17 +7,30 @@
 //
 
 import UIKit
+import SwiftValidator
+import NVActivityIndicatorView
 
 class EnterVerificationCodeViewController: UIViewController {
     
     @IBOutlet weak var smsCodeTextField: UITextField!
     @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var sendAgainButton: UIButton!
+    @IBOutlet weak var smsRequiredText: UILabel!
+    
     var sentSMSCode:Int?
     var phoneNumber: String?
+    var countryCode: String?
+    let validator = Validator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareViews()
+        enableValidations()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        continueButton.isUserInteractionEnabled = true
     }
     
     func prepareViews() {
@@ -28,23 +41,19 @@ class EnterVerificationCodeViewController: UIViewController {
         }
     }
     
+    func enableValidations() {
+        validator.registerField(smsCodeTextField, errorLabel: smsRequiredText, rules: [RequiredRule()])
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
     
     
     @IBAction func continueAction(_ sender: Any) {
-        if verifySMSCode() {
-            if let phoneNumber = phoneNumber {
-                let request = PhoneAuthRequest(phoneNumber: phoneNumber)
-                NetworkManager.auth(request, success: {
-                    // move to next page
-                    self.moveToGetNameViewController()
-                }) { (error) in
-                    print(error)
-                }
-            }
-        }
+        startAnimating(self.view, startAnimate: true)
+        continueButton.isUserInteractionEnabled = false
+        validator.validate(self)
     }
     
     func verifySMSCode() -> Bool {
@@ -57,5 +66,49 @@ class EnterVerificationCodeViewController: UIViewController {
             return false
         }
     }
+    
+    @IBAction func sendAgainAction(_ sender: UIButton) {
+        startAnimating(self.view, startAnimate: true)
+
+        let smsCodeRequest = SMSCodeRequest(countryCode: self.countryCode ?? "", phoneNumber: phoneNumber ?? "")
+        NetworkManager.sendSMSCode(smsCodeRequest, success: { (smsCode) in
+            self.startAnimating(self.view, startAnimate: false)
+            self.sentSMSCode = smsCode
+        }) { (error) in
+            self.startAnimating(self.view, startAnimate: false)
+            print(error)
+        }
+    }
 }
 
+extension EnterVerificationCodeViewController: ValidationDelegate {
+    func validationSuccessful() {
+        smsRequiredText.isHidden = true
+        if verifySMSCode() {
+            if let phoneNumber = phoneNumber {
+                let request = PhoneAuthRequest(phoneNumber: phoneNumber)
+                NetworkManager.auth(request, success: {
+                    // move to next page
+                    self.startAnimating(self.view, startAnimate: false)
+                    self.moveToGetNameViewController()
+                }) { (error) in
+                    self.startAnimating(self.view, startAnimate: false)
+                    print(error)
+                }
+            }
+        }else {
+            self.startAnimating(self.view, startAnimate: false)
+            continueButton.isUserInteractionEnabled = true
+            displayError(message: "Incorrect Code")
+        }
+    }
+    
+    func validationFailed(_ errors: [(Validatable, ValidationError)]) {
+        self.startAnimating(self.view, startAnimate: false)
+        continueButton.isUserInteractionEnabled = true
+        for (_, error) in errors {
+          error.errorLabel?.text = error.errorMessage
+          error.errorLabel?.isHidden = false
+        }
+    }
+}

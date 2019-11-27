@@ -24,6 +24,7 @@ class FirstPageViewController: UIViewController {
         facebookLoginButton.setTitle(Localize.LoginSignup.FacebookButton, for: .normal)
         phoneLoginButton.setTitle(Localize.LoginSignup.PhoneButton, for: .normal)
         facebookLoginButton.layer.cornerRadius = 12.0
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +48,17 @@ class FirstPageViewController: UIViewController {
         }
     }
     @IBAction func phoneLoginTapped(_ sender: Any) {
-        moveToEnterPhoneViewController()
+        if PFUser.current() != nil {
+            PFUser.logOutInBackground { (error) in
+                if error != nil {
+                    self.displayError(message: "Lutfen tekrar deneyiniz.")
+                }else {
+                    self.moveToEnterPhoneViewController()
+                }
+            }
+        }else {
+            moveToEnterPhoneViewController()
+        }
     }
 
 }

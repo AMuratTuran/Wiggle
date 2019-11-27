@@ -29,6 +29,10 @@ PODS:
     - FBSDKShareKit/Share (= 5.11.0)
   - FBSDKShareKit/Share (5.11.0):
     - FBSDKCoreKit (~> 5.0)
+  - Hero (1.5.0)
+  - NVActivityIndicatorView (4.8.0):
+    - NVActivityIndicatorView/Presenter (= 4.8.0)
+  - NVActivityIndicatorView/Presenter (4.8.0)
   - Parse (1.17.3):
     - Parse/Core (= 1.17.3)
   - Parse/Core (1.17.3):
@@ -38,14 +42,18 @@ PODS:
     - FBSDKLoginKit (~> 5.x)
     - Parse/Core
   - RLBAlertsPickers (1.1.2)
+  - SwiftValidator (4.0.0)
 
 DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
   - FacebookShare
+  - Hero
+  - NVActivityIndicatorView
   - Parse
   - Parse/FacebookUtils
   - RLBAlertsPickers (~> 1.1.1)
+  - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, tag `4.2.0`)
 
 SPEC REPOS:
   trunk:
@@ -56,8 +64,20 @@ SPEC REPOS:
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
+    - Hero
+    - NVActivityIndicatorView
     - Parse
     - RLBAlertsPickers
+
+EXTERNAL SOURCES:
+  SwiftValidator:
+    :git: https://github.com/jpotts18/SwiftValidator.git
+    :tag: 4.2.0
+
+CHECKOUT OPTIONS:
+  SwiftValidator:
+    :git: https://github.com/jpotts18/SwiftValidator.git
+    :tag: 4.2.0
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -67,9 +87,12 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 9fbfb5b0022d34861bfa6b79f56f8e2ddcd8170b
   FBSDKLoginKit: 0e976e0c91ee69dd5dc69062c095205146f1dd9f
   FBSDKShareKit: 6f8781da6fca79fe64830fd3404add0660d9f139
+  Hero: b7385b75e7259da62f4f85462f59a5082d66b058
+  NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   Parse: c1ad2a04d2cab2b54b6fb7da05f741abf2cf57d1
   RLBAlertsPickers: 2548943b0cb16620904cbd926a645362d1b43963
+  SwiftValidator: 249b6b3ae3b294266c5b9de134d94f18f2d5aa47
 
-PODFILE CHECKSUM: 7507b00bdaa7b6ac46c26238d44b2b5d80ad3460
+PODFILE CHECKSUM: 61c02e25a4635a35e61a8279e6a056bcc4a4d900
 
 COCOAPODS: 1.8.3

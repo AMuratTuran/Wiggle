@@ -18,6 +18,8 @@
 "cancel_button" = "Cancel";
 "date_picker_title" = "Select Date";
 "skip_button" = "Skip";
+"error" = "Error";
+"phone_codes" = "Phone Codes";
 
 "enter_sms_verification" = "Please enter your 4-digit verification code";
 
@@ -26,5 +28,8 @@
 "take_photo" = "Take photo";
 "camera_roll" = "Camera roll";
 "photo_library" = "Photo library";
+
+
+
 
 

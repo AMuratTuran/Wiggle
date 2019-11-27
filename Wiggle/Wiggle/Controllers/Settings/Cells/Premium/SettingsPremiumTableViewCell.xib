@@ -49,7 +49,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ojg-A1-cac" firstAttribute="centerX" secondItem="nnP-RP-9FK" secondAttribute="centerX" id="18X-Fp-Occ"/>
                             <constraint firstItem="jWA-Af-4AA" firstAttribute="leading" secondItem="ojg-A1-cac" secondAttribute="trailing" constant="8" id="F8e-Ck-OkM"/>
@@ -68,12 +68,14 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="nnP-RP-9FK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="3IL-UK-d4m"/>
                     <constraint firstAttribute="trailing" secondItem="nnP-RP-9FK" secondAttribute="trailing" constant="10" id="vYQ-81-QhZ"/>
                     <constraint firstItem="nnP-RP-9FK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="yMc-eJ-ZTw"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bottomLabel" destination="Ywx-td-jvm" id="Pt1-pg-SiK"/>

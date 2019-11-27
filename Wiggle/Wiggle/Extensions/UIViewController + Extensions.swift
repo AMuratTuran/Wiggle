@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Hero
 
 extension UIViewController {
     
@@ -16,10 +17,11 @@ extension UIViewController {
         self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
     
-    func moveToEnterVerificationCodeViewController(smsCode: Int, phone: String) {
+    func moveToEnterVerificationCodeViewController(smsCode: Int,countryCode: String, phone: String) {
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "EnterVerificationCodeViewController") as! EnterVerificationCodeViewController
         destinationViewController.sentSMSCode = smsCode
+        destinationViewController.countryCode = countryCode
         destinationViewController.phoneNumber = phone
         self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
@@ -65,6 +67,68 @@ extension UIViewController {
         destinationViewController.modalPresentationStyle = .fullScreen
         navigationController.pushViewController(destinationViewController, animated: true)
     }
+    
+    func moveToHomeViewController(navigationController: UINavigationController) {
+        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let destinationViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        navigationController.viewControllers.removeAll()
+        navigationController.pushViewController(destinationViewController, animated: true)
+    }
+    
+    func moveToProfileViewController() {
+        let profileStoryboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+        let destinationViewController = profileStoryboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        destinationViewController.isHeroEnabled = true
+        destinationViewController.heroModalAnimationType = .zoomSlide(direction: .right)
+        if let nc = self.navigationController {
+            nc.hero_replaceViewController(with: destinationViewController)
+        }else {
+            self.hero_replaceViewController(with: destinationViewController)
+        }
+        
+    }
+    
+    func moveToHomeViewControllerFromProfile() {
+        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let destinationViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        destinationViewController.isHeroEnabled = true
+        destinationViewController.heroModalAnimationType = .zoomSlide(direction: .left)
+        self.hero_replaceViewController(with: destinationViewController)
+    }
+    
+    func moveToSettingsViewController() {
+        let settingsStoryboard: UIStoryboard = UIStoryboard(name: "Settings", bundle: nil)
+        let destinationViewController = settingsStoryboard.instantiateInitialViewController() as! UINavigationController
+        destinationViewController.modalPresentationStyle = .fullScreen
+        self.present(destinationViewController, animated: true, completion: nil)
+    }
+    
+    func moveToProfileDetailViewController() {
+        let profileStoryboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+        let destinationViewController = profileStoryboard.instantiateViewController(withIdentifier: "ProfileDetailViewController") as! ProfileDetailViewController
+        destinationViewController.isHeroEnabled = true
+        destinationViewController.modalPresentationStyle = .fullScreen
+               self.present(destinationViewController, animated: true, completion: nil)
+    }
+    
+    func moveToHomeViewControllerFromProfileDetail() {
+        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let destinationViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        destinationViewController.isHeroEnabled = true
+        destinationViewController.modalPresentationStyle = .fullScreen
+
+        self.present(destinationViewController, animated: true, completion: nil)
+    }
+    
+    func displayError(message: String) {
+        let alertController = UIAlertController(title: Localize.Common.Error, message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: Localize.Common.OKButton, style: .destructive, handler: nil)
+        alertController.addAction(alertAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+
+    
 }
 
 

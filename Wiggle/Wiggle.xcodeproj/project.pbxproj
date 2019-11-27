@@ -8,10 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		A6B8A42AC3E4C0E8C384C2E7 /* Pods_Wiggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5526736EFB884D70162BB41 /* Pods_Wiggle.framework */; };
+		F1378F52238A892400622B3C /* GeneralRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1378F51238A892400622B3C /* GeneralRequest.swift */; };
+		F1378F54238A8BC500622B3C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1378F53238A8BC400622B3C /* Home.storyboard */; };
+		F1378F57238A983100622B3C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1378F56238A983100622B3C /* HomeViewController.swift */; };
+		F1378F59238ADC7900622B3C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1378F58238ADC7900622B3C /* Profile.storyboard */; };
+		F1378F5C238ADD8300622B3C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1378F5B238ADD8300622B3C /* ProfileViewController.swift */; };
+		F1378F5E238B012100622B3C /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1378F5D238B012100622B3C /* ProfileDetailViewController.swift */; };
 		F152170323885C0B0027C6D4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F152170223885C0B0027C6D4 /* SettingsViewController.swift */; };
 		F152170623885CC50027C6D4 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F152170523885CC50027C6D4 /* Settings.storyboard */; };
-		F152170A23885D5F0027C6D4 /* SettingsPremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F152170823885D5F0027C6D4 /* SettingsPremiumTableViewCell.swift */; };
-		F152170B23885D5F0027C6D4 /* SettingsPremiumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F152170923885D5F0027C6D4 /* SettingsPremiumTableViewCell.xib */; };
+		F152170D2389CF6D0027C6D4 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F152170C2389CF6D0027C6D4 /* UIView + Extensions.swift */; };
+		F152170F2389D5290027C6D4 /* SettingsPremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F152170823885D5F0027C6D4 /* SettingsPremiumTableViewCell.swift */; };
+		F15217102389D52E0027C6D4 /* SettingsPremiumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F152170923885D5F0027C6D4 /* SettingsPremiumTableViewCell.xib */; };
 		F1585AD82384064F0062A681 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1585AD72384064F0062A681 /* AppDelegate.swift */; };
 		F1585ADA2384064F0062A681 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1585AD92384064F0062A681 /* SceneDelegate.swift */; };
 		F1585ADF2384064F0062A681 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1585ADD2384064F0062A681 /* Main.storyboard */; };
@@ -33,6 +40,11 @@
 		F164568E2384157D00FC0694 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164568D2384157D00FC0694 /* NetworkManager.swift */; };
 		F16456912384160A00FC0694 /* SMSCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16456902384160A00FC0694 /* SMSCodeRequest.swift */; };
 		F16456932384170100FC0694 /* Dictionary + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16456922384170100FC0694 /* Dictionary + Extensions.swift */; };
+		F19A48C7238F05220045C0BC /* WiggleHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A48C6238F05220045C0BC /* WiggleHUD.swift */; };
+		F19A48C9238F0BD80045C0BC /* UIViewController + Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A48C8238F0BD80045C0BC /* UIViewController + Activity.swift */; };
+		F19A48CB238F0C700045C0BC /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A48CA238F0C700045C0BC /* UIColor + Extensions.swift */; };
+		F19A48CF238F129E0045C0BC /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A48CE238F129E0045C0BC /* SplashViewController.swift */; };
+		F19A48D1238F15670045C0BC /* UIViewController + User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A48D0238F15670045C0BC /* UIViewController + User.swift */; };
 		F1D407162385E641002350BE /* EnableLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D407152385E641002350BE /* EnableLocationViewController.swift */; };
 		F1D407182385EE7A002350BE /* EnableNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D407172385EE7A002350BE /* EnableNotificationsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -40,10 +52,17 @@
 /* Begin PBXFileReference section */
 		44BB3C201FFEF9A359F53C04 /* Pods-Wiggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.debug.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.debug.xcconfig"; sourceTree = "<group>"; };
 		4E39BF0A09E61170AE4D6F33 /* Pods-Wiggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.release.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.release.xcconfig"; sourceTree = "<group>"; };
+		F1378F51238A892400622B3C /* GeneralRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralRequest.swift; sourceTree = "<group>"; };
+		F1378F53238A8BC400622B3C /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		F1378F56238A983100622B3C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F1378F58238ADC7900622B3C /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		F1378F5B238ADD8300622B3C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F1378F5D238B012100622B3C /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
 		F152170223885C0B0027C6D4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F152170523885CC50027C6D4 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		F152170823885D5F0027C6D4 /* SettingsPremiumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPremiumTableViewCell.swift; sourceTree = "<group>"; };
 		F152170923885D5F0027C6D4 /* SettingsPremiumTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsPremiumTableViewCell.xib; sourceTree = "<group>"; };
+		F152170C2389CF6D0027C6D4 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		F1585AD42384064F0062A681 /* Wiggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wiggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1585AD72384064F0062A681 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1585AD92384064F0062A681 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +89,11 @@
 		F164568D2384157D00FC0694 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F16456902384160A00FC0694 /* SMSCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeRequest.swift; sourceTree = "<group>"; };
 		F16456922384170100FC0694 /* Dictionary + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary + Extensions.swift"; sourceTree = "<group>"; };
+		F19A48C6238F05220045C0BC /* WiggleHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiggleHUD.swift; sourceTree = "<group>"; };
+		F19A48C8238F0BD80045C0BC /* UIViewController + Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Activity.swift"; sourceTree = "<group>"; };
+		F19A48CA238F0C700045C0BC /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
+		F19A48CE238F129E0045C0BC /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		F19A48D0238F15670045C0BC /* UIViewController + User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + User.swift"; sourceTree = "<group>"; };
 		F1D407152385E641002350BE /* EnableLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableLocationViewController.swift; sourceTree = "<group>"; };
 		F1D407172385EE7A002350BE /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
 		F5526736EFB884D70162BB41 /* Pods_Wiggle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wiggle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +128,31 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F1378F50238A891600622B3C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F1378F51238A892400622B3C /* GeneralRequest.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		F1378F55238A982100622B3C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F1378F56238A983100622B3C /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		F1378F5A238ADD7100622B3C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F1378F5B238ADD8300622B3C /* ProfileViewController.swift */,
+				F1378F5D238B012100622B3C /* ProfileDetailViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		F152170123885BDC0027C6D4 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,10 +165,18 @@
 		F152170723885D400027C6D4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				F152170E2389D4670027C6D4 /* Premium */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F152170E2389D4670027C6D4 /* Premium */ = {
+			isa = PBXGroup;
+			children = (
 				F152170823885D5F0027C6D4 /* SettingsPremiumTableViewCell.swift */,
 				F152170923885D5F0027C6D4 /* SettingsPremiumTableViewCell.xib */,
 			);
-			path = Cells;
+			path = Premium;
 			sourceTree = "<group>";
 		};
 		F1585ACB2384064F0062A681 = {
@@ -164,6 +221,8 @@
 		F1585AEB238406C50062A681 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F1378F5A238ADD7100622B3C /* Profile */,
+				F1378F55238A982100622B3C /* Home */,
 				F152170123885BDC0027C6D4 /* Settings */,
 				F159C7B8238498E70091AB05 /* Registration */,
 				F1585AF32384071A0062A681 /* Splash */,
@@ -176,6 +235,7 @@
 		F1585AEC238406CB0062A681 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F1378F50238A891600622B3C /* Common */,
 				F159C7B5238492F90091AB05 /* User */,
 				F159C7B423848CBC0091AB05 /* Phone Auth  */,
 				F164568F238415F900FC0694 /* SMS Code */,
@@ -186,6 +246,7 @@
 		F1585AED238406D00062A681 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F19A48C5238F05050045C0BC /* Activity Indicator */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,6 +263,8 @@
 			children = (
 				F1585ADD2384064F0062A681 /* Main.storyboard */,
 				F152170523885CC50027C6D4 /* Settings.storyboard */,
+				F1378F53238A8BC400622B3C /* Home.storyboard */,
+				F1378F58238ADC7900622B3C /* Profile.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -219,6 +282,10 @@
 			children = (
 				F1585AFB238407A30062A681 /* UIViewController + Extensions.swift */,
 				F16456922384170100FC0694 /* Dictionary + Extensions.swift */,
+				F152170C2389CF6D0027C6D4 /* UIView + Extensions.swift */,
+				F19A48C8238F0BD80045C0BC /* UIViewController + Activity.swift */,
+				F19A48CA238F0C700045C0BC /* UIColor + Extensions.swift */,
+				F19A48D0238F15670045C0BC /* UIViewController + User.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -234,6 +301,7 @@
 		F1585AF32384071A0062A681 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
+				F19A48CE238F129E0045C0BC /* SplashViewController.swift */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -301,6 +369,14 @@
 			path = "SMS Code";
 			sourceTree = "<group>";
 		};
+		F19A48C5238F05050045C0BC /* Activity Indicator */ = {
+			isa = PBXGroup;
+			children = (
+				F19A48C6238F05220045C0BC /* WiggleHUD.swift */,
+			);
+			path = "Activity Indicator";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -362,11 +438,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1378F54238A8BC500622B3C /* Home.storyboard in Resources */,
 				F1585AE4238406560062A681 /* LaunchScreen.storyboard in Resources */,
+				F1378F59238ADC7900622B3C /* Profile.storyboard in Resources */,
 				F1645687238409CE00FC0694 /* Localizable.strings in Resources */,
 				F1585AE1238406560062A681 /* Assets.xcassets in Resources */,
 				F1585ADF2384064F0062A681 /* Main.storyboard in Resources */,
-				F152170B23885D5F0027C6D4 /* SettingsPremiumTableViewCell.xib in Resources */,
+				F15217102389D52E0027C6D4 /* SettingsPremiumTableViewCell.xib in Resources */,
 				F152170623885CC50027C6D4 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,25 +499,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1585AF6238407430062A681 /* FirstPageViewController.swift in Sources */,
+				F19A48CB238F0C700045C0BC /* UIColor + Extensions.swift in Sources */,
 				F16456932384170100FC0694 /* Dictionary + Extensions.swift in Sources */,
+				F19A48C7238F05220045C0BC /* WiggleHUD.swift in Sources */,
 				F1585AFA2384077A0062A681 /* EnterVerificationCodeViewController.swift in Sources */,
 				F152170323885C0B0027C6D4 /* SettingsViewController.swift in Sources */,
 				F16456912384160A00FC0694 /* SMSCodeRequest.swift in Sources */,
 				F159C7BC2385240D0091AB05 /* GetBioViewController.swift in Sources */,
 				F159C8CE2385AB330091AB05 /* BirthdayViewController.swift in Sources */,
+				F19A48CF238F129E0045C0BC /* SplashViewController.swift in Sources */,
 				F1585AF8238407680062A681 /* EnterPhoneViewController.swift in Sources */,
-				F152170A23885D5F0027C6D4 /* SettingsPremiumTableViewCell.swift in Sources */,
+				F19A48D1238F15670045C0BC /* UIViewController + User.swift in Sources */,
 				F1585AFC238407A30062A681 /* UIViewController + Extensions.swift in Sources */,
 				F159C8D32385CA460091AB05 /* PickImageViewController.swift in Sources */,
 				F164568E2384157D00FC0694 /* NetworkManager.swift in Sources */,
+				F1378F57238A983100622B3C /* HomeViewController.swift in Sources */,
+				F1378F52238A892400622B3C /* GeneralRequest.swift in Sources */,
 				F164568C23840A0600FC0694 /* Localize.swift in Sources */,
 				F1585AD82384064F0062A681 /* AppDelegate.swift in Sources */,
 				F159C7B7238493100091AB05 /* WiggleUser.swift in Sources */,
 				F1585ADA2384064F0062A681 /* SceneDelegate.swift in Sources */,
+				F1378F5E238B012100622B3C /* ProfileDetailViewController.swift in Sources */,
 				F1D407162385E641002350BE /* EnableLocationViewController.swift in Sources */,
 				F159C8D12385C8850091AB05 /* ImagePicker.swift in Sources */,
+				F152170D2389CF6D0027C6D4 /* UIView + Extensions.swift in Sources */,
 				F1D407182385EE7A002350BE /* EnableNotificationsViewController.swift in Sources */,
+				F19A48C9238F0BD80045C0BC /* UIViewController + Activity.swift in Sources */,
 				F159C7B323848CB70091AB05 /* PhoneAuthRequest.swift in Sources */,
+				F1378F5C238ADD8300622B3C /* ProfileViewController.swift in Sources */,
+				F152170F2389D5290027C6D4 /* SettingsPremiumTableViewCell.swift in Sources */,
 				F159C7BA2384991E0091AB05 /* GetNameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

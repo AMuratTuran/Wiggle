@@ -167,6 +167,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                 <color key="tintColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="chevron.down" catalog="system">
                                     <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -202,6 +203,12 @@
                                     <constraint firstAttribute="height" constant="1" id="Nhx-FH-jz6"/>
                                 </constraints>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvo-4s-7AA">
+                                <rect key="frame" x="288" y="316" width="37" height="17.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -214,6 +221,7 @@
                             <constraint firstItem="TN2-dW-Kf6" firstAttribute="width" secondItem="Hc1-Fi-PhE" secondAttribute="width" id="CvV-I1-FnD"/>
                             <constraint firstItem="w6I-rF-zan" firstAttribute="width" secondItem="03g-C2-c4l" secondAttribute="width" id="Esa-sA-mf8"/>
                             <constraint firstItem="Hc1-Fi-PhE" firstAttribute="top" secondItem="i7W-Cj-AMj" secondAttribute="bottom" constant="18" id="FyV-eU-LZd"/>
+                            <constraint firstItem="lvo-4s-7AA" firstAttribute="trailing" secondItem="03g-C2-c4l" secondAttribute="trailing" id="JZj-sf-rAt"/>
                             <constraint firstItem="TN2-dW-Kf6" firstAttribute="leading" secondItem="Hc1-Fi-PhE" secondAttribute="leading" id="L2m-dt-hD8"/>
                             <constraint firstItem="TN2-dW-Kf6" firstAttribute="trailing" secondItem="Hc1-Fi-PhE" secondAttribute="trailing" id="LTB-mN-WbC"/>
                             <constraint firstItem="F6Y-pV-9qd" firstAttribute="leading" secondItem="OSC-j1-n3l" secondAttribute="leading" constant="25" id="Owy-fz-N0b"/>
@@ -227,6 +235,7 @@
                             <constraint firstItem="OSC-j1-n3l" firstAttribute="trailing" secondItem="F6Y-pV-9qd" secondAttribute="trailing" constant="25" id="qy0-p1-oYb"/>
                             <constraint firstItem="i7W-Cj-AMj" firstAttribute="top" secondItem="leu-So-oTm" secondAttribute="bottom" constant="30" id="rkc-vN-XR1"/>
                             <constraint firstItem="03g-C2-c4l" firstAttribute="height" secondItem="Hc1-Fi-PhE" secondAttribute="height" multiplier="0.85" id="uYv-g4-fa8"/>
+                            <constraint firstItem="lvo-4s-7AA" firstAttribute="top" secondItem="03g-C2-c4l" secondAttribute="bottom" constant="1" id="y7a-F4-SXS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OSC-j1-n3l"/>
                     </view>
@@ -234,6 +243,7 @@
                     <connections>
                         <outlet property="continueButton" destination="F6Y-pV-9qd" id="yvp-B8-12U"/>
                         <outlet property="phoneCodePickerButton" destination="Hc1-Fi-PhE" id="Z3t-c3-17t"/>
+                        <outlet property="phoneRequiredText" destination="lvo-4s-7AA" id="nMS-Bb-Bgx"/>
                         <outlet property="phoneTextField" destination="03g-C2-c4l" id="fdf-QL-Rl3"/>
                     </connections>
                 </viewController>
@@ -297,15 +307,30 @@
                                     <action selector="continueAction:" destination="Lr2-Fn-aX0" eventType="touchUpInside" id="ZCc-OF-E1C"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9B-e0-kjo">
+                                <rect key="frame" x="264" y="279" width="61" height="17.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGA-4c-ueq">
+                                <rect key="frame" x="263.5" y="343" width="61.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Rue-OD-UXx" firstAttribute="trailing" secondItem="3XG-lx-8qJ" secondAttribute="trailing" id="6xg-6M-qCs"/>
+                            <constraint firstItem="VGA-4c-ueq" firstAttribute="trailing" secondItem="3XG-lx-8qJ" secondAttribute="trailing" id="Ewi-sh-Bv3"/>
                             <constraint firstItem="bbC-Gk-Qmo" firstAttribute="trailing" secondItem="3XG-lx-8qJ" secondAttribute="trailing" constant="50" id="FUv-kI-3DC"/>
                             <constraint firstItem="baa-Vg-O2a" firstAttribute="leading" secondItem="bbC-Gk-Qmo" secondAttribute="leading" constant="25" id="IbN-eg-jFX"/>
                             <constraint firstItem="FoP-eN-RCU" firstAttribute="width" secondItem="baa-Vg-O2a" secondAttribute="width" id="UJT-AZ-Dkb"/>
                             <constraint firstItem="bbC-Gk-Qmo" firstAttribute="trailing" secondItem="baa-Vg-O2a" secondAttribute="trailing" constant="50" id="UYb-eD-zBl"/>
+                            <constraint firstItem="R9B-e0-kjo" firstAttribute="trailing" secondItem="baa-Vg-O2a" secondAttribute="trailing" id="Vfi-AB-d68"/>
                             <constraint firstItem="Rue-OD-UXx" firstAttribute="width" secondItem="3XG-lx-8qJ" secondAttribute="width" id="ZzA-DU-dzo"/>
+                            <constraint firstItem="VGA-4c-ueq" firstAttribute="top" secondItem="3XG-lx-8qJ" secondAttribute="top" id="bZq-g6-HMi"/>
                             <constraint firstItem="Rue-OD-UXx" firstAttribute="top" secondItem="3XG-lx-8qJ" secondAttribute="bottom" constant="1" id="bmg-DL-Ota"/>
                             <constraint firstItem="bbC-Gk-Qmo" firstAttribute="bottom" secondItem="BO1-kV-gBf" secondAttribute="bottom" constant="50" id="cwV-Dw-hCi"/>
                             <constraint firstItem="Rue-OD-UXx" firstAttribute="leading" secondItem="3XG-lx-8qJ" secondAttribute="leading" id="erc-wk-WVC"/>
@@ -315,6 +340,7 @@
                             <constraint firstItem="FoP-eN-RCU" firstAttribute="top" secondItem="baa-Vg-O2a" secondAttribute="bottom" constant="1" id="iJB-7j-wko"/>
                             <constraint firstItem="bbC-Gk-Qmo" firstAttribute="bottom" secondItem="3XG-lx-8qJ" secondAttribute="bottom" constant="300" id="jcM-wn-vAZ"/>
                             <constraint firstItem="3XG-lx-8qJ" firstAttribute="leading" secondItem="bbC-Gk-Qmo" secondAttribute="leading" constant="25" id="jmx-j6-oyA"/>
+                            <constraint firstItem="R9B-e0-kjo" firstAttribute="top" secondItem="baa-Vg-O2a" secondAttribute="top" id="oA6-kf-Vzg"/>
                             <constraint firstItem="bLb-zW-9CW" firstAttribute="leading" secondItem="bbC-Gk-Qmo" secondAttribute="leading" constant="25" id="qWu-to-M9J"/>
                             <constraint firstItem="bbC-Gk-Qmo" firstAttribute="trailing" secondItem="BO1-kV-gBf" secondAttribute="trailing" constant="25" id="sCg-05-qnv"/>
                             <constraint firstItem="BO1-kV-gBf" firstAttribute="leading" secondItem="baa-Vg-O2a" secondAttribute="leading" id="sjj-w5-o2B"/>
@@ -324,7 +350,9 @@
                     <navigationItem key="navigationItem" id="0zg-Tt-5Zt"/>
                     <connections>
                         <outlet property="continueButton" destination="BO1-kV-gBf" id="h1X-hF-0rQ"/>
+                        <outlet property="lastNameRequiredText" destination="VGA-4c-ueq" id="ofu-Fi-hrc"/>
                         <outlet property="lastnameTextField" destination="3XG-lx-8qJ" id="khf-Oj-9dr"/>
+                        <outlet property="nameRequiredText" destination="R9B-e0-kjo" id="E7v-p4-acj"/>
                         <outlet property="nameTextField" destination="baa-Vg-O2a" id="LQx-MS-o7o"/>
                         <outlet property="topLabel" destination="bLb-zW-9CW" id="h9w-Ea-QWu"/>
                     </connections>
@@ -480,20 +508,49 @@
                                     <constraint firstAttribute="height" constant="1" id="xQI-8z-OEa"/>
                                 </constraints>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNj-mg-meN">
+                                <rect key="frame" x="298" y="204" width="37" height="17.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27V-BU-PCB">
+                                <rect key="frame" x="25" y="507" width="325" height="50"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="Tekrar Gonder">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sendAgainAction:" destination="Qce-oo-uFw" eventType="touchUpInside" id="mil-Ac-h8H"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="27V-BU-PCB" firstAttribute="trailing" secondItem="yFU-XW-UfB" secondAttribute="trailing" id="3ck-b5-KVs"/>
                             <constraint firstItem="0nc-na-63x" firstAttribute="leading" secondItem="Tlw-UO-red" secondAttribute="leading" id="48U-XF-ZO5"/>
                             <constraint firstItem="0nc-na-63x" firstAttribute="width" secondItem="Tlw-UO-red" secondAttribute="width" id="8lk-5F-BaI"/>
                             <constraint firstItem="lyN-xH-4z9" firstAttribute="trailing" secondItem="rnx-e4-2Tg" secondAttribute="trailing" constant="16" id="9cF-gh-BqT"/>
                             <constraint firstItem="yFU-XW-UfB" firstAttribute="leading" secondItem="lyN-xH-4z9" secondAttribute="leading" constant="25" id="Bkr-FP-yYI"/>
                             <constraint firstItem="Tlw-UO-red" firstAttribute="leading" secondItem="lyN-xH-4z9" secondAttribute="leading" constant="40" id="Bx3-60-hxB"/>
+                            <constraint firstItem="27V-BU-PCB" firstAttribute="height" secondItem="yFU-XW-UfB" secondAttribute="height" id="Fa0-U5-2Bf"/>
                             <constraint firstItem="Tlw-UO-red" firstAttribute="top" secondItem="rnx-e4-2Tg" secondAttribute="bottom" constant="50" id="GqX-e0-70n"/>
                             <constraint firstItem="lyN-xH-4z9" firstAttribute="trailing" secondItem="yFU-XW-UfB" secondAttribute="trailing" constant="25" id="Hlv-is-TST"/>
+                            <constraint firstItem="rNj-mg-meN" firstAttribute="trailing" secondItem="Tlw-UO-red" secondAttribute="trailing" id="QEu-0L-qmu"/>
                             <constraint firstItem="0nc-na-63x" firstAttribute="trailing" secondItem="Tlw-UO-red" secondAttribute="trailing" id="WPY-jf-DK0"/>
                             <constraint firstItem="rnx-e4-2Tg" firstAttribute="leading" secondItem="TB8-Vq-kec" secondAttribute="leading" constant="16" id="Yd0-il-yVL"/>
                             <constraint firstItem="0nc-na-63x" firstAttribute="top" secondItem="Tlw-UO-red" secondAttribute="bottom" constant="1" id="a02-pF-qJ4"/>
+                            <constraint firstItem="yFU-XW-UfB" firstAttribute="top" secondItem="27V-BU-PCB" secondAttribute="bottom" constant="10" id="fHj-ef-sTP"/>
                             <constraint firstItem="lyN-xH-4z9" firstAttribute="trailing" secondItem="rnx-e4-2Tg" secondAttribute="trailing" constant="16" id="fOK-ph-LmM"/>
+                            <constraint firstItem="27V-BU-PCB" firstAttribute="leading" secondItem="yFU-XW-UfB" secondAttribute="leading" id="hFq-Kb-fKG"/>
+                            <constraint firstItem="27V-BU-PCB" firstAttribute="width" secondItem="yFU-XW-UfB" secondAttribute="width" id="inb-If-uyk"/>
+                            <constraint firstItem="rNj-mg-meN" firstAttribute="top" secondItem="Tlw-UO-red" secondAttribute="bottom" constant="1" id="kRF-kZ-9ez"/>
                             <constraint firstItem="lyN-xH-4z9" firstAttribute="bottom" secondItem="yFU-XW-UfB" secondAttribute="bottom" constant="50" id="tpC-iL-jWL"/>
                             <constraint firstItem="rnx-e4-2Tg" firstAttribute="top" secondItem="lyN-xH-4z9" secondAttribute="top" constant="50" id="yOD-oM-XFL"/>
                             <constraint firstItem="lyN-xH-4z9" firstAttribute="trailing" secondItem="Tlw-UO-red" secondAttribute="trailing" constant="40" id="zlw-Wb-mSy"/>
@@ -503,7 +560,9 @@
                     <navigationItem key="navigationItem" title="SMS Login" largeTitleDisplayMode="never" id="Iqd-PY-WFc"/>
                     <connections>
                         <outlet property="continueButton" destination="yFU-XW-UfB" id="sp6-8A-Myb"/>
+                        <outlet property="sendAgainButton" destination="27V-BU-PCB" id="duI-v7-E0k"/>
                         <outlet property="smsCodeTextField" destination="Tlw-UO-red" id="Gth-0Z-Aw1"/>
+                        <outlet property="smsRequiredText" destination="rNj-mg-meN" id="yX9-Cu-kTh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pTr-el-Om0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -815,7 +874,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable notifications to get notified when somelikes you or sends you a message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZ7-8v-E0o">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable notifications to get notified when someone likes you or sends you a message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZ7-8v-E0o">
                                 <rect key="frame" x="25" y="310" width="325" height="72"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

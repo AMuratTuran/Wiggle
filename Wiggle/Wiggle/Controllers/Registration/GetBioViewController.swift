@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Parse
 
 class GetBioViewController: UIViewController {
-
+    
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var bioTextView: UITextView!
     @IBOutlet weak var continueButton: UIButton!
@@ -29,7 +30,17 @@ class GetBioViewController: UIViewController {
     }
     
     @IBAction func continueAction(_ sender: Any) {
-        moveToPickImageViewController(navigationController: self.navigationController ?? UINavigationController())
+        startAnimating(self.view, startAnimate: true)
+        let bio = bioTextView.text
+        PFUser.current()?.setValue(bio, forKey: "bio")
+        PFUser.current()?.saveInBackground(block: { (result, error) in
+            self.startAnimating(self.view, startAnimate: false)
+            if error != nil {
+                self.displayError(message: error?.localizedDescription ?? "")
+            }else {
+                self.moveToPickImageViewController(navigationController: self.navigationController ?? UINavigationController())
+            }
+        })
     }
     @IBAction func skipAction(_ sender: UIButton) {
         moveToPickImageViewController(navigationController: self.navigationController ?? UINavigationController())
@@ -42,6 +53,6 @@ class GetBioViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-
+    
 }
 

@@ -12,5 +12,8 @@ target 'Wiggle' do
   pod 'FacebookCore'
   pod 'FacebookShare'
   pod 'RLBAlertsPickers', '~> 1.1.1'
+  pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :tag => '4.2.0'
+  pod 'Hero'
+  pod 'NVActivityIndicatorView'
 
 end

@@ -23,6 +23,12 @@ class SettingsPremiumTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
+        if #available(iOS 13.0, *) {
+            self.containerView.addShadow()
+        } else {
+            // Fallback on earlier versions
+        }
     }
 
     func prepare(type: MembershipType) {

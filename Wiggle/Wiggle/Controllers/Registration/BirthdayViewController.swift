@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import Parse
 
 class BirthdayViewController: UIViewController {
 
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var birthdayPickerButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
+    
+    var birthday: Date?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +46,7 @@ class BirthdayViewController: UIViewController {
         var components = DateComponents()
         components.calendar = calendar
 
-        components.year = 0
+        components.year = -18
         components.month = 0
         let maxDate = calendar.date(byAdding: components, to: currentDate)!
 
@@ -55,6 +59,7 @@ class BirthdayViewController: UIViewController {
         let alert = UIAlertController(style: .actionSheet, title: Localize.DatePicker.PickDate)
         
         alert.addDatePicker(mode: .date, date: startDate, minimumDate: minDate, maximumDate: maxDate) { date in
+            self.birthday = date.adding(.hour, value: 6)
             self.birthdayPickerButton.setTitle(date.dateString(), for: .normal)
         }
         alert.addAction(title: Localize.Common.OKButton, style: .cancel)
@@ -62,7 +67,19 @@ class BirthdayViewController: UIViewController {
     }
     
     @IBAction func continueAction(_ sender: UIButton) {
-        moveToEnableLocationViewController(navigationController: self.navigationController ?? UINavigationController())
+        startAnimating(self.view, startAnimate: true)
+        if let birthday = birthday {
+            PFUser.current()?.setValue(birthday, forKey: "birthday")
+            PFUser.current()?.saveInBackground(block: { (result, error) in
+                self.startAnimating(self.view, startAnimate: false)
+                if error != nil {
+                    self.displayError(message: error?.localizedDescription ?? "")
+                }else {
+                    self.moveToEnableLocationViewController(navigationController: self.navigationController ?? UINavigationController())
+                }
+            })
+        }
+        
     }
     
     @IBAction func backAction(_ sender: UIButton) {
