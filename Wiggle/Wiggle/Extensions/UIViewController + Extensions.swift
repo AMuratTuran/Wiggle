@@ -11,6 +11,12 @@ import Hero
 
 extension UIViewController {
     
+    func moveToFirstPageViewController () {
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "FirstPageViewController") as! FirstPageViewController
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
+    }
+    
     func moveToEnterPhoneViewController() {
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "EnterPhoneViewController") as! EnterPhoneViewController
@@ -126,6 +132,7 @@ extension UIViewController {
         alertController.addAction(alertAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    
     
 
     

@@ -30,6 +30,7 @@ PODS:
   - FBSDKShareKit/Share (5.11.0):
     - FBSDKCoreKit (~> 5.0)
   - Hero (1.5.0)
+  - lottie-ios (3.1.5)
   - NVActivityIndicatorView (4.8.0):
     - NVActivityIndicatorView/Presenter (= 4.8.0)
   - NVActivityIndicatorView/Presenter (4.8.0)
@@ -49,6 +50,7 @@ DEPENDENCIES:
   - FacebookLogin
   - FacebookShare
   - Hero
+  - lottie-ios
   - NVActivityIndicatorView
   - Parse
   - Parse/FacebookUtils
@@ -65,6 +67,7 @@ SPEC REPOS:
     - FBSDKLoginKit
     - FBSDKShareKit
     - Hero
+    - lottie-ios
     - NVActivityIndicatorView
     - Parse
     - RLBAlertsPickers
@@ -88,11 +91,12 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: 0e976e0c91ee69dd5dc69062c095205146f1dd9f
   FBSDKShareKit: 6f8781da6fca79fe64830fd3404add0660d9f139
   Hero: b7385b75e7259da62f4f85462f59a5082d66b058
+  lottie-ios: 32bf84389337d86fbc8b12266e88452e0abf1dee
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   Parse: c1ad2a04d2cab2b54b6fb7da05f741abf2cf57d1
   RLBAlertsPickers: 2548943b0cb16620904cbd926a645362d1b43963
   SwiftValidator: 249b6b3ae3b294266c5b9de134d94f18f2d5aa47
 
-PODFILE CHECKSUM: 61c02e25a4635a35e61a8279e6a056bcc4a4d900
+PODFILE CHECKSUM: 9449bf710c27a943b503566dc475b6aeb9311653
 
 COCOAPODS: 1.8.3

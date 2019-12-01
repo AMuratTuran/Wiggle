@@ -14,6 +14,19 @@
 		F1378F59238ADC7900622B3C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1378F58238ADC7900622B3C /* Profile.storyboard */; };
 		F1378F5C238ADD8300622B3C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1378F5B238ADD8300622B3C /* ProfileViewController.swift */; };
 		F1378F5E238B012100622B3C /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1378F5D238B012100622B3C /* ProfileDetailViewController.swift */; };
+		F150FCEF2393E9B9002FD404 /* heartbeat.json in Resources */ = {isa = PBXBuildFile; fileRef = F150FCEE2393E9B8002FD404 /* heartbeat.json */; };
+		F150FCF32393EDC0002FD404 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150FCF22393EDC0002FD404 /* Delay.swift */; };
+		F150FCF62393F28B002FD404 /* BoostSuperLikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150FCF42393F28B002FD404 /* BoostSuperLikeCell.swift */; };
+		F150FCF72393F28B002FD404 /* BoostSuperLikeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F150FCF52393F28B002FD404 /* BoostSuperLikeCell.xib */; };
+		F150FCFB2393FA50002FD404 /* SettingWithLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150FCF92393FA50002FD404 /* SettingWithLabelCell.swift */; };
+		F150FCFC2393FA50002FD404 /* SettingWithLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F150FCFA2393FA50002FD404 /* SettingWithLabelCell.xib */; };
+		F150FD002394074C002FD404 /* SettingWithSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150FCFE2394074C002FD404 /* SettingWithSliderCell.swift */; };
+		F150FD012394074C002FD404 /* SettingWithSliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F150FCFF2394074C002FD404 /* SettingWithSliderCell.xib */; };
+		F150FD0523940B31002FD404 /* CellWithToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150FD0323940B31002FD404 /* CellWithToggleCell.swift */; };
+		F150FD0623940B31002FD404 /* CellWithToggleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F150FD0423940B31002FD404 /* CellWithToggleCell.xib */; };
+		F150FD0823941287002FD404 /* ShowMeGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150FD0723941287002FD404 /* ShowMeGenderViewController.swift */; };
+		F150FD0C239413CD002FD404 /* LabelWithCheckmarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150FD0A239413CD002FD404 /* LabelWithCheckmarkCell.swift */; };
+		F150FD0D239413CD002FD404 /* LabelWithCheckmarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F150FD0B239413CD002FD404 /* LabelWithCheckmarkCell.xib */; };
 		F152170323885C0B0027C6D4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F152170223885C0B0027C6D4 /* SettingsViewController.swift */; };
 		F152170623885CC50027C6D4 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F152170523885CC50027C6D4 /* Settings.storyboard */; };
 		F152170D2389CF6D0027C6D4 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F152170C2389CF6D0027C6D4 /* UIView + Extensions.swift */; };
@@ -58,6 +71,19 @@
 		F1378F58238ADC7900622B3C /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		F1378F5B238ADD8300622B3C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F1378F5D238B012100622B3C /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
+		F150FCEE2393E9B8002FD404 /* heartbeat.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = heartbeat.json; sourceTree = "<group>"; };
+		F150FCF22393EDC0002FD404 /* Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
+		F150FCF42393F28B002FD404 /* BoostSuperLikeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostSuperLikeCell.swift; sourceTree = "<group>"; };
+		F150FCF52393F28B002FD404 /* BoostSuperLikeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoostSuperLikeCell.xib; sourceTree = "<group>"; };
+		F150FCF92393FA50002FD404 /* SettingWithLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWithLabelCell.swift; sourceTree = "<group>"; };
+		F150FCFA2393FA50002FD404 /* SettingWithLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingWithLabelCell.xib; sourceTree = "<group>"; };
+		F150FCFE2394074C002FD404 /* SettingWithSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingWithSliderCell.swift; sourceTree = "<group>"; };
+		F150FCFF2394074C002FD404 /* SettingWithSliderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingWithSliderCell.xib; sourceTree = "<group>"; };
+		F150FD0323940B31002FD404 /* CellWithToggleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithToggleCell.swift; sourceTree = "<group>"; };
+		F150FD0423940B31002FD404 /* CellWithToggleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellWithToggleCell.xib; sourceTree = "<group>"; };
+		F150FD0723941287002FD404 /* ShowMeGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMeGenderViewController.swift; sourceTree = "<group>"; };
+		F150FD0A239413CD002FD404 /* LabelWithCheckmarkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithCheckmarkCell.swift; sourceTree = "<group>"; };
+		F150FD0B239413CD002FD404 /* LabelWithCheckmarkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelWithCheckmarkCell.xib; sourceTree = "<group>"; };
 		F152170223885C0B0027C6D4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F152170523885CC50027C6D4 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		F152170823885D5F0027C6D4 /* SettingsPremiumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPremiumTableViewCell.swift; sourceTree = "<group>"; };
@@ -153,11 +179,39 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		F150FCF82393FA1B002FD404 /* Account Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F150FCF92393FA50002FD404 /* SettingWithLabelCell.swift */,
+				F150FCFA2393FA50002FD404 /* SettingWithLabelCell.xib */,
+			);
+			path = "Account Settings";
+			sourceTree = "<group>";
+		};
+		F150FCFD239406ED002FD404 /* Discovery */ = {
+			isa = PBXGroup;
+			children = (
+				F150FCFE2394074C002FD404 /* SettingWithSliderCell.swift */,
+				F150FCFF2394074C002FD404 /* SettingWithSliderCell.xib */,
+			);
+			path = Discovery;
+			sourceTree = "<group>";
+		};
+		F150FD0223940B17002FD404 /* Cell with Toggle */ = {
+			isa = PBXGroup;
+			children = (
+				F150FD0323940B31002FD404 /* CellWithToggleCell.swift */,
+				F150FD0423940B31002FD404 /* CellWithToggleCell.xib */,
+			);
+			path = "Cell with Toggle";
+			sourceTree = "<group>";
+		};
 		F152170123885BDC0027C6D4 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				F152170723885D400027C6D4 /* Cells */,
 				F152170223885C0B0027C6D4 /* SettingsViewController.swift */,
+				F150FD0723941287002FD404 /* ShowMeGenderViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -165,7 +219,12 @@
 		F152170723885D400027C6D4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				F150FD0223940B17002FD404 /* Cell with Toggle */,
+				F150FCFD239406ED002FD404 /* Discovery */,
+				F150FCF82393FA1B002FD404 /* Account Settings */,
 				F152170E2389D4670027C6D4 /* Premium */,
+				F150FD0A239413CD002FD404 /* LabelWithCheckmarkCell.swift */,
+				F150FD0B239413CD002FD404 /* LabelWithCheckmarkCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -175,6 +234,8 @@
 			children = (
 				F152170823885D5F0027C6D4 /* SettingsPremiumTableViewCell.swift */,
 				F152170923885D5F0027C6D4 /* SettingsPremiumTableViewCell.xib */,
+				F150FCF42393F28B002FD404 /* BoostSuperLikeCell.swift */,
+				F150FCF52393F28B002FD404 /* BoostSuperLikeCell.xib */,
 			);
 			path = Premium;
 			sourceTree = "<group>";
@@ -200,6 +261,7 @@
 		F1585AD62384064F0062A681 /* Wiggle */ = {
 			isa = PBXGroup;
 			children = (
+				F150FCEE2393E9B8002FD404 /* heartbeat.json */,
 				F159C8CF2385C87A0091AB05 /* Utility */,
 				F16456842384099000FC0694 /* Localization */,
 				F1585AF1238406F60062A681 /* Extensions */,
@@ -348,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				F159C8D02385C8850091AB05 /* ImagePicker.swift */,
+				F150FCF22393EDC0002FD404 /* Delay.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -441,10 +504,16 @@
 				F1378F54238A8BC500622B3C /* Home.storyboard in Resources */,
 				F1585AE4238406560062A681 /* LaunchScreen.storyboard in Resources */,
 				F1378F59238ADC7900622B3C /* Profile.storyboard in Resources */,
+				F150FD012394074C002FD404 /* SettingWithSliderCell.xib in Resources */,
 				F1645687238409CE00FC0694 /* Localizable.strings in Resources */,
 				F1585AE1238406560062A681 /* Assets.xcassets in Resources */,
+				F150FD0D239413CD002FD404 /* LabelWithCheckmarkCell.xib in Resources */,
 				F1585ADF2384064F0062A681 /* Main.storyboard in Resources */,
+				F150FCFC2393FA50002FD404 /* SettingWithLabelCell.xib in Resources */,
+				F150FD0623940B31002FD404 /* CellWithToggleCell.xib in Resources */,
 				F15217102389D52E0027C6D4 /* SettingsPremiumTableViewCell.xib in Resources */,
+				F150FCEF2393E9B9002FD404 /* heartbeat.json in Resources */,
+				F150FCF72393F28B002FD404 /* BoostSuperLikeCell.xib in Resources */,
 				F152170623885CC50027C6D4 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,6 +572,8 @@
 				F16456932384170100FC0694 /* Dictionary + Extensions.swift in Sources */,
 				F19A48C7238F05220045C0BC /* WiggleHUD.swift in Sources */,
 				F1585AFA2384077A0062A681 /* EnterVerificationCodeViewController.swift in Sources */,
+				F150FCFB2393FA50002FD404 /* SettingWithLabelCell.swift in Sources */,
+				F150FD0C239413CD002FD404 /* LabelWithCheckmarkCell.swift in Sources */,
 				F152170323885C0B0027C6D4 /* SettingsViewController.swift in Sources */,
 				F16456912384160A00FC0694 /* SMSCodeRequest.swift in Sources */,
 				F159C7BC2385240D0091AB05 /* GetBioViewController.swift in Sources */,
@@ -514,16 +585,21 @@
 				F159C8D32385CA460091AB05 /* PickImageViewController.swift in Sources */,
 				F164568E2384157D00FC0694 /* NetworkManager.swift in Sources */,
 				F1378F57238A983100622B3C /* HomeViewController.swift in Sources */,
+				F150FD0523940B31002FD404 /* CellWithToggleCell.swift in Sources */,
 				F1378F52238A892400622B3C /* GeneralRequest.swift in Sources */,
 				F164568C23840A0600FC0694 /* Localize.swift in Sources */,
 				F1585AD82384064F0062A681 /* AppDelegate.swift in Sources */,
 				F159C7B7238493100091AB05 /* WiggleUser.swift in Sources */,
 				F1585ADA2384064F0062A681 /* SceneDelegate.swift in Sources */,
+				F150FCF32393EDC0002FD404 /* Delay.swift in Sources */,
 				F1378F5E238B012100622B3C /* ProfileDetailViewController.swift in Sources */,
 				F1D407162385E641002350BE /* EnableLocationViewController.swift in Sources */,
 				F159C8D12385C8850091AB05 /* ImagePicker.swift in Sources */,
+				F150FD0823941287002FD404 /* ShowMeGenderViewController.swift in Sources */,
+				F150FCF62393F28B002FD404 /* BoostSuperLikeCell.swift in Sources */,
 				F152170D2389CF6D0027C6D4 /* UIView + Extensions.swift in Sources */,
 				F1D407182385EE7A002350BE /* EnableNotificationsViewController.swift in Sources */,
+				F150FD002394074C002FD404 /* SettingWithSliderCell.swift in Sources */,
 				F19A48C9238F0BD80045C0BC /* UIViewController + Activity.swift in Sources */,
 				F159C7B323848CB70091AB05 /* PhoneAuthRequest.swift in Sources */,
 				F1378F5C238ADD8300622B3C /* ProfileViewController.swift in Sources */,
