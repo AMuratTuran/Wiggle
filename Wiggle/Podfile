@@ -18,4 +18,5 @@ target 'Wiggle' do
   pod 'Kingfisher'
   pod 'lottie-ios'
   pod 'MessageKit'
+  pod 'Koloda', :git => 'https://github.com/Yalantis/Koloda.git'
 end
