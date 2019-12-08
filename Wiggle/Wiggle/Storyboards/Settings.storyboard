@@ -16,9 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="tFR-t4-ybq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="tFR-t4-ybq">
                                 <rect key="frame" x="0.0" y="103" width="375" height="515"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -44,6 +44,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dc2-Qk-J4n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2016.8" y="-529.38530734632684"/>
+        </scene>
+        <!--Notification Settings View Controller-->
+        <scene sceneID="q7v-vd-PpC">
+            <objects>
+                <viewController storyboardIdentifier="NotificationSettingsViewController" id="4oN-Um-Pvi" customClass="NotificationSettingsViewController" customModule="Wiggle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RIQ-6G-0v7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eYG-B1-WAQ">
+                                <rect key="frame" x="0.0" y="10" width="375" height="657"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="eYG-B1-WAQ" firstAttribute="leading" secondItem="SRi-j5-S1m" secondAttribute="leading" id="6rC-Y1-tyD"/>
+                            <constraint firstItem="eYG-B1-WAQ" firstAttribute="top" secondItem="SRi-j5-S1m" secondAttribute="top" constant="10" id="W0X-eB-ZE7"/>
+                            <constraint firstItem="SRi-j5-S1m" firstAttribute="trailing" secondItem="eYG-B1-WAQ" secondAttribute="trailing" id="czQ-Zh-ovn"/>
+                            <constraint firstItem="SRi-j5-S1m" firstAttribute="bottom" secondItem="eYG-B1-WAQ" secondAttribute="bottom" id="r94-6v-fRd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SRi-j5-S1m"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="eYG-B1-WAQ" id="4z2-9v-Pok"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kmn-dG-O6B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2995" y="-80"/>
         </scene>
         <!--Show Me Gender View Controller-->
         <scene sceneID="qCL-JV-1t2">

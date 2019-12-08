@@ -23,9 +23,19 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tHj-KD-3FJ">
+                        <rect key="frame" x="0.0" y="49" width="280" height="1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="chJ-jP-iY7"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="rAd-z5-LaZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Fmf-WQ-gwe"/>
+                    <constraint firstAttribute="bottom" secondItem="tHj-KD-3FJ" secondAttribute="bottom" id="KV6-gK-a06"/>
+                    <constraint firstAttribute="trailing" secondItem="tHj-KD-3FJ" secondAttribute="trailing" id="UQo-sg-Mt9"/>
+                    <constraint firstItem="tHj-KD-3FJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ylg-oK-km7"/>
                     <constraint firstItem="rAd-z5-LaZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="uER-k9-Xid"/>
                 </constraints>
             </tableViewCellContentView>

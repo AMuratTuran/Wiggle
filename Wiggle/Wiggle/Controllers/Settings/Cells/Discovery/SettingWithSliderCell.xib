@@ -36,6 +36,13 @@
                             <action selector="sliderChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="5Bh-CT-1pE"/>
                         </connections>
                     </slider>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oft-pD-ToX">
+                        <rect key="frame" x="0.0" y="79" width="320" height="1"/>
+                        <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="fU3-g6-M9r"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="f2t-r1-sub" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="6bZ-UD-Bka"/>
@@ -43,6 +50,9 @@
                     <constraint firstItem="zC2-fc-wqp" firstAttribute="centerY" secondItem="f2t-r1-sub" secondAttribute="centerY" id="FdO-JP-4br"/>
                     <constraint firstItem="f2t-r1-sub" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="W9T-aD-1qS"/>
                     <constraint firstItem="Bt6-82-3xZ" firstAttribute="top" secondItem="f2t-r1-sub" secondAttribute="bottom" constant="10" id="WAU-ep-cT3"/>
+                    <constraint firstAttribute="trailing" secondItem="Oft-pD-ToX" secondAttribute="trailing" id="Xg1-6q-F6c"/>
+                    <constraint firstItem="Oft-pD-ToX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="c9f-RE-b47"/>
+                    <constraint firstAttribute="bottom" secondItem="Oft-pD-ToX" secondAttribute="bottom" id="pwG-Ym-t16"/>
                     <constraint firstAttribute="trailing" secondItem="Bt6-82-3xZ" secondAttribute="trailing" constant="16" id="r23-qm-SBM"/>
                     <constraint firstAttribute="trailing" secondItem="zC2-fc-wqp" secondAttribute="trailing" constant="16" id="v6K-WS-R6g"/>
                 </constraints>

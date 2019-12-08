@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A6B8A42AC3E4C0E8C384C2E7 /* Pods_Wiggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5526736EFB884D70162BB41 /* Pods_Wiggle.framework */; };
+		F10038A8239D711C00829A65 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10038A6239D711C00829A65 /* LogoutCell.swift */; };
+		F10038A9239D711C00829A65 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F10038A7239D711C00829A65 /* LogoutCell.xib */; };
+		F10BC89C239D5E3E005934BB /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10BC89B239D5E3E005934BB /* NotificationSettingsViewController.swift */; };
 		F1378F52238A892400622B3C /* GeneralRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1378F51238A892400622B3C /* GeneralRequest.swift */; };
 		F1378F54238A8BC500622B3C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1378F53238A8BC400622B3C /* Home.storyboard */; };
 		F1378F57238A983100622B3C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1378F56238A983100622B3C /* HomeViewController.swift */; };
@@ -71,6 +74,9 @@
 /* Begin PBXFileReference section */
 		44BB3C201FFEF9A359F53C04 /* Pods-Wiggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.debug.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.debug.xcconfig"; sourceTree = "<group>"; };
 		4E39BF0A09E61170AE4D6F33 /* Pods-Wiggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.release.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.release.xcconfig"; sourceTree = "<group>"; };
+		F10038A6239D711C00829A65 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
+		F10038A7239D711C00829A65 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
+		F10BC89B239D5E3E005934BB /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
 		F1378F51238A892400622B3C /* GeneralRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralRequest.swift; sourceTree = "<group>"; };
 		F1378F53238A8BC400622B3C /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		F1378F56238A983100622B3C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +172,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F10038A4239D70E900829A65 /* Cell With Checkmark */ = {
+			isa = PBXGroup;
+			children = (
+				F150FD0A239413CD002FD404 /* LabelWithCheckmarkCell.swift */,
+				F150FD0B239413CD002FD404 /* LabelWithCheckmarkCell.xib */,
+			);
+			path = "Cell With Checkmark";
+			sourceTree = "<group>";
+		};
+		F10038A5239D710600829A65 /* Logout */ = {
+			isa = PBXGroup;
+			children = (
+				F10038A6239D711C00829A65 /* LogoutCell.swift */,
+				F10038A7239D711C00829A65 /* LogoutCell.xib */,
+			);
+			path = Logout;
+			sourceTree = "<group>";
+		};
 		F1378F50238A891600622B3C /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +283,7 @@
 				F152170723885D400027C6D4 /* Cells */,
 				F152170223885C0B0027C6D4 /* SettingsViewController.swift */,
 				F150FD0723941287002FD404 /* ShowMeGenderViewController.swift */,
+				F10BC89B239D5E3E005934BB /* NotificationSettingsViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -266,12 +291,12 @@
 		F152170723885D400027C6D4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				F10038A5239D710600829A65 /* Logout */,
+				F10038A4239D70E900829A65 /* Cell With Checkmark */,
 				F150FD0223940B17002FD404 /* Cell with Toggle */,
 				F150FCFD239406ED002FD404 /* Discovery */,
 				F150FCF82393FA1B002FD404 /* Account Settings */,
 				F152170E2389D4670027C6D4 /* Premium */,
-				F150FD0A239413CD002FD404 /* LabelWithCheckmarkCell.swift */,
-				F150FD0B239413CD002FD404 /* LabelWithCheckmarkCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -555,6 +580,7 @@
 				F1585AE4238406560062A681 /* LaunchScreen.storyboard in Resources */,
 				F1378F59238ADC7900622B3C /* Profile.storyboard in Resources */,
 				F150FD0F239C2E77002FD404 /* Chat.storyboard in Resources */,
+				F10038A9239D711C00829A65 /* LogoutCell.xib in Resources */,
 				F150FD012394074C002FD404 /* SettingWithSliderCell.xib in Resources */,
 				F1645687238409CE00FC0694 /* Localizable.strings in Resources */,
 				F1585AE1238406560062A681 /* Assets.xcassets in Resources */,
@@ -632,6 +658,7 @@
 				F15005F3239C4C5000E19947 /* ChatViewController.swift in Sources */,
 				F159C7BC2385240D0091AB05 /* GetBioViewController.swift in Sources */,
 				F159C8CE2385AB330091AB05 /* BirthdayViewController.swift in Sources */,
+				F10BC89C239D5E3E005934BB /* NotificationSettingsViewController.swift in Sources */,
 				F19A48CF238F129E0045C0BC /* SplashViewController.swift in Sources */,
 				F1585AF8238407680062A681 /* EnterPhoneViewController.swift in Sources */,
 				F19A48D1238F15670045C0BC /* UIViewController + User.swift in Sources */,
@@ -651,6 +678,7 @@
 				F1378F5E238B012100622B3C /* ProfileDetailViewController.swift in Sources */,
 				F1D407162385E641002350BE /* EnableLocationViewController.swift in Sources */,
 				F159C8D12385C8850091AB05 /* ImagePicker.swift in Sources */,
+				F10038A8239D711C00829A65 /* LogoutCell.swift in Sources */,
 				F150FD0823941287002FD404 /* ShowMeGenderViewController.swift in Sources */,
 				F150FCF62393F28B002FD404 /* BoostSuperLikeCell.swift in Sources */,
 				F152170D2389CF6D0027C6D4 /* UIView + Extensions.swift in Sources */,

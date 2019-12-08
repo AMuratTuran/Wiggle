@@ -10,35 +10,62 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="MDG-XA-LJh" detailTextLabel="KDI-ym-Vf2" rowHeight="50" style="IBUITableViewCellStyleValue1" id="KGk-i7-Jjw" customClass="SettingWithLabelCell" customModule="Wiggle" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="KGk-i7-Jjw" customClass="SettingWithLabelCell" customModule="Wiggle" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="293" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MDG-XA-LJh">
-                        <rect key="frame" x="16" y="15" width="32" height="20"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHp-sT-wgL">
+                        <rect key="frame" x="16" y="15" width="42" height="20"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KDI-ym-Vf2">
-                        <rect key="frame" x="241.5" y="15" width="43.5" height="20"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNO-u5-4fa">
+                        <rect key="frame" x="248.5" y="15.5" width="39.5" height="19"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhV-Ql-6Nk">
+                        <rect key="frame" x="0.0" y="49" width="320" height="1"/>
+                        <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="OVV-s1-ch2"/>
+                        </constraints>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="EoN-Im-dtH">
+                        <rect key="frame" x="292" y="17.5" width="20" height="15"/>
+                        <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="RnZ-xe-4Tw"/>
+                            <constraint firstAttribute="height" constant="20" id="knE-El-Soe"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="hhV-Ql-6Nk" secondAttribute="bottom" id="A92-p8-PVU"/>
+                    <constraint firstItem="hhV-Ql-6Nk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="G8t-WC-sKc"/>
+                    <constraint firstItem="aHp-sT-wgL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="HP8-7H-Urz"/>
+                    <constraint firstItem="EoN-Im-dtH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="SO5-Ht-QOc"/>
+                    <constraint firstAttribute="trailing" secondItem="aNO-u5-4fa" secondAttribute="trailing" constant="32" id="X2e-tp-ySI"/>
+                    <constraint firstItem="aNO-u5-4fa" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ZvR-iL-Crc"/>
+                    <constraint firstAttribute="trailing" secondItem="hhV-Ql-6Nk" secondAttribute="trailing" id="dFO-UR-gAo"/>
+                    <constraint firstAttribute="trailing" secondItem="EoN-Im-dtH" secondAttribute="trailing" constant="8" id="fJB-Aj-75T"/>
+                    <constraint firstItem="aHp-sT-wgL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gtg-Nw-TOh"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="detailLabel" destination="KDI-ym-Vf2" id="L18-0M-mJy"/>
-                <outlet property="titleLabel" destination="MDG-XA-LJh" id="Kn4-TE-nwc"/>
+                <outlet property="detailLabel" destination="aNO-u5-4fa" id="Nep-nl-vrb"/>
+                <outlet property="titleLabel" destination="aHp-sT-wgL" id="a8Q-ub-HhC"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="112.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="arrow.right" catalog="system" width="64" height="48"/>
+    </resources>
 </document>
