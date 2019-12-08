@@ -18,16 +18,40 @@ class SettingsViewController: UIViewController {
         configureViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        initUpwardsAnimation()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        startUpwardsAnimation()
+    }
+
+    func initUpwardsAnimation() {
+        tableView.alpha = 0
+        tableView.transform = CGAffineTransform(translationX: 0, y: 50)
+    }
+    
+    func startUpwardsAnimation() {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [.curveEaseIn], animations: {
+            self.tableView.alpha = 1
+            self.tableView.transform = CGAffineTransform.identity
+        })
+    }
+    
     func configureViews() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "SettingsPremiumTableViewCell", bundle: nil), forCellReuseIdentifier: "SettingsPremiumTableViewCell")
-        tableView.register(UINib(nibName: "BoostSuperLikeCell", bundle: nil), forCellReuseIdentifier: "BoostSuperLikeCell")
-        tableView.register(UINib(nibName: "SettingWithLabelCell", bundle: nil), forCellReuseIdentifier: "SettingWithLabelCell")
-        tableView.register(UINib(nibName: "CellWithToggleCell", bundle: nil), forCellReuseIdentifier: "CellWithToggleCell")
-        tableView.register(UINib(nibName: "SettingWithSliderCell", bundle: nil), forCellReuseIdentifier: "SettingWithSliderCell")
+        tableView.register(UINib(nibName: SettingsPremiumTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: SettingsPremiumTableViewCell.reuseIdentifier)
+        tableView.register(UINib(nibName: BoostSuperLikeCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: BoostSuperLikeCell.reuseIdentifier)
+        tableView.register(UINib(nibName: SettingWithLabelCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: SettingWithLabelCell.reuseIdentifier)
+        tableView.register(UINib(nibName: CellWithToggleCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: CellWithToggleCell.reuseIdentifier)
+        tableView.register(UINib(nibName: SettingWithSliderCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: SettingWithSliderCell.reuseIdentifier)
+        tableView.register(UINib(nibName: LogoutCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: LogoutCell.reuseIdentifier)
         
     }
+    
     @IBAction func dismissAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -36,7 +60,7 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,6 +71,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         }else if section == 2 {
             return 5
         }else if section == 3 {
+            return 1
+        }else if section == 4 {
             return 1
         }else {
             return 0
@@ -78,7 +104,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         }else if indexPath.section == 2 {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier:  "SettingWithLabelCell", for: indexPath) as! SettingWithLabelCell
-                cell.accessoryType = .disclosureIndicator
                 cell.prepareCell(title: "Location", detail: "My Current Location")
                 return cell
             }else if indexPath.row == 1 {
@@ -103,10 +128,12 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         }else if indexPath.section == 3 {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier:  "SettingWithLabelCell", for: indexPath) as! SettingWithLabelCell
-                cell.accessoryType = .disclosureIndicator
                 cell.prepareCell(title: "Push Notifications", detail: "")
                 return cell
             }
+        }else if indexPath.section == 4 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: LogoutCell.reuseIdentifier, for: indexPath) as! LogoutCell
+            return cell
         }
         return UITableViewCell()
     }
@@ -122,7 +149,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 1 || section == 2 || section == 3{
+        if section == 1 || section == 2 || section == 3 || section == 4{
             return 50
         }else {
             return 0
@@ -161,9 +188,12 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         return headerView
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Settings", bundle: nil)
         if indexPath.section == 2 && indexPath.row == 2 {
-            let storyboard = UIStoryboard(name: "Settings", bundle: nil)
             let destionationViewController = storyboard.instantiateViewController(withIdentifier: "ShowMeGenderViewController") as! ShowMeGenderViewController
+            self.navigationController?.pushViewController(destionationViewController, animated: true)
+        }else if indexPath.section == 3 {
+            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "NotificationSettingsViewController") as! NotificationSettingsViewController
             self.navigationController?.pushViewController(destionationViewController, animated: true)
         }
         tableView.deselectRow(at: indexPath, animated: true)

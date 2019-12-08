@@ -39,4 +39,8 @@ struct Localize {
         static var CameraRoll: String { return NSLocalizedString("camera_roll", comment: "Camera") }
         static var PhotoLibrary: String { return NSLocalizedString("photo_library", comment: "Camera") }
     }
+    
+    struct Settings {
+        static var Logout: String { return NSLocalizedString("logout", comment: "Settings") }
+    }
 }

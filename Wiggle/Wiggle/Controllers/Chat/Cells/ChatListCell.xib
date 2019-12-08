@@ -89,10 +89,20 @@
                             <constraint firstItem="nNP-zQ-dXv" firstAttribute="leading" secondItem="Wk0-oZ-oH6" secondAttribute="leading" constant="20" id="zVu-kC-Oel"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6qt-HP-N0f" userLabel="Line View">
+                        <rect key="frame" x="70" y="69" width="280" height="1"/>
+                        <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="U2Y-mY-dur"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="6qt-HP-N0f" secondAttribute="trailing" id="FLt-LD-S1P"/>
+                    <constraint firstItem="6qt-HP-N0f" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="70" id="MM4-qL-fTK"/>
                     <constraint firstAttribute="bottom" secondItem="Wk0-oZ-oH6" secondAttribute="bottom" id="Q1x-gU-qlM"/>
                     <constraint firstItem="Wk0-oZ-oH6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="X2Q-7C-ubR"/>
+                    <constraint firstAttribute="bottom" secondItem="6qt-HP-N0f" secondAttribute="bottom" id="bxm-IB-22g"/>
                     <constraint firstAttribute="trailing" secondItem="Wk0-oZ-oH6" secondAttribute="trailing" id="kUK-Mu-vjk"/>
                     <constraint firstItem="Wk0-oZ-oH6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="tth-bO-jCc"/>
                 </constraints>

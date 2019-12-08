@@ -28,10 +28,20 @@
                         <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="onTintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </switch>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="msD-z9-MPf">
+                        <rect key="frame" x="0.0" y="49" width="320" height="1"/>
+                        <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="ZNe-uh-q8P"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="msD-z9-MPf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="8XN-yd-4Mj"/>
                     <constraint firstItem="xPy-sv-aj5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="C0H-Xb-bAa"/>
+                    <constraint firstAttribute="bottom" secondItem="msD-z9-MPf" secondAttribute="bottom" id="P2C-rt-Jkp"/>
                     <constraint firstItem="JSr-IB-LN9" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="V6v-Qk-4Nx"/>
+                    <constraint firstAttribute="trailing" secondItem="msD-z9-MPf" secondAttribute="trailing" id="d3t-a1-AwI"/>
                     <constraint firstItem="xPy-sv-aj5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="fuM-WV-w1i"/>
                     <constraint firstAttribute="trailing" secondItem="JSr-IB-LN9" secondAttribute="trailing" constant="16" id="l5d-IM-hPz"/>
                 </constraints>

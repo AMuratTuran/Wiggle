@@ -73,7 +73,7 @@ extension GetNameViewController: ValidationDelegate {
         lastNameRequiredText.isHidden = true
         let firstname = nameTextField.text
         let lastname = lastnameTextField.text
-        PFUser.current()?.setValue(firstname, forKey: "firstName")
+        PFUser.current()?.setValue(firstname, forKey: "first_name")
         PFUser.current()?.setValue(lastname, forKey: "last_name")
         PFUser.current()?.saveInBackground(block: { (result, error) in
             self.startAnimating(self.view, startAnimate: false)
