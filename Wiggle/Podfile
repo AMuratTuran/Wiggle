@@ -4,7 +4,7 @@ platform :ios, '10.0'
 target 'Wiggle' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
+  
   # Pods for Wiggle
   pod 'Parse'
   pod 'Parse/FacebookUtils'
@@ -15,6 +15,7 @@ target 'Wiggle' do
   pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :tag => '4.2.0'
   pod 'Hero'
   pod 'NVActivityIndicatorView'
-pod 'lottie-ios'
-
+  pod 'Kingfisher'
+  pod 'lottie-ios'
+  pod 'MessageKit'
 end

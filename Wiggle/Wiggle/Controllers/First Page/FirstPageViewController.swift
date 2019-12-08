@@ -57,8 +57,10 @@ class FirstPageViewController: UIViewController {
                 }
             }
         }else {
-            moveToEnterPhoneViewController()
+            //moveToEnterPhoneViewController()
+            moveToChatListViewController()
         }
     }
-
 }
+
+

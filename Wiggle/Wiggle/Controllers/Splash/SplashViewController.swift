@@ -34,7 +34,12 @@ class SplashViewController: UIViewController {
         animationView.play()
         
         delay(2.0) {
-            self.moveToProfileViewController()
+            let homeStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let destinationViewController = homeStoryboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+            //self.navigationController?.viewControllers.removeAll()
+            self.navigationController?.pushViewController(destinationViewController, animated: true)
+            
+            //self.initializeMainTabBar()
         }
         
         

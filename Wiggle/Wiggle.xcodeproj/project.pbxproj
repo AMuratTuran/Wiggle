@@ -14,6 +14,7 @@
 		F1378F59238ADC7900622B3C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1378F58238ADC7900622B3C /* Profile.storyboard */; };
 		F1378F5C238ADD8300622B3C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1378F5B238ADD8300622B3C /* ProfileViewController.swift */; };
 		F1378F5E238B012100622B3C /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1378F5D238B012100622B3C /* ProfileDetailViewController.swift */; };
+		F15005F3239C4C5000E19947 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15005F2239C4C5000E19947 /* ChatViewController.swift */; };
 		F150FCEF2393E9B9002FD404 /* heartbeat.json in Resources */ = {isa = PBXBuildFile; fileRef = F150FCEE2393E9B8002FD404 /* heartbeat.json */; };
 		F150FCF32393EDC0002FD404 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150FCF22393EDC0002FD404 /* Delay.swift */; };
 		F150FCF62393F28B002FD404 /* BoostSuperLikeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150FCF42393F28B002FD404 /* BoostSuperLikeCell.swift */; };
@@ -27,6 +28,11 @@
 		F150FD0823941287002FD404 /* ShowMeGenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150FD0723941287002FD404 /* ShowMeGenderViewController.swift */; };
 		F150FD0C239413CD002FD404 /* LabelWithCheckmarkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150FD0A239413CD002FD404 /* LabelWithCheckmarkCell.swift */; };
 		F150FD0D239413CD002FD404 /* LabelWithCheckmarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F150FD0B239413CD002FD404 /* LabelWithCheckmarkCell.xib */; };
+		F150FD0F239C2E77002FD404 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F150FD0E239C2E77002FD404 /* Chat.storyboard */; };
+		F150FD13239C2EF0002FD404 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150FD12239C2EF0002FD404 /* ChatListViewController.swift */; };
+		F150FD15239C33B0002FD404 /* UIView + ReuseIdentifier .swift in Sources */ = {isa = PBXBuildFile; fileRef = F150FD14239C33B0002FD404 /* UIView + ReuseIdentifier .swift */; };
+		F150FD19239C33E2002FD404 /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150FD17239C33E2002FD404 /* ChatListCell.swift */; };
+		F150FD1A239C33E2002FD404 /* ChatListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F150FD18239C33E2002FD404 /* ChatListCell.xib */; };
 		F152170323885C0B0027C6D4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F152170223885C0B0027C6D4 /* SettingsViewController.swift */; };
 		F152170623885CC50027C6D4 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F152170523885CC50027C6D4 /* Settings.storyboard */; };
 		F152170D2389CF6D0027C6D4 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F152170C2389CF6D0027C6D4 /* UIView + Extensions.swift */; };
@@ -71,6 +77,7 @@
 		F1378F58238ADC7900622B3C /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		F1378F5B238ADD8300622B3C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F1378F5D238B012100622B3C /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
+		F15005F2239C4C5000E19947 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		F150FCEE2393E9B8002FD404 /* heartbeat.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = heartbeat.json; sourceTree = "<group>"; };
 		F150FCF22393EDC0002FD404 /* Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 		F150FCF42393F28B002FD404 /* BoostSuperLikeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoostSuperLikeCell.swift; sourceTree = "<group>"; };
@@ -84,6 +91,11 @@
 		F150FD0723941287002FD404 /* ShowMeGenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMeGenderViewController.swift; sourceTree = "<group>"; };
 		F150FD0A239413CD002FD404 /* LabelWithCheckmarkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithCheckmarkCell.swift; sourceTree = "<group>"; };
 		F150FD0B239413CD002FD404 /* LabelWithCheckmarkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelWithCheckmarkCell.xib; sourceTree = "<group>"; };
+		F150FD0E239C2E77002FD404 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		F150FD12239C2EF0002FD404 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
+		F150FD14239C33B0002FD404 /* UIView + ReuseIdentifier .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ReuseIdentifier .swift"; sourceTree = "<group>"; };
+		F150FD17239C33E2002FD404 /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
+		F150FD18239C33E2002FD404 /* ChatListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatListCell.xib; sourceTree = "<group>"; };
 		F152170223885C0B0027C6D4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F152170523885CC50027C6D4 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		F152170823885D5F0027C6D4 /* SettingsPremiumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPremiumTableViewCell.swift; sourceTree = "<group>"; };
@@ -179,6 +191,14 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		F15005F1239C3BC000E19947 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				F15005F2239C4C5000E19947 /* ChatViewController.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		F150FCF82393FA1B002FD404 /* Account Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +224,33 @@
 				F150FD0423940B31002FD404 /* CellWithToggleCell.xib */,
 			);
 			path = "Cell with Toggle";
+			sourceTree = "<group>";
+		};
+		F150FD10239C2ED3002FD404 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				F150FD16239C33CA002FD404 /* Cells */,
+				F15005F1239C3BC000E19947 /* Chat */,
+				F150FD11239C2ED9002FD404 /* Chat List */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		F150FD11239C2ED9002FD404 /* Chat List */ = {
+			isa = PBXGroup;
+			children = (
+				F150FD12239C2EF0002FD404 /* ChatListViewController.swift */,
+			);
+			path = "Chat List";
+			sourceTree = "<group>";
+		};
+		F150FD16239C33CA002FD404 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F150FD17239C33E2002FD404 /* ChatListCell.swift */,
+				F150FD18239C33E2002FD404 /* ChatListCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		F152170123885BDC0027C6D4 /* Settings */ = {
@@ -283,6 +330,7 @@
 		F1585AEB238406C50062A681 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F150FD10239C2ED3002FD404 /* Chat */,
 				F1378F5A238ADD7100622B3C /* Profile */,
 				F1378F55238A982100622B3C /* Home */,
 				F152170123885BDC0027C6D4 /* Settings */,
@@ -327,6 +375,7 @@
 				F152170523885CC50027C6D4 /* Settings.storyboard */,
 				F1378F53238A8BC400622B3C /* Home.storyboard */,
 				F1378F58238ADC7900622B3C /* Profile.storyboard */,
+				F150FD0E239C2E77002FD404 /* Chat.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -348,6 +397,7 @@
 				F19A48C8238F0BD80045C0BC /* UIViewController + Activity.swift */,
 				F19A48CA238F0C700045C0BC /* UIColor + Extensions.swift */,
 				F19A48D0238F15670045C0BC /* UIViewController + User.swift */,
+				F150FD14239C33B0002FD404 /* UIView + ReuseIdentifier .swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -504,6 +554,7 @@
 				F1378F54238A8BC500622B3C /* Home.storyboard in Resources */,
 				F1585AE4238406560062A681 /* LaunchScreen.storyboard in Resources */,
 				F1378F59238ADC7900622B3C /* Profile.storyboard in Resources */,
+				F150FD0F239C2E77002FD404 /* Chat.storyboard in Resources */,
 				F150FD012394074C002FD404 /* SettingWithSliderCell.xib in Resources */,
 				F1645687238409CE00FC0694 /* Localizable.strings in Resources */,
 				F1585AE1238406560062A681 /* Assets.xcassets in Resources */,
@@ -513,6 +564,7 @@
 				F150FD0623940B31002FD404 /* CellWithToggleCell.xib in Resources */,
 				F15217102389D52E0027C6D4 /* SettingsPremiumTableViewCell.xib in Resources */,
 				F150FCEF2393E9B9002FD404 /* heartbeat.json in Resources */,
+				F150FD1A239C33E2002FD404 /* ChatListCell.xib in Resources */,
 				F150FCF72393F28B002FD404 /* BoostSuperLikeCell.xib in Resources */,
 				F152170623885CC50027C6D4 /* Settings.storyboard in Resources */,
 			);
@@ -572,10 +624,12 @@
 				F16456932384170100FC0694 /* Dictionary + Extensions.swift in Sources */,
 				F19A48C7238F05220045C0BC /* WiggleHUD.swift in Sources */,
 				F1585AFA2384077A0062A681 /* EnterVerificationCodeViewController.swift in Sources */,
+				F150FD19239C33E2002FD404 /* ChatListCell.swift in Sources */,
 				F150FCFB2393FA50002FD404 /* SettingWithLabelCell.swift in Sources */,
 				F150FD0C239413CD002FD404 /* LabelWithCheckmarkCell.swift in Sources */,
 				F152170323885C0B0027C6D4 /* SettingsViewController.swift in Sources */,
 				F16456912384160A00FC0694 /* SMSCodeRequest.swift in Sources */,
+				F15005F3239C4C5000E19947 /* ChatViewController.swift in Sources */,
 				F159C7BC2385240D0091AB05 /* GetBioViewController.swift in Sources */,
 				F159C8CE2385AB330091AB05 /* BirthdayViewController.swift in Sources */,
 				F19A48CF238F129E0045C0BC /* SplashViewController.swift in Sources */,
@@ -588,9 +642,11 @@
 				F150FD0523940B31002FD404 /* CellWithToggleCell.swift in Sources */,
 				F1378F52238A892400622B3C /* GeneralRequest.swift in Sources */,
 				F164568C23840A0600FC0694 /* Localize.swift in Sources */,
+				F150FD15239C33B0002FD404 /* UIView + ReuseIdentifier .swift in Sources */,
 				F1585AD82384064F0062A681 /* AppDelegate.swift in Sources */,
 				F159C7B7238493100091AB05 /* WiggleUser.swift in Sources */,
 				F1585ADA2384064F0062A681 /* SceneDelegate.swift in Sources */,
+				F150FD13239C2EF0002FD404 /* ChatListViewController.swift in Sources */,
 				F150FCF32393EDC0002FD404 /* Delay.swift in Sources */,
 				F1378F5E238B012100622B3C /* ProfileDetailViewController.swift in Sources */,
 				F1D407162385E641002350BE /* EnableLocationViewController.swift in Sources */,

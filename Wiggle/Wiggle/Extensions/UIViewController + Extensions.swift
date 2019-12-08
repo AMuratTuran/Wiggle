@@ -11,6 +11,13 @@ import Hero
 
 extension UIViewController {
     
+    func initializeMainTabBar() {
+        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationViewController = homeStoryboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+        self.navigationController?.viewControllers.removeAll()
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
+    }
+    
     func moveToFirstPageViewController () {
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "FirstPageViewController") as! FirstPageViewController
@@ -126,16 +133,25 @@ extension UIViewController {
         self.present(destinationViewController, animated: true, completion: nil)
     }
     
+    func moveToChatListViewController() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let window = UIWindow()
+        let chatStoryboard = UIStoryboard(name: "Chat", bundle: nil)
+        let destinationViewController = chatStoryboard.instantiateInitialViewController() as! UINavigationController
+        window.rootViewController = destinationViewController
+        window.frame = UIScreen.main.bounds
+        window.backgroundColor = UIColor.black
+        window.makeKeyAndVisible()
+        appDelegate.window = window
+    }
+    
+    
     func displayError(message: String) {
         let alertController = UIAlertController(title: Localize.Common.Error, message: message, preferredStyle: .alert)
         let alertAction = UIAlertAction(title: Localize.Common.OKButton, style: .destructive, handler: nil)
         alertController.addAction(alertAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    
-
-    
 }
 
 

@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Home-->
         <scene sceneID="92O-Xp-4sD">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="UjP-7Z-3he" customClass="HomeViewController" customModule="Wiggle" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQ3-gs-AXU">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wvr-z0-A4C">
-                                        <rect key="frame" x="10" y="80" width="355" height="477"/>
+                                        <rect key="frame" x="10" y="80" width="355" height="428"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.2.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IkA-fL-msk">
                                                 <rect key="frame" x="0.0" y="1.5" width="355" height="352"/>
@@ -87,7 +87,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJ2-02-84T">
-                                        <rect key="frame" x="10" y="587" width="355" height="60"/>
+                                        <rect key="frame" x="10" y="538" width="355" height="60"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ph9-XS-ATq">
                                                 <rect key="frame" x="0.0" y="0.0" width="355" height="60"/>
@@ -235,6 +235,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oy8-cB-0aj"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="heart.fill" catalog="system" id="Ace-ls-tXw">
+                        <color key="badgeColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="imageView" destination="IkA-fL-msk" id="gVI-n4-2u6"/>
                         <outlet property="profileDetailView" destination="11V-tz-hs1" id="hGd-IY-A3f"/>
