@@ -82,10 +82,10 @@ extension UIViewController {
     }
     
     func moveToHomeViewController(navigationController: UINavigationController) {
-        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let destinationViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-        navigationController.viewControllers.removeAll()
-        navigationController.pushViewController(destinationViewController, animated: true)
+        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationViewController = homeStoryboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+        //self.navigationController?.viewControllers.removeAll()
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
     
     func moveToProfileViewController() {
@@ -404,4 +404,20 @@ extension UIViewController {
     }
 }
 
+extension UIViewController {
+    func transparentNavigationBar() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+    }
+}
 
+extension UIViewController {
+
+    func hideBackBarButtonTitle() {
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
+    }
+}

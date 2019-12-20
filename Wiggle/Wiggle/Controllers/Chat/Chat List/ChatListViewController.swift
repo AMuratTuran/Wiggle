@@ -7,16 +7,19 @@
 //
 
 import UIKit
+import Parse
 
 class ChatListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    
     let searchController = UISearchController(searchResultsController: nil)
     var isSearchBarEmpty: Bool {
            return searchController.searchBar.text?.isEmpty ?? true
     }
+    var data: [Chat]?
+    var tableData: [ChatListModel]?
+    var userId: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,14 +28,48 @@ class ChatListViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         prepareViews()
-        startUpwardsAnimation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         initUpwardsAnimation()
+        getChatList()
     }
     
+    func getChatList() {
+        self.startAnimating(self.view, startAnimate: true)
+        NetworkManager.getChatList(success: { (response) in
+            self.data = response
+            self.getUserInfo()
+        }) { (error) in
+            self.startAnimating(self.view, startAnimate: false)
+        }
+    }
+    
+    func getUserInfo() {
+        guard let data = data else { return }
+        var tableData: [ChatListModel] = []
+        
+        data.forEach { chat in
+            let id: String = chat.getReceiverId()
+            NetworkManager.queryUsersById(id, success: { (user) in
+                let chatListModel = ChatListModel(user: user, chat: chat)
+                tableData.append(chatListModel)
+                if tableData.count == data.count{
+                    let sortedDate = tableData.sorted {
+                        $0.createdAt > $1.createdAt
+                    }
+                    self.tableData = sortedDate
+                    self.tableView.reloadData()
+                    self.startAnimating(self.view, startAnimate: false)
+                    self.startUpwardsAnimation()
+                }
+            }) { (error) in
+                self.startAnimating(self.view, startAnimate: false)
+            }
+        }
+    }
+
     func prepareViews() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -53,7 +90,7 @@ class ChatListViewController: UIViewController {
     }
     
     func startUpwardsAnimation() {
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [.curveEaseIn], animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [.curveEaseIn], animations: {
             self.tableView.alpha = 1
             self.tableView.transform = CGAffineTransform.identity
         })
@@ -71,11 +108,14 @@ class ChatListViewController: UIViewController {
 
 extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        guard let data = tableData else { return 0 }
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ChatListCell.reuseIdentifier, for: indexPath)
+        guard let data = self.tableData else { return UITableViewCell() }
+        let cell = tableView.dequeueReusableCell(withIdentifier: ChatListCell.reuseIdentifier, for: indexPath) as! ChatListCell
+        cell.prepare(with: data[indexPath.row])
         return cell
     }
     
@@ -84,10 +124,20 @@ extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let data = tableData else { return }
         tableView.deselectRow(at: indexPath, animated: false)
         let storyBoard = UIStoryboard(name: "Chat", bundle: nil)
         let destinationViewController = storyBoard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+        destinationViewController.contactedUser = data[indexPath.row]
         self.navigationController?.pushViewController(destinationViewController, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .normal, title: "Delete Chat") { _, _ in
+        }
+        delete.backgroundColor = UIColor.systemRed
+        
+        return [delete]
     }
     
 }

@@ -49,16 +49,16 @@ class FirstPageViewController: UIViewController {
     }
     @IBAction func phoneLoginTapped(_ sender: Any) {
         if PFUser.current() != nil {
-            PFUser.logOutInBackground { (error) in
-                if error != nil {
-                    self.displayError(message: "Lutfen tekrar deneyiniz.")
-                }else {
-                    self.moveToEnterPhoneViewController()
-                }
-            }
+            self.moveToHomeViewController(navigationController: self.navigationController ?? UINavigationController())
+//            PFUser.logOutInBackground { (error) in
+//                if error != nil {
+//                    self.displayError(message: "Lutfen tekrar deneyiniz.")
+//                }else {
+//                    self.moveToEnterPhoneViewController()
+//                }
+//            }
         }else {
-            //moveToEnterPhoneViewController()
-            moveToChatListViewController()
+            moveToEnterPhoneViewController()
         }
     }
 }
