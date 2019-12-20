@@ -10,6 +10,9 @@
 		A6B8A42AC3E4C0E8C384C2E7 /* Pods_Wiggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5526736EFB884D70162BB41 /* Pods_Wiggle.framework */; };
 		F100023823AC151900D4DD22 /* FontHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100023723AC151900D4DD22 /* FontHelper.swift */; };
 		F100023A23AC1B9600D4DD22 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100023923AC1B9600D4DD22 /* ChatMessage.swift */; };
+		DC166ED623ACB1AF0000E745 /* WiggleCardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC166ED523ACB1AF0000E745 /* WiggleCardComponent.swift */; };
+		DC166ED823ACB5240000E745 /* WiggleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC166ED723ACB5240000E745 /* WiggleCard.swift */; };
+		DC166EDA23ACBAAD0000E745 /* WiggleCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC166ED923ACBAAD0000E745 /* WiggleCardView.xib */; };
 		F10038A8239D711C00829A65 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10038A6239D711C00829A65 /* LogoutCell.swift */; };
 		F10038A9239D711C00829A65 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F10038A7239D711C00829A65 /* LogoutCell.xib */; };
 		F10038AC239D759800829A65 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10038AB239D759800829A65 /* Chat.swift */; };
@@ -94,6 +97,9 @@
 		4E39BF0A09E61170AE4D6F33 /* Pods-Wiggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.release.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.release.xcconfig"; sourceTree = "<group>"; };
 		F100023723AC151900D4DD22 /* FontHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontHelper.swift; sourceTree = "<group>"; };
 		F100023923AC1B9600D4DD22 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		DC166ED523ACB1AF0000E745 /* WiggleCardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiggleCardComponent.swift; sourceTree = "<group>"; };
+		DC166ED723ACB5240000E745 /* WiggleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiggleCard.swift; sourceTree = "<group>"; };
+		DC166ED923ACBAAD0000E745 /* WiggleCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WiggleCardView.xib; sourceTree = "<group>"; };
 		F10038A6239D711C00829A65 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		F10038A7239D711C00829A65 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
 		F10038AB239D759800829A65 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
@@ -206,6 +212,16 @@
 				4E39BF0A09E61170AE4D6F33 /* Pods-Wiggle.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		DC166ED223ACB10E0000E745 /* WiggleCard */ = {
+			isa = PBXGroup;
+			children = (
+				DC166ED523ACB1AF0000E745 /* WiggleCardComponent.swift */,
+				DC166ED723ACB5240000E745 /* WiggleCard.swift */,
+				DC166ED923ACBAAD0000E745 /* WiggleCardView.xib */,
+			);
+			path = WiggleCard;
 			sourceTree = "<group>";
 		};
 		F10038A4239D70E900829A65 /* Cell With Checkmark */ = {
@@ -430,6 +446,7 @@
 		F1585AED238406D00062A681 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DC166ED223ACB10E0000E745 /* WiggleCard */,
 				F19A48C5238F05050045C0BC /* Activity Indicator */,
 			);
 			path = Views;
@@ -671,6 +688,7 @@
 				F1C794C523AC0E1400D9FEFC /* OpenSans-Bold.ttf in Resources */,
 				F150FCEF2393E9B9002FD404 /* heartbeat.json in Resources */,
 				F150FD1A239C33E2002FD404 /* ChatListCell.xib in Resources */,
+				DC166EDA23ACBAAD0000E745 /* WiggleCardView.xib in Resources */,
 				F150FCF72393F28B002FD404 /* BoostSuperLikeCell.xib in Resources */,
 				F152170623885CC50027C6D4 /* Settings.storyboard in Resources */,
 				F1C794C023AC0E1400D9FEFC /* OpenSans-Regular.ttf in Resources */,
@@ -728,6 +746,7 @@
 			files = (
 				F100023A23AC1B9600D4DD22 /* ChatMessage.swift in Sources */,
 				F1585AF6238407430062A681 /* FirstPageViewController.swift in Sources */,
+				DC166ED623ACB1AF0000E745 /* WiggleCardComponent.swift in Sources */,
 				F19A48CB238F0C700045C0BC /* UIColor + Extensions.swift in Sources */,
 				F16456932384170100FC0694 /* Dictionary + Extensions.swift in Sources */,
 				F19A48C7238F05220045C0BC /* WiggleHUD.swift in Sources */,
@@ -737,6 +756,7 @@
 				F1935EFE23A657E500431DE2 /* Match.swift in Sources */,
 				F150FD0C239413CD002FD404 /* LabelWithCheckmarkCell.swift in Sources */,
 				F152170323885C0B0027C6D4 /* SettingsViewController.swift in Sources */,
+				DC166ED823ACB5240000E745 /* WiggleCard.swift in Sources */,
 				F16456912384160A00FC0694 /* SMSCodeRequest.swift in Sources */,
 				F15005F3239C4C5000E19947 /* ChatViewController.swift in Sources */,
 				F159C7BC2385240D0091AB05 /* GetBioViewController.swift in Sources */,
@@ -935,14 +955,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BSS286Y93W;
+				DEVELOPMENT_TEAM = 478QB249DY;
 				INFOPLIST_FILE = Wiggle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wiggle.Wiggle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wiggle.Wiggl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

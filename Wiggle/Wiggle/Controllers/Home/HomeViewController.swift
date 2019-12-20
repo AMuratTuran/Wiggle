@@ -8,40 +8,36 @@
 
 import UIKit
 import Parse
+import Koloda
 
 class HomeViewController: UIViewController {
-
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var swipeableView: UIView!
-    @IBOutlet weak var profileDetailView: UIView!
     @IBOutlet weak var routeProfileButton: UIButton!
+    @IBOutlet weak var kolodaView: KolodaView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        kolodaView.dataSource = self
+        kolodaView.delegate = self
+        
         self.view.hero.modifiers = [.translate(y: -100), .useGlobalCoordinateSpace]
     }
     
     func configureViews() {
-        swipeableView.cornerRadius(12.0)
-        swipeableView.clipsToBounds = true
-        imageView.image = UIImage(named: "profilePhoto")
+        kolodaView.cornerRadius(12.0)
+        kolodaView.clipsToBounds = true
         addTapGesture()
-        imageView.heroID = "profileImageView"
-        profileDetailView.heroID = "detailView"
     }
     
     func prepareView() {
-        profileDetailView.addShadow(UIColor(named: "shadowColor")!)
-        swipeableView.addShadow()
+        kolodaView.addShadow()
     }
     
     func addTapGesture() {
         let tapGesture = UIGestureRecognizer(target: self, action: #selector(moveToDetail))
         self.view.isUserInteractionEnabled = true
-        profileDetailView.isUserInteractionEnabled = true
-        swipeableView.isUserInteractionEnabled = true
-        imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(tapGesture)
+        kolodaView.isUserInteractionEnabled = true
+        kolodaView.addGestureRecognizer(tapGesture)
     }
     
     @objc func moveToDetail(gestureRecognizer: UIGestureRecognizer) {
@@ -59,9 +55,39 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func routeProfileAction(_ sender: UIButton) {
-        //moveToProfileViewController()
         moveToProfileDetailViewController()
     }
     
 }
-
+extension HomeViewController: KolodaViewDelegate {
+    func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
+        koloda.reloadData()
+    }
+}
+extension HomeViewController: KolodaViewDataSource {
+    
+    func kolodaNumberOfCards(_ koloda:KolodaView) -> Int {
+        return 10
+    }
+    
+    func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
+        return DragSpeed.moderate
+    }
+    
+    func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
+        let view = WiggleCard.init(frame: CGRect.zero)
+        let user1 = WiggleCardModel(profilePicture: "profilePhoto", nameSurname: "Tolga Tas, 24", location: "Kayseri", distance: "31 Km", bio: "s2s")
+        view.model = user1
+        return view
+    }
+    
+    func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
+        return nil
+    }
+    func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
+        moveToProfileDetailViewController()
+    }
+    func koloda(_ koloda: KolodaView, allowedDirectionsForIndex index: Int) -> [SwipeResultDirection] {
+        return [.up, .left, .right]
+    }
+}
