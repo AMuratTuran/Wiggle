@@ -11,33 +11,11 @@ import Parse
 import Koloda
 
 class HomeViewController: UIViewController {
-    
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var profileDetailView: UIView!
     @IBOutlet weak var routeProfileButton: UIButton!
     @IBOutlet weak var kolodaView: KolodaView!
     
-    var cards = [WiggleUser]()
-    
-    func generateMockData(){
-        let user1 = WiggleUser()
-        user1.firstName = "Tolga"
-        user1.lastName = "Tas"
-        user1.bio = "iOS Developer"
-        user1.birthDay = Date()
-        
-        let user2 = WiggleUser()
-        user2.firstName = "Murat"
-        user2.lastName = "Turan"
-        user2.bio = "iOS Developer"
-        user2.birthDay = Date()
-        cards.append(contentsOf: [user1, user2])
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        generateMockData()
         
         kolodaView.dataSource = self
         kolodaView.delegate = self
@@ -48,24 +26,18 @@ class HomeViewController: UIViewController {
     func configureViews() {
         kolodaView.cornerRadius(12.0)
         kolodaView.clipsToBounds = true
-        imageView.image = UIImage(named: "profilePhoto")
         addTapGesture()
-        imageView.heroID = "profileImageView"
-        profileDetailView.heroID = "detailView"
     }
     
     func prepareView() {
-        profileDetailView.addShadow(UIColor(named: "shadowColor")!)
         kolodaView.addShadow()
     }
     
     func addTapGesture() {
         let tapGesture = UIGestureRecognizer(target: self, action: #selector(moveToDetail))
         self.view.isUserInteractionEnabled = true
-        profileDetailView.isUserInteractionEnabled = true
         kolodaView.isUserInteractionEnabled = true
-        imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(tapGesture)
+        kolodaView.addGestureRecognizer(tapGesture)
     }
     
     @objc func moveToDetail(gestureRecognizer: UIGestureRecognizer) {
@@ -83,7 +55,6 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func routeProfileAction(_ sender: UIButton) {
-        //moveToProfileViewController()
         moveToProfileDetailViewController()
     }
     
@@ -96,7 +67,7 @@ extension HomeViewController: KolodaViewDelegate {
 extension HomeViewController: KolodaViewDataSource {
     
     func kolodaNumberOfCards(_ koloda:KolodaView) -> Int {
-        return cards.count
+        return 10
     }
     
     func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
@@ -104,11 +75,19 @@ extension HomeViewController: KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-        return UIImageView(image: UIImage(named: "profilePhoto"))
-//        return kolodaView
+        let view = WiggleCard.init(frame: CGRect.zero)
+        let user1 = WiggleCardModel(profilePicture: "profilePhoto", nameSurname: "Tolga Tas, 24", location: "Kayseri", distance: "31 Km", bio: "s2s")
+        view.model = user1
+        return view
     }
     
     func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
         return nil
+    }
+    func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
+        moveToProfileDetailViewController()
+    }
+    func koloda(_ koloda: KolodaView, allowedDirectionsForIndex index: Int) -> [SwipeResultDirection] {
+        return [.up, .left, .right]
     }
 }
