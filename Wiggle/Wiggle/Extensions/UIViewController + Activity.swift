@@ -14,7 +14,7 @@ extension UIViewController {
     func startAnimating(_ viewContainer: UIView, startAnimate:Bool? = true) -> UIActivityIndicatorView {
         let mainContainer: UIView = UIView(frame: viewContainer.frame)
         mainContainer.center = viewContainer.center
-        mainContainer.backgroundColor = UIColor.darkGray
+        mainContainer.backgroundColor = UIColor.clear
         mainContainer.alpha = 0.5
         mainContainer.tag = 789456123
         mainContainer.isUserInteractionEnabled = false
@@ -22,7 +22,7 @@ extension UIViewController {
         let viewBackgroundLoading: UIView = UIView(frame: CGRect(x:0,y: 0,width: 100,height: 100))
         viewBackgroundLoading.center = viewContainer.center
         viewBackgroundLoading.backgroundColor = UIColor.black
-        viewBackgroundLoading.alpha = 0.5
+        viewBackgroundLoading.alpha = 0.7
         viewBackgroundLoading.clipsToBounds = true
         viewBackgroundLoading.layer.cornerRadius = 15
         

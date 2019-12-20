@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		A6B8A42AC3E4C0E8C384C2E7 /* Pods_Wiggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5526736EFB884D70162BB41 /* Pods_Wiggle.framework */; };
+		F100023823AC151900D4DD22 /* FontHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100023723AC151900D4DD22 /* FontHelper.swift */; };
+		F100023A23AC1B9600D4DD22 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100023923AC1B9600D4DD22 /* ChatMessage.swift */; };
 		DC166ED623ACB1AF0000E745 /* WiggleCardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC166ED523ACB1AF0000E745 /* WiggleCardComponent.swift */; };
 		DC166ED823ACB5240000E745 /* WiggleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC166ED723ACB5240000E745 /* WiggleCard.swift */; };
 		DC166EDA23ACBAAD0000E745 /* WiggleCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC166ED923ACBAAD0000E745 /* WiggleCardView.xib */; };
 		F10038A8239D711C00829A65 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10038A6239D711C00829A65 /* LogoutCell.swift */; };
 		F10038A9239D711C00829A65 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F10038A7239D711C00829A65 /* LogoutCell.xib */; };
+		F10038AC239D759800829A65 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10038AB239D759800829A65 /* Chat.swift */; };
 		F10BC89C239D5E3E005934BB /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10BC89B239D5E3E005934BB /* NotificationSettingsViewController.swift */; };
 		F1378F52238A892400622B3C /* GeneralRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1378F51238A892400622B3C /* GeneralRequest.swift */; };
 		F1378F54238A8BC500622B3C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1378F53238A8BC400622B3C /* Home.storyboard */; };
@@ -65,11 +68,26 @@
 		F164568E2384157D00FC0694 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164568D2384157D00FC0694 /* NetworkManager.swift */; };
 		F16456912384160A00FC0694 /* SMSCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16456902384160A00FC0694 /* SMSCodeRequest.swift */; };
 		F16456932384170100FC0694 /* Dictionary + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16456922384170100FC0694 /* Dictionary + Extensions.swift */; };
+		F1935EFE23A657E500431DE2 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1935EFD23A657E500431DE2 /* Match.swift */; };
 		F19A48C7238F05220045C0BC /* WiggleHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A48C6238F05220045C0BC /* WiggleHUD.swift */; };
 		F19A48C9238F0BD80045C0BC /* UIViewController + Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A48C8238F0BD80045C0BC /* UIViewController + Activity.swift */; };
 		F19A48CB238F0C700045C0BC /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A48CA238F0C700045C0BC /* UIColor + Extensions.swift */; };
 		F19A48CF238F129E0045C0BC /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A48CE238F129E0045C0BC /* SplashViewController.swift */; };
 		F19A48D1238F15670045C0BC /* UIViewController + User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A48D0238F15670045C0BC /* UIViewController + User.swift */; };
+		F1C794AA23AAB8A700D9FEFC /* ChatListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C794A923AAB8A700D9FEFC /* ChatListModel.swift */; };
+		F1C794AC23AAD46300D9FEFC /* Date + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C794AB23AAD46300D9FEFC /* Date + Extensions.swift */; };
+		F1C794AE23AAD6DA00D9FEFC /* String + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C794AD23AAD6DA00D9FEFC /* String + Extensions.swift */; };
+		F1C794BB23AC0E1400D9FEFC /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C794B023AC0E0A00D9FEFC /* OpenSans-Italic.ttf */; };
+		F1C794BC23AC0E1400D9FEFC /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C794B123AC0E0B00D9FEFC /* OpenSans-ExtraBold.ttf */; };
+		F1C794BD23AC0E1400D9FEFC /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C794B223AC0E0C00D9FEFC /* OpenSans-SemiBoldItalic.ttf */; };
+		F1C794BE23AC0E1400D9FEFC /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C794B323AC0E0D00D9FEFC /* OpenSans-BoldItalic.ttf */; };
+		F1C794BF23AC0E1400D9FEFC /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = F1C794B423AC0E0E00D9FEFC /* LICENSE.txt */; };
+		F1C794C023AC0E1400D9FEFC /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C794B523AC0E0F00D9FEFC /* OpenSans-Regular.ttf */; };
+		F1C794C123AC0E1400D9FEFC /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C794B623AC0E1000D9FEFC /* OpenSans-LightItalic.ttf */; };
+		F1C794C223AC0E1400D9FEFC /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C794B723AC0E1100D9FEFC /* OpenSans-ExtraBoldItalic.ttf */; };
+		F1C794C323AC0E1400D9FEFC /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C794B823AC0E1200D9FEFC /* OpenSans-SemiBold.ttf */; };
+		F1C794C423AC0E1400D9FEFC /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C794B923AC0E1300D9FEFC /* OpenSans-Light.ttf */; };
+		F1C794C523AC0E1400D9FEFC /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C794BA23AC0E1400D9FEFC /* OpenSans-Bold.ttf */; };
 		F1D407162385E641002350BE /* EnableLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D407152385E641002350BE /* EnableLocationViewController.swift */; };
 		F1D407182385EE7A002350BE /* EnableNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D407172385EE7A002350BE /* EnableNotificationsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -77,11 +95,14 @@
 /* Begin PBXFileReference section */
 		44BB3C201FFEF9A359F53C04 /* Pods-Wiggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.debug.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.debug.xcconfig"; sourceTree = "<group>"; };
 		4E39BF0A09E61170AE4D6F33 /* Pods-Wiggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.release.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.release.xcconfig"; sourceTree = "<group>"; };
+		F100023723AC151900D4DD22 /* FontHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontHelper.swift; sourceTree = "<group>"; };
+		F100023923AC1B9600D4DD22 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		DC166ED523ACB1AF0000E745 /* WiggleCardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiggleCardComponent.swift; sourceTree = "<group>"; };
 		DC166ED723ACB5240000E745 /* WiggleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiggleCard.swift; sourceTree = "<group>"; };
 		DC166ED923ACBAAD0000E745 /* WiggleCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WiggleCardView.xib; sourceTree = "<group>"; };
 		F10038A6239D711C00829A65 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		F10038A7239D711C00829A65 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
+		F10038AB239D759800829A65 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		F10BC89B239D5E3E005934BB /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
 		F1378F51238A892400622B3C /* GeneralRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralRequest.swift; sourceTree = "<group>"; };
 		F1378F53238A8BC400622B3C /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -139,11 +160,26 @@
 		F164568D2384157D00FC0694 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F16456902384160A00FC0694 /* SMSCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeRequest.swift; sourceTree = "<group>"; };
 		F16456922384170100FC0694 /* Dictionary + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary + Extensions.swift"; sourceTree = "<group>"; };
+		F1935EFD23A657E500431DE2 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		F19A48C6238F05220045C0BC /* WiggleHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiggleHUD.swift; sourceTree = "<group>"; };
 		F19A48C8238F0BD80045C0BC /* UIViewController + Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Activity.swift"; sourceTree = "<group>"; };
 		F19A48CA238F0C700045C0BC /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
 		F19A48CE238F129E0045C0BC /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		F19A48D0238F15670045C0BC /* UIViewController + User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + User.swift"; sourceTree = "<group>"; };
+		F1C794A923AAB8A700D9FEFC /* ChatListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListModel.swift; sourceTree = "<group>"; };
+		F1C794AB23AAD46300D9FEFC /* Date + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extensions.swift"; sourceTree = "<group>"; };
+		F1C794AD23AAD6DA00D9FEFC /* String + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
+		F1C794B023AC0E0A00D9FEFC /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		F1C794B123AC0E0B00D9FEFC /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		F1C794B223AC0E0C00D9FEFC /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		F1C794B323AC0E0D00D9FEFC /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		F1C794B423AC0E0E00D9FEFC /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		F1C794B523AC0E0F00D9FEFC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		F1C794B623AC0E1000D9FEFC /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		F1C794B723AC0E1100D9FEFC /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		F1C794B823AC0E1200D9FEFC /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		F1C794B923AC0E1300D9FEFC /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		F1C794BA23AC0E1400D9FEFC /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		F1D407152385E641002350BE /* EnableLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableLocationViewController.swift; sourceTree = "<group>"; };
 		F1D407172385EE7A002350BE /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
 		F5526736EFB884D70162BB41 /* Pods_Wiggle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wiggle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,6 +240,17 @@
 				F10038A7239D711C00829A65 /* LogoutCell.xib */,
 			);
 			path = Logout;
+			sourceTree = "<group>";
+		};
+		F10038AA239D758A00829A65 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				F10038AB239D759800829A65 /* Chat.swift */,
+				F1935EFD23A657E500431DE2 /* Match.swift */,
+				F1C794A923AAB8A700D9FEFC /* ChatListModel.swift */,
+				F100023923AC1B9600D4DD22 /* ChatMessage.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		F1378F50238A891600622B3C /* Common */ = {
@@ -350,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				F150FCEE2393E9B8002FD404 /* heartbeat.json */,
+				F1C794AF23AC0DFD00D9FEFC /* Font */,
 				F159C8CF2385C87A0091AB05 /* Utility */,
 				F16456842384099000FC0694 /* Localization */,
 				F1585AF1238406F60062A681 /* Extensions */,
@@ -386,6 +434,7 @@
 		F1585AEC238406CB0062A681 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F10038AA239D758A00829A65 /* Chat */,
 				F1378F50238A891600622B3C /* Common */,
 				F159C7B5238492F90091AB05 /* User */,
 				F159C7B423848CBC0091AB05 /* Phone Auth  */,
@@ -440,6 +489,8 @@
 				F19A48CA238F0C700045C0BC /* UIColor + Extensions.swift */,
 				F19A48D0238F15670045C0BC /* UIViewController + User.swift */,
 				F150FD14239C33B0002FD404 /* UIView + ReuseIdentifier .swift */,
+				F1C794AB23AAD46300D9FEFC /* Date + Extensions.swift */,
+				F1C794AD23AAD6DA00D9FEFC /* String + Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -503,6 +554,7 @@
 			children = (
 				F159C8D02385C8850091AB05 /* ImagePicker.swift */,
 				F150FCF22393EDC0002FD404 /* Delay.swift */,
+				F100023723AC151900D4DD22 /* FontHelper.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -530,6 +582,24 @@
 				F19A48C6238F05220045C0BC /* WiggleHUD.swift */,
 			);
 			path = "Activity Indicator";
+			sourceTree = "<group>";
+		};
+		F1C794AF23AC0DFD00D9FEFC /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				F1C794B423AC0E0E00D9FEFC /* LICENSE.txt */,
+				F1C794BA23AC0E1400D9FEFC /* OpenSans-Bold.ttf */,
+				F1C794B323AC0E0D00D9FEFC /* OpenSans-BoldItalic.ttf */,
+				F1C794B123AC0E0B00D9FEFC /* OpenSans-ExtraBold.ttf */,
+				F1C794B723AC0E1100D9FEFC /* OpenSans-ExtraBoldItalic.ttf */,
+				F1C794B023AC0E0A00D9FEFC /* OpenSans-Italic.ttf */,
+				F1C794B923AC0E1300D9FEFC /* OpenSans-Light.ttf */,
+				F1C794B623AC0E1000D9FEFC /* OpenSans-LightItalic.ttf */,
+				F1C794B523AC0E0F00D9FEFC /* OpenSans-Regular.ttf */,
+				F1C794B823AC0E1200D9FEFC /* OpenSans-SemiBold.ttf */,
+				F1C794B223AC0E0C00D9FEFC /* OpenSans-SemiBoldItalic.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -593,24 +663,35 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1C794BF23AC0E1400D9FEFC /* LICENSE.txt in Resources */,
 				F1378F54238A8BC500622B3C /* Home.storyboard in Resources */,
 				F1585AE4238406560062A681 /* LaunchScreen.storyboard in Resources */,
 				F1378F59238ADC7900622B3C /* Profile.storyboard in Resources */,
+				F1C794BE23AC0E1400D9FEFC /* OpenSans-BoldItalic.ttf in Resources */,
 				F150FD0F239C2E77002FD404 /* Chat.storyboard in Resources */,
+				F1C794C323AC0E1400D9FEFC /* OpenSans-SemiBold.ttf in Resources */,
+				F1C794BD23AC0E1400D9FEFC /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				F10038A9239D711C00829A65 /* LogoutCell.xib in Resources */,
 				F150FD012394074C002FD404 /* SettingWithSliderCell.xib in Resources */,
 				F1645687238409CE00FC0694 /* Localizable.strings in Resources */,
 				F1585AE1238406560062A681 /* Assets.xcassets in Resources */,
 				F150FD0D239413CD002FD404 /* LabelWithCheckmarkCell.xib in Resources */,
+				F1C794BB23AC0E1400D9FEFC /* OpenSans-Italic.ttf in Resources */,
+				F1C794BC23AC0E1400D9FEFC /* OpenSans-ExtraBold.ttf in Resources */,
+				F1C794C423AC0E1400D9FEFC /* OpenSans-Light.ttf in Resources */,
+				F1C794C123AC0E1400D9FEFC /* OpenSans-LightItalic.ttf in Resources */,
 				F1585ADF2384064F0062A681 /* Main.storyboard in Resources */,
 				F150FCFC2393FA50002FD404 /* SettingWithLabelCell.xib in Resources */,
+				F1C794C223AC0E1400D9FEFC /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				F150FD0623940B31002FD404 /* CellWithToggleCell.xib in Resources */,
 				F15217102389D52E0027C6D4 /* SettingsPremiumTableViewCell.xib in Resources */,
+				F1C794C523AC0E1400D9FEFC /* OpenSans-Bold.ttf in Resources */,
 				F150FCEF2393E9B9002FD404 /* heartbeat.json in Resources */,
 				F150FD1A239C33E2002FD404 /* ChatListCell.xib in Resources */,
 				DC166EDA23ACBAAD0000E745 /* WiggleCardView.xib in Resources */,
 				F150FCF72393F28B002FD404 /* BoostSuperLikeCell.xib in Resources */,
 				F152170623885CC50027C6D4 /* Settings.storyboard in Resources */,
+				F1C794C023AC0E1400D9FEFC /* OpenSans-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,6 +744,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F100023A23AC1B9600D4DD22 /* ChatMessage.swift in Sources */,
 				F1585AF6238407430062A681 /* FirstPageViewController.swift in Sources */,
 				DC166ED623ACB1AF0000E745 /* WiggleCardComponent.swift in Sources */,
 				F19A48CB238F0C700045C0BC /* UIColor + Extensions.swift in Sources */,
@@ -671,12 +753,14 @@
 				F1585AFA2384077A0062A681 /* EnterVerificationCodeViewController.swift in Sources */,
 				F150FD19239C33E2002FD404 /* ChatListCell.swift in Sources */,
 				F150FCFB2393FA50002FD404 /* SettingWithLabelCell.swift in Sources */,
+				F1935EFE23A657E500431DE2 /* Match.swift in Sources */,
 				F150FD0C239413CD002FD404 /* LabelWithCheckmarkCell.swift in Sources */,
 				F152170323885C0B0027C6D4 /* SettingsViewController.swift in Sources */,
 				DC166ED823ACB5240000E745 /* WiggleCard.swift in Sources */,
 				F16456912384160A00FC0694 /* SMSCodeRequest.swift in Sources */,
 				F15005F3239C4C5000E19947 /* ChatViewController.swift in Sources */,
 				F159C7BC2385240D0091AB05 /* GetBioViewController.swift in Sources */,
+				F10038AC239D759800829A65 /* Chat.swift in Sources */,
 				F159C8CE2385AB330091AB05 /* BirthdayViewController.swift in Sources */,
 				F10BC89C239D5E3E005934BB /* NotificationSettingsViewController.swift in Sources */,
 				F19A48CF238F129E0045C0BC /* SplashViewController.swift in Sources */,
@@ -688,6 +772,8 @@
 				F1378F57238A983100622B3C /* HomeViewController.swift in Sources */,
 				F150FD0523940B31002FD404 /* CellWithToggleCell.swift in Sources */,
 				F1378F52238A892400622B3C /* GeneralRequest.swift in Sources */,
+				F1C794AA23AAB8A700D9FEFC /* ChatListModel.swift in Sources */,
+				F100023823AC151900D4DD22 /* FontHelper.swift in Sources */,
 				F164568C23840A0600FC0694 /* Localize.swift in Sources */,
 				F150FD15239C33B0002FD404 /* UIView + ReuseIdentifier .swift in Sources */,
 				F1585AD82384064F0062A681 /* AppDelegate.swift in Sources */,
@@ -703,8 +789,10 @@
 				F150FCF62393F28B002FD404 /* BoostSuperLikeCell.swift in Sources */,
 				F152170D2389CF6D0027C6D4 /* UIView + Extensions.swift in Sources */,
 				F1D407182385EE7A002350BE /* EnableNotificationsViewController.swift in Sources */,
+				F1C794AE23AAD6DA00D9FEFC /* String + Extensions.swift in Sources */,
 				F150FD002394074C002FD404 /* SettingWithSliderCell.swift in Sources */,
 				F19A48C9238F0BD80045C0BC /* UIViewController + Activity.swift in Sources */,
+				F1C794AC23AAD46300D9FEFC /* Date + Extensions.swift in Sources */,
 				F159C7B323848CB70091AB05 /* PhoneAuthRequest.swift in Sources */,
 				F1378F5C238ADD8300622B3C /* ProfileViewController.swift in Sources */,
 				F152170F2389D5290027C6D4 /* SettingsPremiumTableViewCell.swift in Sources */,

@@ -14,22 +14,28 @@ public enum Gender: Int {
     case female = 2
 }
 
-class WiggleUser: PFUser {
+class WiggleUser {
     static var user = PFUser.current()
     
     var firstName: String = ""
     var lastName: String = ""
-    var gender: Gender = .male
+    var gender: Int = 0
     var birthDay: Date = Date()
     var bio: String = ""
-    var location: CLLocation = CLLocation()
-    var isEmailVerified: Bool = false
-    var authData: String = ""
-    var remote: Int = 0
-    var image: String = ""
-    var friends: [PFUser] = []
+//    var location: CLLocation = CLLocation()
+//    var isEmailVerified: Bool = false
+//    var authData: String = ""
+//    var remote: Int = 0
+//    var image: String = ""
+//    var friends: [PFUser] = []
     
-    public override init() {
-        super.init()
+    init(dictionary: [String: Any]) {
+        self.firstName = dictionary["first_name"] as? String ?? ""
+        self.lastName = dictionary["last_name"] as? String ?? ""
+        self.gender = dictionary["gender"] as? Int ?? 0
+        self.birthDay = dictionary["birthDay"] as? Date ?? Date()
+        self.bio = dictionary["bio"] as? String ?? ""
     }
 }
+
+

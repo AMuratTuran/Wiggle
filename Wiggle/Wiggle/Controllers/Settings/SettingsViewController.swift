@@ -16,6 +16,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViews()
+        transparentNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {

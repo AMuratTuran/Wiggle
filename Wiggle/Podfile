@@ -18,5 +18,8 @@ target 'Wiggle' do
   pod 'Kingfisher'
   pod 'lottie-ios'
   pod 'MessageKit'
+  pod 'PromiseKit'
   pod 'Koloda', :git => 'https://github.com/Yalantis/Koloda.git'
+  pod 'PopupDialog'
+  pod 'ParseLiveQuery'
 end

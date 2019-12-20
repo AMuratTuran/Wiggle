@@ -10,6 +10,8 @@ import UIKit
 import MessageKit
 import InputBarAccessoryView
 import MessageUI
+import Parse
+import ParseLiveQuery
 
 class ChatViewController: MessagesViewController {
     
@@ -24,18 +26,35 @@ class ChatViewController: MessagesViewController {
         formatter.dateFormat = "HH:mm"
         return formatter
     }()
-    
+    var contactedUser: ChatListModel?
     let user = MockUser(senderId: "asdasdasd", displayName: "Murat Turan")
     var myUser: MockUser {
         return user
     }
+    var chatHistory: [ChatMessage] = [] {
+        didSet {
+            DispatchQueue.main.async{
+                self.messagesCollectionView.reloadData()
+                self.messagesCollectionView.scrollToBottom()
+            }
+        }
+    }
+    var subscription: Subscription<PFObject>?
+    var liveQueryClient: ParseLiveQuery.Client!
+    let query1 = PFQuery(className:"Messages")
+    let query2 = PFQuery(className:"Messages")
+    var query: PFQuery<PFObject>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem?.title = ""
         addProfilePhotoNavigationBar()
         configureMessageCollectionView()
         configureMessageCollectionViewLayout()
+        getChatHistory()
+        listenMessages()
     }
     
     override func viewDidLayoutSubviews() {
@@ -53,6 +72,38 @@ class ChatViewController: MessagesViewController {
     override func viewWillLayoutSubviews() {
         configureMessageInputBar()
     }
+    
+    func listenMessages() {
+        guard let contactedUser = contactedUser else { return }
+        
+        query1.whereKey("sender", equalTo: contactedUser.myId)
+        query1.whereKey("receiver", equalTo: contactedUser.receiverId)
+        
+        query2.whereKey("sender", equalTo: contactedUser.receiverId)
+        query2.whereKey("receiver", equalTo: contactedUser.myId)
+        
+        query = PFQuery.orQuery(withSubqueries: [query1, query2])
+        query.addAscendingOrder("createdAt")
+        query.limit = 50
+        
+        liveQueryClient = ParseLiveQuery.Client(server: "wss://lyngl.back4app.io/", applicationId: "EfuNJeqL484fqElyGcCuiTBjNHalE2BhAP2LIv7s", clientKey: "L22P6I1Hxd3WMf8QT0umoy1HRuQit97Zd5i5HCjG")
+        subscription = liveQueryClient.subscribe(query)
+        _ = subscription?.handle(Event.created) { (_, response) in
+            let incomingMessage:ChatMessage = ChatMessage(dictionary: response)
+            self.chatHistory.append(incomingMessage)
+        }
+    }
+    
+    func getChatHistory() {
+        if let currentUser = PFUser.current(), let receiver = contactedUser, let senderId = currentUser.objectId {
+            NetworkManager.getChatHistory(myId: senderId, contactedId: receiver.receiverId, success: {response in
+                self.chatHistory = response
+            }) { (error) in
+                self.displayError(message: error)
+            }
+        }
+    }
+    
     func configureMessageCollectionView() {
         configureMessageCollectionViewLayout()
         scrollsToBottomOnKeyboardBeginsEditing = true
@@ -87,24 +138,23 @@ class ChatViewController: MessagesViewController {
     }
     
     func addProfilePhotoNavigationBar() {
-        circleView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        circleView = UIView(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
         circleView.layer.borderColor = UIColor.systemPink.cgColor
         circleView.layer.borderWidth = 2
         circleView.layer.cornerRadius = circleView.frame.width / 2
         // user image
-        profileIV = UIImageView(frame: CGRect(x: 4, y: 4, width: 32, height: 32))
+        profileIV = UIImageView(frame: CGRect(x: 2, y: 2, width: 32, height: 32))
         profileIV.layer.cornerRadius = profileIV.frame.width / 2
         profileIV.layer.masksToBounds = true
         profileIV.contentMode = .scaleToFill
         profileIV.isUserInteractionEnabled = true
-        profileIV.kf.setImage(with: URL(string: "http://lorempixel.com/400/400/people/\(Int.random(in: 1...10))"))
-        
+        if let imageUrl = contactedUser?.imageUrl, let name = contactedUser?.firstName {
+            profileIV.kf.setImage(with: URL(string: imageUrl))
+            title = name
+        }
         circleView.isUserInteractionEnabled = true
         circleView.addSubview(profileIV)
         circleView.addSubview(nameView)
-        let name = "Murat"
-        let lastName = "Turan"
-        title = name + " " + lastName
         navigationItem.leftItemsSupplementBackButton = true
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: circleView)
     }
@@ -116,13 +166,13 @@ class ChatViewController: MessagesViewController {
         messageInputBar.inputTextView.backgroundColor = .white
         messageInputBar.inputTextView.placeholderTextColor = UIColor(red: 178/255, green: 178/255, blue: 178/255, alpha: 1)
         messageInputBar.inputTextView.textColor = .black
-        messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 12, left: 16, bottom: 8, right: 36)
-        messageInputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 12, left: 20, bottom: 8, right: 36)
+        messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 36)
+        messageInputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 36)
         messageInputBar.inputTextView.autocorrectionType = .no
         messageInputBar.shouldAutoUpdateMaxTextViewHeight = false
         messageInputBar.maxTextViewHeight = 100
-
-        messageInputBar.inputTextView.placeholder = "Mesajiniz"
+        messageInputBar.inputTextView.font = FontHelper.regular(16)
+        messageInputBar.inputTextView.placeholder = ""
         messageInputBar.inputTextView.layer.borderColor = UIColor(red: 141/255, green: 141/255, blue: 141/255, alpha: 1).cgColor
         messageInputBar.inputTextView.layer.borderWidth = 0.5
         messageInputBar.inputTextView.layer.cornerRadius = 20.0
@@ -166,21 +216,32 @@ extension ChatViewController: MessagesLayoutDelegate {
 
 extension ChatViewController: MessagesDataSource {
     func currentSender() -> SenderType {
-        return myUser
+        return MockUser(senderId: contactedUser?.myId ?? "", displayName: "Murat")
     }
 
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
-        return ChatMessageViewModel(messageModel: ChatReceivedMessageModel())
+        return chatHistory[indexPath.section]
     }
 
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
-        return 20
+        return chatHistory.count
     }
 }
 
 extension ChatViewController: MessageInputBarDelegate {
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
-        
+        messageInputBar.sendButton.startAnimating()
+        messageInputBar.inputTextView.text = ""
+        if let currentUser = PFUser.current(), let receiver = contactedUser, let senderId = currentUser.objectId {
+            let receiverId = receiver.receiverId
+            NetworkManager.sendTextMessage(messageText: text, senderId: senderId, receiverId: receiverId, success: { (success) in
+                print(success)
+                self.messageInputBar.sendButton.stopAnimating()
+            }) { (error) in
+                self.messageInputBar.sendButton.stopAnimating()
+                self.displayError(message: error)
+            }
+        }
     }
 }
 
@@ -235,10 +296,7 @@ struct MockUser: SenderType {
 
 final class ChatMessageViewModel: MessageType {
     var sentDate: Date
-    
-    
-    var messageModel: ChatReceivedMessageModel!
-    
+    var messageModel: ChatMessage!
     var sender: SenderType {
         return mockUser
     }
@@ -246,30 +304,19 @@ final class ChatMessageViewModel: MessageType {
     var kind: MessageKind
     var mockUser: MockUser
     
-    var room: String?
     var message: String?
-    var userToConnect: String?
-    var userFullName: String?
     var senderId: String?
-    var senderPhotoUrl: String?
-    var creationTimestamp: Int64?
-    var prevTimeStamp: Int64?
     
-    init(messageModel: ChatReceivedMessageModel) {
+    init(messageModel: ChatMessage) {
         self.messageModel = messageModel
-        self.room = messageModel.room
-        self.message = messageModel.message
-        self.userToConnect = messageModel.userToConnect
-        self.userFullName = messageModel.userFullName
+        self.sentDate = messageModel.sentDate
+        self.message = messageModel.body
         self.senderId = messageModel.senderId
-        self.senderPhotoUrl = messageModel.senderPhotoUrl
-        self.creationTimestamp = messageModel.creationTimestamp
-        self.messageId = messageModel.messageId ?? ""
-        self.kind = .text(messageModel.message ?? "")
+        self.messageId = messageModel.messageId
+        self.kind = .text(messageModel.body )
         let displayName = "Murat Turan"
-        self.mockUser = MockUser(senderId: messageModel.senderId ?? "", displayName: displayName)
-        self.prevTimeStamp = 0
-        self.sentDate = Date()
+        self.mockUser = MockUser(senderId: messageModel.senderId , displayName: displayName)
+        
     }
     
 }

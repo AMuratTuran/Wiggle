@@ -2,9 +2,11 @@ PODS:
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
+  - Bolts-Swift (1.5.0)
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - DynamicBlurView (4.0.0)
   - FacebookCore (0.9.0):
     - FBSDKCoreKit (~> 5.0)
   - FacebookLogin (0.9.0):
@@ -50,8 +52,25 @@ PODS:
     - Bolts (~> 1.9)
     - FBSDKLoginKit (~> 5.x)
     - Parse/Core
+  - ParseLiveQuery (2.7.0):
+    - Bolts (~> 1.9.0)
+    - Bolts-Swift (~> 1.5.0)
+    - Parse (~> 1.17.3)
+    - Starscream (~> 3.1.0)
   - pop (1.0.12)
+  - PopupDialog (1.1.1):
+    - DynamicBlurView (~> 4.0)
+  - PromiseKit (6.12.0):
+    - PromiseKit/CorePromise (= 6.12.0)
+    - PromiseKit/Foundation (= 6.12.0)
+    - PromiseKit/UIKit (= 6.12.0)
+  - PromiseKit/CorePromise (6.12.0)
+  - PromiseKit/Foundation (6.12.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.12.0):
+    - PromiseKit/CorePromise
   - RLBAlertsPickers (1.1.2)
+  - Starscream (3.1.1)
   - SwiftValidator (4.0.0)
 
 DEPENDENCIES:
@@ -66,12 +85,17 @@ DEPENDENCIES:
   - NVActivityIndicatorView
   - Parse
   - Parse/FacebookUtils
+  - ParseLiveQuery
+  - PopupDialog
+  - PromiseKit
   - RLBAlertsPickers (~> 1.1.1)
   - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, tag `4.2.0`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Bolts
+    - Bolts-Swift
+    - DynamicBlurView
     - FacebookCore
     - FacebookLogin
     - FacebookShare
@@ -85,8 +109,12 @@ SPEC REPOS:
     - MessageKit
     - NVActivityIndicatorView
     - Parse
+    - ParseLiveQuery
     - pop
+    - PopupDialog
+    - PromiseKit
     - RLBAlertsPickers
+    - Starscream
 
 EXTERNAL SOURCES:
   Koloda:
@@ -105,6 +133,8 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  Bolts-Swift: afbbaf8c8186e7f769be4afa656949c14087ba44
+  DynamicBlurView: ccf9acd2b20c883cc2c72e3524a04d8d3ee20533
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
   FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
   FacebookShare: 85968ad1b1606c4944fb154924e425fd29184ea5
@@ -119,10 +149,14 @@ SPEC CHECKSUMS:
   MessageKit: e892a9ca49ebe6d82684d3a93ad84021fa23e2c6
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   Parse: c1ad2a04d2cab2b54b6fb7da05f741abf2cf57d1
+  ParseLiveQuery: f251b75fb8941c95b8948837a4685836a72f7f18
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
+  PopupDialog: 720c92befd8bc23c13442254945213db5612f149
+  PromiseKit: c06835ba442ce5454ce3cdde470232804a6e4ff8
   RLBAlertsPickers: 2548943b0cb16620904cbd926a645362d1b43963
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SwiftValidator: 249b6b3ae3b294266c5b9de134d94f18f2d5aa47
 
-PODFILE CHECKSUM: e47845738c72828fe68a839f5aca9664232d4dac
+PODFILE CHECKSUM: f4d9b7ace0e8da4db864422e5152d708526beb08
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.3

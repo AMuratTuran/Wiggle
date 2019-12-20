@@ -49,6 +49,8 @@ class WiggleCard: WiggleCardComponent {
     }
     
     public func updateUI(){
+        view.cornerRadius(12)
+        view.profilePicture.cornerRadius(12)
         guard let model = model else {return}
         view.profilePicture.image = UIImage(named: model.profilePicture ?? "")
         view.nameSurname.text = model.nameSurname
