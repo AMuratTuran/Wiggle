@@ -81,17 +81,32 @@
                                     <constraint firstItem="snz-iQ-aMW" firstAttribute="height" secondItem="pT8-hV-Q3g" secondAttribute="height" id="twy-zv-g5J"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DW2-Mp-dOp">
+                                <rect key="frame" x="320" y="39.5" width="10" height="10"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="10" id="Tmv-bH-UZZ"/>
+                                    <constraint firstAttribute="height" constant="10" id="vhg-c5-gLE"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="70" id="4mQ-TU-Fsi"/>
                             <constraint firstItem="Ves-gL-vPj" firstAttribute="bottom" secondItem="dpX-tv-BL2" secondAttribute="bottom" id="8Sz-se-tqd"/>
+                            <constraint firstAttribute="trailing" secondItem="DW2-Mp-dOp" secondAttribute="trailing" constant="20" id="GOa-x1-Dme"/>
                             <constraint firstAttribute="trailing" secondItem="Ves-gL-vPj" secondAttribute="trailing" constant="20" id="HcT-5r-9NL"/>
                             <constraint firstItem="pT8-hV-Q3g" firstAttribute="top" secondItem="dpX-tv-BL2" secondAttribute="bottom" id="Khi-Vl-Ho9"/>
                             <constraint firstItem="pT8-hV-Q3g" firstAttribute="leading" secondItem="nNP-zQ-dXv" secondAttribute="trailing" constant="10" id="LcD-qM-ZCu"/>
                             <constraint firstItem="Ves-gL-vPj" firstAttribute="leading" secondItem="pT8-hV-Q3g" secondAttribute="trailing" constant="10" id="OdU-sD-PxT"/>
                             <constraint firstItem="dpX-tv-BL2" firstAttribute="leading" secondItem="nNP-zQ-dXv" secondAttribute="trailing" constant="10" id="SE7-sL-Q7P"/>
                             <constraint firstItem="Ves-gL-vPj" firstAttribute="leading" secondItem="dpX-tv-BL2" secondAttribute="trailing" constant="10" id="ZEW-gx-hj3"/>
+                            <constraint firstItem="DW2-Mp-dOp" firstAttribute="centerY" secondItem="Mtg-Mc-R3L" secondAttribute="centerY" id="kqB-9O-07t"/>
                             <constraint firstItem="dpX-tv-BL2" firstAttribute="top" secondItem="nNP-zQ-dXv" secondAttribute="top" id="t3b-bn-J6u"/>
                             <constraint firstItem="nNP-zQ-dXv" firstAttribute="centerY" secondItem="Wk0-oZ-oH6" secondAttribute="centerY" id="tPh-g2-IPI"/>
                             <constraint firstItem="nNP-zQ-dXv" firstAttribute="leading" secondItem="Wk0-oZ-oH6" secondAttribute="leading" constant="20" id="zVu-kC-Oel"/>
@@ -118,6 +133,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="dateLabel" destination="Ves-gL-vPj" id="gDa-Cb-Za3"/>
+                <outlet property="isReadView" destination="DW2-Mp-dOp" id="7Td-O4-X5r"/>
                 <outlet property="lastMessageArrowView" destination="snz-iQ-aMW" id="def-AX-aIa"/>
                 <outlet property="lastMessageLabel" destination="Mtg-Mc-R3L" id="tEU-1d-991"/>
                 <outlet property="lastMessageStackView" destination="pT8-hV-Q3g" id="rVj-DS-xii"/>

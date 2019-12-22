@@ -19,6 +19,7 @@ class ChatListCell: UITableViewCell {
     @IBOutlet weak var lastMessageArrowView: UIView!
     @IBOutlet weak var lineHeight: NSLayoutConstraint!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var isReadView: UIView!
     
     
     var data: ChatListModel?
@@ -51,5 +52,11 @@ class ChatListCell: UITableViewCell {
         }else {
             lastMessageArrowView.isHidden = true
         }
+    }
+    func showIsReadView() {
+        isReadView.isHidden = false
+    }
+    func hideIsReadView() {
+        isReadView.isHidden = true
     }
 }
