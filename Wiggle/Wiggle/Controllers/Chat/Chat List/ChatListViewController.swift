@@ -8,21 +8,36 @@
 
 import UIKit
 import Parse
+import ParseLiveQuery
 
 class ChatListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    var currentUser: PFUser!
     let searchController = UISearchController(searchResultsController: nil)
     var isSearchBarEmpty: Bool {
            return searchController.searchBar.text?.isEmpty ?? true
     }
     var data: [Chat]?
     var tableData: [ChatListModel]?
-    var userId: String?
+    var userId: String? {
+        if let currentUser = PFUser.current() {
+            return currentUser.objectId
+        }
+        return nil
+    }
+    var subscription: Subscription<PFObject>?
+    var liveQueryClient: ParseLiveQuery.Client!
+    let query = PFQuery(className:"Messages")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let currentUser = PFUser.current() else {
+            return
+            // navigate to login
+        }
+        self.currentUser = currentUser
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -61,12 +76,39 @@ class ChatListViewController: UIViewController {
                     }
                     self.tableData = sortedDate
                     self.tableView.reloadData()
+                    self.listenInboxMessages()
                     self.startAnimating(self.view, startAnimate: false)
                     self.startUpwardsAnimation()
                 }
             }) { (error) in
                 self.startAnimating(self.view, startAnimate: false)
             }
+        }
+    }
+    
+    func listenInboxMessages() {
+        guard let userId = userId else { return }
+        query.whereKey("receiver", equalTo: userId)
+        query.addDescendingOrder("createdAt")
+        query.limit = 50
+        liveQueryClient = ParseLiveQuery.Client(server: "wss://lyngl.back4app.io/", applicationId: "EfuNJeqL484fqElyGcCuiTBjNHalE2BhAP2LIv7s", clientKey: "L22P6I1Hxd3WMf8QT0umoy1HRuQit97Zd5i5HCjG")
+        subscription = liveQueryClient.subscribe(query)
+        _ = subscription?.handle(Event.created) { (_, response) in
+            NetworkManager.queryUsersById(response["sender"] as! String, success: { (user) in
+                let chat = Chat(object: response)
+                let incomingMessage:ChatListModel = ChatListModel(user: user, chat: chat)
+                self.tableData?.forEach {
+                    if $0 == incomingMessage {
+                        let index = self.tableData?.firstIndex(of: $0)
+                        self.tableData?.remove(at: index ?? 0)
+                    }
+                }
+                self.tableData?.insert(incomingMessage, at: 0)
+                self.tableView.reloadData()
+            }) { (error) in
+                self.displayError(message: error)
+            }
+            
         }
     }
 
@@ -76,7 +118,6 @@ class ChatListViewController: UIViewController {
         self.navigationItem.searchController = searchController
         definesPresentationContext = true
         self.navigationItem.hidesSearchBarWhenScrolling = true
-        
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -90,7 +131,7 @@ class ChatListViewController: UIViewController {
     }
     
     func startUpwardsAnimation() {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [.curveEaseIn], animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [.curveEaseIn], animations: {
             self.tableView.alpha = 1
             self.tableView.transform = CGAffineTransform.identity
         })

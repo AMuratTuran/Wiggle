@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		A6B8A42AC3E4C0E8C384C2E7 /* Pods_Wiggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5526736EFB884D70162BB41 /* Pods_Wiggle.framework */; };
-		F100023823AC151900D4DD22 /* FontHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100023723AC151900D4DD22 /* FontHelper.swift */; };
-		F100023A23AC1B9600D4DD22 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100023923AC1B9600D4DD22 /* ChatMessage.swift */; };
 		DC166ED623ACB1AF0000E745 /* WiggleCardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC166ED523ACB1AF0000E745 /* WiggleCardComponent.swift */; };
 		DC166ED823ACB5240000E745 /* WiggleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC166ED723ACB5240000E745 /* WiggleCard.swift */; };
 		DC166EDA23ACBAAD0000E745 /* WiggleCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC166ED923ACBAAD0000E745 /* WiggleCardView.xib */; };
+		F100023823AC151900D4DD22 /* FontHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100023723AC151900D4DD22 /* FontHelper.swift */; };
+		F100023A23AC1B9600D4DD22 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100023923AC1B9600D4DD22 /* ChatMessage.swift */; };
 		F10038A8239D711C00829A65 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10038A6239D711C00829A65 /* LogoutCell.swift */; };
 		F10038A9239D711C00829A65 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F10038A7239D711C00829A65 /* LogoutCell.xib */; };
 		F10038AC239D759800829A65 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10038AB239D759800829A65 /* Chat.swift */; };
@@ -23,6 +23,9 @@
 		F1378F59238ADC7900622B3C /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1378F58238ADC7900622B3C /* Profile.storyboard */; };
 		F1378F5C238ADD8300622B3C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1378F5B238ADD8300622B3C /* ProfileViewController.swift */; };
 		F1378F5E238B012100622B3C /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1378F5D238B012100622B3C /* ProfileDetailViewController.swift */; };
+		F14A1EF623AE8E6D00FF2C09 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A1EF523AE8E6D00FF2C09 /* AppConstants.swift */; };
+		F14A1EF823AEB2A500FF2C09 /* UIViewController + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A1EF723AEB2A500FF2C09 /* UIViewController + Alert.swift */; };
+		F14A1EFA23AEB9BC00FF2C09 /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A1EF923AEB9BC00FF2C09 /* GenderViewController.swift */; };
 		F15005F3239C4C5000E19947 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15005F2239C4C5000E19947 /* ChatViewController.swift */; };
 		F150FCEF2393E9B9002FD404 /* heartbeat.json in Resources */ = {isa = PBXBuildFile; fileRef = F150FCEE2393E9B8002FD404 /* heartbeat.json */; };
 		F150FCF32393EDC0002FD404 /* Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150FCF22393EDC0002FD404 /* Delay.swift */; };
@@ -48,7 +51,6 @@
 		F152170F2389D5290027C6D4 /* SettingsPremiumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F152170823885D5F0027C6D4 /* SettingsPremiumTableViewCell.swift */; };
 		F15217102389D52E0027C6D4 /* SettingsPremiumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F152170923885D5F0027C6D4 /* SettingsPremiumTableViewCell.xib */; };
 		F1585AD82384064F0062A681 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1585AD72384064F0062A681 /* AppDelegate.swift */; };
-		F1585ADA2384064F0062A681 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1585AD92384064F0062A681 /* SceneDelegate.swift */; };
 		F1585ADF2384064F0062A681 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1585ADD2384064F0062A681 /* Main.storyboard */; };
 		F1585AE1238406560062A681 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1585AE0238406560062A681 /* Assets.xcassets */; };
 		F1585AE4238406560062A681 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1585AE2238406560062A681 /* LaunchScreen.storyboard */; };
@@ -95,11 +97,11 @@
 /* Begin PBXFileReference section */
 		44BB3C201FFEF9A359F53C04 /* Pods-Wiggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.debug.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.debug.xcconfig"; sourceTree = "<group>"; };
 		4E39BF0A09E61170AE4D6F33 /* Pods-Wiggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.release.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.release.xcconfig"; sourceTree = "<group>"; };
-		F100023723AC151900D4DD22 /* FontHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontHelper.swift; sourceTree = "<group>"; };
-		F100023923AC1B9600D4DD22 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		DC166ED523ACB1AF0000E745 /* WiggleCardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiggleCardComponent.swift; sourceTree = "<group>"; };
 		DC166ED723ACB5240000E745 /* WiggleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiggleCard.swift; sourceTree = "<group>"; };
 		DC166ED923ACBAAD0000E745 /* WiggleCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WiggleCardView.xib; sourceTree = "<group>"; };
+		F100023723AC151900D4DD22 /* FontHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontHelper.swift; sourceTree = "<group>"; };
+		F100023923AC1B9600D4DD22 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		F10038A6239D711C00829A65 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		F10038A7239D711C00829A65 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
 		F10038AB239D759800829A65 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
@@ -110,6 +112,9 @@
 		F1378F58238ADC7900622B3C /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		F1378F5B238ADD8300622B3C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F1378F5D238B012100622B3C /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
+		F14A1EF523AE8E6D00FF2C09 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppConstants.swift; path = Wiggle/Models/Chat/AppConstants.swift; sourceTree = SOURCE_ROOT; };
+		F14A1EF723AEB2A500FF2C09 /* UIViewController + Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alert.swift"; sourceTree = "<group>"; };
+		F14A1EF923AEB9BC00FF2C09 /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
 		F15005F2239C4C5000E19947 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		F150FCEE2393E9B8002FD404 /* heartbeat.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = heartbeat.json; sourceTree = "<group>"; };
 		F150FCF22393EDC0002FD404 /* Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
@@ -136,7 +141,6 @@
 		F152170C2389CF6D0027C6D4 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		F1585AD42384064F0062A681 /* Wiggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wiggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1585AD72384064F0062A681 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F1585AD92384064F0062A681 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F1585ADE2384064F0062A681 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F1585AE0238406560062A681 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1585AE3238406560062A681 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -408,7 +412,6 @@
 				F1585AEC238406CB0062A681 /* Models */,
 				F1585AEB238406C50062A681 /* Controllers */,
 				F1585AD72384064F0062A681 /* AppDelegate.swift */,
-				F1585AD92384064F0062A681 /* SceneDelegate.swift */,
 				F1585AE0238406560062A681 /* Assets.xcassets */,
 				F1585AE2238406560062A681 /* LaunchScreen.storyboard */,
 				F1585AE5238406560062A681 /* Info.plist */,
@@ -455,6 +458,7 @@
 		F1585AEE238406D50062A681 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				F14A1EF523AE8E6D00FF2C09 /* AppConstants.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -491,6 +495,7 @@
 				F150FD14239C33B0002FD404 /* UIView + ReuseIdentifier .swift */,
 				F1C794AB23AAD46300D9FEFC /* Date + Extensions.swift */,
 				F1C794AD23AAD6DA00D9FEFC /* String + Extensions.swift */,
+				F14A1EF723AEB2A500FF2C09 /* UIViewController + Alert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -545,6 +550,7 @@
 				F159C8D22385CA460091AB05 /* PickImageViewController.swift */,
 				F1D407152385E641002350BE /* EnableLocationViewController.swift */,
 				F1D407172385EE7A002350BE /* EnableNotificationsViewController.swift */,
+				F14A1EF923AEB9BC00FF2C09 /* GenderViewController.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -750,6 +756,7 @@
 				F19A48CB238F0C700045C0BC /* UIColor + Extensions.swift in Sources */,
 				F16456932384170100FC0694 /* Dictionary + Extensions.swift in Sources */,
 				F19A48C7238F05220045C0BC /* WiggleHUD.swift in Sources */,
+				F14A1EFA23AEB9BC00FF2C09 /* GenderViewController.swift in Sources */,
 				F1585AFA2384077A0062A681 /* EnterVerificationCodeViewController.swift in Sources */,
 				F150FD19239C33E2002FD404 /* ChatListCell.swift in Sources */,
 				F150FCFB2393FA50002FD404 /* SettingWithLabelCell.swift in Sources */,
@@ -763,6 +770,8 @@
 				F10038AC239D759800829A65 /* Chat.swift in Sources */,
 				F159C8CE2385AB330091AB05 /* BirthdayViewController.swift in Sources */,
 				F10BC89C239D5E3E005934BB /* NotificationSettingsViewController.swift in Sources */,
+				F14A1EF823AEB2A500FF2C09 /* UIViewController + Alert.swift in Sources */,
+				F14A1EF623AE8E6D00FF2C09 /* AppConstants.swift in Sources */,
 				F19A48CF238F129E0045C0BC /* SplashViewController.swift in Sources */,
 				F1585AF8238407680062A681 /* EnterPhoneViewController.swift in Sources */,
 				F19A48D1238F15670045C0BC /* UIViewController + User.swift in Sources */,
@@ -778,7 +787,6 @@
 				F150FD15239C33B0002FD404 /* UIView + ReuseIdentifier .swift in Sources */,
 				F1585AD82384064F0062A681 /* AppDelegate.swift in Sources */,
 				F159C7B7238493100091AB05 /* WiggleUser.swift in Sources */,
-				F1585ADA2384064F0062A681 /* SceneDelegate.swift in Sources */,
 				F150FD13239C2EF0002FD404 /* ChatListViewController.swift in Sources */,
 				F150FCF32393EDC0002FD404 /* Delay.swift in Sources */,
 				F1378F5E238B012100622B3C /* ProfileDetailViewController.swift in Sources */,
@@ -955,14 +963,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 478QB249DY;
+				DEVELOPMENT_TEAM = BSS286Y93W;
 				INFOPLIST_FILE = Wiggle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wiggle.Wiggl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wiggle.Wiggle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

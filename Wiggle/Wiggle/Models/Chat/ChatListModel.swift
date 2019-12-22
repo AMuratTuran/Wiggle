@@ -59,4 +59,11 @@ class ChatListModel {
         }else { }
 
     }
+    
+}
+
+extension ChatListModel: Equatable {
+    static func == (lhs: ChatListModel, rhs: ChatListModel) -> Bool {
+        return lhs.receiverId == rhs.receiverId
+    }
 }

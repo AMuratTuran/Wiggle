@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class SettingsViewController: UIViewController {
 
@@ -176,7 +177,12 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 60))
         let label = UILabel(frame: CGRect(x: 15.0, y: 0, width: tableView.bounds.size.width, height: 60))
         headerView.addSubview(label)
-        label.textColor = UIColor(hexString: "4a4a4a")
+        label.font = FontHelper.regular(16)
+        if #available(iOS 13.0, *) {
+            label.textColor = .secondaryLabel
+        } else {
+            label.textColor = UIColor.gray
+        }
         if section == 1 {
             label.text = "Account Settings"
         }else if section == 2 {
@@ -196,6 +202,20 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         }else if indexPath.section == 3 {
             let destionationViewController = storyboard.instantiateViewController(withIdentifier: "NotificationSettingsViewController") as! NotificationSettingsViewController
             self.navigationController?.pushViewController(destionationViewController, animated: true)
+        }else if indexPath.section == 4 {
+            self.startAnimating(self.view, startAnimate: true)
+            PFUser.logOutInBackground { (error) in
+                self.startAnimating(self.view, startAnimate: false)
+                if let error = error {
+                    self.displayError(message: error.localizedDescription)
+                }else {
+                    UserDefaults.standard.removeObject(forKey: AppConstants.UserDefaultsKeys.SessionToken)
+                    guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+                        return
+                    }
+                    delegate.initializeWindow()
+                }
+            }
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }

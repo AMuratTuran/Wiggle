@@ -80,10 +80,9 @@ extension GetNameViewController: ValidationDelegate {
             if error != nil {
                 self.displayError(message: error?.localizedDescription ?? "")
             }else {
-                self.moveToGetBioViewController(navigationController: self.navigationController ?? UINavigationController())
+                self.moveToGenderViewController(navigationController: self.navigationController ?? UINavigationController())
             }
         })
-        
     }
     
     func validationFailed(_ errors: [(Validatable, ValidationError)]) {

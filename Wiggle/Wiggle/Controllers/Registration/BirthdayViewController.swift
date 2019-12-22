@@ -59,7 +59,7 @@ class BirthdayViewController: UIViewController {
         let alert = UIAlertController(style: .actionSheet, title: Localize.DatePicker.PickDate)
         
         alert.addDatePicker(mode: .date, date: startDate, minimumDate: minDate, maximumDate: maxDate) { date in
-            self.birthday = date.adding(.hour, value: 6)
+            self.birthday = date.adding(.hour, value: 3)
             self.birthdayPickerButton.setTitle(date.dateString(), for: .normal)
         }
         alert.addAction(title: Localize.Common.OKButton, style: .cancel)
@@ -79,7 +79,6 @@ class BirthdayViewController: UIViewController {
                 }
             })
         }
-        
     }
     
     @IBAction func backAction(_ sender: UIButton) {

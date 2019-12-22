@@ -10,7 +10,7 @@ import Foundation
 import MessageKit
 import Parse
 
-class Chat: Decodable  {
+class Chat: Decodable {
     
     var lastMessage: String
     var senderId: String
@@ -41,6 +41,13 @@ class Chat: Decodable  {
         self.createdAt = formatDate(dateString: createdAtString, outputFormat: "dd-MM-yy HH:mm:ss")
     }
     
+    init (object: PFObject) {
+        self.lastMessage = object["body"] as! String
+        self.senderId = object["sender"] as! String
+        self.remoteId = object["receiver"] as! String
+        self.createdAt = object.createdAt?.prettyStringFromDate(dateFormat: "dd-MM-yy HH:mm:ss", localeIdentifier: "tr") ?? ""
+    }
+    
     func getReceiverId() -> String {
         if let currentUser = PFUser.current() {
             let id = currentUser.objectId
@@ -63,9 +70,13 @@ class Chat: Decodable  {
         }
         return false
     }
-
 }
 
+extension Chat: Equatable {
+    static func == (lhs: Chat, rhs: Chat) -> Bool {
+        return (lhs.senderId == rhs.senderId && lhs.remoteId == rhs.remoteId)
+    }
+}
 
 func formatDate(dateString: String, outputFormat: String) -> String{
     let formatter = DateFormatter()

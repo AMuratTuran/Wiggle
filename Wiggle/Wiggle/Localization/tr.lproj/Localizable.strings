@@ -20,6 +20,7 @@
 "skip_button" = "Geç";
 "error" = "Hata";
 "phone_codes" = "Ülke Kodları";
+"general_error" = "Bir hata oluştu. Tekrar deneyiniz.";
 
 "enter_sms_verification" = "Lutfen SMS ile gonderilen 4 haneli dogrulama kodunu giriniz.";
 

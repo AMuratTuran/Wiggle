@@ -26,14 +26,14 @@ struct NetworkManager {
                 return
             }
             guard let smsCode = response as? Int else {
-                fail("Response cannot be nil")
+                fail(Localize.Common.GeneralError)
                 return
             }
             success(smsCode)
         }
     }
     
-    static func auth(_ request: PhoneAuthRequest, success: @escaping() -> Void, fail: @escaping(String) -> Void) {
+    static func auth(_ request: PhoneAuthRequest, success: @escaping(Bool) -> Void, fail: @escaping(String) -> Void) {
         PFCloud.callFunction(inBackground: "Auth", withParameters: request.toDict()) { (response, error) in
             if let error = error {
                 fail(error.localizedDescription)
@@ -43,6 +43,8 @@ struct NetworkManager {
                 fail("Invalid Token")
                 return
             }
+            
+            UserDefaults.standard.set(sessionToken, forKey: AppConstants.UserDefaultsKeys.SessionToken)
             PFUser.become(inBackground: sessionToken) { (user, error) in
                 if let error = error {
                     fail(error.localizedDescription)
@@ -52,7 +54,26 @@ struct NetworkManager {
                     fail("No user data")
                     return
                 }
-                success()
+                user.fetchInBackground { (user, error) in
+                    if let error = error {
+                        fail(error.localizedDescription)
+                        return
+                    }
+                    
+                    guard let userInfo = user else {
+                        fail("No user data")
+                        return
+                    }
+                    if let _ = userInfo["gender"] as? Int, let userName = userInfo["first_name"] as? String {
+                        if userName.isEmpty {
+                            success(false)
+                        }else {
+                            success(true)
+                        }
+                    }else {
+                        success(false)
+                    }
+                }
             }
         }
     }
@@ -65,7 +86,7 @@ struct NetworkManager {
             }
             
             guard let chats = response as? NSArray else {
-                fail("Cannot map response")
+                fail(Localize.Common.GeneralError)
                 return
             }
             
@@ -75,6 +96,8 @@ struct NetworkManager {
                 if let dict = chatModel as? [String: Any]{
                     let chat = Chat(dictionary: dict)
                     chatResponse.append(chat)
+                }else {
+                    fail(Localize.Common.GeneralError)
                 }
             }
             let sortedData = chatResponse.sorted {
@@ -93,7 +116,7 @@ struct NetworkManager {
             }
             
             guard let userResponse = response as NSArray? else {
-                fail("Cannot map response")
+                fail(Localize.Common.GeneralError)
                 return
             }
             
@@ -102,10 +125,12 @@ struct NetworkManager {
                     dict.fetchInBackground { (object, error) in
                         if let user = object as? PFUser {
                             success(user)
+                        }else {
+                            fail(Localize.Common.GeneralError)
                         }
                     }
                 }else {
-                    fail("Unable map user to WiggleUser")
+                    fail(Localize.Common.GeneralError)
                 }
             }
         }
@@ -159,7 +184,7 @@ struct NetworkManager {
             }
             
             guard let chatHistory = objects else {
-                fail("Cannot map response")
+                fail(Localize.Common.GeneralError)
                 return
             }
             
@@ -169,7 +194,11 @@ struct NetworkManager {
                 let chat = ChatMessage(dictionary: chatMessageModel)
                 chatResponse.append(chat)
             }
-            success(chatResponse)
+            let sortedData = chatResponse.sorted {
+                $0.sentDate < $1.sentDate
+            }
+            
+            success(sortedData)
         }
         
     }

@@ -9,6 +9,7 @@
 import UIKit
 import SwiftValidator
 import NVActivityIndicatorView
+import PopupDialog
 
 class EnterVerificationCodeViewController: UIViewController {
     
@@ -87,19 +88,31 @@ extension EnterVerificationCodeViewController: ValidationDelegate {
         if verifySMSCode() {
             if let phoneNumber = phoneNumber {
                 let request = PhoneAuthRequest(phoneNumber: phoneNumber)
-                NetworkManager.auth(request, success: {
-                    // move to next page
+                NetworkManager.auth(request, success: { hasInfo in
                     self.startAnimating(self.view, startAnimate: false)
-                    self.moveToGetNameViewController()
+                    if hasInfo {
+                        guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+                               return
+                           }
+                        delegate.initializeWindow()
+                    }else {
+                        self.moveToGetNameViewController()
+                    }
                 }) { (error) in
                     self.startAnimating(self.view, startAnimate: false)
-                    print(error)
+                    let doneButton = PopupDialogButton(title: Localize.Common.OKButton) {
+                        
+                    }
+                    self.alertMessage(message: error, buttons: [doneButton], isErrorMessage: false)
                 }
             }
         }else {
             self.startAnimating(self.view, startAnimate: false)
             continueButton.isUserInteractionEnabled = true
-            displayError(message: "Incorrect Code")
+            let doneButton = PopupDialogButton(title: Localize.Common.OKButton) {
+                
+            }
+            self.alertMessage(message: "Incorrect Code", buttons: [doneButton], isErrorMessage: false)
         }
     }
     

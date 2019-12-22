@@ -15,6 +15,7 @@ import ParseLiveQuery
 
 class ChatViewController: MessagesViewController {
     
+    var currentUser: PFUser!
     private var messages: [MessageType] = []
     var circleView = UIView()
     var profileIV = UIImageView()
@@ -47,6 +48,13 @@ class ChatViewController: MessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let currentUser = PFUser.current() else {
+            return
+            // navigate to login
+        }
+        self.currentUser = currentUser
+        
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem?.title = ""

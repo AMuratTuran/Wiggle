@@ -34,8 +34,10 @@ class SplashViewController: UIViewController {
         animationView.play()
         
         delay(2.0) {
-            self.moveToFirstPageViewController()
-            //self.initializeMainTabBar()
+            guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            delegate.initializeWindow()
         }
         
         

@@ -46,6 +46,13 @@ extension UIViewController {
         self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
     
+    func moveToGenderViewController(navigationController: UINavigationController) {
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "GenderViewController") as! GenderViewController
+        destinationViewController.modalPresentationStyle = .fullScreen
+        navigationController.pushViewController(destinationViewController, animated: true)
+    }
+    
     func moveToGetBioViewController(navigationController: UINavigationController) {
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "GetBioViewController") as! GetBioViewController
@@ -84,7 +91,6 @@ extension UIViewController {
     func moveToHomeViewController(navigationController: UINavigationController) {
         let homeStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let destinationViewController = homeStoryboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
-        //self.navigationController?.viewControllers.removeAll()
         self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
     
@@ -409,7 +415,7 @@ extension UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
+        self.navigationController?.view.backgroundColor = .white
     }
 }
 

@@ -7,7 +7,7 @@
 */
 
 
-"login_accept_terms" = "Giris yaparak kullanici sozlesmemizi ve gizlilik politikamizi kabul etmis olursunuz.";
+"login_accept_terms" = "Giriş yaparak kullanıcı sözleşmemizi ve gizlilik politikamızı kabul etmiş olursunuz.";
 "facebook_button" = "Login with Facebook";
 "phone_button" = "Login with Phone Number";
 
@@ -20,6 +20,7 @@
 "skip_button" = "Skip";
 "error" = "Error";
 "phone_codes" = "Phone Codes";
+"general_error" = "Error Occured. Please try again.";
 
 "enter_sms_verification" = "Please enter your 4-digit verification code";
 
