@@ -32,14 +32,7 @@ class ChatViewController: MessagesViewController {
     var myUser: MockUser {
         return user
     }
-    var chatHistory: [ChatMessage] = [] {
-        didSet {
-            DispatchQueue.main.async{
-                self.messagesCollectionView.reloadData()
-                self.messagesCollectionView.scrollToBottom()
-            }
-        }
-    }
+    var chatHistory: [ChatMessage] = []
     var subscription: Subscription<PFObject>?
     var liveQueryClient: ParseLiveQuery.Client!
     let query1 = PFQuery(className:"Messages")
@@ -94,11 +87,39 @@ class ChatViewController: MessagesViewController {
         query.addAscendingOrder("createdAt")
         query.limit = 50
         
-        liveQueryClient = ParseLiveQuery.Client(server: "wss://lyngl.back4app.io/", applicationId: "EfuNJeqL484fqElyGcCuiTBjNHalE2BhAP2LIv7s", clientKey: "L22P6I1Hxd3WMf8QT0umoy1HRuQit97Zd5i5HCjG")
+        liveQueryClient = ParseLiveQuery.Client(server: AppConstants.ParseConstants.LiveQueryServer, applicationId: AppConstants.ParseConstants.ApplicationId, clientKey: AppConstants.ParseConstants.ClientKey)
         subscription = liveQueryClient.subscribe(query)
         _ = subscription?.handle(Event.created) { (_, response) in
             let incomingMessage:ChatMessage = ChatMessage(dictionary: response)
-            self.chatHistory.append(incomingMessage)
+            self.insertMessage(incomingMessage)
+        }
+    }
+    
+    func loadFirstMessages() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                self.messagesCollectionView.reloadData()
+                self.messagesCollectionView.scrollToBottom()
+            }
+        }
+    }
+    
+    func insertMessage(_ message: ChatMessage) {
+        chatHistory.append(message)
+        DispatchQueue.main.async {
+            self.messagesCollectionView.performBatchUpdates({
+                
+                self.messagesCollectionView.insertSections([self.chatHistory.count - 1])
+                if self.chatHistory.count >= 2 {
+                    self.messagesCollectionView.reloadSections([self.chatHistory.count - 2])
+                    
+                }
+                
+            }, completion: { [weak self] _ in
+                if self?.isLastSectionVisible() == true {
+                    self?.messagesCollectionView.scrollToBottom(animated: true)
+                }
+            })
         }
     }
     
@@ -106,6 +127,7 @@ class ChatViewController: MessagesViewController {
         if let currentUser = PFUser.current(), let receiver = contactedUser, let senderId = currentUser.objectId {
             NetworkManager.getChatHistory(myId: senderId, contactedId: receiver.receiverId, success: {response in
                 self.chatHistory = response
+                self.loadFirstMessages()
             }) { (error) in
                 self.displayError(message: error)
             }
@@ -206,33 +228,100 @@ class ChatViewController: MessagesViewController {
                 UIView.animate(withDuration: 0.2, animations: {
                     item.backgroundColor = UIColor.systemPink
                 })
-            }.onDisabled { item in
-                UIView.animate(withDuration: 0.2, animations: {
-                    item.backgroundColor = UIColor.gray
-                })
+        }.onDisabled { item in
+            UIView.animate(withDuration: 0.2, animations: {
+                item.backgroundColor = UIColor.gray
+            })
         }
+    }
+    
+    func isPreviousMessageSameSender(at indexPath: IndexPath) -> Bool {
+        guard indexPath.section - 1 >= 0 else { return false }
+        return chatHistory[indexPath.section].senderId == chatHistory[indexPath.section - 1].senderId
+    }
+    
+    func isNextMessageSameSender(at indexPath: IndexPath) -> Bool {
+        guard indexPath.section + 1 < chatHistory.count else { return false }
+        return chatHistory[indexPath.section].senderId == chatHistory[indexPath.section + 1].senderId
+    }
+    
+    func isTimeLabelVisible(at indexPath: IndexPath) -> Bool {
+        guard indexPath.section - 1 >= 0 else { return true }
+        return !chatHistory[indexPath.section - 1].sentDate.isInSameDay(date: chatHistory[indexPath.section].sentDate)
+    }
+    
+    func isLastSectionVisible() -> Bool {
+        guard !chatHistory.isEmpty else { return false }
+        
+        let lastIndexPath = IndexPath(item: 0, section: chatHistory.count - 1)
+        return messagesCollectionView.indexPathsForVisibleItems.contains(lastIndexPath)
     }
 }
 
 extension ChatViewController: MessagesDisplayDelegate {
     
+    func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
+        
+        var corners: UIRectCorner = []
+        
+        if isFromCurrentSender(message: message) {
+            corners.formUnion(.topLeft)
+            corners.formUnion(.bottomLeft)
+            if !isPreviousMessageSameSender(at: indexPath) {
+                corners.formUnion(.topRight)
+            }
+            if !isNextMessageSameSender(at: indexPath) {
+                corners.formUnion(.bottomRight)
+            }
+        } else {
+            corners.formUnion(.topRight)
+            corners.formUnion(.bottomRight)
+            if !isPreviousMessageSameSender(at: indexPath) {
+                corners.formUnion(.topLeft)
+            }
+            if !isNextMessageSameSender(at: indexPath) {
+                corners.formUnion(.bottomLeft)
+            }
+        }
+        
+        return .custom { view in
+            let radius: CGFloat = 16
+            let path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+            let mask = CAShapeLayer()
+            mask.path = path.cgPath
+            view.layer.mask = mask
+        }
+    }
+    
 }
 
 extension ChatViewController: MessagesLayoutDelegate {
-    
+    func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        if isTimeLabelVisible(at: indexPath) {
+            return 25
+        }
+        return 0
+    }
 }
 
 extension ChatViewController: MessagesDataSource {
     func currentSender() -> SenderType {
         return MockUser(senderId: contactedUser?.myId ?? "", displayName: "Murat")
     }
-
+    
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
         return chatHistory[indexPath.section]
     }
-
+    
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         return chatHistory.count
+    }
+    
+    func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        if isTimeLabelVisible(at: indexPath) {
+            return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate), attributes: [NSAttributedString.Key.font: FontHelper.regular(10), NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        }
+        return nil
     }
 }
 
