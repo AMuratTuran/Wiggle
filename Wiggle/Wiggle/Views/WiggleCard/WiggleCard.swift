@@ -30,6 +30,7 @@ public struct WiggleCardModel{
         self.distance = distance
         self.bio = bio
     }
+    public init(){}
 }
 
 class WiggleCard: WiggleCardComponent {
