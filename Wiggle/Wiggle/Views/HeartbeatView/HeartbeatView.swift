@@ -1,36 +1,26 @@
 //
-//  SplashViewController.swift
+//  HeartbeatView.swift
 //  Wiggle
 //
-//  Created by Murat Turan on 27.11.2019.
+//  Created by MUSTAFA TOLGA TAS on 22.12.2019.
 //  Copyright © 2019 Murat Turan. All rights reserved.
 //
 
 import UIKit
-import Parse
 import Lottie
 
-class SplashViewController: UIViewController {
+class HeartbeatView: UIView {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-        createLottieAnimation()
-        if isLoggedIn() {
-            
-        }
-    }
-    
-    func createLottieAnimation() {
+    public func createLottieAnimation() {
         let animationView = AnimationView(name: "heartbeat")
         animationView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
-        animationView.center = self.view.center
+        animationView.center = self.center
         
         animationView.loopMode = .loop
         animationView.contentMode = .scaleAspectFill
         animationView.animationSpeed = 0.5
         
-        view.addSubview(animationView)
+        self.addSubview(animationView)
         animationView.play()
         
         delay(2.0) {
@@ -41,11 +31,15 @@ class SplashViewController: UIViewController {
         }
     }
     
-    func isLoggedIn() -> Bool {
-        if PFUser.current() != nil {
-            return true
-        }else {
-            return false
+}
+class Heartbeat : HeartbeatViewComponent{
+    
+    public weak var view: HeartbeatView!
+    
+    override public func componentDidLoad() {
+        if let componentView = super.componentView as? HeartbeatView {
+            view = componentView
+            view.createLottieAnimation()
         }
     }
 }
