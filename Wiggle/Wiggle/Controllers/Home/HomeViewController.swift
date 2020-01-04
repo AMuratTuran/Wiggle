@@ -23,6 +23,16 @@ class HomeViewController: UIViewController {
     let cardView = WiggleCard.init(frame: CGRect.zero)
 //    let heartbeatView = Heartbeat.init(frame: CGRect.zero)
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureViews()
+        fetchUsers()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        prepareView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +41,7 @@ class HomeViewController: UIViewController {
         
         
         let user1 = WiggleCardModel(profilePicture: "profilePhoto", nameSurname: "Tolga Tas, 24", location: "Kayseri", distance: "31 Km", bio: "s2s")
-        cardArray.append(user1)
+        //cardArray.append(user1)
         
         self.view.hero.modifiers = [.translate(y: -100), .useGlobalCoordinateSpace]
     }
@@ -58,17 +68,16 @@ class HomeViewController: UIViewController {
         moveToProfileDetailViewController()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        configureViews()
-    }
-    
-    override func viewWillLayoutSubviews() {
-        prepareView()
-    }
-    
     @IBAction func routeProfileAction(_ sender: UIButton) {
         moveToProfileDetailViewController()
+    }
+    
+    func fetchUsers(){
+        NetworkManager.getUsersForSwipe(success: { (users) in
+            self.cardArray.append(contentsOf: users)
+        }) { fail in
+            print("===========\(fail)===========")
+        }
     }
     
 }

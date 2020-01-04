@@ -12,15 +12,23 @@ import Parse
 extension PFUser {
     
     func getFirstName() -> String {
-        return self.object(forKey: "firstName") as! String
+        return self.object(forKey: "first_name") as! String
     }
     
     func getLastName() -> String {
-        return self.object(forKey: "lastName") as! String
+        return self.object(forKey: "last_name") as! String
     }
     
     func getBio() -> String {
         return self.object(forKey: "bio") as! String
+    }
+    
+    func getPhotoUrl() -> String{        
+        if let photoUrl = self["photo"] as? PFFileObject {
+            return photoUrl.url ?? ""
+        }else{
+            return ""
+        }
     }
     
     func getBirthday() -> NSDate {
