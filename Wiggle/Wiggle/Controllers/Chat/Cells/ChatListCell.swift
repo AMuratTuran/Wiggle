@@ -52,6 +52,8 @@ class ChatListCell: UITableViewCell {
         }else {
             lastMessageArrowView.isHidden = true
         }
+        
+        isReadView.isHidden = data.isRead
     }
     func showIsReadView() {
         isReadView.isHidden = false

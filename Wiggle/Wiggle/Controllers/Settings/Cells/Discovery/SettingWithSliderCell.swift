@@ -27,10 +27,10 @@ class SettingWithSliderCell: UITableViewCell {
     
     func prepareCell(title: String) {
         titleLabel.text = title
-        detailLabel.text = "\(slider.value)"
+        detailLabel.text = "\(Int(slider.value)) km"
     }
     
     @IBAction func sliderChanged(_ sender: UISlider) {
-        self.detailLabel.text = "\(Int(floor(sender.value)))"
+        self.detailLabel.text = "\(Int(floor(sender.value))) km"
     }
 }

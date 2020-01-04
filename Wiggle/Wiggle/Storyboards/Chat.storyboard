@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8at-pz-eGu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8at-pz-eGu">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,24 +16,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N6S-lM-dTT">
-                                <rect key="frame" x="0.0" y="96" width="375" height="522"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="separatorColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="separatorInset" minX="80" minY="0.0" maxX="20" maxY="0.0"/>
-                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XTY-Pg-GJn">
+                                <rect key="frame" x="0.0" y="96" width="375" height="571"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N6S-lM-dTT">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="571"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="separatorColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="separatorInset" minX="80" minY="0.0" maxX="20" maxY="0.0"/>
+                                    </tableView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="N6S-lM-dTT" firstAttribute="leading" secondItem="58U-HE-DrU" secondAttribute="leading" id="P9J-Lg-aTM"/>
-                            <constraint firstItem="58U-HE-DrU" firstAttribute="trailing" secondItem="N6S-lM-dTT" secondAttribute="trailing" id="UCe-jc-klt"/>
-                            <constraint firstItem="58U-HE-DrU" firstAttribute="bottom" secondItem="N6S-lM-dTT" secondAttribute="bottom" id="a12-Fx-PiJ"/>
-                            <constraint firstItem="N6S-lM-dTT" firstAttribute="top" secondItem="58U-HE-DrU" secondAttribute="top" id="vla-qF-KKY"/>
+                            <constraint firstItem="XTY-Pg-GJn" firstAttribute="top" secondItem="58U-HE-DrU" secondAttribute="top" id="A9y-LY-cBK"/>
+                            <constraint firstAttribute="bottom" secondItem="XTY-Pg-GJn" secondAttribute="bottom" id="E9V-XK-LX1"/>
+                            <constraint firstItem="XTY-Pg-GJn" firstAttribute="leading" secondItem="58U-HE-DrU" secondAttribute="leading" id="LvY-yS-nws"/>
+                            <constraint firstItem="XTY-Pg-GJn" firstAttribute="trailing" secondItem="58U-HE-DrU" secondAttribute="trailing" id="nL9-Qt-3Am"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="58U-HE-DrU"/>
                     </view>
                     <navigationItem key="navigationItem" title="Chats" id="BgO-0k-Snv"/>
                     <connections>
+                        <outlet property="stackView" destination="XTY-Pg-GJn" id="aG4-hz-B0w"/>
                         <outlet property="tableView" destination="N6S-lM-dTT" id="4xe-JL-TBp"/>
                     </connections>
                 </viewController>

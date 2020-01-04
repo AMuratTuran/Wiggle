@@ -25,7 +25,6 @@ class EnterPhoneViewController: UIViewController {
         super.viewDidLoad()
         prepareViews()
         enableValidations()
-        phoneTextField.text = "5395773787"
     }
     
     override func viewWillAppear(_ animated: Bool) {

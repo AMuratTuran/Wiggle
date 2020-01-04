@@ -94,6 +94,4 @@ extension UIView {
         borderLayer.frame = bounds
         layer.addSublayer(borderLayer)
     }
-    
-    
 }

@@ -75,6 +75,14 @@
 		F16456912384160A00FC0694 /* SMSCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16456902384160A00FC0694 /* SMSCodeRequest.swift */; };
 		F16456932384170100FC0694 /* Dictionary + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16456922384170100FC0694 /* Dictionary + Extensions.swift */; };
 		F1935EFE23A657E500431DE2 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1935EFD23A657E500431DE2 /* Match.swift */; };
+		F194B5E223BF8BFC00349953 /* UIViewController + Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F194B5E123BF8BFC00349953 /* UIViewController + Alerts.swift */; };
+		F194B5E423BF94CE00349953 /* AppDelegate + Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F194B5E323BF94CE00349953 /* AppDelegate + Notification.swift */; };
+		F194B5E623C09BA700349953 /* InAppBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F194B5E523C09BA700349953 /* InAppBannerView.swift */; };
+		F194B5E823C09BCB00349953 /* InAppBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F194B5E723C09BCB00349953 /* InAppBannerView.xib */; };
+		F194B5EF23C0E19C00349953 /* MatchScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F194B5EE23C0E19C00349953 /* MatchScrollView.swift */; };
+		F194B5F123C0E1A900349953 /* MatchScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F194B5F023C0E1A900349953 /* MatchScrollView.xib */; };
+		F194B5F323C0E1BD00349953 /* MatchedUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F194B5F223C0E1BD00349953 /* MatchedUserView.swift */; };
+		F194B5F523C0E1C900349953 /* MatchedUserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F194B5F423C0E1C800349953 /* MatchedUserView.xib */; };
 		F19A48C7238F05220045C0BC /* WiggleHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A48C6238F05220045C0BC /* WiggleHUD.swift */; };
 		F19A48C9238F0BD80045C0BC /* UIViewController + Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A48C8238F0BD80045C0BC /* UIViewController + Activity.swift */; };
 		F19A48CB238F0C700045C0BC /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A48CA238F0C700045C0BC /* UIColor + Extensions.swift */; };
@@ -173,6 +181,14 @@
 		F16456902384160A00FC0694 /* SMSCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeRequest.swift; sourceTree = "<group>"; };
 		F16456922384170100FC0694 /* Dictionary + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary + Extensions.swift"; sourceTree = "<group>"; };
 		F1935EFD23A657E500431DE2 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		F194B5E123BF8BFC00349953 /* UIViewController + Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alerts.swift"; sourceTree = "<group>"; };
+		F194B5E323BF94CE00349953 /* AppDelegate + Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate + Notification.swift"; sourceTree = "<group>"; };
+		F194B5E523C09BA700349953 /* InAppBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppBannerView.swift; sourceTree = "<group>"; };
+		F194B5E723C09BCB00349953 /* InAppBannerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InAppBannerView.xib; sourceTree = "<group>"; };
+		F194B5EE23C0E19C00349953 /* MatchScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchScrollView.swift; sourceTree = "<group>"; };
+		F194B5F023C0E1A900349953 /* MatchScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchScrollView.xib; sourceTree = "<group>"; };
+		F194B5F223C0E1BD00349953 /* MatchedUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedUserView.swift; sourceTree = "<group>"; };
+		F194B5F423C0E1C800349953 /* MatchedUserView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchedUserView.xib; sourceTree = "<group>"; };
 		F19A48C6238F05220045C0BC /* WiggleHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiggleHUD.swift; sourceTree = "<group>"; };
 		F19A48C8238F0BD80045C0BC /* UIViewController + Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Activity.swift"; sourceTree = "<group>"; };
 		F19A48CA238F0C700045C0BC /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
@@ -194,6 +210,7 @@
 		F1C794BA23AC0E1400D9FEFC /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		F1D407152385E641002350BE /* EnableLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableLocationViewController.swift; sourceTree = "<group>"; };
 		F1D407172385EE7A002350BE /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
+		F1FDDEBF23BDC15B00D4B501 /* Wiggle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Wiggle.entitlements; sourceTree = "<group>"; };
 		F5526736EFB884D70162BB41 /* Pods_Wiggle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wiggle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -418,6 +435,7 @@
 		F1585AD62384064F0062A681 /* Wiggle */ = {
 			isa = PBXGroup;
 			children = (
+				F1FDDEBF23BDC15B00D4B501 /* Wiggle.entitlements */,
 				F150FCEE2393E9B8002FD404 /* heartbeat.json */,
 				F1C794AF23AC0DFD00D9FEFC /* Font */,
 				F159C8CF2385C87A0091AB05 /* Utility */,
@@ -469,8 +487,11 @@
 			isa = PBXGroup;
 			children = (
 				DC10995223AFBE5100068054 /* HeartbeatView */,
+				F194B5ED23C0E10400349953 /* Chat */,
 				DC166ED223ACB10E0000E745 /* WiggleCard */,
 				F19A48C5238F05050045C0BC /* Activity Indicator */,
+				F194B5E523C09BA700349953 /* InAppBannerView.swift */,
+				F194B5E723C09BCB00349953 /* InAppBannerView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -516,6 +537,8 @@
 				F1C794AB23AAD46300D9FEFC /* Date + Extensions.swift */,
 				F1C794AD23AAD6DA00D9FEFC /* String + Extensions.swift */,
 				F14A1EF723AEB2A500FF2C09 /* UIViewController + Alert.swift */,
+				F194B5E123BF8BFC00349953 /* UIViewController + Alerts.swift */,
+				F194B5E323BF94CE00349953 /* AppDelegate + Notification.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -600,6 +623,17 @@
 				F16456902384160A00FC0694 /* SMSCodeRequest.swift */,
 			);
 			path = "SMS Code";
+			sourceTree = "<group>";
+		};
+		F194B5ED23C0E10400349953 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				F194B5EE23C0E19C00349953 /* MatchScrollView.swift */,
+				F194B5F023C0E1A900349953 /* MatchScrollView.xib */,
+				F194B5F223C0E1BD00349953 /* MatchedUserView.swift */,
+				F194B5F423C0E1C800349953 /* MatchedUserView.xib */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		F19A48C5238F05050045C0BC /* Activity Indicator */ = {
@@ -694,6 +728,7 @@
 				F1585AE4238406560062A681 /* LaunchScreen.storyboard in Resources */,
 				F1378F59238ADC7900622B3C /* Profile.storyboard in Resources */,
 				F1C794BE23AC0E1400D9FEFC /* OpenSans-BoldItalic.ttf in Resources */,
+				F194B5E823C09BCB00349953 /* InAppBannerView.xib in Resources */,
 				F150FD0F239C2E77002FD404 /* Chat.storyboard in Resources */,
 				F1C794C323AC0E1400D9FEFC /* OpenSans-SemiBold.ttf in Resources */,
 				F1C794BD23AC0E1400D9FEFC /* OpenSans-SemiBoldItalic.ttf in Resources */,
@@ -704,9 +739,11 @@
 				F150FD0D239413CD002FD404 /* LabelWithCheckmarkCell.xib in Resources */,
 				F1C794BB23AC0E1400D9FEFC /* OpenSans-Italic.ttf in Resources */,
 				F1C794BC23AC0E1400D9FEFC /* OpenSans-ExtraBold.ttf in Resources */,
+				F194B5F123C0E1A900349953 /* MatchScrollView.xib in Resources */,
 				F1C794C423AC0E1400D9FEFC /* OpenSans-Light.ttf in Resources */,
 				F1C794C123AC0E1400D9FEFC /* OpenSans-LightItalic.ttf in Resources */,
 				F1585ADF2384064F0062A681 /* Main.storyboard in Resources */,
+				F194B5F523C0E1C900349953 /* MatchedUserView.xib in Resources */,
 				F150FCFC2393FA50002FD404 /* SettingWithLabelCell.xib in Resources */,
 				F1C794C223AC0E1400D9FEFC /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				F150FD0623940B31002FD404 /* CellWithToggleCell.xib in Resources */,
@@ -772,6 +809,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F100023A23AC1B9600D4DD22 /* ChatMessage.swift in Sources */,
+				F194B5E623C09BA700349953 /* InAppBannerView.swift in Sources */,
 				F1585AF6238407430062A681 /* FirstPageViewController.swift in Sources */,
 				DC166ED623ACB1AF0000E745 /* WiggleCardComponent.swift in Sources */,
 				F19A48CB238F0C700045C0BC /* UIColor + Extensions.swift in Sources */,
@@ -786,6 +824,7 @@
 				F152170323885C0B0027C6D4 /* SettingsViewController.swift in Sources */,
 				DC166ED823ACB5240000E745 /* WiggleCard.swift in Sources */,
 				F16456912384160A00FC0694 /* SMSCodeRequest.swift in Sources */,
+				F194B5F323C0E1BD00349953 /* MatchedUserView.swift in Sources */,
 				F15005F3239C4C5000E19947 /* ChatViewController.swift in Sources */,
 				F159C7BC2385240D0091AB05 /* GetBioViewController.swift in Sources */,
 				F10038AC239D759800829A65 /* Chat.swift in Sources */,
@@ -793,6 +832,7 @@
 				F10BC89C239D5E3E005934BB /* NotificationSettingsViewController.swift in Sources */,
 				F14A1EF823AEB2A500FF2C09 /* UIViewController + Alert.swift in Sources */,
 				F14A1EF623AE8E6D00FF2C09 /* AppConstants.swift in Sources */,
+				F194B5EF23C0E19C00349953 /* MatchScrollView.swift in Sources */,
 				F19A48CF238F129E0045C0BC /* SplashViewController.swift in Sources */,
 				F1585AF8238407680062A681 /* EnterPhoneViewController.swift in Sources */,
 				F19A48D1238F15670045C0BC /* UIViewController + User.swift in Sources */,
@@ -800,6 +840,7 @@
 				F159C8D32385CA460091AB05 /* PickImageViewController.swift in Sources */,
 				F164568E2384157D00FC0694 /* NetworkManager.swift in Sources */,
 				F1378F57238A983100622B3C /* HomeViewController.swift in Sources */,
+				F194B5E223BF8BFC00349953 /* UIViewController + Alerts.swift in Sources */,
 				F150FD0523940B31002FD404 /* CellWithToggleCell.swift in Sources */,
 				F1378F52238A892400622B3C /* GeneralRequest.swift in Sources */,
 				F1C794AA23AAB8A700D9FEFC /* ChatListModel.swift in Sources */,
@@ -825,6 +866,7 @@
 				DC10995823AFC2DC00068054 /* HeartbeatViewComponent.swift in Sources */,
 				F19A48C9238F0BD80045C0BC /* UIViewController + Activity.swift in Sources */,
 				F1C794AC23AAD46300D9FEFC /* Date + Extensions.swift in Sources */,
+				F194B5E423BF94CE00349953 /* AppDelegate + Notification.swift in Sources */,
 				F159C7B323848CB70091AB05 /* PhoneAuthRequest.swift in Sources */,
 				F1378F5C238ADD8300622B3C /* ProfileViewController.swift in Sources */,
 				F152170F2389D5290027C6D4 /* SettingsPremiumTableViewCell.swift in Sources */,
@@ -986,15 +1028,16 @@
 			baseConfigurationReference = 44BB3C201FFEF9A359F53C04 /* Pods-Wiggle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Wiggle/Wiggle.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 478QB249DY;
+				DEVELOPMENT_TEAM = 9HS67S8FA3;
 				INFOPLIST_FILE = Wiggle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wiggle.Wigglee;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wiggleTeam.Wiggle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1006,15 +1049,16 @@
 			baseConfigurationReference = 4E39BF0A09E61170AE4D6F33 /* Pods-Wiggle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Wiggle/Wiggle.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 478QB249DY;
+				DEVELOPMENT_TEAM = 9HS67S8FA3;
 				INFOPLIST_FILE = Wiggle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wiggle.Wigglee;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wiggleTeam.Wiggle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

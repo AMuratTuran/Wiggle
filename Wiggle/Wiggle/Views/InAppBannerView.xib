@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="InAppBannerView" customModule="Wiggle" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcG-eT-sdl">
+                    <rect key="frame" x="20" y="35" width="374" height="70"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSs-sr-Atr">
+                            <rect key="frame" x="20" y="10" width="116" height="23.5"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Murat:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3C-Pz-rZd">
+                            <rect key="frame" x="20" y="38.5" width="334" height="20.5"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="FoV-Z7-B3Q"/>
+                        <constraint firstItem="S3C-Pz-rZd" firstAttribute="top" secondItem="zSs-sr-Atr" secondAttribute="bottom" constant="5" id="bVJ-tt-ck2"/>
+                        <constraint firstItem="zSs-sr-Atr" firstAttribute="top" secondItem="rcG-eT-sdl" secondAttribute="top" constant="10" id="fww-tp-xUo"/>
+                        <constraint firstItem="S3C-Pz-rZd" firstAttribute="leading" secondItem="rcG-eT-sdl" secondAttribute="leading" constant="20" id="jNy-fR-KdD"/>
+                        <constraint firstAttribute="trailing" secondItem="S3C-Pz-rZd" secondAttribute="trailing" constant="20" id="jVa-DM-3n2"/>
+                        <constraint firstItem="zSs-sr-Atr" firstAttribute="leading" secondItem="rcG-eT-sdl" secondAttribute="leading" constant="20" id="rs0-4z-rI4"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="rcG-eT-sdl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="35" id="ArN-bp-3vd"/>
+                <constraint firstItem="rcG-eT-sdl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="BhR-Pd-hG4"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="rcG-eT-sdl" secondAttribute="trailing" constant="20" id="dZq-uQ-gIP"/>
+                <constraint firstAttribute="bottom" secondItem="rcG-eT-sdl" secondAttribute="bottom" constant="5" id="pvv-CF-jks"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="alertLabel" destination="S3C-Pz-rZd" id="ZXF-Ek-7Rp"/>
+                <outlet property="containerView" destination="rcG-eT-sdl" id="Z58-O8-e7X"/>
+                <outlet property="headerView" destination="zSs-sr-Atr" id="vnO-KU-Kam"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="-228.48575712143929"/>
+        </view>
+    </objects>
+</document>

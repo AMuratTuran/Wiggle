@@ -12,6 +12,8 @@ import Lottie
 
 class SplashViewController: UIViewController {
     
+    var isLaunchedFromPN: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -37,7 +39,7 @@ class SplashViewController: UIViewController {
             guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
                 return
             }
-            delegate.initializeWindow()
+            delegate.initializeWindow(isLaunchedFromPN: self.isLaunchedFromPN)
         }
     }
     

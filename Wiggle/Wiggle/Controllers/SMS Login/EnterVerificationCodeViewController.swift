@@ -10,6 +10,7 @@ import UIKit
 import SwiftValidator
 import NVActivityIndicatorView
 import PopupDialog
+import Parse
 
 class EnterVerificationCodeViewController: UIViewController {
     
@@ -89,6 +90,11 @@ extension EnterVerificationCodeViewController: ValidationDelegate {
             if let phoneNumber = phoneNumber {
                 let request = PhoneAuthRequest(phoneNumber: phoneNumber)
                 NetworkManager.auth(request, success: { hasInfo in
+                    let installation = PFInstallation.current()
+                    if let user = PFUser.current(), let id = user.objectId {
+                        installation?.setValue(id, forKey: "userId")
+                    }
+                    installation?.saveInBackground()
                     self.startAnimating(self.view, startAnimate: false)
                     if hasInfo {
                         guard let delegate = UIApplication.shared.delegate as? AppDelegate else {

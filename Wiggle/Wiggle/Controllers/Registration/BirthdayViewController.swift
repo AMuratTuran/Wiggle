@@ -37,6 +37,7 @@ class BirthdayViewController: UIViewController {
         components.year = -18
         let startDate = calendar.date(byAdding: components, to: currentDate)
         birthdayPickerButton.setTitle(startDate?.dateString(), for: .normal)
+        birthday = startDate        
     }
     
     @IBAction func chooseBirthdayAction(_ sender: UIButton) {
@@ -70,7 +71,7 @@ class BirthdayViewController: UIViewController {
         startAnimating(self.view, startAnimate: true)
         if let birthday = birthday {
             PFUser.current()?.setValue(birthday, forKey: "birthday")
-            PFUser.current()?.saveInBackground(block: { (result, error) in
+            PFUser.current()?.saveEventually({ (result, error) in
                 self.startAnimating(self.view, startAnimate: false)
                 if error != nil {
                     self.displayError(message: error?.localizedDescription ?? "")
