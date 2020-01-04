@@ -23,12 +23,12 @@ class HeartbeatView: UIView {
         self.addSubview(animationView)
         animationView.play()
         
-        delay(2.0) {
-            guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
-                return
-            }
-            delegate.initializeWindow()
-        }
+//        delay(2.0) {
+//            guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+//                return
+//            }
+//            delegate.initializeWindow()
+//        }
     }
     
 }

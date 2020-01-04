@@ -202,6 +202,39 @@ struct NetworkManager {
         }
         
     }
+    
+    // MARK : HomeScreen User Functions
+    static func getUsersForSwipe(success: @escaping([WiggleCardModel]) -> Void, fail: @escaping(String) -> Void) {
+        let query : PFQuery? = PFUser.query()
+        query?.limit = 20
+        query?.findObjectsInBackground { (response, error) in
+            if let error = error {
+                fail(error.localizedDescription)
+            }
+            
+            guard let userResponse = response as NSArray? else {
+                fail(Localize.Common.GeneralError)
+                return
+            }
+            
+            userResponse.forEach { (user) in
+                if let dict = user as? PFObject {
+                    dict.fetchInBackground { (object, error) in
+                        if let user = object as? PFUser {
+                            var wiggleCardModels = [WiggleCardModel]()
+                            let wiggleUserModel = ModelParser.PFUserToWiggleCardModel(user: user)
+                            wiggleCardModels.append(wiggleUserModel)
+                            success(wiggleCardModels)
+                        }else {
+                            fail(Localize.Common.GeneralError)
+                        }
+                    }
+                }else {
+                    fail(Localize.Common.GeneralError)
+                }
+            }
+        }
+    }
 }
 
 

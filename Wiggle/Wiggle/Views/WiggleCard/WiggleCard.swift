@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 public class WiggleCardView : UIView{
     @IBOutlet weak var profilePicture: UIImageView!
@@ -57,6 +58,11 @@ class WiggleCard: WiggleCardComponent {
         view.likeImage.alpha = 0.0
         view.dislikeImage.alpha = 0.0
         guard let model = model else {return}
+        if let photoUrl = model.profilePicture{
+            view.profilePicture.kf.setImage(with: URL(string: photoUrl))
+        }else{
+            view.profilePicture.image = UIImage(named: "profilePicture")
+        }
         view.profilePicture.image = UIImage(named: model.profilePicture ?? "")
         view.nameSurname.text = model.nameSurname
         view.location.text = model.location

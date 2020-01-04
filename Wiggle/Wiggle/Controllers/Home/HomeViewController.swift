@@ -14,14 +14,24 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var routeProfileButton: UIButton!
     @IBOutlet weak var kolodaView: KolodaView!
     
-    var cardArray = [WiggleCardModel](){
+    var cardArray = [WiggleCardModel()]{
         didSet{
             kolodaView.reloadData()
         }
     }
     
     let cardView = WiggleCard.init(frame: CGRect.zero)
-    let heartbeatView = Heartbeat.init(frame: CGRect.zero)
+//    let heartbeatView = Heartbeat.init(frame: CGRect.zero)
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureViews()
+        fetchUsers()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        prepareView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +39,9 @@ class HomeViewController: UIViewController {
         kolodaView.dataSource = self
         kolodaView.delegate = self
         
+        
         let user1 = WiggleCardModel(profilePicture: "profilePhoto", nameSurname: "Tolga Tas, 24", location: "Kayseri", distance: "31 Km", bio: "s2s")
-        cardArray = [] //[user1]
+        //cardArray.append(user1)
         
         self.view.hero.modifiers = [.translate(y: -100), .useGlobalCoordinateSpace]
     }
@@ -57,31 +68,27 @@ class HomeViewController: UIViewController {
         moveToProfileDetailViewController()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        configureViews()
-    }
-    
-    override func viewWillLayoutSubviews() {
-        prepareView()
-    }
-    
     @IBAction func routeProfileAction(_ sender: UIButton) {
         moveToProfileDetailViewController()
+    }
+    
+    func fetchUsers(){
+        NetworkManager.getUsersForSwipe(success: { (users) in
+            self.cardArray.append(contentsOf: users)
+        }) { fail in
+            print("===========\(fail)===========")
+        }
     }
     
 }
 extension HomeViewController: KolodaViewDelegate {
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
-//        koloda.reloadData()
+        koloda.reloadData()
     }
 }
 extension HomeViewController: KolodaViewDataSource {
     
     func kolodaNumberOfCards(_ koloda:KolodaView) -> Int {
-        if cardArray.isEmpty{
-            return 1
-        }
         return cardArray.count
     }
     
@@ -91,7 +98,7 @@ extension HomeViewController: KolodaViewDataSource {
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
         if cardArray.count == 0{
-            return heartbeatView
+            //return heartbeatli view yap
         }
         cardView.model = cardArray[index]
         return cardView
