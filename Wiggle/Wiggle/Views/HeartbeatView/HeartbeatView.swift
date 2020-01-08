@@ -10,6 +10,7 @@ import UIKit
 import Lottie
 
 class HeartbeatView: UIView {
+    @IBOutlet weak var emptyImage: UIImageView!
     
     public func createLottieAnimation() {
         let animationView = AnimationView(name: "heartbeat")
@@ -22,24 +23,38 @@ class HeartbeatView: UIView {
         
         self.addSubview(animationView)
         animationView.play()
-        
-//        delay(2.0) {
-//            guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
-//                return
-//            }
-//            delegate.initializeWindow()
-//        }
     }
     
 }
+
+public struct HeartbeatModel{
+    public var image : String?
+    
+    public init(image : String){
+        self.image = image
+    }
+    public init (){}
+}
+
 class Heartbeat : HeartbeatViewComponent{
     
     public weak var view: HeartbeatView!
+    public var model : HeartbeatModel?{
+        didSet{
+            updateUI()
+        }
+    }
     
     override public func componentDidLoad() {
         if let componentView = super.componentView as? HeartbeatView {
             view = componentView
-            view.createLottieAnimation()
+//            view.createLottieAnimation()
         }
     }
+    
+    public func updateUI(){
+        view.emptyImage.cornerRadius(12)
+        //view.emptyImage.image = UIImage(named: model?.image ?? "")
+    }
+    
 }

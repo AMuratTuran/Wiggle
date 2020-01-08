@@ -14,14 +14,10 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var routeProfileButton: UIButton!
     @IBOutlet weak var kolodaView: KolodaView!
     
-    var cardArray = [WiggleCardModel()]{
-        didSet{
-            kolodaView.reloadData()
-        }
-    }
+    var cardArray = [WiggleCardModel]()
     
     let cardView = WiggleCard.init(frame: CGRect.zero)
-//    let heartbeatView = Heartbeat.init(frame: CGRect.zero)
+    let heartbeatView = Heartbeat.init(frame: CGRect.zero)
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,10 +34,6 @@ class HomeViewController: UIViewController {
         
         kolodaView.dataSource = self
         kolodaView.delegate = self
-        
-        
-        let user1 = WiggleCardModel(profilePicture: "profilePhoto", nameSurname: "Tolga Tas, 24", location: "Kayseri", distance: "31 Km", bio: "s2s")
-        //cardArray.append(user1)
         
         self.view.hero.modifiers = [.translate(y: -100), .useGlobalCoordinateSpace]
     }
@@ -75,6 +67,7 @@ class HomeViewController: UIViewController {
     func fetchUsers(){
         NetworkManager.getUsersForSwipe(success: { (users) in
             self.cardArray.append(contentsOf: users)
+//            self.kolodaView.reloadData()
         }) { fail in
             print("===========\(fail)===========")
         }
@@ -98,9 +91,10 @@ extension HomeViewController: KolodaViewDataSource {
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
         if cardArray.count == 0{
-            //return heartbeatli view yap
+            return heartbeatView
         }
         cardView.model = cardArray[index]
+        cardView.updateUI()
         return cardView
     }
     
@@ -118,12 +112,10 @@ extension HomeViewController: KolodaViewDataSource {
     func koloda(_ koloda: KolodaView, draggedCardWithPercentage finishPercentage: CGFloat, in direction: SwipeResultDirection) {
         switch direction {
         case .left:
-            print("sola gidiyor with \(finishPercentage)")
             UIView.animate(withDuration: 0.0) {
                 self.cardView.view.likeImage.alpha = finishPercentage/100
             }
         case .right:
-            print("saga gidiyor with \(finishPercentage)")
             self.cardView.view.dislikeImage.alpha = finishPercentage/100
         default:
             print("nereye gidiyo")
@@ -146,6 +138,7 @@ extension HomeViewController: KolodaViewDataSource {
         default:
             print("Atamadi")
         }
+        cardArray.remove(at: index)
         self.cardView.view.likeImage.alpha = 0.0
         self.cardView.view.dislikeImage.alpha = 0.0
     }
