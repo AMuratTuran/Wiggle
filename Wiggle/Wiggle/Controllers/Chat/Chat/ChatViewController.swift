@@ -144,6 +144,7 @@ class ChatViewController: MessagesViewController {
         messagesCollectionView.messageCellDelegate = self
         messagesCollectionView.messagesDataSource = self
         messageInputBar.delegate = self
+        messagesCollectionView.backgroundColor = UIColor.white
     }
     
     func configureMessageCollectionViewLayout() {
@@ -167,41 +168,28 @@ class ChatViewController: MessagesViewController {
         layout?.setMessageOutgoingAccessoryViewPadding(HorizontalEdgeInsets(left: 0, right: 8))
     }
     
-    func addProfilePhotoNavigationBar() {
-        circleView = UIView(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
-        circleView.layer.borderColor = UIColor.systemPink.cgColor
-        circleView.layer.borderWidth = 2
-        circleView.layer.cornerRadius = circleView.frame.width / 2
-        // user image
-        profileIV = UIImageView(frame: CGRect(x: 2, y: 2, width: 32, height: 32))
-        profileIV.layer.cornerRadius = profileIV.frame.width / 2
-        profileIV.layer.masksToBounds = true
-        profileIV.contentMode = .scaleToFill
-        profileIV.isUserInteractionEnabled = true
-        if let imageUrl = contactedUser?.imageUrl, let name = contactedUser?.firstName {
-            profileIV.kf.setImage(with: URL(string: imageUrl))
-            title = name
-        }
-        circleView.isUserInteractionEnabled = true
-        circleView.addSubview(profileIV)
-        circleView.addSubview(nameView)
-        navigationItem.leftItemsSupplementBackButton = true
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: circleView)
-    }
-    
     func configureMessageInputBar() {
+        if #available(iOS 13.0, *) {
+            messageInputBar.subviews.forEach { $0.backgroundColor = UIColor.systemBackground}
+            messageInputBar.contentView.backgroundColor = UIColor.systemBackground
+            messageInputBar.blurView.isHidden = true
+            messageInputBar.bottomStackView.backgroundColor = UIColor.systemBackground
+            messageInputBar.inputAccessoryView?.backgroundColor = UIColor.systemBackground
+            messageInputBar.inputTextView.backgroundColor = UIColor.systemBackground
+            messageInputBar.backgroundColor = UIColor.systemBackground
+            messageInputBar.backgroundView.backgroundColor = UIColor.systemBackground
+            messageInputBar.leftStackView.backgroundColor = UIColor.red
+        } else {
+            // Fallback on earlier versions
+        }
         messageInputBar.isTranslucent = true
         messageInputBar.separatorLine.isHidden = true
         messageInputBar.inputTextView.tintColor =  UIColor(red: 178/255, green: 178/255, blue: 178/255, alpha: 1)
-        messageInputBar.inputTextView.backgroundColor = .white
-        messageInputBar.inputTextView.placeholderTextColor = UIColor(red: 178/255, green: 178/255, blue: 178/255, alpha: 1)
-        messageInputBar.inputTextView.textColor = .black
-        messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 10, left: 16, bottom: 10, right: 36)
-        messageInputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 36)
-        messageInputBar.inputTextView.autocorrectionType = .no
+        messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 12, left: 16, bottom: 8, right: 36)
+        messageInputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 12, left: 20, bottom: 8, right: 36)
         messageInputBar.shouldAutoUpdateMaxTextViewHeight = false
         messageInputBar.maxTextViewHeight = 100
-        messageInputBar.inputTextView.font = FontHelper.regular(16)
+        messageInputBar.inputTextView.font = FontHelper.regular(16.0)
         messageInputBar.inputTextView.placeholder = ""
         messageInputBar.inputTextView.layer.borderColor = UIColor(red: 141/255, green: 141/255, blue: 141/255, alpha: 1).cgColor
         messageInputBar.inputTextView.layer.borderWidth = 0.5
@@ -235,6 +223,29 @@ class ChatViewController: MessagesViewController {
         }
     }
     
+    
+    func addProfilePhotoNavigationBar() {
+        circleView = UIView(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
+        circleView.layer.borderColor = UIColor.systemPink.cgColor
+        circleView.layer.borderWidth = 2
+        circleView.layer.cornerRadius = circleView.frame.width / 2
+        // user image
+        profileIV = UIImageView(frame: CGRect(x: 2, y: 2, width: 32, height: 32))
+        profileIV.layer.cornerRadius = profileIV.frame.width / 2
+        profileIV.layer.masksToBounds = true
+        profileIV.contentMode = .scaleToFill
+        profileIV.isUserInteractionEnabled = true
+        if let imageUrl = contactedUser?.imageUrl, let name = contactedUser?.firstName {
+            profileIV.kf.setImage(with: URL(string: imageUrl))
+            title = name
+        }
+        circleView.isUserInteractionEnabled = true
+        circleView.addSubview(profileIV)
+        circleView.addSubview(nameView)
+        navigationItem.leftItemsSupplementBackButton = true
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: circleView)
+    }
+    
     func isPreviousMessageSameSender(at indexPath: IndexPath) -> Bool {
         guard indexPath.section - 1 >= 0 else { return false }
         return chatHistory[indexPath.section].senderId == chatHistory[indexPath.section - 1].senderId
@@ -259,6 +270,44 @@ class ChatViewController: MessagesViewController {
 }
 
 extension ChatViewController: MessagesDisplayDelegate {
+    
+    func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        return UIColor(red: 52/255, green: 52/255, blue: 52/255, alpha: 1)
+    }
+    
+    func detectorAttributes(for detector: DetectorType, and message: MessageType, at indexPath: IndexPath) -> [NSAttributedString.Key: Any] {
+        switch detector {
+        // TODO: .mention ekle
+        case .hashtag, .address, .phoneNumber, .transitInformation:
+            return [.foregroundColor: UIColor(red: 26/255, green: 16/255, blue: 171/255, alpha: 1)]
+            //            if isFromCurrentSender(message: message) {
+            //                return [.foregroundColor: UIColor.workplaceKocHubGray]
+            //            } else {
+            //                return [.foregroundColor: UIColor.workplaceKocHubGray]
+        //            }
+        case .custom:
+            return [.foregroundColor: UIColor(red: 26/255, green: 16/255, blue: 171/255, alpha: 1), .underlineStyle: NSUnderlineStyle.single.rawValue]
+        case .url:
+            return [.foregroundColor: UIColor(red: 26/255, green: 16/255, blue: 171/255, alpha: 1), .underlineStyle: NSUnderlineStyle.single.rawValue]
+        default: return MessageLabel.defaultAttributes
+        }
+    }
+    
+    func enabledDetectors(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> [DetectorType] {
+        let emailRegEx = "(?:[a-zA-Z0-9!#$%\\&‘*+/=?\\^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%\\&'*+/=?\\^_`{|}" +
+            "~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\" +
+            "x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-" +
+            "z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5" +
+            "]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-" +
+            "9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21" +
+        "-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
+        let emailExpr = try! NSRegularExpression(pattern: emailRegEx, options: [])
+        return [.custom(emailExpr), .address, .phoneNumber, .date, .transitInformation, .hashtag, .url] // .mention -> bunu custom kendin yap
+    }
+    
+    func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        return isFromCurrentSender(message: message) ? UIColor(red: 228/255, green: 233/255, blue: 252/255, alpha: 1) : UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+    }
     
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
         
@@ -298,9 +347,21 @@ extension ChatViewController: MessagesDisplayDelegate {
 extension ChatViewController: MessagesLayoutDelegate {
     func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         if isTimeLabelVisible(at: indexPath) {
-            return 25
+            return 15
         }
         return 0
+    }
+    
+    func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        if isFromCurrentSender(message: message) {
+            return !isPreviousMessageSameSender(at: indexPath) ? 12 : 0
+        } else {
+            return !isPreviousMessageSameSender(at: indexPath) ? 12 : 0
+        }
+    }
+    
+    func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return !isNextMessageSameSender(at: indexPath) ? 15 : 0
     }
 }
 

@@ -19,13 +19,33 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XTY-Pg-GJn">
                                 <rect key="frame" x="0.0" y="96" width="375" height="571"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WWk-ji-bhK">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="10"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8WK-46-lyy">
+                                                <rect key="frame" x="0.0" y="4.5" width="375" height="1"/>
+                                                <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="rI3-Wm-3g3"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="DKu-pu-1Ad"/>
+                                            <constraint firstItem="8WK-46-lyy" firstAttribute="centerY" secondItem="WWk-ji-bhK" secondAttribute="centerY" id="Smi-R7-NTb"/>
+                                            <constraint firstAttribute="trailing" secondItem="8WK-46-lyy" secondAttribute="trailing" id="gkn-nC-T6R"/>
+                                            <constraint firstItem="8WK-46-lyy" firstAttribute="leading" secondItem="WWk-ji-bhK" secondAttribute="leading" id="oFJ-f0-5IV"/>
+                                        </constraints>
+                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N6S-lM-dTT">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="571"/>
+                                        <rect key="frame" x="0.0" y="10" width="375" height="561"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="separatorColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="separatorInset" minX="80" minY="0.0" maxX="20" maxY="0.0"/>
                                     </tableView>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -39,6 +59,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Chats" id="BgO-0k-Snv"/>
                     <connections>
+                        <outlet property="lineView" destination="WWk-ji-bhK" id="O6q-CR-Zjt"/>
                         <outlet property="stackView" destination="XTY-Pg-GJn" id="aG4-hz-B0w"/>
                         <outlet property="tableView" destination="N6S-lM-dTT" id="4xe-JL-TBp"/>
                     </connections>
@@ -54,7 +75,7 @@
                     <view key="view" contentMode="scaleToFill" id="tIO-1y-2iz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Ga1-cs-ey6"/>
                     </view>
                 </viewController>

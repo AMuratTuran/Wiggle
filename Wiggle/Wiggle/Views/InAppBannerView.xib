@@ -39,6 +39,7 @@
                         </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="height" constant="70" id="FoV-Z7-B3Q"/>
                         <constraint firstItem="S3C-Pz-rZd" firstAttribute="top" secondItem="zSs-sr-Atr" secondAttribute="bottom" constant="5" id="bVJ-tt-ck2"/>
@@ -52,6 +53,9 @@
                             <integer key="value" value="12"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="map-tY-gD6" appends="YES" id="ges-eO-Bkh"/>
+                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -67,8 +71,14 @@
                 <outlet property="alertLabel" destination="S3C-Pz-rZd" id="ZXF-Ek-7Rp"/>
                 <outlet property="containerView" destination="rcG-eT-sdl" id="Z58-O8-e7X"/>
                 <outlet property="headerView" destination="zSs-sr-Atr" id="vnO-KU-Kam"/>
+                <outlet property="tapGesture" destination="map-tY-gD6" id="Hia-Xl-h7Z"/>
             </connections>
             <point key="canvasLocation" x="137.59999999999999" y="-228.48575712143929"/>
         </view>
+        <tapGestureRecognizer id="map-tY-gD6">
+            <connections>
+                <action selector="bannerTapped:" destination="iN0-l3-epB" id="WAa-O1-GSU"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

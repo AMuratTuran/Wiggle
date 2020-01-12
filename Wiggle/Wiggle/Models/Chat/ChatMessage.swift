@@ -22,6 +22,7 @@ class ChatMessage: MessageType {
     var body: String
     var isReceived: Bool = false
     var messageId: String
+    var isRead: Bool
         
     init(dictionary: PFObject) {
         self.sender = SenderModel(senderId: dictionary["sender"] as? String ?? "", displayName: "")
@@ -30,6 +31,8 @@ class ChatMessage: MessageType {
         self.senderId = dictionary["sender"] as? String ?? ""
         self.receiverId = dictionary["receiver"] as? String ?? ""
         self.body = dictionary["body"] as? String ?? ""
+        let isReadNum = dictionary["isRead"] as? Int ?? 0
+        isRead = isReadNum == 1 ? true : false
         if let currentUser = PFUser.current() {
             if let myId = currentUser.objectId, myId == senderId {
                 self.isReceived = false

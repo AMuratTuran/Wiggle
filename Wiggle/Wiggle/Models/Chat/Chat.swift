@@ -35,7 +35,8 @@ class Chat: Decodable {
         senderId = try (values.decodeIfPresent(String.self, forKey: .senderId) ?? "")
         remoteId = try (values.decodeIfPresent(String.self, forKey: .remoteId) ?? "")
         createdAt = try (values.decodeIfPresent(String.self, forKey: .createdAt) ?? "")
-        isRead = try (values.decodeIfPresent(Bool.self, forKey: .isRead) ?? false)
+        let isReadNum = try (values.decodeIfPresent(Int.self, forKey: .isRead) ?? 0)
+        isRead = isReadNum == 1 ? true : false
         objectId = try (values.decodeIfPresent(String.self, forKey: .objectId) ?? "")
     }
     
@@ -43,7 +44,8 @@ class Chat: Decodable {
         self.lastMessage = dictionary["lastMessage"] as? String ?? ""
         self.senderId = dictionary["senderId"] as? String ?? ""
         self.remoteId = dictionary["remoteId"] as? String ?? ""
-        self.isRead =  dictionary["isRead"] as? Bool ?? false
+        let isReadNum =  dictionary["isRead"] as? Int ?? 0
+        isRead = isReadNum == 1 ? true : false
         let createdAtString = dictionary["createdAt"] as? String ?? ""
         self.createdAt = formatDate(dateString: createdAtString, outputFormat: "dd-MM-yy HH:mm:ss")
         self.objectId = dictionary["objectId"] as? String ?? ""
@@ -53,7 +55,8 @@ class Chat: Decodable {
         self.lastMessage = object["body"] as! String
         self.senderId = object["sender"] as! String
         self.remoteId = object["receiver"] as! String
-        self.isRead = object["isRead"] as! Bool
+        let isReadNum =  object["isRead"] as? Int ?? 0
+        isRead = isReadNum == 1 ? true : false
         self.createdAt = object.createdAt?.prettyStringFromDate(dateFormat: "dd-MM-yy HH:mm:ss", localeIdentifier: "tr") ?? ""
         self.objectId = object["objectId"] as! String
     }

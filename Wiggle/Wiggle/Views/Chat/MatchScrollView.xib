@@ -43,6 +43,7 @@
                             </constraints>
                         </view>
                     </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="90" id="5yg-2Z-TPj"/>
                         <constraint firstItem="LYW-cb-diE" firstAttribute="top" secondItem="MU5-mU-EdD" secondAttribute="top" id="7pn-o6-inA"/>
@@ -53,7 +54,7 @@
                     </constraints>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MU5-mU-EdD" secondAttribute="trailing" id="Aam-Ws-YnO"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="MU5-mU-EdD" secondAttribute="bottom" id="UwZ-9T-Fbt"/>
