@@ -15,15 +15,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var kolodaView: KolodaView!
     
     var cardArray = [WiggleCardModel]()
-    
     var currentCard = WiggleCard()
-//    let cardView = WiggleCard.init(frame: CGRect.zero)
-    let heartbeatView = Heartbeat.init(frame: CGRect.zero)
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureViews()
-        fetchUsers()
     }
     
     override func viewWillLayoutSubviews() {
@@ -37,6 +33,7 @@ class HomeViewController: UIViewController {
         kolodaView.delegate = self
         
         self.view.hero.modifiers = [.translate(y: -100), .useGlobalCoordinateSpace]
+        fetchUsers()
     }
     
     func configureViews() {
@@ -94,7 +91,7 @@ extension HomeViewController: KolodaViewDataSource {
         let cardView = WiggleCard.init(frame: CGRect.zero)
         
         if cardArray.count == 0{
-            return heartbeatView
+            return Heartbeat.init(frame: CGRect.zero)
         }
         cardView.model = cardArray[index]
         cardView.updateUI()
@@ -120,7 +117,9 @@ extension HomeViewController: KolodaViewDataSource {
                 self.currentCard.view.likeImage.alpha = finishPercentage/100
             }
         case .right:
-            self.currentCard.view.dislikeImage.alpha = finishPercentage/100
+            UIView.animate(withDuration: 0.0) {
+                self.currentCard.view.dislikeImage.alpha = finishPercentage/100
+            }
         default:
             print("nereye gidiyo")
         }
@@ -142,8 +141,5 @@ extension HomeViewController: KolodaViewDataSource {
         default:
             print("Atamadi")
         }
-        cardArray.remove(at: index)
-        self.currentCard.view.likeImage.alpha = 0.0
-        self.currentCard.view.dislikeImage.alpha = 0.0
     }
 }

@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate {
         
         let notificationOption = launchOptions?[.remoteNotification]
         if let notification = notificationOption as? [String: AnyObject],
-            let aps = notification["aps"] as? [String: AnyObject] {
+            let _ = notification["aps"] as? [String: AnyObject] {
             ((window?.rootViewController as? UINavigationController)?.topViewController as? SplashViewController)?.isLaunchedFromPN = true
         }
         
@@ -122,7 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate {
         // 2. Print device token to use for PNs payloads
         print("Device Token: \(token)")
         let bundleID = Bundle.main.bundleIdentifier;
-        print("Bundle ID: \(token) \(bundleID)");
+        print("Bundle ID: \(token) \(bundleID ?? "")");
         // 3. Save the token to local storeage and post to app server to generate Push Notification. ...
     }
     

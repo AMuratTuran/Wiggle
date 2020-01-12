@@ -55,7 +55,11 @@ class WiggleCard: WiggleCardComponent {
         view.dislikeImage.alpha = 0.0
         guard let model = model else {return}
         if let photoUrl = model.profilePicture{
-            view.profilePicture.kf.setImage(with: URL(string: photoUrl))
+            if !photoUrl.isEmpty{
+                view.profilePicture.kf.setImage(with: URL(string: photoUrl))
+            }else{
+                view.profilePicture.image = UIImage(named: "profilePicture")
+            }
         }else{
             view.profilePicture.image = UIImage(named: "profilePicture")
         }
@@ -64,6 +68,4 @@ class WiggleCard: WiggleCardComponent {
         view.distance.text = model.distance
         view.bio.text = model.bio
     }
-    
-
 }
