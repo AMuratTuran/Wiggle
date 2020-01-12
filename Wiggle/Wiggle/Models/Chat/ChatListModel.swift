@@ -20,6 +20,8 @@ class ChatListModel {
     var firstName: String = ""
     var lastName: String = ""
     var myId: String = ""
+    var isRead: Bool = false
+    var objectId: String = ""
     
     init(user: PFUser, chat: Chat) {
         if let receiverFirstName = user["first_name"] as? String, let receiverLastName = user["last_name"] as? String{
@@ -54,10 +56,11 @@ class ChatListModel {
             }else if createdAt.isInThisMonth || createdAt.isInThisYear {
                 dateString = createdAt.prettyStringFromDate(dateFormat: "dd MMM", localeIdentifier: "tr")
             }else {
-                dateString = createdAt.prettyStringFromDate(dateFormat: "dd MM yyyy", localeIdentifier: "tr")
+                dateString = createdAt.prettyStringFromDate(dateFormat: "dd.MM.yyyy", localeIdentifier: "tr")
             }
-        }else { }
-
+        }
+        self.isRead = chat.isRead
+        self.objectId = chat.objectId
     }
     
 }

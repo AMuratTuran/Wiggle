@@ -13,6 +13,7 @@ import ParseLiveQuery
 class ChatListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var stackView: UIStackView!
     
     var currentUser: PFUser!
     let searchController = UISearchController(searchResultsController: nil)
@@ -48,7 +49,20 @@ class ChatListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         initUpwardsAnimation()
+        let matchesView = MatchScrollView.instanceFromNib()
+        stackView.arrangedSubviews.forEach { $0.removeFromSuperview()}
+        stackView.insertArrangedSubview(matchesView, at: 0)
+        stackView.addArrangedSubview(tableView)
         getChatList()
+    }
+    
+    func updateChatList() {
+        NetworkManager.getChatList(success: { (response) in
+            self.data = response
+            self.getUserInfo()
+        }) { (error) in
+            
+        }
     }
     
     func getChatList() {
@@ -76,42 +90,15 @@ class ChatListViewController: UIViewController {
                     }
                     self.tableData = sortedDate
                     self.tableView.reloadData()
-                    self.listenInboxMessages()
-                    self.startAnimating(self.view, startAnimate: false)
                     self.startUpwardsAnimation()
                 }
             }) { (error) in
-                self.startAnimating(self.view, startAnimate: false)
+                
             }
         }
+        self.startAnimating(self.view, startAnimate: false)
     }
     
-    func listenInboxMessages() {
-        guard let userId = userId else { return }
-        query.whereKey("receiver", equalTo: userId)
-        query.addDescendingOrder("createdAt")
-        query.limit = 50
-        liveQueryClient = ParseLiveQuery.Client(server: "wss://lyngl.back4app.io/", applicationId: "EfuNJeqL484fqElyGcCuiTBjNHalE2BhAP2LIv7s", clientKey: "L22P6I1Hxd3WMf8QT0umoy1HRuQit97Zd5i5HCjG")
-        subscription = liveQueryClient.subscribe(query)
-        _ = subscription?.handle(Event.created) { (_, response) in
-            NetworkManager.queryUsersById(response["sender"] as! String, success: { (user) in
-                let chat = Chat(object: response)
-                let incomingMessage:ChatListModel = ChatListModel(user: user, chat: chat)
-                self.tableData?.forEach {
-                    if $0 == incomingMessage {
-                        let index = self.tableData?.firstIndex(of: $0)
-                        self.tableData?.remove(at: index ?? 0)
-                    }
-                }
-                self.tableData?.insert(incomingMessage, at: 0)
-                self.tableView.reloadData()
-            }) { (error) in
-                self.displayError(message: error)
-            }
-            
-        }
-    }
-
     func prepareViews() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false

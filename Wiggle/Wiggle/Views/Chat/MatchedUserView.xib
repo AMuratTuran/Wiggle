@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MatchedUserView" customModule="Wiggle" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="90"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ul4-Ih-Rpo">
+                    <rect key="frame" x="0.0" y="0.0" width="80" height="90"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePhoto" translatesAutoresizingMaskIntoConstraints="NO" id="3Su-Wo-ZDl">
+                            <rect key="frame" x="10" y="10" width="60" height="60"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="30"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Murat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a8p-cX-l8Q">
+                            <rect key="frame" x="2" y="75" width="76" height="15"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="a8p-cX-l8Q" firstAttribute="top" secondItem="3Su-Wo-ZDl" secondAttribute="bottom" constant="5" id="1kT-jG-yw9"/>
+                        <constraint firstItem="3Su-Wo-ZDl" firstAttribute="top" secondItem="Ul4-Ih-Rpo" secondAttribute="top" constant="10" id="3hq-K1-awO"/>
+                        <constraint firstAttribute="bottom" secondItem="a8p-cX-l8Q" secondAttribute="bottom" id="HB5-Em-fCd"/>
+                        <constraint firstAttribute="height" constant="90" id="P8E-ed-EMD"/>
+                        <constraint firstAttribute="trailing" secondItem="3Su-Wo-ZDl" secondAttribute="trailing" constant="10" id="QaS-Vy-y1e"/>
+                        <constraint firstItem="3Su-Wo-ZDl" firstAttribute="leading" secondItem="Ul4-Ih-Rpo" secondAttribute="leading" constant="10" id="Sfi-Bz-uNZ"/>
+                        <constraint firstAttribute="trailing" secondItem="a8p-cX-l8Q" secondAttribute="trailing" constant="2" id="T8h-T6-Z5i"/>
+                        <constraint firstItem="a8p-cX-l8Q" firstAttribute="leading" secondItem="Ul4-Ih-Rpo" secondAttribute="leading" constant="2" id="ZfI-jY-hZf"/>
+                        <constraint firstAttribute="width" constant="80" id="rf8-Qv-s8Q"/>
+                        <constraint firstAttribute="bottom" secondItem="3Su-Wo-ZDl" secondAttribute="bottom" constant="20" id="shf-3z-lJv"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Ul4-Ih-Rpo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4sJ-4k-N52"/>
+                <constraint firstItem="Ul4-Ih-Rpo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="b2W-QK-N6z"/>
+                <constraint firstAttribute="bottom" secondItem="Ul4-Ih-Rpo" secondAttribute="bottom" id="iWu-vW-w2F"/>
+                <constraint firstAttribute="trailing" secondItem="Ul4-Ih-Rpo" secondAttribute="trailing" id="uTT-g2-BZW"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="imageView" destination="3Su-Wo-ZDl" id="lbb-uK-Xld"/>
+                <outlet property="nameLabel" destination="a8p-cX-l8Q" id="IBO-eJ-AMl"/>
+            </connections>
+            <point key="canvasLocation" x="30.399999999999999" y="-111.54422788605699"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="profilePhoto" width="1200" height="800"/>
+    </resources>
+</document>

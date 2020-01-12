@@ -46,14 +46,12 @@ class GenderViewController: UIViewController {
     }
     
     @IBAction func maleTapped(_ sender: Any) {
-        print("Male Tapped")
         visibleBorders(view: maleView)
         clearBorders(view: femaleView)
         self.selectedGender = 1
     }
     
     @IBAction func femaleTapped(_ sender: Any) {
-        print("Female Tapped")
         visibleBorders(view: femaleView)
         clearBorders(view: maleView)
         self.selectedGender = 2

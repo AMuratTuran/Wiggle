@@ -22,4 +22,5 @@ target 'Wiggle' do
   pod 'Koloda', :git => 'https://github.com/Yalantis/Koloda.git'
   pod 'PopupDialog'
   pod 'ParseLiveQuery'
+  pod 'SwiftMessages'
 end

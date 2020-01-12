@@ -170,7 +170,7 @@ struct NetworkManager {
         query2.whereKey("receiver", equalTo: myId)
         
         let query = PFQuery.orQuery(withSubqueries: [query1, query2])
-        query.addAscendingOrder("createdAt")
+        query.addDescendingOrder("createdAt")
         query.limit = 50
         let liveQueryClient = ParseLiveQuery.Client()
         let handling = liveQueryClient.subscribe(query)
@@ -197,7 +197,6 @@ struct NetworkManager {
             let sortedData = chatResponse.sorted {
                 $0.sentDate < $1.sentDate
             }
-            
             success(sortedData)
         }
         
