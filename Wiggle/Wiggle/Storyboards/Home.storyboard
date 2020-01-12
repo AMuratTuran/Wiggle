@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UjP-7Z-3he">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oJv-bw-7pC">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home-->
+        <!--Home View Controller-->
         <scene sceneID="92O-Xp-4sD">
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="UjP-7Z-3he" customClass="HomeViewController" customModule="Wiggle" customModuleProvider="target" sceneMemberID="viewController">
@@ -135,29 +135,15 @@
                                             <constraint firstItem="ph9-XS-ATq" firstAttribute="leading" secondItem="JJ2-02-84T" secondAttribute="leading" id="w4i-Ir-QPf"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXz-gs-2G9">
-                                        <rect key="frame" x="10" y="20" width="45" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="45" id="dpw-sD-ZrS"/>
-                                            <constraint firstAttribute="height" constant="45" id="zUm-nH-B0Y"/>
-                                        </constraints>
-                                        <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="person.fill" catalog="system"/>
-                                        <connections>
-                                            <action selector="routeProfileAction:" destination="UjP-7Z-3he" eventType="touchUpInside" id="EHE-3K-Mks"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="TBM-dU-B0T" secondAttribute="trailing" constant="10" id="42W-5N-Qdf"/>
                                     <constraint firstItem="TBM-dU-B0T" firstAttribute="top" secondItem="ZQ3-gs-AXU" secondAttribute="top" constant="80" id="BlO-uX-4PL"/>
-                                    <constraint firstItem="zXz-gs-2G9" firstAttribute="top" secondItem="ZQ3-gs-AXU" secondAttribute="top" constant="20" id="Ov4-Pm-i3B"/>
                                     <constraint firstItem="JJ2-02-84T" firstAttribute="leading" secondItem="ZQ3-gs-AXU" secondAttribute="leading" constant="10" id="RnV-LF-T7B"/>
                                     <constraint firstItem="JJ2-02-84T" firstAttribute="centerX" secondItem="ZQ3-gs-AXU" secondAttribute="centerX" id="dL5-fs-dx8"/>
                                     <constraint firstItem="JJ2-02-84T" firstAttribute="top" secondItem="TBM-dU-B0T" secondAttribute="bottom" constant="30" id="huV-RI-Qh5"/>
                                     <constraint firstItem="TBM-dU-B0T" firstAttribute="leading" secondItem="ZQ3-gs-AXU" secondAttribute="leading" constant="10" id="uhH-Nf-6nW"/>
-                                    <constraint firstItem="zXz-gs-2G9" firstAttribute="leading" secondItem="ZQ3-gs-AXU" secondAttribute="leading" constant="10" id="vJi-qg-ZaS"/>
                                     <constraint firstAttribute="trailing" secondItem="JJ2-02-84T" secondAttribute="trailing" constant="10" id="y5A-UW-d73"/>
                                     <constraint firstAttribute="bottom" secondItem="JJ2-02-84T" secondAttribute="bottom" constant="20" id="ziF-B7-TSp"/>
                                 </constraints>
@@ -172,16 +158,34 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oy8-cB-0aj"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="heart.fill" catalog="system" id="Ace-ls-tXw">
-                        <color key="badgeColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="CAr-aZ-rl3"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="kolodaView" destination="TBM-dU-B0T" id="RrE-ZK-xit"/>
-                        <outlet property="routeProfileButton" destination="zXz-gs-2G9" id="L0d-MH-fan"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1Y-A1-3fy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="904.79999999999995" y="-57.121439280359823"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="Au3-bq-Y1g">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oJv-bw-7pC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="heart.fill" catalog="system" id="Ace-ls-tXw">
+                        <color key="badgeColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oZK-C7-Q3z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UjP-7Z-3he" kind="relationship" relationship="rootViewController" id="p5g-gK-Yp3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wCs-IY-chv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-34.399999999999999" y="-57.121439280359823"/>
         </scene>
@@ -190,7 +194,6 @@
         <image name="bolt.fill" catalog="system" width="50" height="64"/>
         <image name="gobackward" catalog="system" width="60" height="64"/>
         <image name="heart.fill" catalog="system" width="64" height="54"/>
-        <image name="person.fill" catalog="system" width="64" height="60"/>
         <image name="star.fill" catalog="system" width="64" height="58"/>
         <image name="xmark" catalog="system" width="64" height="56"/>
     </resources>

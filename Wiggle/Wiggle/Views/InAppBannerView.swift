@@ -29,7 +29,17 @@ class InAppBannerView: MessageView {
         alertLabel.text = body
     }
     @IBAction func bannerTapped(_ sender: Any) {
+        pushToChatViewController()
+        
+    }
+    
+    private func pushToChatViewController() {
         SwiftMessages.hide()
+        
+        guard let tabBarController = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController else { return }
+        
+        let storyboard = UIStoryboard(name: "Chat", bundle: nil)
+        let chatVC = storyboard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
         
     }
 }
