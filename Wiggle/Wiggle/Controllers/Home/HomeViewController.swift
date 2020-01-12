@@ -44,6 +44,19 @@ class HomeViewController: UIViewController {
     
     func prepareView() {
         kolodaView.addShadow()
+        let messageImage = UIImage(named: "icon_smartsearch_message")
+        let messageBT = UIBarButtonItem(image: messageImage, style: .plain, target: self, action: #selector(messageTapped))
+        navigationItem.rightBarButtonItems = [messageBT]
+    }
+    
+    @objc private func messageTapped() {
+        let transition = CATransition()
+        transition.duration = 0.2
+        transition.type = CATransitionType.fade
+        let storyboard = UIStoryboard(name: "Chat", bundle: nil)
+        let chatListVC = storyboard.instantiateViewController(withIdentifier: "ChatListViewController") as! ChatListViewController
+        navigationController?.view.layer.add(transition, forKey: nil)
+        navigationController?.pushViewController(chatListVC, animated: true)
     }
     
     func addTapGesture() {

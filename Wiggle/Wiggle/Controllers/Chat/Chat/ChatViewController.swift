@@ -170,7 +170,6 @@ class ChatViewController: MessagesViewController {
     
     func configureMessageInputBar() {
         if #available(iOS 13.0, *) {
-            messageInputBar.subviews.forEach { $0.backgroundColor = UIColor.systemBackground}
             messageInputBar.contentView.backgroundColor = UIColor.systemBackground
             messageInputBar.blurView.isHidden = true
             messageInputBar.bottomStackView.backgroundColor = UIColor.systemBackground

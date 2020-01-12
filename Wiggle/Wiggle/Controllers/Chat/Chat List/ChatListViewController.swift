@@ -50,6 +50,7 @@ class ChatListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         initUpwardsAnimation()
+        navigationController?.navigationBar.prefersLargeTitles = true
         let matchesView = MatchScrollView.instanceFromNib()
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview()}
         stackView.insertArrangedSubview(matchesView, at: 0)
