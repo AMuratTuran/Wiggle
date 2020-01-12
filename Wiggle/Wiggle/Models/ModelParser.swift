@@ -11,10 +11,15 @@ import Parse
 
 class ModelParser{
     
-    static func PFUserToWiggleCardModel(user : PFUser) -> WiggleCardModel{
-        let name = "\(user.getFirstName()) \(user.getLastName())"
-        let wiggleCardModel = WiggleCardModel(profilePicture: user.getPhotoUrl(), nameSurname: name, location: "", distance: "", bio: user.getBio())
-        return wiggleCardModel
+    static func PFUserToWiggleCardModel(user : [PFUser]) -> [WiggleCardModel]{
+        var wiggleCardModels = [WiggleCardModel]()
+        user.forEach { user in
+            let name = "\(user.getFirstName()) \(user.getLastName())"
+            let wiggleCardModel = WiggleCardModel(profilePicture: user.getPhotoUrl(), nameSurname: name, location: "", distance: "", bio: user.getBio())
+            wiggleCardModels.append(wiggleCardModel)
+        }
+        
+        return wiggleCardModels
     }
     
 }
