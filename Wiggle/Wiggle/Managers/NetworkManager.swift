@@ -153,6 +153,7 @@ struct NetworkManager {
         messageObject.setValue(messageText, forKey: "body")
         messageObject.setValue(senderId, forKey: "sender")
         messageObject.setValue(receiverId, forKey: "receiver")
+        messageObject.setValue(0, forKey: "isRead")
         messageObject.saveEventually { (isSuccess, error) in
             if let error = error {
                 fail(error.localizedDescription)
@@ -186,6 +187,11 @@ struct NetworkManager {
             guard let chatHistory = objects else {
                 fail(Localize.Common.GeneralError)
                 return
+            }
+            
+            objects?.forEach {
+                $0.setValue(1, forKey: "isRead")
+                $0.saveInBackground()
             }
             
             var chatResponse:[ChatMessage] = []

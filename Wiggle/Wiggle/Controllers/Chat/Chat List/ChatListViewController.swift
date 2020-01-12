@@ -14,6 +14,7 @@ class ChatListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var lineView: UIView!
     
     var currentUser: PFUser!
     let searchController = UISearchController(searchResultsController: nil)
@@ -52,6 +53,7 @@ class ChatListViewController: UIViewController {
         let matchesView = MatchScrollView.instanceFromNib()
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview()}
         stackView.insertArrangedSubview(matchesView, at: 0)
+        stackView.insertArrangedSubview(lineView, at: 1)
         stackView.addArrangedSubview(tableView)
         getChatList()
     }

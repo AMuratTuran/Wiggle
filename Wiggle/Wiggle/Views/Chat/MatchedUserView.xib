@@ -52,7 +52,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Ul4-Ih-Rpo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="4sJ-4k-N52"/>
                 <constraint firstItem="Ul4-Ih-Rpo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="b2W-QK-N6z"/>
