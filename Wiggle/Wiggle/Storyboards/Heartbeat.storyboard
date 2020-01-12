@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BFi-ci-QJJ">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Initial Heartbeat View Controller-->
+        <scene sceneID="KmQ-kB-fc4">
+            <objects>
+                <viewController storyboardIdentifier="InitialHeartbeatViewController" id="f7S-Ir-6YN" customClass="InitialHeartbeatViewController" customModule="Wiggle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DHi-gK-SyV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nabzınızın aynı olduğu insanlarla eşleşeceksiniz" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ShN-Th-Q23">
+                                <rect key="frame" x="20" y="94" width="335" height="54.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Htp-X8-J7l">
+                                <rect key="frame" x="25" y="518" width="325" height="50"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="kyu-Cl-w0o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
+                                <state key="normal" title="Başla">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startTapped:" destination="f7S-Ir-6YN" eventType="touchUpInside" id="YwB-gd-q8H"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parmağınızı kameranızın flashına yerleştiriniz" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbo-a0-PHC">
+                                <rect key="frame" x="25" y="363.5" width="325" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.viewfinder" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sgi-6f-0om">
+                                <rect key="frame" x="127.5" y="194.5" width="120" height="117.5"/>
+                                <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="55g-Yz-koH"/>
+                                    <constraint firstAttribute="height" constant="120" id="BWj-mg-qzJ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="GAq-Y1-g3s" firstAttribute="trailing" secondItem="Htp-X8-J7l" secondAttribute="trailing" constant="25" id="1hf-g3-aLb"/>
+                            <constraint firstItem="ShN-Th-Q23" firstAttribute="top" secondItem="GAq-Y1-g3s" secondAttribute="top" constant="50" id="48H-YF-fYs"/>
+                            <constraint firstItem="sgi-6f-0om" firstAttribute="top" secondItem="ShN-Th-Q23" secondAttribute="bottom" constant="45" id="80R-gt-4Wx"/>
+                            <constraint firstItem="sgi-6f-0om" firstAttribute="centerX" secondItem="DHi-gK-SyV" secondAttribute="centerX" id="Oj7-fh-BtY"/>
+                            <constraint firstItem="wbo-a0-PHC" firstAttribute="leading" secondItem="GAq-Y1-g3s" secondAttribute="leading" constant="25" id="QHg-ec-KHh"/>
+                            <constraint firstItem="wbo-a0-PHC" firstAttribute="top" secondItem="sgi-6f-0om" secondAttribute="bottom" constant="50" id="TNk-PC-QOm"/>
+                            <constraint firstItem="Htp-X8-J7l" firstAttribute="leading" secondItem="GAq-Y1-g3s" secondAttribute="leading" constant="25" id="cNP-Zj-qPE"/>
+                            <constraint firstItem="ShN-Th-Q23" firstAttribute="leading" secondItem="GAq-Y1-g3s" secondAttribute="leading" constant="20" id="cee-En-SgL"/>
+                            <constraint firstItem="ShN-Th-Q23" firstAttribute="centerX" secondItem="DHi-gK-SyV" secondAttribute="centerX" id="dBb-nU-HN9"/>
+                            <constraint firstItem="GAq-Y1-g3s" firstAttribute="bottom" secondItem="Htp-X8-J7l" secondAttribute="bottom" constant="50" id="kIA-c1-Zie"/>
+                            <constraint firstItem="GAq-Y1-g3s" firstAttribute="trailing" secondItem="wbo-a0-PHC" secondAttribute="trailing" constant="25" id="su5-5p-apv"/>
+                            <constraint firstItem="GAq-Y1-g3s" firstAttribute="trailing" secondItem="ShN-Th-Q23" secondAttribute="trailing" constant="20" id="ysS-RM-kxU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GAq-Y1-g3s"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Jbh-wV-8zF"/>
+                    <connections>
+                        <outlet property="startButton" destination="Htp-X8-J7l" id="86D-Id-JLB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="91m-1s-EPb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="528.79999999999995" y="49.925037481259373"/>
+        </scene>
+        <!--Get Heartbeat View Controller-->
+        <scene sceneID="RCQ-Wu-mRC">
+            <objects>
+                <viewController storyboardIdentifier="GetHeartbeatViewController" id="F7n-X7-dY6" customClass="GetHeartbeatViewController" customModule="Wiggle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tj5-n1-JIV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ab1-UZ-NJT">
+                                <rect key="frame" x="335" y="20" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="trr-vZ-ghb"/>
+                                    <constraint firstAttribute="width" constant="30" id="xtb-dn-K40"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="xmark.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="dismissTapped:" destination="F7n-X7-dY6" eventType="touchUpInside" id="gg4-L2-LJB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="OaB-of-Je2" firstAttribute="trailing" secondItem="ab1-UZ-NJT" secondAttribute="trailing" constant="10" id="KQq-62-yrL"/>
+                            <constraint firstItem="ab1-UZ-NJT" firstAttribute="top" secondItem="OaB-of-Je2" secondAttribute="top" constant="20" id="Soe-SP-eEj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OaB-of-Je2"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GV4-LK-LYV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1482" y="50"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="sxJ-Xb-FCa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BFi-ci-QJJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="heart.circle.fill" catalog="system" id="KJn-Wg-Tn4">
+                        <color key="badgeColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Dze-tt-XMW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="f7S-Ir-6YN" kind="relationship" relationship="rootViewController" id="tX8-5G-aXf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bdq-SD-ZlB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-410.39999999999998" y="49.925037481259373"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="camera.viewfinder" catalog="system" width="64" height="56"/>
+        <image name="heart.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="xmark.circle.fill" catalog="system" width="64" height="60"/>
+    </resources>
+</document>

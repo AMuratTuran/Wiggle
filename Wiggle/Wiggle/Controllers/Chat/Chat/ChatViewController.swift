@@ -90,6 +90,8 @@ class ChatViewController: MessagesViewController {
         liveQueryClient = ParseLiveQuery.Client(server: AppConstants.ParseConstants.LiveQueryServer, applicationId: AppConstants.ParseConstants.ApplicationId, clientKey: AppConstants.ParseConstants.ClientKey)
         subscription = liveQueryClient.subscribe(query)
         _ = subscription?.handle(Event.created) { (_, response) in
+            response.setValue(1, forKey: "isRead")
+            response.saveInBackground()
             let incomingMessage:ChatMessage = ChatMessage(dictionary: response)
             self.insertMessage(incomingMessage)
         }

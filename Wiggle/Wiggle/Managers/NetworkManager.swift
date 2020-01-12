@@ -189,10 +189,10 @@ struct NetworkManager {
                 return
             }
             
-//            objects?.forEach {
-//                $0.setValue(1, forKey: "isRead")
-//                $0.saveEventually()
-//            }
+            objects?.forEach {
+                $0.setValue(1, forKey: "isRead")
+                $0.saveEventually()
+            }
             
             var chatResponse:[ChatMessage] = []
             
