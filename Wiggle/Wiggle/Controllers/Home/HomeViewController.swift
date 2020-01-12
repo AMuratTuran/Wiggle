@@ -16,7 +16,8 @@ class HomeViewController: UIViewController {
     
     var cardArray = [WiggleCardModel]()
     
-    let cardView = WiggleCard.init(frame: CGRect.zero)
+    var currentCard = WiggleCard()
+//    let cardView = WiggleCard.init(frame: CGRect.zero)
     let heartbeatView = Heartbeat.init(frame: CGRect.zero)
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +68,7 @@ class HomeViewController: UIViewController {
     func fetchUsers(){
         NetworkManager.getUsersForSwipe(success: { (users) in
             self.cardArray.append(contentsOf: users)
-//            self.kolodaView.reloadData()
+            self.kolodaView.reloadData()
         }) { fail in
             print("===========\(fail)===========")
         }
@@ -90,11 +91,14 @@ extension HomeViewController: KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
+        let cardView = WiggleCard.init(frame: CGRect.zero)
+        
         if cardArray.count == 0{
             return heartbeatView
         }
         cardView.model = cardArray[index]
         cardView.updateUI()
+        currentCard = cardView
         return cardView
     }
     
@@ -113,18 +117,18 @@ extension HomeViewController: KolodaViewDataSource {
         switch direction {
         case .left:
             UIView.animate(withDuration: 0.0) {
-                self.cardView.view.likeImage.alpha = finishPercentage/100
+                self.currentCard.view.likeImage.alpha = finishPercentage/100
             }
         case .right:
-            self.cardView.view.dislikeImage.alpha = finishPercentage/100
+            self.currentCard.view.dislikeImage.alpha = finishPercentage/100
         default:
             print("nereye gidiyo")
         }
     }
     
     func kolodaDidResetCard(_ koloda: KolodaView) {
-        self.cardView.view.likeImage.alpha = 0.0
-        self.cardView.view.dislikeImage.alpha = 0.0
+        self.currentCard.view.likeImage.alpha = 0.0
+        self.currentCard.view.dislikeImage.alpha = 0.0
     }
     
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
@@ -139,7 +143,7 @@ extension HomeViewController: KolodaViewDataSource {
             print("Atamadi")
         }
         cardArray.remove(at: index)
-        self.cardView.view.likeImage.alpha = 0.0
-        self.cardView.view.dislikeImage.alpha = 0.0
+        self.currentCard.view.likeImage.alpha = 0.0
+        self.currentCard.view.dislikeImage.alpha = 0.0
     }
 }

@@ -12,39 +12,43 @@ import Parse
 extension PFUser {
     
     func getFirstName() -> String {
-        return self.object(forKey: "first_name") as! String
+        guard let lastName = self.object(forKey: "first_name") as? String else {return ""}
+        return lastName
     }
     
     func getLastName() -> String {
-        return self.object(forKey: "last_name") as! String
+        guard let lastName = self.object(forKey: "last_name") as? String else {return ""}
+        return lastName
     }
     
     func getBio() -> String {
-        return self.object(forKey: "bio") as! String
+        guard let bio = self.object(forKey: "bio") as? String else {return ""}
+        return bio
     }
     
-    func getPhotoUrl() -> String{        
-        if let photoUrl = self["photo"] as? PFFileObject {
-            return photoUrl.url ?? ""
-        }else{
-            return ""
-        }
+    func getPhotoUrl() -> String{
+        guard let photo = self.object(forKey: "photo") as? PFFileObject else {return ""}
+        return photo.url ?? ""
     }
     
     func getBirthday() -> NSDate {
-        return self.object(forKey: "birthday") as! NSDate
+        guard let birthday = self.object(forKey: "birthday") as? NSDate else {return NSDate()}
+        return birthday
     }
     
     func getGold() -> Bool {
-        return self.object(forKey: "gold") as! Bool
+        guard let gold = self.object(forKey: "gold") as? Bool else {return false}
+        return gold
     }
     
     func getLocation() -> CLLocationCoordinate2D{
-        return self.object(forKey: "gold") as! CLLocationCoordinate2D
+        guard let location = self.object(forKey: "location") as? CLLocationCoordinate2D else {return CLLocationCoordinate2D()}
+        return location
     }
     
     func getGender() -> Int {
-        return self.object(forKey: "gender") as! Int
+        guard let gender = self.object(forKey: "gender") as? Int else {return 1}
+        return gender
     }
     
     

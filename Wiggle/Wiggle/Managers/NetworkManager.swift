@@ -215,23 +215,8 @@ struct NetworkManager {
                 fail(Localize.Common.GeneralError)
                 return
             }
-            
-            userResponse.forEach { (user) in
-                if let dict = user as? PFObject {
-                    dict.fetchInBackground { (object, error) in
-                        if let user = object as? PFUser {
-                            var wiggleCardModels = [WiggleCardModel]()
-                            let wiggleUserModel = ModelParser.PFUserToWiggleCardModel(user: user)
-                            wiggleCardModels.append(wiggleUserModel)
-                            success(wiggleCardModels)
-                        }else {
-                            fail(Localize.Common.GeneralError)
-                        }
-                    }
-                }else {
-                    fail(Localize.Common.GeneralError)
-                }
-            }
+            let wiggleCardModels = ModelParser.PFUserToWiggleCardModel(user: userResponse as? [PFUser] ?? [])
+            success(wiggleCardModels)
         }
     }
 }

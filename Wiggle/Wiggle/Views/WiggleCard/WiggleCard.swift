@@ -40,11 +40,7 @@ class WiggleCard: WiggleCardComponent {
     
     public weak var view: WiggleCardView!
     
-    public var model : WiggleCardModel?{
-        didSet{
-            updateUI()
-        }
-    }
+    public var model : WiggleCardModel?
     
     override public func componentDidLoad() {
         if let componentView = super.componentView as? WiggleCardView {
@@ -63,7 +59,6 @@ class WiggleCard: WiggleCardComponent {
         }else{
             view.profilePicture.image = UIImage(named: "profilePicture")
         }
-        view.profilePicture.image = UIImage(named: model.profilePicture ?? "")
         view.nameSurname.text = model.nameSurname
         view.location.text = model.location
         view.distance.text = model.distance
