@@ -11,11 +11,11 @@ import Parse
 import Koloda
 
 class HomeViewController: UIViewController {
-    @IBOutlet weak var routeProfileButton: UIButton!
     @IBOutlet weak var kolodaView: KolodaView!
+    @IBOutlet weak var likeImage: UIImageView!
+    @IBOutlet weak var dislikeImage: UIImageView!
     
     var cardArray = [WiggleCardModel]()
-    var currentCard = WiggleCard()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -108,7 +108,8 @@ extension HomeViewController: KolodaViewDataSource {
         }
         cardView.model = cardArray[index]
         cardView.updateUI()
-        currentCard = cardView
+        self.likeImage.alpha = 0.0
+        self.dislikeImage.alpha = 0.0
         return cardView
     }
     
@@ -127,11 +128,11 @@ extension HomeViewController: KolodaViewDataSource {
         switch direction {
         case .left:
             UIView.animate(withDuration: 0.0) {
-                self.currentCard.view.likeImage.alpha = finishPercentage/100
+                self.likeImage.alpha = finishPercentage/100
             }
         case .right:
             UIView.animate(withDuration: 0.0) {
-                self.currentCard.view.dislikeImage.alpha = finishPercentage/100
+                self.dislikeImage.alpha = finishPercentage/100
             }
         default:
             print("nereye gidiyo")
@@ -139,8 +140,8 @@ extension HomeViewController: KolodaViewDataSource {
     }
     
     func kolodaDidResetCard(_ koloda: KolodaView) {
-        self.currentCard.view.likeImage.alpha = 0.0
-        self.currentCard.view.dislikeImage.alpha = 0.0
+        self.likeImage.alpha = 0.0
+        self.dislikeImage.alpha = 0.0
     }
     
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
