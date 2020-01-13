@@ -74,6 +74,11 @@ class ChatViewController: MessagesViewController {
         configureMessageInputBar()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        liveQueryClient.unsubscribe(query)
+    }
+    
     func listenMessages() {
         guard let contactedUser = contactedUser else { return }
         
@@ -90,8 +95,13 @@ class ChatViewController: MessagesViewController {
         liveQueryClient = ParseLiveQuery.Client(server: AppConstants.ParseConstants.LiveQueryServer, applicationId: AppConstants.ParseConstants.ApplicationId, clientKey: AppConstants.ParseConstants.ClientKey)
         subscription = liveQueryClient.subscribe(query)
         _ = subscription?.handle(Event.created) { (_, response) in
-            response.setValue(1, forKey: "isRead")
-            response.saveInBackground()
+            if response["sender"] as! String != contactedUser.myId {
+                response.setValue(1, forKey: "isRead")
+                response.saveInBackground()
+            }else {
+                response.setValue(0, forKey: "isRead")
+                response.saveInBackground()
+            }
             let incomingMessage:ChatMessage = ChatMessage(dictionary: response)
             self.insertMessage(incomingMessage)
         }

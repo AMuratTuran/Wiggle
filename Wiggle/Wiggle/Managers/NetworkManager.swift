@@ -169,7 +169,6 @@ struct NetworkManager {
         let query2 = PFQuery(className:"Messages")
         query2.whereKey("sender", equalTo: contactedId)
         query2.whereKey("receiver", equalTo: myId)
-        
         let query = PFQuery.orQuery(withSubqueries: [query1, query2])
         query.addDescendingOrder("createdAt")
         query.limit = 50
@@ -178,7 +177,8 @@ struct NetworkManager {
         handling.handle(Event.created) { (_, object) in
             print(object)
         }
-        query.findObjectsInBackground { (objects: [PFObject]?, error) in
+        
+        query2.findObjectsInBackground { (objects: [PFObject]?, error) in
             if let error = error {
                 fail(error.localizedDescription)
                 return
@@ -191,7 +191,19 @@ struct NetworkManager {
             
             objects?.forEach {
                 $0.setValue(1, forKey: "isRead")
-                $0.saveEventually()
+                $0.saveInBackground()
+            }
+        }
+        
+        query.findObjectsInBackground { (objects: [PFObject]?, error) in
+            if let error = error {
+                fail(error.localizedDescription)
+                return
+            }
+            
+            guard let chatHistory = objects else {
+                fail(Localize.Common.GeneralError)
+                return
             }
             
             var chatResponse:[ChatMessage] = []
