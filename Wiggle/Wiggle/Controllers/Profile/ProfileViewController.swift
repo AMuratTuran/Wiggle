@@ -13,13 +13,10 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var changePhotoButton: UIButton!
     @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var profilePhoto: UIImageView!
-    @IBOutlet weak var routeToHomeButton: UIButton!
     @IBOutlet weak var imageBackgroundView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.hero.isEnabled = true
         configureViews()
         // Do any additional setup after loading the view.
     }
@@ -31,6 +28,7 @@ class ProfileViewController: UIViewController {
         profilePhoto.cornerRadius(profilePhoto.frame.height / 2)
         imageBackgroundView.cornerRadius(imageBackgroundView.frame.height / 2)
         imageBackgroundView.clipsToBounds = false
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -42,10 +40,6 @@ class ProfileViewController: UIViewController {
         self.changePhotoButton.addShadow(UIColor(named: "shadowColor")!)
         self.editProfileButton.addShadow(UIColor(named: "shadowColor")!)
         self.imageBackgroundView.addShadow(UIColor(named: "shadowColor")!, shadowRadiues: 2.0, shadowOpacity: 0.4)
-    }
-
-    @IBAction func routeHomeAction(_ sender: UIButton) {
-        moveToHomeViewControllerFromProfile()
     }
     
     @IBAction func routeSettingsAction(_ sender: UIButton) {
