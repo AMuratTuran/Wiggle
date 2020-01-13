@@ -17,6 +17,8 @@ public class WiggleCardView : UIView{
     @IBOutlet weak var bio: UILabel!
     @IBOutlet weak var likeImage: UIImageView!
     @IBOutlet weak var dislikeImage: UIImageView!
+    @IBOutlet weak var backView: UIView!
+    
 }
 
 public struct WiggleCardModel{
@@ -51,11 +53,16 @@ class WiggleCard: WiggleCardComponent {
     public func updateUI(){
         view.cornerRadius(12)
         view.profilePicture.cornerRadius(12)
+        view.backView.cornerRadius(12)
         view.likeImage.alpha = 0.0
         view.dislikeImage.alpha = 0.0
         guard let model = model else {return}
         if let photoUrl = model.profilePicture{
-            view.profilePicture.kf.setImage(with: URL(string: photoUrl))
+            if !photoUrl.isEmpty{
+                view.profilePicture.kf.setImage(with: URL(string: photoUrl))
+            }else{
+                view.profilePicture.image = UIImage(named: "profilePicture")
+            }
         }else{
             view.profilePicture.image = UIImage(named: "profilePicture")
         }
@@ -64,6 +71,4 @@ class WiggleCard: WiggleCardComponent {
         view.distance.text = model.distance
         view.bio.text = model.bio
     }
-    
-
 }

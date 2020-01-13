@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,8 +14,12 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Abb-gs-ocT">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
                 <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.2.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="G19-6F-OEn">
-                    <rect key="frame" x="0.0" y="45.5" width="414" height="411.5"/>
+                    <rect key="frame" x="0.0" y="45.5" width="414" height="411"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="G19-6F-OEn" secondAttribute="height" multiplier="2:2" id="78T-gH-98Q"/>
@@ -65,44 +69,49 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4lp-4j-b21">
-                    <rect key="frame" x="50" y="95.5" width="100" height="98"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="N41-FS-UIk">
+                    <rect key="frame" x="40" y="85.5" width="100" height="97.5"/>
                     <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="100" id="7Pm-wW-rjY"/>
-                        <constraint firstAttribute="height" constant="100" id="Z8n-gr-EHO"/>
+                        <constraint firstAttribute="height" constant="100" id="QtX-em-dix"/>
+                        <constraint firstAttribute="width" constant="100" id="qbN-kW-KCW"/>
                     </constraints>
                 </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="csD-IJ-fch">
-                    <rect key="frame" x="264" y="96" width="100" height="96"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eL1-h0-V0a">
+                    <rect key="frame" x="274" y="86" width="100" height="95.5"/>
                     <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="100" id="aAL-PB-mZf"/>
-                        <constraint firstAttribute="width" constant="100" id="vl2-gq-sZx"/>
+                        <constraint firstAttribute="width" constant="100" id="8F5-mn-sS6"/>
+                        <constraint firstAttribute="height" constant="100" id="xb0-7M-Iey"/>
                     </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="a3E-0R-Omo" firstAttribute="width" secondItem="G19-6F-OEn" secondAttribute="width" multiplier="0.9" id="36y-Ac-AhR"/>
-                <constraint firstItem="4lp-4j-b21" firstAttribute="top" secondItem="G19-6F-OEn" secondAttribute="top" constant="50" id="3P7-yo-RA2"/>
                 <constraint firstAttribute="trailing" secondItem="G19-6F-OEn" secondAttribute="trailing" id="9Lv-B5-NU8"/>
                 <constraint firstItem="G19-6F-OEn" firstAttribute="top" secondItem="1ss-sU-zCW" secondAttribute="top" id="F1x-E6-khd"/>
-                <constraint firstItem="G19-6F-OEn" firstAttribute="leading" secondItem="4lp-4j-b21" secondAttribute="trailing" constant="-150" id="IjL-Nc-QaO"/>
-                <constraint firstItem="csD-IJ-fch" firstAttribute="top" secondItem="G19-6F-OEn" secondAttribute="top" constant="50" id="LIz-zo-NnT"/>
+                <constraint firstItem="N41-FS-UIk" firstAttribute="top" secondItem="1ss-sU-zCW" secondAttribute="top" constant="40" id="N7W-QV-vv9"/>
+                <constraint firstItem="Abb-gs-ocT" firstAttribute="leading" secondItem="1ss-sU-zCW" secondAttribute="leading" id="YQu-G8-bBX"/>
                 <constraint firstItem="OXq-dv-sZg" firstAttribute="top" secondItem="a3E-0R-Omo" secondAttribute="bottom" constant="10" id="Zmz-OX-LyJ"/>
+                <constraint firstItem="1ss-sU-zCW" firstAttribute="bottom" secondItem="Abb-gs-ocT" secondAttribute="bottom" id="Zro-pZ-EXN"/>
+                <constraint firstItem="1ss-sU-zCW" firstAttribute="trailing" secondItem="eL1-h0-V0a" secondAttribute="trailing" constant="40" id="cY6-Wr-FQJ"/>
                 <constraint firstItem="OXq-dv-sZg" firstAttribute="leading" secondItem="rzd-LN-prv" secondAttribute="leading" constant="8" id="d4u-gv-Y3v"/>
+                <constraint firstItem="N41-FS-UIk" firstAttribute="leading" secondItem="1ss-sU-zCW" secondAttribute="leading" constant="40" id="gs8-ME-FDT"/>
+                <constraint firstItem="1ss-sU-zCW" firstAttribute="trailing" secondItem="Abb-gs-ocT" secondAttribute="trailing" id="k86-QT-voq"/>
+                <constraint firstItem="eL1-h0-V0a" firstAttribute="top" secondItem="1ss-sU-zCW" secondAttribute="top" constant="40" id="lGM-LQ-vLb"/>
                 <constraint firstItem="G19-6F-OEn" firstAttribute="leading" secondItem="rzd-LN-prv" secondAttribute="leading" id="nKq-ui-c27"/>
                 <constraint firstItem="a3E-0R-Omo" firstAttribute="centerX" secondItem="G19-6F-OEn" secondAttribute="centerX" id="s98-Op-QF2"/>
                 <constraint firstItem="a3E-0R-Omo" firstAttribute="top" secondItem="G19-6F-OEn" secondAttribute="bottom" constant="-40" id="tWA-Io-VJ6"/>
-                <constraint firstItem="csD-IJ-fch" firstAttribute="leading" secondItem="G19-6F-OEn" secondAttribute="trailing" constant="-150" id="yxg-jd-xlJ"/>
+                <constraint firstItem="Abb-gs-ocT" firstAttribute="top" secondItem="1ss-sU-zCW" secondAttribute="top" id="uoZ-Lk-YmF"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="1ss-sU-zCW"/>
             <connections>
+                <outlet property="backView" destination="Abb-gs-ocT" id="xUq-gC-lg9"/>
                 <outlet property="bio" destination="OXq-dv-sZg" id="Ane-cj-KFt"/>
-                <outlet property="dislikeImage" destination="csD-IJ-fch" id="ykO-N0-ce4"/>
+                <outlet property="dislikeImage" destination="eL1-h0-V0a" id="x7D-MA-LBS"/>
                 <outlet property="distance" destination="SuR-un-bqk" id="4Yf-cV-Vp1"/>
-                <outlet property="likeImage" destination="4lp-4j-b21" id="hwh-r8-anP"/>
+                <outlet property="likeImage" destination="N41-FS-UIk" id="1Jl-r6-nFG"/>
                 <outlet property="location" destination="osn-zZ-iIS" id="FbC-cl-IIk"/>
                 <outlet property="nameSurname" destination="YDB-Zg-zgL" id="c2w-Qs-pJl"/>
                 <outlet property="profilePicture" destination="G19-6F-OEn" id="hLd-AW-KYZ"/>
@@ -111,7 +120,7 @@
         </view>
     </objects>
     <resources>
-        <image name="heart.fill" catalog="system" width="64" height="58"/>
+        <image name="heart.fill" catalog="system" width="64" height="54"/>
         <image name="person.2.fill" catalog="system" width="64" height="40"/>
         <image name="xmark" catalog="system" width="64" height="56"/>
     </resources>

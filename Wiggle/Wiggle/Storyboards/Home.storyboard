@@ -20,8 +20,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TBM-dU-B0T" customClass="KolodaView" customModule="Koloda">
-                                        <rect key="frame" x="10" y="80" width="355" height="428"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <rect key="frame" x="10" y="80" width="355" height="530"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JJ2-02-84T">
                                         <rect key="frame" x="10" y="538" width="355" height="60"/>
@@ -141,8 +141,8 @@
                                     <constraint firstAttribute="trailing" secondItem="TBM-dU-B0T" secondAttribute="trailing" constant="10" id="42W-5N-Qdf"/>
                                     <constraint firstItem="TBM-dU-B0T" firstAttribute="top" secondItem="ZQ3-gs-AXU" secondAttribute="top" constant="80" id="BlO-uX-4PL"/>
                                     <constraint firstItem="JJ2-02-84T" firstAttribute="leading" secondItem="ZQ3-gs-AXU" secondAttribute="leading" constant="10" id="RnV-LF-T7B"/>
+                                    <constraint firstAttribute="bottom" secondItem="TBM-dU-B0T" secondAttribute="bottom" constant="8" id="Yox-7f-oM8"/>
                                     <constraint firstItem="JJ2-02-84T" firstAttribute="centerX" secondItem="ZQ3-gs-AXU" secondAttribute="centerX" id="dL5-fs-dx8"/>
-                                    <constraint firstItem="JJ2-02-84T" firstAttribute="top" secondItem="TBM-dU-B0T" secondAttribute="bottom" constant="30" id="huV-RI-Qh5"/>
                                     <constraint firstItem="TBM-dU-B0T" firstAttribute="leading" secondItem="ZQ3-gs-AXU" secondAttribute="leading" constant="10" id="uhH-Nf-6nW"/>
                                     <constraint firstAttribute="trailing" secondItem="JJ2-02-84T" secondAttribute="trailing" constant="10" id="y5A-UW-d73"/>
                                     <constraint firstAttribute="bottom" secondItem="JJ2-02-84T" secondAttribute="bottom" constant="20" id="ziF-B7-TSp"/>
