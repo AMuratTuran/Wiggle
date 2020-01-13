@@ -7,6 +7,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Regular.ttf">
+            <string>OpenSans-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Profile View Controller-->
         <scene sceneID="OpO-Tt-Ezc">
@@ -17,18 +22,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cdz-if-Yic">
-                                <rect key="frame" x="125" y="119" width="125" height="125"/>
+                                <rect key="frame" x="125" y="94" width="125" height="125"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePhoto" translatesAutoresizingMaskIntoConstraints="NO" id="HM5-pm-OqA">
-                                <rect key="frame" x="125" y="119" width="125" height="125"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HM5-pm-OqA">
+                                <rect key="frame" x="125" y="94" width="125" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="2Hf-dq-f2F"/>
                                     <constraint firstAttribute="width" constant="125" id="Ky6-cx-YhU"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYx-t5-5Aj">
-                                <rect key="frame" x="162.5" y="344" width="50" height="50"/>
+                                <rect key="frame" x="162.5" y="319" width="50" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="G2h-e0-kRW"/>
@@ -36,9 +41,12 @@
                                 </constraints>
                                 <color key="tintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <state key="normal" image="camera" catalog="system"/>
+                                <connections>
+                                    <action selector="changePhotoTapped:" destination="ga9-op-ggg" eventType="touchUpInside" id="OZa-6M-nLC"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4se-Hp-Ur7">
-                                <rect key="frame" x="70" y="304" width="40" height="40"/>
+                                <rect key="frame" x="70" y="279" width="40" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="qdy-Dt-uAL"/>
@@ -51,7 +59,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3PP-d6-Blm">
-                                <rect key="frame" x="265" y="304" width="40" height="40"/>
+                                <rect key="frame" x="265" y="279" width="40" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="DBr-ES-lre"/>
@@ -61,25 +69,25 @@
                                 <state key="normal" image="pencil" catalog="system"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ath-Og-egU">
-                                <rect key="frame" x="62.5" y="349" width="55.5" height="17.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <rect key="frame" x="62" y="324" width="56" height="20.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJq-kD-D0j">
-                                <rect key="frame" x="249" y="349" width="72.5" height="17.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <rect key="frame" x="247" y="324" width="76" height="20.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xx0-tC-V4v">
-                                <rect key="frame" x="139.5" y="399" width="96.5" height="17.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <rect key="frame" x="138.5" y="374" width="98.5" height="20.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Murat Turan, 25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2e-r8-ceK">
-                                <rect key="frame" x="94.5" y="254" width="186" height="30"/>
+                                <rect key="frame" x="94.5" y="229" width="186" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -101,7 +109,7 @@
                             <constraint firstItem="vYx-t5-5Aj" firstAttribute="top" secondItem="HM5-pm-OqA" secondAttribute="bottom" constant="100" id="l1G-vs-Z6i"/>
                             <constraint firstItem="kJq-kD-D0j" firstAttribute="centerX" secondItem="3PP-d6-Blm" secondAttribute="centerX" id="lKf-em-RpE"/>
                             <constraint firstItem="Cdz-if-Yic" firstAttribute="centerX" secondItem="HM5-pm-OqA" secondAttribute="centerX" id="mgh-cy-IlP"/>
-                            <constraint firstItem="HM5-pm-OqA" firstAttribute="top" secondItem="u2v-jx-aiD" secondAttribute="top" constant="75" id="mza-In-10C"/>
+                            <constraint firstItem="HM5-pm-OqA" firstAttribute="top" secondItem="u2v-jx-aiD" secondAttribute="top" constant="50" id="mza-In-10C"/>
                             <constraint firstItem="vYx-t5-5Aj" firstAttribute="centerX" secondItem="cGC-Su-ZlL" secondAttribute="centerX" id="nG0-va-hlG"/>
                             <constraint firstItem="Ath-Og-egU" firstAttribute="centerX" secondItem="4se-Hp-Ur7" secondAttribute="centerX" id="oSN-Cm-DQW"/>
                             <constraint firstItem="kJq-kD-D0j" firstAttribute="top" secondItem="3PP-d6-Blm" secondAttribute="bottom" constant="5" id="ufE-76-8dS"/>
@@ -115,6 +123,7 @@
                         <outlet property="changePhotoButton" destination="vYx-t5-5Aj" id="cmg-oL-MfF"/>
                         <outlet property="editProfileButton" destination="3PP-d6-Blm" id="XQT-hP-dTg"/>
                         <outlet property="imageBackgroundView" destination="Cdz-if-Yic" id="fWp-2m-lBC"/>
+                        <outlet property="nameAndAgeLabel" destination="T2e-r8-ceK" id="B0x-mV-NNF"/>
                         <outlet property="profilePhoto" destination="HM5-pm-OqA" id="jHM-OT-c76"/>
                         <outlet property="settingsButton" destination="4se-Hp-Ur7" id="yoK-8f-0l2"/>
                     </connections>

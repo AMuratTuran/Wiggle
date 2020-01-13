@@ -119,7 +119,6 @@ extension UIViewController {
     func moveToSettingsViewController() {
         let settingsStoryboard: UIStoryboard = UIStoryboard(name: "Settings", bundle: nil)
         let destinationViewController = settingsStoryboard.instantiateInitialViewController() as! UINavigationController
-        destinationViewController.modalPresentationStyle = .fullScreen
         self.present(destinationViewController, animated: true, completion: nil)
     }
     
