@@ -69,6 +69,15 @@
 		F159C8CE2385AB330091AB05 /* BirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C8CD2385AB330091AB05 /* BirthdayViewController.swift */; };
 		F159C8D12385C8850091AB05 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C8D02385C8850091AB05 /* ImagePicker.swift */; };
 		F159C8D32385CA460091AB05 /* PickImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159C8D22385CA460091AB05 /* PickImageViewController.swift */; };
+		F159FCD323CBCDE50042429E /* Heartbeat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F159FCD223CBCDE50042429E /* Heartbeat.storyboard */; };
+		F159FCD723CBD1E80042429E /* InitialHeartbeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159FCD623CBD1E80042429E /* InitialHeartbeatViewController.swift */; };
+		F159FCDA23CBD3FC0042429E /* GetHeartbeatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159FCD823CBD3050042429E /* GetHeartbeatViewController.swift */; };
+		F159FCE823CBD89D0042429E /* UIView+HeartRateKit.m in Sources */ = {isa = PBXBuildFile; fileRef = F159FCDD23CBD89A0042429E /* UIView+HeartRateKit.m */; };
+		F159FCE923CBD89D0042429E /* HRKButterworth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F159FCDE23CBD89A0042429E /* HRKButterworth.cpp */; };
+		F159FCEA23CBD89D0042429E /* HeartRateKitController.m in Sources */ = {isa = PBXBuildFile; fileRef = F159FCE123CBD89B0042429E /* HeartRateKitController.m */; };
+		F159FCEB23CBD89D0042429E /* HeartRateKitResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F159FCE223CBD89B0042429E /* HeartRateKitResult.m */; };
+		F159FCEC23CBD89D0042429E /* HeartRateKitAlgorithm.mm in Sources */ = {isa = PBXBuildFile; fileRef = F159FCE323CBD89B0042429E /* HeartRateKitAlgorithm.mm */; };
+		F159FCED23CBD89D0042429E /* UIImage+ImageAverageColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F159FCE623CBD89C0042429E /* UIImage+ImageAverageColor.m */; };
 		F1645687238409CE00FC0694 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1645689238409CE00FC0694 /* Localizable.strings */; };
 		F164568C23840A0600FC0694 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164568B23840A0600FC0694 /* Localize.swift */; };
 		F164568E2384157D00FC0694 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164568D2384157D00FC0694 /* NetworkManager.swift */; };
@@ -172,6 +181,24 @@
 		F159C8CD2385AB330091AB05 /* BirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewController.swift; sourceTree = "<group>"; };
 		F159C8D02385C8850091AB05 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F159C8D22385CA460091AB05 /* PickImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickImageViewController.swift; sourceTree = "<group>"; };
+		F159FCD223CBCDE50042429E /* Heartbeat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Heartbeat.storyboard; sourceTree = "<group>"; };
+		F159FCD623CBD1E80042429E /* InitialHeartbeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialHeartbeatViewController.swift; sourceTree = "<group>"; };
+		F159FCD823CBD3050042429E /* GetHeartbeatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeartbeatViewController.swift; sourceTree = "<group>"; };
+		F159FCDC23CBD8990042429E /* Wiggle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wiggle-Bridging-Header.h"; sourceTree = "<group>"; };
+		F159FCDD23CBD89A0042429E /* UIView+HeartRateKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HeartRateKit.m"; sourceTree = "<group>"; };
+		F159FCDE23CBD89A0042429E /* HRKButterworth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HRKButterworth.cpp; sourceTree = "<group>"; };
+		F159FCDF23CBD89A0042429E /* HeartRateKitResult+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HeartRateKitResult+Protected.h"; sourceTree = "<group>"; };
+		F159FCE023CBD89B0042429E /* UIImage+ImageAverageColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageAverageColor.h"; sourceTree = "<group>"; };
+		F159FCE123CBD89B0042429E /* HeartRateKitController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartRateKitController.m; sourceTree = "<group>"; };
+		F159FCE223CBD89B0042429E /* HeartRateKitResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeartRateKitResult.m; sourceTree = "<group>"; };
+		F159FCE323CBD89B0042429E /* HeartRateKitAlgorithm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = HeartRateKitAlgorithm.mm; sourceTree = "<group>"; };
+		F159FCE423CBD89C0042429E /* HeartRateKitAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeartRateKitAlgorithm.h; sourceTree = "<group>"; };
+		F159FCE523CBD89C0042429E /* HRKButterworth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRKButterworth.h; sourceTree = "<group>"; };
+		F159FCE623CBD89C0042429E /* UIImage+ImageAverageColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageAverageColor.m"; sourceTree = "<group>"; };
+		F159FCE723CBD89D0042429E /* UIView+HeartRateKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HeartRateKit.h"; sourceTree = "<group>"; };
+		F159FCEE23CBD8D10042429E /* HeartRateKitResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeartRateKitResult.h; sourceTree = "<group>"; };
+		F159FCEF23CBD8D10042429E /* HeartRateKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeartRateKit.h; sourceTree = "<group>"; };
+		F159FCF023CBD8D10042429E /* HeartRateKitController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeartRateKitController.h; sourceTree = "<group>"; };
 		F16456822384098700FC0694 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
 		F16456832384098700FC0694 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F1645688238409CE00FC0694 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -458,6 +485,7 @@
 		F1585AEB238406C50062A681 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F159FCD523CBD1C70042429E /* Heartbeat */,
 				F150FD10239C2ED3002FD404 /* Chat */,
 				F1378F5A238ADD7100622B3C /* Profile */,
 				F1378F55238A982100622B3C /* Home */,
@@ -512,6 +540,7 @@
 				F1378F53238A8BC400622B3C /* Home.storyboard */,
 				F1378F58238ADC7900622B3C /* Profile.storyboard */,
 				F150FD0E239C2E77002FD404 /* Chat.storyboard */,
+				F159FCD223CBCDE50042429E /* Heartbeat.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -519,6 +548,7 @@
 		F1585AF0238406F10062A681 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				F159FCDB23CBD88A0042429E /* HeartRate */,
 				F164568D2384157D00FC0694 /* NetworkManager.swift */,
 			);
 			path = Managers;
@@ -606,6 +636,37 @@
 				F100023723AC151900D4DD22 /* FontHelper.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		F159FCD523CBD1C70042429E /* Heartbeat */ = {
+			isa = PBXGroup;
+			children = (
+				F159FCD623CBD1E80042429E /* InitialHeartbeatViewController.swift */,
+				F159FCD823CBD3050042429E /* GetHeartbeatViewController.swift */,
+			);
+			path = Heartbeat;
+			sourceTree = "<group>";
+		};
+		F159FCDB23CBD88A0042429E /* HeartRate */ = {
+			isa = PBXGroup;
+			children = (
+				F159FCE423CBD89C0042429E /* HeartRateKitAlgorithm.h */,
+				F159FCE323CBD89B0042429E /* HeartRateKitAlgorithm.mm */,
+				F159FCE123CBD89B0042429E /* HeartRateKitController.m */,
+				F159FCE223CBD89B0042429E /* HeartRateKitResult.m */,
+				F159FCDF23CBD89A0042429E /* HeartRateKitResult+Protected.h */,
+				F159FCDE23CBD89A0042429E /* HRKButterworth.cpp */,
+				F159FCE523CBD89C0042429E /* HRKButterworth.h */,
+				F159FCE023CBD89B0042429E /* UIImage+ImageAverageColor.h */,
+				F159FCE623CBD89C0042429E /* UIImage+ImageAverageColor.m */,
+				F159FCE723CBD89D0042429E /* UIView+HeartRateKit.h */,
+				F159FCDD23CBD89A0042429E /* UIView+HeartRateKit.m */,
+				F159FCEF23CBD8D10042429E /* HeartRateKit.h */,
+				F159FCF023CBD8D10042429E /* HeartRateKitController.h */,
+				F159FCEE23CBD8D10042429E /* HeartRateKitResult.h */,
+				F159FCDC23CBD8990042429E /* Wiggle-Bridging-Header.h */,
+			);
+			path = HeartRate;
 			sourceTree = "<group>";
 		};
 		F16456842384099000FC0694 /* Localization */ = {
@@ -696,6 +757,7 @@
 				TargetAttributes = {
 					F1585AD32384064F0062A681 = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -744,6 +806,7 @@
 				F1C794C123AC0E1400D9FEFC /* OpenSans-LightItalic.ttf in Resources */,
 				F1585ADF2384064F0062A681 /* Main.storyboard in Resources */,
 				F194B5F523C0E1C900349953 /* MatchedUserView.xib in Resources */,
+				F159FCD323CBCDE50042429E /* Heartbeat.storyboard in Resources */,
 				F150FCFC2393FA50002FD404 /* SettingWithLabelCell.xib in Resources */,
 				F1C794C223AC0E1400D9FEFC /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				F150FD0623940B31002FD404 /* CellWithToggleCell.xib in Resources */,
@@ -832,6 +895,7 @@
 				F10BC89C239D5E3E005934BB /* NotificationSettingsViewController.swift in Sources */,
 				F14A1EF823AEB2A500FF2C09 /* UIViewController + Alert.swift in Sources */,
 				F14A1EF623AE8E6D00FF2C09 /* AppConstants.swift in Sources */,
+				F159FCD723CBD1E80042429E /* InitialHeartbeatViewController.swift in Sources */,
 				F194B5EF23C0E19C00349953 /* MatchScrollView.swift in Sources */,
 				F19A48CF238F129E0045C0BC /* SplashViewController.swift in Sources */,
 				F1585AF8238407680062A681 /* EnterPhoneViewController.swift in Sources */,
@@ -849,11 +913,15 @@
 				F150FD15239C33B0002FD404 /* UIView + ReuseIdentifier .swift in Sources */,
 				F1585AD82384064F0062A681 /* AppDelegate.swift in Sources */,
 				F159C7B7238493100091AB05 /* WiggleUser.swift in Sources */,
+				F159FCDA23CBD3FC0042429E /* GetHeartbeatViewController.swift in Sources */,
+				F159FCEB23CBD89D0042429E /* HeartRateKitResult.m in Sources */,
+				F159FCED23CBD89D0042429E /* UIImage+ImageAverageColor.m in Sources */,
 				F150FD13239C2EF0002FD404 /* ChatListViewController.swift in Sources */,
 				F150FCF32393EDC0002FD404 /* Delay.swift in Sources */,
 				F1378F5E238B012100622B3C /* ProfileDetailViewController.swift in Sources */,
 				F1D407162385E641002350BE /* EnableLocationViewController.swift in Sources */,
 				DC10995623AFBEF800068054 /* HeartbeatView.swift in Sources */,
+				F159FCEC23CBD89D0042429E /* HeartRateKitAlgorithm.mm in Sources */,
 				F159C8D12385C8850091AB05 /* ImagePicker.swift in Sources */,
 				F10038A8239D711C00829A65 /* LogoutCell.swift in Sources */,
 				F150FD0823941287002FD404 /* ShowMeGenderViewController.swift in Sources */,
@@ -865,12 +933,15 @@
 				F150FD002394074C002FD404 /* SettingWithSliderCell.swift in Sources */,
 				DC10995823AFC2DC00068054 /* HeartbeatViewComponent.swift in Sources */,
 				F19A48C9238F0BD80045C0BC /* UIViewController + Activity.swift in Sources */,
+				F159FCE923CBD89D0042429E /* HRKButterworth.cpp in Sources */,
 				F1C794AC23AAD46300D9FEFC /* Date + Extensions.swift in Sources */,
 				F194B5E423BF94CE00349953 /* AppDelegate + Notification.swift in Sources */,
 				F159C7B323848CB70091AB05 /* PhoneAuthRequest.swift in Sources */,
 				F1378F5C238ADD8300622B3C /* ProfileViewController.swift in Sources */,
 				F152170F2389D5290027C6D4 /* SettingsPremiumTableViewCell.swift in Sources */,
+				F159FCE823CBD89D0042429E /* UIView+HeartRateKit.m in Sources */,
 				F159C7BA2384991E0091AB05 /* GetNameViewController.swift in Sources */,
+				F159FCEA23CBD89D0042429E /* HeartRateKitController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1028,6 +1099,7 @@
 			baseConfigurationReference = 44BB3C201FFEF9A359F53C04 /* Pods-Wiggle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Wiggle/Wiggle.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HS67S8FA3;
@@ -1039,6 +1111,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wiggleTeam.Wiggle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Wiggle/Managers/HeartRate/Wiggle-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1049,6 +1123,7 @@
 			baseConfigurationReference = 4E39BF0A09E61170AE4D6F33 /* Pods-Wiggle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Wiggle/Wiggle.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HS67S8FA3;
@@ -1060,6 +1135,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wiggleTeam.Wiggle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Wiggle/Managers/HeartRate/Wiggle-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

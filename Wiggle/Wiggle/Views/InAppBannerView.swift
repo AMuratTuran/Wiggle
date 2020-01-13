@@ -39,7 +39,13 @@ class InAppBannerView: MessageView {
         guard let tabBarController = UIApplication.shared.keyWindow?.rootViewController as? UITabBarController else { return }
         
         let storyboard = UIStoryboard(name: "Chat", bundle: nil)
-        let chatVC = storyboard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+        let chatVC = storyboard.instantiateViewController(withIdentifier: "ChatListViewController") as! ChatListViewController
+        if tabBarController.selectedIndex == 0 {
+            (tabBarController.viewControllers?.first as? UINavigationController)?.pushViewController(chatVC, animated: true)
+        }else {
+            tabBarController.selectedIndex = 0
+            (tabBarController.viewControllers?.first as? UINavigationController)?.pushViewController(chatVC, animated: true)
+        }
         
     }
 }

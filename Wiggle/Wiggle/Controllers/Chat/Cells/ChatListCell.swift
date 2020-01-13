@@ -48,12 +48,12 @@ class ChatListCell: UITableViewCell {
         lastMessageLabel.text = data.lastMessage
         dateLabel.text = data.dateString
         if data.isReceivedMessage {
-            lastMessageArrowView.isHidden = false
-        }else {
             lastMessageArrowView.isHidden = true
+            isReadView.isHidden = data.isRead
+        }else {
+            lastMessageArrowView.isHidden = false
+            isReadView.isHidden = true
         }
-        
-        isReadView.isHidden = data.isRead
     }
     func showIsReadView() {
         isReadView.isHidden = false

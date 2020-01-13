@@ -77,7 +77,7 @@ class Chat: Decodable {
     func isReceivedMessage() -> Bool {
         if let currentUser = PFUser.current() {
             let id = currentUser.objectId
-            if id == senderId {
+            if id == remoteId {
                 return true
             }
         }
