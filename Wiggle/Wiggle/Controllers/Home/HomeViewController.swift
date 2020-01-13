@@ -12,10 +12,9 @@ import Koloda
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var kolodaView: KolodaView!
-    @IBOutlet weak var likeImage: UIImageView!
-    @IBOutlet weak var dislikeImage: UIImageView!
     
     var cardArray = [WiggleCardModel]()
+    var currentCard : WiggleCard?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -72,6 +71,18 @@ class HomeViewController: UIViewController {
         }
     }
     
+    func likeAction(user : WiggleCardModel){
+        
+    }
+    
+    func dislikeAction(user : WiggleCardModel){
+        
+    }
+    
+    func superLikeAction(user : WiggleCardModel){
+        
+    }
+    
 }
 extension HomeViewController: KolodaViewDelegate {
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
@@ -96,8 +107,8 @@ extension HomeViewController: KolodaViewDataSource {
         }
         cardView.model = cardArray[index]
         cardView.updateUI()
-        self.likeImage.alpha = 0.0
-        self.dislikeImage.alpha = 0.0
+        cardView.view.likeImage.alpha = 0.0
+        cardView.view.dislikeImage.alpha = 0.0
         return cardView
     }
     
@@ -113,33 +124,39 @@ extension HomeViewController: KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, draggedCardWithPercentage finishPercentage: CGFloat, in direction: SwipeResultDirection) {
-        switch direction {
-        case .left:
-            UIView.animate(withDuration: 0.0) {
-                self.likeImage.alpha = finishPercentage/100
+        if let currentCard = koloda.subviews.last?.subviews[0] as? WiggleCard{
+            switch direction {
+            case .left:
+                currentCard.view.likeImage.alpha = finishPercentage/50
+            case .right:
+                UIView.animate(withDuration: 0.0) {
+                    currentCard.view.dislikeImage.alpha = finishPercentage/50
+                }
+            default:
+                print("nereye gidiyo")
             }
-        case .right:
-            UIView.animate(withDuration: 0.0) {
-                self.dislikeImage.alpha = finishPercentage/100
-            }
-        default:
-            print("nereye gidiyo")
         }
     }
     
     func kolodaDidResetCard(_ koloda: KolodaView) {
-        self.likeImage.alpha = 0.0
-        self.dislikeImage.alpha = 0.0
+        if let currentCard = koloda.subviews.last?.subviews[0] as? WiggleCard{
+            currentCard.view.likeImage.alpha = 0.0
+            currentCard.view.dislikeImage.alpha = 0.0
+        }
+    }
+    
+    func kolodaShouldTransparentizeNextCard(_ koloda: KolodaView) -> Bool {
+        return false
     }
     
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
         switch direction {
         case .right:
-            print("Saga Atti")
+            dislikeAction(user: cardArray[index])
         case .left:
-            print("Sola Atti")
+            likeAction(user: cardArray[index])
         case .up:
-            print("Yukari Atti")
+            superLikeAction(user: cardArray[index])
         default:
             print("Atamadi")
         }
