@@ -27,13 +27,15 @@ public struct WiggleCardModel{
     public var location : String?
     public var distance : String?
     public var bio : String?
+    public var objectId : String?
     
-    public init(profilePicture : String, nameSurname : String, location : String, distance : String, bio : String){
+    public init(profilePicture : String, nameSurname : String, location : String, distance : String, bio : String, objectId : String){
         self.profilePicture = profilePicture
         self.nameSurname = nameSurname
         self.location = location
         self.distance = distance
         self.bio = bio
+        self.objectId = objectId
     }
     public init(){}
 }

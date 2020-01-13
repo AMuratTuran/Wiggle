@@ -10,6 +10,7 @@ import Foundation
 import Parse
 import PromiseKit
 import ParseLiveQuery
+import Koloda
 
 typealias JSON = [String: AnyObject]
 
@@ -237,6 +238,26 @@ struct NetworkManager {
             success(wiggleCardModels)
         }
     }
+    
+    static func swipeActionWithDirection(receiver : String, direction : SwipeResultDirection){
+        let object = PFObject(className: "Likes")
+        object.setValue("sender", forKey: AppConstants.objectId)
+        object.setValue("receiver", forKey: receiver)
+        
+        switch direction {
+        case .left:
+            object.setValue("direction", forKey: "left")
+        case .right:
+            object.setValue("direction", forKey: "right")
+        case .up:
+            object.setValue("direction", forKey: "top")
+        default:
+            print("Unnecessary Direction : \(direction)")
+        }
+        
+        object.saveInBackground()
+    }
+    
 }
 
 

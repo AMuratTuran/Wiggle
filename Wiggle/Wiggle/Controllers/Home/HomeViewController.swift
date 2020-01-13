@@ -11,11 +11,15 @@ import Parse
 import Koloda
 
 class HomeViewController: UIViewController {
+    // MARK: Outlets
     @IBOutlet weak var kolodaView: KolodaView!
     
+    // MARK: Variables
     var cardArray = [WiggleCardModel]()
     var currentCard : WiggleCard?
+    var currentCardModel : WiggleCardModel?
     
+    // MARK: Override Functions
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureViews()
@@ -28,11 +32,22 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        updateObjectId()
+        
         kolodaView.dataSource = self
         kolodaView.delegate = self
         
         self.view.hero.modifiers = [.translate(y: -100), .useGlobalCoordinateSpace]
         fetchUsers()
+    }
+    
+    // MARK: Class Functions
+    func updateObjectId(){
+        if let currentUser = PFUser.current(){
+            if let id = currentUser.objectId{
+                AppConstants.objectId = id
+            }
+        }
     }
     
     func configureViews() {
@@ -58,10 +73,6 @@ class HomeViewController: UIViewController {
         moveToProfileDetailViewController()
     }
     
-    @IBAction func routeProfileAction(_ sender: UIButton) {
-        moveToProfileDetailViewController()
-    }
-    
     func fetchUsers(){
         NetworkManager.getUsersForSwipe(success: { (users) in
             self.cardArray.append(contentsOf: users)
@@ -71,24 +82,37 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func likeAction(user : WiggleCardModel){
-        
+    func swipeAction(direction : SwipeResultDirection){
+        guard let receiverObjectId = currentCardModel?.objectId else {return}
+        NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: direction)
     }
     
-    func dislikeAction(user : WiggleCardModel){
-        
+    // MARK: IBActions
+    
+    @IBAction func routeProfileAction(_ sender: UIButton) {
+        moveToProfileDetailViewController()
     }
     
-    func superLikeAction(user : WiggleCardModel){
-        
+    @IBAction func likeButtonAction(_ sender: Any) {
+        swipeAction(direction: SwipeResultDirection.left)
     }
-    
+    @IBAction func dislikeButtonAction(_ sender: Any) {
+        swipeAction(direction: SwipeResultDirection.right)
+    }
+    @IBAction func superLikeButtonAction(_ sender: Any) {
+        swipeAction(direction: SwipeResultDirection.up)
+    }
 }
+
+// MARK: KolodaViewDelegate Functions
+
 extension HomeViewController: KolodaViewDelegate {
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
         koloda.reloadData()
     }
 }
+
+// MARK: KolodaViewDataSource Functions
 extension HomeViewController: KolodaViewDataSource {
     
     func kolodaNumberOfCards(_ koloda:KolodaView) -> Int {
@@ -150,15 +174,10 @@ extension HomeViewController: KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
-        switch direction {
-        case .right:
-            dislikeAction(user: cardArray[index])
-        case .left:
-            likeAction(user: cardArray[index])
-        case .up:
-            superLikeAction(user: cardArray[index])
-        default:
-            print("Atamadi")
-        }
+        swipeAction(direction: direction)
+    }
+    
+    func koloda(_ koloda: KolodaView, didShowCardAt index: Int) {
+        currentCardModel = cardArray[index]
     }
 }
