@@ -51,5 +51,15 @@ extension PFUser {
         return gender
     }
     
+    func getAge() -> Int {
+        let now = Date()
+        let birthday: Date = getBirthday() as! Date
+        let calendar = Calendar.current
+
+        let ageComponents = calendar.dateComponents([.year], from: birthday, to: now)
+        let age = ageComponents.year!
+        return age
+    }
+    
     
 }

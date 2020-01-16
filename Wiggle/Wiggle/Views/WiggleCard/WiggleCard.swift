@@ -19,6 +19,18 @@ public class WiggleCardView : UIView{
     @IBOutlet weak var dislikeImage: UIImageView!
     @IBOutlet weak var backView: UIView!
     
+    public override func awakeFromNib() {
+
+    }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        if #available(iOS 13.0, *) {
+            backView.addBorder(UIColor.label, width: 0.1)
+        } else {
+            backView.addBorder(UIColor.black, width: 0.1)
+        }
+    }
 }
 
 public struct WiggleCardModel{
@@ -27,13 +39,15 @@ public struct WiggleCardModel{
     public var location : String?
     public var distance : String?
     public var bio : String?
+    public var objectId : String?
     
-    public init(profilePicture : String, nameSurname : String, location : String, distance : String, bio : String){
+    public init(profilePicture : String, nameSurname : String, location : String, distance : String, bio : String, objectId : String){
         self.profilePicture = profilePicture
         self.nameSurname = nameSurname
         self.location = location
         self.distance = distance
         self.bio = bio
+        self.objectId = objectId
     }
     public init(){}
 }
@@ -52,7 +66,6 @@ class WiggleCard: WiggleCardComponent {
     
     public func updateUI(){
         view.cornerRadius(12)
-        view.profilePicture.cornerRadius(12)
         view.backView.cornerRadius(12)
         view.likeImage.alpha = 0.0
         view.dislikeImage.alpha = 0.0

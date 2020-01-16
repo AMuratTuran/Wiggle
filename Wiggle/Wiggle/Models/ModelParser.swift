@@ -14,9 +14,11 @@ class ModelParser{
     static func PFUserToWiggleCardModel(user : [PFUser]) -> [WiggleCardModel]{
         var wiggleCardModels = [WiggleCardModel]()
         user.forEach { user in
-            let name = "\(user.getFirstName()) \(user.getLastName())"
-            let wiggleCardModel = WiggleCardModel(profilePicture: user.getPhotoUrl(), nameSurname: name, location: "", distance: "", bio: user.getBio())
-            wiggleCardModels.append(wiggleCardModel)
+            if let objectId = user.objectId{
+                let name = "\(user.getFirstName()) \(user.getLastName())"
+                let wiggleCardModel = WiggleCardModel(profilePicture: user.getPhotoUrl(), nameSurname: name, location: "", distance: "", bio: user.getBio(), objectId : objectId)
+                wiggleCardModels.append(wiggleCardModel)
+            }
         }
         
         return wiggleCardModels

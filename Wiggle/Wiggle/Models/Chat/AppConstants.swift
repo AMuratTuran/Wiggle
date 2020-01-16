@@ -10,6 +10,8 @@ import UIKit
 
 struct AppConstants {
     
+    static var objectId : String = ""
+    
     struct General {
         static let ApplicationName: String = "Wiggle"
     }
