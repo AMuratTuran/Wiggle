@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import Koloda
+import CoreLocation
 
 class HomeViewController: UIViewController {
     // MARK: Outlets
@@ -18,6 +19,8 @@ class HomeViewController: UIViewController {
     var cardArray = [WiggleCardModel]()
     var currentCard : WiggleCard?
     var currentCardModel : WiggleCardModel?
+    
+    let locationManager = CLLocationManager()
     
     // MARK: Override Functions
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +41,9 @@ class HomeViewController: UIViewController {
         kolodaView.delegate = self
         
         self.view.hero.modifiers = [.translate(y: -100), .useGlobalCoordinateSpace]
+        
         fetchUsers()
+        setupLocationManager()
     }
     
     // MARK: Class Functions
@@ -71,6 +76,15 @@ class HomeViewController: UIViewController {
     @objc func moveToDetail(gestureRecognizer: UIGestureRecognizer) {
         print("tapped")
         moveToProfileDetailViewController()
+    }
+    
+    func setupLocationManager(){
+        locationManager.delegate = self
+        self.locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.requestLocation()
+        }
     }
     
     func fetchUsers(){
@@ -179,5 +193,24 @@ extension HomeViewController: KolodaViewDataSource {
     
     func koloda(_ koloda: KolodaView, didShowCardAt index: Int) {
         currentCardModel = cardArray[index]
+    }
+}
+// MARK: CLLocationManagerDelegate Functions
+extension HomeViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location?.coordinate ?? CLLocationCoordinate2D()
+        let point = PFGeoPoint(latitude: locValue.latitude, longitude: locValue.longitude)
+        //PFUser.current()?.setValue(point, forKey: "location")
+        //fetchUsers()
+        AppConstants.location = point
+        PFUser.current()?.saveInBackground(block: { (result, error) in
+            if error != nil {
+                self.displayError(message: error?.localizedDescription ?? "")
+            }
+        })
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
     }
 }

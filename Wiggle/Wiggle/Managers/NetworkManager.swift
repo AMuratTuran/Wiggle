@@ -223,9 +223,19 @@ struct NetworkManager {
     
     // MARK : HomeScreen User Functions
     static func getUsersForSwipe(success: @escaping([WiggleCardModel]) -> Void, fail: @escaping(String) -> Void) {
-        let query : PFQuery? = PFUser.query()
-        query?.limit = 20
-        query?.findObjectsInBackground { (response, error) in
+        let likesQuery : PFQuery = PFQuery(className:"Likes")
+        let query : PFQuery = PFQuery()
+        
+        query.limit = 20
+        query.whereKey("sender", equalTo: AppConstants.objectId)
+        query.whereKey("objectId", notEqualTo: AppConstants.objectId)
+        query.whereKey("location", nearGeoPoint: AppConstants.location, withinMiles: Double(AppConstants.distance))
+        query.whereKey("gender", notEqualTo: AppConstants.gender)
+        query.whereKey("objectId", doesNotMatchKey: "receiver", in: likesQuery)
+        query.order(byDescending: "popular")
+        
+        
+        query.findObjectsInBackground { (response, error) in
             if let error = error {
                 fail(error.localizedDescription)
             }
@@ -241,21 +251,23 @@ struct NetworkManager {
     
     static func swipeActionWithDirection(receiver : String, direction : SwipeResultDirection){
         let object = PFObject(className: "Likes")
-        object.setValue("sender", forKey: AppConstants.objectId)
-        object.setValue("receiver", forKey: receiver)
+        object.setValue(AppConstants.objectId, forKey: "sender")
+        object.setValue(receiver, forKey: "receiver")
         
         switch direction {
         case .left:
-            object.setValue("direction", forKey: "left")
+            object.setValue("left", forKey: "direction")
         case .right:
-            object.setValue("direction", forKey: "right")
+            object.setValue("right", forKey: "direction")
         case .up:
-            object.setValue("direction", forKey: "top")
+            object.setValue("top", forKey: "direction")
         default:
             print("Unnecessary Direction : \(direction)")
         }
         
-        object.saveInBackground()
+        object.saveInBackground { (result, err) in
+            print(result)
+        }
     }
     
 }

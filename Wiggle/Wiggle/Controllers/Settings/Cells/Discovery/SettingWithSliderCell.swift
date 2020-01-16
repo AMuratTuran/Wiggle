@@ -31,6 +31,8 @@ class SettingWithSliderCell: UITableViewCell {
     }
     
     @IBAction func sliderChanged(_ sender: UISlider) {
-        self.detailLabel.text = "\(Int(floor(sender.value))) km"
+        let distance = Int(floor(sender.value))
+        self.detailLabel.text = "\(distance) km"
+        AppConstants.distance = distance
     }
 }

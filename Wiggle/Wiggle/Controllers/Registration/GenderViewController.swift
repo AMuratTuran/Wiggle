@@ -31,6 +31,7 @@ class GenderViewController: UIViewController {
     @IBAction func continueAction(_ sender: Any) {
         self.startAnimating(self.view, startAnimate: true)
         PFUser.current()?.setValue(selectedGender, forKey: "gender")
+        AppConstants.gender = selectedGender
         PFUser.current()?.saveInBackground(block: { (result, error) in
             self.startAnimating(self.view, startAnimate: false)
             if error != nil {
