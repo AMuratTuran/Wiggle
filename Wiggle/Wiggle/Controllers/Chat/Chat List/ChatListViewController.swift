@@ -16,6 +16,7 @@ class ChatListViewController: UIViewController {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var lineView: UIView!
     
+    var matchedUsers: [PFUser]?
     var currentUser: PFUser!
     let searchController = UISearchController(searchResultsController: nil)
     var isSearchBarEmpty: Bool {
@@ -32,6 +33,7 @@ class ChatListViewController: UIViewController {
     var subscription: Subscription<PFObject>?
     var liveQueryClient: ParseLiveQuery.Client!
     let query = PFQuery(className:"Messages")
+    let matchesView = MatchScrollView.instanceFromNib()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,14 +53,22 @@ class ChatListViewController: UIViewController {
         super.viewWillAppear(true)
         initUpwardsAnimation()
         navigationController?.navigationBar.prefersLargeTitles = true
-        let matchesView = MatchScrollView.instanceFromNib()
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview()}
         stackView.insertArrangedSubview(matchesView, at: 0)
         stackView.insertArrangedSubview(lineView, at: 1)
         stackView.addArrangedSubview(tableView)
         getChatList()
+        getMatchedUsers()
     }
     
+    func getMatchedUsers() {
+        NetworkManager.getMatchedUsers(success: { (response) in
+            self.matchedUsers = response
+            self.matchesView.prepare(with: self.matchedUsers ?? [])
+        }) { (error) in
+            
+        }
+    }
     func updateChatList() {
         NetworkManager.getChatList(success: { (response) in
             self.data = response

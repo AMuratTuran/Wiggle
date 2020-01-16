@@ -127,7 +127,7 @@ extension UIViewController {
         let destinationViewController = profileStoryboard.instantiateViewController(withIdentifier: "ProfileDetailViewController") as! ProfileDetailViewController
         destinationViewController.isHeroEnabled = true
         destinationViewController.modalPresentationStyle = .fullScreen
-               self.present(destinationViewController, animated: true, completion: nil)
+        self.present(destinationViewController, animated: true, completion: nil)
     }
     
     func moveToHomeViewControllerFromProfileDetail() {
@@ -150,6 +150,14 @@ extension UIViewController {
         window.makeKeyAndVisible()
         appDelegate.window = window
     }
+    
+    func moveToMatchResultsViewController(result: HeartRateKitResult) {
+        let storyboard = UIStoryboard(name: "Heartbeat", bundle: nil)
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "MatchResultsViewController") as! MatchResultsViewController
+        destinationVC.result = result 
+        self.navigationController?.pushViewController(destinationVC, animated: true)
+    }
+    
     
     func addMessageIconToNavigationBar() {
         let messageImage = UIImage(named: "icon_smartsearch_message")

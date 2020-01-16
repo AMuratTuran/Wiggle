@@ -42,8 +42,16 @@ extension PFUser {
     }
     
     func getLocation() -> CLLocationCoordinate2D{
-        guard let location = self.object(forKey: "location") as? CLLocationCoordinate2D else {return CLLocationCoordinate2D()}
-        return location
+        guard let parseLocation = self.object(forKey: "location") as? PFGeoPoint else {return CLLocationCoordinate2D()}
+        let lat = parseLocation.latitude
+        let lon = parseLocation.longitude
+        return CLLocationCoordinate2D(latitude: lat, longitude: lon)
+    }
+    
+    func getRelation() -> PFRelation<PFUser>? {
+        guard let relation = self.object(forKey: "friends") as? PFRelation<PFUser> else { return nil }
+        return relation
+        
     }
     
     func getGender() -> Int {

@@ -163,6 +163,25 @@ struct NetworkManager {
         }
     }
     
+    static func sendImageMessage(image: Data, senderId: String, receiverId: String, success: @escaping(Bool) -> Void, fail: @escaping(String) -> Void ) {
+        let messageObject: PFObject = PFObject(className: "Messages")
+        let file = PFFileObject(data: image)
+        file?.saveInBackground(block: { (response, error) in
+            if response {
+                messageObject.setValue(file, forKey: "file")
+                messageObject.setValue(senderId, forKey: "sender")
+                messageObject.setValue(receiverId, forKey: "receiver")
+                messageObject.setValue(0, forKey: "isRead")
+                messageObject.saveEventually { (isSuccess, error) in
+                    if let error = error {
+                        fail(error.localizedDescription)
+                    }
+                    success(isSuccess)
+                }
+            }
+        })
+    }
+    
     static func getChatHistory(myId: String, contactedId: String, success: @escaping([ChatMessage]) -> Void, fail: @escaping(String) -> Void) {
         let query1 = PFQuery(className:"Messages")
         query1.whereKey("sender", equalTo: myId)
@@ -270,6 +289,47 @@ struct NetworkManager {
         }
     }
     
+    static func getHeartRateMatches(success: @escaping([PFUser]) -> Void, fail: @escaping(String) -> Void) {
+        let query : PFQuery? = PFUser.query()
+        let location = PFUser.current()?.getLocation()
+        let gender = PFUser.current()?.getGender()
+        let parseLocation: PFGeoPoint = PFGeoPoint(latitude: location?.latitude ?? 0, longitude: location?.longitude ?? 0)
+        query?.limit = 20
+        query?.order(byDescending: "popular")
+        query?.whereKey("location", nearGeoPoint: parseLocation, withinKilometers: 100)
+        //query?.whereKey("gender", notEqualTo: gender ?? 0)
+        query?.findObjectsInBackground { (response, error) in
+            if let error = error {
+                fail(error.localizedDescription)
+            }
+            guard let userResponse = response as NSArray? else {
+                fail(Localize.Common.GeneralError)
+                return
+            }
+            success(userResponse as? [PFUser] ?? [])
+        }
+    }
+    
+    static func getMatchedUsers(success: @escaping([PFUser]) -> Void, fail: @escaping(String) -> Void) {
+        guard let relation = PFUser.current()?.getRelation() else {
+            fail("error")
+            return
+        }
+        let query: PFQuery = relation.query()
+        query.order(byDescending: "updatedAt")
+        query.whereKeyExists("photo")
+        
+        query.findObjectsInBackground { (response, error) in
+            if let error = error {
+                fail(error.localizedDescription)
+            }
+            guard let userResponse = response as NSArray? else {
+                fail(Localize.Common.GeneralError)
+                return
+            }
+            success(userResponse as? [PFUser] ?? [])
+        }
+    }
 }
 
 
