@@ -7,10 +7,13 @@
 //
 
 import UIKit
-
+import Parse
 struct AppConstants {
     
     static var objectId : String = ""
+    static var location : PFGeoPoint = PFGeoPoint()
+    static var gender : Int = 0
+    static var distance : Int = 50
     
     struct General {
         static let ApplicationName: String = "Wiggle"
