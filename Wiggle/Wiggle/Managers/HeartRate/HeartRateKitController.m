@@ -7,7 +7,7 @@
 #import "UIView+HeartRateKit.h"
 
 #define kShouldAbortAfterSeconds 20
-#define kTimeToDetermineBPMFinalResultInSeconds 20
+#define kTimeToDetermineBPMFinalResultInSeconds 2
 
 static const NSUInteger HRKLabelFontSize = 14;
 static const CGFloat HRKTopButtonsVerticalPadding = 8.0;
@@ -79,17 +79,10 @@ static const CGFloat HRKLabelToLabelTopPadding = 8.0;
     
     dispatch_async(sessionQ, ^{
         // turn flash on
-        if ([self.videoDevice hasTorch] && [self.videoDevice hasFlash]){
+        if([self.videoDevice isTorchModeSupported:AVCaptureTorchModeOn]) {
             [self.videoDevice lockForConfiguration:nil];
-            [self.videoDevice setTorchMode:AVCaptureTorchModeOn];
-            
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
-            AVCapturePhotoSettings *set = [AVCapturePhotoSettings photoSettings];
-            set.flashMode = AVCaptureFlashModeOn;
-#else
-            [self.videoDevice setFlashMode:AVCaptureFlashModeOn];
-#endif
-            
+            [self.session startRunning];
+            self.videoDevice.torchMode=AVCaptureTorchModeOn;
             [self.videoDevice unlockForConfiguration];
         }
     });
@@ -137,7 +130,6 @@ static const CGFloat HRKLabelToLabelTopPadding = 8.0;
 {
     [super viewDidAppear:animated];
     
-    [self startRunningSession];
     
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];// prevent the iphone from sleeping
     
@@ -170,7 +162,7 @@ static const CGFloat HRKLabelToLabelTopPadding = 8.0;
 - (void)applicationEnteredForeground
 {
     if (self.isViewLoaded && self.view.window) {
-        [self startRunningSession];
+        
     }
 }
 
@@ -258,6 +250,8 @@ static const CGFloat HRKLabelToLabelTopPadding = 8.0;
     
     [self.view hrkPinAttribute:NSLayoutAttributeTop toAttribute:NSLayoutAttributeTop ofItem:self.cancelButton withConstant:-HRKTopButtonsVerticalPadding];
     [self.view hrkPinAttribute:NSLayoutAttributeLeft toAttribute:NSLayoutAttributeLeft ofItem:self.cancelButton withConstant:-HRKTopButtonsVerticalPadding];
+    
+    [self startRunningSession];
     
 }
 
@@ -351,8 +345,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
                 
                 self.bpmLabel.text = @"";
                 self.algorithm = nil;
-                self.algorithmStartTime = nil;
-                self.bpmFinalResultFirstTimeDetected = nil;
+
                 return; // stop execution
             }
             

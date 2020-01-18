@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class MatchScrollView: UIView {
     
@@ -23,16 +24,18 @@ class MatchScrollView: UIView {
     
     func prepare() {
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        
-        let view1 = MatchedUserView.instanceFromNib()
-        let view2 = MatchedUserView.instanceFromNib()
-        let view3 = MatchedUserView.instanceFromNib()
-        let view4 = MatchedUserView.instanceFromNib()
-        let view5 = MatchedUserView.instanceFromNib()
-        stackView.addArrangedSubview(view1)
-        stackView.addArrangedSubview(view2)
-        stackView.addArrangedSubview(view3)
-        stackView.addArrangedSubview(view4)
-        stackView.addArrangedSubview(view5)
+    }
+    
+    func prepare(with data: [PFUser]) {
+        stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        self.isHidden = false
+        if data.isEmpty {
+            self.isHidden = true
+        }
+        data.forEach {
+            let view = MatchedUserView.instanceFromNib()
+            view.prepare(with: $0)
+            stackView.addArrangedSubview(view)
+        }
     }
 }

@@ -21,6 +21,9 @@
 		F10038A9239D711C00829A65 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F10038A7239D711C00829A65 /* LogoutCell.xib */; };
 		F10038AC239D759800829A65 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10038AB239D759800829A65 /* Chat.swift */; };
 		F10BC89C239D5E3E005934BB /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10BC89B239D5E3E005934BB /* NotificationSettingsViewController.swift */; };
+		F123854923D07A570062ABC8 /* MatchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F123854823D07A570062ABC8 /* MatchResultsViewController.swift */; };
+		F123854F23D094BB0062ABC8 /* HeartbeatMatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F123854D23D094BB0062ABC8 /* HeartbeatMatchCell.swift */; };
+		F123855023D094BB0062ABC8 /* HeartbeatMatchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F123854E23D094BB0062ABC8 /* HeartbeatMatchCell.xib */; };
 		F1378F52238A892400622B3C /* GeneralRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1378F51238A892400622B3C /* GeneralRequest.swift */; };
 		F1378F54238A8BC500622B3C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1378F53238A8BC400622B3C /* Home.storyboard */; };
 		F1378F57238A983100622B3C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1378F56238A983100622B3C /* HomeViewController.swift */; };
@@ -131,6 +134,9 @@
 		F10038A7239D711C00829A65 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
 		F10038AB239D759800829A65 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		F10BC89B239D5E3E005934BB /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
+		F123854823D07A570062ABC8 /* MatchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchResultsViewController.swift; sourceTree = "<group>"; };
+		F123854D23D094BB0062ABC8 /* HeartbeatMatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartbeatMatchCell.swift; sourceTree = "<group>"; };
+		F123854E23D094BB0062ABC8 /* HeartbeatMatchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeartbeatMatchCell.xib; sourceTree = "<group>"; };
 		F1378F51238A892400622B3C /* GeneralRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralRequest.swift; sourceTree = "<group>"; };
 		F1378F53238A8BC400622B3C /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		F1378F56238A983100622B3C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -520,6 +526,8 @@
 				F19A48C5238F05050045C0BC /* Activity Indicator */,
 				F194B5E523C09BA700349953 /* InAppBannerView.swift */,
 				F194B5E723C09BCB00349953 /* InAppBannerView.xib */,
+				F123854D23D094BB0062ABC8 /* HeartbeatMatchCell.swift */,
+				F123854E23D094BB0062ABC8 /* HeartbeatMatchCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -643,6 +651,7 @@
 			children = (
 				F159FCD623CBD1E80042429E /* InitialHeartbeatViewController.swift */,
 				F159FCD823CBD3050042429E /* GetHeartbeatViewController.swift */,
+				F123854823D07A570062ABC8 /* MatchResultsViewController.swift */,
 			);
 			path = Heartbeat;
 			sourceTree = "<group>";
@@ -741,6 +750,8 @@
 			dependencies = (
 			);
 			name = Wiggle;
+			packageProductDependencies = (
+			);
 			productName = Wiggle;
 			productReference = F1585AD42384064F0062A681 /* Wiggle.app */;
 			productType = "com.apple.product-type.application";
@@ -771,6 +782,8 @@
 				tr,
 			);
 			mainGroup = F1585ACB2384064F0062A681;
+			packageReferences = (
+			);
 			productRefGroup = F1585AD52384064F0062A681 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -787,6 +800,7 @@
 			files = (
 				F1C794BF23AC0E1400D9FEFC /* LICENSE.txt in Resources */,
 				F1378F54238A8BC500622B3C /* Home.storyboard in Resources */,
+				F123855023D094BB0062ABC8 /* HeartbeatMatchCell.xib in Resources */,
 				F1585AE4238406560062A681 /* LaunchScreen.storyboard in Resources */,
 				F1378F59238ADC7900622B3C /* Profile.storyboard in Resources */,
 				F1C794BE23AC0E1400D9FEFC /* OpenSans-BoldItalic.ttf in Resources */,
@@ -881,6 +895,7 @@
 				F14A1EFA23AEB9BC00FF2C09 /* GenderViewController.swift in Sources */,
 				F1585AFA2384077A0062A681 /* EnterVerificationCodeViewController.swift in Sources */,
 				F150FD19239C33E2002FD404 /* ChatListCell.swift in Sources */,
+				F123854F23D094BB0062ABC8 /* HeartbeatMatchCell.swift in Sources */,
 				F150FCFB2393FA50002FD404 /* SettingWithLabelCell.swift in Sources */,
 				F1935EFE23A657E500431DE2 /* Match.swift in Sources */,
 				F150FD0C239413CD002FD404 /* LabelWithCheckmarkCell.swift in Sources */,
@@ -921,6 +936,7 @@
 				F1378F5E238B012100622B3C /* ProfileDetailViewController.swift in Sources */,
 				F1D407162385E641002350BE /* EnableLocationViewController.swift in Sources */,
 				DC10995623AFBEF800068054 /* HeartbeatView.swift in Sources */,
+				F123854923D07A570062ABC8 /* MatchResultsViewController.swift in Sources */,
 				F159FCEC23CBD89D0042429E /* HeartRateKitAlgorithm.mm in Sources */,
 				F159C8D12385C8850091AB05 /* ImagePicker.swift in Sources */,
 				F10038A8239D711C00829A65 /* LogoutCell.swift in Sources */,

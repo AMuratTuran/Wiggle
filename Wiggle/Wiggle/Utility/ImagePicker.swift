@@ -36,7 +36,7 @@ open class ImagePicker: NSObject {
             return nil
         }
         
-        return UIAlertAction(title: title, style: .default) { [unowned self] _ in
+        return UIAlertAction(title: title, style: .default) { _ -> Void in
             self.pickerController.sourceType = type
             self.presentationController?.present(self.pickerController, animated: true)
         }

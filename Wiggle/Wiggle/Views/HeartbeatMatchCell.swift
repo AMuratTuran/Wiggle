@@ -1,22 +1,19 @@
 //
-//  MatchedUserView.swift
+//  HeartbeatMatchCell.swift
 //  Wiggle
 //
-//  Created by Murat Turan on 4.01.2020.
+//  Created by Murat Turan on 16.01.2020.
 //  Copyright © 2020 Murat Turan. All rights reserved.
 //
 
 import UIKit
 import Parse
 
-class MatchedUserView: UIView {
-        
+class HeartbeatMatchCell: UICollectionViewCell {
+
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    
-    class func instanceFromNib() -> MatchedUserView {
-        return UINib(nibName: MatchedUserView.reuseIdentifier, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! MatchedUserView
-    }
+    @IBOutlet weak var nameAndAgeLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,7 +28,9 @@ class MatchedUserView: UIView {
         let imageUrl = data.getPhotoUrl()
         imageView.kf.indicatorType = .activity
         imageView.kf.setImage(with: URL(string: imageUrl))
-        let name = "\(data.getFirstName())"
-        nameLabel.text = "\(name)"
+        let age = "\(data.getAge())"
+        let name = "\(data.getFirstName()) \(data.getLastName())"
+        nameAndAgeLabel.text = "\(name), \(age)"
+        locationLabel.text = "4 km uzakta"
     }
 }

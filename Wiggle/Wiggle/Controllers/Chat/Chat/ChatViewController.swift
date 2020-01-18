@@ -32,12 +32,19 @@ class ChatViewController: MessagesViewController {
     var myUser: MockUser {
         return user
     }
+    let addButton = InputBarButtonItem(type: .infoDark)
     var chatHistory: [ChatMessage] = []
     var subscription: Subscription<PFObject>?
     var liveQueryClient: ParseLiveQuery.Client!
     let query1 = PFQuery(className:"Messages")
     let query2 = PFQuery(className:"Messages")
     var query: PFQuery<PFObject>!
+    open lazy var attachmentManager: AttachmentManager = { [unowned self] in
+        let manager = AttachmentManager()
+        manager.delegate = self
+        return manager
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -181,18 +188,17 @@ class ChatViewController: MessagesViewController {
     }
     
     func configureMessageInputBar() {
-        if #available(iOS 13.0, *) {
-            messageInputBar.contentView.backgroundColor = UIColor.systemBackground
-            messageInputBar.blurView.isHidden = true
-            messageInputBar.bottomStackView.backgroundColor = UIColor.systemBackground
-            messageInputBar.inputAccessoryView?.backgroundColor = UIColor.systemBackground
-            messageInputBar.inputTextView.backgroundColor = UIColor.systemBackground
-            messageInputBar.backgroundColor = UIColor.systemBackground
-            messageInputBar.backgroundView.backgroundColor = UIColor.systemBackground
-            messageInputBar.leftStackView.backgroundColor = UIColor.red
-        } else {
-            // Fallback on earlier versions
-        }
+        messageInputBar.setLeftStackViewWidthConstant(to: 38, animated: false)
+        messageInputBar.setStackViewItems([addButton, InputBarButtonItem.fixedSpace(2)], forStack: .left, animated: false)
+        addButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        addButton.setSize(CGSize(width: 36, height: 36), animated: false)
+        addButton.title = nil
+        addButton.imageView?.layer.cornerRadius = 16
+        addButton.backgroundColor = .clear
+        addButton.imageView?.backgroundColor = .systemPink
+        addButton.tintColor = .systemPink
+        addButton.image = UIImage(named: "add")
+        addButton.addTarget(self, action: #selector(addImageTapped), for: .touchUpInside)
         messageInputBar.isTranslucent = true
         messageInputBar.separatorLine.isHidden = true
         messageInputBar.inputTextView.tintColor =  UIColor(red: 178/255, green: 178/255, blue: 178/255, alpha: 1)
@@ -209,6 +215,12 @@ class ChatViewController: MessagesViewController {
         messageInputBar.inputTextView.scrollIndicatorInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         messageInputBar.inputTextView.delegate = self
         configureInputBarItems()
+    }
+    
+    @objc func addImageTapped() {
+        let imagePicker: ImagePicker!
+        imagePicker = ImagePicker(presentationController: self, delegate: self)
+        imagePicker.present(from: self.addButton)
     }
     
     private func configureInputBarItems() {
@@ -400,17 +412,36 @@ extension ChatViewController: MessagesDataSource {
 extension ChatViewController: MessageInputBarDelegate {
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         messageInputBar.sendButton.startAnimating()
-        messageInputBar.inputTextView.text = ""
-        if let currentUser = PFUser.current(), let receiver = contactedUser, let senderId = currentUser.objectId {
-            let receiverId = receiver.receiverId
-            NetworkManager.sendTextMessage(messageText: text, senderId: senderId, receiverId: receiverId, success: { (success) in
-                print(success)
-                self.messageInputBar.sendButton.stopAnimating()
-            }) { (error) in
-                self.messageInputBar.sendButton.stopAnimating()
-                self.displayError(message: error)
+        
+        if inputBar.inputTextView.images.isEmpty {
+            if let currentUser = PFUser.current(), let receiver = contactedUser, let senderId = currentUser.objectId {
+                let receiverId = receiver.receiverId
+                NetworkManager.sendTextMessage(messageText: text, senderId: senderId, receiverId: receiverId, success: { (success) in
+                    print(success)
+                    self.messageInputBar.sendButton.stopAnimating()
+                }) { (error) in
+                    self.messageInputBar.sendButton.stopAnimating()
+                    self.displayError(message: error)
+                }
+            }
+        }else {
+            if let currentUser = PFUser.current(), let receiver = contactedUser, let senderId = currentUser.objectId {
+                let receiverId = receiver.receiverId
+                guard let selectedImage = inputBar.inputTextView.images.first else { return }
+                do {
+                    let imageData: Data = selectedImage.jpegData(compressionQuality: 1.0)! as Data
+                    NetworkManager.sendImageMessage(image: imageData, senderId: senderId, receiverId: receiverId, success: { (success) in
+                        print(success)
+                        self.messageInputBar.sendButton.stopAnimating()
+                    }) { (error) in
+                        self.messageInputBar.sendButton.stopAnimating()
+                        self.displayError(message: error)
+                    }
+                }
             }
         }
+        messageInputBar.inputTextView.text = ""
+
     }
 }
 
@@ -555,3 +586,22 @@ class ChatReceivedMessageModel {
 extension ChatViewController: UITextViewDelegate {
     
 }
+
+extension ChatViewController: ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        guard let image = image else { return }
+        do {
+            let imageData: NSData = image.jpegData(compressionQuality: 1.0)! as NSData
+            
+        }catch {
+            
+        }
+    }
+}
+
+extension ChatViewController: AttachmentManagerDelegate {
+    func attachmentManager(_ manager: AttachmentManager, shouldBecomeVisible: Bool) {
+        
+    }
+}
+
