@@ -224,18 +224,18 @@ struct NetworkManager {
     // MARK : HomeScreen User Functions
     static func getUsersForSwipe(success: @escaping([WiggleCardModel]) -> Void, fail: @escaping(String) -> Void) {
         let likesQuery : PFQuery = PFQuery(className:"Likes")
-        let query : PFQuery = PFQuery()
+        let query : PFQuery? = PFUser.query()
         
-        query.limit = 20
-        query.whereKey("sender", equalTo: AppConstants.objectId)
-        query.whereKey("objectId", notEqualTo: AppConstants.objectId)
-        query.whereKey("location", nearGeoPoint: AppConstants.location, withinMiles: Double(AppConstants.distance))
-        query.whereKey("gender", notEqualTo: AppConstants.gender)
-        query.whereKey("objectId", doesNotMatchKey: "receiver", in: likesQuery)
-        query.order(byDescending: "popular")
+        query?.limit = 20
+        //query?.whereKey("sender", equalTo: AppConstants.objectId)
+        query?.whereKey("objectId", notEqualTo: AppConstants.objectId)
+        //query?.whereKey("location", nearGeoPoint: AppConstants.location, withinMiles: Double(AppConstants.distance))
+        query?.whereKey("gender", notEqualTo: AppConstants.gender)
+        query?.whereKey("objectId", doesNotMatchKey: "receiver", in: likesQuery)
+        query?.order(byDescending: "popular")
         
         
-        query.findObjectsInBackground { (response, error) in
+        query?.findObjectsInBackground { (response, error) in
             if let error = error {
                 fail(error.localizedDescription)
             }
