@@ -165,21 +165,19 @@ struct NetworkManager {
     
     static func sendImageMessage(image: Data, senderId: String, receiverId: String, success: @escaping(Bool) -> Void, fail: @escaping(String) -> Void ) {
         let messageObject: PFObject = PFObject(className: "Messages")
-        let file = PFFileObject(data: image)
-        file?.saveInBackground(block: { (response, error) in
-            if response {
-                messageObject.setValue(file, forKey: "file")
-                messageObject.setValue(senderId, forKey: "sender")
-                messageObject.setValue(receiverId, forKey: "receiver")
-                messageObject.setValue(0, forKey: "isRead")
-                messageObject.saveEventually { (isSuccess, error) in
-                    if let error = error {
-                        fail(error.localizedDescription)
-                    }
-                    success(isSuccess)
-                }
+        let imageFile = PFFileObject(name:"image.png", data:image)
+        
+        messageObject.setValue(imageFile, forKey: "file")
+        messageObject.setValue(senderId, forKey: "sender")
+        messageObject.setValue(receiverId, forKey: "receiver")
+        messageObject.setValue(0, forKey: "isRead")
+        messageObject.saveInBackground { (isSuccess, error) in
+            if let error = error {
+                fail(error.localizedDescription)
+            }else {
+                success(isSuccess)
             }
-        })
+        }
     }
     
     static func getChatHistory(myId: String, contactedId: String, success: @escaping([ChatMessage]) -> Void, fail: @escaping(String) -> Void) {

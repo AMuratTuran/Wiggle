@@ -20,6 +20,7 @@ struct Localize {
     struct Common {
         static var ContinueButton: String { return NSLocalizedString("continue_button", comment: "Common") }
         static var OKButton: String { return NSLocalizedString("ok_button", comment: "Common") }
+        static var Clear: String { return NSLocalizedString("Temizle", comment: "Common") }
         static var CancelButton: String { return NSLocalizedString("cancel_button", comment: "Common") }
         static var SkipButton: String { return NSLocalizedString("skip_button", comment: "Common") }
         static var Error: String { return NSLocalizedString("error", comment: "Common") }

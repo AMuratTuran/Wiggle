@@ -7,6 +7,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Chats-->
         <scene sceneID="RLs-cZ-K7R">
@@ -68,6 +73,68 @@
             </objects>
             <point key="canvasLocation" x="386.95652173913044" y="-40.178571428571423"/>
         </scene>
+        <!--Send Image View Controller-->
+        <scene sceneID="iuf-9R-MLb">
+            <objects>
+                <viewController storyboardIdentifier="SendImageViewController" id="3nY-V8-qx7" customClass="SendImageViewController" customModule="Wiggle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nE0-8p-xHc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diD-BK-XCC">
+                                <rect key="frame" x="320" y="612" width="35" height="35"/>
+                                <state key="normal" image="icon_smartsearch_message"/>
+                                <connections>
+                                    <action selector="sendAction:" destination="3nY-V8-qx7" eventType="touchUpInside" id="zpK-vI-P8l"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQc-rd-gdM">
+                                <rect key="frame" x="265.5" y="618" width="49.5" height="23.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Enh-aR-HCM">
+                                <rect key="frame" x="0.0" y="150" width="375" height="367"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o11-7L-epR">
+                                <rect key="frame" x="335" y="20" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="SzR-Mh-3Pk"/>
+                                    <constraint firstAttribute="width" constant="30" id="qo1-8w-O4p"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="x.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="dismissTapped:" destination="3nY-V8-qx7" eventType="touchUpInside" id="YUP-de-Sz7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="diD-BK-XCC" firstAttribute="leading" secondItem="eQc-rd-gdM" secondAttribute="trailing" constant="5" id="4Tf-hy-jth"/>
+                            <constraint firstItem="o11-7L-epR" firstAttribute="top" secondItem="ylN-z3-ecR" secondAttribute="top" constant="20" id="4Vc-DX-3Ah"/>
+                            <constraint firstItem="Enh-aR-HCM" firstAttribute="centerY" secondItem="nE0-8p-xHc" secondAttribute="centerY" id="Ev1-HQ-rfe"/>
+                            <constraint firstItem="Enh-aR-HCM" firstAttribute="leading" secondItem="ylN-z3-ecR" secondAttribute="leading" id="H6L-aX-B0n"/>
+                            <constraint firstItem="ylN-z3-ecR" firstAttribute="bottom" secondItem="diD-BK-XCC" secondAttribute="bottom" constant="20" id="LPS-az-Jsl"/>
+                            <constraint firstItem="Enh-aR-HCM" firstAttribute="centerX" secondItem="nE0-8p-xHc" secondAttribute="centerX" id="M0u-Pg-KKl"/>
+                            <constraint firstItem="ylN-z3-ecR" firstAttribute="trailing" secondItem="o11-7L-epR" secondAttribute="trailing" constant="10" id="Mv9-mb-etd"/>
+                            <constraint firstItem="Enh-aR-HCM" firstAttribute="top" secondItem="ylN-z3-ecR" secondAttribute="top" constant="150" id="XZ3-lc-Ez6"/>
+                            <constraint firstItem="ylN-z3-ecR" firstAttribute="trailing" secondItem="diD-BK-XCC" secondAttribute="trailing" constant="20" id="jzb-CG-Unj"/>
+                            <constraint firstItem="eQc-rd-gdM" firstAttribute="centerY" secondItem="diD-BK-XCC" secondAttribute="centerY" id="zOT-tK-Ymh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ylN-z3-ecR"/>
+                    </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="eQc-rd-gdM" id="VeM-uY-Cpe"/>
+                        <outlet property="selectedImage" destination="Enh-aR-HCM" id="d5l-if-Sr0"/>
+                        <outlet property="sendButton" destination="diD-BK-XCC" id="nDI-EX-QQg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gio-06-360" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="386" y="710"/>
+        </scene>
         <!--Chat View Controller-->
         <scene sceneID="uRS-Wd-XHx">
             <objects>
@@ -108,5 +175,7 @@
     </scenes>
     <resources>
         <image name="bubble.left.fill" catalog="system" width="64" height="54"/>
+        <image name="icon_smartsearch_message" width="34.5" height="34.5"/>
+        <image name="x.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>

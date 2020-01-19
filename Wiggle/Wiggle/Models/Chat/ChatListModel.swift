@@ -22,6 +22,7 @@ class ChatListModel {
     var myId: String = ""
     var isRead: Bool = false
     var objectId: String = ""
+    var isImageMessage: Bool
     
     init(user: PFUser, chat: Chat) {
         if let receiverFirstName = user["first_name"] as? String, let receiverLastName = user["last_name"] as? String{
@@ -39,6 +40,8 @@ class ChatListModel {
         }else {
             self.receiverId = ""
         }
+        
+        isImageMessage = chat.isImageMessage
         
         if let currentUser = PFUser.current(), let id = currentUser.objectId {
             self.myId = id

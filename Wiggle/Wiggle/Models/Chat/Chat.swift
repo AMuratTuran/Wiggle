@@ -18,6 +18,7 @@ class Chat: Decodable {
     var remoteId: String
     var isRead: Bool
     var createdAt: String
+    var isImageMessage: Bool
     
     enum CodingKeys: String, CodingKey {
 
@@ -31,7 +32,8 @@ class Chat: Decodable {
 
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        lastMessage = try (values.decodeIfPresent(String.self, forKey: .lastMessage) ?? "")
+        lastMessage = try (values.decodeIfPresent(String.self, forKey: .lastMessage) ?? "Photo")
+        isImageMessage = lastMessage == "Photo" ? true : false
         senderId = try (values.decodeIfPresent(String.self, forKey: .senderId) ?? "")
         remoteId = try (values.decodeIfPresent(String.self, forKey: .remoteId) ?? "")
         createdAt = try (values.decodeIfPresent(String.self, forKey: .createdAt) ?? "")
@@ -41,7 +43,8 @@ class Chat: Decodable {
     }
     
     init(dictionary: [String: Any]) {
-        self.lastMessage = dictionary["lastMessage"] as? String ?? ""
+        self.lastMessage = dictionary["lastMessage"] as? String ?? "Photo"
+        isImageMessage = lastMessage == "Photo" ? true : false
         self.senderId = dictionary["senderId"] as? String ?? ""
         self.remoteId = dictionary["remoteId"] as? String ?? ""
         let isReadNum =  dictionary["isRead"] as? Int ?? 0
@@ -52,7 +55,8 @@ class Chat: Decodable {
     }
     
     init (object: PFObject) {
-        self.lastMessage = object["body"] as! String
+        self.lastMessage = object["body"] as? String ?? "Photo"
+        isImageMessage = lastMessage == "Photo" ? true : false
         self.senderId = object["sender"] as! String
         self.remoteId = object["receiver"] as! String
         let isReadNum =  object["isRead"] as? Int ?? 0
