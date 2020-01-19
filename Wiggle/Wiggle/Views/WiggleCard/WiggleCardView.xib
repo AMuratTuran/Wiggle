@@ -22,23 +22,23 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3E-0R-Omo">
-                            <rect key="frame" x="8" y="660" width="373" height="80"/>
+                            <rect key="frame" x="8" y="664" width="373" height="80"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Murat Turan, 25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDB-Zg-zgL">
-                                    <rect key="frame" x="8" y="8" width="149" height="24"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                    <rect key="frame" x="8" y="8" width="193.5" height="31"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="26"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Istanbul, Turkey" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osn-zZ-iIS">
-                                    <rect key="frame" x="8" y="36" width="114" height="20.5"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                    <rect key="frame" x="8" y="43" width="151" height="24"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13 km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SuR-un-bqk">
-                                    <rect key="frame" x="318" y="12" width="47" height="20"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                    <rect key="frame" x="307.5" y="15" width="57.5" height="24"/>
+                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -60,8 +60,8 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Developer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXq-dv-sZg">
-                            <rect key="frame" x="8" y="748" width="110" height="20"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <rect key="frame" x="8" y="744" width="133" height="24"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -69,16 +69,14 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstItem="G19-6F-OEn" firstAttribute="top" secondItem="Abb-gs-ocT" secondAttribute="top" id="1hO-MW-cSl"/>
-                        <constraint firstItem="OXq-dv-sZg" firstAttribute="leading" secondItem="Abb-gs-ocT" secondAttribute="leading" constant="8" id="6yb-6G-v28"/>
                         <constraint firstAttribute="trailing" secondItem="a3E-0R-Omo" secondAttribute="trailing" constant="33" id="BnQ-3I-hrs"/>
                         <constraint firstAttribute="trailing" secondItem="G19-6F-OEn" secondAttribute="trailing" id="O6j-gL-bk0"/>
                         <constraint firstAttribute="bottom" secondItem="G19-6F-OEn" secondAttribute="bottom" id="TP5-pD-w8B"/>
                         <constraint firstAttribute="bottom" secondItem="OXq-dv-sZg" secondAttribute="bottom" constant="50" id="Tn7-sZ-Zbf"/>
                         <constraint firstItem="G19-6F-OEn" firstAttribute="leading" secondItem="Abb-gs-ocT" secondAttribute="leading" id="UF1-xa-gge"/>
                         <constraint firstItem="OXq-dv-sZg" firstAttribute="leading" secondItem="Abb-gs-ocT" secondAttribute="leading" constant="8" id="iKE-VI-n63"/>
-                        <constraint firstItem="OXq-dv-sZg" firstAttribute="top" secondItem="a3E-0R-Omo" secondAttribute="bottom" constant="8" id="l1V-bM-zYa"/>
                         <constraint firstItem="a3E-0R-Omo" firstAttribute="leading" secondItem="Abb-gs-ocT" secondAttribute="leading" constant="8" id="lMk-pE-uiR"/>
-                        <constraint firstItem="OXq-dv-sZg" firstAttribute="top" secondItem="a3E-0R-Omo" secondAttribute="bottom" constant="8" id="pIt-MT-8sl"/>
+                        <constraint firstItem="OXq-dv-sZg" firstAttribute="top" secondItem="a3E-0R-Omo" secondAttribute="bottom" id="pIt-MT-8sl"/>
                     </constraints>
                 </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="N41-FS-UIk">

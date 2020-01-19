@@ -247,10 +247,10 @@ struct NetworkManager {
         
         query?.limit = 20
         //query?.whereKey("sender", equalTo: AppConstants.objectId)
-        query?.whereKey("objectId", notEqualTo: AppConstants.objectId)
+        //query?.whereKey("objectId", notEqualTo: AppConstants.objectId)
         //query?.whereKey("location", nearGeoPoint: AppConstants.location, withinMiles: Double(AppConstants.distance))
-        query?.whereKey("gender", notEqualTo: AppConstants.gender)
-        query?.whereKey("objectId", doesNotMatchKey: "receiver", in: likesQuery)
+        //query?.whereKey("gender", notEqualTo: AppConstants.gender)
+        //query?.whereKey("objectId", doesNotMatchKey: "receiver", in: likesQuery)
         query?.order(byDescending: "popular")
         
         
