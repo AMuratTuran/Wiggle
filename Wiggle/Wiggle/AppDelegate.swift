@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate {
         // Override point for customization after application launch.
         // Parse configuration
         
-        configureBackButton()
         
         let parseConfig = ParseClientConfiguration {
             $0.applicationId = AppConstants.ParseConstants.ApplicationId
@@ -74,13 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate {
       }
     }
     
-    func configureBackButton() {
-        let barButtonItemAppearance = UIBarButtonItem.appearance()
-        let attributes = [NSAttributedString.Key.font:  UIFont(name: "OpenSans-Bold", size: 0.1)!, NSAttributedString.Key.foregroundColor: UIColor.clear]
-        
-        barButtonItemAppearance.setTitleTextAttributes(attributes, for: .normal)
-        barButtonItemAppearance.setTitleTextAttributes(attributes, for: .highlighted)
-    }
+
     
     // Handle Facebook authorization URLs
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {

@@ -26,6 +26,7 @@ struct Localize {
         static var Error: String { return NSLocalizedString("error", comment: "Common") }
         static var PhoneCodes: String { return NSLocalizedString("phone_codes", comment: "Common") }
         static var GeneralError: String { return NSLocalizedString("general_error", comment: "Common") }
+        static var Required: String { return NSLocalizedString("Zorunlu alan", comment: "Common") }
     }
     
     struct DatePicker {

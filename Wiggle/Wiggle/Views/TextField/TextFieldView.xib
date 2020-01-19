@@ -35,7 +35,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Adınız Soyadınız" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HHh-PB-vDl" customClass="FloatLabelTextField" customModule="Wiggle" customModuleProvider="target">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Adınız Soyadınız" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HHh-PB-vDl">
                             <rect key="frame" x="0.0" y="78" width="375" height="40"/>
                             <accessibility key="accessibilityConfiguration" identifier="register-name-textfield"/>
                             <constraints>

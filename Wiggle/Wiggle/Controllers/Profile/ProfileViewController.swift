@@ -115,10 +115,10 @@ class ProfileViewController: UIViewController {
     }
     @IBAction func editProfileAction(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-        let destinationVC = storyboard.instantiateViewController(withIdentifier: "EditProfileNavigationController") as! UINavigationController
-        self.present(destinationVC, animated: true, completion: nil)
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "EditProfileViewController") as! EditProfileViewController
+        let nav = UINavigationController(rootViewController: destinationVC)
+        self.present(nav, animated: true, completion: nil)
     }
-    
 }
 
 extension ProfileViewController: ImagePickerDelegate {

@@ -213,8 +213,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fls-Vs-QqP">
-                                <rect key="frame" x="20" y="64" width="130" height="130"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="anV-ju-WQf">
+                                <rect key="frame" x="165" y="20" width="190" height="100"/>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hNO-Sk-fzc">
+                                <rect key="frame" x="20" y="20" width="130" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="65"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fls-Vs-QqP">
+                                <rect key="frame" x="20" y="20" width="130" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="867-A5-UTs"/>
                                     <constraint firstAttribute="height" constant="130" id="pOn-mW-uJH"/>
@@ -225,24 +237,77 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="anV-ju-WQf">
-                                <rect key="frame" x="165" y="64" width="190" height="130"/>
-                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZf-PV-arD">
+                                <rect key="frame" x="20" y="175" width="29" height="25"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIh-k7-MEF">
+                                <rect key="frame" x="20" y="350" width="78" height="25"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62r-Qd-0Uj">
+                                <rect key="frame" x="20" y="385" width="55" height="36"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="pickBirthdayAction:" destination="BDF-fJ-k5s" eventType="touchUpInside" id="rxs-bo-Gkb"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hWa-Aw-FMX">
+                                <rect key="frame" x="20" y="210" width="335" height="120"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="cQa-xx-6Hw"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. a qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="anV-ju-WQf" firstAttribute="height" secondItem="fls-Vs-QqP" secondAttribute="height" id="4ub-xU-2G1"/>
+                            <constraint firstItem="hWa-Aw-FMX" firstAttribute="leading" secondItem="fls-Vs-QqP" secondAttribute="leading" id="3Z0-d2-yff"/>
+                            <constraint firstItem="anV-ju-WQf" firstAttribute="height" secondItem="fls-Vs-QqP" secondAttribute="height" constant="-30" id="4ub-xU-2G1"/>
+                            <constraint firstItem="xZf-PV-arD" firstAttribute="leading" secondItem="fls-Vs-QqP" secondAttribute="leading" id="7HW-e6-elV"/>
                             <constraint firstItem="anV-ju-WQf" firstAttribute="leading" secondItem="fls-Vs-QqP" secondAttribute="trailing" constant="15" id="9fH-s7-A4W"/>
+                            <constraint firstItem="hWa-Aw-FMX" firstAttribute="trailing" secondItem="anV-ju-WQf" secondAttribute="trailing" id="ACE-Km-NRz"/>
+                            <constraint firstItem="hWa-Aw-FMX" firstAttribute="top" secondItem="xZf-PV-arD" secondAttribute="bottom" constant="10" id="Enf-xq-D67"/>
+                            <constraint firstItem="hNO-Sk-fzc" firstAttribute="top" secondItem="fls-Vs-QqP" secondAttribute="top" id="JVO-eu-Lhe"/>
+                            <constraint firstItem="xZf-PV-arD" firstAttribute="top" secondItem="fls-Vs-QqP" secondAttribute="bottom" constant="25" id="KY4-G7-hIw"/>
                             <constraint firstItem="fls-Vs-QqP" firstAttribute="leading" secondItem="L0n-Ni-o9B" secondAttribute="leading" constant="20" id="LNh-wz-UTH"/>
+                            <constraint firstItem="hNO-Sk-fzc" firstAttribute="leading" secondItem="fls-Vs-QqP" secondAttribute="leading" id="TFs-rF-ld0"/>
+                            <constraint firstItem="hNO-Sk-fzc" firstAttribute="height" secondItem="fls-Vs-QqP" secondAttribute="height" multiplier="0.984615" id="bCT-Ap-Zt3"/>
+                            <constraint firstItem="62r-Qd-0Uj" firstAttribute="top" secondItem="aIh-k7-MEF" secondAttribute="bottom" constant="10" id="fkz-hR-4dL"/>
                             <constraint firstItem="L0n-Ni-o9B" firstAttribute="trailing" secondItem="anV-ju-WQf" secondAttribute="trailing" constant="20" id="mKT-rV-w6O"/>
+                            <constraint firstItem="hNO-Sk-fzc" firstAttribute="trailing" secondItem="fls-Vs-QqP" secondAttribute="trailing" id="nSn-rQ-NIo"/>
+                            <constraint firstItem="aIh-k7-MEF" firstAttribute="top" secondItem="hWa-Aw-FMX" secondAttribute="bottom" constant="20" id="qnd-hi-t9h"/>
                             <constraint firstItem="anV-ju-WQf" firstAttribute="top" secondItem="L0n-Ni-o9B" secondAttribute="top" constant="20" id="s50-Yk-OPB"/>
+                            <constraint firstItem="62r-Qd-0Uj" firstAttribute="leading" secondItem="aIh-k7-MEF" secondAttribute="leading" id="sgF-ax-mWt"/>
+                            <constraint firstItem="hNO-Sk-fzc" firstAttribute="width" secondItem="fls-Vs-QqP" secondAttribute="width" id="tpG-x7-Jka"/>
                             <constraint firstItem="fls-Vs-QqP" firstAttribute="top" secondItem="L0n-Ni-o9B" secondAttribute="top" constant="20" id="x7v-Nn-2sL"/>
+                            <constraint firstItem="aIh-k7-MEF" firstAttribute="leading" secondItem="xZf-PV-arD" secondAttribute="leading" id="yLh-Tz-ssl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="L0n-Ni-o9B"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Bilgileri Düzenle" id="ONk-Nc-Anv"/>
+                    <navigationItem key="navigationItem" title="Bilgileri Düzenle" id="ONk-Nc-Anv">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Wga-GW-s4B">
+                            <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="bioTextView" destination="hWa-Aw-FMX" id="Uvj-Yr-iHl"/>
+                        <outlet property="bioTitleLabel" destination="xZf-PV-arD" id="CXT-qk-X7A"/>
+                        <outlet property="imageBackgroundView" destination="hNO-Sk-fzc" id="GjH-i3-dbh"/>
                         <outlet property="nameStackView" destination="anV-ju-WQf" id="gVk-ad-tZs"/>
+                        <outlet property="pickBirthdayButton" destination="62r-Qd-0Uj" id="JcZ-Fg-WuE"/>
                         <outlet property="profileImageView" destination="fls-Vs-QqP" id="OXJ-n6-tsZ"/>
                     </connections>
                 </viewController>
@@ -348,24 +413,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pqb-UX-XQW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="132" y="38.23088455772114"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="eVi-Om-U2X">
-            <objects>
-                <navigationController storyboardIdentifier="EditProfileNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="sRL-Fa-I5A" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Wf7-SP-3SG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BDF-fJ-k5s" kind="relationship" relationship="rootViewController" id="j1V-If-7Gd"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vKa-ok-CVY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1079.2" y="771.36431784107947"/>
         </scene>
     </scenes>
     <resources>
