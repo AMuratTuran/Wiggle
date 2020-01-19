@@ -14,6 +14,8 @@ import CoreLocation
 class HomeViewController: UIViewController {
     // MARK: Outlets
     @IBOutlet weak var kolodaView: KolodaView!
+    @IBOutlet weak var emptyImage: UIImageView!
+    @IBOutlet weak var buttonsStackView: UIStackView!
     
     // MARK: Variables
     var cardArray = [WiggleCardModel]()
@@ -42,7 +44,6 @@ class HomeViewController: UIViewController {
         
         self.view.hero.modifiers = [.translate(y: -100), .useGlobalCoordinateSpace]
         
-        fetchUsers()
         setupLocationManager()
     }
     
@@ -59,11 +60,13 @@ class HomeViewController: UIViewController {
         kolodaView.cornerRadius(12.0)
         kolodaView.clipsToBounds = true
         addTapGesture()
+        emptyImage.isHidden = false
+        buttonsStackView.isHidden = true
+        addMessageIconToNavigationBar()
     }
     
     func prepareView() {
         kolodaView.addShadow()
-        addMessageIconToNavigationBar()
     }
     
     func addTapGesture() {
@@ -89,6 +92,13 @@ class HomeViewController: UIViewController {
     
     func fetchUsers(){
         NetworkManager.getUsersForSwipe(success: { (users) in
+            if users.count == 0{
+                self.emptyImage.isHidden = false
+                self.buttonsStackView.isHidden = true
+            }else{
+                self.emptyImage.isHidden = true
+                self.buttonsStackView.isHidden = false
+            }
             self.cardArray.append(contentsOf: users)
             self.kolodaView.reloadData()
         }) { fail in
@@ -122,6 +132,9 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: KolodaViewDelegate {
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
+        self.emptyImage.isHidden = false
+        self.buttonsStackView.isHidden = true
+        fetchUsers()
         koloda.reloadData()
     }
 }
@@ -139,10 +152,6 @@ extension HomeViewController: KolodaViewDataSource {
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
         let cardView = WiggleCard.init(frame: CGRect.zero)
-        
-        if cardArray.count == 0{
-            return Heartbeat.init(frame: CGRect.zero)
-        }
         cardView.model = cardArray[index]
         cardView.updateUI()
         cardView.view.likeImage.alpha = 0.0
@@ -200,9 +209,9 @@ extension HomeViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue:CLLocationCoordinate2D = manager.location?.coordinate ?? CLLocationCoordinate2D()
         let point = PFGeoPoint(latitude: locValue.latitude, longitude: locValue.longitude)
-        //PFUser.current()?.setValue(point, forKey: "location")
-        //fetchUsers()
+        PFUser.current()?.setValue(point, forKey: "location")
         AppConstants.location = point
+        fetchUsers()
         PFUser.current()?.saveInBackground(block: { (result, error) in
             if error != nil {
                 self.displayError(message: error?.localizedDescription ?? "")
