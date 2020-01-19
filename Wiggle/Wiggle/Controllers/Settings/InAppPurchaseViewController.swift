@@ -9,11 +9,25 @@
 import UIKit
 
 class InAppPurchaseViewController: UIViewController {
-
+    @IBOutlet weak var seperatorView: UIView!
+    @IBOutlet weak var purchaseButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.delegate = self
+        tableView.dataSource = self
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        configureViews()
+    }
+    
+    func configureViews(){
+        seperatorView.layer.cornerRadius = seperatorView.bounds.height / 2
+        purchaseButton.layer.cornerRadius = purchaseButton.bounds.height / 10
     }
     
 
@@ -27,4 +41,18 @@ class InAppPurchaseViewController: UIViewController {
     }
     */
 
+}
+extension InAppPurchaseViewController: UITableViewDelegate{
+    
+}
+extension InAppPurchaseViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    
+    
 }
