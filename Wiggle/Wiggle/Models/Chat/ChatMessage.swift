@@ -14,7 +14,7 @@ class ChatMessage: MessageType {
     var sender: SenderType
     
     var sentDate: Date
-    
+    var imageData: UIImage?
     var kind: MessageKind
     
     var senderId: String
@@ -23,14 +23,13 @@ class ChatMessage: MessageType {
     var isReceived: Bool = false
     var messageId: String
     var isRead: Bool
-        
+    
     init(dictionary: PFObject) {
         self.sender = SenderModel(senderId: dictionary["sender"] as? String ?? "", displayName: "")
         self.sentDate = dictionary.createdAt ?? Date()
-        self.kind = .text(dictionary["body"] as? String ?? "")
+        self.body = dictionary["body"] as? String ?? ""
         self.senderId = dictionary["sender"] as? String ?? ""
         self.receiverId = dictionary["receiver"] as? String ?? ""
-        self.body = dictionary["body"] as? String ?? ""
         let isReadNum = dictionary["isRead"] as? Int ?? 0
         isRead = isReadNum == 1 ? true : false
         if let currentUser = PFUser.current() {
@@ -40,7 +39,20 @@ class ChatMessage: MessageType {
                 self.isReceived = true
             }
         }
-        self.messageId = dictionary.objectId ?? "" 
+        if body.isEmpty {
+            let userImageFile = dictionary["file"] as! PFFileObject
+            do {
+                let imageFile = try userImageFile.getData()
+                let image = UIImage(data:imageFile)
+                self.imageData = image
+                self.kind = .photo(SentImage(image: image ?? UIImage(), url: userImageFile.url ?? ""))
+            }catch {
+                self.kind = .text("")
+            }
+        }else {
+             self.kind = .text(dictionary["body"] as? String ?? "")
+        }
+        self.messageId = dictionary.objectId ?? ""
     }
 }
 
@@ -53,5 +65,22 @@ struct SenderModel: SenderType {
     init(senderId: String, displayName: String ) {
         self.senderId = senderId
         self.displayName = displayName
+    }
+}
+
+struct SentImage: MediaItem {
+    var url: URL?
+    
+    var image: UIImage?
+    
+    var placeholderImage: UIImage
+    
+    var size: CGSize
+    
+    init(image: UIImage, url: String) {
+        self.image = image
+        self.url = URL(string: url)
+        self.placeholderImage = UIImage()
+        self.size = image.size
     }
 }

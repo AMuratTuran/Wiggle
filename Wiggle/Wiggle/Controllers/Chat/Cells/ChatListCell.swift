@@ -20,6 +20,8 @@ class ChatListCell: UITableViewCell {
     @IBOutlet weak var lineHeight: NSLayoutConstraint!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var isReadView: UIView!
+    @IBOutlet weak var cameraIcon: UIImageView!
+    @IBOutlet weak var arrowImage: UIImageView!
     
     
     var data: ChatListModel?
@@ -47,11 +49,22 @@ class ChatListCell: UITableViewCell {
         nameLabel.text = data.receiverName
         lastMessageLabel.text = data.lastMessage
         dateLabel.text = data.dateString
+        lastMessageArrowView.isHidden = false
+        if data.isImageMessage {
+            arrowImage.isHidden = true
+            cameraIcon.isHidden = false
+        }else {
+            cameraIcon.isHidden = true
+            if data.isReceivedMessage {
+                lastMessageArrowView.isHidden = true
+                arrowImage.isHidden = true
+            }else {
+                lastMessageArrowView.isHidden = false
+            }
+        }
         if data.isReceivedMessage {
-            lastMessageArrowView.isHidden = true
             isReadView.isHidden = data.isRead
         }else {
-            lastMessageArrowView.isHidden = false
             isReadView.isHidden = true
         }
     }

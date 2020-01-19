@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -55,6 +55,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="snz-iQ-aMW">
                                         <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
                                         <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="121-4Y-5WK">
+                                                <rect key="frame" x="2" y="2.5" width="18" height="16"/>
+                                                <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape.turn.up.right.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aip-YJ-u9Z">
                                                 <rect key="frame" x="0.0" y="6" width="22" height="9.5"/>
                                                 <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -64,7 +68,11 @@
                                         <constraints>
                                             <constraint firstItem="aip-YJ-u9Z" firstAttribute="top" secondItem="snz-iQ-aMW" secondAttribute="top" constant="5" id="Ffz-JF-J64"/>
                                             <constraint firstItem="aip-YJ-u9Z" firstAttribute="leading" secondItem="snz-iQ-aMW" secondAttribute="leading" id="SUi-gA-yQO"/>
+                                            <constraint firstItem="121-4Y-5WK" firstAttribute="trailing" secondItem="snz-iQ-aMW" secondAttribute="trailing" constant="-2" id="Xni-oN-Ocw"/>
+                                            <constraint firstItem="121-4Y-5WK" firstAttribute="leading" secondItem="snz-iQ-aMW" secondAttribute="leading" constant="2" id="Xol-Q5-joi"/>
+                                            <constraint firstItem="121-4Y-5WK" firstAttribute="bottom" secondItem="snz-iQ-aMW" secondAttribute="bottom" constant="-2" id="awu-w4-J0U"/>
                                             <constraint firstAttribute="trailing" secondItem="aip-YJ-u9Z" secondAttribute="trailing" id="moV-b9-KYB"/>
+                                            <constraint firstItem="121-4Y-5WK" firstAttribute="top" secondItem="snz-iQ-aMW" secondAttribute="top" constant="2" id="xsE-Oo-aPn"/>
                                             <constraint firstAttribute="bottom" secondItem="aip-YJ-u9Z" secondAttribute="bottom" constant="5" id="yx8-xG-cc7"/>
                                         </constraints>
                                     </view>
@@ -132,6 +140,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="arrowImage" destination="aip-YJ-u9Z" id="1Ue-dg-TYq"/>
+                <outlet property="cameraIcon" destination="121-4Y-5WK" id="Lmd-4X-owQ"/>
                 <outlet property="dateLabel" destination="Ves-gL-vPj" id="gDa-Cb-Za3"/>
                 <outlet property="isReadView" destination="DW2-Mp-dOp" id="7Td-O4-X5r"/>
                 <outlet property="lastMessageArrowView" destination="snz-iQ-aMW" id="def-AX-aIa"/>
@@ -146,5 +156,6 @@
     </objects>
     <resources>
         <image name="arrowshape.turn.up.right.fill" catalog="system" width="64" height="52"/>
+        <image name="camera.fill" catalog="system" width="64" height="48"/>
     </resources>
 </document>

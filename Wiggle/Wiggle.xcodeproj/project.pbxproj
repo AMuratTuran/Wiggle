@@ -24,6 +24,7 @@
 		F123854923D07A570062ABC8 /* MatchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F123854823D07A570062ABC8 /* MatchResultsViewController.swift */; };
 		F123854F23D094BB0062ABC8 /* HeartbeatMatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F123854D23D094BB0062ABC8 /* HeartbeatMatchCell.swift */; };
 		F123855023D094BB0062ABC8 /* HeartbeatMatchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F123854E23D094BB0062ABC8 /* HeartbeatMatchCell.xib */; };
+		F123855423D18F660062ABC8 /* UIImage + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F123855323D18F660062ABC8 /* UIImage + Extensions.swift */; };
 		F1378F52238A892400622B3C /* GeneralRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1378F51238A892400622B3C /* GeneralRequest.swift */; };
 		F1378F54238A8BC500622B3C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1378F53238A8BC400622B3C /* Home.storyboard */; };
 		F1378F57238A983100622B3C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1378F56238A983100622B3C /* HomeViewController.swift */; };
@@ -86,6 +87,13 @@
 		F164568E2384157D00FC0694 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164568D2384157D00FC0694 /* NetworkManager.swift */; };
 		F16456912384160A00FC0694 /* SMSCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16456902384160A00FC0694 /* SMSCodeRequest.swift */; };
 		F16456932384170100FC0694 /* Dictionary + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16456922384170100FC0694 /* Dictionary + Extensions.swift */; };
+		F191A56023D4F33A002CD7E0 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191A55E23D4F339002CD7E0 /* TextFieldView.swift */; };
+		F191A56123D4F33A002CD7E0 /* TextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F191A55F23D4F33A002CD7E0 /* TextFieldView.xib */; };
+		F191A56323D4F451002CD7E0 /* UITextField + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191A56223D4F451002CD7E0 /* UITextField + Extensions.swift */; };
+		F191A56523D4F474002CD7E0 /* UILabel + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191A56423D4F474002CD7E0 /* UILabel + Extensions.swift */; };
+		F191A56723D4F4A7002CD7E0 /* UIKit + Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191A56623D4F4A7002CD7E0 /* UIKit + Validation.swift */; };
+		F191A56923D4F4FC002CD7E0 /* InputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191A56823D4F4FC002CD7E0 /* InputAccessoryView.swift */; };
+		F191A56B23D4F63E002CD7E0 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191A56A23D4F63E002CD7E0 /* EditProfileViewController.swift */; };
 		F1935EFE23A657E500431DE2 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1935EFD23A657E500431DE2 /* Match.swift */; };
 		F194B5E223BF8BFC00349953 /* UIViewController + Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F194B5E123BF8BFC00349953 /* UIViewController + Alerts.swift */; };
 		F194B5E423BF94CE00349953 /* AppDelegate + Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F194B5E323BF94CE00349953 /* AppDelegate + Notification.swift */; };
@@ -100,6 +108,9 @@
 		F19A48CB238F0C700045C0BC /* UIColor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A48CA238F0C700045C0BC /* UIColor + Extensions.swift */; };
 		F19A48CF238F129E0045C0BC /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A48CE238F129E0045C0BC /* SplashViewController.swift */; };
 		F19A48D1238F15670045C0BC /* UIViewController + User.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19A48D0238F15670045C0BC /* UIViewController + User.swift */; };
+		F1AEB96823D34C2600407C03 /* SendImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AEB96723D34C2600407C03 /* SendImageViewController.swift */; };
+		F1AEB96C23D35F9B00407C03 /* SwipablePremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AEB96B23D35F9B00407C03 /* SwipablePremiumView.swift */; };
+		F1AEB96E23D4A9D300407C03 /* SwipablePremiumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1AEB96D23D4A9D300407C03 /* SwipablePremiumView.xib */; };
 		F1C794AA23AAB8A700D9FEFC /* ChatListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C794A923AAB8A700D9FEFC /* ChatListModel.swift */; };
 		F1C794AC23AAD46300D9FEFC /* Date + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C794AB23AAD46300D9FEFC /* Date + Extensions.swift */; };
 		F1C794AE23AAD6DA00D9FEFC /* String + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C794AD23AAD6DA00D9FEFC /* String + Extensions.swift */; };
@@ -137,6 +148,7 @@
 		F123854823D07A570062ABC8 /* MatchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchResultsViewController.swift; sourceTree = "<group>"; };
 		F123854D23D094BB0062ABC8 /* HeartbeatMatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartbeatMatchCell.swift; sourceTree = "<group>"; };
 		F123854E23D094BB0062ABC8 /* HeartbeatMatchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeartbeatMatchCell.xib; sourceTree = "<group>"; };
+		F123855323D18F660062ABC8 /* UIImage + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extensions.swift"; sourceTree = "<group>"; };
 		F1378F51238A892400622B3C /* GeneralRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralRequest.swift; sourceTree = "<group>"; };
 		F1378F53238A8BC400622B3C /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		F1378F56238A983100622B3C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -213,6 +225,13 @@
 		F164568D2384157D00FC0694 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F16456902384160A00FC0694 /* SMSCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeRequest.swift; sourceTree = "<group>"; };
 		F16456922384170100FC0694 /* Dictionary + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary + Extensions.swift"; sourceTree = "<group>"; };
+		F191A55E23D4F339002CD7E0 /* TextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		F191A55F23D4F33A002CD7E0 /* TextFieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldView.xib; sourceTree = "<group>"; };
+		F191A56223D4F451002CD7E0 /* UITextField + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + Extensions.swift"; sourceTree = "<group>"; };
+		F191A56423D4F474002CD7E0 /* UILabel + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extensions.swift"; sourceTree = "<group>"; };
+		F191A56623D4F4A7002CD7E0 /* UIKit + Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit + Validation.swift"; sourceTree = "<group>"; };
+		F191A56823D4F4FC002CD7E0 /* InputAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputAccessoryView.swift; sourceTree = "<group>"; };
+		F191A56A23D4F63E002CD7E0 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		F1935EFD23A657E500431DE2 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		F194B5E123BF8BFC00349953 /* UIViewController + Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alerts.swift"; sourceTree = "<group>"; };
 		F194B5E323BF94CE00349953 /* AppDelegate + Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate + Notification.swift"; sourceTree = "<group>"; };
@@ -227,6 +246,9 @@
 		F19A48CA238F0C700045C0BC /* UIColor + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extensions.swift"; sourceTree = "<group>"; };
 		F19A48CE238F129E0045C0BC /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		F19A48D0238F15670045C0BC /* UIViewController + User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + User.swift"; sourceTree = "<group>"; };
+		F1AEB96723D34C2600407C03 /* SendImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendImageViewController.swift; sourceTree = "<group>"; };
+		F1AEB96B23D35F9B00407C03 /* SwipablePremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipablePremiumView.swift; sourceTree = "<group>"; };
+		F1AEB96D23D4A9D300407C03 /* SwipablePremiumView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwipablePremiumView.xib; sourceTree = "<group>"; };
 		F1C794A923AAB8A700D9FEFC /* ChatListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListModel.swift; sourceTree = "<group>"; };
 		F1C794AB23AAD46300D9FEFC /* Date + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extensions.swift"; sourceTree = "<group>"; };
 		F1C794AD23AAD6DA00D9FEFC /* String + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
@@ -346,6 +368,7 @@
 			children = (
 				F1378F5B238ADD8300622B3C /* ProfileViewController.swift */,
 				F1378F5D238B012100622B3C /* ProfileDetailViewController.swift */,
+				F191A56A23D4F63E002CD7E0 /* EditProfileViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -391,6 +414,7 @@
 				F150FD16239C33CA002FD404 /* Cells */,
 				F15005F1239C3BC000E19947 /* Chat */,
 				F150FD11239C2ED9002FD404 /* Chat List */,
+				F1AEB96723D34C2600407C03 /* SendImageViewController.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -520,6 +544,9 @@
 		F1585AED238406D00062A681 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F191A56823D4F4FC002CD7E0 /* InputAccessoryView.swift */,
+				F191A55D23D4F32F002CD7E0 /* TextField */,
+				F1AEB96A23D35F7900407C03 /* PremiumSwipe */,
 				DC10995223AFBE5100068054 /* HeartbeatView */,
 				F194B5ED23C0E10400349953 /* Chat */,
 				DC166ED223ACB10E0000E745 /* WiggleCard */,
@@ -577,6 +604,10 @@
 				F14A1EF723AEB2A500FF2C09 /* UIViewController + Alert.swift */,
 				F194B5E123BF8BFC00349953 /* UIViewController + Alerts.swift */,
 				F194B5E323BF94CE00349953 /* AppDelegate + Notification.swift */,
+				F123855323D18F660062ABC8 /* UIImage + Extensions.swift */,
+				F191A56223D4F451002CD7E0 /* UITextField + Extensions.swift */,
+				F191A56423D4F474002CD7E0 /* UILabel + Extensions.swift */,
+				F191A56623D4F4A7002CD7E0 /* UIKit + Validation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -695,6 +726,15 @@
 			path = "SMS Code";
 			sourceTree = "<group>";
 		};
+		F191A55D23D4F32F002CD7E0 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				F191A55E23D4F339002CD7E0 /* TextFieldView.swift */,
+				F191A55F23D4F33A002CD7E0 /* TextFieldView.xib */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
 		F194B5ED23C0E10400349953 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -712,6 +752,15 @@
 				F19A48C6238F05220045C0BC /* WiggleHUD.swift */,
 			);
 			path = "Activity Indicator";
+			sourceTree = "<group>";
+		};
+		F1AEB96A23D35F7900407C03 /* PremiumSwipe */ = {
+			isa = PBXGroup;
+			children = (
+				F1AEB96B23D35F9B00407C03 /* SwipablePremiumView.swift */,
+				F1AEB96D23D4A9D300407C03 /* SwipablePremiumView.xib */,
+			);
+			path = PremiumSwipe;
 			sourceTree = "<group>";
 		};
 		F1C794AF23AC0DFD00D9FEFC /* Font */ = {
@@ -804,6 +853,7 @@
 				F1585AE4238406560062A681 /* LaunchScreen.storyboard in Resources */,
 				F1378F59238ADC7900622B3C /* Profile.storyboard in Resources */,
 				F1C794BE23AC0E1400D9FEFC /* OpenSans-BoldItalic.ttf in Resources */,
+				F191A56123D4F33A002CD7E0 /* TextFieldView.xib in Resources */,
 				F194B5E823C09BCB00349953 /* InAppBannerView.xib in Resources */,
 				F150FD0F239C2E77002FD404 /* Chat.storyboard in Resources */,
 				F1C794C323AC0E1400D9FEFC /* OpenSans-SemiBold.ttf in Resources */,
@@ -827,6 +877,7 @@
 				F15217102389D52E0027C6D4 /* SettingsPremiumTableViewCell.xib in Resources */,
 				F1C794C523AC0E1400D9FEFC /* OpenSans-Bold.ttf in Resources */,
 				F150FCEF2393E9B9002FD404 /* heartbeat.json in Resources */,
+				F1AEB96E23D4A9D300407C03 /* SwipablePremiumView.xib in Resources */,
 				F150FD1A239C33E2002FD404 /* ChatListCell.xib in Resources */,
 				DC166EDA23ACBAAD0000E745 /* WiggleCardView.xib in Resources */,
 				F150FCF72393F28B002FD404 /* BoostSuperLikeCell.xib in Resources */,
@@ -894,10 +945,12 @@
 				F19A48C7238F05220045C0BC /* WiggleHUD.swift in Sources */,
 				F14A1EFA23AEB9BC00FF2C09 /* GenderViewController.swift in Sources */,
 				F1585AFA2384077A0062A681 /* EnterVerificationCodeViewController.swift in Sources */,
+				F191A56323D4F451002CD7E0 /* UITextField + Extensions.swift in Sources */,
 				F150FD19239C33E2002FD404 /* ChatListCell.swift in Sources */,
 				F123854F23D094BB0062ABC8 /* HeartbeatMatchCell.swift in Sources */,
 				F150FCFB2393FA50002FD404 /* SettingWithLabelCell.swift in Sources */,
 				F1935EFE23A657E500431DE2 /* Match.swift in Sources */,
+				F191A56B23D4F63E002CD7E0 /* EditProfileViewController.swift in Sources */,
 				F150FD0C239413CD002FD404 /* LabelWithCheckmarkCell.swift in Sources */,
 				F152170323885C0B0027C6D4 /* SettingsViewController.swift in Sources */,
 				DC166ED823ACB5240000E745 /* WiggleCard.swift in Sources */,
@@ -915,12 +968,16 @@
 				F19A48CF238F129E0045C0BC /* SplashViewController.swift in Sources */,
 				F1585AF8238407680062A681 /* EnterPhoneViewController.swift in Sources */,
 				F19A48D1238F15670045C0BC /* UIViewController + User.swift in Sources */,
+				F191A56723D4F4A7002CD7E0 /* UIKit + Validation.swift in Sources */,
 				F1585AFC238407A30062A681 /* UIViewController + Extensions.swift in Sources */,
 				F159C8D32385CA460091AB05 /* PickImageViewController.swift in Sources */,
 				F164568E2384157D00FC0694 /* NetworkManager.swift in Sources */,
 				F1378F57238A983100622B3C /* HomeViewController.swift in Sources */,
 				F194B5E223BF8BFC00349953 /* UIViewController + Alerts.swift in Sources */,
+				F123855423D18F660062ABC8 /* UIImage + Extensions.swift in Sources */,
+				F191A56023D4F33A002CD7E0 /* TextFieldView.swift in Sources */,
 				F150FD0523940B31002FD404 /* CellWithToggleCell.swift in Sources */,
+				F1AEB96C23D35F9B00407C03 /* SwipablePremiumView.swift in Sources */,
 				F1378F52238A892400622B3C /* GeneralRequest.swift in Sources */,
 				F1C794AA23AAB8A700D9FEFC /* ChatListModel.swift in Sources */,
 				F100023823AC151900D4DD22 /* FontHelper.swift in Sources */,
@@ -935,9 +992,12 @@
 				F150FCF32393EDC0002FD404 /* Delay.swift in Sources */,
 				F1378F5E238B012100622B3C /* ProfileDetailViewController.swift in Sources */,
 				F1D407162385E641002350BE /* EnableLocationViewController.swift in Sources */,
+				F191A56523D4F474002CD7E0 /* UILabel + Extensions.swift in Sources */,
 				DC10995623AFBEF800068054 /* HeartbeatView.swift in Sources */,
 				F123854923D07A570062ABC8 /* MatchResultsViewController.swift in Sources */,
+				F191A56923D4F4FC002CD7E0 /* InputAccessoryView.swift in Sources */,
 				F159FCEC23CBD89D0042429E /* HeartRateKitAlgorithm.mm in Sources */,
+				F1AEB96823D34C2600407C03 /* SendImageViewController.swift in Sources */,
 				F159C8D12385C8850091AB05 /* ImagePicker.swift in Sources */,
 				F10038A8239D711C00829A65 /* LogoutCell.swift in Sources */,
 				F150FD0823941287002FD404 /* ShowMeGenderViewController.swift in Sources */,

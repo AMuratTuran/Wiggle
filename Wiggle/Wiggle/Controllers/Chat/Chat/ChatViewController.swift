@@ -35,7 +35,7 @@ class ChatViewController: MessagesViewController {
     let addButton = InputBarButtonItem(type: .infoDark)
     var chatHistory: [ChatMessage] = []
     var subscription: Subscription<PFObject>?
-    var liveQueryClient: ParseLiveQuery.Client!
+    var liveQueryClient: ParseLiveQuery.Client = ParseLiveQuery.Client(server: AppConstants.ParseConstants.LiveQueryServer, applicationId: AppConstants.ParseConstants.ApplicationId, clientKey: AppConstants.ParseConstants.ClientKey)
     let query1 = PFQuery(className:"Messages")
     let query2 = PFQuery(className:"Messages")
     var query: PFQuery<PFObject>!
@@ -43,7 +43,8 @@ class ChatViewController: MessagesViewController {
         let manager = AttachmentManager()
         manager.delegate = self
         return manager
-    }()
+        }()
+    var imagePicker: ImagePicker!
     
     
     override func viewDidLoad() {
@@ -54,7 +55,7 @@ class ChatViewController: MessagesViewController {
             // navigate to login
         }
         self.currentUser = currentUser
-        
+        imagePicker = ImagePicker(presentationController: self, delegate: self)
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem?.title = ""
@@ -81,12 +82,16 @@ class ChatViewController: MessagesViewController {
         configureMessageInputBar()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         liveQueryClient.unsubscribe(query)
     }
     
-    func listenMessages() {
+    
+    func listenMessages(onCompelete: (()->())? = nil){
         guard let contactedUser = contactedUser else { return }
         
         query1.whereKey("sender", equalTo: contactedUser.myId)
@@ -99,7 +104,7 @@ class ChatViewController: MessagesViewController {
         query.addAscendingOrder("createdAt")
         query.limit = 50
         
-        liveQueryClient = ParseLiveQuery.Client(server: AppConstants.ParseConstants.LiveQueryServer, applicationId: AppConstants.ParseConstants.ApplicationId, clientKey: AppConstants.ParseConstants.ClientKey)
+
         subscription = liveQueryClient.subscribe(query)
         _ = subscription?.handle(Event.created) { (_, response) in
             if response["sender"] as! String != contactedUser.myId {
@@ -111,6 +116,9 @@ class ChatViewController: MessagesViewController {
             }
             let incomingMessage:ChatMessage = ChatMessage(dictionary: response)
             self.insertMessage(incomingMessage)
+        }
+        if let complete = onCompelete {
+            complete()
         }
     }
     
@@ -127,13 +135,10 @@ class ChatViewController: MessagesViewController {
         chatHistory.append(message)
         DispatchQueue.main.async {
             self.messagesCollectionView.performBatchUpdates({
-                
                 self.messagesCollectionView.insertSections([self.chatHistory.count - 1])
                 if self.chatHistory.count >= 2 {
                     self.messagesCollectionView.reloadSections([self.chatHistory.count - 2])
-                    
                 }
-                
             }, completion: { [weak self] _ in
                 if self?.isLastSectionVisible() == true {
                     self?.messagesCollectionView.scrollToBottom(animated: true)
@@ -156,7 +161,6 @@ class ChatViewController: MessagesViewController {
     func configureMessageCollectionView() {
         configureMessageCollectionViewLayout()
         scrollsToBottomOnKeyboardBeginsEditing = true
-        maintainPositionOnKeyboardFrameChanged = true
         // MARK: Delegates
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
@@ -205,6 +209,7 @@ class ChatViewController: MessagesViewController {
         messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 12, left: 16, bottom: 8, right: 36)
         messageInputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 12, left: 20, bottom: 8, right: 36)
         messageInputBar.shouldAutoUpdateMaxTextViewHeight = false
+        messageInputBar.inputTextView.textColor = UIColor(red: 52/255, green: 52/255, blue: 52/255, alpha: 1)
         messageInputBar.maxTextViewHeight = 100
         messageInputBar.inputTextView.font = FontHelper.regular(16.0)
         messageInputBar.inputTextView.placeholder = ""
@@ -218,9 +223,7 @@ class ChatViewController: MessagesViewController {
     }
     
     @objc func addImageTapped() {
-        let imagePicker: ImagePicker!
-        imagePicker = ImagePicker(presentationController: self, delegate: self)
-        imagePicker.present(from: self.addButton)
+        imagePicker.present(from: self.view)
     }
     
     private func configureInputBarItems() {
@@ -417,7 +420,6 @@ extension ChatViewController: MessageInputBarDelegate {
             if let currentUser = PFUser.current(), let receiver = contactedUser, let senderId = currentUser.objectId {
                 let receiverId = receiver.receiverId
                 NetworkManager.sendTextMessage(messageText: text, senderId: senderId, receiverId: receiverId, success: { (success) in
-                    print(success)
                     self.messageInputBar.sendButton.stopAnimating()
                 }) { (error) in
                     self.messageInputBar.sendButton.stopAnimating()
@@ -429,9 +431,9 @@ extension ChatViewController: MessageInputBarDelegate {
                 let receiverId = receiver.receiverId
                 guard let selectedImage = inputBar.inputTextView.images.first else { return }
                 do {
-                    let imageData: Data = selectedImage.jpegData(compressionQuality: 1.0)! as Data
+                    guard let imageData = selectedImage.jpeg(.medium) else { return }
+                    
                     NetworkManager.sendImageMessage(image: imageData, senderId: senderId, receiverId: receiverId, success: { (success) in
-                        print(success)
                         self.messageInputBar.sendButton.stopAnimating()
                     }) { (error) in
                         self.messageInputBar.sendButton.stopAnimating()
@@ -441,7 +443,7 @@ extension ChatViewController: MessageInputBarDelegate {
             }
         }
         messageInputBar.inputTextView.text = ""
-
+        
     }
 }
 
@@ -590,12 +592,14 @@ extension ChatViewController: UITextViewDelegate {
 extension ChatViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         guard let image = image else { return }
-        do {
-            let imageData: NSData = image.jpegData(compressionQuality: 1.0)! as NSData
-            
-        }catch {
-            
-        }
+        
+        let storyBoard = UIStoryboard(name: "Chat", bundle: nil)
+        let destinationViewController = storyBoard.instantiateViewController(withIdentifier: "SendImageViewController") as! SendImageViewController
+        destinationViewController.pickedImage = image
+        destinationViewController.delegate = self
+        destinationViewController.modalPresentationStyle = .fullScreen
+        destinationViewController.name = "\(contactedUser?.firstName ?? "") \(contactedUser?.lastName ?? "")"
+        self.present(destinationViewController, animated: true, completion: nil)
     }
 }
 
@@ -605,3 +609,28 @@ extension ChatViewController: AttachmentManagerDelegate {
     }
 }
 
+extension ChatViewController: ImageMessageProtocol {
+    func imageConfirmed(image: UIImage) {
+        startAnimating(self.view, startAnimate: true)
+        if let currentUser = PFUser.current(), let receiver = contactedUser, let senderId = currentUser.objectId {
+            let receiverId = receiver.receiverId
+            do {
+                guard let imageData = image.jpeg(.medium) else { return }
+                listenMessages {
+                    NetworkManager.sendImageMessage(image: imageData, senderId: senderId, receiverId: receiverId, success: { (success) in
+                        self.startAnimating(self.view, startAnimate: false)
+                        self.messageInputBar.sendButton.stopAnimating()
+                    }) { (error) in
+                        self.startAnimating(self.view, startAnimate: false)
+                        self.messageInputBar.sendButton.stopAnimating()
+                        self.displayError(message: error)
+                    }
+                }
+            }
+        }
+    }
+    
+    func selectionCancelled() {
+        listenMessages(onCompelete: nil)
+    }
+}
