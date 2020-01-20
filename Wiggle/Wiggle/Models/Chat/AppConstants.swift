@@ -28,6 +28,7 @@ struct AppConstants {
     struct Color {
         static let mainHeaderTitleColor: UIColor = UIColor(hexString: "191a2a")
         static let mainSubtitleColor: UIColor = UIColor(hexString: "797686")
+        static let mainComplementaryColor: UIColor = UIColor(hexString: "2DFFD7")
         static let mainPinkColor: UIColor = UIColor.systemPink
     }
     

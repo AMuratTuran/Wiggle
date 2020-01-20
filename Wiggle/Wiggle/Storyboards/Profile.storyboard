@@ -38,6 +38,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYx-t5-5Aj">
                                 <rect key="frame" x="162.5" y="319" width="50" height="50"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="G2h-e0-kRW"/>
                                     <constraint firstAttribute="width" constant="50" id="xdj-3H-ATZ"/>
@@ -45,7 +46,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="camera.fill" catalog="system"/>
                                 <connections>
-                                    <action selector="changePhotoTapped:" destination="ga9-op-ggg" eventType="touchUpInside" id="OZa-6M-nLC"/>
+                                    <action selector="changePhotoTapped:" destination="ga9-op-ggg" eventType="touchUpInside" id="l8s-tF-D5p"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4se-Hp-Ur7">
@@ -58,7 +59,7 @@
                                 <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="gear" catalog="system"/>
                                 <connections>
-                                    <action selector="routeSettingsAction:" destination="ga9-op-ggg" eventType="touchUpInside" id="8AJ-cw-wZd"/>
+                                    <action selector="routeSettingsAction:" destination="ga9-op-ggg" eventType="touchUpInside" id="K3h-Pt-zvd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3PP-d6-Blm">
@@ -71,7 +72,7 @@
                                 <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="pencil" catalog="system"/>
                                 <connections>
-                                    <action selector="editProfileAction:" destination="ga9-op-ggg" eventType="touchUpInside" id="MLz-Es-8v0"/>
+                                    <action selector="editProfileAction:" destination="ga9-op-ggg" eventType="touchUpInside" id="qFf-9L-uWE"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ath-Og-egU">
@@ -101,28 +102,28 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K3C-S1-peb">
                                 <rect key="frame" x="0.0" y="404.5" width="375" height="213.5"/>
                                 <subviews>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPf-lm-3uf">
-                                        <rect key="frame" x="102.5" y="163.5" width="170" height="40"/>
-                                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPf-lm-3uf">
+                                        <rect key="frame" x="87.5" y="153.5" width="200" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="170" id="i7c-l8-noZ"/>
-                                            <constraint firstAttribute="height" constant="40" id="mci-xC-XAM"/>
+                                            <constraint firstAttribute="width" constant="200" id="i7c-l8-noZ"/>
+                                            <constraint firstAttribute="height" constant="50" id="mci-xC-XAM"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
                                         <state key="normal" title="WSTORE">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <state key="highlighted">
                                             <color key="titleColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="20"/>
+                                                <integer key="value" value="25"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OZ-tZ-Bsh">
-                                        <rect key="frame" x="0.0" y="18.5" width="375" height="130"/>
+                                        <rect key="frame" x="0.0" y="8.5" width="375" height="130"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bEL-q7-17c">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
@@ -141,7 +142,7 @@
                                         </constraints>
                                     </scrollView>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="vA9-rg-VLA">
-                                        <rect key="frame" x="168" y="126.5" width="39" height="37"/>
+                                        <rect key="frame" x="168" y="116.5" width="39" height="37"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -199,6 +200,7 @@
                         <outlet property="pageControl" destination="vA9-rg-VLA" id="dgd-sq-b2H"/>
                         <outlet property="profilePhoto" destination="HM5-pm-OqA" id="jHM-OT-c76"/>
                         <outlet property="settingsButton" destination="4se-Hp-Ur7" id="yoK-8f-0l2"/>
+                        <outlet property="storeButton" destination="DPf-lm-3uf" id="79F-mK-ppm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hee-vK-IX7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

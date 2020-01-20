@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profilePhoto: UIImageView!
     @IBOutlet weak var imageBackgroundView: UIView!
     @IBOutlet weak var nameAndAgeLabel: UILabel!
+    @IBOutlet weak var storeButton: UIButton!
     
     
     var slides:[SwipablePremiumView] = []
@@ -73,6 +74,7 @@ class ProfileViewController: UIViewController {
         self.changePhotoButton.addShadow(UIColor(named: "shadowColor")!)
         self.editProfileButton.addShadow(UIColor(named: "shadowColor")!)
         self.imageBackgroundView.addShadow(UIColor(named: "shadowColor")!, shadowRadiues: 2.0, shadowOpacity: 0.4)
+        self.storeButton.addShadow(UIColor(named: "shadowColor")!, shadowRadiues: 2.0, shadowOpacity: 0.4)
     }
     
     func updateImage() {

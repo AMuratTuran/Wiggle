@@ -188,9 +188,6 @@ extension UIViewController {
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
     }
-    
-    
-    
 }
 
 

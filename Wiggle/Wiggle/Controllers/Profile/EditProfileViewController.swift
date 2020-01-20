@@ -31,6 +31,7 @@ class EditProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigationBar()
         configureViews()
     }
     
@@ -38,10 +39,7 @@ class EditProfileViewController: UIViewController {
         guard let user = PFUser.current() else {
             return
         }
-        title = "Bilgileri Düzenle"
-        let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveInfos))
-        saveButton.tintColor = UIColor.systemPink
-        navigationItem.rightBarButtonItem = saveButton
+        
         self.imageBackgroundView.addShadow(UIColor(named: "shadowColor")!, shadowRadiues: 2.0, shadowOpacity: 0.4)
         let imageUrl = user.getPhotoUrl()
         profileImageView.kf.indicatorType = .activity
@@ -51,8 +49,7 @@ class EditProfileViewController: UIViewController {
         nameStackView.addArrangedSubview(nameTextFieldView)
         lastnameTextFieldView.text = user.getLastName()
         nameStackView.addArrangedSubview(lastnameTextFieldView)
-        nameTextFieldView.prepareValidation(validator: self.validator, validationRules: [RequiredRule(message: Localize.Common.Required)])
-        lastnameTextFieldView.prepareValidation(validator: self.validator, validationRules: [RequiredRule(message: Localize.Common.Required)])
+        prepareForValidation()
         
         bioTextView.layer.borderColor = UIColor.systemGray.cgColor
         bioTextView.layer.borderWidth = 0.5
@@ -70,11 +67,30 @@ class EditProfileViewController: UIViewController {
         birthday = user.getBirthday() as Date
     }
     
+    func configureNavigationBar() {
+        title = "Bilgileri Düzenle"
+        
+        let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveInfos))
+        saveButton.tintColor = UIColor.systemPink
+        navigationItem.rightBarButtonItem = saveButton
+        
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(dismissTapped))
+        navigationItem.leftBarButtonItem = cancelButton
+    }
+    
+    func prepareForValidation() {
+        nameTextFieldView.prepareValidation(validator: self.validator, validationRules: [RequiredRule(message: Localize.Common.Required)])
+        lastnameTextFieldView.prepareValidation(validator: self.validator, validationRules: [RequiredRule(message: Localize.Common.Required)])
+    }
+    
     @objc func saveInfos() {
         self.startAnimating(self.view, startAnimate: true)
         validator.validate(self)
     }
     
+    @objc func dismissTapped() {
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBAction func pickBirthdayAction(_ sender: Any) {
         let calendar = Calendar(identifier: .gregorian)
         

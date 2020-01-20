@@ -38,6 +38,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         updateObjectId()
+        hideBackBarButtonTitle()
         
         kolodaView.dataSource = self
         kolodaView.delegate = self
