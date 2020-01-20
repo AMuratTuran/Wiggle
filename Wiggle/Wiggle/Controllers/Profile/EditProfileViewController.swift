@@ -10,6 +10,10 @@ import UIKit
 import Parse
 import SwiftValidator
 
+protocol UpdateInfoDelegate {
+    func infosUpdated()
+}
+
 class EditProfileViewController: UIViewController {
     
     @IBOutlet weak var imageBackgroundView: UIView!
@@ -23,6 +27,7 @@ class EditProfileViewController: UIViewController {
     let nameTextFieldView = TextFieldView.load(title: "", placeholder: "")
     let lastnameTextFieldView = TextFieldView.load(title: "", placeholder: "")
     let validator = Validator()
+    var delegate: UpdateInfoDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,16 +63,15 @@ class EditProfileViewController: UIViewController {
         }, clearFunc: nil)
         
         let calendar = Calendar(identifier: .gregorian)
-        let currentDate = Date()
         var components = DateComponents()
         components.calendar = calendar
         components.year = -18
-        let startDate = calendar.date(byAdding: components, to: currentDate)
-        pickBirthdayButton.setTitle(startDate?.dateString(), for: .normal)
-        birthday = startDate
+        pickBirthdayButton.setTitle((user.getBirthday() as Date).prettyStringFromDate(dateFormat: "dd MMMM yyyy", localeIdentifier: "tr"),  for: .normal)
+        birthday = user.getBirthday() as Date
     }
     
     @objc func saveInfos() {
+        self.startAnimating(self.view, startAnimate: true)
         validator.validate(self)
     }
     
@@ -115,15 +119,16 @@ extension EditProfileViewController: ValidationDelegate {
                 self.displayError(message: error?.localizedDescription ?? "")
             }else {
                 self.dismiss(animated: true, completion: nil)
+                self.delegate?.infosUpdated()
             }
         })
     }
-
+    
     func validationFailed(_ errors:[(Validatable ,ValidationError)]) {
-      // turn the fields to red
-      for (field, error) in errors {
-        error.errorLabel?.text = error.errorMessage // works if you added labels
-        error.errorLabel?.isHidden = false
-      }
+        self.startAnimating(self.view, startAnimate: false)
+        for (_, error) in errors {
+            error.errorLabel?.text = error.errorMessage // works if you added labels
+            error.errorLabel?.isHidden = false
+        }
     }
 }
