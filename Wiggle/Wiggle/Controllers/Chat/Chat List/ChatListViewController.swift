@@ -11,7 +11,7 @@ import Parse
 import ParseLiveQuery
 
 class ChatListViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var lineView: UIView!
@@ -20,10 +20,14 @@ class ChatListViewController: UIViewController {
     var currentUser: PFUser!
     let searchController = UISearchController(searchResultsController: nil)
     var isSearchBarEmpty: Bool {
-           return searchController.searchBar.text?.isEmpty ?? true
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    var isFiltering: Bool {
+        return searchController.isActive && !isSearchBarEmpty
     }
     var data: [Chat]?
     var tableData: [ChatListModel]?
+    var filteredChats: [ChatListModel]?
     var userId: String? {
         if let currentUser = PFUser.current() {
             return currentUser.objectId
@@ -52,6 +56,7 @@ class ChatListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         initUpwardsAnimation()
+        hideBackBarButtonTitle()
         navigationController?.navigationBar.prefersLargeTitles = true
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview()}
         stackView.insertArrangedSubview(matchesView, at: 0)
@@ -138,25 +143,34 @@ class ChatListViewController: UIViewController {
     }
     
     private func filterContentForSearchText(_ searchText: String) {
-//        guard let data = data else { return }
-//        filteredEmployees = data.employeeList.filter { (employee: Employee) -> Bool in
-//            return employee.getFullName().lowercased().contains(searchText.lowercased())
-//        }
-//
-//        tableView.reloadData()
+        guard let data = tableData else { return }
+        filteredChats = data.filter { (chatModel: ChatListModel) -> Bool in
+            return chatModel.getFullName().lowercased().contains(searchText.lowercased())
+        }
+        
+        tableView.reloadData()
     }
 }
 
 extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let data = tableData else { return 0 }
+        if isFiltering {
+            return filteredChats?.count ?? 0
+        }
         return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let data = self.tableData else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: ChatListCell.reuseIdentifier, for: indexPath) as! ChatListCell
-        cell.prepare(with: data[indexPath.row])
+        let chat: ChatListModel
+        if isFiltering, let filteredChats = filteredChats {
+            chat = filteredChats[indexPath.row]
+        } else {
+            chat = data[indexPath.row]
+        }
+        cell.prepare(with: chat)
         return cell
     }
     
@@ -169,7 +183,13 @@ extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: false)
         let storyBoard = UIStoryboard(name: "Chat", bundle: nil)
         let destinationViewController = storyBoard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
-        destinationViewController.contactedUser = data[indexPath.row]
+        let chat: ChatListModel
+        if isFiltering, let filteredChats = filteredChats {
+            chat = filteredChats[indexPath.row]
+        } else {
+            chat = data[indexPath.row]
+        }
+        destinationViewController.contactedUser = chat
         self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
     
@@ -180,7 +200,6 @@ extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
         
         return [delete]
     }
-    
 }
 
 extension ChatListViewController: UISearchResultsUpdating {

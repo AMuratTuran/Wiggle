@@ -135,7 +135,7 @@ extension UIViewController {
         let destinationViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
         destinationViewController.isHeroEnabled = true
         destinationViewController.modalPresentationStyle = .fullScreen
-
+        
         self.present(destinationViewController, animated: true, completion: nil)
     }
     
@@ -183,6 +183,11 @@ extension UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    func hideBackBarButtonTitle() {
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
+    }
 }
 
 
@@ -441,14 +446,5 @@ extension UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .white
-    }
-}
-
-extension UIViewController {
-
-    func hideBackBarButtonTitle() {
-        let backItem = UIBarButtonItem()
-        backItem.title = ""
-        navigationItem.backBarButtonItem = backItem
     }
 }

@@ -62,11 +62,9 @@ class InputAccessoryView: UIToolbar {
         } 
 
         let spacingItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneItem = UIBarButtonItem(title: Localize.Common.OKButton, style: .done, target: self, action: #selector(resign))
-        doneItem.accessibilityIdentifier = "done-button"
+        let doneItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(resign))
 
         let clearItem = UIBarButtonItem(title: Localize.Common.Clear, style: .done, target: self, action: #selector(clear))
-        clearItem.accessibilityIdentifier = "clear-button"
 
         if isShowNextBackButtons {
             self.items = [previousButton, nextButton, spacingItem, doneItem]

@@ -66,6 +66,10 @@ class ChatListModel {
         self.objectId = chat.objectId
     }
     
+    func getFullName() -> String {
+        return "\(self.firstName) \(self.lastName)"
+    }
+    
 }
 
 extension ChatListModel: Equatable {
