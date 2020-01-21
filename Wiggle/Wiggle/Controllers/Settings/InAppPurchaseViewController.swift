@@ -29,17 +29,6 @@ class InAppPurchaseViewController: UIViewController {
         seperatorView.layer.cornerRadius = seperatorView.bounds.height / 2
         purchaseButton.layer.cornerRadius = purchaseButton.bounds.height / 10
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 extension InAppPurchaseViewController: UITableViewDelegate{
@@ -47,11 +36,14 @@ extension InAppPurchaseViewController: UITableViewDelegate{
 }
 extension InAppPurchaseViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "InAppPurchaseTableViewCell", for: indexPath) as! InAppPurchaseTableViewCell
+        let product = productTestModel(duration: "1 Ay", discountRate: "", price: "31 tl")
+        cell.testModel = product
+        return cell
     }
     
     
