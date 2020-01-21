@@ -54,6 +54,7 @@ class ChatViewController: MessagesViewController {
             return
             // navigate to login
         }
+        hideBackBarButtonTitle()
         self.currentUser = currentUser
         imagePicker = ImagePicker(presentationController: self, delegate: self)
         navigationItem.largeTitleDisplayMode = .never

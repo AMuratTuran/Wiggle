@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profilePhoto: UIImageView!
     @IBOutlet weak var imageBackgroundView: UIView!
     @IBOutlet weak var nameAndAgeLabel: UILabel!
+    @IBOutlet weak var storeButton: UIButton!
     
     
     var slides:[SwipablePremiumView] = []
@@ -38,7 +39,7 @@ class ProfileViewController: UIViewController {
     }
     
     func configureViews() {
-        guard let user = PFUser.current() else {
+        guard PFUser.current() != nil else {
             return
         }
         settingsButton.cornerRadius(settingsButton.frame.height / 2)
@@ -48,6 +49,13 @@ class ProfileViewController: UIViewController {
         imageBackgroundView.cornerRadius(imageBackgroundView.frame.height / 2)
         imageBackgroundView.clipsToBounds = false
         navigationController?.setNavigationBarHidden(true, animated: true)
+        updateViews()
+    }
+    
+    func updateViews() {
+        guard let user = PFUser.current() else {
+            return
+        }
         let imageUrl = user.getPhotoUrl()
         profilePhoto.kf.indicatorType = .activity
         profilePhoto.kf.setImage(with: URL(string: imageUrl))
@@ -55,6 +63,7 @@ class ProfileViewController: UIViewController {
         let name = "\(user.getFirstName()) \(user.getLastName())"
         nameAndAgeLabel.text = "\(name), \(age)"
     }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         prepareViews()
@@ -65,6 +74,7 @@ class ProfileViewController: UIViewController {
         self.changePhotoButton.addShadow(UIColor(named: "shadowColor")!)
         self.editProfileButton.addShadow(UIColor(named: "shadowColor")!)
         self.imageBackgroundView.addShadow(UIColor(named: "shadowColor")!, shadowRadiues: 2.0, shadowOpacity: 0.4)
+        self.storeButton.addShadow(UIColor(named: "shadowColor")!, shadowRadiues: 2.0, shadowOpacity: 0.4)
     }
     
     func updateImage() {
@@ -115,10 +125,11 @@ class ProfileViewController: UIViewController {
     }
     @IBAction func editProfileAction(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-        let destinationVC = storyboard.instantiateViewController(withIdentifier: "EditProfileNavigationController") as! UINavigationController
-        self.present(destinationVC, animated: true, completion: nil)
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "EditProfileViewController") as! EditProfileViewController
+        destinationVC.delegate = self
+        let nav = UINavigationController(rootViewController: destinationVC)
+        self.present(nav, animated: true, completion: nil)
     }
-    
 }
 
 extension ProfileViewController: ImagePickerDelegate {
@@ -155,4 +166,10 @@ extension ProfileViewController: UIScrollViewDelegate {
             let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
             pageControl.currentPage = Int(pageIndex)
         }
+}
+
+extension ProfileViewController: UpdateInfoDelegate {
+    func infosUpdated() {
+        self.updateViews()
+    }
 }
