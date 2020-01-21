@@ -243,7 +243,7 @@ struct NetworkManager {
         let likesQuery : PFQuery = PFQuery(className:"Likes")
         let query : PFQuery? = PFUser.query()
         
-        query?.limit = 20
+        query?.limit = 3
         //query?.whereKey("sender", equalTo: AppConstants.objectId)
         //query?.whereKey("objectId", notEqualTo: AppConstants.objectId)
         //query?.whereKey("location", nearGeoPoint: AppConstants.location, withinMiles: Double(AppConstants.distance))

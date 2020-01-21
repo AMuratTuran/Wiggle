@@ -27,12 +27,9 @@ class HomeViewController: UIViewController {
     // MARK: Override Functions
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         configureViews()
         navigationController?.navigationBar.prefersLargeTitles = false
-    }
-    
-    override func viewWillLayoutSubviews() {
-        prepareView()
     }
     
     override func viewDidLoad() {
@@ -63,11 +60,8 @@ class HomeViewController: UIViewController {
         kolodaView.clipsToBounds = true
         addTapGesture()
         emptyImage.isHidden = false
-        buttonsStackView.isHidden = true
         addMessageIconToNavigationBar()
-    }
-    
-    func prepareView() {
+        kolodaView.reloadData()
         kolodaView.addShadow()
     }
     
