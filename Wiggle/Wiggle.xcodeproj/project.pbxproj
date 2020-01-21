@@ -15,6 +15,8 @@
 		DC166ED823ACB5240000E745 /* WiggleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC166ED723ACB5240000E745 /* WiggleCard.swift */; };
 		DC166EDA23ACBAAD0000E745 /* WiggleCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC166ED923ACBAAD0000E745 /* WiggleCardView.xib */; };
 		DC264A8A23C0D57C00ADE806 /* ModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC264A8923C0D57C00ADE806 /* ModelParser.swift */; };
+		DC6C64C423D4FF4C007977A7 /* InAppPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6C64C323D4FF4C007977A7 /* InAppPurchaseViewController.swift */; };
+		DCE3969E23D79781008D8F5D /* InAppPurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE3969D23D79781008D8F5D /* InAppPurchaseTableViewCell.swift */; };
 		F100023823AC151900D4DD22 /* FontHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100023723AC151900D4DD22 /* FontHelper.swift */; };
 		F100023A23AC1B9600D4DD22 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100023923AC1B9600D4DD22 /* ChatMessage.swift */; };
 		F10038A8239D711C00829A65 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10038A6239D711C00829A65 /* LogoutCell.swift */; };
@@ -141,6 +143,8 @@
 		DC166ED723ACB5240000E745 /* WiggleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiggleCard.swift; sourceTree = "<group>"; };
 		DC166ED923ACBAAD0000E745 /* WiggleCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WiggleCardView.xib; sourceTree = "<group>"; };
 		DC264A8923C0D57C00ADE806 /* ModelParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelParser.swift; sourceTree = "<group>"; };
+		DC6C64C323D4FF4C007977A7 /* InAppPurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseViewController.swift; sourceTree = "<group>"; };
+		DCE3969D23D79781008D8F5D /* InAppPurchaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseTableViewCell.swift; sourceTree = "<group>"; };
 		F100023723AC151900D4DD22 /* FontHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontHelper.swift; sourceTree = "<group>"; };
 		F100023923AC1B9600D4DD22 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		F10038A6239D711C00829A65 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
@@ -322,6 +326,14 @@
 			path = WiggleCard;
 			sourceTree = "<group>";
 		};
+		DCE3969C23D7975C008D8F5D /* InAppPurchase */ = {
+			isa = PBXGroup;
+			children = (
+				DCE3969D23D79781008D8F5D /* InAppPurchaseTableViewCell.swift */,
+			);
+			path = InAppPurchase;
+			sourceTree = "<group>";
+		};
 		F10038A4239D70E900829A65 /* Cell With Checkmark */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,6 +459,7 @@
 				F152170223885C0B0027C6D4 /* SettingsViewController.swift */,
 				F150FD0723941287002FD404 /* ShowMeGenderViewController.swift */,
 				F10BC89B239D5E3E005934BB /* NotificationSettingsViewController.swift */,
+				DC6C64C323D4FF4C007977A7 /* InAppPurchaseViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -454,6 +467,7 @@
 		F152170723885D400027C6D4 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				DCE3969C23D7975C008D8F5D /* InAppPurchase */,
 				F10038A5239D710600829A65 /* Logout */,
 				F10038A4239D70E900829A65 /* Cell With Checkmark */,
 				F150FD0223940B17002FD404 /* Cell with Toggle */,
@@ -969,6 +983,7 @@
 				F152170323885C0B0027C6D4 /* SettingsViewController.swift in Sources */,
 				DC166ED823ACB5240000E745 /* WiggleCard.swift in Sources */,
 				F191A56D23D507F2002CD7E0 /* UIWindow + Extensions.swift in Sources */,
+				DC6C64C423D4FF4C007977A7 /* InAppPurchaseViewController.swift in Sources */,
 				F16456912384160A00FC0694 /* SMSCodeRequest.swift in Sources */,
 				F194B5F323C0E1BD00349953 /* MatchedUserView.swift in Sources */,
 				F15005F3239C4C5000E19947 /* ChatViewController.swift in Sources */,
@@ -1021,6 +1036,7 @@
 				F152170D2389CF6D0027C6D4 /* UIView + Extensions.swift in Sources */,
 				F1D407182385EE7A002350BE /* EnableNotificationsViewController.swift in Sources */,
 				DC264A8A23C0D57C00ADE806 /* ModelParser.swift in Sources */,
+				DCE3969E23D79781008D8F5D /* InAppPurchaseTableViewCell.swift in Sources */,
 				F1C794AE23AAD6DA00D9FEFC /* String + Extensions.swift in Sources */,
 				F150FD002394074C002FD404 /* SettingWithSliderCell.swift in Sources */,
 				DC10995823AFC2DC00068054 /* HeartbeatViewComponent.swift in Sources */,
