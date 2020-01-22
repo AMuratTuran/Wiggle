@@ -65,6 +65,16 @@ class Chat: Decodable {
         self.objectId = object["objectId"] as! String
     }
     
+    init() {
+        self.lastMessage = ""
+        isImageMessage = false
+        senderId = ""
+        remoteId = ""
+        isRead = false
+        self.createdAt = ""
+        self.objectId = ""
+    }
+    
     func getReceiverId() -> String {
         if let currentUser = PFUser.current() {
             let id = currentUser.objectId

@@ -69,7 +69,7 @@ class ChatListViewController: UIViewController {
     func getMatchedUsers() {
         NetworkManager.getMatchedUsers(success: { (response) in
             self.matchedUsers = response
-            self.matchesView.prepare(with: self.matchedUsers ?? [])
+            self.matchesView.prepare(with: self.matchedUsers ?? [], delegate: self)
         }) { (error) in
             
         }
@@ -122,7 +122,6 @@ class ChatListViewController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         self.navigationItem.searchController = searchController
         definesPresentationContext = true
-        self.navigationItem.hidesSearchBarWhenScrolling = true
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -145,9 +144,8 @@ class ChatListViewController: UIViewController {
     private func filterContentForSearchText(_ searchText: String) {
         guard let data = tableData else { return }
         filteredChats = data.filter { (chatModel: ChatListModel) -> Bool in
-            return chatModel.getFullName().lowercased().contains(searchText.lowercased())
+            return chatModel.getFullName().lowercased().contains(searchText.lowercased()) || chatModel.lastMessage.lowercased().contains(searchText.lowercased())
         }
-        
         tableView.reloadData()
     }
 }
@@ -206,5 +204,16 @@ extension ChatListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         filterContentForSearchText(searchBar.text ?? "")
+    }
+}
+
+extension ChatListViewController: MatchViewDelegate {
+    func matchViewTapped(user: PFUser) {
+        let storyBoard = UIStoryboard(name: "Chat", bundle: nil)
+        let destinationViewController = storyBoard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+        let chat: ChatListModel?
+        chat = ChatListModel(user: user, chat: Chat())
+        destinationViewController.contactedUser = chat
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
 }

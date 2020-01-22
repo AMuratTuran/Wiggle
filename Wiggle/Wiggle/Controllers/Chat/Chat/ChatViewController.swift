@@ -39,12 +39,12 @@ class ChatViewController: MessagesViewController {
     let query1 = PFQuery(className:"Messages")
     let query2 = PFQuery(className:"Messages")
     var query: PFQuery<PFObject>!
-    open lazy var attachmentManager: AttachmentManager = { [unowned self] in
-        let manager = AttachmentManager()
-        manager.delegate = self
-        return manager
-        }()
+    
     var imagePicker: ImagePicker!
+    var isScrolled: Bool = false
+    var skipCount: Int = 0
+    
+    var safariProtocol: SafariDelegate?
     
     
     override func viewDidLoad() {
@@ -57,13 +57,14 @@ class ChatViewController: MessagesViewController {
         hideBackBarButtonTitle()
         self.currentUser = currentUser
         imagePicker = ImagePicker(presentationController: self, delegate: self)
+        safariProtocol = SafariManager(viewController: self)
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem?.title = ""
         addProfilePhotoNavigationBar()
         configureMessageCollectionView()
         configureMessageCollectionViewLayout()
-        getChatHistory()
+        getChatHistory(skipCount: skipCount)
         listenMessages()
     }
     
@@ -124,16 +125,27 @@ class ChatViewController: MessagesViewController {
     }
     
     func loadFirstMessages() {
+        if skipCount >= chatHistory.count {
+            isScrolled = false
+            return
+        }
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
-                self.messagesCollectionView.reloadData()
-                self.messagesCollectionView.scrollToBottom()
+                if self.skipCount < 1 {
+                    self.messagesCollectionView.reloadData()
+                    self.messagesCollectionView.scrollToBottom()
+                } else {
+                    self.messagesCollectionView.reloadDataAndKeepOffset()
+                }
+                self.skipCount = self.chatHistory.count
+                self.isScrolled = false
             }
         }
     }
     
     func insertMessage(_ message: ChatMessage) {
         chatHistory.append(message)
+        skipCount = chatHistory.count
         DispatchQueue.main.async {
             self.messagesCollectionView.performBatchUpdates({
                 self.messagesCollectionView.insertSections([self.chatHistory.count - 1])
@@ -148,10 +160,14 @@ class ChatViewController: MessagesViewController {
         }
     }
     
-    func getChatHistory() {
+    func getChatHistory(skipCount: Int) {
         if let currentUser = PFUser.current(), let receiver = contactedUser, let senderId = currentUser.objectId {
-            NetworkManager.getChatHistory(myId: senderId, contactedId: receiver.receiverId, success: {response in
-                self.chatHistory = response
+            NetworkManager.getChatHistory(myId: senderId, contactedId: receiver.receiverId, skipCount: skipCount, success: {response in
+                if self.chatHistory.isEmpty {
+                    self.chatHistory = response
+                }else {
+                    self.chatHistory.insert(contentsOf: response, at: 0)
+                }
                 self.loadFirstMessages()
             }) { (error) in
                 self.displayError(message: error)
@@ -456,7 +472,6 @@ extension ChatViewController: MessageCellDelegate {
     
     func didTapMessage(in cell: MessageCollectionViewCell) {
         print("message tapped")
-        //TODO: -> interactor -> worker'daki getMessageKind'ı çağır.
     }
     
     func didTapCellTopLabel(in cell: MessageCollectionViewCell) {
@@ -492,97 +507,78 @@ extension ChatViewController: MessageCellDelegate {
     }
 }
 
+extension ChatViewController: MessageLabelDelegate {
+    func didSelectURL(_ url: URL) {
+        let checkmailorurl = url.absoluteString
+        if checkmailorurl.contains("mailto:") {
+            let mail = checkmailorurl.replacingOccurrences(of: "mailto:", with: "")
+            sendEmail(mail: mail)
+        } else {
+            safariProtocol?.presentSafari(urlString: url.absoluteString)
+        }
+    }
+    
+    func didSelectPhoneNumber(_ phoneNumber: String) {
+        print("phone selected")
+        callPhone(phoneNumber: phoneNumber)
+    }
+    
+    func didSelectDate(_ date: Date) {
+        print("date selected")
+        gotoAppleCalendar(date: date)
+    }
+    
+    func didSelectCustom(_ pattern: String, match: String?) {
+        print("custom selected")
+        guard let mail = match else { return }
+        if mail.isValidEmail() {
+            sendEmail(mail: mail)
+        }
+    }
+    
+    func callPhone(phoneNumber: String) {
+        guard let phoneUrl = URL(string: "tel://\(phoneNumber.removeIllegalCharacter())") else { return }
+        UIApplication.shared.open(phoneUrl, options: [:], completionHandler: nil)
+    }
+    
+    func gotoAppleCalendar(date: Date) {
+        let alert = UIAlertController(title: "Ajanda", message: "Seçtiğiniz tarih ajanda da açılacaktır.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Tamam", style: .default) { _ in
+            let interval = date.timeIntervalSinceReferenceDate
+            let url = URL(string: "calshow:\(interval)")!
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Vazgec", style: .cancel, handler: { _ in
+            self.dismiss(animated: true, completion: nil)
+        })
+        alert.addAction(action)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func sendEmail(mail: String) {
+        let mailViewController = MFMailComposeViewController()
+        mailViewController.mailComposeDelegate = self
+        mailViewController.setToRecipients([mail])
+        mailViewController.setMessageBody("", isHTML: false)
+        guard MFMailComposeViewController.canSendMail() else {
+            return
+        }
+        present(mailViewController, animated: true, completion: nil)
+    }
+}
+
 struct MockUser: SenderType {
     var senderId: String
     var displayName: String
 }
 
-final class ChatMessageViewModel: MessageType {
-    var sentDate: Date
-    var messageModel: ChatMessage!
-    var sender: SenderType {
-        return mockUser
-    }
-    var messageId: String
-    var kind: MessageKind
-    var mockUser: MockUser
-    
-    var message: String?
-    var senderId: String?
-    
-    init(messageModel: ChatMessage) {
-        self.messageModel = messageModel
-        self.sentDate = messageModel.sentDate
-        self.message = messageModel.body
-        self.senderId = messageModel.senderId
-        self.messageId = messageModel.messageId
-        self.kind = .text(messageModel.body )
-        let displayName = "Murat Turan"
-        self.mockUser = MockUser(senderId: messageModel.senderId , displayName: displayName)
-        
-    }
-    
-}
-
-class ChatReceivedMessageModel {
-    var room: String?
-    var message: String?
-    var userToConnect: String?
-    var userFullName: String?
-    var senderId: String?
-    var senderPhotoUrl: String?
-    var creationTimestamp: Int64?
-    var messageId: String?
-    
-    init(room: String, message: String, userToConnect: String, userFullName: String, senderId: String, senderPhotoUrl: String, creationTimestamp: Int64, messageId: String) {
-        self.room = room
-        self.message = message
-        self.userToConnect = userToConnect
-        self.userFullName = userFullName
-        self.senderId = senderId
-        self.senderPhotoUrl = senderPhotoUrl
-        self.creationTimestamp = creationTimestamp
-        self.messageId = messageId
-    }
-    
-    init() {
-        let messages:[String] = ["Selam", "Napiyorsun", "Merhaba", "Nasil gidiyor"]
-        self.message = messages[Int.random(in: 0...3)]
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case room
-        case message
-        case userToConnect
-        case userFullName
-        case senderId
-        case senderPhotoUrl
-        case creationTimestamp
-        case messageId
-    }
-    
-    required init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        room = try values.decode(String.self, forKey: .room)
-        message = try values.decodeIfPresent(String.self, forKey: .message)
-        userToConnect = try values.decode(String.self, forKey: .userToConnect)
-        userFullName = try values.decode(String.self, forKey: .userFullName)
-        senderId =  try values.decode(String.self, forKey: .senderId)
-        senderPhotoUrl = try values.decode(String.self, forKey: .senderPhotoUrl)
-        creationTimestamp = try values.decode(Int64.self, forKey: .creationTimestamp)
-        messageId = try values.decode(String.self, forKey: .messageId)
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(room, forKey: .room)
-        try container.encode(message, forKey: .message)
-        try container.encode(userToConnect, forKey: .userToConnect)
-        try container.encode(userFullName, forKey: .userFullName)
-        try container.encode(senderId, forKey: .senderId)
-        try container.encode(senderPhotoUrl, forKey: .senderPhotoUrl)
-        try container.encode(creationTimestamp, forKey: .creationTimestamp)
-        try container.encode(messageId, forKey: .messageId)
+extension ChatViewController {
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if scrollView.contentOffset.y < 100 && !isScrolled {
+            isScrolled = true
+            getChatHistory(skipCount: skipCount)
+        }
     }
 }
 
@@ -601,12 +597,6 @@ extension ChatViewController: ImagePickerDelegate {
         destinationViewController.modalPresentationStyle = .fullScreen
         destinationViewController.name = "\(contactedUser?.firstName ?? "") \(contactedUser?.lastName ?? "")"
         self.present(destinationViewController, animated: true, completion: nil)
-    }
-}
-
-extension ChatViewController: AttachmentManagerDelegate {
-    func attachmentManager(_ manager: AttachmentManager, shouldBecomeVisible: Bool) {
-        
     }
 }
 
@@ -633,5 +623,11 @@ extension ChatViewController: ImageMessageProtocol {
     
     func selectionCancelled() {
         listenMessages(onCompelete: nil)
+    }
+}
+
+extension ChatViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }

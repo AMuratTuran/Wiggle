@@ -180,7 +180,7 @@ struct NetworkManager {
         }
     }
     
-    static func getChatHistory(myId: String, contactedId: String, success: @escaping([ChatMessage]) -> Void, fail: @escaping(String) -> Void) {
+    static func getChatHistory(myId: String, contactedId: String, skipCount: Int, success: @escaping([ChatMessage]) -> Void, fail: @escaping(String) -> Void) {
         let query1 = PFQuery(className:"Messages")
         query1.whereKey("sender", equalTo: myId)
         query1.whereKey("receiver", equalTo: contactedId)
@@ -190,6 +190,7 @@ struct NetworkManager {
         let query = PFQuery.orQuery(withSubqueries: [query1, query2])
         query.addDescendingOrder("createdAt")
         query.limit = 50
+        query.skip = skipCount
         let liveQueryClient = ParseLiveQuery.Client()
         let handling = liveQueryClient.subscribe(query)
         handling.handle(Event.created) { (_, object) in

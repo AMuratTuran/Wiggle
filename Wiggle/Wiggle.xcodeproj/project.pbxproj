@@ -98,6 +98,7 @@
 		F191A56B23D4F63E002CD7E0 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191A56A23D4F63E002CD7E0 /* EditProfileViewController.swift */; };
 		F191A56D23D507F2002CD7E0 /* UIWindow + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191A56C23D507F2002CD7E0 /* UIWindow + Extensions.swift */; };
 		F191A57023D5959D002CD7E0 /* TouchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191A56F23D5959D002CD7E0 /* TouchButton.swift */; };
+		F191A57223D8E140002CD7E0 /* SafariDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191A57123D8E140002CD7E0 /* SafariDelegate.swift */; };
 		F1935EFE23A657E500431DE2 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1935EFD23A657E500431DE2 /* Match.swift */; };
 		F194B5E223BF8BFC00349953 /* UIViewController + Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F194B5E123BF8BFC00349953 /* UIViewController + Alerts.swift */; };
 		F194B5E423BF94CE00349953 /* AppDelegate + Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F194B5E323BF94CE00349953 /* AppDelegate + Notification.swift */; };
@@ -240,6 +241,7 @@
 		F191A56A23D4F63E002CD7E0 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		F191A56C23D507F2002CD7E0 /* UIWindow + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow + Extensions.swift"; sourceTree = "<group>"; };
 		F191A56F23D5959D002CD7E0 /* TouchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchButton.swift; sourceTree = "<group>"; };
+		F191A57123D8E140002CD7E0 /* SafariDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariDelegate.swift; sourceTree = "<group>"; };
 		F1935EFD23A657E500431DE2 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		F194B5E123BF8BFC00349953 /* UIViewController + Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alerts.swift"; sourceTree = "<group>"; };
 		F194B5E323BF94CE00349953 /* AppDelegate + Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate + Notification.swift"; sourceTree = "<group>"; };
@@ -692,6 +694,7 @@
 				F159C8D02385C8850091AB05 /* ImagePicker.swift */,
 				F150FCF22393EDC0002FD404 /* Delay.swift */,
 				F100023723AC151900D4DD22 /* FontHelper.swift */,
+				F191A57123D8E140002CD7E0 /* SafariDelegate.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -980,6 +983,7 @@
 				F1935EFE23A657E500431DE2 /* Match.swift in Sources */,
 				F191A56B23D4F63E002CD7E0 /* EditProfileViewController.swift in Sources */,
 				F150FD0C239413CD002FD404 /* LabelWithCheckmarkCell.swift in Sources */,
+				F191A57223D8E140002CD7E0 /* SafariDelegate.swift in Sources */,
 				F152170323885C0B0027C6D4 /* SettingsViewController.swift in Sources */,
 				DC166ED823ACB5240000E745 /* WiggleCard.swift in Sources */,
 				F191A56D23D507F2002CD7E0 /* UIWindow + Extensions.swift in Sources */,
