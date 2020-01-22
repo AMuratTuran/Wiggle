@@ -19,6 +19,7 @@ class InitialHeartbeatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
+        hideBackBarButtonTitle()
     }
     
     @IBAction func startTapped(_ sender: Any) {

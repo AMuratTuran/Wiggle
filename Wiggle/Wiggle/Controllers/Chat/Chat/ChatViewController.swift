@@ -471,7 +471,22 @@ extension ChatViewController: MessageCellDelegate {
     }
     
     func didTapMessage(in cell: MessageCollectionViewCell) {
-        print("message tapped")
+        if let indexPath = messagesCollectionView.indexPath(for: cell) {
+            let message = chatHistory[indexPath.section]
+            
+            switch message.kind {
+            case .photo( _):
+                let imageView = FullScreenImageView.instanceFromNib()
+                if let window = UIApplication.shared.keyWindow, let contactedUser = contactedUser {
+                    imageView.prepare(with: message, contactedUser: contactedUser, frame: window.bounds)
+                    imageView.delegate = self
+                    messageInputBar.isHidden = true
+                    window.addSubview(imageView)
+                }
+            default:
+                break
+            }
+        }
     }
     
     func didTapCellTopLabel(in cell: MessageCollectionViewCell) {
@@ -629,5 +644,14 @@ extension ChatViewController: ImageMessageProtocol {
 extension ChatViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ChatViewController: FullScreenImageDelegate {
+    func shouldRemoveFromWindow(view: UIView) {
+        if let window = UIApplication.shared.keyWindow {
+            messageInputBar.isHidden = false
+            view.removeFromSuperview()
+        }
     }
 }

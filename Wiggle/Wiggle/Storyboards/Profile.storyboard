@@ -251,8 +251,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62r-Qd-0Uj">
-                                <rect key="frame" x="20" y="385" width="55" height="36"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62r-Qd-0Uj">
+                                <rect key="frame" x="20" y="385" width="335" height="36"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -273,18 +273,29 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ETy-GZ-Z61">
+                                <rect key="frame" x="20" y="422" width="335" height="2"/>
+                                <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="Jaj-eu-mLv"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="hWa-Aw-FMX" firstAttribute="leading" secondItem="fls-Vs-QqP" secondAttribute="leading" id="3Z0-d2-yff"/>
                             <constraint firstItem="anV-ju-WQf" firstAttribute="height" secondItem="fls-Vs-QqP" secondAttribute="height" constant="-30" id="4ub-xU-2G1"/>
+                            <constraint firstItem="ETy-GZ-Z61" firstAttribute="top" secondItem="62r-Qd-0Uj" secondAttribute="bottom" constant="1" id="5uO-Cd-v1I"/>
                             <constraint firstItem="xZf-PV-arD" firstAttribute="leading" secondItem="fls-Vs-QqP" secondAttribute="leading" id="7HW-e6-elV"/>
                             <constraint firstItem="anV-ju-WQf" firstAttribute="leading" secondItem="fls-Vs-QqP" secondAttribute="trailing" constant="15" id="9fH-s7-A4W"/>
+                            <constraint firstItem="ETy-GZ-Z61" firstAttribute="trailing" secondItem="hWa-Aw-FMX" secondAttribute="trailing" id="ABl-en-yJS"/>
                             <constraint firstItem="hWa-Aw-FMX" firstAttribute="trailing" secondItem="anV-ju-WQf" secondAttribute="trailing" id="ACE-Km-NRz"/>
+                            <constraint firstItem="62r-Qd-0Uj" firstAttribute="trailing" secondItem="hWa-Aw-FMX" secondAttribute="trailing" id="DvC-xn-Qc9"/>
                             <constraint firstItem="hWa-Aw-FMX" firstAttribute="top" secondItem="xZf-PV-arD" secondAttribute="bottom" constant="10" id="Enf-xq-D67"/>
                             <constraint firstItem="hNO-Sk-fzc" firstAttribute="top" secondItem="fls-Vs-QqP" secondAttribute="top" id="JVO-eu-Lhe"/>
                             <constraint firstItem="xZf-PV-arD" firstAttribute="top" secondItem="fls-Vs-QqP" secondAttribute="bottom" constant="25" id="KY4-G7-hIw"/>
                             <constraint firstItem="fls-Vs-QqP" firstAttribute="leading" secondItem="L0n-Ni-o9B" secondAttribute="leading" constant="20" id="LNh-wz-UTH"/>
+                            <constraint firstItem="ETy-GZ-Z61" firstAttribute="leading" secondItem="62r-Qd-0Uj" secondAttribute="leading" id="R0u-PM-Dex"/>
                             <constraint firstItem="hNO-Sk-fzc" firstAttribute="leading" secondItem="fls-Vs-QqP" secondAttribute="leading" id="TFs-rF-ld0"/>
                             <constraint firstItem="hNO-Sk-fzc" firstAttribute="height" secondItem="fls-Vs-QqP" secondAttribute="height" multiplier="0.984615" id="bCT-Ap-Zt3"/>
                             <constraint firstItem="62r-Qd-0Uj" firstAttribute="top" secondItem="aIh-k7-MEF" secondAttribute="bottom" constant="10" id="fkz-hR-4dL"/>

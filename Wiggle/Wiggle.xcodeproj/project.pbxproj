@@ -99,6 +99,8 @@
 		F191A56D23D507F2002CD7E0 /* UIWindow + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191A56C23D507F2002CD7E0 /* UIWindow + Extensions.swift */; };
 		F191A57023D5959D002CD7E0 /* TouchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191A56F23D5959D002CD7E0 /* TouchButton.swift */; };
 		F191A57223D8E140002CD7E0 /* SafariDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191A57123D8E140002CD7E0 /* SafariDelegate.swift */; };
+		F191A57923D8FABE002CD7E0 /* FullScreenImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F191A57823D8FABE002CD7E0 /* FullScreenImageView.xib */; };
+		F191A57B23D8FAD1002CD7E0 /* FullScreenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191A57A23D8FAD1002CD7E0 /* FullScreenImageView.swift */; };
 		F1935EFE23A657E500431DE2 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1935EFD23A657E500431DE2 /* Match.swift */; };
 		F194B5E223BF8BFC00349953 /* UIViewController + Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F194B5E123BF8BFC00349953 /* UIViewController + Alerts.swift */; };
 		F194B5E423BF94CE00349953 /* AppDelegate + Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = F194B5E323BF94CE00349953 /* AppDelegate + Notification.swift */; };
@@ -242,6 +244,8 @@
 		F191A56C23D507F2002CD7E0 /* UIWindow + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow + Extensions.swift"; sourceTree = "<group>"; };
 		F191A56F23D5959D002CD7E0 /* TouchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchButton.swift; sourceTree = "<group>"; };
 		F191A57123D8E140002CD7E0 /* SafariDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariDelegate.swift; sourceTree = "<group>"; };
+		F191A57823D8FABE002CD7E0 /* FullScreenImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullScreenImageView.xib; sourceTree = "<group>"; };
+		F191A57A23D8FAD1002CD7E0 /* FullScreenImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageView.swift; sourceTree = "<group>"; };
 		F1935EFD23A657E500431DE2 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		F194B5E123BF8BFC00349953 /* UIViewController + Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alerts.swift"; sourceTree = "<group>"; };
 		F194B5E323BF94CE00349953 /* AppDelegate + Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate + Notification.swift"; sourceTree = "<group>"; };
@@ -773,6 +777,8 @@
 				F194B5F023C0E1A900349953 /* MatchScrollView.xib */,
 				F194B5F223C0E1BD00349953 /* MatchedUserView.swift */,
 				F194B5F423C0E1C800349953 /* MatchedUserView.xib */,
+				F191A57823D8FABE002CD7E0 /* FullScreenImageView.xib */,
+				F191A57A23D8FAD1002CD7E0 /* FullScreenImageView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -885,6 +891,7 @@
 				F1378F59238ADC7900622B3C /* Profile.storyboard in Resources */,
 				F1C794BE23AC0E1400D9FEFC /* OpenSans-BoldItalic.ttf in Resources */,
 				F191A56123D4F33A002CD7E0 /* TextFieldView.xib in Resources */,
+				F191A57923D8FABE002CD7E0 /* FullScreenImageView.xib in Resources */,
 				F194B5E823C09BCB00349953 /* InAppBannerView.xib in Resources */,
 				F150FD0F239C2E77002FD404 /* Chat.storyboard in Resources */,
 				F1C794C323AC0E1400D9FEFC /* OpenSans-SemiBold.ttf in Resources */,
@@ -1044,6 +1051,7 @@
 				F1C794AE23AAD6DA00D9FEFC /* String + Extensions.swift in Sources */,
 				F150FD002394074C002FD404 /* SettingWithSliderCell.swift in Sources */,
 				DC10995823AFC2DC00068054 /* HeartbeatViewComponent.swift in Sources */,
+				F191A57B23D8FAD1002CD7E0 /* FullScreenImageView.swift in Sources */,
 				F19A48C9238F0BD80045C0BC /* UIViewController + Activity.swift in Sources */,
 				F159FCE923CBD89D0042429E /* HRKButterworth.cpp in Sources */,
 				F1C794AC23AAD46300D9FEFC /* Date + Extensions.swift in Sources */,

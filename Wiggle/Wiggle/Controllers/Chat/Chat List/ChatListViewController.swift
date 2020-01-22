@@ -192,7 +192,21 @@ extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .normal, title: "Delete Chat") { _, _ in
+        guard let data = tableData else { return nil}
+        
+        let delete = UITableViewRowAction(style: .normal, title: "Delete Chat") { (action, indexPath) in
+            let chat: ChatListModel
+            if self.isFiltering, let filteredChats = self.filteredChats {
+                chat = filteredChats[indexPath.row]
+            } else {
+                chat = data[indexPath.row]
+            }
+            self.startAnimating(self.view, startAnimate: true)
+            NetworkManager.deleteChat(chat: chat, success: {
+                self.getChatList()
+            }) { (error) in
+                
+            }
         }
         delete.backgroundColor = UIColor.systemRed
         
