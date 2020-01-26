@@ -21,17 +21,20 @@ class InAppPurchaseTableViewCell: UITableViewCell {
         }
     }
     
-    var testModel : productTestModel?{
-        didSet{
-            setUI()
-        }
-    }
+    static let priceFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        
+        formatter.formatterBehavior = .behavior10_4
+        formatter.numberStyle = .currency
+        
+        return formatter
+    }()
     
     func setUI(){
-        guard let product = testModel else {return}
-        durationLabel.text = product.duration
-        priceLabel.text = product.price
+        guard let product = product else {return}
         
+        InAppPurchaseTableViewCell.priceFormatter.locale = product.priceLocale
+        priceLabel.text = InAppPurchaseTableViewCell.priceFormatter.string(from: product.price)
     }
 
 }

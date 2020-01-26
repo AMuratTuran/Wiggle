@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A6B8A42AC3E4C0E8C384C2E7 /* Pods_Wiggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5526736EFB884D70162BB41 /* Pods_Wiggle.framework */; };
+		DC0557AA23DDE9C400F77383 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0557A923DDE9C400F77383 /* IAPHelper.swift */; };
 		DC10995423AFBEB600068054 /* HeartbeatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC10995323AFBEB600068054 /* HeartbeatView.xib */; };
 		DC10995623AFBEF800068054 /* HeartbeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC10995523AFBEF800068054 /* HeartbeatView.swift */; };
 		DC10995823AFC2DC00068054 /* HeartbeatViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC10995723AFC2DC00068054 /* HeartbeatViewComponent.swift */; };
@@ -16,6 +17,7 @@
 		DC166EDA23ACBAAD0000E745 /* WiggleCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC166ED923ACBAAD0000E745 /* WiggleCardView.xib */; };
 		DC264A8A23C0D57C00ADE806 /* ModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC264A8923C0D57C00ADE806 /* ModelParser.swift */; };
 		DC6C64C423D4FF4C007977A7 /* InAppPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6C64C323D4FF4C007977A7 /* InAppPurchaseViewController.swift */; };
+		DCBB8E6B23DDF3350080AC27 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBB8E6A23DDF3350080AC27 /* StoreKit.framework */; };
 		DCE3969E23D79781008D8F5D /* InAppPurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE3969D23D79781008D8F5D /* InAppPurchaseTableViewCell.swift */; };
 		F100023823AC151900D4DD22 /* FontHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100023723AC151900D4DD22 /* FontHelper.swift */; };
 		F100023A23AC1B9600D4DD22 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100023923AC1B9600D4DD22 /* ChatMessage.swift */; };
@@ -139,6 +141,7 @@
 /* Begin PBXFileReference section */
 		44BB3C201FFEF9A359F53C04 /* Pods-Wiggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.debug.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.debug.xcconfig"; sourceTree = "<group>"; };
 		4E39BF0A09E61170AE4D6F33 /* Pods-Wiggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.release.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.release.xcconfig"; sourceTree = "<group>"; };
+		DC0557A923DDE9C400F77383 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		DC10995323AFBEB600068054 /* HeartbeatView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeartbeatView.xib; sourceTree = "<group>"; };
 		DC10995523AFBEF800068054 /* HeartbeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartbeatView.swift; sourceTree = "<group>"; };
 		DC10995723AFC2DC00068054 /* HeartbeatViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartbeatViewComponent.swift; sourceTree = "<group>"; };
@@ -147,6 +150,7 @@
 		DC166ED923ACBAAD0000E745 /* WiggleCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WiggleCardView.xib; sourceTree = "<group>"; };
 		DC264A8923C0D57C00ADE806 /* ModelParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelParser.swift; sourceTree = "<group>"; };
 		DC6C64C323D4FF4C007977A7 /* InAppPurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseViewController.swift; sourceTree = "<group>"; };
+		DCBB8E6A23DDF3350080AC27 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		DCE3969D23D79781008D8F5D /* InAppPurchaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseTableViewCell.swift; sourceTree = "<group>"; };
 		F100023723AC151900D4DD22 /* FontHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontHelper.swift; sourceTree = "<group>"; };
 		F100023923AC1B9600D4DD22 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
@@ -289,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6B8A42AC3E4C0E8C384C2E7 /* Pods_Wiggle.framework in Frameworks */,
+				DCBB8E6B23DDF3350080AC27 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +303,7 @@
 		0C3CC6E3D46A87DDA8F56F4D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DCBB8E6A23DDF3350080AC27 /* StoreKit.framework */,
 				F5526736EFB884D70162BB41 /* Pods_Wiggle.framework */,
 			);
 			name = Frameworks;
@@ -609,6 +615,7 @@
 			children = (
 				F159FCDB23CBD88A0042429E /* HeartRate */,
 				F164568D2384157D00FC0694 /* NetworkManager.swift */,
+				DC0557A923DDE9C400F77383 /* IAPHelper.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1029,6 +1036,7 @@
 				F159C7B7238493100091AB05 /* WiggleUser.swift in Sources */,
 				F159FCDA23CBD3FC0042429E /* GetHeartbeatViewController.swift in Sources */,
 				F159FCEB23CBD89D0042429E /* HeartRateKitResult.m in Sources */,
+				DC0557AA23DDE9C400F77383 /* IAPHelper.swift in Sources */,
 				F159FCED23CBD89D0042429E /* UIImage+ImageAverageColor.m in Sources */,
 				F150FD13239C2EF0002FD404 /* ChatListViewController.swift in Sources */,
 				F150FCF32393EDC0002FD404 /* Delay.swift in Sources */,
@@ -1221,6 +1229,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Wiggle/Wiggle.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HS67S8FA3;
 				INFOPLIST_FILE = Wiggle/Info.plist;
@@ -1231,6 +1240,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wiggleTeam.Wiggle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Wiggle/Managers/HeartRate/Wiggle-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1245,6 +1255,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Wiggle/Wiggle.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9HS67S8FA3;
 				INFOPLIST_FILE = Wiggle/Info.plist;
@@ -1255,6 +1266,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wiggleTeam.Wiggle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Wiggle/Managers/HeartRate/Wiggle-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
