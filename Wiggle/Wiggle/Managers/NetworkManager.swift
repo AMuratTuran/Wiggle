@@ -356,6 +356,27 @@ struct NetworkManager {
             success(userResponse as? [PFUser] ?? [])
         }
     }
+    
+    static func getWhoLikedYou(success: @escaping([PFObject]) -> Void, fail: @escaping(String) -> Void) {
+        let likesQuery : PFQuery = PFQuery(className:"Likes")
+        guard let user = PFUser.current(), let myId =  user.objectId else {
+            fail("Error")
+            return
+        }
+        likesQuery.whereKey("receiver", equalTo: myId)
+        likesQuery.whereKey("direction", equalTo: "left")
+        likesQuery.addDescendingOrder("createdAt")
+        likesQuery.findObjectsInBackground { (response, error) in
+            if let error = error {
+                fail(error.localizedDescription)
+            }
+            guard let userResponse = response as NSArray? else {
+                fail(Localize.Common.GeneralError)
+                return
+            }
+            success(userResponse as? [PFObject] ?? [])
+        }
+    }
 }
 
 

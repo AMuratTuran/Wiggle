@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 protocol MatchViewDelegate{
-    func matchViewTapped(user: PFUser)
+    func matchViewTapped(user: PFUser?)
 }
 
 class MatchedUserView: UIView {
@@ -43,9 +43,18 @@ class MatchedUserView: UIView {
         nameLabel.text = "\(name)"
         self.delegate = delegate
     }
-    @IBAction func viewTapped(_ sender: Any) {
-        if let data = data {
-           delegate?.matchViewTapped(user: data)
+    
+    func prepareForMatchScreen() {
+        nameLabel.isHidden = true
+        if #available(iOS 13.0, *) {
+            imageView.image = UIImage(systemName: "bolt.fill")
+        } else {
+            // Fallback on earlier versions
         }
+    }
+    
+    @IBAction func viewTapped(_ sender: Any) {
+           delegate?.matchViewTapped(user: data)
+        
     }
 }

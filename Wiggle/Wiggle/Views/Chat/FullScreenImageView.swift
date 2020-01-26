@@ -48,26 +48,30 @@ class FullScreenImageView: UIView {
         delegate?.shouldRemoveFromWindow(view: self)
     }
     @IBAction func viewTapped(_ sender: Any) {
-
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if areViewsHidden {
-            bottomView.isHidden = false
-            topView.isHidden = false
+        UIView.animate(withDuration: 0.2) {
             if #available(iOS 13.0, *) {
                 self.backgroundColor = UIColor.systemBackground
             } else {
                 // Fallback on earlier versions
             }
             self.imageView.backgroundColor = UIColor.lightGray
-        }else {
-            bottomView.isHidden = true
-            topView.isHidden = true
-            self.backgroundColor = UIColor.black
-            self.imageView.backgroundColor = UIColor.black
+            if self.areViewsHidden {
+                self.topView.isHidden = false
+                self.bottomView.isHidden = false
+            }else {
+                self.backgroundColor = UIColor.black
+                self.imageView.backgroundColor = UIColor.black
+                self.topView.isHidden = true
+                self.bottomView.isHidden = true
+            }
+            self.areViewsHidden = !self.areViewsHidden
         }
-        areViewsHidden = !areViewsHidden
+        
+        
     }
     
 }

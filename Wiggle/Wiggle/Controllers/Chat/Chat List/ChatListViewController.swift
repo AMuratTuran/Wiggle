@@ -222,12 +222,20 @@ extension ChatListViewController: UISearchResultsUpdating {
 }
 
 extension ChatListViewController: MatchViewDelegate {
-    func matchViewTapped(user: PFUser) {
-        let storyBoard = UIStoryboard(name: "Chat", bundle: nil)
-        let destinationViewController = storyBoard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
-        let chat: ChatListModel?
-        chat = ChatListModel(user: user, chat: Chat())
-        destinationViewController.contactedUser = chat
-        self.navigationController?.pushViewController(destinationViewController, animated: true)
+    func matchViewTapped(user: PFUser?) {
+        if let user = user {
+            let storyBoard = UIStoryboard(name: "Chat", bundle: nil)
+            let destinationViewController = storyBoard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+            let chat: ChatListModel?
+            chat = ChatListModel(user: user, chat: Chat())
+            destinationViewController.contactedUser = chat
+            self.navigationController?.pushViewController(destinationViewController, animated: true)
+        }else {
+            let storyBoard = UIStoryboard(name: "Chat", bundle: nil)
+            let destinationViewController = storyBoard.instantiateViewController(withIdentifier: "WhoLikedViewController") as! WhoLikedViewController
+            destinationViewController.modalPresentationStyle = .fullScreen
+            self.present(destinationViewController, animated: true, completion: nil)
+            
+        }
     }
 }

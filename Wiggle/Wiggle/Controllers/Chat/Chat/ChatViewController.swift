@@ -476,6 +476,7 @@ extension ChatViewController: MessageCellDelegate {
             
             switch message.kind {
             case .photo( _):
+                messageInputBar.inputTextView.resignFirstResponder()
                 let imageView = FullScreenImageView.instanceFromNib()
                 if let window = UIApplication.shared.keyWindow, let contactedUser = contactedUser {
                     imageView.prepare(with: message, contactedUser: contactedUser, frame: window.bounds)
@@ -651,7 +652,11 @@ extension ChatViewController: FullScreenImageDelegate {
     func shouldRemoveFromWindow(view: UIView) {
         if let window = UIApplication.shared.keyWindow {
             messageInputBar.isHidden = false
-            view.removeFromSuperview()
+            UIView.animate(withDuration: 0.2,animations: {
+                view.alpha = 0
+            }) { (isSuccess) in
+                view.removeFromSuperview()
+            }
         }
     }
 }

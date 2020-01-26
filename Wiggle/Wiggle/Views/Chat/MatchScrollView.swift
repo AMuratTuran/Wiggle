@@ -32,6 +32,11 @@ class MatchScrollView: UIView {
         if data.isEmpty {
             self.isHidden = true
         }
+        let whoLikedView = MatchedUserView.instanceFromNib()
+        whoLikedView.prepareForMatchScreen()
+        whoLikedView.delegate = delegate
+        stackView.addArrangedSubview(whoLikedView)
+        
         data.forEach {
             let view = MatchedUserView.instanceFromNib()
             view.prepare(with: $0, delegate: delegate)
