@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +23,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="80" height="90"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePhoto" translatesAutoresizingMaskIntoConstraints="NO" id="3Su-Wo-ZDl">
-                            <rect key="frame" x="10" y="10" width="60" height="60"/>
+                            <rect key="frame" x="10" y="8" width="60" height="62"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                     <integer key="value" value="30"/>
@@ -38,9 +38,10 @@
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="a8p-cX-l8Q" firstAttribute="top" secondItem="3Su-Wo-ZDl" secondAttribute="bottom" constant="3" id="1kT-jG-yw9"/>
-                        <constraint firstItem="3Su-Wo-ZDl" firstAttribute="top" secondItem="Ul4-Ih-Rpo" secondAttribute="top" constant="10" id="3hq-K1-awO"/>
+                        <constraint firstItem="3Su-Wo-ZDl" firstAttribute="top" secondItem="Ul4-Ih-Rpo" secondAttribute="top" constant="8" id="3hq-K1-awO"/>
                         <constraint firstAttribute="bottom" secondItem="a8p-cX-l8Q" secondAttribute="bottom" constant="2" id="HB5-Em-fCd"/>
                         <constraint firstAttribute="height" constant="90" id="P8E-ed-EMD"/>
                         <constraint firstAttribute="trailing" secondItem="3Su-Wo-ZDl" secondAttribute="trailing" constant="10" id="QaS-Vy-y1e"/>
@@ -50,6 +51,9 @@
                         <constraint firstAttribute="width" constant="80" id="rf8-Qv-s8Q"/>
                         <constraint firstAttribute="bottom" secondItem="3Su-Wo-ZDl" secondAttribute="bottom" constant="20" id="shf-3z-lJv"/>
                     </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="KuF-mn-fsW" appends="YES" id="2C6-uB-RlV"/>
+                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -67,6 +71,11 @@
             </connections>
             <point key="canvasLocation" x="29" y="-45"/>
         </view>
+        <tapGestureRecognizer id="KuF-mn-fsW">
+            <connections>
+                <action selector="viewTapped:" destination="iN0-l3-epB" id="YGa-gR-kDN"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="profilePhoto" width="1200" height="800"/>

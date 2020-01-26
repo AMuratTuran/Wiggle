@@ -105,8 +105,10 @@ class EditProfileViewController: UIViewController {
         components.year = -100
         let minDate = calendar.date(byAdding: components, to: currentDate)!
         
-        components.year = -18
-        let startDate = calendar.date(byAdding: components, to: currentDate)
+        guard let user = PFUser.current() else {
+            return
+        }
+        let startDate = user.getBirthday() as Date
         
         let alert = UIAlertController(style: .actionSheet, title: Localize.DatePicker.PickDate)
         

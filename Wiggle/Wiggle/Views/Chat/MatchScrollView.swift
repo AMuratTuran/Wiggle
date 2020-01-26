@@ -26,7 +26,7 @@ class MatchScrollView: UIView {
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
     }
     
-    func prepare(with data: [PFUser]) {
+    func prepare(with data: [PFUser], delegate: MatchViewDelegate) {
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         self.isHidden = false
         if data.isEmpty {
@@ -34,7 +34,7 @@ class MatchScrollView: UIView {
         }
         data.forEach {
             let view = MatchedUserView.instanceFromNib()
-            view.prepare(with: $0)
+            view.prepare(with: $0, delegate: delegate)
             stackView.addArrangedSubview(view)
         }
     }
