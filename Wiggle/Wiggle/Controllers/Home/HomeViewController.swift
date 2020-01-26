@@ -30,6 +30,7 @@ class HomeViewController: UIViewController {
         
         configureViews()
         navigationController?.navigationBar.prefersLargeTitles = false
+        fetchUsers()
     }
     
     override func viewDidLoad() {

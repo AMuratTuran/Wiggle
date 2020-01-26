@@ -23,4 +23,5 @@ target 'Wiggle' do
   pod 'PopupDialog'
   pod 'ParseLiveQuery'
   pod 'SwiftMessages'
+  pod 'SwiftyStoreKit'
 end
