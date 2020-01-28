@@ -28,14 +28,16 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        configureViews()
+        
         navigationController?.navigationBar.prefersLargeTitles = false
-        fetchUsers()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        addProductLogoToNavigationBar()
+        fetchUsers()
+        configureViews()
         updateObjectId()
         hideBackBarButtonTitle()
         

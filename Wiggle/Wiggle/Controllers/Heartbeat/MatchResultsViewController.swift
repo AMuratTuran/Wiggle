@@ -26,6 +26,7 @@ class MatchResultsViewController: UIViewController {
         super.viewDidLoad()
         prepare()
         getMatchData()
+        addProductLogoToNavigationBar()
         // Do any additional setup after loading the view.
     }
     
@@ -72,14 +73,27 @@ extension MatchResultsViewController: UICollectionViewDataSource, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let data = data else { return UICollectionViewCell() }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeartbeatMatchCell.reuseIdentifier, for: indexPath) as! HeartbeatMatchCell
+        let profileImageHeroId = "profileImage\(indexPath.row)"
+        let nameHeroId = "name\(indexPath.row)"
+        let subLabelId = "subLabel\(indexPath.row)"
+        let contentViewId = "contentView\(indexPath.row)"
+        cell.imageView.hero.id = profileImageHeroId
+        cell.nameAndAgeLabel.hero.id = nameHeroId
+        cell.locationLabel.hero.id = subLabelId
+        cell.shadowView?.hero.id = contentViewId
         cell.prepare(with: data[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let windowWidth = collectionView.frame.width - 20
+        let windowWidth = collectionView.frame.width - 40
         let cellWidth = windowWidth / 2
         return CGSize(width: cellWidth, height: cellWidth + 70)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let data = data else { return }
+        moveToProfileDetailFromWhoLiked(data: data[indexPath.row], index: indexPath.row)
     }
 }
 

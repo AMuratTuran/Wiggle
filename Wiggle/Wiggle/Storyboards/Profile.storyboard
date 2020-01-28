@@ -367,14 +367,15 @@
                                     <constraint firstAttribute="height" constant="100" id="uev-Se-nVj"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZf-Kw-rQR">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZf-Kw-rQR">
                                 <rect key="frame" x="309" y="325.5" width="50" height="49"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="8Wy-UA-Ft4"/>
                                     <constraint firstAttribute="height" constant="50" id="Uc9-j8-Pyc"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="arrow.down.circle.fill" catalog="system"/>
+                                <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" backgroundImage="arrow.down.circle" catalog="system"/>
                                 <connections>
                                     <action selector="backActionWithSender:" destination="MF9-jC-nXk" eventType="touchUpInside" id="bKu-QV-VVI"/>
                                 </connections>
@@ -429,7 +430,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.down.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="arrow.down.circle" catalog="system" width="64" height="60"/>
         <image name="camera.fill" catalog="system" width="64" height="48"/>
         <image name="gear" catalog="system" width="64" height="58"/>
         <image name="pencil" catalog="system" width="64" height="56"/>

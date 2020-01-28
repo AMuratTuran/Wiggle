@@ -16,6 +16,7 @@ class WhoLikedViewController: UIViewController {
     @IBOutlet weak var matchedButton: UIButton!
     @IBOutlet weak var buttonsStackView: UIStackView!
     @IBOutlet weak var messagesButton: UIButton!
+    @IBOutlet weak var buttonShadowView: UIView!
     
     
     var matchedUserData: [PFUser]? {
@@ -37,6 +38,11 @@ class WhoLikedViewController: UIViewController {
         super.viewDidLoad()
         prepareViews()
         getMatchData()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        buttonShadowView.layer.applyShadow(color: UIColor(named: "shadowColor")!, alpha: 0.3, x: 0, y: 10, blur: 25, spread: 0)
     }
     
     func prepareViews() {
@@ -141,7 +147,14 @@ extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeartbeatMatchCell.reuseIdentifier, for: indexPath) as! HeartbeatMatchCell
-        
+        let profileImageHeroId = "profileImage\(indexPath.row)"
+        let nameHeroId = "name\(indexPath.row)"
+        let subLabelId = "subLabel\(indexPath.row)"
+        let contentViewId = "contentView\(indexPath.row)"
+        cell.imageView.hero.id = profileImageHeroId
+        cell.nameAndAgeLabel.hero.id = nameHeroId
+        cell.locationLabel.hero.id = subLabelId
+        cell.shadowView?.hero.id = contentViewId
         if matchedButton.isSelected {
             guard let data = matchedUserData else { return UICollectionViewCell() }
             cell.prepare(with: data[indexPath.row])
@@ -154,8 +167,21 @@ extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let windowWidth = collectionView.frame.width - 20
+        let windowWidth = collectionView.frame.width - 40
         let cellWidth = windowWidth / 2
         return CGSize(width: cellWidth, height: cellWidth + 70)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var userData: PFUser!
+        if matchedButton.isSelected {
+            guard let data = matchedUserData else { return }
+            userData = data[indexPath.row]
+        }else {
+            guard let data = usersLikedYouData else { return }
+            userData = data[indexPath.row]
+        }
+        
+        moveToProfileDetailFromWhoLiked(data: userData, index: indexPath.row)
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import Hero
+import Parse
 import SwiftMessages
 
 extension UIViewController {
@@ -130,13 +131,18 @@ extension UIViewController {
         self.present(destinationViewController, animated: true, completion: nil)
     }
     
-    func moveToHomeViewControllerFromProfileDetail() {
-        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let destinationViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-        destinationViewController.isHeroEnabled = true
+    func moveToProfileDetailFromWhoLiked(data: PFUser, index: Int) {
+        let profileStoryboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+        let destinationViewController = profileStoryboard.instantiateViewController(withIdentifier: "ProfileDetailViewController") as! ProfileDetailViewController
+        destinationViewController.hero.isEnabled = true
         destinationViewController.modalPresentationStyle = .fullScreen
-        
+        destinationViewController.userData = data
+        destinationViewController.indexOfParentCell = index
         self.present(destinationViewController, animated: true, completion: nil)
+    }
+    
+    func moveToHomeViewControllerFromProfileDetail() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func moveToChatListViewController() {
@@ -446,5 +452,21 @@ extension UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .white
+    }
+    
+    func addProductLogoToNavigationBar(selector: Selector? = nil, logoName: String = "labeled-wiggle-logo") {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+        let image = UIImage(named: logoName)
+        button.setImage(image, for: .normal)
+        button.setImage(image, for: .highlighted)
+        button.setImage(image, for: .disabled)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.isEnabled = false
+
+        if let selector = selector {
+            button.isEnabled = true
+            button.addTarget(self, action: selector, for: .touchUpInside)
+        }
+        navigationItem.titleView = button
     }
 }
