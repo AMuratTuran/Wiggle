@@ -9,13 +9,6 @@
 import StoreKit
 import SwiftyStoreKit
 
-enum SubscriptionType : String {
-    case oneMonthSubs = "wiggle1Month"
-    case threeMonthsSubs = "wiggle3Months"
-    case sixMonthsSubs = "wiggle6Months"
-    case oneYearSubs = "wiggle12Months"
-}
-
 public typealias ProductIdentifier = String
 public typealias ProductsRequestCompletionHandler = (_ success: Bool, _ products: [SKProduct]?) -> Void
 
@@ -25,7 +18,7 @@ extension Notification.Name {
 
 open class IAPHelper: NSObject  {
     
-    let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: "fcdcc877bc0b470e8f75d44258e9de8f")
+    let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: "20511a59762f45b8a5bc39f60f29abb7")
     func verifyReceipt(completion : @escaping (Bool, String) -> Void){
         SwiftyStoreKit.verifyReceipt(using: appleValidator) { result in
             switch result {

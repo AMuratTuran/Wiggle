@@ -23,7 +23,7 @@ class InAppPurchaseViewController: UIViewController {
         tableView.dataSource = self
         
         reload()
-        configureViews()
+        configureViews()    
     }
     
     func configureViews(){

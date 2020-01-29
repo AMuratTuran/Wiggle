@@ -267,11 +267,12 @@ struct NetworkManager {
     }
     
     // MARK : HomeScreen User Functions
-    static func getUsersForSwipe(success: @escaping([WiggleCardModel]) -> Void, fail: @escaping(String) -> Void) {
+    static func getUsersForSwipe(withSkip : Int, success: @escaping([WiggleCardModel]) -> Void, fail: @escaping(String) -> Void) {
         let likesQuery : PFQuery = PFQuery(className:"Likes")
         let query : PFQuery? = PFUser.query()
         
-        query?.limit = 13
+        query?.limit = 5
+        query?.skip = withSkip
         //query?.whereKey("sender", equalTo: AppConstants.objectId)
         //query?.whereKey("objectId", notEqualTo: AppConstants.objectId)
         //query?.whereKey("location", nearGeoPoint: AppConstants.location, withinMiles: Double(AppConstants.distance))

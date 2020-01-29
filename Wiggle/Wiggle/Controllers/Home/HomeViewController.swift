@@ -22,6 +22,8 @@ class HomeViewController: UIViewController {
     var currentCard : WiggleCard?
     var currentCardModel : WiggleCardModel?
     
+    var skipCount : Int = 0
+    
     let locationManager = CLLocationManager()
     
     // MARK: Override Functions
@@ -33,10 +35,21 @@ class HomeViewController: UIViewController {
         
     }
     
+    func testModel(){
+        let user1 = WiggleCardModel(profilePicture: "", nameSurname: "Tolga Tas", location: "", distance: "", bio: "", objectId: "")
+        let user2 = WiggleCardModel(profilePicture: "", nameSurname: "Tolga Tas", location: "", distance: "", bio: "", objectId: "")
+        let user3 = WiggleCardModel(profilePicture: "", nameSurname: "Tolga Tas", location: "", distance: "", bio: "", objectId: "")
+        let user4 = WiggleCardModel(profilePicture: "", nameSurname: "Tolga Tas", location: "", distance: "", bio: "", objectId: "")
+        let user5 = WiggleCardModel(profilePicture: "", nameSurname: "Tolga Tas", location: "", distance: "", bio: "", objectId: "")
+        
+        cardArray = [user1, user2, user3, user4, user5]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addProductLogoToNavigationBar()
-        fetchUsers()
+//        fetchUsers()
+        testModel()
         configureViews()
         updateObjectId()
         hideBackBarButtonTitle()
@@ -90,7 +103,7 @@ class HomeViewController: UIViewController {
     }
     
     func fetchUsers(){
-        NetworkManager.getUsersForSwipe(success: { (users) in
+        NetworkManager.getUsersForSwipe(withSkip: skipCount, success: { (users) in
             if users.count == 0{
                 self.emptyImage.isHidden = false
                 self.buttonsStackView.isHidden = true
@@ -100,14 +113,18 @@ class HomeViewController: UIViewController {
             }
             self.cardArray.append(contentsOf: users)
             self.kolodaView.reloadData()
+            self.skipCount += 5
         }) { fail in
             print("===========\(fail)===========")
         }
     }
     
-    func swipeAction(direction : SwipeResultDirection){
-        guard let receiverObjectId = currentCardModel?.objectId else {return}
-        NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: direction)
+    func swipeAction(direction : SwipeResultDirection, fromButton : Bool){
+        //guard let receiverObjectId = currentCardModel?.objectId else {return}
+        if fromButton{
+            kolodaView.swipe(direction)
+        }
+        NetworkManager.swipeActionWithDirection(receiver: "", direction: direction)
     }
     
     // MARK: IBActions
@@ -117,13 +134,13 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func likeButtonAction(_ sender: Any) {
-        swipeAction(direction: SwipeResultDirection.left)
+        swipeAction(direction: SwipeResultDirection.left, fromButton: true)
     }
     @IBAction func dislikeButtonAction(_ sender: Any) {
-        swipeAction(direction: SwipeResultDirection.right)
+        swipeAction(direction: SwipeResultDirection.right, fromButton: true)
     }
     @IBAction func superLikeButtonAction(_ sender: Any) {
-        swipeAction(direction: SwipeResultDirection.up)
+        swipeAction(direction: SwipeResultDirection.up, fromButton: true)
     }
 }
 
@@ -173,13 +190,17 @@ extension HomeViewController: KolodaViewDataSource {
         if let currentCard = koloda.subviews.last?.subviews[0] as? WiggleCard{
             switch direction {
             case .left:
-                currentCard.view.likeImage.alpha = finishPercentage/50
+                UIView.animate(withDuration: 0.0) {
+                    currentCard.view.likeImage.alpha = finishPercentage/50
+                }
             case .right:
                 UIView.animate(withDuration: 0.0) {
                     currentCard.view.dislikeImage.alpha = finishPercentage/50
                 }
             default:
-                print("nereye gidiyo")
+                UIView.animate(withDuration: 0.0) {
+//                    currentCard.view.superLikeImage.alpha = finishPercentage/50
+                }
             }
         }
     }
@@ -196,7 +217,7 @@ extension HomeViewController: KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
-        swipeAction(direction: direction)
+        swipeAction(direction: direction, fromButton: false)
     }
     
     func koloda(_ koloda: KolodaView, didShowCardAt index: Int) {
