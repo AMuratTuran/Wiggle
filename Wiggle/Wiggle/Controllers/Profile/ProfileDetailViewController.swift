@@ -17,6 +17,7 @@ class ProfileDetailViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var detailView: UIView!
     
+    var wiggleCardModel: WiggleCardModel?
     var userData: PFUser?
     var indexOfParentCell: Int?
     
@@ -44,12 +45,32 @@ class ProfileDetailViewController: UIViewController {
     }
     
     func prepareViews() {
-        guard let user = userData else { return }
         self.backButton.addShadow(UIColor(named: "shadowColor")!, shadowRadiues: 2.0, shadowOpacity: 0.4)
-        let imageUrl = user.getPhotoUrl()
-        profileImageView.kf.setImage(with: URL(string: imageUrl))
-        nameLabel.text = "\(user.getFirstName()) \(user.getLastName()), \(user.getAge())"
-        bioLabel.text = user.getBio()
+        if let user = wiggleCardModel{
+            profileImageView.heroID = "fromHomeProfilePicture"
+            nameLabel.heroID = "fromHomeName"
+            bioLabel.heroID = "fromHomeBio"
+            if let photoUrl = user.profilePicture{
+                if !photoUrl.isEmpty{
+                    profileImageView.kf.setImage(with: URL(string: photoUrl))
+                }else{
+                    profileImageView.image = UIImage(named: "profilePicture")
+                }
+            }else{
+                profileImageView.image = UIImage(named: "profilePicture")
+            }
+            nameLabel.text = user.nameSurname
+            bioLabel.text = user.bio
+        }else if let user = userData{
+            let imageUrl = user.getPhotoUrl()
+            if !imageUrl.isEmpty{
+                profileImageView.kf.setImage(with: URL(string: imageUrl))
+            }else{
+                profileImageView.image = UIImage(named: "profilePicture")
+            }
+            nameLabel.text = "\(user.getFirstName()) \(user.getLastName()), \(user.getAge())"
+            bioLabel.text = user.getBio()
+        }
     }
 
     

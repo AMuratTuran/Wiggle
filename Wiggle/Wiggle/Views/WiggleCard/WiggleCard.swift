@@ -83,5 +83,8 @@ class WiggleCard: WiggleCardComponent {
         view.location.text = model.location
         view.distance.text = model.distance
         view.bio.text = model.bio
+        view.profilePicture.heroID = "fromHomeProfilePicture"
+        view.nameSurname.heroID = "fromHomeName"
+        view.bio.heroID = "fromHomeBio"
     }
 }

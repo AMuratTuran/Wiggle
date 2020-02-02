@@ -19,17 +19,18 @@ class HomeViewController: UIViewController {
     
     // MARK: Variables
     var cardArray = [WiggleCardModel]()
-    var currentCard : WiggleCard?
     var currentCardModel : WiggleCardModel?
     
     var skipCount : Int = 0
     
     let locationManager = CLLocationManager()
     let animationView = AnimationView(name: "heartbeat")
+    var fetchUsersGestureRecognizer = UITapGestureRecognizer()
     
     // MARK: Override Functions
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        createLottieAnimation()
         navigationController?.navigationBar.prefersLargeTitles = false
     }
     
@@ -47,7 +48,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         addProductLogoToNavigationBar()
         fetchUsers()
-//        testModel()
         configureViews()
         updateObjectId()
         hideBackBarButtonTitle()
@@ -58,11 +58,13 @@ class HomeViewController: UIViewController {
         self.view.hero.modifiers = [.translate(y: -100), .useGlobalCoordinateSpace]
         
         setupLocationManager()
-        createLottieAnimation()
     }
     
     // MARK: Class Functions
     func createLottieAnimation() {
+        animationView.isUserInteractionEnabled = true
+        fetchUsersGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(fetchUsers))
+        animationView.addGestureRecognizer(fetchUsersGestureRecognizer)
         animationView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
         animationView.center = self.view.center
         
@@ -87,6 +89,7 @@ class HomeViewController: UIViewController {
         kolodaView.clipsToBounds = true
         addTapGesture()
         animationView.isHidden = false
+        animationView.play()
         addMessageIconToNavigationBar()
         kolodaView.reloadData()
         kolodaView.addShadow()
@@ -100,8 +103,8 @@ class HomeViewController: UIViewController {
     }
     
     @objc func moveToDetail(gestureRecognizer: UIGestureRecognizer) {
-        print("tapped")
-        moveToProfileDetailViewController()
+        guard let data = currentCardModel else {return}
+        moveToProfileDetailViewController(data : data)
     }
     
     func setupLocationManager(){
@@ -113,12 +116,14 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func fetchUsers(){
+    @objc func fetchUsers(){
         NetworkManager.getUsersForSwipe(withSkip: skipCount, success: { (users) in
             if users.count == 0{
                 self.animationView.isHidden = false
+                self.animationView.play()
                 self.buttonsStackView.isHidden = true
             }else{
+                self.animationView.pause()
                 self.animationView.isHidden = true
                 self.buttonsStackView.isHidden = false
             }
@@ -141,7 +146,8 @@ class HomeViewController: UIViewController {
     // MARK: IBActions
     
     @IBAction func routeProfileAction(_ sender: UIButton) {
-        moveToProfileDetailViewController()
+        guard let data = currentCardModel else {return}
+        moveToProfileDetailViewController(data : data)
     }
     
     @IBAction func likeButtonAction(_ sender: Any) {
@@ -160,6 +166,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: KolodaViewDelegate {
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
         self.animationView.isHidden = false
+        animationView.play()
         self.buttonsStackView.isHidden = true
         fetchUsers()
         koloda.reloadData()
@@ -190,7 +197,8 @@ extension HomeViewController: KolodaViewDataSource {
         return nil
     }
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
-        moveToProfileDetailViewController()
+        guard let data = currentCardModel else {return}
+        moveToProfileDetailViewController(data : data)
     }
     
     func koloda(_ koloda: KolodaView, allowedDirectionsForIndex index: Int) -> [SwipeResultDirection] {
