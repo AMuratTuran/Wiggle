@@ -122,7 +122,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="storeButtonAction:" destination="ga9-op-ggg" eventType="touchUpOutside" id="SFG-BY-EsY"/>
+                                            <action selector="storeButtonAction:" destination="ga9-op-ggg" eventType="touchUpInside" id="dv1-FN-PRE"/>
                                         </connections>
                                     </button>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OZ-tZ-Bsh">
