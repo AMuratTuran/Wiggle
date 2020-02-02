@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol DistanceChanged {
+    
+}
+
 class SettingWithSliderCell: UITableViewCell {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var titleLabel: UILabel!

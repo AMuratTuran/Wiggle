@@ -12,17 +12,25 @@ import Parse
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var rightBarButton: UIBarButtonItem!
     
+    var isChanged: Bool = false {
+        didSet {
+            rightBarButton.title = isChanged ? "Save" : "Close"
+        }
+    }
+    var selectedDistance: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViews()
         transparentNavigationBar()
+        initUpwardsAnimation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        initUpwardsAnimation()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,7 +62,17 @@ class SettingsViewController: UIViewController {
         
     }
     
+    func saveDistanceInfo() {
+        if let distance = self.selectedDistance {
+            AppConstants.Settings.SelectedDistance = distance
+            UserDefaults.standard.set(distance, forKey: "MaximumDistance")
+        }
+    }
+    
     @IBAction func dismissAction(_ sender: Any) {
+        if isChanged {
+            saveDistanceInfo()
+        }
         self.dismiss(animated: true, completion: nil)
     }
 }
@@ -62,19 +80,17 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 3
+            return 2
         }else if section == 1 {
             return 2
         }else if section == 2 {
-            return 5
+            return 3
         }else if section == 3 {
-            return 1
-        }else if section == 4 {
             return 1
         }else {
             return 0
@@ -84,10 +100,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier:  "SettingsPremiumTableViewCell", for: indexPath) as! SettingsPremiumTableViewCell
-                cell.prepare(type: .gold)
-                return cell
-            }else if indexPath.row == 1{
                 let cell = tableView.dequeueReusableCell(withIdentifier:  "SettingsPremiumTableViewCell", for: indexPath) as! SettingsPremiumTableViewCell
                 cell.prepare(type: .plus)
                 return cell
@@ -116,24 +128,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier:  "SettingWithLabelCell", for: indexPath) as! SettingWithLabelCell
                 cell.prepareCell(title: "Show Me", detail: "Women")
                 return cell
-            }else if indexPath.row == 3 {
-                let cell = tableView.dequeueReusableCell(withIdentifier:  "SettingWithSliderCell", for: indexPath) as! SettingWithSliderCell
-                cell.prepareCell(title: "Age Range")
-                return cell
-            }else if indexPath.row == 4 {
-                let cell = tableView.dequeueReusableCell(withIdentifier:  "CellWithToggleCell", for: indexPath) as! CellWithToggleCell
-                cell.prepareCell(title: "Show me on Wiggle")
-                return cell
             }else {
                 return UITableViewCell()
             }
         }else if indexPath.section == 3 {
-            if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier:  "SettingWithLabelCell", for: indexPath) as! SettingWithLabelCell
-                cell.prepareCell(title: "Push Notifications", detail: "")
-                return cell
-            }
-        }else if indexPath.section == 4 {
             let cell = tableView.dequeueReusableCell(withIdentifier: LogoutCell.reuseIdentifier, for: indexPath) as! LogoutCell
             return cell
         }
@@ -151,7 +149,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 1 || section == 2 || section == 3 || section == 4{
+        if section == 1 || section == 2 || section == 3 {
             return 50
         }else {
             return 0
@@ -187,8 +185,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             label.text = "Account Settings"
         }else if section == 2 {
             label.text = "Discovery"
-        }else if section == 3 {
-            label.text = "Notifications"
         }
         headerView.backgroundColor = UIColor.clear
 
@@ -227,4 +223,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+}
+
+extension SettingsViewController: DistanceChanged {
+    func maxDistanceChanged(value: Int) {
+        isChanged = true
+        self.selectedDistance = value
+    }
 }

@@ -39,8 +39,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate {
             let _ = notification["aps"] as? [String: AnyObject] {
             ((window?.rootViewController as? UINavigationController)?.topViewController as? SplashViewController)?.isLaunchedFromPN = true
         }
-        
+        initializeConstants()
         return true
+    }
+    
+    func initializeConstants() {
+        if let value = UserDefaults.standard.value(forKey: "Maximum Distance") as? Int {
+            AppConstants.Settings.SelectedDistance = value
+        }else {
+            UserDefaults.standard.set(80, forKey: "MaximumDistance")
+        }
     }
     
     func registerForPushNotifications(_ application: UIApplication) {

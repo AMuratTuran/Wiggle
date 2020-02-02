@@ -21,6 +21,21 @@ class SettingsPremiumTableViewCell: UITableViewCell {
     @IBOutlet weak var leftFlame: UIImageView!
     @IBOutlet weak var containerView: UIView!
     
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        shrink(down: highlighted)
+    }
+    
+    func shrink(down: Bool) {
+      UIView.animate(withDuration: 0.3) {
+        if down {
+            self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        } else {
+            self.transform = .identity
+        }
+      }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none

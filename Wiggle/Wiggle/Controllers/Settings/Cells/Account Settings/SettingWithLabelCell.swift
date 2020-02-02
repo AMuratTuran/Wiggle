@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class SettingWithLabelCell: UITableViewCell {
     
@@ -21,16 +22,22 @@ class SettingWithLabelCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
     func prepare() {
-        
+        if let user = PFUser.current(), let _ = user["authData"] as? [String:AnyObject] {
+            titleLabel.text = "Facebook Profile"
+            detailLabel.text = "\(user.getFirstName()) \(user.getLastName())"
+        }
     }
     
     func prepareCell(title: String, detail: String) {
-        titleLabel.text = title
-        detailLabel.text = detail
+        if let user = PFUser.current(), let _ = user["authData"] as? [String:AnyObject] {
+            titleLabel.text = "Facebook Profile"
+            detailLabel.text = "\(user.getFirstName()) \(user.getLastName())"
+        }else {
+            titleLabel.text = title
+            detailLabel.text = detail
+        }
     }
-    
 }

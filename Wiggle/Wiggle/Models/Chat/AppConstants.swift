@@ -35,4 +35,8 @@ struct AppConstants {
     struct UserDefaultsKeys {
         static let SessionToken: String = "ParseSessionToken"
     }
+    
+    struct Settings {
+        static var SelectedDistance: Int = 0
+    }
 }
