@@ -271,7 +271,7 @@ struct NetworkManager {
         let likesQuery : PFQuery = PFQuery(className:"Likes")
         let query : PFQuery? = PFUser.query()
         
-        query?.limit = 5
+        query?.limit = 2
         query?.skip = withSkip
         //query?.whereKey("sender", equalTo: AppConstants.objectId)
         //query?.whereKey("objectId", notEqualTo: AppConstants.objectId)

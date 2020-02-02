@@ -10,11 +10,11 @@ import UIKit
 import Parse
 import Koloda
 import CoreLocation
+import Lottie
 
 class HomeViewController: UIViewController {
     // MARK: Outlets
     @IBOutlet weak var kolodaView: KolodaView!
-    @IBOutlet weak var emptyImage: UIImageView!
     @IBOutlet weak var buttonsStackView: UIStackView!
     
     // MARK: Variables
@@ -25,14 +25,12 @@ class HomeViewController: UIViewController {
     var skipCount : Int = 0
     
     let locationManager = CLLocationManager()
+    let animationView = AnimationView(name: "heartbeat")
     
     // MARK: Override Functions
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
         navigationController?.navigationBar.prefersLargeTitles = false
-        
     }
     
     func testModel(){
@@ -48,8 +46,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addProductLogoToNavigationBar()
-//        fetchUsers()
-        testModel()
+        fetchUsers()
+//        testModel()
         configureViews()
         updateObjectId()
         hideBackBarButtonTitle()
@@ -60,9 +58,22 @@ class HomeViewController: UIViewController {
         self.view.hero.modifiers = [.translate(y: -100), .useGlobalCoordinateSpace]
         
         setupLocationManager()
+        createLottieAnimation()
     }
     
     // MARK: Class Functions
+    func createLottieAnimation() {
+        animationView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+        animationView.center = self.view.center
+        
+        animationView.loopMode = .loop
+        animationView.contentMode = .scaleAspectFill
+        animationView.animationSpeed = 0.5
+        
+        view.addSubview(animationView)
+        animationView.play()
+    }
+    
     func updateObjectId(){
         if let currentUser = PFUser.current(){
             if let id = currentUser.objectId{
@@ -75,7 +86,7 @@ class HomeViewController: UIViewController {
         kolodaView.cornerRadius(12.0)
         kolodaView.clipsToBounds = true
         addTapGesture()
-        emptyImage.isHidden = false
+        animationView.isHidden = false
         addMessageIconToNavigationBar()
         kolodaView.reloadData()
         kolodaView.addShadow()
@@ -105,10 +116,10 @@ class HomeViewController: UIViewController {
     func fetchUsers(){
         NetworkManager.getUsersForSwipe(withSkip: skipCount, success: { (users) in
             if users.count == 0{
-                self.emptyImage.isHidden = false
+                self.animationView.isHidden = false
                 self.buttonsStackView.isHidden = true
             }else{
-                self.emptyImage.isHidden = true
+                self.animationView.isHidden = true
                 self.buttonsStackView.isHidden = false
             }
             self.cardArray.append(contentsOf: users)
@@ -120,11 +131,11 @@ class HomeViewController: UIViewController {
     }
     
     func swipeAction(direction : SwipeResultDirection, fromButton : Bool){
-        //guard let receiverObjectId = currentCardModel?.objectId else {return}
+        guard let receiverObjectId = currentCardModel?.objectId else {return}
         if fromButton{
             kolodaView.swipe(direction)
         }
-        NetworkManager.swipeActionWithDirection(receiver: "", direction: direction)
+        NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: direction)
     }
     
     // MARK: IBActions
@@ -148,7 +159,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: KolodaViewDelegate {
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
-        self.emptyImage.isHidden = false
+        self.animationView.isHidden = false
         self.buttonsStackView.isHidden = true
         fetchUsers()
         koloda.reloadData()

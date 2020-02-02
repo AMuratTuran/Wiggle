@@ -130,6 +130,11 @@ class ProfileViewController: UIViewController {
         let nav = UINavigationController(rootViewController: destinationVC)
         self.present(nav, animated: true, completion: nil)
     }
+    @IBAction func storeButtonAction(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
+        self.navigationController?.present(destionationViewController, animated: true, completion: {})
+    }
 }
 
 extension ProfileViewController: ImagePickerDelegate {

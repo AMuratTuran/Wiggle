@@ -198,9 +198,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let storyboard = UIStoryboard(name: "Settings", bundle: nil)
         if indexPath.section == 0 && indexPath.row == 0{
             let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
-            self.navigationController?.present(destionationViewController, animated: true, completion: {
-
-            })
+            self.navigationController?.present(destionationViewController, animated: true, completion: {})
+        }else if indexPath.section == 0 && indexPath.row == 1{
+            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
+            self.navigationController?.present(destionationViewController, animated: true, completion: {})
         }else if indexPath.section == 2 && indexPath.row == 2 {
             let destionationViewController = storyboard.instantiateViewController(withIdentifier: "ShowMeGenderViewController") as! ShowMeGenderViewController
             self.navigationController?.pushViewController(destionationViewController, animated: true)
