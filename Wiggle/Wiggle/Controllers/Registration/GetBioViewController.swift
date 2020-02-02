@@ -27,6 +27,7 @@ class GetBioViewController: UIViewController {
         bioTextView.layer.borderWidth = 0.5
         bioTextView.layer.cornerRadius = 12.0
         skipButton.setTitle(Localize.Common.SkipButton, for: .normal)
+        topLabel.text = Localize.Bio.Title
     }
     
     @IBAction func continueAction(_ sender: Any) {

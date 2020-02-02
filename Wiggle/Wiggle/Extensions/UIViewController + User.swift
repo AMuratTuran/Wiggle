@@ -31,8 +31,8 @@ extension PFUser {
         return photo.url ?? ""
     }
     
-    func getBirthday() -> NSDate {
-        guard let birthday = self.object(forKey: "birthday") as? NSDate else {return NSDate()}
+    func getBirthday() -> NSDate? {
+        let birthday = self.object(forKey: "birthday") as? NSDate
         return birthday
     }
     
@@ -54,8 +54,8 @@ extension PFUser {
         
     }
     
-    func getGender() -> Int {
-        guard let gender = self.object(forKey: "gender") as? Int else {return 1}
+    func getGender() -> Int? {
+        let gender = self.object(forKey: "gender") as? Int
         return gender
     }
     

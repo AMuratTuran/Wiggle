@@ -29,7 +29,7 @@ class BirthdayViewController: UIViewController {
     
     func prepareViews() {
         topLabel.text = Localize.BirthdayPicker.TopLabel
-        continueButton.setTitle("Complete", for: .normal)
+        continueButton.setTitle(Localize.Common.CompleteButton, for: .normal)
         let calendar = Calendar(identifier: .gregorian)
         let currentDate = Date()
         var components = DateComponents()
@@ -68,11 +68,13 @@ class BirthdayViewController: UIViewController {
     }
     
     @IBAction func continueAction(_ sender: UIButton) {
+        sender.isUserInteractionEnabled = false
         startAnimating(self.view, startAnimate: true)
         if let birthday = birthday {
             PFUser.current()?.setValue(birthday, forKey: "birthday")
             PFUser.current()?.saveEventually({ (result, error) in
                 self.startAnimating(self.view, startAnimate: false)
+                sender.isUserInteractionEnabled = true
                 if error != nil {
                     self.displayError(message: error?.localizedDescription ?? "")
                 }else {

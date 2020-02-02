@@ -24,6 +24,8 @@
 		F10038A8239D711C00829A65 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10038A6239D711C00829A65 /* LogoutCell.swift */; };
 		F10038A9239D711C00829A65 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F10038A7239D711C00829A65 /* LogoutCell.xib */; };
 		F10038AC239D759800829A65 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10038AB239D759800829A65 /* Chat.swift */; };
+		F103654323E6D8210095DB52 /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F103654123E6D8210095DB52 /* EmptyCell.swift */; };
+		F103654423E6D8210095DB52 /* EmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F103654223E6D8210095DB52 /* EmptyCell.xib */; };
 		F10BC89C239D5E3E005934BB /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10BC89B239D5E3E005934BB /* NotificationSettingsViewController.swift */; };
 		F123854923D07A570062ABC8 /* MatchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F123854823D07A570062ABC8 /* MatchResultsViewController.swift */; };
 		F123854F23D094BB0062ABC8 /* HeartbeatMatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F123854D23D094BB0062ABC8 /* HeartbeatMatchCell.swift */; };
@@ -158,6 +160,8 @@
 		F10038A6239D711C00829A65 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		F10038A7239D711C00829A65 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
 		F10038AB239D759800829A65 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		F103654123E6D8210095DB52 /* EmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
+		F103654223E6D8210095DB52 /* EmptyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCell.xib; sourceTree = "<group>"; };
 		F10BC89B239D5E3E005934BB /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
 		F123854823D07A570062ABC8 /* MatchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchResultsViewController.swift; sourceTree = "<group>"; };
 		F123854D23D094BB0062ABC8 /* HeartbeatMatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartbeatMatchCell.swift; sourceTree = "<group>"; };
@@ -377,6 +381,15 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
+		F103653E23E6D7550095DB52 /* Empty */ = {
+			isa = PBXGroup;
+			children = (
+				F103654123E6D8210095DB52 /* EmptyCell.swift */,
+				F103654223E6D8210095DB52 /* EmptyCell.xib */,
+			);
+			path = Empty;
+			sourceTree = "<group>";
+		};
 		F1378F50238A891600622B3C /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -577,6 +590,7 @@
 		F1585AED238406D00062A681 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F103653E23E6D7550095DB52 /* Empty */,
 				F191A56E23D59581002CD7E0 /* Common */,
 				F191A55D23D4F32F002CD7E0 /* TextField */,
 				F1AEB96A23D35F7900407C03 /* PremiumSwipe */,
@@ -928,6 +942,7 @@
 				F194B5F523C0E1C900349953 /* MatchedUserView.xib in Resources */,
 				F159FCD323CBCDE50042429E /* Heartbeat.storyboard in Resources */,
 				F150FCFC2393FA50002FD404 /* SettingWithLabelCell.xib in Resources */,
+				F103654423E6D8210095DB52 /* EmptyCell.xib in Resources */,
 				F1C794C223AC0E1400D9FEFC /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				F150FD0623940B31002FD404 /* CellWithToggleCell.xib in Resources */,
 				F15217102389D52E0027C6D4 /* SettingsPremiumTableViewCell.xib in Resources */,
@@ -1037,6 +1052,7 @@
 				F194B5E223BF8BFC00349953 /* UIViewController + Alerts.swift in Sources */,
 				F123855423D18F660062ABC8 /* UIImage + Extensions.swift in Sources */,
 				F191A56023D4F33A002CD7E0 /* TextFieldView.swift in Sources */,
+				F103654323E6D8210095DB52 /* EmptyCell.swift in Sources */,
 				F150FD0523940B31002FD404 /* CellWithToggleCell.swift in Sources */,
 				F1AEB96C23D35F9B00407C03 /* SwipablePremiumView.swift in Sources */,
 				F1378F52238A892400622B3C /* GeneralRequest.swift in Sources */,

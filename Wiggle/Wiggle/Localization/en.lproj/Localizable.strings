@@ -7,7 +7,7 @@
 */
 
 
-"login_accept_terms" = "Giriş yaparak kullanıcı sözleşmemizi ve gizlilik politikamızı kabul etmiş olursunuz.";
+"login_accept_terms" = "By logging in, you agree to our Terms of Service and Privacy Policy.";
 "facebook_button" = "Login with Facebook";
 "phone_button" = "Login with Phone Number";
 
@@ -21,14 +21,37 @@
 "error" = "Error";
 "phone_codes" = "Phone Codes";
 "general_error" = "Error Occured. Please try again.";
+"complete_button" = "Complete";
 
 "enter_sms_verification" = "Please enter your 4-digit verification code";
 
 "birthday_top_label" = "My birthday is on";
 
+"enable_location" = "Enable Location";
+"enable_location_description" = "Enable your location to meet people around you.";
+"enable_location_button" = "Enable Location";
+
+"enable_notification" = "Enable Notifications";
+"enable_notification_description" = "Enable notifications to get notified when someone likes you or sends you a message";
+"enable_notification_button" = "Enable Notifications";
+
 "take_photo" = "Take photo";
 "camera_roll" = "Camera roll";
 "photo_library" = "Photo library";
+
+"my_name_is" = "My name is";
+
+"i_am_a" = "I am a";
+"male" = "Male";
+"female" = "Female";
+
+"bio" = "Bio";
+
+"choose_photo" = "Choose your best photo";
+"tap_again" = "Tap again on the picture to change it.";
+
+"firstName_placeholder" = "Name";
+"lastName_placeholder" = "Lastname";
 
 "logout" = "Logout";
 

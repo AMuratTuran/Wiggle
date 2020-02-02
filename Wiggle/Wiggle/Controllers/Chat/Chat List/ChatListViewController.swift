@@ -13,8 +13,6 @@ import ParseLiveQuery
 class ChatListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var lineView: UIView!
     
     var matchedUsers: [PFUser]?
     var currentUser: PFUser!
@@ -58,10 +56,6 @@ class ChatListViewController: UIViewController {
         initUpwardsAnimation()
         hideBackBarButtonTitle()
         navigationController?.navigationBar.prefersLargeTitles = true
-        stackView.arrangedSubviews.forEach { $0.removeFromSuperview()}
-        stackView.insertArrangedSubview(matchesView, at: 0)
-        stackView.insertArrangedSubview(lineView, at: 1)
-        stackView.addArrangedSubview(tableView)
         getChatList()
         getMatchedUsers()
     }
@@ -71,9 +65,10 @@ class ChatListViewController: UIViewController {
             self.matchedUsers = response
             self.matchesView.prepare(with: self.matchedUsers ?? [], delegate: self)
         }) { (error) in
-            
+            self.matchesView.prepare(delegate: self)
         }
     }
+    
     func updateChatList() {
         NetworkManager.getChatList(success: { (response) in
             self.data = response
@@ -96,7 +91,7 @@ class ChatListViewController: UIViewController {
     func getUserInfo() {
         guard let data = data else { return }
         var tableData: [ChatListModel] = []
-        
+        self.tableData = tableData
         data.forEach { chat in
             let id: String = chat.getReceiverId()
             NetworkManager.queryUsersById(id, success: { (user) in
@@ -107,13 +102,14 @@ class ChatListViewController: UIViewController {
                         $0.createdAt > $1.createdAt
                     }
                     self.tableData = sortedDate
-                    self.tableView.reloadData()
                     self.startUpwardsAnimation()
                 }
             }) { (error) in
                 
             }
         }
+        self.tableView.reloadData()
+        self.startUpwardsAnimation()
         self.startAnimating(self.view, startAnimate: false)
     }
     
@@ -126,6 +122,7 @@ class ChatListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: ChatListCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: ChatListCell.reuseIdentifier)
+        tableView.register(UINib(nibName: EmptyCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: EmptyCell.reuseIdentifier)
         tableView.tableFooterView = UIView()
     }
     
@@ -153,6 +150,9 @@ class ChatListViewController: UIViewController {
 extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let data = tableData else { return 0 }
+        if data.isEmpty {
+            return 1
+        }
         if isFiltering {
             return filteredChats?.count ?? 0
         }
@@ -161,6 +161,17 @@ extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let data = self.tableData else { return UITableViewCell() }
+        if data.count == 0 {
+            let emptyCell = tableView.dequeueReusableCell(withIdentifier: EmptyCell.reuseIdentifier, for: indexPath) as! EmptyCell
+            if #available(iOS 13.0, *) {
+                emptyCell.prepare(icon: UIImage(systemName: "envelope.open.fill") ?? UIImage(), description: "Henüz mesajın yok ancak pes etme, uygun aday karşına kısa zamanda çıkacaktır. Ritmini ölçmeye devam et.!", isButtonVisible: true, buttonText: "Anasayfaya Dön", buttonAction: {
+                    self.navigationController?.popViewController(animated: true)
+                })
+            } else {
+                // Fallback on earlier versions
+            }
+            return emptyCell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: ChatListCell.reuseIdentifier, for: indexPath) as! ChatListCell
         let chat: ChatListModel
         if isFiltering, let filteredChats = filteredChats {
@@ -173,12 +184,16 @@ extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let data = self.tableData else { return 0 }
+        if data.count == 0 {
+            return self.tableView.frame.height
+        }
         return 70
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let data = tableData else { return }
         tableView.deselectRow(at: indexPath, animated: false)
+        guard let data = tableData, !data.isEmpty else { return }
         let storyBoard = UIStoryboard(name: "Chat", bundle: nil)
         let destinationViewController = storyBoard.instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
         let chat: ChatListModel
@@ -192,7 +207,7 @@ extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        guard let data = tableData else { return nil}
+        guard let data = tableData, !data.isEmpty else { return nil}
         
         let delete = UITableViewRowAction(style: .normal, title: "Delete Chat") { (action, indexPath) in
             let chat: ChatListModel
@@ -211,6 +226,15 @@ extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
         delete.backgroundColor = UIColor.systemRed
         
         return [delete]
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard tableData != nil else { return nil}
+        return matchesView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 90
     }
 }
 

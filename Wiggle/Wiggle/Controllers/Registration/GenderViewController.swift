@@ -16,6 +16,7 @@ class GenderViewController: UIViewController {
     @IBOutlet weak var femaleView: UIView!
     @IBOutlet weak var femaleLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
     
     var selectedGender: Int = 1
     
@@ -25,7 +26,11 @@ class GenderViewController: UIViewController {
     }
     
     func prepareViews() {
+        visibleBorders(view: maleView)
         continueButton.setTitle(Localize.Common.ContinueButton, for: .normal)
+        titleLabel.text = Localize.Gender.Title
+        maleLabel.text = Localize.Gender.Male
+        femaleLabel.text = Localize.Gender.Female
     }
     
     @IBAction func continueAction(_ sender: Any) {

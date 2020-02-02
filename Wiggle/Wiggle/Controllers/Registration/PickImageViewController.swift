@@ -30,8 +30,18 @@ class PickImageViewController: UIViewController {
     }
     
     func prepareViews() {
+        tapAgainLabel.text = Localize.PickImage.TapAgain
+        topLabel.text = Localize.PickImage.Title
         skipButton.setTitle(Localize.Common.SkipButton, for: .normal)
         continueButton.setTitle(Localize.Common.ContinueButton, for: .normal)
+//        if let user = PFUser.current() {
+//            let url = user.getPhotoUrl()
+//            self.pickImageButton.kf.setImage(with: URL(string: url), for: .normal)
+//            if let url = URL(string: url), let data = try? Data(contentsOf: url){
+//                let image: UIImage = UIImage(data: data) ?? UIImage()
+//                self.selectedImage = image
+//            }
+//        }
     }
     @IBAction func backAction(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -40,6 +50,7 @@ class PickImageViewController: UIViewController {
         self.imagePicker.present(from: sender)
     }
     @IBAction func continueAction(_ sender: UIButton) {
+        sender.isUserInteractionEnabled = false
         startAnimating(self.view, startAnimate: true)
         if let image = selectedImage {
             do {
@@ -50,6 +61,7 @@ class PickImageViewController: UIViewController {
                 let user = PFUser.current()
                 user?.setObject(imageFile, forKey: "photo")
                 user?.saveInBackground { (success, error) -> Void in
+                    sender.isUserInteractionEnabled = true
                     self.startAnimating(self.view, startAnimate: false)
                     if error != nil {
                         self.displayError(message: error?.localizedDescription ?? "")

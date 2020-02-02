@@ -13,7 +13,7 @@ protocol MatchViewDelegate{
     func matchViewTapped(user: PFUser?)
 }
 
-class MatchedUserView: UIView {
+class MatchedUserView: UIView  {
         
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -47,7 +47,7 @@ class MatchedUserView: UIView {
     func prepareForMatchScreen() {
         nameLabel.isHidden = true
         if #available(iOS 13.0, *) {
-            imageView.image = UIImage(systemName: "bolt.fill")
+            imageView.image = UIImage(systemName: "heart.fill")
         } else {
             // Fallback on earlier versions
         }
@@ -56,5 +56,25 @@ class MatchedUserView: UIView {
     @IBAction func viewTapped(_ sender: Any) {
            delegate?.matchViewTapped(user: data)
         
+    }
+}
+
+extension MatchedUserView {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        UIView.animate(withDuration: 0.2) {
+            self.transform = CGAffineTransform(scaleX: 0.98, y: 0.98)
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        UIView.animate(withDuration: 0.2) {
+            self.transform = CGAffineTransform.identity
+        }
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        UIView.animate(withDuration: 0.2) {
+            self.transform = CGAffineTransform.identity
+        }
     }
 }

@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate {
         PFFacebookUtils.initializeFacebook(applicationLaunchOptions: launchOptions)
         // Facebook SDK configuration
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        registerForPushNotifications(application)
+        self.getNotificationSettings()
         
         let notificationOption = launchOptions?[.remoteNotification]
         if let notification = notificationOption as? [String: AnyObject],
@@ -45,35 +45,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate {
     
     func registerForPushNotifications(_ application: UIApplication) {
         UNUserNotificationCenter.current()
-          .requestAuthorization(options: [.alert, .sound, .badge]) {
-            [weak self] granted, error in
-              
-            print("Permission granted: \(granted)")
-            guard granted else { return }
-            
-            let viewAction = UNNotificationAction(
-              identifier: "VIEW_ACTION", title: "Custom Action",
-              options: [.authenticationRequired, .foreground])
-            let newsCategory = UNNotificationCategory(
-              identifier: "NEWS_CATEGORY", actions: [viewAction],
-              intentIdentifiers: [], options: [])
-
-            UNUserNotificationCenter.current().setNotificationCategories([newsCategory])
-            self?.getNotificationSettings()
+            .requestAuthorization(options: [.alert, .sound, .badge]) {
+                [weak self] granted, error in
+                
+                print("Permission granted: \(granted)")
+                guard granted else { return }
+                
+                let viewAction = UNNotificationAction(
+                    identifier: "VIEW_ACTION", title: "Custom Action",
+                    options: [.authenticationRequired, .foreground])
+                let newsCategory = UNNotificationCategory(
+                    identifier: "NEWS_CATEGORY", actions: [viewAction],
+                    intentIdentifiers: [], options: [])
+                
+                UNUserNotificationCenter.current().setNotificationCategories([newsCategory])
+                self?.getNotificationSettings()
         }
     }
     
     func getNotificationSettings() {
-      UNUserNotificationCenter.current().getNotificationSettings { settings in
-        print("Notification settings: \(settings)")
-        guard settings.authorizationStatus == .authorized else { return }
-        DispatchQueue.main.async {
-          UIApplication.shared.registerForRemoteNotifications()
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            if let _ = UserDefaults.standard.value(forKey: AppConstants.UserDefaultsKeys.SessionToken) {
+                if settings.authorizationStatus == .notDetermined {
+                    UNUserNotificationCenter.current()
+                        .requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+                            
+                    }
+                }
+            }
+            guard settings.authorizationStatus == .authorized else { return }
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
         }
-      }
     }
     
-
+    
     
     // Handle Facebook authorization URLs
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
@@ -126,7 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         print("Received push notification: \(userInfo)")
         guard let aps = userInfo["aps"] as? [String: AnyObject] else {
-          return
+            return
         }
         presentTopMessage(aps: aps, title: "New Message", body: "You have one new message")
     }
@@ -137,10 +144,17 @@ extension AppDelegate {
         let w = UIWindow()
         
         if let _ = UserDefaults.standard.value(forKey: AppConstants.UserDefaultsKeys.SessionToken) {
-            let homeStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let destinationViewController = homeStoryboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
-            destinationViewController.selectedIndex = isLaunchedFromPN ? 1 : 0
-            w.rootViewController = destinationViewController
+            if let _ = PFUser.current()?.getGender(), let firstName = PFUser.current()?.getFirstName(), !firstName.isEmpty, let lastName = PFUser.current()?.getLastName(), !lastName.isEmpty, let _ = PFUser.current()?.getBirthday(){
+                let homeStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let destinationViewController = homeStoryboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+                destinationViewController.selectedIndex = isLaunchedFromPN ? 1 : 0
+                w.rootViewController = destinationViewController
+            } else {
+                let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+                let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "GetNameViewController") as! GetNameViewController
+                let nav = UINavigationController(rootViewController: destinationViewController)
+                w.rootViewController = nav
+            }
             w.frame = UIScreen.main.bounds
             w.backgroundColor = UIColor.black
             w.makeKeyAndVisible()

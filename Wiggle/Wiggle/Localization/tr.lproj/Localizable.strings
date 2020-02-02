@@ -21,13 +21,36 @@
 "error" = "Hata";
 "phone_codes" = "Ülke Kodları";
 "general_error" = "Bir hata oluştu. Tekrar deneyiniz.";
+"complete_button" = "Tamamla";
 
 "enter_sms_verification" = "Lutfen SMS ile gonderilen 4 haneli dogrulama kodunu giriniz.";
 
 "birthday_top_label" = "Doğum Günüm";
 
+"enable_location" = "Konum Erişimine İzin Ver";
+"enable_location_description" = "Konumunu etkinleştirmeni öneririz, çevrende sana en yakın ve sana en uygun kişileri bulacağımızdan şüphen olmasın.";
+"enable_location_button" = "İzin Ver";
+
+"enable_notification" = "Bildirimlere İzin Ver";
+"enable_notification_description" = "Enable notifications to get notified when someone likes you or sends you a message";
+"enable_notification_button" = "İzin Ver";
+
 "take_photo" = "Fotoğraf Çek";
 "camera_roll" = "Kamera Rulosu";
 "photo_library" = "Kütüphane";
+
+"my_name_is" = "Benim Adım";
+
+"i_am_a" = "Cinsiyetim";
+"male" = "Erkek";
+"female" = "Kadın";
+
+"bio" = "Hakkımda";
+
+"choose_photo" = "En iyi fotoğrafını seç";
+"tap_again" = "Tekrar seçmek için resme tıkla.";
+
+"firstName_placeholder" = "Adın";
+"lastName_placeholder" = "Soyadın";
 
 "logout" = "Çıkış Yap";

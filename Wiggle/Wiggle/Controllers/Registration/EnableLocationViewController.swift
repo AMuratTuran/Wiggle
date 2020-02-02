@@ -27,12 +27,15 @@ class EnableLocationViewController: UIViewController {
         prepareViews()
     }
     func prepareViews() {
-        
+        enableButton.setTitle(Localize.EnableLocation.EnableButton, for: .normal)
+        topLabel.text = Localize.EnableLocation.EnableLocation
+        descriptionLabel.text = Localize.EnableLocation.Description
     }
     
     @IBAction func enableLocation(_ sender: UIButton) {
         startAnimating(self.view, startAnimate: true)
         locationManager.delegate = self
+        sender.isUserInteractionEnabled = false
         self.locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -47,6 +50,7 @@ extension EnableLocationViewController: CLLocationManagerDelegate {
         let point = PFGeoPoint(latitude: locValue.latitude, longitude: locValue.longitude)
         PFUser.current()?.setValue(point, forKey: "location")
         PFUser.current()?.saveInBackground(block: { (result, error) in
+            self.enableButton.isUserInteractionEnabled = true
             self.startAnimating(self.view, startAnimate: false)
             if error != nil {
                 self.displayError(message: error?.localizedDescription ?? "")
@@ -58,6 +62,7 @@ extension EnableLocationViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         self.startAnimating(self.view, startAnimate: false)
+        self.enableButton.isUserInteractionEnabled = true
         print(error.localizedDescription)
     }
 }

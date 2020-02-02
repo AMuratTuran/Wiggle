@@ -63,8 +63,8 @@ class EditProfileViewController: UIViewController {
         var components = DateComponents()
         components.calendar = calendar
         components.year = -18
-        pickBirthdayButton.setTitle((user.getBirthday() as Date).prettyStringFromDate(dateFormat: "dd MMMM yyyy", localeIdentifier: "tr"),  for: .normal)
-        birthday = user.getBirthday() as Date
+        pickBirthdayButton.setTitle((user.getBirthday()! as Date).prettyStringFromDate(dateFormat: "dd MMMM yyyy", localeIdentifier: "tr"),  for: .normal)
+        birthday = user.getBirthday()! as Date
     }
     
     func configureNavigationBar() {
@@ -108,7 +108,7 @@ class EditProfileViewController: UIViewController {
         guard let user = PFUser.current() else {
             return
         }
-        let startDate = user.getBirthday() as Date
+        let startDate = user.getBirthday()! as Date
         
         let alert = UIAlertController(style: .actionSheet, title: Localize.DatePicker.PickDate)
         

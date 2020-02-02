@@ -27,6 +27,7 @@ struct Localize {
         static var PhoneCodes: String { return NSLocalizedString("phone_codes", comment: "Common") }
         static var GeneralError: String { return NSLocalizedString("general_error", comment: "Common") }
         static var Required: String { return NSLocalizedString("Zorunlu alan", comment: "Common") }
+        static var CompleteButton: String { return NSLocalizedString("complete_button", comment: "Common") }
     }
     
     struct DatePicker {
@@ -37,6 +38,18 @@ struct Localize {
         static var TopLabel: String { return NSLocalizedString("birthday_top_label", comment: "BirthdayPicker") }
     }
     
+    struct EnableLocation {
+        static var EnableLocation: String { return NSLocalizedString("enable_location", comment: "GetLocation") }
+        static var Description: String { return NSLocalizedString("enable_location_description", comment: "GetLocation") }
+        static var EnableButton: String { return NSLocalizedString("enable_location_button", comment: "GetLocation")}
+    }
+    
+    struct EnableNotifications {
+        static var EnableNotification: String { return NSLocalizedString("enable_notification", comment: "EnableNotifications") }
+        static var Description: String { return NSLocalizedString("enable_notification_description", comment: "EnableNotifications") }
+        static var EnableButton: String { return NSLocalizedString("enable_notification_button", comment: "EnableNotifications")}
+    }
+    
     struct Camera {
         static var TakePhoto: String { return NSLocalizedString("take_photo", comment: "Camera") }
         static var CameraRoll: String { return NSLocalizedString("camera_roll", comment: "Camera") }
@@ -45,5 +58,29 @@ struct Localize {
     
     struct Settings {
         static var Logout: String { return NSLocalizedString("logout", comment: "Settings") }
+    }
+    
+    struct GetName {
+         static var Title: String { return NSLocalizedString("my_name_is", comment: "GetName") }
+    }
+    
+    struct Gender {
+        static var Title: String { return NSLocalizedString("i_am_a", comment: "Gender") }
+        static var Male: String { return NSLocalizedString("male", comment: "Gender") }
+        static var Female: String { return NSLocalizedString("female", comment: "Gender") }
+    }
+    
+    struct Bio {
+        static var Title: String { return NSLocalizedString("bio", comment: "Bio") }
+    }
+    
+    struct PickImage {
+        static var Title: String { return NSLocalizedString("choose_photo", comment: "PickImage") }
+        static var TapAgain: String { return NSLocalizedString("tap_again", comment: "PickImage") }
+    }
+    
+    struct Placeholder {
+        static var FirstNamePlaceholder: String { return NSLocalizedString("firstName_placeholder", comment: "Placeholder") }
+        static var LastNamePlaceholder: String { return NSLocalizedString("lastName_placeholder", comment: "Placeholder") }
     }
 }

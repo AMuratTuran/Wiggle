@@ -157,51 +157,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XTY-Pg-GJn">
-                                <rect key="frame" x="0.0" y="96" width="375" height="571"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WWk-ji-bhK">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="10"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8WK-46-lyy">
-                                                <rect key="frame" x="0.0" y="4.5" width="375" height="1"/>
-                                                <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="1" id="rI3-Wm-3g3"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="10" id="DKu-pu-1Ad"/>
-                                            <constraint firstItem="8WK-46-lyy" firstAttribute="centerY" secondItem="WWk-ji-bhK" secondAttribute="centerY" id="Smi-R7-NTb"/>
-                                            <constraint firstAttribute="trailing" secondItem="8WK-46-lyy" secondAttribute="trailing" id="gkn-nC-T6R"/>
-                                            <constraint firstItem="8WK-46-lyy" firstAttribute="leading" secondItem="WWk-ji-bhK" secondAttribute="leading" id="oFJ-f0-5IV"/>
-                                        </constraints>
-                                    </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N6S-lM-dTT">
-                                        <rect key="frame" x="0.0" y="10" width="375" height="561"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="separatorColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <inset key="separatorInset" minX="80" minY="0.0" maxX="20" maxY="0.0"/>
-                                    </tableView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="N6S-lM-dTT">
+                                <rect key="frame" x="0.0" y="96" width="375" height="522"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="separatorColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="separatorInset" minX="80" minY="0.0" maxX="20" maxY="0.0"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="XTY-Pg-GJn" firstAttribute="top" secondItem="58U-HE-DrU" secondAttribute="top" id="A9y-LY-cBK"/>
-                            <constraint firstAttribute="bottom" secondItem="XTY-Pg-GJn" secondAttribute="bottom" id="E9V-XK-LX1"/>
-                            <constraint firstItem="XTY-Pg-GJn" firstAttribute="leading" secondItem="58U-HE-DrU" secondAttribute="leading" id="LvY-yS-nws"/>
-                            <constraint firstItem="XTY-Pg-GJn" firstAttribute="trailing" secondItem="58U-HE-DrU" secondAttribute="trailing" id="nL9-Qt-3Am"/>
+                            <constraint firstItem="N6S-lM-dTT" firstAttribute="trailing" secondItem="58U-HE-DrU" secondAttribute="trailing" id="3kF-FE-5Jx"/>
+                            <constraint firstItem="N6S-lM-dTT" firstAttribute="leading" secondItem="58U-HE-DrU" secondAttribute="leading" id="BOL-H2-oEc"/>
+                            <constraint firstItem="58U-HE-DrU" firstAttribute="bottom" secondItem="N6S-lM-dTT" secondAttribute="bottom" id="D0p-EN-fY5"/>
+                            <constraint firstItem="N6S-lM-dTT" firstAttribute="top" secondItem="58U-HE-DrU" secondAttribute="top" id="Q64-0T-0WD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="58U-HE-DrU"/>
                     </view>
                     <navigationItem key="navigationItem" title="Chats" id="BgO-0k-Snv"/>
                     <connections>
-                        <outlet property="lineView" destination="WWk-ji-bhK" id="O6q-CR-Zjt"/>
-                        <outlet property="stackView" destination="XTY-Pg-GJn" id="aG4-hz-B0w"/>
                         <outlet property="tableView" destination="N6S-lM-dTT" id="4xe-JL-TBp"/>
                     </connections>
                 </viewController>

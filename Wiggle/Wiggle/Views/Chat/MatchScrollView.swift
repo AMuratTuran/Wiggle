@@ -19,19 +19,22 @@ class MatchScrollView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        prepare()
+        prepare(delegate: nil)
     }
     
-    func prepare() {
+    func prepare(delegate: MatchViewDelegate?) {
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        let whoLikedView = MatchedUserView.instanceFromNib()
+        whoLikedView.prepareForMatchScreen()
+        if let delegate = delegate {
+            whoLikedView.delegate = delegate
+        }
+        stackView.addArrangedSubview(whoLikedView)
     }
     
     func prepare(with data: [PFUser], delegate: MatchViewDelegate) {
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         self.isHidden = false
-        if data.isEmpty {
-            self.isHidden = true
-        }
         let whoLikedView = MatchedUserView.instanceFromNib()
         whoLikedView.prepareForMatchScreen()
         whoLikedView.delegate = delegate

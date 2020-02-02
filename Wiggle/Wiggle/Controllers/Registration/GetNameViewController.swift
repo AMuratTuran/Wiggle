@@ -40,9 +40,18 @@ class GetNameViewController: UIViewController {
     
     func prepareViews() {
         continueButton.setTitle(Localize.Common.ContinueButton, for: .normal)
-        
+        topLabel.text = Localize.GetName.Title
         nameTextField.delegate = self
+        nameTextField.placeholder = Localize.Placeholder.FirstNamePlaceholder
         lastnameTextField.delegate = self
+        lastnameTextField.placeholder = Localize.Placeholder.LastNamePlaceholder
+        
+        if let user = PFUser.current() {
+            let firstName = user.getFirstName()
+            let lastName = user.getLastName()
+            nameTextField.text = firstName
+            lastnameTextField.text = lastName
+        }
         // cevirileri yap
     }
     @IBAction func continueAction(_ sender: Any) {
