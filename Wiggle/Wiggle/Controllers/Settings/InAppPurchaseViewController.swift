@@ -23,7 +23,11 @@ class InAppPurchaseViewController: UIViewController {
         tableView.dataSource = self
         
         reload()
-        configureViews()    
+        configureViews()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(InAppPurchaseViewController.handlePurchaseNotification(_:)),
+        name: .IAPHelperPurchaseNotification,
+        object: nil)
     }
     
     func configureViews(){
@@ -43,6 +47,17 @@ class InAppPurchaseViewController: UIViewController {
         }
     }
     
+    @objc func handlePurchaseNotification(_ notification: Notification) {
+        guard
+            let productID = notification.object as? String,
+            let index = products.firstIndex(where: { product -> Bool in
+                product.productIdentifier == productID
+            })
+            else { return }
+        
+        tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+    }
+    
 }
 extension InAppPurchaseViewController: UITableViewDelegate{
     
@@ -59,6 +74,10 @@ extension InAppPurchaseViewController: UITableViewDataSource{
         cell.product = product
         
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let product = products[(indexPath as NSIndexPath).row]
+        WiggleProducts.store.buyProduct(product)
     }
     
     

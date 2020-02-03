@@ -32,6 +32,9 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         createLottieAnimation()
         navigationController?.navigationBar.prefersLargeTitles = false
+        
+        WiggleProducts.store.verifyReceipt { _, _ in
+        }
     }
     
     func testModel(){

@@ -17,6 +17,7 @@
 		DC166EDA23ACBAAD0000E745 /* WiggleCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC166ED923ACBAAD0000E745 /* WiggleCardView.xib */; };
 		DC264A8A23C0D57C00ADE806 /* ModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC264A8923C0D57C00ADE806 /* ModelParser.swift */; };
 		DC6C64C423D4FF4C007977A7 /* InAppPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6C64C323D4FF4C007977A7 /* InAppPurchaseViewController.swift */; };
+		DC93BCE723E8C4C900B7BF3B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC93BCE623E8C4C900B7BF3B /* Constants.swift */; };
 		DCBB8E6B23DDF3350080AC27 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBB8E6A23DDF3350080AC27 /* StoreKit.framework */; };
 		DCE3969E23D79781008D8F5D /* InAppPurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE3969D23D79781008D8F5D /* InAppPurchaseTableViewCell.swift */; };
 		F100023823AC151900D4DD22 /* FontHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F100023723AC151900D4DD22 /* FontHelper.swift */; };
@@ -153,6 +154,7 @@
 		DC166ED923ACBAAD0000E745 /* WiggleCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WiggleCardView.xib; sourceTree = "<group>"; };
 		DC264A8923C0D57C00ADE806 /* ModelParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelParser.swift; sourceTree = "<group>"; };
 		DC6C64C323D4FF4C007977A7 /* InAppPurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseViewController.swift; sourceTree = "<group>"; };
+		DC93BCE623E8C4C900B7BF3B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DCBB8E6A23DDF3350080AC27 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		DCE3969D23D79781008D8F5D /* InAppPurchaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseTableViewCell.swift; sourceTree = "<group>"; };
 		F100023723AC151900D4DD22 /* FontHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontHelper.swift; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 				F1585AE0238406560062A681 /* Assets.xcassets */,
 				F1585AE2238406560062A681 /* LaunchScreen.storyboard */,
 				F1585AE5238406560062A681 /* Info.plist */,
+				DC93BCE623E8C4C900B7BF3B /* Constants.swift */,
 			);
 			path = Wiggle;
 			sourceTree = "<group>";
@@ -1082,6 +1085,7 @@
 				F150FCF62393F28B002FD404 /* BoostSuperLikeCell.swift in Sources */,
 				F152170D2389CF6D0027C6D4 /* UIView + Extensions.swift in Sources */,
 				F1D407182385EE7A002350BE /* EnableNotificationsViewController.swift in Sources */,
+				DC93BCE723E8C4C900B7BF3B /* Constants.swift in Sources */,
 				DC264A8A23C0D57C00ADE806 /* ModelParser.swift in Sources */,
 				DCE3969E23D79781008D8F5D /* InAppPurchaseTableViewCell.swift in Sources */,
 				F1C794AE23AAD6DA00D9FEFC /* String + Extensions.swift in Sources */,

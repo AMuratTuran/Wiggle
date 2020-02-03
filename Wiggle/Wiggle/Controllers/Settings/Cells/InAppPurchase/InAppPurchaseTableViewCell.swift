@@ -12,7 +12,7 @@ import StoreKit
 class InAppPurchaseTableViewCell: UITableViewCell {
     
     @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var discountView: UIView!
+    @IBOutlet weak var discountView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
     
     var product : SKProduct?{
@@ -35,6 +35,13 @@ class InAppPurchaseTableViewCell: UITableViewCell {
         
         InAppPurchaseTableViewCell.priceFormatter.locale = product.priceLocale
         priceLabel.text = InAppPurchaseTableViewCell.priceFormatter.string(from: product.price)
+        
+        durationLabel.text = product.localizedTitle
+        
+        let duration = product.localizedTitle.components(separatedBy: " ")
+        let durationn = Int(duration[0]) ?? 1
+        
+        discountView.isHidden = !(durationn * 50 >= Int(truncating: product.price))
     }
 
 }

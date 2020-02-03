@@ -31,9 +31,11 @@ open class IAPHelper: NSObject  {
                 
                 switch purchaseResult {
                 case .purchased(let expiryDate, let items):
+                    isPremium = true
                     print("\(productIds) is valid until \(expiryDate)\n\(items)\n")
                     completion(true, items[0].productId)
                 case .expired, .notPurchased:
+                    isPremium = false
                     completion(false, "")
                 }
                 
