@@ -27,7 +27,7 @@ extension UIViewController {
         popup.addButtons(buttons)
 
         let overlayAppearance = PopupDialogOverlayView.appearance()
-        overlayAppearance.blurEnabled = false
+        overlayAppearance.blurEnabled = true
         let containerAppearance = PopupDialogContainerView.appearance()
         containerAppearance.cornerRadius = 12
         let dialogAppearance = PopupDialogDefaultView.appearance()

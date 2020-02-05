@@ -13,7 +13,6 @@ struct AppConstants {
     static var objectId : String = ""
     static var location : PFGeoPoint = PFGeoPoint()
     static var gender : Int = 0
-    static var distance : Int = 1000
     
     struct General {
         static let ApplicationName: String = "Wiggle"
@@ -38,5 +37,6 @@ struct AppConstants {
     
     struct Settings {
         static var SelectedDistance: Int = 0
+        static var SelectedShowMeGender: Int = 0 
     }
 }

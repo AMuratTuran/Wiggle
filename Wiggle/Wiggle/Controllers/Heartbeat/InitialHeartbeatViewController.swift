@@ -12,6 +12,8 @@ import Parse
 class InitialHeartbeatViewController: UIViewController {
 
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var instructionLabel: UILabel!
     
     var result: HeartRateKitResult?
     
@@ -20,6 +22,9 @@ class InitialHeartbeatViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
         hideBackBarButtonTitle()
+        startButton.setTitle(Localize.Common.Start, for: .normal)
+        titleLabel.text = Localize.Heartbeat.Title
+        instructionLabel.text = Localize.Heartbeat.PlaceFinger
     }
     
     @IBAction func startTapped(_ sender: Any) {

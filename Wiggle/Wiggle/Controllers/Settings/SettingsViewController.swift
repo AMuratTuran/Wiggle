@@ -16,7 +16,7 @@ class SettingsViewController: UIViewController {
     
     var isChanged: Bool = false {
         didSet {
-            rightBarButton.title = isChanged ? "Save" : "Close"
+            rightBarButton.title = isChanged ? Localize.Common.Save : Localize.Common.Close
         }
     }
     var selectedDistance: Int?
@@ -30,7 +30,7 @@ class SettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
+        tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -87,9 +87,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 2
         }else if section == 1 {
-            return 2
+            return 1
         }else if section == 2 {
-            return 3
+            return 2
         }else if section == 3 {
             return 1
         }else {
@@ -110,23 +110,32 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         }else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier:  "SettingWithLabelCell", for: indexPath) as! SettingWithLabelCell
             if indexPath.row == 0 {
-                cell.prepareCell(title: "Phone Number", detail: "905395773787")
-            }else {
-                cell.prepareCell(title: "Email", detail: "0muratturan@gmail.com")
+                if let user = PFUser.current(), user.isFacebookLogin() {
+                    cell.prepareCell(title: Localize.Settings.FacebookProfile, detail: "\(user.getFirstName()) \(user.getLastName())")
+                    cell.arrowImage.isHidden = true
+                }else {
+                    if let user = PFUser.current() {
+                        let phone = user.getUsername()
+                        cell.prepareCell(title: Localize.Settings.PhoneNumber, detail: phone)
+                    }
+                }
             }
             return cell
         }else if indexPath.section == 2 {
             if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier:  "SettingWithLabelCell", for: indexPath) as! SettingWithLabelCell
-                cell.prepareCell(title: "Location", detail: "My Current Location")
-                return cell
-            }else if indexPath.row == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier:  "SettingWithSliderCell", for: indexPath) as! SettingWithSliderCell
-                cell.prepareCell(title: "Maximum Distance")
+                cell.delegate = self
+                cell.prepareCell(title: Localize.Settings.MaxDistance)
                 return cell 
-            }else if indexPath.row == 2 {
+            }else if indexPath.row == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier:  "SettingWithLabelCell", for: indexPath) as! SettingWithLabelCell
-                cell.prepareCell(title: "Show Me", detail: "Women")
+                if AppConstants.Settings.SelectedShowMeGender == 1 {
+                    cell.prepareCell(title: Localize.Gender.ShowMe, detail: Localize.Gender.Female)
+                }else if AppConstants.Settings.SelectedShowMeGender == 2{
+                    cell.prepareCell(title: Localize.Gender.ShowMe, detail: Localize.Gender.Male)
+                }else {
+                    cell.prepareCell(title: Localize.Gender.ShowMe, detail: Localize.Gender.Everyone)
+                }
                 return cell
             }else {
                 return UITableViewCell()
@@ -140,9 +149,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 1 {
-            return "Account Settings"
+            return Localize.Settings.AccountSettings
         }else if section == 2 {
-            return "Discovery"
+            return Localize.Settings.Discovery
         }else {
             return nil
         }
@@ -160,7 +169,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             return 75.0
         }else if indexPath.section == 2 {
-            if indexPath.row == 1 || indexPath.row == 3 {
+            if indexPath.row == 0 {
                 return 80.0
             }else {
                 return 50.0
@@ -182,9 +191,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             label.textColor = UIColor.gray
         }
         if section == 1 {
-            label.text = "Account Settings"
+            label.text = Localize.Settings.AccountSettings
         }else if section == 2 {
-            label.text = "Discovery"
+            label.text = Localize.Settings.Discovery
         }
         headerView.backgroundColor = UIColor.clear
 
@@ -198,13 +207,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         }else if indexPath.section == 0 && indexPath.row == 1{
             let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
             self.navigationController?.present(destionationViewController, animated: true, completion: {})
-        }else if indexPath.section == 2 && indexPath.row == 2 {
+        }else if indexPath.section == 2 && indexPath.row == 1 {
             let destionationViewController = storyboard.instantiateViewController(withIdentifier: "ShowMeGenderViewController") as! ShowMeGenderViewController
             self.navigationController?.pushViewController(destionationViewController, animated: true)
         }else if indexPath.section == 3 {
-            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "NotificationSettingsViewController") as! NotificationSettingsViewController
-            self.navigationController?.pushViewController(destionationViewController, animated: true)
-        }else if indexPath.section == 4 {
             self.startAnimating(self.view, startAnimate: true)
             PFUser.logOutInBackground { (error) in
                 self.startAnimating(self.view, startAnimate: false)

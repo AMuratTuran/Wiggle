@@ -140,6 +140,9 @@
 		F1C794C523AC0E1400D9FEFC /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C794BA23AC0E1400D9FEFC /* OpenSans-Bold.ttf */; };
 		F1D407162385E641002350BE /* EnableLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D407152385E641002350BE /* EnableLocationViewController.swift */; };
 		F1D407182385EE7A002350BE /* EnableNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D407172385EE7A002350BE /* EnableNotificationsViewController.swift */; };
+		F1DBCA2123EAB6D000AE3247 /* EmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBCA1F23EAB6D000AE3247 /* EmptyCollectionViewCell.swift */; };
+		F1DBCA2223EAB6D000AE3247 /* EmptyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DBCA2023EAB6D000AE3247 /* EmptyCollectionViewCell.xib */; };
+		F1DBCA2A23EAE27C00AE3247 /* WiggleTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBCA2923EAE27C00AE3247 /* WiggleTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -291,6 +294,9 @@
 		F1C794BA23AC0E1400D9FEFC /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		F1D407152385E641002350BE /* EnableLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableLocationViewController.swift; sourceTree = "<group>"; };
 		F1D407172385EE7A002350BE /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
+		F1DBCA1F23EAB6D000AE3247 /* EmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionViewCell.swift; sourceTree = "<group>"; };
+		F1DBCA2023EAB6D000AE3247 /* EmptyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCollectionViewCell.xib; sourceTree = "<group>"; };
+		F1DBCA2923EAE27C00AE3247 /* WiggleTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiggleTabBarController.swift; sourceTree = "<group>"; };
 		F1FDDEBF23BDC15B00D4B501 /* Wiggle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Wiggle.entitlements; sourceTree = "<group>"; };
 		F5526736EFB884D70162BB41 /* Pods_Wiggle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wiggle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -388,6 +394,8 @@
 			children = (
 				F103654123E6D8210095DB52 /* EmptyCell.swift */,
 				F103654223E6D8210095DB52 /* EmptyCell.xib */,
+				F1DBCA1F23EAB6D000AE3247 /* EmptyCollectionViewCell.swift */,
+				F1DBCA2023EAB6D000AE3247 /* EmptyCollectionViewCell.xib */,
 			);
 			path = Empty;
 			sourceTree = "<group>";
@@ -564,6 +572,7 @@
 		F1585AEB238406C50062A681 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F1DBCA2823EAE26000AE3247 /* Tabbar */,
 				F159FCD523CBD1C70042429E /* Heartbeat */,
 				F150FD10239C2ED3002FD404 /* Chat */,
 				F1378F5A238ADD7100622B3C /* Profile */,
@@ -853,6 +862,14 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		F1DBCA2823EAE26000AE3247 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				F1DBCA2923EAE27C00AE3247 /* WiggleTabBarController.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -953,6 +970,7 @@
 				F150FCEF2393E9B9002FD404 /* heartbeat.json in Resources */,
 				F1AEB96E23D4A9D300407C03 /* SwipablePremiumView.xib in Resources */,
 				F150FD1A239C33E2002FD404 /* ChatListCell.xib in Resources */,
+				F1DBCA2223EAB6D000AE3247 /* EmptyCollectionViewCell.xib in Resources */,
 				DC166EDA23ACBAAD0000E745 /* WiggleCardView.xib in Resources */,
 				F150FCF72393F28B002FD404 /* BoostSuperLikeCell.xib in Resources */,
 				DC10995423AFBEB600068054 /* HeartbeatView.xib in Resources */,
@@ -1018,6 +1036,7 @@
 				F16456932384170100FC0694 /* Dictionary + Extensions.swift in Sources */,
 				F19A48C7238F05220045C0BC /* WiggleHUD.swift in Sources */,
 				F14A1EFA23AEB9BC00FF2C09 /* GenderViewController.swift in Sources */,
+				F1DBCA2A23EAE27C00AE3247 /* WiggleTabBarController.swift in Sources */,
 				F1585AFA2384077A0062A681 /* EnterVerificationCodeViewController.swift in Sources */,
 				F191A56323D4F451002CD7E0 /* UITextField + Extensions.swift in Sources */,
 				F150FD19239C33E2002FD404 /* ChatListCell.swift in Sources */,
@@ -1026,6 +1045,7 @@
 				F1935EFE23A657E500431DE2 /* Match.swift in Sources */,
 				F191A56B23D4F63E002CD7E0 /* EditProfileViewController.swift in Sources */,
 				F150FD0C239413CD002FD404 /* LabelWithCheckmarkCell.swift in Sources */,
+				F1DBCA2123EAB6D000AE3247 /* EmptyCollectionViewCell.swift in Sources */,
 				F191A57223D8E140002CD7E0 /* SafariDelegate.swift in Sources */,
 				F152170323885C0B0027C6D4 /* SettingsViewController.swift in Sources */,
 				DC166ED823ACB5240000E745 /* WiggleCard.swift in Sources */,

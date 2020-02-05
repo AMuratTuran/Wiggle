@@ -10,6 +10,7 @@
 "login_accept_terms" = "Giriş yaparak kullanıcı sözleşmemizi ve gizlilik politikamızı kabul etmiş olursunuz.";
 "facebook_button" = "Facebook ile giriş yap";
 "phone_button" = "Telefon ile giriş yap";
+"send_again_button" = "Tekrar Gönder";
 
 "sms_login_title" = "SMS ile Giriş";
 
@@ -22,8 +23,11 @@
 "phone_codes" = "Ülke Kodları";
 "general_error" = "Bir hata oluştu. Tekrar deneyiniz.";
 "complete_button" = "Tamamla";
+"save_button" = "Kaydet";
+"close_button" = "Kapat";
+"start_button" = "Başla";
 
-"enter_sms_verification" = "Lutfen SMS ile gonderilen 4 haneli dogrulama kodunu giriniz.";
+"enter_sms_verification" = "Lütfen SMS ile gonderilen 4 haneli doğrulama kodunu giriniz.";
 
 "birthday_top_label" = "Doğum Günüm";
 
@@ -44,13 +48,31 @@
 "i_am_a" = "Cinsiyetim";
 "male" = "Erkek";
 "female" = "Kadın";
+"everyone" = "Herkes";
+"show_me" = "Bana Göster";
 
 "bio" = "Hakkımda";
+
+"discovery" = "Keşif";
+"max_distance" = "Azami Mesafe";
+"account_settings" = "Hesap Ayarları";
+"facebook_profile" = "Facebook Profili";
+"phone_number" = "Telefon Numarası";
 
 "choose_photo" = "En iyi fotoğrafını seç";
 "tap_again" = "Tekrar seçmek için resme tıkla.";
 
 "firstName_placeholder" = "Adın";
 "lastName_placeholder" = "Soyadın";
+
+"settings" = "Ayarlar";
+"change_photo" = "Fotoğraf Değiştir";
+"edit_profile" = "Profili Düzenle";
+
+"chats_title" = "Sohbetler";
+
+"place_finger" = "Parmak ucunuzu flash ve kameranızı kapatacak şekilde yerleştirin";
+"heartbeat_title" = "Nabzınızın aynı olduğu insanlarla eşleşeceksiniz";
+"heartbeat_calculating" = "Hesaplanıyor...\nParmağını flash ve kameranın üzerinde tutmaya devam et";
 
 "logout" = "Çıkış Yap";

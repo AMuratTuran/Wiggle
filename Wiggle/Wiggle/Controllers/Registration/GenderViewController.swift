@@ -37,6 +37,8 @@ class GenderViewController: UIViewController {
         self.startAnimating(self.view, startAnimate: true)
         PFUser.current()?.setValue(selectedGender, forKey: "gender")
         AppConstants.gender = selectedGender
+        AppConstants.Settings.SelectedShowMeGender = selectedGender
+        UserDefaults.standard.set(self.selectedGender, forKey: "SelectedGender")
         PFUser.current()?.saveInBackground(block: { (result, error) in
             self.startAnimating(self.view, startAnimate: false)
             if error != nil {

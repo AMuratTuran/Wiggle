@@ -10,6 +10,7 @@
 "login_accept_terms" = "By logging in, you agree to our Terms of Service and Privacy Policy.";
 "facebook_button" = "Login with Facebook";
 "phone_button" = "Login with Phone Number";
+"send_again_button" = "Send Again";
 
 "sms_login_title" = "SMS Login";
 
@@ -22,6 +23,9 @@
 "phone_codes" = "Phone Codes";
 "general_error" = "Error Occured. Please try again.";
 "complete_button" = "Complete";
+"save_button" = "Save";
+"close_button" = "Close";
+"start_button" = "Start";
 
 "enter_sms_verification" = "Please enter your 4-digit verification code";
 
@@ -44,14 +48,32 @@
 "i_am_a" = "I am a";
 "male" = "Male";
 "female" = "Female";
+"everyone" = "Everyone";
+"show_me" = "Show Me";
 
 "bio" = "Bio";
+
+"discovery" = "Discovery";
+"max_distance" = "Max Distance";
+"account_settings" = "Account Settings";
+"facebook_profile" = "Facebook Profile";
+"phone_number" = "Phone Number";
 
 "choose_photo" = "Choose your best photo";
 "tap_again" = "Tap again on the picture to change it.";
 
 "firstName_placeholder" = "Name";
 "lastName_placeholder" = "Lastname";
+
+"settings" = "Settings";
+"change_photo" = "Change Photo";
+"edit_profile" = "Edit Profile";
+
+"chats_title" = "Chats";
+
+"place_finger" = "Place your finger tip on top of your camera and flash";
+"heartbeat_title" = "You will match other people with same pulse";
+"heartbeat_calculating" = "Calculating...\nKeep your finger on top of your camera and flash";
 
 "logout" = "Logout";
 

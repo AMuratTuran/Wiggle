@@ -25,6 +25,7 @@ class EnterPhoneViewController: UIViewController {
         super.viewDidLoad()
         prepareViews()
         enableValidations()
+        hideBackBarButtonTitle()
     }
     
     override func viewWillAppear(_ animated: Bool) {

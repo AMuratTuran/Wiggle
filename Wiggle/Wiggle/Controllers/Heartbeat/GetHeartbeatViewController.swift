@@ -22,6 +22,8 @@ protocol HeartRateDelegate {
 
 class GetHeartbeatViewController: UIViewController {
     // MARK: Heartbeat variables
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
     var shouldAbortAfterSeconds:Int = 20
     var timeToDetermineBPMFinalResultInSeconds:Double = 0.5
     
@@ -83,6 +85,8 @@ class GetHeartbeatViewController: UIViewController {
         session.addOutput(frameOutput)
         
         startRunningSession()
+        
+        descriptionLabel.text = Localize.Heartbeat.Calculating
     }
     
     @objc func applicationWillEnterForeground() {

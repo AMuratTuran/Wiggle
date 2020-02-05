@@ -12,7 +12,9 @@ class ShowMeGenderViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var genders: [String] = ["Women", "Men", "Everyone"]
+    var genders: [String] = [Localize.Gender.Female, Localize.Gender.Male, Localize.Gender.Everyone]
+    var selectedGender: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViews()
@@ -21,9 +23,19 @@ class ShowMeGenderViewController: UIViewController {
     
     func configureViews() {
         self.title = "Show Me"
+        self.selectedGender = AppConstants.Settings.SelectedShowMeGender
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "LabelWithCheckmarkCell", bundle: nil), forCellReuseIdentifier: "LabelWithCheckmarkCell")
+        tableView.allowsMultipleSelection = false
+    }
+    
+    @objc func saveTapped() {
+        if let gender = self.selectedGender {
+            AppConstants.Settings.SelectedShowMeGender = gender
+            UserDefaults.standard.set(gender, forKey: "SelectedGender")
+        }
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -35,6 +47,16 @@ extension ShowMeGenderViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelWithCheckmarkCell", for: indexPath) as! LabelWithCheckmarkCell
         cell.prepareCell(title: genders[indexPath.row])
+        if indexPath.row + 1 == (self.selectedGender ?? 1) {
+            cell.isSelected = true
+        }else {
+            cell.isSelected = false
+        }
+        if cell.isSelected {
+            cell.accessoryType = .checkmark
+        }else {
+             cell.accessoryType = .none
+        }
         return cell
     }
     
@@ -42,9 +64,13 @@ extension ShowMeGenderViewController: UITableViewDelegate, UITableViewDataSource
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 60))
         let label = UILabel(frame: CGRect(x: 15.0, y: 30, width: tableView.bounds.size.width, height: 21))
         headerView.addSubview(label)
-        label.textColor = UIColor(hexString: "4a4a4a")
+        if #available(iOS 13.0, *) {
+            label.textColor = .secondaryLabel
+        } else {
+            label.textColor = UIColor(hexString: "4a4a4a")
+        }
         
-        label.text = "Show Me"
+        label.text = Localize.Gender.ShowMe
         
         headerView.backgroundColor = UIColor.clear
         
@@ -62,6 +88,8 @@ extension ShowMeGenderViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
+        self.selectedGender = indexPath.row + 1
         if let cell = tableView.cellForRow(at: indexPath) {
             if cell.accessoryType == .none{
                 cell.accessoryType = .checkmark
@@ -69,6 +97,6 @@ extension ShowMeGenderViewController: UITableViewDelegate, UITableViewDataSource
                 cell.accessoryType = .none
             }
         }
-        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.reloadData()
     }
 }

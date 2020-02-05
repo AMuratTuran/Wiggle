@@ -339,7 +339,7 @@ struct NetworkManager {
     
     static func getMatchedUsers(success: @escaping([PFUser]) -> Void, fail: @escaping(String) -> Void) {
         guard let relation = PFUser.current()?.getRelation() else {
-            fail("error")
+            success([])
             return
         }
         let query: PFQuery = relation.query()

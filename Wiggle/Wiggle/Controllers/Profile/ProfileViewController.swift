@@ -19,6 +19,9 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var imageBackgroundView: UIView!
     @IBOutlet weak var nameAndAgeLabel: UILabel!
     @IBOutlet weak var storeButton: UIButton!
+    @IBOutlet weak var settingsLabel: UILabel!
+    @IBOutlet weak var changePhotoLabel: UILabel!
+    @IBOutlet weak var editProfileLabel: UILabel!
     
     
     var slides:[SwipablePremiumView] = []
@@ -49,6 +52,9 @@ class ProfileViewController: UIViewController {
         imageBackgroundView.cornerRadius(imageBackgroundView.frame.height / 2)
         imageBackgroundView.clipsToBounds = false
         navigationController?.setNavigationBarHidden(true, animated: true)
+        settingsLabel.text = Localize.Profile.Settings
+        changePhotoLabel.text = Localize.Profile.ChangePhoto
+        editProfileLabel.text = Localize.Profile.EditProfile
         updateViews()
     }
     
@@ -159,8 +165,10 @@ extension ProfileViewController: ImagePickerDelegate {
                     }
                 }
             }catch {
-                
+                self.startAnimating(self.view, startAnimate: false)
             }
+        }else {
+            self.startAnimating(self.view, startAnimate: false)
         }
     }
 }

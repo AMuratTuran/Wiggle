@@ -69,5 +69,22 @@ extension PFUser {
         return age
     }
     
+    func getUsername() -> String {
+        guard let username = self.object(forKey: "username") as? String else {return ""}
+        return username
+    }
     
+    func getAuthData() -> PFObject? {
+        guard let authData = self.object(forKey: "authData") as? PFObject else { return nil }
+        return authData
+    }
+    
+    func isFacebookLogin() -> Bool {
+        guard let username = self.object(forKey: "username") as? String else {return false}
+        if username.count > 15 {
+            return true
+        }else {
+            return false
+        }
+    }
 }

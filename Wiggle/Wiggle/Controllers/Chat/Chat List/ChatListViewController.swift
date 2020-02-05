@@ -39,9 +39,10 @@ class ChatListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = Localize.Chat.Chats
         guard let currentUser = PFUser.current() else {
+            self.navigationController?.popViewController(animated: true)
             return
-            // navigate to login
         }
         self.currentUser = currentUser
     }

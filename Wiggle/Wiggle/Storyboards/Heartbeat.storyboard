@@ -87,7 +87,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="Jbh-wV-8zF"/>
                     <connections>
+                        <outlet property="instructionLabel" destination="wbo-a0-PHC" id="rPw-xJ-nJ2"/>
                         <outlet property="startButton" destination="Htp-X8-J7l" id="86D-Id-JLB"/>
+                        <outlet property="titleLabel" destination="ShN-Th-Q23" id="a5Y-xE-GX0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="91m-1s-EPb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -114,14 +116,26 @@
                                     <action selector="dismissTapped:" destination="F7n-X7-dY6" eventType="touchUpInside" id="gg4-L2-LJB"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqJ-oL-kZk">
+                                <rect key="frame" x="25" y="567" width="325" height="0.0"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="OaB-of-Je2" firstAttribute="trailing" secondItem="ab1-UZ-NJT" secondAttribute="trailing" constant="10" id="KQq-62-yrL"/>
+                            <constraint firstItem="MqJ-oL-kZk" firstAttribute="leading" secondItem="OaB-of-Je2" secondAttribute="leading" constant="25" id="ObS-Hp-X9x"/>
+                            <constraint firstItem="OaB-of-Je2" firstAttribute="trailing" secondItem="MqJ-oL-kZk" secondAttribute="trailing" constant="25" id="QaV-Hc-ZU3"/>
                             <constraint firstItem="ab1-UZ-NJT" firstAttribute="top" secondItem="OaB-of-Je2" secondAttribute="top" constant="20" id="Soe-SP-eEj"/>
+                            <constraint firstItem="OaB-of-Je2" firstAttribute="bottom" secondItem="MqJ-oL-kZk" secondAttribute="bottom" constant="100" id="xh8-lg-zpd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OaB-of-Je2"/>
                     </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="MqJ-oL-kZk" id="Q0I-4X-VnB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GV4-LK-LYV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

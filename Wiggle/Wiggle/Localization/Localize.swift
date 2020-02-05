@@ -15,6 +15,7 @@ struct Localize {
         static var FacebookButton: String { return NSLocalizedString("facebook_button", comment: "LoginSignup") }
         static var PhoneButton: String { return NSLocalizedString("phone_button", comment: "LoginSignup") }
         static var SMSLoginTitle: String { return NSLocalizedString("sms_login_title", comment: "LoginSignup") }
+        static var SendAgain: String { return NSLocalizedString("send_again_button", comment: "LoginSignup") }
     }
     
     struct Common {
@@ -28,6 +29,9 @@ struct Localize {
         static var GeneralError: String { return NSLocalizedString("general_error", comment: "Common") }
         static var Required: String { return NSLocalizedString("Zorunlu alan", comment: "Common") }
         static var CompleteButton: String { return NSLocalizedString("complete_button", comment: "Common") }
+        static var Save: String { return NSLocalizedString("save_button", comment: "Common") }
+        static var Close: String { return NSLocalizedString("close_button", comment: "Common") }
+        static var Start: String { return NSLocalizedString("start_button", comment: "Common") }
     }
     
     struct DatePicker {
@@ -58,6 +62,12 @@ struct Localize {
     
     struct Settings {
         static var Logout: String { return NSLocalizedString("logout", comment: "Settings") }
+        static var FacebookProfile: String { return NSLocalizedString("facebook_profile", comment: "Settings") }
+        static var Location: String { return NSLocalizedString("location", comment: "Settings") }
+        static var MaxDistance: String { return NSLocalizedString("max_distance", comment: "Settings") }
+        static var AccountSettings: String { return NSLocalizedString("account_settings", comment: "Settings") }
+        static var Discovery: String { return NSLocalizedString("discovery", comment: "Settings") }
+        static var PhoneNumber: String { return NSLocalizedString("phone_number", comment: "Settings") }
     }
     
     struct GetName {
@@ -68,6 +78,8 @@ struct Localize {
         static var Title: String { return NSLocalizedString("i_am_a", comment: "Gender") }
         static var Male: String { return NSLocalizedString("male", comment: "Gender") }
         static var Female: String { return NSLocalizedString("female", comment: "Gender") }
+        static var Everyone: String { return NSLocalizedString("everyone", comment: "Gender") }
+        static var ShowMe: String { return NSLocalizedString("show_me", comment: "Gender") }
     }
     
     struct Bio {
@@ -82,5 +94,21 @@ struct Localize {
     struct Placeholder {
         static var FirstNamePlaceholder: String { return NSLocalizedString("firstName_placeholder", comment: "Placeholder") }
         static var LastNamePlaceholder: String { return NSLocalizedString("lastName_placeholder", comment: "Placeholder") }
+    }
+    
+    struct Profile {
+        static var Settings: String { return NSLocalizedString("settings", comment: "Profile") }
+        static var ChangePhoto: String { return NSLocalizedString("change_photo", comment: "Profile") }
+        static var EditProfile: String { return NSLocalizedString("edit_profile", comment: "Profile") }
+    }
+    
+    struct Chat {
+         static var Chats: String { return NSLocalizedString("chats_title", comment: "Chat") }
+    }
+    
+    struct Heartbeat {
+        static var PlaceFinger: String { return NSLocalizedString("place_finger", comment: "Heartbeat") }
+        static var Title: String { return NSLocalizedString("heartbeat_title", comment: "Heartbeat") }
+        static var Calculating: String { return NSLocalizedString("heartbeat_calculating", comment: "Heartbeat") }
     }
 }

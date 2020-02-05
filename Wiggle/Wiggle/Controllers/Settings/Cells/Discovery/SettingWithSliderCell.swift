@@ -9,13 +9,15 @@
 import UIKit
 
 protocol DistanceChanged {
-    
+    func maxDistanceChanged(value: Int)
 }
 
 class SettingWithSliderCell: UITableViewCell {
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
+    
+    var delegate:DistanceChanged?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,13 +32,15 @@ class SettingWithSliderCell: UITableViewCell {
     }
     
     func prepareCell(title: String) {
+        slider.value = Float(AppConstants.Settings.SelectedDistance)
         titleLabel.text = title
         detailLabel.text = "\(Int(slider.value)) km"
+        
     }
     
     @IBAction func sliderChanged(_ sender: UISlider) {
         let distance = Int(floor(sender.value))
         self.detailLabel.text = "\(distance) km"
-        AppConstants.distance = distance
+        delegate?.maxDistanceChanged(value: distance)
     }
 }

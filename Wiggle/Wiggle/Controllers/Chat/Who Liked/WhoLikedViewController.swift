@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import PopupDialog
 
 class WhoLikedViewController: UIViewController {
     
@@ -48,8 +49,9 @@ class WhoLikedViewController: UIViewController {
     func prepareViews() {
         collectionView.delegate = self
         collectionView.dataSource = self
-               collectionView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 20, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 20, right: 0)
         collectionView.register(UINib(nibName: HeartbeatMatchCell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: HeartbeatMatchCell.reuseIdentifier)
+        collectionView.register(UINib(nibName: EmptyCollectionViewCell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: EmptyCollectionViewCell.reuseIdentifier)
         buttonsStackView.cornerRadius(25.0)
         buttonsStackView.clipsToBounds = true
         matchedButton.isSelected = true
@@ -75,17 +77,39 @@ class WhoLikedViewController: UIViewController {
     }
     
     func getWhoLiked() {
-        if likedYouData == nil {
-            startAnimating(self.view, startAnimate: true)
-            NetworkManager.getWhoLikedYou(success: { (response) in
-                self.likedYouData = response
-                self.getUserInfo()
-            }) { (error) in
-                self.startAnimating(self.view, startAnimate: false)
-                self.displayError(message: error)
+        if let user = PFUser.current(), user.getGold() {
+            if likedYouData == nil {
+                startAnimating(self.view, startAnimate: true)
+                NetworkManager.getWhoLikedYou(success: { (response) in
+                    self.likedYouData = response
+                    if !response.isEmpty {
+                        self.getUserInfo()
+                    }else {
+                        self.startAnimating(self.view, startAnimate: false)
+                    }
+                }) { (error) in
+                    self.startAnimating(self.view, startAnimate: false)
+                    self.displayError(message: error)
+                }
+            }else {
+                collectionView.reloadData()
             }
         }else {
-            collectionView.reloadData()
+            let goToStoreButton = DefaultButton(title: "WStore") {
+                print("storeButton")
+            }
+            let goToMatchScreen = DefaultButton(title: "Geri Dön") {
+                self.matchedButton.isSelected = true
+                self.likedButton.isSelected = false
+                self.matchedButton.backgroundColor = .systemPink
+                if #available(iOS 13.0, *) {
+                    self.likedButton.backgroundColor = .secondarySystemBackground
+                } else {
+                    // Fallback on earlier versions
+                }
+                self.getMatchData()
+            }
+            self.alertMessage(message: "Kimin seni beğendiğini görmek için Wiggle Gold satın alman gerekiyor.", buttons: [goToStoreButton, goToMatchScreen], isErrorMessage: true)
         }
     }
     
@@ -97,10 +121,11 @@ class WhoLikedViewController: UIViewController {
             NetworkManager.queryUsersById(id, success: { (user) in
                 collectionViewData.append(user)
                 if collectionViewData.count == data.count {
+                    self.startAnimating(self.view, startAnimate: false)
                     self.usersLikedYouData = collectionViewData
                 }
             }) { (error) in
-                
+                self.startAnimating(self.view, startAnimate: false)
             }
         }
     }
@@ -118,6 +143,7 @@ class WhoLikedViewController: UIViewController {
         } else {
             // Fallback on earlier versions
         }
+        collectionView.reloadData()
         getWhoLiked()
     }
     
@@ -130,6 +156,7 @@ class WhoLikedViewController: UIViewController {
         } else {
             // Fallback on earlier versions
         }
+        collectionView.reloadData()
         getMatchData()
     }
 }
@@ -138,10 +165,18 @@ extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if matchedButton.isSelected {
             guard let data = matchedUserData else { return 0 }
-            return data.count
+            if data.isEmpty {
+                return 1
+            }else {
+                return data.count
+            }
         }else {
             guard let data = usersLikedYouData else { return 0 }
-            return data.count
+            if data.isEmpty {
+                return 1
+            }else {
+                return data.count
+            }
         }
     }
     
@@ -157,28 +192,55 @@ extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDe
         cell.shadowView?.hero.id = contentViewId
         if matchedButton.isSelected {
             guard let data = matchedUserData else { return UICollectionViewCell() }
-            cell.prepare(with: data[indexPath.row])
+            if data.isEmpty {
+                let emptyCell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.reuseIdentifier, for: indexPath) as! EmptyCollectionViewCell
+                emptyCell.prepare(description: "Henüz eşleştiğin kimse bulunmuyor. Aramaya devam et!")
+                return emptyCell
+            }else {
+                cell.prepare(with: data[indexPath.row])
+            }
         }else {
             guard let data = usersLikedYouData else { return UICollectionViewCell() }
-            cell.prepare(with: data[indexPath.row])
+            if data.isEmpty {
+                let emptyCell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.reuseIdentifier, for: indexPath) as! EmptyCollectionViewCell
+                emptyCell.prepare(description: "Henüz eşleştiğin kimse bulunmuyor. Aramaya devam et!")
+                return emptyCell
+            }else {
+                cell.prepare(with: data[indexPath.row])
+            }
         }
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let windowWidth = collectionView.frame.width - 40
-        let cellWidth = windowWidth / 2
-        return CGSize(width: cellWidth, height: cellWidth + 70)
+        if matchedButton.isSelected {
+            guard let data = matchedUserData else { return  .zero}
+            if data.isEmpty {
+                return collectionView.frame.size
+            }else {
+                let windowWidth = collectionView.frame.width - 40
+                let cellWidth = windowWidth / 2
+                return CGSize(width: cellWidth, height: cellWidth + 70)
+            }
+        }else {
+            guard let data = usersLikedYouData else { return  .zero}
+            if data.isEmpty {
+                return collectionView.frame.size
+            }else {
+                let windowWidth = collectionView.frame.width - 40
+                let cellWidth = windowWidth / 2
+                return CGSize(width: cellWidth, height: cellWidth + 70)
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var userData: PFUser!
         if matchedButton.isSelected {
-            guard let data = matchedUserData else { return }
+            guard let data = matchedUserData, !data.isEmpty else { return }
             userData = data[indexPath.row]
         }else {
-            guard let data = usersLikedYouData else { return }
+            guard let data = usersLikedYouData, !data.isEmpty else { return }
             userData = data[indexPath.row]
         }
         

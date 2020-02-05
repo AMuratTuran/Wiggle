@@ -13,15 +13,16 @@ class SettingWithLabelCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var arrowImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
     
     func prepare() {
@@ -32,12 +33,8 @@ class SettingWithLabelCell: UITableViewCell {
     }
     
     func prepareCell(title: String, detail: String) {
-        if let user = PFUser.current(), let _ = user["authData"] as? [String:AnyObject] {
-            titleLabel.text = "Facebook Profile"
-            detailLabel.text = "\(user.getFirstName()) \(user.getLastName())"
-        }else {
-            titleLabel.text = title
-            detailLabel.text = detail
-        }
+        titleLabel.text = title
+        detailLabel.text = detail
+        arrowImage.isHidden = false
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MatchScrollView" customModule="Wiggle" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="91"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MU5-mU-EdD">
@@ -53,11 +53,21 @@
                         <constraint firstAttribute="bottom" secondItem="LYW-cb-diE" secondAttribute="bottom" id="xpJ-QA-8YL"/>
                     </constraints>
                 </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HkI-pM-xw3">
+                    <rect key="frame" x="0.0" y="90" width="375" height="1"/>
+                    <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="2Q7-fD-1SD"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="HkI-pM-xw3" secondAttribute="bottom" id="9uE-aV-Q44"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MU5-mU-EdD" secondAttribute="trailing" id="Aam-Ws-YnO"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="MU5-mU-EdD" secondAttribute="bottom" id="UwZ-9T-Fbt"/>
+                <constraint firstItem="HkI-pM-xw3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="DeF-Re-gYy"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HkI-pM-xw3" secondAttribute="trailing" id="RBn-pJ-clI"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="MU5-mU-EdD" secondAttribute="bottom" constant="1" id="UwZ-9T-Fbt"/>
                 <constraint firstItem="MU5-mU-EdD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="dJG-cs-AzE"/>
                 <constraint firstItem="MU5-mU-EdD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="nGq-92-kD2"/>
             </constraints>

@@ -456,18 +456,19 @@ extension UIViewController {
     }
     
     func addProductLogoToNavigationBar(selector: Selector? = nil, logoName: String = "labeled-wiggle-logo") {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
-        let image = UIImage(named: logoName)
-        button.setImage(image, for: .normal)
-        button.setImage(image, for: .highlighted)
-        button.setImage(image, for: .disabled)
-        button.imageView?.contentMode = .scaleAspectFit
-        button.isEnabled = false
-
-        if let selector = selector {
-            button.isEnabled = true
-            button.addTarget(self, action: selector, for: .touchUpInside)
-        }
-        navigationItem.titleView = button
+//        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+//        let image = UIImage(named: logoName)
+//        button.setImage(image, for: .normal)
+//        button.setImage(image, for: .highlighted)
+//        button.setImage(image, for: .disabled)
+//        button.imageView?.contentMode = .scaleAspectFit
+//        button.isEnabled = false
+//
+//        if let selector = selector {
+//            button.isEnabled = true
+//            button.addTarget(self, action: selector, for: .touchUpInside)
+//        }
+//        navigationItem.titleView = button
+        navigationItem.title = "wiggle"
     }
 }

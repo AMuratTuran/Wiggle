@@ -15,6 +15,7 @@ class LabelWithCheckmarkCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.accessoryType = .none
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

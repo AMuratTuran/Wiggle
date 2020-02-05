@@ -44,10 +44,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate {
     }
     
     func initializeConstants() {
-        if let value = UserDefaults.standard.value(forKey: "Maximum Distance") as? Int {
+        if let value = UserDefaults.standard.value(forKey: "MaximumDistance") as? Int {
             AppConstants.Settings.SelectedDistance = value
         }else {
             UserDefaults.standard.set(80, forKey: "MaximumDistance")
+        }
+        if let value = UserDefaults.standard.value(forKey: "SelectedGender") as? Int {
+            AppConstants.Settings.SelectedShowMeGender = value
+        }else {
+            UserDefaults.standard.set(1, forKey: "SelectedGender")
         }
     }
     

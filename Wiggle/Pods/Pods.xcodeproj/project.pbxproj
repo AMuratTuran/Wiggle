@@ -9650,6 +9650,23 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		005D34C45BB9C9380C8610C72B184DB4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C38342DE5478E1077C63FA46C4A66062 /* MessageKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MessageKit";
+				IBSC_MODULE = MessageKit;
+				INFOPLIST_FILE = "Target Support Files/MessageKit/ResourceBundle-MessageKitAssets-MessageKit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = MessageKitAssets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
 		02F444852A09C5AE0E0825ECF2F8D6DE /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7949C9376E2F8A60C6A02F9D77ED5A2B /* ParseLiveQuery.xcconfig */;
@@ -9722,31 +9739,16 @@
 			};
 			name = Release;
 		};
-		0A73CF6706A54AE134E0034857919E1E /* Debug */ = {
+		09A994ADB5450A793009D1EA8F18B519 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E707C963464A86B8AF674B1E690EB5A /* RLBAlertsPickers.xcconfig */;
+			baseConfigurationReference = 02E0BD4A1F9B76C5C89F7151244C8A07 /* SwiftMessages.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/RLBAlertsPickers";
-				INFOPLIST_FILE = "Target Support Files/RLBAlertsPickers/ResourceBundle-Countries-RLBAlertsPickers-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				PRODUCT_NAME = Countries;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		18A43DBCE94155BDE0313CD4535F1D38 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 841F693989D961C5BD8562E3BC9C646C /* Parse.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Parse";
-				INFOPLIST_FILE = "Target Support Files/Parse/ResourceBundle-Parse-Parse-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = Parse;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SwiftMessages";
+				IBSC_MODULE = SwiftMessages;
+				INFOPLIST_FILE = "Target Support Files/SwiftMessages/ResourceBundle-SwiftMessages-SwiftMessages-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = SwiftMessages;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -10138,22 +10140,6 @@
 			};
 			name = Debug;
 		};
-		3A03D7C5734FA8864BC3F9D3EC452E2E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C38342DE5478E1077C63FA46C4A66062 /* MessageKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MessageKit";
-				INFOPLIST_FILE = "Target Support Files/MessageKit/ResourceBundle-MessageKitAssets-MessageKit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = MessageKitAssets;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
 		3A85AECD9396E86D3A52A1149F3506CE /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3E6DC326B60A8B3B99F3C23736C0F404 /* PromiseKit.xcconfig */;
@@ -10474,22 +10460,6 @@
 			};
 			name = Debug;
 		};
-		6F3A5B2DA3BC82ABBF0786F585CE0961 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C38342DE5478E1077C63FA46C4A66062 /* MessageKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MessageKit";
-				INFOPLIST_FILE = "Target Support Files/MessageKit/ResourceBundle-MessageKitAssets-MessageKit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = MessageKitAssets;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		709436A5131820E44A1196F57BC8461B /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6672A8406059759C4951972327427EF1 /* FacebookShare.xcconfig */;
@@ -10562,22 +10532,6 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		73C30E4A5C39BA890E4E3EA800943598 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 02E0BD4A1F9B76C5C89F7151244C8A07 /* SwiftMessages.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SwiftMessages";
-				INFOPLIST_FILE = "Target Support Files/SwiftMessages/ResourceBundle-SwiftMessages-SwiftMessages-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = SwiftMessages;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -10687,6 +10641,23 @@
 			};
 			name = Debug;
 		};
+		8C83D6B1A1D4F2905E21FF0D96559975 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 841F693989D961C5BD8562E3BC9C646C /* Parse.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Parse";
+				IBSC_MODULE = Parse;
+				INFOPLIST_FILE = "Target Support Files/Parse/ResourceBundle-Parse-Parse-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = Parse;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
 		8C9D0EEA7D4C3D5CD26FCB496BFB132C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5913304887EABE24684067AD0A0FE331 /* Koloda.xcconfig */;
@@ -10719,6 +10690,23 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8F70D6C63704FA387CADA6A5C3DFA8CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E707C963464A86B8AF674B1E690EB5A /* RLBAlertsPickers.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/RLBAlertsPickers";
+				IBSC_MODULE = RLBAlertsPickers;
+				INFOPLIST_FILE = "Target Support Files/RLBAlertsPickers/ResourceBundle-Countries-RLBAlertsPickers-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				PRODUCT_NAME = Countries;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -10898,6 +10886,23 @@
 			};
 			name = Debug;
 		};
+		A940080071D8ABC47598BFCB679AED7D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E707C963464A86B8AF674B1E690EB5A /* RLBAlertsPickers.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/RLBAlertsPickers";
+				IBSC_MODULE = RLBAlertsPickers;
+				INFOPLIST_FILE = "Target Support Files/RLBAlertsPickers/ResourceBundle-Countries-RLBAlertsPickers-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				PRODUCT_NAME = Countries;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		A9D5697C06996FBBDF1B0339E20A66C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DA20261E29E1F95F48A80FEE49E4A459 /* lottie-ios.xcconfig */;
@@ -10930,22 +10935,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		A9FB7A9F19ADA94DD27CF040B8EC778E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 02E0BD4A1F9B76C5C89F7151244C8A07 /* SwiftMessages.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SwiftMessages";
-				INFOPLIST_FILE = "Target Support Files/SwiftMessages/ResourceBundle-SwiftMessages-SwiftMessages-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_NAME = SwiftMessages;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -11079,6 +11068,23 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		B6D13582EBE9BD3D804F004798A04965 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C38342DE5478E1077C63FA46C4A66062 /* MessageKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MessageKit";
+				IBSC_MODULE = MessageKit;
+				INFOPLIST_FILE = "Target Support Files/MessageKit/ResourceBundle-MessageKitAssets-MessageKit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = MessageKitAssets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
 		};
 		C4E02BF6D78F80F06640EB68532283A5 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -11547,38 +11553,6 @@
 			};
 			name = Debug;
 		};
-		E06FD04A54A1BEC211B32A56857E69EF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 841F693989D961C5BD8562E3BC9C646C /* Parse.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Parse";
-				INFOPLIST_FILE = "Target Support Files/Parse/ResourceBundle-Parse-Parse-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = Parse;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		E70AE7E1021337375B25D074FCDEE619 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E707C963464A86B8AF674B1E690EB5A /* RLBAlertsPickers.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/RLBAlertsPickers";
-				INFOPLIST_FILE = "Target Support Files/RLBAlertsPickers/ResourceBundle-Countries-RLBAlertsPickers-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				PRODUCT_NAME = Countries;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		E81C30CD63389F82C0B47B27758AE6A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6672A8406059759C4951972327427EF1 /* FacebookShare.xcconfig */;
@@ -11646,6 +11620,23 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EE309090A46E59BED05CC63AC2DC3AEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02E0BD4A1F9B76C5C89F7151244C8A07 /* SwiftMessages.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/SwiftMessages";
+				IBSC_MODULE = SwiftMessages;
+				INFOPLIST_FILE = "Target Support Files/SwiftMessages/ResourceBundle-SwiftMessages-SwiftMessages-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = SwiftMessages;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
 		};
@@ -11752,6 +11743,23 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F8E9676D8C2AD1AE6A91E62A6FFA5F0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 841F693989D961C5BD8562E3BC9C646C /* Parse.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Parse";
+				IBSC_MODULE = Parse;
+				INFOPLIST_FILE = "Target Support Files/Parse/ResourceBundle-Parse-Parse-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = Parse;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -11941,8 +11949,8 @@
 		818709DCDB09376FD28106077ED3F940 /* Build configuration list for PBXNativeTarget "Parse-Parse" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E06FD04A54A1BEC211B32A56857E69EF /* Debug */,
-				18A43DBCE94155BDE0313CD4535F1D38 /* Release */,
+				8C83D6B1A1D4F2905E21FF0D96559975 /* Debug */,
+				F8E9676D8C2AD1AE6A91E62A6FFA5F0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -11950,8 +11958,8 @@
 		85A707D2FAFD64EE8644BEA327FA41CD /* Build configuration list for PBXNativeTarget "SwiftMessages-SwiftMessages" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A9FB7A9F19ADA94DD27CF040B8EC778E /* Debug */,
-				73C30E4A5C39BA890E4E3EA800943598 /* Release */,
+				EE309090A46E59BED05CC63AC2DC3AEB /* Debug */,
+				09A994ADB5450A793009D1EA8F18B519 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -12022,8 +12030,8 @@
 		D337830989D5BCE4C59EFE994F7BB2C6 /* Build configuration list for PBXNativeTarget "RLBAlertsPickers-Countries" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0A73CF6706A54AE134E0034857919E1E /* Debug */,
-				E70AE7E1021337375B25D074FCDEE619 /* Release */,
+				8F70D6C63704FA387CADA6A5C3DFA8CF /* Debug */,
+				A940080071D8ABC47598BFCB679AED7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -12040,8 +12048,8 @@
 		DA5267817980FA796F80904C37F9749F /* Build configuration list for PBXNativeTarget "MessageKit-MessageKitAssets" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3A03D7C5734FA8864BC3F9D3EC452E2E /* Debug */,
-				6F3A5B2DA3BC82ABBF0786F585CE0961 /* Release */,
+				005D34C45BB9C9380C8610C72B184DB4 /* Debug */,
+				B6D13582EBE9BD3D804F004798A04965 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

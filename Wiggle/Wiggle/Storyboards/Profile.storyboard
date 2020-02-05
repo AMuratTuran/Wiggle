@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mbh-ya-gwL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mbh-ya-gwL">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -197,12 +197,15 @@
                     <connections>
                         <outlet property="bottomScrollView" destination="2OZ-tZ-Bsh" id="Icr-GP-jaJ"/>
                         <outlet property="changePhotoButton" destination="vYx-t5-5Aj" id="cmg-oL-MfF"/>
+                        <outlet property="changePhotoLabel" destination="Xx0-tC-V4v" id="EGT-OL-AAz"/>
                         <outlet property="editProfileButton" destination="3PP-d6-Blm" id="XQT-hP-dTg"/>
+                        <outlet property="editProfileLabel" destination="kJq-kD-D0j" id="g3m-zZ-qfS"/>
                         <outlet property="imageBackgroundView" destination="Cdz-if-Yic" id="fWp-2m-lBC"/>
                         <outlet property="nameAndAgeLabel" destination="T2e-r8-ceK" id="B0x-mV-NNF"/>
                         <outlet property="pageControl" destination="vA9-rg-VLA" id="dgd-sq-b2H"/>
                         <outlet property="profilePhoto" destination="HM5-pm-OqA" id="jHM-OT-c76"/>
                         <outlet property="settingsButton" destination="4se-Hp-Ur7" id="yoK-8f-0l2"/>
+                        <outlet property="settingsLabel" destination="Ath-Og-egU" id="Nna-5C-RBj"/>
                         <outlet property="storeButton" destination="DPf-lm-3uf" id="79F-mK-ppm"/>
                     </connections>
                 </viewController>
