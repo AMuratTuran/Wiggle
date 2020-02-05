@@ -246,4 +246,6 @@ extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDe
         
         moveToProfileDetailFromWhoLiked(data: userData, index: indexPath.row)
     }
+    
+    
 }

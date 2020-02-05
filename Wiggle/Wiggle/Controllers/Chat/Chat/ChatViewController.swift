@@ -60,6 +60,11 @@ class ChatViewController: MessagesViewController {
         safariProtocol = SafariManager(viewController: self)
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        if #available(iOS 13.0, *) {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(moreAction))
+        } else {
+            // Fallback on earlier versions
+        }
         self.navigationItem.backBarButtonItem?.title = ""
         addProfilePhotoNavigationBar()
         configureMessageCollectionView()
@@ -241,6 +246,26 @@ class ChatViewController: MessagesViewController {
     
     @objc func addImageTapped() {
         imagePicker.present(from: self.view)
+    }
+    
+    @objc func moreAction() {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let reportAction = UIAlertAction(title: Localize.Chat.Report, style: .default) { (action) in
+            if let contactedUser = self.contactedUser {
+                let name = "\(contactedUser.firstName) \(contactedUser.lastName)"
+                self.sendEmail(mail: "report@appwiggle.com", with: "Report User: \(name)")
+            }
+        }
+        let unmatchAction = UIAlertAction(title: Localize.Chat.Unmatch, style: .default) { (action) in
+            
+        }
+        let cancelAction = UIAlertAction(title: Localize.Common.CancelButton, style: .cancel) { (action) in
+            
+        }
+        alertController.addAction(unmatchAction)
+        alertController.addAction(reportAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     private func configureInputBarItems() {
@@ -572,11 +597,12 @@ extension ChatViewController: MessageLabelDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func sendEmail(mail: String) {
+    func sendEmail(mail: String, with subject: String = "") {
         let mailViewController = MFMailComposeViewController()
         mailViewController.mailComposeDelegate = self
         mailViewController.setToRecipients([mail])
         mailViewController.setMessageBody("", isHTML: false)
+        mailViewController.setSubject(subject)
         guard MFMailComposeViewController.canSendMail() else {
             return
         }

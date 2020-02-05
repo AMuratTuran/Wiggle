@@ -104,6 +104,8 @@ struct Localize {
     
     struct Chat {
          static var Chats: String { return NSLocalizedString("chats_title", comment: "Chat") }
+        static var Report: String { return NSLocalizedString("report_user", comment: "Chat") }
+        static var Unmatch: String { return NSLocalizedString("unmatch", comment: "Chat") }
     }
     
     struct Heartbeat {

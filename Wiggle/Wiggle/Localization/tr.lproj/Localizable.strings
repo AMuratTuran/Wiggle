@@ -70,6 +70,8 @@
 "edit_profile" = "Profili Düzenle";
 
 "chats_title" = "Sohbetler";
+"report_user" = "Bildir";
+"unmatch" = "Eşleşmeyi Kaldır";
 
 "place_finger" = "Parmak ucunuzu flash ve kameranızı kapatacak şekilde yerleştirin";
 "heartbeat_title" = "Nabzınızın aynı olduğu insanlarla eşleşeceksiniz";
