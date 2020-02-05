@@ -116,7 +116,7 @@
         <scene sceneID="Au3-bq-Y1g">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oJv-bw-7pC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="heart.fill" catalog="system" id="Ace-ls-tXw">
+                    <tabBarItem key="tabBarItem" title="" image="heartFill" id="Ace-ls-tXw">
                         <color key="badgeColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -138,7 +138,7 @@
     <resources>
         <image name="boostImage" width="40" height="40"/>
         <image name="dislikeImage" width="40" height="40"/>
-        <image name="heart.fill" catalog="system" width="64" height="54"/>
+        <image name="heartFill" width="26" height="26"/>
         <image name="likeImage" width="40" height="40"/>
         <image name="revertImage" width="40" height="40"/>
         <image name="starsImage" width="40" height="40"/>

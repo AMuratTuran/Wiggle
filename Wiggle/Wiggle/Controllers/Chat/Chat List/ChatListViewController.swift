@@ -170,7 +170,7 @@ extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
         if data.count == 0 {
             let emptyCell = tableView.dequeueReusableCell(withIdentifier: EmptyCell.reuseIdentifier, for: indexPath) as! EmptyCell
             if #available(iOS 13.0, *) {
-                emptyCell.prepare(icon: UIImage(systemName: "envelope.open.fill") ?? UIImage(), description: "Henüz mesajın yok ancak pes etme, uygun aday karşına kısa zamanda çıkacaktır. Ritmini ölçmeye devam et.!", isButtonVisible: true, buttonText: "Anasayfaya Dön", buttonAction: {
+                emptyCell.prepare(icon: UIImage(named: "emptyCellImage") ?? UIImage(), description: "Henüz mesajın yok ancak pes etme, uygun aday karşına kısa zamanda çıkacaktır. Ritmini ölçmeye devam et.!", isButtonVisible: true, buttonText: "Anasayfaya Dön", buttonAction: {
                     self.navigationController?.popViewController(animated: true)
                 })
             } else {

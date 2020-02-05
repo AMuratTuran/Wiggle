@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import Koloda
 
 class ProfileDetailViewController: UIViewController {
     
@@ -73,6 +74,30 @@ class ProfileDetailViewController: UIViewController {
         }
     }
 
+    @IBAction func likeButtonAction(_ sender: Any) {
+        if let receiverObjectId = wiggleCardModel?.objectId{
+            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
+        }else if let receiverObjectId = userData?.objectId{
+            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
+        }
+        moveToHomeViewControllerFromProfileDetail()
+    }
+    @IBAction func starButtonAction(_ sender: Any) {
+        if let receiverObjectId = wiggleCardModel?.objectId{
+            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "up") ?? .down)
+        }else if let receiverObjectId = userData?.objectId{
+            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "up") ?? .down)
+        }
+        moveToHomeViewControllerFromProfileDetail()
+    }
+    @IBAction func dislikeButtonAction(_ sender: Any) {
+        if let receiverObjectId = wiggleCardModel?.objectId{
+            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down)
+        }else if let receiverObjectId = userData?.objectId{
+            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down)
+        }
+        moveToHomeViewControllerFromProfileDetail()
+    }
     
     @IBAction func backAction(sender: UIButton) {
         moveToHomeViewControllerFromProfileDetail()
