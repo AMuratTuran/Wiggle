@@ -167,7 +167,7 @@ extension UIViewController {
     
     
     func addMessageIconToNavigationBar() {
-        let messageImage = UIImage(named: "icon_smartsearch_message")
+        let messageImage = UIImage(named: "chatImage")
         let messageBT = UIBarButtonItem(image: messageImage, style: .plain, target: self, action: #selector(messageTapped))
         navigationItem.rightBarButtonItems = [messageBT]
     }
