@@ -340,10 +340,11 @@ struct NetworkManager {
     }
     
     static func getMatchedUsers(success: @escaping([PFUser]) -> Void, fail: @escaping(String) -> Void) {
-        guard let user = PFUser.current(), let relation = user.getRelation() else {
+        guard let user = PFUser.current() else {
             success([])
             return
         }
+        let relation = user.relation(forKey: "friends")
         let query: PFQuery = relation.query()
         query.order(byDescending: "updatedAt")
         query.whereKeyExists("photo")

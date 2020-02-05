@@ -55,6 +55,18 @@ class HeartbeatMatchCell: UICollectionViewCell {
         let age = "\(data.getAge())"
         let name = "\(data.getFirstName()) \(data.getLastName())"
         nameAndAgeLabel.text = "\(name), \(age)"
-        locationLabel.text = "4 km uzakta"
+        locationLabel.text = "\(String(format: "%.1f", getDistance(with: data))) km"
+    }
+    
+    func getDistance(with data: PFUser) -> Double {
+        if let user = PFUser.current() {
+            let myLocation = CLLocation(latitude: user.getLocation().latitude, longitude: user.getLocation().longitude)
+            let userLocation = CLLocation(latitude: data.getLocation().latitude, longitude: data.getLocation().longitude)
+            let distanceInMeters = myLocation.distance(from: userLocation)
+            let distanceInKm = distanceInMeters / 1000
+            return Double(distanceInKm)
+        }else {
+            return 0
+        }
     }
 }
