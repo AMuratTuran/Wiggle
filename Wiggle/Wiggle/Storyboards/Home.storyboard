@@ -23,75 +23,72 @@
                                         <rect key="frame" x="0.0" y="60" width="375" height="558"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Yy9-wX-W7O">
-                                        <rect key="frame" x="327" y="165" width="40" height="320"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="ykG-Zq-wyb">
+                                        <rect key="frame" x="23.5" y="570" width="328" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtw-jH-v7y">
-                                                <rect key="frame" x="0.0" y="1.5" width="40" height="37.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="BF1-N5-IuX"/>
                                                     <constraint firstAttribute="width" constant="40" id="Ndb-WD-CYX"/>
                                                 </constraints>
                                                 <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" backgroundImage="heart.fill" catalog="system"/>
+                                                <state key="normal" backgroundImage="likeImage"/>
                                                 <connections>
                                                     <action selector="likeButtonAction:" destination="UjP-7Z-3he" eventType="touchUpInside" id="UAj-e5-l2T"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIM-Pi-LrZ">
-                                                <rect key="frame" x="0.0" y="68.5" width="40" height="41"/>
+                                                <rect key="frame" x="72" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="Dnf-6B-Cey"/>
                                                     <constraint firstAttribute="height" constant="40" id="rsv-0L-2JX"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="gobackward" catalog="system"/>
+                                                <state key="normal" backgroundImage="revertImage"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3f-De-aFz">
-                                                <rect key="frame" x="0.0" y="140" width="40" height="40"/>
+                                                <rect key="frame" x="144" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="Ub8-Vf-eeo"/>
                                                     <constraint firstAttribute="height" constant="40" id="Yc0-S6-R9L"/>
                                                 </constraints>
                                                 <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" backgroundImage="star.fill" catalog="system"/>
+                                                <state key="normal" backgroundImage="starsImage"/>
                                                 <connections>
                                                     <action selector="superLikeButtonAction:" destination="UjP-7Z-3he" eventType="touchUpInside" id="XPb-7S-RtC"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9a9-gk-Ccx">
-                                                <rect key="frame" x="0.0" y="210" width="40" height="40"/>
+                                                <rect key="frame" x="216" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="CG9-2b-Kkf"/>
                                                     <constraint firstAttribute="height" constant="40" id="G3d-Hy-A0G"/>
                                                 </constraints>
-                                                <state key="normal" image="bolt.fill" catalog="system"/>
+                                                <state key="normal" image="boostImage"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHe-yD-amb">
-                                                <rect key="frame" x="0.0" y="282" width="40" height="35.5"/>
+                                                <rect key="frame" x="288" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="92e-tq-A5L"/>
                                                     <constraint firstAttribute="height" constant="40" id="gke-VX-iIG"/>
                                                 </constraints>
                                                 <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" backgroundImage="xmark" catalog="system"/>
+                                                <state key="normal" backgroundImage="dislikeImage"/>
                                                 <connections>
                                                     <action selector="dislikeButtonAction:" destination="UjP-7Z-3he" eventType="touchUpInside" id="S6F-No-bwt"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="HsA-5K-iaP"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="TBM-dU-B0T" secondAttribute="trailing" id="42W-5N-Qdf"/>
                                     <constraint firstItem="TBM-dU-B0T" firstAttribute="top" secondItem="ZQ3-gs-AXU" secondAttribute="top" constant="60" id="BlO-uX-4PL"/>
-                                    <constraint firstAttribute="trailing" secondItem="Yy9-wX-W7O" secondAttribute="trailing" constant="8" id="K9P-rH-tKK"/>
+                                    <constraint firstItem="ykG-Zq-wyb" firstAttribute="centerX" secondItem="ZQ3-gs-AXU" secondAttribute="centerX" id="Dk8-6Q-eS6"/>
                                     <constraint firstAttribute="bottom" secondItem="TBM-dU-B0T" secondAttribute="bottom" id="Yox-7f-oM8"/>
+                                    <constraint firstAttribute="bottom" secondItem="ykG-Zq-wyb" secondAttribute="bottom" constant="8" id="tvM-iV-WEe"/>
                                     <constraint firstItem="TBM-dU-B0T" firstAttribute="leading" secondItem="ZQ3-gs-AXU" secondAttribute="leading" id="uhH-Nf-6nW"/>
-                                    <constraint firstItem="Yy9-wX-W7O" firstAttribute="top" secondItem="ZQ3-gs-AXU" secondAttribute="top" constant="165" id="yB6-KA-Jlu"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -107,7 +104,7 @@
                     <navigationItem key="navigationItem" id="CAr-aZ-rl3"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="buttonsStackView" destination="Yy9-wX-W7O" id="2gM-mh-9i4"/>
+                        <outlet property="buttonsStackView" destination="ykG-Zq-wyb" id="cMs-GK-KPa"/>
                         <outlet property="kolodaView" destination="TBM-dU-B0T" id="RrE-ZK-xit"/>
                     </connections>
                 </viewController>
@@ -139,10 +136,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bolt.fill" catalog="system" width="50" height="64"/>
-        <image name="gobackward" catalog="system" width="60" height="64"/>
+        <image name="boostImage" width="40" height="40"/>
+        <image name="dislikeImage" width="40" height="40"/>
         <image name="heart.fill" catalog="system" width="64" height="54"/>
-        <image name="star.fill" catalog="system" width="64" height="58"/>
-        <image name="xmark" catalog="system" width="64" height="56"/>
+        <image name="likeImage" width="40" height="40"/>
+        <image name="revertImage" width="40" height="40"/>
+        <image name="starsImage" width="40" height="40"/>
     </resources>
 </document>
