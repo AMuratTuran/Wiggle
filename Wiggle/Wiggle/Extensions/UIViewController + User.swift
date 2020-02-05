@@ -51,7 +51,6 @@ extension PFUser {
     func getRelation() -> PFRelation<PFUser>? {
         guard let relation = self.object(forKey: "friends") as? PFRelation<PFUser> else { return nil }
         return relation
-        
     }
     
     func getGender() -> Int? {
@@ -81,10 +80,15 @@ extension PFUser {
     
     func isFacebookLogin() -> Bool {
         guard let username = self.object(forKey: "username") as? String else {return false}
-        if username.count > 15 {
+        if username.count > 13 {
             return true
         }else {
             return false
         }
+    }
+    
+    func getSuperLike() -> Int{
+        guard let superlike = self.object(forKey: "super_like") as? Int else {return 0}
+        return superlike
     }
 }

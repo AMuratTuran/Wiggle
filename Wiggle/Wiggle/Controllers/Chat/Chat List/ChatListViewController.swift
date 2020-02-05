@@ -92,6 +92,9 @@ class ChatListViewController: UIViewController {
     func getUserInfo() {
         guard let data = data else { return }
         var tableData: [ChatListModel] = []
+        if data.isEmpty {
+            self.tableData = []
+        }
         data.forEach { chat in
             let id: String = chat.getReceiverId()
             NetworkManager.queryUsersById(id, success: { (user) in

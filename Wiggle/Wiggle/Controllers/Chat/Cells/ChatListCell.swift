@@ -60,6 +60,7 @@ class ChatListCell: UITableViewCell {
                 arrowImage.isHidden = true
             }else {
                 lastMessageArrowView.isHidden = false
+                arrowImage.isHidden = false
             }
         }
         if data.isReceivedMessage {
