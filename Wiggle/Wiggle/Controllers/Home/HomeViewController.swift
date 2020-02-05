@@ -32,9 +32,6 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         createLottieAnimation()
         navigationController?.navigationBar.prefersLargeTitles = false
-        
-        WiggleProducts.store.verifyReceipt { _, _ in
-        }
     }
     
     func testModel(){
@@ -49,8 +46,9 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        WiggleProducts.store.verifyReceipt { _, _ in
+        }
         addProductLogoToNavigationBar()
-        fetchUsers()
         configureViews()
         updateObjectId()
         hideBackBarButtonTitle()
