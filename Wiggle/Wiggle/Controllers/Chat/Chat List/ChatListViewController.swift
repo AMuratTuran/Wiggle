@@ -24,7 +24,7 @@ class ChatListViewController: UIViewController {
         return searchController.isActive && !isSearchBarEmpty
     }
     var data: [Chat]?
-    var tableData: [ChatListModel]?
+    var tableData: [ChatListModel]? = nil
     var filteredChats: [ChatListModel]?
     var userId: String? {
         if let currentUser = PFUser.current() {
@@ -92,7 +92,6 @@ class ChatListViewController: UIViewController {
     func getUserInfo() {
         guard let data = data else { return }
         var tableData: [ChatListModel] = []
-        self.tableData = tableData
         data.forEach { chat in
             let id: String = chat.getReceiverId()
             NetworkManager.queryUsersById(id, success: { (user) in
@@ -103,7 +102,10 @@ class ChatListViewController: UIViewController {
                         $0.createdAt > $1.createdAt
                     }
                     self.tableData = sortedDate
-                    self.startUpwardsAnimation()
+                    DispatchQueue.main.async {
+                        self.startUpwardsAnimation()
+                        self.tableView.reloadData()
+                    }
                 }
             }) { (error) in
                 
