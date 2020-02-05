@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Shape.png",
+      "filename" : "icons8-male-stroke.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Shape@2x.png",
+      "filename" : "icons8-male-stroke@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Shape@3x.png",
+      "filename" : "icons8-male-stroke@3x.png",
       "scale" : "3x"
     }
   ],

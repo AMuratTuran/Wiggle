@@ -91,6 +91,7 @@ class HomeViewController: UIViewController {
         addTapGesture()
         animationView.isHidden = false
         animationView.play()
+        buttonsStackView.isHidden = true
         addMessageIconToNavigationBar()
         kolodaView.reloadData()
         kolodaView.addShadow()
