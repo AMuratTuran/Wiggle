@@ -272,7 +272,7 @@
         <!--Blindstory Premium-->
         <scene sceneID="iA8-LZ-axp">
             <objects>
-                <viewController storyboardIdentifier="InAppPurchaseViewController" id="YTk-EZ-oc2" customClass="InAppPurchaseViewController" customModule="Story_For_Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YTk-EZ-oc2" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YKY-e9-bSu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
