@@ -118,7 +118,7 @@ class ProfileViewController: UIViewController {
         bottomScrollView.isPagingEnabled = true
         
         for i in 0 ..< slides.count {
-            slides[i].frame = CGRect(x: bottomScrollView.frame.width * CGFloat(i), y: 0, width: bottomScrollView.frame.width, height: bottomScrollView.frame.height)
+            slides[i].frame = CGRect(x: bottomScrollView.frame.width * CGFloat(i), y: 0, width: self.view.frame.width, height: bottomScrollView.frame.height)
             bottomScrollView.addSubview(slides[i])
         }
     }

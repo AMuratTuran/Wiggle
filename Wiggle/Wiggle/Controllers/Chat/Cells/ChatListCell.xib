@@ -36,12 +36,12 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Murat Turan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpX-tv-BL2">
-                                <rect key="frame" x="80" y="10" width="160" height="23.5"/>
+                                <rect key="frame" x="80" y="10" width="160" height="20"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23:45" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ves-gL-vPj">
-                                <rect key="frame" x="250" y="13" width="80" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23:45" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ves-gL-vPj">
+                                <rect key="frame" x="250" y="12.5" width="80" height="17.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="kbA-cM-U8R"/>
                                 </constraints>
@@ -50,7 +50,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pT8-hV-Q3g">
-                                <rect key="frame" x="80" y="33.5" width="160" height="22"/>
+                                <rect key="frame" x="80" y="30" width="160" height="22"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="snz-iQ-aMW">
                                         <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
@@ -90,7 +90,7 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DW2-Mp-dOp">
-                                <rect key="frame" x="320" y="39.5" width="10" height="10"/>
+                                <rect key="frame" x="320" y="36" width="10" height="10"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="10" id="Tmv-bH-UZZ"/>
@@ -138,6 +138,7 @@
                     <constraint firstItem="Wk0-oZ-oH6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="tth-bO-jCc"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="arrowImage" destination="aip-YJ-u9Z" id="1Ue-dg-TYq"/>

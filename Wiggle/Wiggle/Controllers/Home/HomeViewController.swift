@@ -27,6 +27,7 @@ class HomeViewController: UIViewController {
     let locationManager = CLLocationManager()
     let animationView = AnimationView(name: "heartbeat")
     var fetchUsersGestureRecognizer = UITapGestureRecognizer()
+    var isLaunchedFromPN:Bool = false
     
     var superLikeCount : Int = 0
     
@@ -64,6 +65,16 @@ class HomeViewController: UIViewController {
         setupLocationManager()
         
         superLikeCount = PFUser.current()?.getSuperLike() ?? 0
+
+        if isLaunchedFromPN {
+            let transition = CATransition()
+            transition.duration = 0.2
+            transition.type = CATransitionType.fade
+            let storyboard = UIStoryboard(name: "Chat", bundle: nil)
+            let chatListVC = storyboard.instantiateViewController(withIdentifier: "ChatListViewController") as! ChatListViewController
+            navigationController?.view.layer.add(transition, forKey: nil)
+            navigationController?.pushViewController(chatListVC, animated: true)
+        }
     }
     
     // MARK: Class Functions

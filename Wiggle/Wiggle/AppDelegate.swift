@@ -160,7 +160,10 @@ extension AppDelegate {
             if let _ = PFUser.current()?.getGender(), let firstName = PFUser.current()?.getFirstName(), !firstName.isEmpty, let lastName = PFUser.current()?.getLastName(), !lastName.isEmpty, let _ = PFUser.current()?.getBirthday(){
                 let homeStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let destinationViewController = homeStoryboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
-                destinationViewController.selectedIndex = isLaunchedFromPN ? 1 : 0
+                destinationViewController.selectedIndex = 0
+                let homeNav = destinationViewController.selectedViewController as? UINavigationController
+                let homeVC = homeNav?.viewControllers.first as? HomeViewController
+                homeVC?.isLaunchedFromPN = isLaunchedFromPN
                 w.rootViewController = destinationViewController
             } else {
                 let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)

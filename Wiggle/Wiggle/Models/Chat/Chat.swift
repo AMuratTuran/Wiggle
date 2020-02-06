@@ -61,7 +61,7 @@ class Chat: Decodable {
         self.remoteId = object["receiver"] as! String
         let isReadNum =  object["isRead"] as? Int ?? 0
         isRead = isReadNum == 1 ? true : false
-        self.createdAt = object.createdAt?.prettyStringFromDate(dateFormat: "dd-MM-yy HH:mm:ss", localeIdentifier: "tr") ?? ""
+        self.createdAt = object.createdAt?.prettyStringFromDate(dateFormat: "dd-MM-yy HH:mm:ss", localeIdentifier: Locale.current.identifier) ?? ""
         self.objectId = object["objectId"] as! String
     }
     

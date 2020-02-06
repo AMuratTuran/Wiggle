@@ -41,7 +41,7 @@ class FullScreenImageView: UIView {
         self.frame = frame
         imageView.image = data.imageData
         titleLabel.text = data.isReceived ? contactedUser.firstName : "You"
-        subtitleLabel.text = data.sentDate.prettyStringFromDate(dateFormat: "dd.MM.yyyy HH:mm", localeIdentifier: "tr")
+        subtitleLabel.text = data.sentDate.prettyStringFromDate(dateFormat: "dd.MM.yyyy HH:mm", localeIdentifier: Locale.current.identifier)
     }
     
     @IBAction func backTapped(_ sender: Any) {

@@ -66,6 +66,7 @@ class ChatViewController: MessagesViewController {
             // Fallback on earlier versions
         }
         self.navigationItem.backBarButtonItem?.title = ""
+        self.hidesBottomBarWhenPushed = true
         addProfilePhotoNavigationBar()
         configureMessageCollectionView()
         configureMessageCollectionViewLayout()

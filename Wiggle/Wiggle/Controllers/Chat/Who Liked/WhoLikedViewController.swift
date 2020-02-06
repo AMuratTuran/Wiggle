@@ -47,6 +47,7 @@ class WhoLikedViewController: UIViewController {
     }
     
     func prepareViews() {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 20, right: 0)
@@ -96,20 +97,16 @@ class WhoLikedViewController: UIViewController {
             }
         }else {
             let goToStoreButton = DefaultButton(title: "WStore") {
-                print("storeButton")
+                let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+                let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
+                self.navigationController?.present(destionationViewController, animated: true, completion: {
+                    self.switchToMatchScreen()
+                })
             }
             let goToMatchScreen = DefaultButton(title: "Geri Dön") {
-                self.matchedButton.isSelected = true
-                self.likedButton.isSelected = false
-                self.matchedButton.backgroundColor = .systemPink
-                if #available(iOS 13.0, *) {
-                    self.likedButton.backgroundColor = .secondarySystemBackground
-                } else {
-                    // Fallback on earlier versions
-                }
-                self.getMatchData()
+                self.switchToMatchScreen()
             }
-            self.alertMessage(message: "Kimin seni beğendiğini görmek için Wiggle Gold satın alman gerekiyor.", buttons: [goToStoreButton, goToMatchScreen], isErrorMessage: true)
+            self.alertMessage(message: "Kimin seni beğendiğini görmek için Wiggle Gold satın alman gerekiyor.", buttons: [goToStoreButton, goToMatchScreen], isErrorMessage: true, isGestureDismissal: false)
         }
     }
     
@@ -130,6 +127,18 @@ class WhoLikedViewController: UIViewController {
         }
     }
     
+    fileprivate func switchToMatchScreen() {
+        self.matchedButton.isSelected = true
+        self.likedButton.isSelected = false
+        self.matchedButton.backgroundColor = .systemPink
+        if #available(iOS 13.0, *) {
+            self.likedButton.backgroundColor = .secondarySystemBackground
+        } else {
+            // Fallback on earlier versions
+        }
+        self.getMatchData()
+    }
+    
     @IBAction func messageButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -148,16 +157,8 @@ class WhoLikedViewController: UIViewController {
     }
     
     @IBAction func matchedButtonTapped(_ sender: UIButton) {
-        sender.isSelected = true
-        likedButton.isSelected = false 
-        matchedButton.backgroundColor = .systemPink
-        if #available(iOS 13.0, *) {
-            likedButton.backgroundColor = .secondarySystemBackground
-        } else {
-            // Fallback on earlier versions
-        }
+        switchToMatchScreen()
         collectionView.reloadData()
-        getMatchData()
     }
 }
 

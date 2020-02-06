@@ -18,7 +18,7 @@ extension AppDelegate {
         config.presentationStyle = .top
         config.presentationContext = .window(windowLevel: UIWindow.Level.statusBar)
         let messageTitle = (aps["alert"] as? String) ?? ""
-        view.configure(title: "New Message", body: messageTitle)
+        view.configure(title: Localize.Chat.NewMessage, body: messageTitle)
         view.layoutMarginAdditions = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         (view.backgroundView as? CornerRoundingView)?.cornerRadius = 10
         SwiftMessages.pauseBetweenMessages = 1.0

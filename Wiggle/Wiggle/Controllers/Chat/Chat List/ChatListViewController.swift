@@ -44,6 +44,7 @@ class ChatListViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
             return
         }
+        self.hidesBottomBarWhenPushed = true
         self.currentUser = currentUser
     }
     
@@ -263,8 +264,9 @@ extension ChatListViewController: MatchViewDelegate {
         }else {
             let storyBoard = UIStoryboard(name: "Chat", bundle: nil)
             let destinationViewController = storyBoard.instantiateViewController(withIdentifier: "WhoLikedViewController") as! WhoLikedViewController
-            destinationViewController.modalPresentationStyle = .fullScreen
-            self.present(destinationViewController, animated: true, completion: nil)
+            let nav = UINavigationController(rootViewController: destinationViewController)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true, completion: nil)
             
         }
     }

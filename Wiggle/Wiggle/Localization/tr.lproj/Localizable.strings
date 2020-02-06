@@ -72,6 +72,7 @@
 "chats_title" = "Sohbetler";
 "report_user" = "Bildir";
 "unmatch" = "Eşleşmeyi Kaldır";
+"new_message" = "Yeni Mesaj";
 
 "place_finger" = "Parmak ucunuzu flash ve kameranızı kapatacak şekilde yerleştirin";
 "heartbeat_title" = "Nabzınızın aynı olduğu insanlarla eşleşeceksiniz";

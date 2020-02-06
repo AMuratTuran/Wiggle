@@ -63,7 +63,7 @@ class EditProfileViewController: UIViewController {
         var components = DateComponents()
         components.calendar = calendar
         components.year = -18
-        pickBirthdayButton.setTitle((user.getBirthday()! as Date).prettyStringFromDate(dateFormat: "dd MMMM yyyy", localeIdentifier: "tr"),  for: .normal)
+        pickBirthdayButton.setTitle((user.getBirthday()! as Date).prettyStringFromDate(dateFormat: "dd MMMM yyyy", localeIdentifier: Locale.current.identifier),  for: .normal)
         birthday = user.getBirthday()! as Date
     }
     

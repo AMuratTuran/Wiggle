@@ -53,13 +53,13 @@ class ChatListModel {
         if let createdAt = chat.createdAt.dateFromStringWithFormat("dd-MM-yy HH:mm:ss") {
             self.createdAt = createdAt
             if createdAt.isInToday {
-                dateString = createdAt.prettyStringFromDate(dateFormat: "HH:mm", localeIdentifier: "tr")
+                dateString = createdAt.prettyStringFromDate(dateFormat: "HH:mm", localeIdentifier: Locale.current.identifier)
             }else if createdAt.isInThisWeek{
-                dateString = createdAt.prettyStringFromDate(dateFormat: "EEEE", localeIdentifier: "tr")
+                dateString = createdAt.prettyStringFromDate(dateFormat: "EEEE", localeIdentifier: Locale.current.identifier)
             }else if createdAt.isInThisMonth || createdAt.isInThisYear {
-                dateString = createdAt.prettyStringFromDate(dateFormat: "dd MMM", localeIdentifier: "tr")
+                dateString = createdAt.prettyStringFromDate(dateFormat: "dd MMM", localeIdentifier: Locale.current.identifier)
             }else {
-                dateString = createdAt.prettyStringFromDate(dateFormat: "dd.MM.yyyy", localeIdentifier: "tr")
+                dateString = createdAt.prettyStringFromDate(dateFormat: "dd.MM.yyyy", localeIdentifier: Locale.current.identifier)
             }
         }
         self.isRead = chat.isRead
