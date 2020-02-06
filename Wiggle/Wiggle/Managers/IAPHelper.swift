@@ -8,6 +8,7 @@
 
 import StoreKit
 import SwiftyStoreKit
+import Parse
 
 public typealias ProductIdentifier = String
 public typealias ProductsRequestCompletionHandler = (_ success: Bool, _ products: [SKProduct]?) -> Void
@@ -33,6 +34,8 @@ open class IAPHelper: NSObject  {
                 case .purchased(let expiryDate, let items):
                     isPremium = true
                     print("\(productIds) is valid until \(expiryDate)\n\(items)\n")
+                    PFUser.current()?.setValue(true, forKey: "isGold")
+                    PFUser.current()?.saveInBackground()
                     completion(true, items[0].productId)
                 case .expired, .notPurchased:
                     isPremium = false

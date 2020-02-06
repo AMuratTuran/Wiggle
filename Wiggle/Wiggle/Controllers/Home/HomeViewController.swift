@@ -11,6 +11,7 @@ import Parse
 import Koloda
 import CoreLocation
 import Lottie
+import PopupDialog
 
 class HomeViewController: UIViewController {
     // MARK: Outlets
@@ -26,6 +27,8 @@ class HomeViewController: UIViewController {
     let locationManager = CLLocationManager()
     let animationView = AnimationView(name: "heartbeat")
     var fetchUsersGestureRecognizer = UITapGestureRecognizer()
+    
+    var superLikeCount : Int = 0
     
     // MARK: Override Functions
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +62,8 @@ class HomeViewController: UIViewController {
         self.view.hero.modifiers = [.translate(y: -100), .useGlobalCoordinateSpace]
         
         setupLocationManager()
+        
+        superLikeCount = PFUser.current()?.getSuperLike() ?? 0
     }
     
     // MARK: Class Functions
@@ -142,7 +147,17 @@ class HomeViewController: UIViewController {
         if fromButton{
             kolodaView.swipe(direction)
         }
-        NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: direction)
+        if direction == .up && superLikeCount <= 0{
+            let cancelButton = DefaultButton(title: "İptal") {}
+            let goToStoreButton = DefaultButton(title: "WStore") {
+                let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+                let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
+                self.navigationController?.present(destionationViewController, animated: true, completion: {})
+            }
+            self.alertMessage(message: "Super Likeların bitti almak için store'a git", buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
+        }else{
+            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: direction)
+        }
     }
     
     // MARK: IBActions
