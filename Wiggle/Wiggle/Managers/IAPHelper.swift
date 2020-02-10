@@ -37,6 +37,8 @@ open class IAPHelper: NSObject  {
                     PFUser.current()?.saveInBackground()
                     completion(true, items[0].productId)
                 case .expired, .notPurchased:
+                    PFUser.current()?.setValue(false, forKey: "isGold")
+                    PFUser.current()?.saveInBackground()
                     completion(false, "")
                 }
                 
