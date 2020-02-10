@@ -231,6 +231,7 @@ class HomeViewController: UIViewController {
             }
             self.alertMessage(message: "Super Likeların bitti almak için store'a git", buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
         }else{
+            superLikeCount -= 1
             NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: direction)
         }
     }

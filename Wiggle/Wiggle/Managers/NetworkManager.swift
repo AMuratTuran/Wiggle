@@ -311,6 +311,20 @@ struct NetworkManager {
         }
     }
     
+    static func updateSubstriction(sku : String){
+        guard let user = PFUser.current() else {
+            return
+        }
+        let object : PFObject = PFObject(className: "Subscriptions")
+        
+        object.setValue(user.objectId, forKey: "userId")
+        object.setValue(sku, forKey: "sku")
+        
+        object.saveInBackground { (result, err) in
+            print(result)
+        }
+    }
+    
     static func swipeActionWithDirection(receiver : String, direction : SwipeResultDirection){
         let object = PFObject(className: "Likes")
         object.setValue(AppConstants.objectId, forKey: "sender")

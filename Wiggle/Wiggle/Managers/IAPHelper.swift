@@ -35,10 +35,9 @@ open class IAPHelper: NSObject  {
                     print("\(productIds) is valid until \(expiryDate)\n\(items)\n")
                     PFUser.current()?.setValue(true, forKey: "isGold")
                     PFUser.current()?.saveInBackground()
+                    NetworkManager.updateSubstriction(sku: productIds.first ?? "")
                     completion(true, items[0].productId)
                 case .expired, .notPurchased:
-                    PFUser.current()?.setValue(false, forKey: "isGold")
-                    PFUser.current()?.saveInBackground()
                     completion(false, "")
                 }
                 
@@ -216,7 +215,7 @@ public struct WiggleProducts {
     public static let twelveMonthsSubs = "wiggle12Months"
     public static let oneSuperLike = "wiggle1SuperLike"
     public static let fiveSuperLikes = "wiggle5SuperLikes"
-    public static let twentyFiveSuperLikes = "wiggle25SuperLikes"
+    public static let twentyFiveSuperLikes = "Wiggle25SuperLikes"
     
     private static let productIdentifiers: Set<ProductIdentifier> = [WiggleProducts.oneMonthSubs, WiggleProducts.threeMonthsSubs, WiggleProducts.sixMonthsSubs, WiggleProducts.twelveMonthsSubs]
     
