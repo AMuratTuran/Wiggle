@@ -204,10 +204,16 @@ public struct WiggleProducts {
     public static let threeMonthsSubs = "wiggle3Months"
     public static let sixMonthsSubs = "wiggle6Months"
     public static let twelveMonthsSubs = "wiggle12Months"
+    public static let oneSuperLike = "wiggle1SuperLike"
+    public static let fiveSuperLikes = "wiggle5SuperLikes"
+    public static let twentyFiveSuperLikes = "wiggle25SuperLikes"
     
     private static let productIdentifiers: Set<ProductIdentifier> = [WiggleProducts.oneMonthSubs, WiggleProducts.threeMonthsSubs, WiggleProducts.sixMonthsSubs, WiggleProducts.twelveMonthsSubs]
     
+    private static let superLikeProductIdentifiers: Set<ProductIdentifier> = [WiggleProducts.oneSuperLike, WiggleProducts.fiveSuperLikes, WiggleProducts.twentyFiveSuperLikes]
+    
     public static let store = IAPHelper(productIds: WiggleProducts.productIdentifiers)
+    public static let superLikeStore = IAPHelper(productIds: WiggleProducts.superLikeProductIdentifiers)
 }
 
 func resourceNameForProductIdentifier(_ productIdentifier: String) -> String? {

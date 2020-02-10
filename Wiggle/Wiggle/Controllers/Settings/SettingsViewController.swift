@@ -202,7 +202,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Settings", bundle: nil)
         if indexPath.section == 0 && indexPath.row == 0{
-            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
+            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "SuperLikeInAppPurchase") as! SuperLikeInAppPurchaseViewController
             self.navigationController?.present(destionationViewController, animated: true, completion: {})
         }else if indexPath.section == 0 && indexPath.row == 1{
             let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
