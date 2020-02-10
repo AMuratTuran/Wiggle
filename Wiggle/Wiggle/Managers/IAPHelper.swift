@@ -32,13 +32,11 @@ open class IAPHelper: NSObject  {
                 
                 switch purchaseResult {
                 case .purchased(let expiryDate, let items):
-                    isPremium = true
                     print("\(productIds) is valid until \(expiryDate)\n\(items)\n")
                     PFUser.current()?.setValue(true, forKey: "isGold")
                     PFUser.current()?.saveInBackground()
                     completion(true, items[0].productId)
                 case .expired, .notPurchased:
-                    isPremium = false
                     completion(false, "")
                 }
                 
@@ -191,6 +189,16 @@ extension IAPHelper: SKPaymentTransactionObserver {
     
     private func deliverPurchaseNotificationFor(identifier: String?) {
         guard let identifier = identifier else { return }
+        
+        if identifier == WiggleProducts.fiveSuperLikes || identifier == WiggleProducts.oneSuperLike || identifier == WiggleProducts.twentyFiveSuperLikes{
+            if identifier == WiggleProducts.oneSuperLike{
+                NetworkManager.updateSuperLikeCount(count : 1)
+            }else if identifier == WiggleProducts.fiveSuperLikes{
+                NetworkManager.updateSuperLikeCount(count : 5)
+            }else if identifier == WiggleProducts.twentyFiveSuperLikes{
+                NetworkManager.updateSuperLikeCount(count : 25)
+            }
+        }
         
         purchasedProductIdentifiers.insert(identifier)
         UserDefaults.standard.set(true, forKey: identifier)

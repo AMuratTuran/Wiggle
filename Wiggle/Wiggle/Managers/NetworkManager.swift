@@ -297,6 +297,20 @@ struct NetworkManager {
         }
     }
     
+    static func updateSuperLikeCount(count : Int){
+        guard let user = PFUser.current() else {
+            return
+        }
+        let object = PFObject(className:"User")
+        let final = user.getSuperLike() + count
+        
+        object.setValue(final, forKey: "super_like")
+        
+        object.saveInBackground { (result, err) in
+            print(result)
+        }
+    }
+    
     static func swipeActionWithDirection(receiver : String, direction : SwipeResultDirection){
         let object = PFObject(className: "Likes")
         object.setValue(AppConstants.objectId, forKey: "sender")
