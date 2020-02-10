@@ -11,6 +11,7 @@ import Parse
 import Koloda
 import CoreLocation
 import Lottie
+import GoogleMobileAds
 import PopupDialog
 
 class HomeViewController: UIViewController {
@@ -28,6 +29,8 @@ class HomeViewController: UIViewController {
     let animationView = AnimationView(name: "heartbeat")
     var fetchUsersGestureRecognizer = UITapGestureRecognizer()
     var isLaunchedFromPN:Bool = false
+    var bannerView: GADBannerView!
+    var interstitial: GADInterstitial!
     
     var superLikeCount : Int = 0
     
@@ -36,6 +39,7 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         createLottieAnimation()
         navigationController?.navigationBar.prefersLargeTitles = false
+        configureBannerView()
     }
     
     func testModel(){
@@ -75,7 +79,67 @@ class HomeViewController: UIViewController {
             navigationController?.view.layer.add(transition, forKey: nil)
             navigationController?.pushViewController(chatListVC, animated: true)
         }
+        
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        addBannerViewToView(bannerView)
+        
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-4067151614085861/4960834755")
+        let request = GADRequest()
+        interstitial.load(request)
+        checkForAdd()
     }
+    
+       func configureBannerView() {
+           bannerView.adUnitID = "ca-app-pub-4067151614085861/4960834755"
+           bannerView.rootViewController = self
+           bannerView.load(GADRequest())
+           bannerView.delegate = self
+           bannerView.load(GADRequest())
+       }
+       
+       func addBannerViewToView(_ bannerView: GADBannerView) {
+           bannerView.translatesAutoresizingMaskIntoConstraints = false
+           view.addSubview(bannerView)
+           view.addConstraints(
+               [NSLayoutConstraint(item: bannerView,
+                                   attribute: .bottom,
+                                   relatedBy: .equal,
+                                   toItem: bottomLayoutGuide,
+                                   attribute: .top,
+                                   multiplier: 1,
+                                   constant: 0),
+                NSLayoutConstraint(item: bannerView,
+                                   attribute: .centerX,
+                                   relatedBy: .equal,
+                                   toItem: view,
+                                   attribute: .centerX,
+                                   multiplier: 1,
+                                   constant: 0),
+                NSLayoutConstraint(item: bannerView,
+                                   attribute: .leading,
+                                   relatedBy: .equal,
+                                   toItem: view,
+                                   attribute: .leading,
+                                   multiplier: 1,
+                                   constant: 0),
+                NSLayoutConstraint(item: bannerView,
+                                   attribute: .trailing,
+                                   relatedBy: .equal,
+                                   toItem: view,
+                                   attribute: .trailing,
+                                   multiplier: 1,
+                                   constant: 0)
+               ])
+       }
+       
+       func checkForAdd(){
+           let shouldShow = Bool.random()
+           DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) {
+               if self.interstitial.isReady && shouldShow && !(PFUser.current()?.getGold() ?? true){
+                   self.interstitial.present(fromRootViewController: self)
+               }
+           }
+       }
     
     // MARK: Class Functions
     func createLottieAnimation() {
@@ -288,5 +352,14 @@ extension HomeViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error.localizedDescription)
+    }
+}
+
+extension HomeViewController: GADBannerViewDelegate {
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        bannerView.alpha = 0
+        UIView.animate(withDuration: 1.0) {
+            bannerView.alpha = 1
+        }
     }
 }

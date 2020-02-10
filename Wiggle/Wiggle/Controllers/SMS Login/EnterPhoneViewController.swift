@@ -67,7 +67,6 @@ class EnterPhoneViewController: UIViewController {
             self.moveToEnterVerificationCodeViewController(smsCode: smsCode, countryCode: self.countryCode, phone: smsCodeRequest.phoneNumber)
         }) { (error) in
             self.startAnimating(self.view, startAnimate: false)
-            print(error)
         }
     }
     

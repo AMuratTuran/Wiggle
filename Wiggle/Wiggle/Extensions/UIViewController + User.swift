@@ -37,7 +37,7 @@ extension PFUser {
     }
     
     func getGold() -> Bool {
-        guard let gold = self.object(forKey: "gold") as? Bool else {return false}
+        guard let gold = self.object(forKey: "isGold") as? Bool else {return false}
         return gold
     }
     

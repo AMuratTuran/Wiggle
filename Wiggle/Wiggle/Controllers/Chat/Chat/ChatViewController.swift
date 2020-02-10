@@ -258,7 +258,11 @@ class ChatViewController: MessagesViewController {
             }
         }
         let unmatchAction = UIAlertAction(title: Localize.Chat.Unmatch, style: .default) { (action) in
-            
+            NetworkManager.unMatch(myId: "", contactedUserId: self.contactedUser?.receiverId ?? "", success: {
+                self.navigationController?.popViewController(animated: true)
+            }) { (error) in
+                self.displayError(message: error)
+            }
         }
         let cancelAction = UIAlertAction(title: Localize.Common.CancelButton, style: .cancel) { (action) in
             

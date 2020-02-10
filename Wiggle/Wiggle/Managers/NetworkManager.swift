@@ -332,6 +332,19 @@ struct NetworkManager {
         }
     }
     
+    static func unMatch(myId: String, contactedUserId: String, success: @escaping() -> Void, fail: @escaping(String) -> Void) {
+        let object = PFObject(className: "Unmatches")
+        object.setValue(AppConstants.objectId, forKey: "userId")
+        object.setValue(contactedUserId, forKey: "peerId")
+        object.saveInBackground { (result, err) in
+            if result {
+                success()
+            }else {
+                fail(err?.localizedDescription ?? "")
+            }
+        }
+    }
+    
     static func getHeartRateMatches(success: @escaping([PFUser]) -> Void, fail: @escaping(String) -> Void) {
         let query : PFQuery? = PFUser.query()
         let location = PFUser.current()?.getLocation()

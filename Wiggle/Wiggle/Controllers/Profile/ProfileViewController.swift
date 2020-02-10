@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import GoogleMobileAds
 
 class ProfileViewController: UIViewController {
     @IBOutlet weak var settingsButton: UIButton!
@@ -27,6 +28,8 @@ class ProfileViewController: UIViewController {
     var slides:[SwipablePremiumView] = []
     var imagePicker: ImagePicker!
     var selectedImage: UIImage?
+    var bannerView: GADBannerView!
+    var interstitial: GADInterstitial!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +42,72 @@ class ProfileViewController: UIViewController {
         pageControl.currentPage = 0
         view.bringSubviewToFront(pageControl)
         bottomScrollView.delegate = self
+        
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        addBannerViewToView(bannerView)
+        
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-4067151614085861/4960834755")
+        let request = GADRequest()
+        interstitial.load(request)
+        checkForAdd()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        configureBannerView()
+    }
+
+    
+    func configureBannerView() {
+        bannerView.adUnitID = "ca-app-pub-4067151614085861/4960834755"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
+        bannerView.load(GADRequest())
+    }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: bottomLayoutGuide,
+                                attribute: .top,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .leading,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .leading,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .trailing,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .trailing,
+                                multiplier: 1,
+                                constant: 0)
+            ])
+    }
+    
+    func checkForAdd(){
+        let shouldShow = Bool.random()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) {
+            if self.interstitial.isReady && shouldShow && !(PFUser.current()?.getGold() ?? true){
+                self.interstitial.present(fromRootViewController: self)
+            }
+        }
+    }
     func configureViews() {
         guard PFUser.current() != nil else {
             return
@@ -184,5 +251,15 @@ extension ProfileViewController: UIScrollViewDelegate {
 extension ProfileViewController: UpdateInfoDelegate {
     func infosUpdated() {
         self.updateViews()
+    }
+}
+
+
+extension ProfileViewController: GADBannerViewDelegate {
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        bannerView.alpha = 0
+        UIView.animate(withDuration: 1.0) {
+            bannerView.alpha = 1
+        }
     }
 }

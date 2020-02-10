@@ -139,12 +139,38 @@
 		F1C794C323AC0E1400D9FEFC /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C794B823AC0E1200D9FEFC /* OpenSans-SemiBold.ttf */; };
 		F1C794C423AC0E1400D9FEFC /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C794B923AC0E1300D9FEFC /* OpenSans-Light.ttf */; };
 		F1C794C523AC0E1400D9FEFC /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C794BA23AC0E1400D9FEFC /* OpenSans-Bold.ttf */; };
+		F1CF618023EC9D1F0029BA3D /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CF617F23EC9D1F0029BA3D /* NotificationService.swift */; };
+		F1CF618423EC9D1F0029BA3D /* WigglePNExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F1CF617D23EC9D1F0029BA3D /* WigglePNExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F1D407162385E641002350BE /* EnableLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D407152385E641002350BE /* EnableLocationViewController.swift */; };
 		F1D407182385EE7A002350BE /* EnableNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D407172385EE7A002350BE /* EnableNotificationsViewController.swift */; };
 		F1DBCA2123EAB6D000AE3247 /* EmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBCA1F23EAB6D000AE3247 /* EmptyCollectionViewCell.swift */; };
 		F1DBCA2223EAB6D000AE3247 /* EmptyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DBCA2023EAB6D000AE3247 /* EmptyCollectionViewCell.xib */; };
 		F1DBCA2A23EAE27C00AE3247 /* WiggleTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBCA2923EAE27C00AE3247 /* WiggleTabBarController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F1CF618223EC9D1F0029BA3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1585ACC2384064F0062A681 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1CF617C23EC9D1F0029BA3D;
+			remoteInfo = WigglePNExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F1CF618523EC9D1F0029BA3D /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F1CF618423EC9D1F0029BA3D /* WigglePNExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		44BB3C201FFEF9A359F53C04 /* Pods-Wiggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.debug.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.debug.xcconfig"; sourceTree = "<group>"; };
@@ -294,6 +320,9 @@
 		F1C794B823AC0E1200D9FEFC /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		F1C794B923AC0E1300D9FEFC /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		F1C794BA23AC0E1400D9FEFC /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		F1CF617D23EC9D1F0029BA3D /* WigglePNExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WigglePNExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1CF617F23EC9D1F0029BA3D /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		F1CF618123EC9D1F0029BA3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1D407152385E641002350BE /* EnableLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableLocationViewController.swift; sourceTree = "<group>"; };
 		F1D407172385EE7A002350BE /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
 		F1DBCA1F23EAB6D000AE3247 /* EmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -310,6 +339,13 @@
 			files = (
 				A6B8A42AC3E4C0E8C384C2E7 /* Pods_Wiggle.framework in Frameworks */,
 				DCBB8E6B23DDF3350080AC27 /* StoreKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1CF617A23EC9D1F0029BA3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +571,7 @@
 			isa = PBXGroup;
 			children = (
 				F1585AD62384064F0062A681 /* Wiggle */,
+				F1CF617E23EC9D1F0029BA3D /* WigglePNExtension */,
 				F1585AD52384064F0062A681 /* Products */,
 				C0A7BAAFF9D38BFEDD116339 /* Pods */,
 				0C3CC6E3D46A87DDA8F56F4D /* Frameworks */,
@@ -545,6 +582,7 @@
 			isa = PBXGroup;
 			children = (
 				F1585AD42384064F0062A681 /* Wiggle.app */,
+				F1CF617D23EC9D1F0029BA3D /* WigglePNExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -865,6 +903,15 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		F1CF617E23EC9D1F0029BA3D /* WigglePNExtension */ = {
+			isa = PBXGroup;
+			children = (
+				F1CF617F23EC9D1F0029BA3D /* NotificationService.swift */,
+				F1CF618123EC9D1F0029BA3D /* Info.plist */,
+			);
+			path = WigglePNExtension;
+			sourceTree = "<group>";
+		};
 		F1DBCA2823EAE26000AE3247 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -885,10 +932,12 @@
 				F1585AD12384064F0062A681 /* Frameworks */,
 				F1585AD22384064F0062A681 /* Resources */,
 				DE4CD51BC3893089951A3495 /* [CP] Embed Pods Frameworks */,
+				F1CF618523EC9D1F0029BA3D /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F1CF618323EC9D1F0029BA3D /* PBXTargetDependency */,
 			);
 			name = Wiggle;
 			packageProductDependencies = (
@@ -897,19 +946,39 @@
 			productReference = F1585AD42384064F0062A681 /* Wiggle.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F1CF617C23EC9D1F0029BA3D /* WigglePNExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1CF618823EC9D1F0029BA3D /* Build configuration list for PBXNativeTarget "WigglePNExtension" */;
+			buildPhases = (
+				F1CF617923EC9D1F0029BA3D /* Sources */,
+				F1CF617A23EC9D1F0029BA3D /* Frameworks */,
+				F1CF617B23EC9D1F0029BA3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WigglePNExtension;
+			productName = WigglePNExtension;
+			productReference = F1CF617D23EC9D1F0029BA3D /* WigglePNExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		F1585ACC2384064F0062A681 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1120;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Murat Turan";
 				TargetAttributes = {
 					F1585AD32384064F0062A681 = {
 						CreatedOnToolsVersion = 11.2.1;
 						LastSwiftMigration = 1130;
+					};
+					F1CF617C23EC9D1F0029BA3D = {
+						CreatedOnToolsVersion = 11.3.1;
 					};
 				};
 			};
@@ -930,6 +999,7 @@
 			projectRoot = "";
 			targets = (
 				F1585AD32384064F0062A681 /* Wiggle */,
+				F1CF617C23EC9D1F0029BA3D /* WigglePNExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -979,6 +1049,13 @@
 				DC10995423AFBEB600068054 /* HeartbeatView.xib in Resources */,
 				F152170623885CC50027C6D4 /* Settings.storyboard in Resources */,
 				F1C794C023AC0E1400D9FEFC /* OpenSans-Regular.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1CF617B23EC9D1F0029BA3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1129,7 +1206,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F1CF617923EC9D1F0029BA3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1CF618023EC9D1F0029BA3D /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F1CF618323EC9D1F0029BA3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1CF617C23EC9D1F0029BA3D /* WigglePNExtension */;
+			targetProxy = F1CF618223EC9D1F0029BA3D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F1585ADD2384064F0062A681 /* Main.storyboard */ = {
@@ -1282,6 +1375,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 44BB3C201FFEF9A359F53C04 /* Pods-Wiggle.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Wiggle/Wiggle.entitlements;
@@ -1294,6 +1388,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wiggleTeam.Wiggle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1308,6 +1403,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4E39BF0A09E61170AE4D6F33 /* Pods-Wiggle.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Wiggle/Wiggle.entitlements;
@@ -1320,12 +1416,53 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wiggleTeam.Wiggle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Wiggle/Managers/HeartRate/Wiggle-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		F1CF618623EC9D1F0029BA3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9HS67S8FA3;
+				INFOPLIST_FILE = WigglePNExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wiggleTeam.Wiggle.WigglePNExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F1CF618723EC9D1F0029BA3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9HS67S8FA3;
+				INFOPLIST_FILE = WigglePNExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.wiggleTeam.Wiggle.WigglePNExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1346,6 +1483,15 @@
 			buildConfigurations = (
 				F1585AE9238406560062A681 /* Debug */,
 				F1585AEA238406560062A681 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1CF618823EC9D1F0029BA3D /* Build configuration list for PBXNativeTarget "WigglePNExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1CF618623EC9D1F0029BA3D /* Debug */,
+				F1CF618723EC9D1F0029BA3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

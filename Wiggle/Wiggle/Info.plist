@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -29,6 +29,8 @@
 	<string>1</string>
 	<key>FacebookAppID</key>
 	<string>2344242332572062</string>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-4067151614085861~7156108472</string>
 	<key>FacebookDisplayName</key>
 	<string>Wiggle</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -47,6 +49,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>This app wants to take pictures.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>This app wants to access your contacts</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>We need your location to help you meet others</string>
 	<key>NSLocationWhenInUseUsageDescription</key>

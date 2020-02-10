@@ -31,6 +31,30 @@ PODS:
     - FBSDKShareKit/Share (= 5.11.0)
   - FBSDKShareKit/Share (5.11.0):
     - FBSDKCoreKit (~> 5.0)
+  - Google-Mobile-Ads-SDK (7.55.0):
+    - GoogleAppMeasurement (~> 6.0)
+  - GoogleAppMeasurement (6.1.6):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (= 0.3.9011)
+  - GoogleUtilities/AppDelegateSwizzler (6.3.2):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (6.3.2)
+  - GoogleUtilities/Logger (6.3.2):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (6.3.2):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (6.3.2):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (6.3.2)"
+  - GoogleUtilities/Reachability (6.3.2):
+    - GoogleUtilities/Logger
   - Hero (1.5.0)
   - InputBarAccessoryView (4.2.2)
   - Kingfisher (5.10.1):
@@ -41,6 +65,11 @@ PODS:
   - lottie-ios (3.1.5)
   - MessageKit (3.0.0):
     - InputBarAccessoryView (~> 4.2.2)
+  - nanopb (0.3.9011):
+    - nanopb/decode (= 0.3.9011)
+    - nanopb/encode (= 0.3.9011)
+  - nanopb/decode (0.3.9011)
+  - nanopb/encode (0.3.9011)
   - NVActivityIndicatorView (4.8.0):
     - NVActivityIndicatorView/Presenter (= 4.8.0)
   - NVActivityIndicatorView/Presenter (4.8.0)
@@ -81,6 +110,7 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
   - FacebookShare
+  - Google-Mobile-Ads-SDK
   - Hero
   - Kingfisher
   - Koloda (from `https://github.com/Yalantis/Koloda.git`)
@@ -108,11 +138,15 @@ SPEC REPOS:
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
+    - Google-Mobile-Ads-SDK
+    - GoogleAppMeasurement
+    - GoogleUtilities
     - Hero
     - InputBarAccessoryView
     - Kingfisher
     - lottie-ios
     - MessageKit
+    - nanopb
     - NVActivityIndicatorView
     - Parse
     - ParseLiveQuery
@@ -149,12 +183,16 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 9fbfb5b0022d34861bfa6b79f56f8e2ddcd8170b
   FBSDKLoginKit: 0e976e0c91ee69dd5dc69062c095205146f1dd9f
   FBSDKShareKit: 6f8781da6fca79fe64830fd3404add0660d9f139
+  Google-Mobile-Ads-SDK: 09d1c182f144b456fce626f9234ab4d35397ea10
+  GoogleAppMeasurement: dfe55efa543e899d906309eaaac6ca26d249862f
+  GoogleUtilities: 547a86735c6f0ee30ad17e94df4fc21f616b71cb
   Hero: b7385b75e7259da62f4f85462f59a5082d66b058
   InputBarAccessoryView: 2b937602598e2fab3149f37f51dd7ad795653812
   Kingfisher: eb36b7dfcc78d60877051c92c119a2865972961a
   Koloda: 75302d21882cc3e274c1561b1155805ea5919dab
   lottie-ios: 32bf84389337d86fbc8b12266e88452e0abf1dee
   MessageKit: e892a9ca49ebe6d82684d3a93ad84021fa23e2c6
+  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   Parse: c1ad2a04d2cab2b54b6fb7da05f741abf2cf57d1
   ParseLiveQuery: f251b75fb8941c95b8948837a4685836a72f7f18
@@ -167,6 +205,6 @@ SPEC CHECKSUMS:
   SwiftValidator: 249b6b3ae3b294266c5b9de134d94f18f2d5aa47
   SwiftyStoreKit: 033d06b6f87955405d3f844a18a7687c2438592a
 
-PODFILE CHECKSUM: 43628b5c320f4588d25b39b19ea4b5f5c2625bf9
+PODFILE CHECKSUM: 33c68f5e932e58f3dff5766268014a9c22777625
 
 COCOAPODS: 1.8.3

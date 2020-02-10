@@ -31,7 +31,7 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Murat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a8p-cX-l8Q">
-                            <rect key="frame" x="2" y="73" width="76" height="15"/>
+                            <rect key="frame" x="2" y="71" width="76" height="17"/>
                             <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -40,7 +40,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <gestureRecognizers/>
                     <constraints>
-                        <constraint firstItem="a8p-cX-l8Q" firstAttribute="top" secondItem="3Su-Wo-ZDl" secondAttribute="bottom" constant="3" id="1kT-jG-yw9"/>
+                        <constraint firstItem="a8p-cX-l8Q" firstAttribute="top" secondItem="3Su-Wo-ZDl" secondAttribute="bottom" constant="1" id="1kT-jG-yw9"/>
                         <constraint firstItem="3Su-Wo-ZDl" firstAttribute="top" secondItem="Ul4-Ih-Rpo" secondAttribute="top" constant="8" id="3hq-K1-awO"/>
                         <constraint firstAttribute="bottom" secondItem="a8p-cX-l8Q" secondAttribute="bottom" constant="2" id="HB5-Em-fCd"/>
                         <constraint firstAttribute="height" constant="90" id="P8E-ed-EMD"/>

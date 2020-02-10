@@ -11,6 +11,7 @@ import Parse
 import FBSDKCoreKit
 import SwiftMessages
 import UserNotifications
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate {
@@ -33,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate {
         // Facebook SDK configuration
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         self.getNotificationSettings()
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         
         let notificationOption = launchOptions?[.remoteNotification]
         if let notification = notificationOption as? [String: AnyObject],
