@@ -53,6 +53,8 @@
 	<string>This app wants to access your contacts</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>We need your location to help you meet others</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need your location to help you meet others</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need your location to help you meet others</string>
 	<key>NSPhotoLibraryUsageDescription</key>
