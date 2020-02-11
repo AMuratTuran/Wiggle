@@ -459,7 +459,7 @@
         <scene sceneID="3in-dk-HPf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Mbh-ya-gwL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="person.fill" catalog="system" id="4t6-82-cZd">
+                    <tabBarItem key="tabBarItem" title="" image="profileImage" id="4t6-82-cZd">
                         <color key="badgeColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -485,7 +485,7 @@
         <image name="gear" catalog="system" width="64" height="58"/>
         <image name="likeImage" width="40" height="40"/>
         <image name="pencil" catalog="system" width="64" height="56"/>
-        <image name="person.fill" catalog="system" width="64" height="60"/>
+        <image name="profileImage" width="20" height="20"/>
         <image name="profilePhoto" width="1200" height="800"/>
         <image name="starsImage" width="40" height="40"/>
     </resources>

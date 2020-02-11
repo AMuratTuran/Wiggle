@@ -16,6 +16,8 @@ class InAppPurchaseViewController: UIViewController {
     
     var products: [SKProduct] = []
     
+    var selectedProduct : SKProduct?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,6 +60,15 @@ class InAppPurchaseViewController: UIViewController {
         tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .fade)
     }
     
+    @IBAction func closeButtonAction(_ sender: Any) {
+        self.dismiss(animated: true) {}
+    }
+    @IBAction func buyButtonAction(_ sender: Any) {
+        guard let selectedProduct = selectedProduct else {return}
+        WiggleProducts.store.buyProduct(selectedProduct)
+    }
+    
+    
 }
 extension InAppPurchaseViewController: UITableViewDelegate{
     
@@ -77,7 +88,7 @@ extension InAppPurchaseViewController: UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let product = products[(indexPath as NSIndexPath).row]
-        WiggleProducts.store.buyProduct(product)
+        selectedProduct = product
     }
     
     

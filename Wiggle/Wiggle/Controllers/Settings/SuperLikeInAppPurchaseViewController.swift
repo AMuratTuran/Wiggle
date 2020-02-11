@@ -72,7 +72,7 @@ class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDa
     
     // MARK: - IAP Functions
     @IBAction func dismissAction(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true) {}
     }
     
     @objc func handlePurchaseNotification(_ notification: Notification) {

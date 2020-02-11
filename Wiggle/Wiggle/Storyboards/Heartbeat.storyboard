@@ -211,7 +211,6 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BFi-ci-QJJ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="heartCirleFill" id="KJn-Wg-Tn4">
-                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="20"/>
                         <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
                         <color key="badgeColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
@@ -233,7 +232,7 @@
     </scenes>
     <resources>
         <image name="cancelImageFilled" width="19" height="19"/>
-        <image name="heartCirleFill" width="85" height="85"/>
+        <image name="heartCirleFill" width="25" height="25"/>
         <image name="heartFIlledRed" width="30" height="30"/>
         <image name="heartbeatImage" width="120" height="120"/>
     </resources>

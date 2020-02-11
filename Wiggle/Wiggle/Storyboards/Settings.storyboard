@@ -190,15 +190,27 @@
                                 <state key="normal" title="Satın Al">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="buyButtonAction:" destination="BfF-3S-uAP" eventType="touchUpInside" id="Umi-q5-uya"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XlH-Ya-Hj2">
+                                <rect key="frame" x="330" y="6" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closeButtonAction:" destination="BfF-3S-uAP" eventType="touchUpInside" id="dFe-aj-k3v"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="1mf-If-H3A" firstAttribute="top" secondItem="jmt-b8-7e6" secondAttribute="top" constant="16" id="6A6-JA-hWW"/>
                             <constraint firstItem="jmt-b8-7e6" firstAttribute="bottom" secondItem="0pf-ei-UMm" secondAttribute="bottom" constant="20" id="JDp-l7-bA4"/>
+                            <constraint firstItem="XlH-Ya-Hj2" firstAttribute="top" secondItem="jmt-b8-7e6" secondAttribute="top" constant="6" id="P7X-ja-z1j"/>
                             <constraint firstItem="jmt-b8-7e6" firstAttribute="trailing" secondItem="0pf-ei-UMm" secondAttribute="trailing" constant="16" id="ZtY-UU-Obp"/>
                             <constraint firstItem="0pf-ei-UMm" firstAttribute="top" secondItem="1mf-If-H3A" secondAttribute="bottom" constant="295.5" id="iRG-kd-iIl"/>
                             <constraint firstItem="1mf-If-H3A" firstAttribute="leading" secondItem="jmt-b8-7e6" secondAttribute="leading" constant="16" id="kah-vJ-C96"/>
+                            <constraint firstItem="jmt-b8-7e6" firstAttribute="trailing" secondItem="XlH-Ya-Hj2" secondAttribute="trailing" constant="6" id="mm0-Ll-YGO"/>
                             <constraint firstItem="0pf-ei-UMm" firstAttribute="leading" secondItem="jmt-b8-7e6" secondAttribute="leading" constant="16" id="p3C-Qi-ckl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jmt-b8-7e6"/>
@@ -481,11 +493,21 @@
                                             <constraint firstItem="C2a-nV-sAV" firstAttribute="leading" secondItem="gls-vv-7g8" secondAttribute="leading" id="jVW-Eh-azJ"/>
                                         </constraints>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fBn-VN-jzQ">
+                                        <rect key="frame" x="330" y="6" width="39" height="30"/>
+                                        <state key="normal" title="Close"/>
+                                        <connections>
+                                            <action selector="closeButtonAction:" destination="BfF-3S-uAP" eventType="touchUpInside" id="dcv-7e-Nci"/>
+                                            <action selector="dismissAction:" destination="YTk-EZ-oc2" eventType="touchUpInside" id="xjp-zH-GVq"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.95686274510000002" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="gg5-aW-d16" firstAttribute="top" secondItem="7ep-Tf-g0a" secondAttribute="bottom" constant="-119" id="2KX-9U-JaG"/>
                                     <constraint firstItem="7ep-Tf-g0a" firstAttribute="leading" secondItem="M3i-Pj-osZ" secondAttribute="leading" id="2WO-xd-M0O"/>
+                                    <constraint firstAttribute="trailing" secondItem="fBn-VN-jzQ" secondAttribute="trailing" constant="6" id="4PK-bQ-Hdb"/>
+                                    <constraint firstItem="fBn-VN-jzQ" firstAttribute="top" secondItem="M3i-Pj-osZ" secondAttribute="top" constant="6" id="7SW-pi-dEc"/>
                                     <constraint firstItem="7ep-Tf-g0a" firstAttribute="top" secondItem="M3i-Pj-osZ" secondAttribute="top" id="7yP-av-SWs"/>
                                     <constraint firstItem="gg5-aW-d16" firstAttribute="leading" secondItem="M3i-Pj-osZ" secondAttribute="leading" constant="8" id="8mg-hW-oHJ"/>
                                     <constraint firstItem="F7c-gG-8wW" firstAttribute="top" secondItem="eEI-M0-RCp" secondAttribute="bottom" constant="14" id="CZj-vA-8mH"/>
@@ -521,11 +543,7 @@
                         <viewLayoutGuide key="safeArea" id="eM6-95-lcH"/>
                     </view>
                     <navigationItem key="navigationItem" title="Blindstory Premium" id="bjp-9W-21U">
-                        <barButtonItem key="rightBarButtonItem" title="Kapat" id="28q-ET-Ke4">
-                            <connections>
-                                <action selector="dismissAction:" destination="YTk-EZ-oc2" id="vwI-h8-s18"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Kapat" id="28q-ET-Ke4"/>
                     </navigationItem>
                     <connections>
                         <outlet property="bottomLabel" destination="h4l-yE-Jir" id="xmx-lZ-Md6"/>
