@@ -81,7 +81,7 @@ class FirstPageViewController: UIViewController {
     }
     
     @IBAction func facebookLoginTapped(_ sender: Any) {
-        
+        LoginManager().logOut()
         PFFacebookUtils.logInInBackground(withReadPermissions: ["public_profile","email"]) {
             (user: PFUser?, error: Error?) in
             if let user = user {
