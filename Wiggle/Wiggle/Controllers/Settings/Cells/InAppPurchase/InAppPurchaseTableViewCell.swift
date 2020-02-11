@@ -38,10 +38,7 @@ class InAppPurchaseTableViewCell: UITableViewCell {
         
         durationLabel.text = product.localizedTitle
         
-        let duration = product.localizedTitle.components(separatedBy: " ")
-        let durationn = Int(duration[0]) ?? 1
-        
-        discountView.isHidden = !(durationn * 50 >= Int(truncating: product.price))
+        discountView.isHidden = true
     }
 
 }

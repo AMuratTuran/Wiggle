@@ -181,8 +181,22 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XlH-Ya-Hj2">
+                                <rect key="frame" x="330" y="6" width="39" height="30"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closeButtonAction:" destination="BfF-3S-uAP" eventType="touchUpInside" id="dFe-aj-k3v"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mlt-u8-lSJ">
+                                <rect key="frame" x="8" y="575.5" width="359" height="75.5"/>
+                                <mutableString key="text">About subscriptions: You are beginning a paid auto renewing subscription. Subscription automatically renews per month. Payment will be charged to your Apple ID account at the confirmation of purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. You can manage and cancel your subscriptions by going to your App Store account settings after purchase.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0pf-ei-UMm">
-                                <rect key="frame" x="16" y="597" width="343" height="50"/>
+                                <rect key="frame" x="16" y="505" width="343" height="50"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="3dd-Xs-W9p"/>
@@ -194,23 +208,19 @@
                                     <action selector="buyButtonAction:" destination="BfF-3S-uAP" eventType="touchUpInside" id="Umi-q5-uya"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XlH-Ya-Hj2">
-                                <rect key="frame" x="330" y="6" width="39" height="30"/>
-                                <state key="normal" title="Close"/>
-                                <connections>
-                                    <action selector="closeButtonAction:" destination="BfF-3S-uAP" eventType="touchUpInside" id="dFe-aj-k3v"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="1mf-If-H3A" firstAttribute="top" secondItem="jmt-b8-7e6" secondAttribute="top" constant="16" id="6A6-JA-hWW"/>
-                            <constraint firstItem="jmt-b8-7e6" firstAttribute="bottom" secondItem="0pf-ei-UMm" secondAttribute="bottom" constant="20" id="JDp-l7-bA4"/>
+                            <constraint firstItem="Mlt-u8-lSJ" firstAttribute="leading" secondItem="jmt-b8-7e6" secondAttribute="leading" constant="8" id="7ie-ik-JzN"/>
+                            <constraint firstItem="jmt-b8-7e6" firstAttribute="trailing" secondItem="Mlt-u8-lSJ" secondAttribute="trailing" constant="8" id="JX5-YS-b4w"/>
                             <constraint firstItem="XlH-Ya-Hj2" firstAttribute="top" secondItem="jmt-b8-7e6" secondAttribute="top" constant="6" id="P7X-ja-z1j"/>
                             <constraint firstItem="jmt-b8-7e6" firstAttribute="trailing" secondItem="0pf-ei-UMm" secondAttribute="trailing" constant="16" id="ZtY-UU-Obp"/>
-                            <constraint firstItem="0pf-ei-UMm" firstAttribute="top" secondItem="1mf-If-H3A" secondAttribute="bottom" constant="295.5" id="iRG-kd-iIl"/>
+                            <constraint firstItem="jmt-b8-7e6" firstAttribute="bottom" secondItem="Mlt-u8-lSJ" secondAttribute="bottom" constant="16" id="hr9-be-fip"/>
                             <constraint firstItem="1mf-If-H3A" firstAttribute="leading" secondItem="jmt-b8-7e6" secondAttribute="leading" constant="16" id="kah-vJ-C96"/>
+                            <constraint firstItem="0pf-ei-UMm" firstAttribute="top" secondItem="1mf-If-H3A" secondAttribute="bottom" constant="203.5" id="kdv-Dx-0mZ"/>
                             <constraint firstItem="jmt-b8-7e6" firstAttribute="trailing" secondItem="XlH-Ya-Hj2" secondAttribute="trailing" constant="6" id="mm0-Ll-YGO"/>
+                            <constraint firstItem="Mlt-u8-lSJ" firstAttribute="top" secondItem="0pf-ei-UMm" secondAttribute="bottom" constant="20.5" id="oDT-By-5bm"/>
                             <constraint firstItem="0pf-ei-UMm" firstAttribute="leading" secondItem="jmt-b8-7e6" secondAttribute="leading" constant="16" id="p3C-Qi-ckl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jmt-b8-7e6"/>
