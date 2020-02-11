@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
     var skipCount : Int = 0
     
     let locationManager = CLLocationManager()
-    let animationView = AnimationView(name: "heartbeat")
+    let animationView = AnimationView(name: "sensor_fingerprint")
     var fetchUsersGestureRecognizer = UITapGestureRecognizer()
     var isLaunchedFromPN:Bool = false
     var bannerView: GADBannerView!

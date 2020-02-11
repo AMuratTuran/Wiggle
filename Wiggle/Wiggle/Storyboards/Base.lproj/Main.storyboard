@@ -1167,7 +1167,20 @@
                     <view key="view" contentMode="scaleToFill" id="xf8-Cw-iUD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="labeled-wiggle-logo" translatesAutoresizingMaskIntoConstraints="NO" id="8Ed-QR-xcR">
+                                <rect key="frame" x="67.5" y="273.5" width="240" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="5YN-Uh-LyF"/>
+                                    <constraint firstAttribute="height" constant="120" id="En1-he-yWJ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8Ed-QR-xcR" firstAttribute="centerX" secondItem="xf8-Cw-iUD" secondAttribute="centerX" id="P0b-eo-gtY"/>
+                            <constraint firstItem="8Ed-QR-xcR" firstAttribute="centerY" secondItem="xf8-Cw-iUD" secondAttribute="centerY" id="qlv-Op-Vz5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="DYj-6u-N0P"/>
                     </view>
                     <navigationItem key="navigationItem" id="zL6-aj-Kj5"/>
@@ -1228,9 +1241,10 @@
         <image name="arrow.left" catalog="system" width="64" height="48"/>
         <image name="chevron.down" catalog="system" width="64" height="36"/>
         <image name="envelope.badge.fill" catalog="system" width="64" height="48"/>
-        <image name="female" width="384" height="512"/>
+        <image name="female" width="60" height="60"/>
+        <image name="labeled-wiggle-logo" width="1024" height="500"/>
         <image name="location.fill" catalog="system" width="64" height="56"/>
-        <image name="male" width="448" height="448"/>
+        <image name="male" width="60" height="60"/>
         <image name="person.crop.circle.fill.badge.plus" catalog="system" width="64" height="50"/>
         <image name="phone.circle.fill" catalog="system" width="64" height="60"/>
         <image name="wiggle-icon" width="205" height="294"/>

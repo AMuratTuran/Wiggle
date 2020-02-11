@@ -367,7 +367,7 @@ struct NetworkManager {
         query?.limit = 20
         query?.order(byDescending: "popular")
         query?.whereKey("location", nearGeoPoint: parseLocation, withinKilometers: 100)
-        //query?.whereKey("gender", notEqualTo: gender ?? 0)
+        query?.whereKey("gender", notEqualTo: gender ?? 0)
         query?.findObjectsInBackground { (response, error) in
             if let error = error {
                 fail(error.localizedDescription)

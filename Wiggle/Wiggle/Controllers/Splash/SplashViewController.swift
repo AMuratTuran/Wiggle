@@ -32,8 +32,8 @@ class SplashViewController: UIViewController {
         animationView.contentMode = .scaleAspectFill
         animationView.animationSpeed = 0.5
         
-        view.addSubview(animationView)
-        animationView.play()
+        //view.addSubview(animationView)
+        //animationView.play()
         
         delay(2.0) {
             guard let delegate = UIApplication.shared.delegate as? AppDelegate else {

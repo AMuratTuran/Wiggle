@@ -26,6 +26,16 @@
 		F10038A8239D711C00829A65 /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10038A6239D711C00829A65 /* LogoutCell.swift */; };
 		F10038A9239D711C00829A65 /* LogoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F10038A7239D711C00829A65 /* LogoutCell.xib */; };
 		F10038AC239D759800829A65 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10038AB239D759800829A65 /* Chat.swift */; };
+		F10167E523F33DC100E52FE2 /* heart.json in Resources */ = {isa = PBXBuildFile; fileRef = F10167DB23F33DBE00E52FE2 /* heart.json */; };
+		F10167E623F33DC100E52FE2 /* sensor_fingerprint.json in Resources */ = {isa = PBXBuildFile; fileRef = F10167DC23F33DBE00E52FE2 /* sensor_fingerprint.json */; };
+		F10167E723F33DC100E52FE2 /* star.json in Resources */ = {isa = PBXBuildFile; fileRef = F10167DD23F33DBF00E52FE2 /* star.json */; };
+		F10167E823F33DC100E52FE2 /* eye.json in Resources */ = {isa = PBXBuildFile; fileRef = F10167DE23F33DBF00E52FE2 /* eye.json */; };
+		F10167E923F33DC100E52FE2 /* rewound.json in Resources */ = {isa = PBXBuildFile; fileRef = F10167DF23F33DBF00E52FE2 /* rewound.json */; };
+		F10167EA23F33DC100E52FE2 /* reload.json in Resources */ = {isa = PBXBuildFile; fileRef = F10167E023F33DBF00E52FE2 /* reload.json */; };
+		F10167EB23F33DC100E52FE2 /* brain.json in Resources */ = {isa = PBXBuildFile; fileRef = F10167E123F33DC000E52FE2 /* brain.json */; };
+		F10167EC23F33DC100E52FE2 /* sad_heart.json in Resources */ = {isa = PBXBuildFile; fileRef = F10167E223F33DC000E52FE2 /* sad_heart.json */; };
+		F10167ED23F33DC100E52FE2 /* business.json in Resources */ = {isa = PBXBuildFile; fileRef = F10167E323F33DC100E52FE2 /* business.json */; };
+		F10167EE23F33DC100E52FE2 /* rainbow.json in Resources */ = {isa = PBXBuildFile; fileRef = F10167E423F33DC100E52FE2 /* rainbow.json */; };
 		F103654323E6D8210095DB52 /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F103654123E6D8210095DB52 /* EmptyCell.swift */; };
 		F103654423E6D8210095DB52 /* EmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F103654223E6D8210095DB52 /* EmptyCell.xib */; };
 		F10BC89C239D5E3E005934BB /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10BC89B239D5E3E005934BB /* NotificationSettingsViewController.swift */; };
@@ -139,24 +149,12 @@
 		F1C794C323AC0E1400D9FEFC /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C794B823AC0E1200D9FEFC /* OpenSans-SemiBold.ttf */; };
 		F1C794C423AC0E1400D9FEFC /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C794B923AC0E1300D9FEFC /* OpenSans-Light.ttf */; };
 		F1C794C523AC0E1400D9FEFC /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1C794BA23AC0E1400D9FEFC /* OpenSans-Bold.ttf */; };
-		F1CF618023EC9D1F0029BA3D /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CF617F23EC9D1F0029BA3D /* NotificationService.swift */; };
-		F1CF618423EC9D1F0029BA3D /* WigglePNExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F1CF617D23EC9D1F0029BA3D /* WigglePNExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F1D407162385E641002350BE /* EnableLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D407152385E641002350BE /* EnableLocationViewController.swift */; };
 		F1D407182385EE7A002350BE /* EnableNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D407172385EE7A002350BE /* EnableNotificationsViewController.swift */; };
 		F1DBCA2123EAB6D000AE3247 /* EmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBCA1F23EAB6D000AE3247 /* EmptyCollectionViewCell.swift */; };
 		F1DBCA2223EAB6D000AE3247 /* EmptyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DBCA2023EAB6D000AE3247 /* EmptyCollectionViewCell.xib */; };
 		F1DBCA2A23EAE27C00AE3247 /* WiggleTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DBCA2923EAE27C00AE3247 /* WiggleTabBarController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		F1CF618223EC9D1F0029BA3D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F1585ACC2384064F0062A681 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F1CF617C23EC9D1F0029BA3D;
-			remoteInfo = WigglePNExtension;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		F1CF618523EC9D1F0029BA3D /* Embed App Extensions */ = {
@@ -165,7 +163,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				F1CF618423EC9D1F0029BA3D /* WigglePNExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -193,6 +190,16 @@
 		F10038A6239D711C00829A65 /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		F10038A7239D711C00829A65 /* LogoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoutCell.xib; sourceTree = "<group>"; };
 		F10038AB239D759800829A65 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		F10167DB23F33DBE00E52FE2 /* heart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = heart.json; sourceTree = "<group>"; };
+		F10167DC23F33DBE00E52FE2 /* sensor_fingerprint.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sensor_fingerprint.json; sourceTree = "<group>"; };
+		F10167DD23F33DBF00E52FE2 /* star.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = star.json; sourceTree = "<group>"; };
+		F10167DE23F33DBF00E52FE2 /* eye.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = eye.json; sourceTree = "<group>"; };
+		F10167DF23F33DBF00E52FE2 /* rewound.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rewound.json; sourceTree = "<group>"; };
+		F10167E023F33DBF00E52FE2 /* reload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = reload.json; sourceTree = "<group>"; };
+		F10167E123F33DC000E52FE2 /* brain.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = brain.json; sourceTree = "<group>"; };
+		F10167E223F33DC000E52FE2 /* sad_heart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sad_heart.json; sourceTree = "<group>"; };
+		F10167E323F33DC100E52FE2 /* business.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = business.json; sourceTree = "<group>"; };
+		F10167E423F33DC100E52FE2 /* rainbow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rainbow.json; sourceTree = "<group>"; };
 		F103654123E6D8210095DB52 /* EmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
 		F103654223E6D8210095DB52 /* EmptyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCell.xib; sourceTree = "<group>"; };
 		F10BC89B239D5E3E005934BB /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
@@ -320,9 +327,6 @@
 		F1C794B823AC0E1200D9FEFC /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		F1C794B923AC0E1300D9FEFC /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		F1C794BA23AC0E1400D9FEFC /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
-		F1CF617D23EC9D1F0029BA3D /* WigglePNExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WigglePNExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1CF617F23EC9D1F0029BA3D /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
-		F1CF618123EC9D1F0029BA3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1D407152385E641002350BE /* EnableLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableLocationViewController.swift; sourceTree = "<group>"; };
 		F1D407172385EE7A002350BE /* EnableNotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableNotificationsViewController.swift; sourceTree = "<group>"; };
 		F1DBCA1F23EAB6D000AE3247 /* EmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -339,13 +343,6 @@
 			files = (
 				A6B8A42AC3E4C0E8C384C2E7 /* Pods_Wiggle.framework in Frameworks */,
 				DCBB8E6B23DDF3350080AC27 /* StoreKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F1CF617A23EC9D1F0029BA3D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +423,23 @@
 				F100023923AC1B9600D4DD22 /* ChatMessage.swift */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		F10167DA23F33CB400E52FE2 /* Json Animations */ = {
+			isa = PBXGroup;
+			children = (
+				F10167E123F33DC000E52FE2 /* brain.json */,
+				F10167E323F33DC100E52FE2 /* business.json */,
+				F10167DE23F33DBF00E52FE2 /* eye.json */,
+				F10167DB23F33DBE00E52FE2 /* heart.json */,
+				F10167E423F33DC100E52FE2 /* rainbow.json */,
+				F10167E023F33DBF00E52FE2 /* reload.json */,
+				F10167DF23F33DBF00E52FE2 /* rewound.json */,
+				F10167E223F33DC000E52FE2 /* sad_heart.json */,
+				F10167DC23F33DBE00E52FE2 /* sensor_fingerprint.json */,
+				F10167DD23F33DBF00E52FE2 /* star.json */,
+			);
+			path = "Json Animations";
 			sourceTree = "<group>";
 		};
 		F103653E23E6D7550095DB52 /* Empty */ = {
@@ -571,7 +585,6 @@
 			isa = PBXGroup;
 			children = (
 				F1585AD62384064F0062A681 /* Wiggle */,
-				F1CF617E23EC9D1F0029BA3D /* WigglePNExtension */,
 				F1585AD52384064F0062A681 /* Products */,
 				C0A7BAAFF9D38BFEDD116339 /* Pods */,
 				0C3CC6E3D46A87DDA8F56F4D /* Frameworks */,
@@ -582,7 +595,6 @@
 			isa = PBXGroup;
 			children = (
 				F1585AD42384064F0062A681 /* Wiggle.app */,
-				F1CF617D23EC9D1F0029BA3D /* WigglePNExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -590,6 +602,7 @@
 		F1585AD62384064F0062A681 /* Wiggle */ = {
 			isa = PBXGroup;
 			children = (
+				F10167DA23F33CB400E52FE2 /* Json Animations */,
 				F1FDDEBF23BDC15B00D4B501 /* Wiggle.entitlements */,
 				F150FCEE2393E9B8002FD404 /* heartbeat.json */,
 				F1C794AF23AC0DFD00D9FEFC /* Font */,
@@ -903,15 +916,6 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		F1CF617E23EC9D1F0029BA3D /* WigglePNExtension */ = {
-			isa = PBXGroup;
-			children = (
-				F1CF617F23EC9D1F0029BA3D /* NotificationService.swift */,
-				F1CF618123EC9D1F0029BA3D /* Info.plist */,
-			);
-			path = WigglePNExtension;
-			sourceTree = "<group>";
-		};
 		F1DBCA2823EAE26000AE3247 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -937,7 +941,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				F1CF618323EC9D1F0029BA3D /* PBXTargetDependency */,
 			);
 			name = Wiggle;
 			packageProductDependencies = (
@@ -945,23 +948,6 @@
 			productName = Wiggle;
 			productReference = F1585AD42384064F0062A681 /* Wiggle.app */;
 			productType = "com.apple.product-type.application";
-		};
-		F1CF617C23EC9D1F0029BA3D /* WigglePNExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F1CF618823EC9D1F0029BA3D /* Build configuration list for PBXNativeTarget "WigglePNExtension" */;
-			buildPhases = (
-				F1CF617923EC9D1F0029BA3D /* Sources */,
-				F1CF617A23EC9D1F0029BA3D /* Frameworks */,
-				F1CF617B23EC9D1F0029BA3D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = WigglePNExtension;
-			productName = WigglePNExtension;
-			productReference = F1CF617D23EC9D1F0029BA3D /* WigglePNExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -976,9 +962,6 @@
 					F1585AD32384064F0062A681 = {
 						CreatedOnToolsVersion = 11.2.1;
 						LastSwiftMigration = 1130;
-					};
-					F1CF617C23EC9D1F0029BA3D = {
-						CreatedOnToolsVersion = 11.3.1;
 					};
 				};
 			};
@@ -999,7 +982,6 @@
 			projectRoot = "";
 			targets = (
 				F1585AD32384064F0062A681 /* Wiggle */,
-				F1CF617C23EC9D1F0029BA3D /* WigglePNExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1012,6 +994,7 @@
 				F1C794BF23AC0E1400D9FEFC /* LICENSE.txt in Resources */,
 				F1378F54238A8BC500622B3C /* Home.storyboard in Resources */,
 				F123855023D094BB0062ABC8 /* HeartbeatMatchCell.xib in Resources */,
+				F10167E823F33DC100E52FE2 /* eye.json in Resources */,
 				F1585AE4238406560062A681 /* LaunchScreen.storyboard in Resources */,
 				F1378F59238ADC7900622B3C /* Profile.storyboard in Resources */,
 				F1C794BE23AC0E1400D9FEFC /* OpenSans-BoldItalic.ttf in Resources */,
@@ -1020,42 +1003,44 @@
 				F194B5E823C09BCB00349953 /* InAppBannerView.xib in Resources */,
 				F150FD0F239C2E77002FD404 /* Chat.storyboard in Resources */,
 				F1C794C323AC0E1400D9FEFC /* OpenSans-SemiBold.ttf in Resources */,
+				F10167E723F33DC100E52FE2 /* star.json in Resources */,
 				F1C794BD23AC0E1400D9FEFC /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				F10038A9239D711C00829A65 /* LogoutCell.xib in Resources */,
 				F150FD012394074C002FD404 /* SettingWithSliderCell.xib in Resources */,
 				F1645687238409CE00FC0694 /* Localizable.strings in Resources */,
+				F10167EC23F33DC100E52FE2 /* sad_heart.json in Resources */,
 				F1585AE1238406560062A681 /* Assets.xcassets in Resources */,
 				F150FD0D239413CD002FD404 /* LabelWithCheckmarkCell.xib in Resources */,
 				F1C794BB23AC0E1400D9FEFC /* OpenSans-Italic.ttf in Resources */,
 				F1C794BC23AC0E1400D9FEFC /* OpenSans-ExtraBold.ttf in Resources */,
 				F194B5F123C0E1A900349953 /* MatchScrollView.xib in Resources */,
 				F1C794C423AC0E1400D9FEFC /* OpenSans-Light.ttf in Resources */,
+				F10167ED23F33DC100E52FE2 /* business.json in Resources */,
 				F1C794C123AC0E1400D9FEFC /* OpenSans-LightItalic.ttf in Resources */,
 				F1585ADF2384064F0062A681 /* Main.storyboard in Resources */,
 				F194B5F523C0E1C900349953 /* MatchedUserView.xib in Resources */,
+				F10167EB23F33DC100E52FE2 /* brain.json in Resources */,
 				F159FCD323CBCDE50042429E /* Heartbeat.storyboard in Resources */,
 				F150FCFC2393FA50002FD404 /* SettingWithLabelCell.xib in Resources */,
 				F103654423E6D8210095DB52 /* EmptyCell.xib in Resources */,
 				F1C794C223AC0E1400D9FEFC /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				F150FD0623940B31002FD404 /* CellWithToggleCell.xib in Resources */,
+				F10167E523F33DC100E52FE2 /* heart.json in Resources */,
 				F15217102389D52E0027C6D4 /* SettingsPremiumTableViewCell.xib in Resources */,
 				F1C794C523AC0E1400D9FEFC /* OpenSans-Bold.ttf in Resources */,
 				F150FCEF2393E9B9002FD404 /* heartbeat.json in Resources */,
 				F1AEB96E23D4A9D300407C03 /* SwipablePremiumView.xib in Resources */,
+				F10167EA23F33DC100E52FE2 /* reload.json in Resources */,
+				F10167E923F33DC100E52FE2 /* rewound.json in Resources */,
 				F150FD1A239C33E2002FD404 /* ChatListCell.xib in Resources */,
 				F1DBCA2223EAB6D000AE3247 /* EmptyCollectionViewCell.xib in Resources */,
 				DC166EDA23ACBAAD0000E745 /* WiggleCardView.xib in Resources */,
 				F150FCF72393F28B002FD404 /* BoostSuperLikeCell.xib in Resources */,
 				DC10995423AFBEB600068054 /* HeartbeatView.xib in Resources */,
 				F152170623885CC50027C6D4 /* Settings.storyboard in Resources */,
+				F10167E623F33DC100E52FE2 /* sensor_fingerprint.json in Resources */,
+				F10167EE23F33DC100E52FE2 /* rainbow.json in Resources */,
 				F1C794C023AC0E1400D9FEFC /* OpenSans-Regular.ttf in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F1CF617B23EC9D1F0029BA3D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1206,23 +1191,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F1CF617923EC9D1F0029BA3D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F1CF618023EC9D1F0029BA3D /* NotificationService.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		F1CF618323EC9D1F0029BA3D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F1CF617C23EC9D1F0029BA3D /* WigglePNExtension */;
-			targetProxy = F1CF618223EC9D1F0029BA3D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F1585ADD2384064F0062A681 /* Main.storyboard */ = {
@@ -1375,7 +1344,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 44BB3C201FFEF9A359F53C04 /* Pods-Wiggle.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Wiggle/Wiggle.entitlements;
@@ -1404,7 +1372,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4E39BF0A09E61170AE4D6F33 /* Pods-Wiggle.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Wiggle/Wiggle.entitlements;
@@ -1428,46 +1395,6 @@
 			};
 			name = Release;
 		};
-		F1CF618623EC9D1F0029BA3D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9HS67S8FA3;
-				INFOPLIST_FILE = WigglePNExtension/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wiggleTeam.Wiggle.WigglePNExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		F1CF618723EC9D1F0029BA3D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9HS67S8FA3;
-				INFOPLIST_FILE = WigglePNExtension/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wiggleTeam.Wiggle.WigglePNExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1485,15 +1412,6 @@
 			buildConfigurations = (
 				F1585AE9238406560062A681 /* Debug */,
 				F1585AEA238406560062A681 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F1CF618823EC9D1F0029BA3D /* Build configuration list for PBXNativeTarget "WigglePNExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F1CF618623EC9D1F0029BA3D /* Debug */,
-				F1CF618723EC9D1F0029BA3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
