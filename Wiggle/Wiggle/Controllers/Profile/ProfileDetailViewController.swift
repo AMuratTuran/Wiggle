@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import Koloda
+import PopupDialog
 
 class ProfileDetailViewController: UIViewController {
     
@@ -21,6 +22,8 @@ class ProfileDetailViewController: UIViewController {
     var wiggleCardModel: WiggleCardModel?
     var userData: PFUser?
     var indexOfParentCell: Int?
+    
+    var superLikeCount : Int = 0
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -38,6 +41,7 @@ class ProfileDetailViewController: UIViewController {
         bioLabel.hero.id = "subLabel\(indexOfParentCell ?? 0)"
         self.view.hero.id = "contentView\(indexOfParentCell ?? 0)"
         backButton.cornerRadius(backButton.frame.height / 2)
+        superLikeCount = PFUser.current()?.getSuperLike() ?? 0
     }
     
     override func viewWillLayoutSubviews() {
@@ -75,26 +79,70 @@ class ProfileDetailViewController: UIViewController {
     }
 
     @IBAction func likeButtonAction(_ sender: Any) {
+        let cancelButton = DefaultButton(title: Localize.Common.CancelButton) {}
+        let goToStoreButton = DefaultButton(title: "WStore") {
+            let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
+            self.navigationController?.present(destionationViewController, animated: true, completion: {})
+        }
         if let receiverObjectId = wiggleCardModel?.objectId{
-            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
+            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down, success: {
+            }) { (err) in
+                if err.contains("1007"){
+                    self.alertMessage(message: "Likeların bitti almak için store'a git", buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
+                }
+            }
         }else if let receiverObjectId = userData?.objectId{
-            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
+            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down, success: {
+            }) { (err) in
+                if err.contains("1007"){
+                    self.alertMessage(message: "Likeların bitti almak için store'a git", buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
+                }
+            }
         }
         moveToHomeViewControllerFromProfileDetail()
     }
     @IBAction func starButtonAction(_ sender: Any) {
-        if let receiverObjectId = wiggleCardModel?.objectId{
-            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "up") ?? .down)
-        }else if let receiverObjectId = userData?.objectId{
-            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "up") ?? .down)
+        let cancelButton = DefaultButton(title: Localize.Common.CancelButton) {}
+        let goToStoreButton = DefaultButton(title: "WStore") {
+            let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
+            self.navigationController?.present(destionationViewController, animated: true, completion: {})
         }
-        moveToHomeViewControllerFromProfileDetail()
+        if superLikeCount <= 0{
+            self.alertMessage(message: "Super Likeların bitti almak için store'a git", buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
+        }else{
+            if let receiverObjectId = wiggleCardModel?.objectId{
+                NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "up") ?? .down, success: {
+                }) { (_) in}
+            }else if let receiverObjectId = userData?.objectId{
+                NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "up") ?? .down, success: {
+                }) { (_) in}
+            }
+            moveToHomeViewControllerFromProfileDetail()
+        }
     }
     @IBAction func dislikeButtonAction(_ sender: Any) {
+        let cancelButton = DefaultButton(title: Localize.Common.CancelButton) {}
+        let goToStoreButton = DefaultButton(title: "WStore") {
+            let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
+            self.navigationController?.present(destionationViewController, animated: true, completion: {})
+        }
         if let receiverObjectId = wiggleCardModel?.objectId{
-            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down)
+            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down, success: {
+            }) { (err) in
+                if err.contains("1007"){
+                    self.alertMessage(message: "Likeların bitti almak için store'a git", buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
+                }
+            }
         }else if let receiverObjectId = userData?.objectId{
-            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down)
+            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down, success: {
+            }) { (err) in
+                if err.contains("1007"){
+                    self.alertMessage(message: "Likeların bitti almak için store'a git", buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
+                }
+            }
         }
         moveToHomeViewControllerFromProfileDetail()
     }

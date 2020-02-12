@@ -81,7 +81,7 @@ class HomeViewController: UIViewController {
         }
         
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        addBannerViewToView(bannerView)
+//        addBannerViewToView(bannerView)
         
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-4067151614085861/4960834755")
         let request = GADRequest()
@@ -218,21 +218,28 @@ class HomeViewController: UIViewController {
     }
     
     func swipeAction(direction : SwipeResultDirection, fromButton : Bool){
+        let cancelButton = DefaultButton(title: Localize.Common.CancelButton) {}
+        let goToStoreButton = DefaultButton(title: "WStore") {
+            let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
+            self.navigationController?.present(destionationViewController, animated: true, completion: {})
+        }
         guard let receiverObjectId = currentCardModel?.objectId else {return}
         if fromButton{
             kolodaView.swipe(direction)
         }
         if direction == .up && superLikeCount <= 0{
-            let cancelButton = DefaultButton(title: "İptal") {}
-            let goToStoreButton = DefaultButton(title: "WStore") {
-                let storyboard = UIStoryboard(name: "Settings", bundle: nil)
-                let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
-                self.navigationController?.present(destionationViewController, animated: true, completion: {})
-            }
             self.alertMessage(message: "Super Likeların bitti almak için store'a git", buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
-        }else{
+            kolodaView.revertAction()
+        }else if direction == .up{
             superLikeCount -= 1
-            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: direction)
+        }
+        NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: direction, success: {
+        }) { (err) in
+            if err.contains("1007"){
+                self.alertMessage(message: "Likeların bitti almak için store'a git", buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
+                self.kolodaView.revertAction()
+            }
         }
     }
     

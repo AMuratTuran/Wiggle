@@ -275,13 +275,13 @@ struct NetworkManager {
             fail("User not found")
             return
         }
-        likesQuery.whereKey("sender", equalTo: user.objectId ?? "")
+//        likesQuery.whereKey("sender", equalTo: user.objectId ?? "")
         query?.limit = 10
         query?.skip = withSkip
-        query?.whereKey("objectId", notEqualTo: user.objectId ?? "")
+//        query?.whereKey("objectId", notEqualTo: user.objectId ?? "")
         //query?.whereKey("location", nearGeoPoint: AppConstants.location, withinMiles: Double(AppConstants.distance))
-        query?.whereKey("gender", notEqualTo: gender ?? 0)
-        query?.whereKey("objectId", doesNotMatchKey: "receiver", in: likesQuery)
+//        query?.whereKey("gender", notEqualTo: gender ?? 0)
+//        query?.whereKey("objectId", doesNotMatchKey: "receiver", in: likesQuery)
         query?.order(byDescending: "popular")
         
         query?.findObjectsInBackground { (response, error) in
@@ -326,7 +326,7 @@ struct NetworkManager {
         }
     }
     
-    static func swipeActionWithDirection(receiver : String, direction : SwipeResultDirection){
+    static func swipeActionWithDirection(receiver : String, direction : SwipeResultDirection, success: @escaping() -> Void, fail: @escaping(String) -> Void){
         let object = PFObject(className: "Likes")
         object.setValue(AppConstants.objectId, forKey: "sender")
         object.setValue(receiver, forKey: "receiver")
@@ -343,7 +343,11 @@ struct NetworkManager {
         }
         
         object.saveInBackground { (result, err) in
-            print(result)
+            if result{
+                success()
+            }else{
+                fail(err.debugDescription)
+            }
         }
     }
     
