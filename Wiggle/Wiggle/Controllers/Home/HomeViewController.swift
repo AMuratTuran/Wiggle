@@ -236,7 +236,7 @@ class HomeViewController: UIViewController {
         }
         NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: direction, success: {
         }) { (err) in
-            if err.contains("1007"){
+            if err.contains("1006"){
                 self.alertMessage(message: "Likeların bitti almak için store'a git", buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
                 self.kolodaView.revertAction()
             }
