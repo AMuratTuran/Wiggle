@@ -9,7 +9,7 @@
 import UIKit
 import StoreKit
 
-class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Variables
     var products: [SKProduct] = []
@@ -135,5 +135,14 @@ extension SuperLikeInAppPurchaseViewController {
         cell.setUI()
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let screenSize = self.view.frame.width
+        let spacing = 10
+        let totalSpace: CGFloat = CGFloat(20 + ((products.count - 1) * spacing))
+        let available = screenSize - totalSpace
+        let cellWidth = (available / CGFloat(products.count))
+        return CGSize(width: cellWidth, height: 100)
     }
 }
