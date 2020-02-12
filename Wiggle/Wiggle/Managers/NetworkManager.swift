@@ -270,6 +270,7 @@ struct NetworkManager {
     static func getUsersForSwipe(withSkip : Int, success: @escaping([WiggleCardModel]) -> Void, fail: @escaping(String) -> Void) {
         let likesQuery : PFQuery = PFQuery(className:"Likes")
         let query : PFQuery? = PFUser.query()
+        let gender = PFUser.current()?.getGender()
         guard let user = PFUser.current() else {
             fail("User not found")
             return
@@ -279,7 +280,7 @@ struct NetworkManager {
         query?.skip = withSkip
         query?.whereKey("objectId", notEqualTo: user.objectId ?? "")
         //query?.whereKey("location", nearGeoPoint: AppConstants.location, withinMiles: Double(AppConstants.distance))
-        //query?.whereKey("gender", notEqualTo: AppConstants.gender)
+        query?.whereKey("gender", notEqualTo: gender ?? 0)
         query?.whereKey("objectId", doesNotMatchKey: "receiver", in: likesQuery)
         query?.order(byDescending: "popular")
         
