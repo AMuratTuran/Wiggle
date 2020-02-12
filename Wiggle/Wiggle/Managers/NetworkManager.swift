@@ -23,7 +23,7 @@ struct NetworkManager {
     static func sendSMSCode(_ request: SMSCodeRequest, success: @escaping(Int) -> Void, fail: @escaping(String) -> Void) {
         PFCloud.callFunction(inBackground: "SendSMS", withParameters: request.toDict()) { (response, error) in
             if let error = error {
-                fail(error.localizedDescription)
+                fail("Error")
                 return
             }
             guard let smsCode = response as? Int else {
