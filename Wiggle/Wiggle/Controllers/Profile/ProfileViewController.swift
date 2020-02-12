@@ -12,8 +12,6 @@ import GoogleMobileAds
 
 class ProfileViewController: UIViewController {
     @IBOutlet weak var settingsButton: UIButton!
-    @IBOutlet weak var bottomScrollView: UIScrollView!
-    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var changePhotoButton: UIButton!
     @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var profilePhoto: UIImageView!
@@ -35,16 +33,8 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         configureViews()
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
-        slides = createSlides()
-        setupSlideScrollView(slides: slides)
-        
-        pageControl.numberOfPages = slides.count
-        pageControl.currentPage = 0
-        view.bringSubviewToFront(pageControl)
-        bottomScrollView.delegate = self
-        
+
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        addBannerViewToView(bannerView)
         
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-4067151614085861/4960834755")
         let request = GADRequest()
@@ -159,37 +149,6 @@ class ProfileViewController: UIViewController {
         profilePhoto.kf.setImage(with: URL(string: imageUrl))
     }
     
-    func createSlides() -> [SwipablePremiumView] {
-        
-        bottomScrollView.subviews.forEach { $0.removeFromSuperview() }
-
-        let slide1:SwipablePremiumView = SwipablePremiumView.instanceFromNib()
-        slide1.prepare(title: "Kartlari Tekrar Gor", subtitle: "Kaydirdigin kartlari tekrar gorme firsati simdi Wiggle Gold'da")
-        
-        
-        let slide2:SwipablePremiumView = SwipablePremiumView.instanceFromNib()
-        slide2.prepare(title: "A real-life bear", subtitle: "Did you know that Winnie the chubby little cubby was based on a real, young bear in London")
-        
-        let slide3:SwipablePremiumView = SwipablePremiumView.instanceFromNib()
-        slide3.prepare(title: "Kartlari Tekrar Gor", subtitle: "Kaydirdigin kartlari tekrar gorme firsati simdi Wiggle Gold'da")
-        
-        let slide4:SwipablePremiumView = SwipablePremiumView.instanceFromNib()
-        slide4.prepare(title: "A real-life bear", subtitle: "Did you know that Winnie the chubby little cubby was based on a real, young bear in London")
-        
-        
-        return [slide1, slide2, slide3, slide4]
-    }
-    
-    func setupSlideScrollView(slides : [SwipablePremiumView]) {
-        bottomScrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: bottomScrollView.frame.height)
-        bottomScrollView.isPagingEnabled = true
-        
-        for i in 0 ..< slides.count {
-            slides[i].frame = CGRect(x: bottomScrollView.frame.width * CGFloat(i), y: 0, width: self.view.frame.width, height: bottomScrollView.frame.height)
-            bottomScrollView.addSubview(slides[i])
-        }
-    }
-    
     @IBAction func routeSettingsAction(_ sender: UIButton) {
         moveToSettingsViewController()
     }
@@ -240,13 +199,6 @@ extension ProfileViewController: ImagePickerDelegate {
     }
 }
 
-extension ProfileViewController: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-            let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
-            pageControl.currentPage = Int(pageIndex)
-        }
-}
 
 extension ProfileViewController: UpdateInfoDelegate {
     func infosUpdated() {

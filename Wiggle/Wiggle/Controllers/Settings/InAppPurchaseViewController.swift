@@ -34,17 +34,22 @@ class InAppPurchaseViewController: UIViewController {
     
     func configureViews(){
         seperatorView.layer.cornerRadius = seperatorView.bounds.height / 2
-        purchaseButton.layer.cornerRadius = purchaseButton.bounds.height / 10
+        purchaseButton.layer.cornerRadius = 12
     }
     
     @objc func reload() {
+        self.startAnimating(self.view, startAnimate: true)
         WiggleProducts.store.requestProducts{ [weak self] success, products in
             guard let self = self else { return }
             if success {
                 self.products = products ?? []
                 DispatchQueue.main.async {
+                    self.startAnimating(self.view, startAnimate: false)
                     self.tableView.reloadData()
                 }
+            }else {
+                self.startAnimating(self.view, startAnimate: false)
+                self.displayError(message: "Something went wrong")
             }
         }
     }

@@ -125,42 +125,11 @@
                                             <action selector="storeButtonAction:" destination="ga9-op-ggg" eventType="touchUpInside" id="dv1-FN-PRE"/>
                                         </connections>
                                     </button>
-                                    <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OZ-tZ-Bsh">
-                                        <rect key="frame" x="0.0" y="8.5" width="375" height="130"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bEL-q7-17c">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="bEL-q7-17c" firstAttribute="height" secondItem="2OZ-tZ-Bsh" secondAttribute="height" id="5Gt-b5-5B7"/>
-                                            <constraint firstItem="bEL-q7-17c" firstAttribute="centerX" secondItem="2OZ-tZ-Bsh" secondAttribute="centerX" id="6Lk-7O-MVv"/>
-                                            <constraint firstAttribute="bottom" secondItem="bEL-q7-17c" secondAttribute="bottom" id="7o8-oe-zzu"/>
-                                            <constraint firstAttribute="trailing" secondItem="bEL-q7-17c" secondAttribute="trailing" id="Boz-wD-43D"/>
-                                            <constraint firstAttribute="height" constant="130" id="g7b-2g-eqp"/>
-                                            <constraint firstItem="bEL-q7-17c" firstAttribute="top" secondItem="2OZ-tZ-Bsh" secondAttribute="top" id="iCC-MP-fcs"/>
-                                            <constraint firstItem="bEL-q7-17c" firstAttribute="leading" secondItem="2OZ-tZ-Bsh" secondAttribute="leading" id="p4c-iF-J5u"/>
-                                        </constraints>
-                                    </scrollView>
-                                    <pageControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="vA9-rg-VLA">
-                                        <rect key="frame" x="168" y="116.5" width="39" height="37"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="currentPageIndicatorTintColor" red="0.1764705882352941" green="1" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </pageControl>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="DPf-lm-3uf" secondAttribute="bottom" constant="10" id="FBI-jc-5ud"/>
-                                    <constraint firstAttribute="trailing" secondItem="2OZ-tZ-Bsh" secondAttribute="trailing" id="Lhy-Hi-jbi"/>
                                     <constraint firstItem="DPf-lm-3uf" firstAttribute="centerX" secondItem="K3C-S1-peb" secondAttribute="centerX" id="TTs-sA-OxZ"/>
-                                    <constraint firstItem="DPf-lm-3uf" firstAttribute="top" secondItem="vA9-rg-VLA" secondAttribute="bottom" id="b7n-rb-tww"/>
-                                    <constraint firstItem="2OZ-tZ-Bsh" firstAttribute="leading" secondItem="K3C-S1-peb" secondAttribute="leading" id="den-EJ-ZKV"/>
-                                    <constraint firstItem="DPf-lm-3uf" firstAttribute="top" secondItem="2OZ-tZ-Bsh" secondAttribute="bottom" constant="15" id="i0J-V7-Is1"/>
-                                    <constraint firstItem="vA9-rg-VLA" firstAttribute="centerX" secondItem="K3C-S1-peb" secondAttribute="centerX" id="oLE-Ma-Cbd"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -195,14 +164,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="Qni-u4-23U"/>
                     <connections>
-                        <outlet property="bottomScrollView" destination="2OZ-tZ-Bsh" id="Icr-GP-jaJ"/>
                         <outlet property="changePhotoButton" destination="vYx-t5-5Aj" id="cmg-oL-MfF"/>
                         <outlet property="changePhotoLabel" destination="Xx0-tC-V4v" id="EGT-OL-AAz"/>
                         <outlet property="editProfileButton" destination="3PP-d6-Blm" id="XQT-hP-dTg"/>
                         <outlet property="editProfileLabel" destination="kJq-kD-D0j" id="g3m-zZ-qfS"/>
                         <outlet property="imageBackgroundView" destination="Cdz-if-Yic" id="fWp-2m-lBC"/>
                         <outlet property="nameAndAgeLabel" destination="T2e-r8-ceK" id="B0x-mV-NNF"/>
-                        <outlet property="pageControl" destination="vA9-rg-VLA" id="dgd-sq-b2H"/>
                         <outlet property="profilePhoto" destination="HM5-pm-OqA" id="jHM-OT-c76"/>
                         <outlet property="settingsButton" destination="4se-Hp-Ur7" id="yoK-8f-0l2"/>
                         <outlet property="settingsLabel" destination="Ath-Og-egU" id="Nna-5C-RBj"/>
