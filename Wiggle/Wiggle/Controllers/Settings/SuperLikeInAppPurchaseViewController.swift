@@ -67,7 +67,7 @@ class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDa
     
     // MARK: - Class Functions
     func updateBottomLabel(){
-        bottomLabel.text = "Total price: \(selectedProductPrice). About subscriptions: You are beginning a paid auto renewing subscription. Subscription automatically renews for xxx per x month. Payment will be charged to your Apple ID account at the confirmation of purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. You can manage and cancel your subscriptions by going to your App Store account settings after purchase."
+        bottomLabel.text = "About subscriptions: You are beginning a paid auto renewing subscription. Subscription automatically renews for per month. Payment will be charged to your Apple ID account at the confirmation of purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. You can manage and cancel your subscriptions by going to your App Store account settings after purchase."
     }
     
     // MARK: - IAP Functions

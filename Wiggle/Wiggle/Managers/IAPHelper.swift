@@ -216,10 +216,11 @@ public struct WiggleProducts {
     public static let oneSuperLike = "wiggle1SuperLike"
     public static let fiveSuperLikes = "wiggle5SuperLikes"
     public static let twentyFiveSuperLikes = "Wiggle25SuperLikes"
+    public static let boost = "WiggleBoost"
     
     private static let productIdentifiers: Set<ProductIdentifier> = [WiggleProducts.oneMonthSubs, WiggleProducts.threeMonthsSubs, WiggleProducts.sixMonthsSubs, WiggleProducts.twelveMonthsSubs]
     
-    private static let superLikeProductIdentifiers: Set<ProductIdentifier> = [WiggleProducts.oneSuperLike, WiggleProducts.fiveSuperLikes, WiggleProducts.twentyFiveSuperLikes]
+    private static let superLikeProductIdentifiers: Set<ProductIdentifier> = [WiggleProducts.oneSuperLike, WiggleProducts.fiveSuperLikes, WiggleProducts.twentyFiveSuperLikes, WiggleProducts.boost]
     
     public static let store = IAPHelper(productIds: WiggleProducts.productIdentifiers)
     public static let superLikeStore = IAPHelper(productIds: WiggleProducts.superLikeProductIdentifiers)

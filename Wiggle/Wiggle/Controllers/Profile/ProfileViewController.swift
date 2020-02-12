@@ -38,8 +38,8 @@ class ProfileViewController: UIViewController {
         
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-4067151614085861/4960834755")
         let request = GADRequest()
-        interstitial.load(request)
-        checkForAdd()
+//        interstitial.load(request)
+//        checkForAdd()
     }
     
     override func viewWillAppear(_ animated: Bool) {
