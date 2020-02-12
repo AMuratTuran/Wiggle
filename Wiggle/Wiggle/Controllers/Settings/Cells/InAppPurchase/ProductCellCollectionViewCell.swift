@@ -32,18 +32,14 @@ class ProductCell: UICollectionViewCell {
     func setUI(){
         guard let product = product else { return }
         
-//        let array = product.localizedTitle.split{$0 == "("}.map(String.init)
-//        let newArray = array[1].split{ $0 == ")" }.map(String.init)
-//
-//        let lastArray = newArray[0].split { $0 == " "}.map(String.init)
-//        let title = lastArray.first
-//        let desc = lastArray[1]
         priceLabel.bringSubviewToFront(self)
         descriptionLabel.bringSubviewToFront(self)
         priceLabel.bringSubviewToFront(self)
         
-//        productLabel.text = title
-//        descriptionLabel.text = desc
+        var array = product.localizedTitle.components(separatedBy: " ")
+        
+        productLabel.text = array[0]
+        descriptionLabel.text = array[1]
         ProductCell.priceFormatter.locale = product.priceLocale
         priceLabel.text = "\(product.price) \(product.priceLocale.currencySymbol ?? "")"
         let monthlyPrice = Double(product.price) / 7.0

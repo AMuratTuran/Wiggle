@@ -42,7 +42,8 @@ class InAppPurchaseViewController: UIViewController {
         WiggleProducts.store.requestProducts{ [weak self] success, products in
             guard let self = self else { return }
             if success {
-                self.products = products ?? []
+                let productsSorted = products?.sorted { $0.localizedTitle < $1.localizedTitle }
+                self.products = productsSorted ?? []
                 DispatchQueue.main.async {
                     self.startAnimating(self.view, startAnimate: false)
                     self.tableView.reloadData()

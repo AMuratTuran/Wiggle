@@ -47,7 +47,8 @@ class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDa
             guard let self = self else { return }
             DispatchQueue.main.async {
                 if success {
-                    self.products = products ?? []
+                    let productsSorted = products?.sorted { $0.localizedTitle < $1.localizedTitle }
+                    self.products = productsSorted ?? []
                     
                     self.collectionView.reloadData()
                 }
