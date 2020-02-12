@@ -17,6 +17,7 @@ class EmptyCell: UITableViewCell {
     var touchButton: (() -> Void)?
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         // Initialization code
     }
 
