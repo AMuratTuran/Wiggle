@@ -25,6 +25,8 @@ class ProfileDetailViewController: UIViewController {
     
     var superLikeCount : Int = 0
     
+    var delegate: userActionsDelegate?
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         UIView.animate(withDuration: 0, delay: 0.1, animations: {
@@ -77,72 +79,28 @@ class ProfileDetailViewController: UIViewController {
             bioLabel.text = user.getBio()
         }
     }
-
+    
     @IBAction func likeButtonAction(_ sender: Any) {
-        let cancelButton = DefaultButton(title: Localize.Common.CancelButton) {}
-        let goToStoreButton = DefaultButton(title: "WStore") {
-            let storyboard = UIStoryboard(name: "Settings", bundle: nil)
-            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
-            self.navigationController?.present(destionationViewController, animated: true, completion: {})
-        }
         if let receiverObjectId = wiggleCardModel?.objectId{
-            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down, success: {
-            }) { (err) in
-                if err.contains("1007"){
-                    self.alertMessage(message: "Likeların bitti almak için store'a git", buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
-                }
-            }
+            delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
         }else if let receiverObjectId = userData?.objectId{
-            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down, success: {
-            }) { (err) in
-                if err.contains("1007"){
-                    self.alertMessage(message: "Likeların bitti almak için store'a git", buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
-                }
-            }
+            delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
         }
         moveToHomeViewControllerFromProfileDetail()
     }
     @IBAction func starButtonAction(_ sender: Any) {
-        let cancelButton = DefaultButton(title: Localize.Common.CancelButton) {}
-        let goToStoreButton = DefaultButton(title: "WStore") {
-            let storyboard = UIStoryboard(name: "Settings", bundle: nil)
-            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
-            self.navigationController?.present(destionationViewController, animated: true, completion: {})
+        if let receiverObjectId = wiggleCardModel?.objectId{
+            delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "up") ?? .down)
+        }else if let receiverObjectId = userData?.objectId{
+            delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "up") ?? .down)
         }
-        if superLikeCount <= 0{
-            self.alertMessage(message: "Super Likeların bitti almak için store'a git", buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
-        }else{
-            if let receiverObjectId = wiggleCardModel?.objectId{
-                NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "up") ?? .down, success: {
-                }) { (_) in}
-            }else if let receiverObjectId = userData?.objectId{
-                NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "up") ?? .down, success: {
-                }) { (_) in}
-            }
-            moveToHomeViewControllerFromProfileDetail()
-        }
+        moveToHomeViewControllerFromProfileDetail()
     }
     @IBAction func dislikeButtonAction(_ sender: Any) {
-        let cancelButton = DefaultButton(title: Localize.Common.CancelButton) {}
-        let goToStoreButton = DefaultButton(title: "WStore") {
-            let storyboard = UIStoryboard(name: "Settings", bundle: nil)
-            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
-            self.navigationController?.present(destionationViewController, animated: true, completion: {})
-        }
         if let receiverObjectId = wiggleCardModel?.objectId{
-            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down, success: {
-            }) { (err) in
-                if err.contains("1007"){
-                    self.alertMessage(message: "Likeların bitti almak için store'a git", buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
-                }
-            }
+            delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down)
         }else if let receiverObjectId = userData?.objectId{
-            NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down, success: {
-            }) { (err) in
-                if err.contains("1007"){
-                    self.alertMessage(message: "Likeların bitti almak için store'a git", buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
-                }
-            }
+            delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down)
         }
         moveToHomeViewControllerFromProfileDetail()
     }
@@ -150,5 +108,5 @@ class ProfileDetailViewController: UIViewController {
     @IBAction func backAction(sender: UIButton) {
         moveToHomeViewControllerFromProfileDetail()
     }
-
+    
 }

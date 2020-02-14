@@ -275,13 +275,13 @@ struct NetworkManager {
             fail("User not found")
             return
         }
-        likesQuery.whereKey("sender", equalTo: user.objectId ?? "")
+//        likesQuery.whereKey("sender", equalTo: user.objectId ?? "")
         query?.limit = 10
         query?.skip = withSkip
-        query?.whereKey("objectId", notEqualTo: user.objectId ?? "")
+//        query?.whereKey("objectId", notEqualTo: user.objectId ?? "")
 //        query?.whereKey("location", nearGeoPoint: AppConstants.location, withinMiles: Double(AppConstants.distance))
-        query?.whereKey("gender", notEqualTo: gender ?? 0)
-        query?.whereKey("objectId", doesNotMatchKey: "receiver", in: likesQuery)
+//        query?.whereKey("gender", notEqualTo: gender ?? 0)
+//        query?.whereKey("objectId", doesNotMatchKey: "receiver", in: likesQuery)
         query?.order(byDescending: "popular")
         
         query?.findObjectsInBackground { (response, error) in

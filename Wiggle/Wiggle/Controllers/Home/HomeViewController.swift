@@ -14,7 +14,14 @@ import Lottie
 import GoogleMobileAds
 import PopupDialog
 
-class HomeViewController: UIViewController {
+protocol userActionsDelegate {
+    func likeAction(receiverObjectId : String, direction : SwipeResultDirection)
+    func dislikeAction(receiverObjectId : String, direction : SwipeResultDirection)
+    func superlikeAction(receiverObjectId : String, direction : SwipeResultDirection)
+}
+
+class HomeViewController: UIViewController, userActionsDelegate {
+    
     // MARK: Outlets
     @IBOutlet weak var kolodaView: KolodaView!
     @IBOutlet weak var buttonsStackView: UIStackView!
@@ -241,6 +248,20 @@ class HomeViewController: UIViewController {
                 self.kolodaView.revertAction()
             }
         }
+    }
+    
+    // MARK: Protocol Actions
+    
+    func likeAction(receiverObjectId: String, direction: SwipeResultDirection) {
+        swipeAction(direction: SwipeResultDirection.left, fromButton: true)
+    }
+    
+    func dislikeAction(receiverObjectId: String, direction: SwipeResultDirection) {
+        swipeAction(direction: SwipeResultDirection.right, fromButton: true)
+    }
+    
+    func superlikeAction(receiverObjectId: String, direction: SwipeResultDirection) {
+        swipeAction(direction: SwipeResultDirection.up, fromButton: true)
     }
     
     // MARK: IBActions
