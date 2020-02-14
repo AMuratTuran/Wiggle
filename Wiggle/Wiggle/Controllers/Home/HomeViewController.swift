@@ -33,7 +33,7 @@ class HomeViewController: UIViewController, userActionsDelegate {
     var skipCount : Int = 0
     
     let locationManager = CLLocationManager()
-    let animationView = AnimationView(name: "sensor_fingerprint")
+    let animationView = AnimationView(name: "heartbeat")
     var fetchUsersGestureRecognizer = UITapGestureRecognizer()
     var isLaunchedFromPN:Bool = false
     var bannerView: GADBannerView!
@@ -153,7 +153,7 @@ class HomeViewController: UIViewController, userActionsDelegate {
         animationView.isUserInteractionEnabled = true
         fetchUsersGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(fetchUsers))
         animationView.addGestureRecognizer(fetchUsersGestureRecognizer)
-        animationView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+        animationView.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         animationView.center = self.view.center
         
         animationView.loopMode = .loop
