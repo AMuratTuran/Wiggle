@@ -193,7 +193,7 @@ class HomeViewController: UIViewController, userActionsDelegate {
     
     @objc func moveToDetail(gestureRecognizer: UIGestureRecognizer) {
         guard let data = currentCardModel else {return}
-        moveToProfileDetailViewController(data : data)
+//        moveToProfileDetailViewController(data : data)
     }
     
     func setupLocationManager(){
@@ -268,7 +268,7 @@ class HomeViewController: UIViewController, userActionsDelegate {
     
     @IBAction func routeProfileAction(_ sender: UIButton) {
         guard let data = currentCardModel else {return}
-        moveToProfileDetailViewController(data : data)
+//        moveToProfileDetailViewController(data : data)
     }
     
     @IBAction func likeButtonAction(_ sender: Any) {
@@ -319,7 +319,7 @@ extension HomeViewController: KolodaViewDataSource {
     }
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
         guard let data = currentCardModel else {return}
-        moveToProfileDetailViewController(data : data)
+        moveToProfileDetailViewController(data : data, delegate : self)
     }
     
     func koloda(_ koloda: KolodaView, allowedDirectionsForIndex index: Int) -> [SwipeResultDirection] {

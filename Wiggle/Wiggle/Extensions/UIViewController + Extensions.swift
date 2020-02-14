@@ -123,12 +123,13 @@ extension UIViewController {
         self.present(destinationViewController, animated: true, completion: nil)
     }
     
-    func moveToProfileDetailViewController(data : WiggleCardModel) {
+    func moveToProfileDetailViewController(data : WiggleCardModel, delegate : userActionsDelegate) {
         let profileStoryboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
         let destinationViewController = profileStoryboard.instantiateViewController(withIdentifier: "ProfileDetailViewController") as! ProfileDetailViewController
         destinationViewController.isHeroEnabled = true
         destinationViewController.modalPresentationStyle = .fullScreen
         destinationViewController.wiggleCardModel = data
+        destinationViewController.delegate = delegate
         self.present(destinationViewController, animated: true, completion: nil)
     }
     
