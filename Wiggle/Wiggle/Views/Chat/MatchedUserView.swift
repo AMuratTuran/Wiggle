@@ -47,7 +47,7 @@ class MatchedUserView: UIView  {
     func prepareForMatchScreen() {
         nameLabel.isHidden = true
         if #available(iOS 13.0, *) {
-            imageView.image = UIImage(systemName: "heart.fill")
+            imageView.image = UIImage(systemName: "chatDummy")
         } else {
             // Fallback on earlier versions
         }
