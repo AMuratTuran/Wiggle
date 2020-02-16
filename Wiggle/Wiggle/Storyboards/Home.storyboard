@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oJv-bw-7pC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oJv-bw-7pC">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,25 +26,25 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="ykG-Zq-wyb">
                                         <rect key="frame" x="23.5" y="562" width="328" height="40"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtw-jH-v7y">
-                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="BF1-N5-IuX"/>
-                                                    <constraint firstAttribute="width" constant="40" id="Ndb-WD-CYX"/>
-                                                </constraints>
-                                                <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" backgroundImage="likeImage"/>
-                                                <connections>
-                                                    <action selector="likeButtonAction:" destination="UjP-7Z-3he" eventType="touchUpInside" id="UAj-e5-l2T"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIM-Pi-LrZ">
-                                                <rect key="frame" x="72" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="Dnf-6B-Cey"/>
                                                     <constraint firstAttribute="height" constant="40" id="rsv-0L-2JX"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="revertImage"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHe-yD-amb">
+                                                <rect key="frame" x="72" y="0.0" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="92e-tq-A5L"/>
+                                                    <constraint firstAttribute="height" constant="40" id="gke-VX-iIG"/>
+                                                </constraints>
+                                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" backgroundImage="dislikeImage"/>
+                                                <connections>
+                                                    <action selector="dislikeButtonAction:" destination="UjP-7Z-3he" eventType="touchUpInside" id="S6F-No-bwt"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3f-De-aFz">
                                                 <rect key="frame" x="144" y="0.0" width="40" height="40"/>
@@ -58,25 +58,26 @@
                                                     <action selector="superLikeButtonAction:" destination="UjP-7Z-3he" eventType="touchUpInside" id="XPb-7S-RtC"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9a9-gk-Ccx">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtw-jH-v7y">
                                                 <rect key="frame" x="216" y="0.0" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="BF1-N5-IuX"/>
+                                                    <constraint firstAttribute="width" constant="40" id="Ndb-WD-CYX"/>
+                                                </constraints>
+                                                <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" backgroundImage="likeImage"/>
+                                                <connections>
+                                                    <action selector="likeButtonAction:" destination="UjP-7Z-3he" eventType="touchUpInside" id="UAj-e5-l2T"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9a9-gk-Ccx">
+                                                <rect key="frame" x="288" y="0.0" width="40" height="40"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="CG9-2b-Kkf"/>
                                                     <constraint firstAttribute="height" constant="40" id="G3d-Hy-A0G"/>
                                                 </constraints>
-                                                <state key="normal" image="boostImage"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHe-yD-amb">
-                                                <rect key="frame" x="288" y="0.0" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="92e-tq-A5L"/>
-                                                    <constraint firstAttribute="height" constant="40" id="gke-VX-iIG"/>
-                                                </constraints>
-                                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" backgroundImage="dislikeImage"/>
-                                                <connections>
-                                                    <action selector="dislikeButtonAction:" destination="UjP-7Z-3he" eventType="touchUpInside" id="S6F-No-bwt"/>
-                                                </connections>
+                                                <state key="normal" backgroundImage="wiggle-icon"/>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -136,11 +137,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="boostImage" width="40" height="40"/>
         <image name="dislikeImage" width="40" height="40"/>
         <image name="likeImage" width="40" height="40"/>
         <image name="pokerImage" width="25" height="25"/>
         <image name="revertImage" width="40" height="40"/>
         <image name="starsImage" width="40" height="40"/>
+        <image name="wiggle-icon" width="205" height="294"/>
     </resources>
 </document>

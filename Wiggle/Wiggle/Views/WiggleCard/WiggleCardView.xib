@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,22 +22,22 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3E-0R-Omo">
-                            <rect key="frame" x="8" y="664" width="373" height="80"/>
+                            <rect key="frame" x="8" y="654" width="373" height="80"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Murat Turan, 25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YDB-Zg-zgL">
-                                    <rect key="frame" x="8" y="8" width="193.5" height="31"/>
+                                    <rect key="frame" x="8" y="25" width="193.5" height="31"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="26"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Istanbul, Turkey" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="osn-zZ-iIS">
-                                    <rect key="frame" x="8" y="43" width="151" height="24"/>
+                                    <rect key="frame" x="8" y="60" width="151" height="24"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13 km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SuR-un-bqk">
-                                    <rect key="frame" x="307.5" y="15" width="57.5" height="24"/>
+                                    <rect key="frame" x="307.5" y="32" width="57.5" height="24"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -51,7 +51,7 @@
                                 <constraint firstAttribute="trailing" secondItem="SuR-un-bqk" secondAttribute="trailing" constant="8" id="Gly-tm-mNT"/>
                                 <constraint firstAttribute="height" constant="80" id="NVB-4h-Iyf"/>
                                 <constraint firstItem="YDB-Zg-zgL" firstAttribute="leading" secondItem="a3E-0R-Omo" secondAttribute="leading" constant="8" id="Wk2-6Q-oiO"/>
-                                <constraint firstItem="YDB-Zg-zgL" firstAttribute="top" secondItem="a3E-0R-Omo" secondAttribute="top" constant="8" id="Xj7-h6-Fcy"/>
+                                <constraint firstItem="YDB-Zg-zgL" firstAttribute="top" secondItem="a3E-0R-Omo" secondAttribute="top" constant="25" id="Xj7-h6-Fcy"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -60,7 +60,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Developer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OXq-dv-sZg">
-                            <rect key="frame" x="8" y="744" width="133" height="24"/>
+                            <rect key="frame" x="16" y="734" width="133" height="24"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -72,9 +72,9 @@
                         <constraint firstAttribute="trailing" secondItem="a3E-0R-Omo" secondAttribute="trailing" constant="33" id="BnQ-3I-hrs"/>
                         <constraint firstAttribute="trailing" secondItem="G19-6F-OEn" secondAttribute="trailing" id="O6j-gL-bk0"/>
                         <constraint firstAttribute="bottom" secondItem="G19-6F-OEn" secondAttribute="bottom" id="TP5-pD-w8B"/>
-                        <constraint firstAttribute="bottom" secondItem="OXq-dv-sZg" secondAttribute="bottom" constant="50" id="Tn7-sZ-Zbf"/>
+                        <constraint firstAttribute="bottom" secondItem="OXq-dv-sZg" secondAttribute="bottom" constant="60" id="Tn7-sZ-Zbf"/>
                         <constraint firstItem="G19-6F-OEn" firstAttribute="leading" secondItem="Abb-gs-ocT" secondAttribute="leading" id="UF1-xa-gge"/>
-                        <constraint firstItem="OXq-dv-sZg" firstAttribute="leading" secondItem="Abb-gs-ocT" secondAttribute="leading" constant="8" id="iKE-VI-n63"/>
+                        <constraint firstItem="OXq-dv-sZg" firstAttribute="leading" secondItem="Abb-gs-ocT" secondAttribute="leading" constant="16" id="iKE-VI-n63"/>
                         <constraint firstItem="a3E-0R-Omo" firstAttribute="leading" secondItem="Abb-gs-ocT" secondAttribute="leading" constant="8" id="lMk-pE-uiR"/>
                         <constraint firstItem="OXq-dv-sZg" firstAttribute="top" secondItem="a3E-0R-Omo" secondAttribute="bottom" id="pIt-MT-8sl"/>
                     </constraints>

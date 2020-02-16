@@ -12,7 +12,7 @@ class ShowMeGenderViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var genders: [String] = [Localize.Gender.Female, Localize.Gender.Male, Localize.Gender.Everyone]
+    var genders: [String] = [Localize.Gender.Male, Localize.Gender.Female, Localize.Gender.Everyone]
     var selectedGender: Int?
     
     override func viewDidLoad() {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mbh-ya-gwL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mbh-ya-gwL">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,7 +44,7 @@
                                     <constraint firstAttribute="width" constant="50" id="xdj-3H-ATZ"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="cameraImage"/>
+                                <state key="normal" image="camera.fill" catalog="system"/>
                                 <connections>
                                     <action selector="changePhotoTapped:" destination="ga9-op-ggg" eventType="touchUpInside" id="l8s-tF-D5p"/>
                                 </connections>
@@ -57,7 +57,7 @@
                                     <constraint firstAttribute="height" constant="40" id="qzL-vY-ktZ"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="gearImage"/>
+                                <state key="normal" image="gear" catalog="system"/>
                                 <connections>
                                     <action selector="routeSettingsAction:" destination="ga9-op-ggg" eventType="touchUpInside" id="K3h-Pt-zvd"/>
                                 </connections>
@@ -70,7 +70,7 @@
                                     <constraint firstAttribute="width" constant="40" id="wpB-vb-aO8"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="pencilImage"/>
+                                <state key="normal" image="pencil" catalog="system"/>
                                 <connections>
                                     <action selector="editProfileAction:" destination="ga9-op-ggg" eventType="touchUpInside" id="qFf-9L-uWE"/>
                                 </connections>
@@ -446,12 +446,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cameraImage" width="30" height="25"/>
+        <image name="camera.fill" catalog="system" width="64" height="48"/>
         <image name="detailArrowDown" width="50" height="50"/>
         <image name="dislikeImage" width="40" height="40"/>
-        <image name="gearImage" width="20" height="20"/>
+        <image name="gear" catalog="system" width="64" height="58"/>
         <image name="likeImage" width="40" height="40"/>
-        <image name="pencilImage" width="21" height="20"/>
+        <image name="pencil" catalog="system" width="64" height="56"/>
         <image name="profileImage" width="20" height="20"/>
         <image name="profilePhoto" width="1200" height="800"/>
         <image name="starsImage" width="40" height="40"/>

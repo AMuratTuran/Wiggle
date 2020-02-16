@@ -130,9 +130,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             }else if indexPath.row == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier:  "SettingWithLabelCell", for: indexPath) as! SettingWithLabelCell
                 if AppConstants.Settings.SelectedShowMeGender == 1 {
-                    cell.prepareCell(title: Localize.Gender.ShowMe, detail: Localize.Gender.Female)
-                }else if AppConstants.Settings.SelectedShowMeGender == 2{
                     cell.prepareCell(title: Localize.Gender.ShowMe, detail: Localize.Gender.Male)
+                }else if AppConstants.Settings.SelectedShowMeGender == 2{
+                    cell.prepareCell(title: Localize.Gender.ShowMe, detail: Localize.Gender.Female)
                 }else {
                     cell.prepareCell(title: Localize.Gender.ShowMe, detail: Localize.Gender.Everyone)
                 }

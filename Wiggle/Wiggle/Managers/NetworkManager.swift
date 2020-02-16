@@ -275,13 +275,17 @@ struct NetworkManager {
             fail("User not found")
             return
         }
-//        likesQuery.whereKey("sender", equalTo: user.objectId ?? "")
+         let location = PFUser.current()?.getLocation()
+        let parseLocation: PFGeoPoint = PFGeoPoint(latitude: location?.latitude ?? 0, longitude: location?.longitude ?? 0)
+        likesQuery.whereKey("sender", equalTo: user.objectId ?? "")
         query?.limit = 10
         query?.skip = withSkip
-//        query?.whereKey("objectId", notEqualTo: user.objectId ?? "")
-//        query?.whereKey("location", nearGeoPoint: AppConstants.location, withinMiles: Double(AppConstants.distance))
-//        query?.whereKey("gender", notEqualTo: gender ?? 0)
-//        query?.whereKey("objectId", doesNotMatchKey: "receiver", in: likesQuery)
+        query?.whereKey("objectId", notEqualTo: user.objectId ?? "")
+        query?.whereKey("location", nearGeoPoint: parseLocation, withinKilometers: Double(AppConstants.Settings.SelectedDistance))
+        if AppConstants.Settings.SelectedShowMeGender != 3 {
+            query?.whereKey("gender", equalTo: AppConstants.Settings.SelectedShowMeGender)
+        }
+        query?.whereKey("objectId", doesNotMatchKey: "receiver", in: likesQuery)
         query?.order(byDescending: "popular")
         
         query?.findObjectsInBackground { (response, error) in
@@ -372,7 +376,9 @@ struct NetworkManager {
         query?.limit = 20
         query?.order(byDescending: "popular")
         query?.whereKey("location", nearGeoPoint: parseLocation, withinKilometers: 100)
-        query?.whereKey("gender", notEqualTo: gender ?? 0)
+        if AppConstants.Settings.SelectedShowMeGender != 3 {
+            query?.whereKey("gender", equalTo: AppConstants.Settings.SelectedShowMeGender)
+        }
         query?.findObjectsInBackground { (response, error) in
             if let error = error {
                 fail(error.localizedDescription)

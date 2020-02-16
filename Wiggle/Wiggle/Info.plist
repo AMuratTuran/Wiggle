@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -35,6 +33,8 @@
 	<string>Wiggle</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-4067151614085861~7156108472</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -60,17 +60,17 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>This app wants to take pictures.</string>
+	<string>We need to access your camera to calculate your pulse and send images to your match. </string>
 	<key>NSContactsUsageDescription</key>
 	<string>This app wants to access your contacts</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>We need your location to help you meet others</string>
+	<string>We need your location to help you meet others around you</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We need your location to help you meet others</string>
+	<string>We need your location to help you meet others around you</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We need your location to help you meet others</string>
+	<string>We need your location to help you meet others around you</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app wants to use your photos.</string>
+	<string>We need to access your photo library to send images to your match.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Bold.ttf</string>

@@ -470,6 +470,6 @@ extension UIViewController {
 //            button.addTarget(self, action: selector, for: .touchUpInside)
 //        }
 //        navigationItem.titleView = button
-        navigationItem.title = "wiggle"
+        navigationItem.title = "Wiggle"
     }
 }
