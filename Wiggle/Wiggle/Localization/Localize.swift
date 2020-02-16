@@ -114,4 +114,9 @@ struct Localize {
         static var Title: String { return NSLocalizedString("heartbeat_title", comment: "Heartbeat") }
         static var Calculating: String { return NSLocalizedString("heartbeat_calculating", comment: "Heartbeat") }
     }
+    struct HomeScreen{
+        static var superLikeError: String {return NSLocalizedString("home_screen_like_error", comment: "HomeScreen")}
+        static var likeError: String {return NSLocalizedString("home_screen_superlike_error", comment: "HomeScreen")}
+        static var revertError: String {return NSLocalizedString("home_screen_revert_error", comment: "HomeScreen")}
+    }
 }

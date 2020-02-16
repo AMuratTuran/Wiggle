@@ -78,4 +78,8 @@
 "heartbeat_title" = "Nabzınızın aynı olduğu insanlarla eşleşeceksiniz";
 "heartbeat_calculating" = "Hesaplanıyor...\nParmağını flash ve kameranın üzerinde tutmaya devam et";
 
+"home_screen_like_error" = "Super Likeların bitti!";
+"home_screen_superlike_error" = "Likeların bitti!";
+"home_screen_revert_error" = "Geri alabilmek için premium olmalısın!";
+
 "logout" = "Çıkış Yap";

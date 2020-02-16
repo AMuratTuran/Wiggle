@@ -236,15 +236,15 @@ class HomeViewController: UIViewController, userActionsDelegate {
             kolodaView.swipe(direction)
         }
         if direction == .up && superLikeCount <= 0{
-            self.alertMessage(message: "Super Likeların bitti almak için store'a git", buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
+            self.alertMessage(message: Localize.HomeScreen.superLikeError, buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
             kolodaView.revertAction()
         }else if direction == .up{
             superLikeCount -= 1
         }
         NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: direction, success: {
         }) { (err) in
-            if err.contains("1006"){
-                self.alertMessage(message: "Likeların bitti almak için store'a git", buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
+            if err.contains("1007"){
+                self.alertMessage(message: Localize.HomeScreen.likeError, buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
                 self.kolodaView.revertAction()
             }
         }
@@ -263,6 +263,20 @@ class HomeViewController: UIViewController, userActionsDelegate {
     func superlikeAction(receiverObjectId: String, direction: SwipeResultDirection) {
         swipeAction(direction: SwipeResultDirection.up, fromButton: true)
     }
+    func revertAction(){
+        let cancelButton = DefaultButton(title: Localize.Common.CancelButton) {}
+        let goToStoreButton = DefaultButton(title: "WStore") {
+            let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
+            self.navigationController?.present(destionationViewController, animated: true, completion: {})
+        }
+        guard let user = PFUser.current() else {
+            self.alertMessage(message: Localize.HomeScreen.revertError, buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
+            return}
+        if user.getGold(){
+            kolodaView.revertAction()
+        }
+    }
     
     // MARK: IBActions
     
@@ -280,6 +294,11 @@ class HomeViewController: UIViewController, userActionsDelegate {
     @IBAction func superLikeButtonAction(_ sender: Any) {
         swipeAction(direction: SwipeResultDirection.up, fromButton: true)
     }
+    
+    @IBAction func revertButtonAtion(_ sender: Any) {
+        
+    }
+    
 }
 
 // MARK: KolodaViewDelegate Functions
