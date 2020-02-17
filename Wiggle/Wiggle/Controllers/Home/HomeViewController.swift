@@ -253,11 +253,11 @@ class HomeViewController: UIViewController, userActionsDelegate {
     // MARK: Protocol Actions
     
     func likeAction(receiverObjectId: String, direction: SwipeResultDirection) {
-        swipeAction(direction: SwipeResultDirection.left, fromButton: true)
+        swipeAction(direction: SwipeResultDirection.right, fromButton: true)
     }
     
     func dislikeAction(receiverObjectId: String, direction: SwipeResultDirection) {
-        swipeAction(direction: SwipeResultDirection.right, fromButton: true)
+        swipeAction(direction: SwipeResultDirection.left, fromButton: true)
     }
     
     func superlikeAction(receiverObjectId: String, direction: SwipeResultDirection) {
@@ -286,17 +286,17 @@ class HomeViewController: UIViewController, userActionsDelegate {
     }
     
     @IBAction func likeButtonAction(_ sender: Any) {
-        swipeAction(direction: SwipeResultDirection.left, fromButton: true)
+        swipeAction(direction: SwipeResultDirection.right, fromButton: true)
     }
     @IBAction func dislikeButtonAction(_ sender: Any) {
-        swipeAction(direction: SwipeResultDirection.right, fromButton: true)
+        swipeAction(direction: SwipeResultDirection.left, fromButton: true)
     }
     @IBAction func superLikeButtonAction(_ sender: Any) {
         swipeAction(direction: SwipeResultDirection.up, fromButton: true)
     }
     
     @IBAction func revertButtonAtion(_ sender: Any) {
-        
+        revertAction()
     }
     
 }
@@ -348,11 +348,11 @@ extension HomeViewController: KolodaViewDataSource {
     func koloda(_ koloda: KolodaView, draggedCardWithPercentage finishPercentage: CGFloat, in direction: SwipeResultDirection) {
         if let currentCard = koloda.subviews.last?.subviews[0] as? WiggleCard{
             switch direction {
-            case .left:
+            case .right:
                 UIView.animate(withDuration: 0.0) {
                     currentCard.view.likeImage.alpha = finishPercentage/50
                 }
-            case .right:
+            case .left:
                 UIView.animate(withDuration: 0.0) {
                     currentCard.view.dislikeImage.alpha = finishPercentage/50
                 }

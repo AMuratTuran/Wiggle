@@ -19,78 +19,91 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQ3-gs-AXU">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eVI-lZ-DMZ">
+                                        <rect key="frame" x="0.0" y="553" width="375" height="65"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="ykG-Zq-wyb">
+                                                <rect key="frame" x="29.5" y="12.5" width="316" height="40"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIM-Pi-LrZ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="Dnf-6B-Cey"/>
+                                                            <constraint firstAttribute="height" constant="40" id="rsv-0L-2JX"/>
+                                                        </constraints>
+                                                        <state key="normal" backgroundImage="revertImage"/>
+                                                        <connections>
+                                                            <action selector="revertButtonAtion:" destination="UjP-7Z-3he" eventType="touchUpInside" id="nyJ-DK-isI"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHe-yD-amb">
+                                                        <rect key="frame" x="72" y="0.0" width="40" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="92e-tq-A5L"/>
+                                                            <constraint firstAttribute="height" constant="40" id="gke-VX-iIG"/>
+                                                        </constraints>
+                                                        <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" backgroundImage="dislikeImage"/>
+                                                        <connections>
+                                                            <action selector="dislikeButtonAction:" destination="UjP-7Z-3he" eventType="touchUpInside" id="S6F-No-bwt"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3f-De-aFz">
+                                                        <rect key="frame" x="144" y="0.0" width="40" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="Ub8-Vf-eeo"/>
+                                                            <constraint firstAttribute="height" constant="40" id="Yc0-S6-R9L"/>
+                                                        </constraints>
+                                                        <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" backgroundImage="starsImage"/>
+                                                        <connections>
+                                                            <action selector="superLikeButtonAction:" destination="UjP-7Z-3he" eventType="touchUpInside" id="XPb-7S-RtC"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtw-jH-v7y">
+                                                        <rect key="frame" x="216" y="0.0" width="40" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="BF1-N5-IuX"/>
+                                                            <constraint firstAttribute="width" constant="40" id="Ndb-WD-CYX"/>
+                                                        </constraints>
+                                                        <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" backgroundImage="likeImage"/>
+                                                        <connections>
+                                                            <action selector="likeButtonAction:" destination="UjP-7Z-3he" eventType="touchUpInside" id="UAj-e5-l2T"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9a9-gk-Ccx">
+                                                        <rect key="frame" x="288" y="0.0" width="28" height="40"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="G3d-Hy-A0G"/>
+                                                        </constraints>
+                                                        <state key="normal" backgroundImage="boostImage"/>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="ykG-Zq-wyb" firstAttribute="centerY" secondItem="eVI-lZ-DMZ" secondAttribute="centerY" id="ObY-CV-FFf"/>
+                                            <constraint firstAttribute="height" constant="65" id="b6h-rZ-o2J"/>
+                                            <constraint firstItem="ykG-Zq-wyb" firstAttribute="centerX" secondItem="eVI-lZ-DMZ" secondAttribute="centerX" id="f83-gi-I3a"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TBM-dU-B0T" customClass="KolodaView" customModule="Koloda">
-                                        <rect key="frame" x="0.0" y="60" width="375" height="558"/>
+                                        <rect key="frame" x="0.0" y="60" width="375" height="493"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="ykG-Zq-wyb">
-                                        <rect key="frame" x="29.5" y="562" width="316" height="40"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIM-Pi-LrZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="Dnf-6B-Cey"/>
-                                                    <constraint firstAttribute="height" constant="40" id="rsv-0L-2JX"/>
-                                                </constraints>
-                                                <state key="normal" backgroundImage="revertImage"/>
-                                                <connections>
-                                                    <action selector="revertButtonAtion:" destination="UjP-7Z-3he" eventType="touchUpInside" id="nyJ-DK-isI"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHe-yD-amb">
-                                                <rect key="frame" x="72" y="0.0" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="92e-tq-A5L"/>
-                                                    <constraint firstAttribute="height" constant="40" id="gke-VX-iIG"/>
-                                                </constraints>
-                                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" backgroundImage="dislikeImage"/>
-                                                <connections>
-                                                    <action selector="dislikeButtonAction:" destination="UjP-7Z-3he" eventType="touchUpInside" id="S6F-No-bwt"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U3f-De-aFz">
-                                                <rect key="frame" x="144" y="0.0" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="Ub8-Vf-eeo"/>
-                                                    <constraint firstAttribute="height" constant="40" id="Yc0-S6-R9L"/>
-                                                </constraints>
-                                                <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" backgroundImage="starsImage"/>
-                                                <connections>
-                                                    <action selector="superLikeButtonAction:" destination="UjP-7Z-3he" eventType="touchUpInside" id="XPb-7S-RtC"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtw-jH-v7y">
-                                                <rect key="frame" x="216" y="0.0" width="40" height="40"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="BF1-N5-IuX"/>
-                                                    <constraint firstAttribute="width" constant="40" id="Ndb-WD-CYX"/>
-                                                </constraints>
-                                                <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" backgroundImage="likeImage"/>
-                                                <connections>
-                                                    <action selector="likeButtonAction:" destination="UjP-7Z-3he" eventType="touchUpInside" id="UAj-e5-l2T"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9a9-gk-Ccx">
-                                                <rect key="frame" x="288" y="0.0" width="28" height="40"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="G3d-Hy-A0G"/>
-                                                </constraints>
-                                                <state key="normal" backgroundImage="boostImage"/>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="TBM-dU-B0T" secondAttribute="trailing" id="42W-5N-Qdf"/>
                                     <constraint firstItem="TBM-dU-B0T" firstAttribute="top" secondItem="ZQ3-gs-AXU" secondAttribute="top" constant="60" id="BlO-uX-4PL"/>
-                                    <constraint firstItem="ykG-Zq-wyb" firstAttribute="centerX" secondItem="ZQ3-gs-AXU" secondAttribute="centerX" id="Dk8-6Q-eS6"/>
-                                    <constraint firstAttribute="bottom" secondItem="TBM-dU-B0T" secondAttribute="bottom" id="Yox-7f-oM8"/>
-                                    <constraint firstAttribute="bottom" secondItem="ykG-Zq-wyb" secondAttribute="bottom" constant="16" id="tvM-iV-WEe"/>
+                                    <constraint firstAttribute="bottom" secondItem="eVI-lZ-DMZ" secondAttribute="bottom" id="CXS-dB-a81"/>
+                                    <constraint firstAttribute="trailing" secondItem="eVI-lZ-DMZ" secondAttribute="trailing" id="DDA-av-MOk"/>
+                                    <constraint firstItem="eVI-lZ-DMZ" firstAttribute="leading" secondItem="ZQ3-gs-AXU" secondAttribute="leading" id="a3V-1E-D3e"/>
+                                    <constraint firstItem="eVI-lZ-DMZ" firstAttribute="top" secondItem="TBM-dU-B0T" secondAttribute="bottom" id="jq3-s3-xba"/>
                                     <constraint firstItem="TBM-dU-B0T" firstAttribute="leading" secondItem="ZQ3-gs-AXU" secondAttribute="leading" id="uhH-Nf-6nW"/>
                                 </constraints>
                             </view>

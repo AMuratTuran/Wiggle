@@ -82,9 +82,9 @@ class ProfileDetailViewController: UIViewController {
     
     @IBAction func likeButtonAction(_ sender: Any) {
         if let receiverObjectId = wiggleCardModel?.objectId{
-            delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
+            delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down)
         }else if let receiverObjectId = userData?.objectId{
-            delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
+            delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down)
         }
         moveToHomeViewControllerFromProfileDetail()
     }
@@ -98,9 +98,9 @@ class ProfileDetailViewController: UIViewController {
     }
     @IBAction func dislikeButtonAction(_ sender: Any) {
         if let receiverObjectId = wiggleCardModel?.objectId{
-            delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down)
+            delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
         }else if let receiverObjectId = userData?.objectId{
-            delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down)
+            delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
         }
         moveToHomeViewControllerFromProfileDetail()
     }
