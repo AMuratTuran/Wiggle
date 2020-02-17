@@ -32,7 +32,6 @@ class EnableNotificationsViewController: UIViewController {
         center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             DispatchQueue.main.async {
                 self.enableButton.isUserInteractionEnabled = true
-                guard granted else { return }
                 UIApplication.shared.registerForRemoteNotifications()
                 self.moveToHomeViewController(navigationController: self.navigationController ?? UINavigationController())
             }
