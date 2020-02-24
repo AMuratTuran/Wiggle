@@ -456,7 +456,7 @@ extension UIViewController {
         self.navigationController?.view.backgroundColor = .white
     }
     
-    func addProductLogoToNavigationBar(selector: Selector? = nil, logoName: String = "labeled-wiggle-logo") {
+    func addProductLogoToNavigationBar(selector: Selector? = nil, logoName: String = "labeled-wiggle-logo", isItalicTitle: Bool = false) {
 //        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
 //        let image = UIImage(named: logoName)
 //        button.setImage(image, for: .normal)
@@ -470,6 +470,13 @@ extension UIViewController {
 //            button.addTarget(self, action: selector, for: .touchUpInside)
 //        }
 //        navigationItem.titleView = button
+        
+        if isItalicTitle {
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Cochin-BoldItalic", size: 20)!]
+        }else {
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: FontHelper.bold(20)]
+        }
+        
         navigationItem.title = "Wiggle"
     }
 }

@@ -63,7 +63,7 @@ class HomeViewController: UIViewController, userActionsDelegate {
         super.viewDidLoad()
         WiggleProducts.store.verifyReceipt { _, _ in
         }
-        addProductLogoToNavigationBar()
+        addProductLogoToNavigationBar(selector: nil, logoName: "", isItalicTitle: true)
         configureViews()
         updateObjectId()
         hideBackBarButtonTitle()
