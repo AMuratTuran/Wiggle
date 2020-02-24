@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import SwiftValidator
+import PopupDialog
 
 class GetNameViewController: UIViewController {
     
@@ -26,6 +27,9 @@ class GetNameViewController: UIViewController {
         super.viewDidLoad()
         prepareViews()
         enableValidations()
+        if !UserDefaults.standard.bool(forKey: "TermsAccepted") {
+            openTermsWebView()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +65,15 @@ class GetNameViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    func openTermsWebView() {
+        let storyBoard = UIStoryboard(name: "WebView", bundle: nil)
+        let webViewController = storyBoard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        webViewController.delegate = self
+        let nav = UINavigationController(rootViewController: webViewController)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
     }
 }
 
@@ -99,6 +112,19 @@ extension GetNameViewController: ValidationDelegate {
             self.startAnimating(self.view, startAnimate: false)
             error.errorLabel?.text = error.errorMessage
             error.errorLabel?.isHidden = false
+        }
+    }
+}
+
+extension GetNameViewController: TermsViewDelegate {
+    func acceptTapped() {
+        
+    }
+    
+    func declineTapped() {
+        delay(1.0) {
+            let okButton = DefaultButton(title: Localize.Common.OKButton, action: self.openTermsWebView)
+            self.alertMessage(message: "You cannot continue using Wiggle without acceping Terms Of Use.", buttons: [okButton], isErrorMessage: true)
         }
     }
 }

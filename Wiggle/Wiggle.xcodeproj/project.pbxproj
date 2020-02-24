@@ -36,6 +36,8 @@
 		F10167EC23F33DC100E52FE2 /* sad_heart.json in Resources */ = {isa = PBXBuildFile; fileRef = F10167E223F33DC000E52FE2 /* sad_heart.json */; };
 		F10167ED23F33DC100E52FE2 /* business.json in Resources */ = {isa = PBXBuildFile; fileRef = F10167E323F33DC100E52FE2 /* business.json */; };
 		F10167EE23F33DC100E52FE2 /* rainbow.json in Resources */ = {isa = PBXBuildFile; fileRef = F10167E423F33DC100E52FE2 /* rainbow.json */; };
+		F10167F02404658A00E52FE2 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F10167EF2404658A00E52FE2 /* WebView.storyboard */; };
+		F10167F32404667A00E52FE2 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10167F22404667900E52FE2 /* WebViewController.swift */; };
 		F103654323E6D8210095DB52 /* EmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F103654123E6D8210095DB52 /* EmptyCell.swift */; };
 		F103654423E6D8210095DB52 /* EmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F103654223E6D8210095DB52 /* EmptyCell.xib */; };
 		F10BC89C239D5E3E005934BB /* NotificationSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10BC89B239D5E3E005934BB /* NotificationSettingsViewController.swift */; };
@@ -200,6 +202,8 @@
 		F10167E223F33DC000E52FE2 /* sad_heart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sad_heart.json; sourceTree = "<group>"; };
 		F10167E323F33DC100E52FE2 /* business.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = business.json; sourceTree = "<group>"; };
 		F10167E423F33DC100E52FE2 /* rainbow.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rainbow.json; sourceTree = "<group>"; };
+		F10167EF2404658A00E52FE2 /* WebView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebView.storyboard; sourceTree = "<group>"; };
+		F10167F22404667900E52FE2 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		F103654123E6D8210095DB52 /* EmptyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCell.swift; sourceTree = "<group>"; };
 		F103654223E6D8210095DB52 /* EmptyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCell.xib; sourceTree = "<group>"; };
 		F10BC89B239D5E3E005934BB /* NotificationSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsViewController.swift; sourceTree = "<group>"; };
@@ -442,6 +446,14 @@
 			path = "Json Animations";
 			sourceTree = "<group>";
 		};
+		F10167F12404666200E52FE2 /* Web View */ = {
+			isa = PBXGroup;
+			children = (
+				F10167F22404667900E52FE2 /* WebViewController.swift */,
+			);
+			path = "Web View";
+			sourceTree = "<group>";
+		};
 		F103653E23E6D7550095DB52 /* Empty */ = {
 			isa = PBXGroup;
 			children = (
@@ -626,6 +638,7 @@
 		F1585AEB238406C50062A681 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F10167F12404666200E52FE2 /* Web View */,
 				F1DBCA2823EAE26000AE3247 /* Tabbar */,
 				F159FCD523CBD1C70042429E /* Heartbeat */,
 				F150FD10239C2ED3002FD404 /* Chat */,
@@ -689,6 +702,7 @@
 				F1378F58238ADC7900622B3C /* Profile.storyboard */,
 				F150FD0E239C2E77002FD404 /* Chat.storyboard */,
 				F159FCD223CBCDE50042429E /* Heartbeat.storyboard */,
+				F10167EF2404658A00E52FE2 /* WebView.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -998,6 +1012,7 @@
 				F1585AE4238406560062A681 /* LaunchScreen.storyboard in Resources */,
 				F1378F59238ADC7900622B3C /* Profile.storyboard in Resources */,
 				F1C794BE23AC0E1400D9FEFC /* OpenSans-BoldItalic.ttf in Resources */,
+				F10167F02404658A00E52FE2 /* WebView.storyboard in Resources */,
 				F191A56123D4F33A002CD7E0 /* TextFieldView.xib in Resources */,
 				F191A57923D8FABE002CD7E0 /* FullScreenImageView.xib in Resources */,
 				F194B5E823C09BCB00349953 /* InAppBannerView.xib in Resources */,
@@ -1172,6 +1187,7 @@
 				F150FCF62393F28B002FD404 /* BoostSuperLikeCell.swift in Sources */,
 				F152170D2389CF6D0027C6D4 /* UIView + Extensions.swift in Sources */,
 				F1D407182385EE7A002350BE /* EnableNotificationsViewController.swift in Sources */,
+				F10167F32404667A00E52FE2 /* WebViewController.swift in Sources */,
 				DC264A8A23C0D57C00ADE806 /* ModelParser.swift in Sources */,
 				DCE3969E23D79781008D8F5D /* InAppPurchaseTableViewCell.swift in Sources */,
 				F1C794AE23AAD6DA00D9FEFC /* String + Extensions.swift in Sources */,
@@ -1349,7 +1365,7 @@
 				CODE_SIGN_ENTITLEMENTS = Wiggle/Wiggle.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 9HS67S8FA3;
 				INFOPLIST_FILE = Wiggle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1377,7 +1393,7 @@
 				CODE_SIGN_ENTITLEMENTS = Wiggle/Wiggle.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 9HS67S8FA3;
 				INFOPLIST_FILE = Wiggle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

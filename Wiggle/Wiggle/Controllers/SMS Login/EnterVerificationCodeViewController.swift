@@ -23,6 +23,7 @@ class EnterVerificationCodeViewController: UIViewController {
     var phoneNumber: String?
     var countryCode: String?
     let validator = Validator()
+    var hasUserInfo: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +92,7 @@ extension EnterVerificationCodeViewController: ValidationDelegate {
             if let phoneNumber = phoneNumber {
                 let request = PhoneAuthRequest(phoneNumber: phoneNumber)
                 NetworkManager.auth(request, success: { hasInfo in
+                    self.hasUserInfo = hasInfo
                     let installation = PFInstallation.current()
                     if let user = PFUser.current(), let id = user.objectId {
                         installation?.setValue(id, forKey: "userId")
@@ -103,7 +105,7 @@ extension EnterVerificationCodeViewController: ValidationDelegate {
                            }
                         delegate.initializeWindow()
                     }else {
-                        self.moveToGetNameViewController()
+                        self.openTermsWebView()
                     }
                 }) { (error) in
                     self.startAnimating(self.view, startAnimate: false)
@@ -129,6 +131,28 @@ extension EnterVerificationCodeViewController: ValidationDelegate {
         for (_, error) in errors {
           error.errorLabel?.text = error.errorMessage
           error.errorLabel?.isHidden = false
+        }
+    }
+    
+    func openTermsWebView() {
+        let storyBoard = UIStoryboard(name: "WebView", bundle: nil)
+        let webViewController = storyBoard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        webViewController.delegate = self
+        let nav = UINavigationController(rootViewController: webViewController)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
+    }
+}
+
+extension EnterVerificationCodeViewController: TermsViewDelegate {
+    func acceptTapped() {
+        self.moveToGetNameViewController()
+    }
+    
+    func declineTapped() {
+        delay(1.0) {
+            let okButton = DefaultButton(title: Localize.Common.OKButton, action: self.openTermsWebView)
+            self.alertMessage(message: "You cannot continue using Wiggle without acceping Terms Of Use.", buttons: [okButton], isErrorMessage: true)
         }
     }
 }
