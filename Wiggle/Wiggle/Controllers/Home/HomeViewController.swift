@@ -33,7 +33,7 @@ class HomeViewController: UIViewController, userActionsDelegate {
     var skipCount : Int = 0
     
     let locationManager = CLLocationManager()
-    let animationView = AnimationView(name: "heartbeat")
+    let animationView = AnimationView(name: "sensor_fingerprint")
     var fetchUsersGestureRecognizer = UITapGestureRecognizer()
     var isLaunchedFromPN:Bool = false
     var bannerView: GADBannerView!
@@ -214,7 +214,7 @@ class HomeViewController: UIViewController, userActionsDelegate {
                 let doneButton = DefaultButton(title: Localize.Common.OKButton) {
                     
                 }
-                self.alertMessage(message: Localize.HomeScreen.noUserError, buttons: [doneButton], isErrorMessage: true)
+                self.alertMessage(message: Localize.HomeScreen.noUserError, buttons: [doneButton], isErrorMessage: true, isGestureDismissal: false)
             }else{
                 self.animationView.pause()
                 self.animationView.isHidden = true
