@@ -211,14 +211,18 @@ class HomeViewController: UIViewController, userActionsDelegate {
                 self.animationView.isHidden = false
                 self.animationView.play()
                 self.buttonsStackView.isHidden = true
+                let doneButton = DefaultButton(title: Localize.Common.OKButton) {
+                    
+                }
+                self.alertMessage(message: Localize.HomeScreen.noUserError, buttons: [doneButton], isErrorMessage: true)
             }else{
                 self.animationView.pause()
                 self.animationView.isHidden = true
                 self.buttonsStackView.isHidden = false
+                self.skipCount += 5
             }
             self.cardArray.append(contentsOf: users)
             self.kolodaView.reloadData()
-            self.skipCount += 5
         }) { fail in
             print("===========\(fail)===========")
         }

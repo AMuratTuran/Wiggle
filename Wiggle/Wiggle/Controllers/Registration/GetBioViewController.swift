@@ -26,6 +26,7 @@ class GetBioViewController: UIViewController {
         bioTextView.layer.borderColor = UIColor.systemGray.cgColor
         bioTextView.layer.borderWidth = 0.5
         bioTextView.layer.cornerRadius = 12.0
+        bioTextView.delegate = self
         skipButton.setTitle(Localize.Common.SkipButton, for: .normal)
         topLabel.text = Localize.Bio.Title
     }
@@ -55,5 +56,13 @@ class GetBioViewController: UIViewController {
         view.endEditing(true)
     }
     
+}
+
+extension GetBioViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let numberOfChars = newText.count
+        return numberOfChars < 10
+    }
 }
 

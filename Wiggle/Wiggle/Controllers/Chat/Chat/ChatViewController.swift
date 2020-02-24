@@ -253,15 +253,26 @@ class ChatViewController: MessagesViewController {
     @objc func moreAction() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let reportAction = UIAlertAction(title: Localize.Chat.Report, style: .default) { (action) in
-            if let contactedUser = self.contactedUser {
-                let name = "\(contactedUser.firstName) \(contactedUser.lastName)"
-                self.sendEmail(mail: "report@appwiggle.com", with: "Report User: \(name)")
+            self.startAnimating(self.view, startAnimate: true)
+            delay(1.5) {
+                self.startAnimating(self.view, startAnimate: false)
+                let doneButton = DefaultButton(title: Localize.Common.OKButton) {
+                    if let contactedUser = self.contactedUser {
+                        let name = "\(contactedUser.firstName) \(contactedUser.lastName)"
+                        self.sendEmail(mail: "report@appwiggle.com", with: "Report User: \(name)")
+                    }
+                }
+                self.alertMessage(message: Localize.Chat.ReportMessage, buttons: [doneButton], isErrorMessage: false)
             }
+            
         }
         let unmatchAction = UIAlertAction(title: Localize.Chat.Unmatch, style: .default) { (action) in
+            self.startAnimating(self.view, startAnimate: true)
             NetworkManager.unMatch(myId: "", contactedUserId: self.contactedUser?.receiverId ?? "", success: {
+                self.startAnimating(self.view, startAnimate: false)
                 self.navigationController?.popViewController(animated: true)
             }) { (error) in
+                self.startAnimating(self.view, startAnimate: false)
                 self.displayError(message: error)
             }
         }

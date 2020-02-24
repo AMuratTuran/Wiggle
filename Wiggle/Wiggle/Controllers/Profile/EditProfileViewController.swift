@@ -51,6 +51,7 @@ class EditProfileViewController: UIViewController {
         nameStackView.addArrangedSubview(lastnameTextFieldView)
         prepareForValidation()
         
+        bioTextView.delegate = self
         bioTextView.layer.borderColor = UIColor.systemGray.cgColor
         bioTextView.layer.borderWidth = 0.5
         bioTextView.layer.cornerRadius = 12.0
@@ -148,5 +149,14 @@ extension EditProfileViewController: ValidationDelegate {
             error.errorLabel?.text = error.errorMessage // works if you added labels
             error.errorLabel?.isHidden = false
         }
+    }
+}
+
+
+extension EditProfileViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        let numberOfChars = newText.count
+        return numberOfChars < 10
     }
 }

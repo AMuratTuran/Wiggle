@@ -109,6 +109,7 @@ struct Localize {
         static var Unmatch: String { return NSLocalizedString("unmatch", comment: "Chat") }
         static var NewMessage: String { return NSLocalizedString("new_message", comment: "Chat")}
         static var unMatched: String { return NSLocalizedString("unmatch_message", comment: "Chat")}
+        static var ReportMessage: String { return NSLocalizedString("report_message", comment: "Chat")}
     }
     
     struct Heartbeat {
@@ -120,5 +121,6 @@ struct Localize {
         static var superLikeError: String {return NSLocalizedString("home_screen_like_error", comment: "HomeScreen")}
         static var likeError: String {return NSLocalizedString("home_screen_superlike_error", comment: "HomeScreen")}
         static var revertError: String {return NSLocalizedString("home_screen_revert_error", comment: "HomeScreen")}
+        static var noUserError: String {return NSLocalizedString("home_screen_no_user_error", comment: "HomeScreen")}
     }
 }

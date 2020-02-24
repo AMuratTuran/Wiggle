@@ -74,6 +74,7 @@ class PickImageViewController: UIViewController {
             }
         }else {
             self.startAnimating(self.view, startAnimate: false)
+            sender.isUserInteractionEnabled = true
             print("Empty Image")
         }
     }

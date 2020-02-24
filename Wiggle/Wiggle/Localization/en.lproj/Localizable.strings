@@ -76,6 +76,7 @@
 "new_message" = "New Message";
 "unmatch_message" = "Couldn't send message, this user unmatched you.";
 
+"report_message" = "You have successfully reported this user";
 "place_finger" = "Place your finger tip on top of your camera and flash";
 "heartbeat_title" = "You will match other people with same pulse";
 "heartbeat_calculating" = "Calculating...\nKeep your finger on top of your camera and flash";
@@ -83,6 +84,7 @@
 "home_screen_like_error" = "You ran out of super likes!";
 "home_screen_superlike_error" = "You ran out of likes!";
 "home_screen_revert_error" = "You have to be premium to revert action!";
+"home_screen_no_user_error" = "There’s no one around. Expand your discovery settings to see more people.";
 
 "logout" = "Logout";
 

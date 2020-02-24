@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mbh-ya-gwL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mbh-ya-gwL">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -349,6 +349,9 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="YHf-tS-UQ9"/>
+                                </constraints>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePhoto" translatesAutoresizingMaskIntoConstraints="NO" id="QgA-Vr-U6S">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
@@ -357,7 +360,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Er9-wj-Vv5">
-                                <rect key="frame" x="0.0" y="375" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="375" width="375" height="174"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Murat Turan, 25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qn4-fO-hAL">
                                         <rect key="frame" x="16" y="20" width="186" height="30"/>
@@ -365,8 +368,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Developer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWO-32-Ptu">
-                                        <rect key="frame" x="16" y="58" width="110" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Developer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWO-32-Ptu">
+                                        <rect key="frame" x="16" y="58" width="343" height="20"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -378,7 +381,7 @@
                                     <constraint firstItem="Qn4-fO-hAL" firstAttribute="leading" secondItem="Er9-wj-Vv5" secondAttribute="leading" constant="16" id="CmR-EZ-eVS"/>
                                     <constraint firstItem="OWO-32-Ptu" firstAttribute="leading" secondItem="Er9-wj-Vv5" secondAttribute="leading" constant="16" id="M7Q-9F-KjK"/>
                                     <constraint firstItem="OWO-32-Ptu" firstAttribute="top" secondItem="Qn4-fO-hAL" secondAttribute="bottom" constant="8" id="X2O-4l-xDE"/>
-                                    <constraint firstAttribute="height" constant="100" id="uev-Se-nVj"/>
+                                    <constraint firstAttribute="trailing" secondItem="OWO-32-Ptu" secondAttribute="trailing" constant="16" id="YPu-hm-qTA"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZf-Kw-rQR">
@@ -396,6 +399,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JwX-rR-YXE">
                                 <rect key="frame" x="16" y="633" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="xC6-pW-aHh"/>
+                                </constraints>
                                 <state key="normal" title="Report"/>
                                 <connections>
                                     <action selector="reportAction:" destination="MF9-jC-nXk" eventType="touchUpInside" id="gNp-sd-jEP"/>
@@ -409,6 +415,7 @@
                             <constraint firstItem="JwX-rR-YXE" firstAttribute="leading" secondItem="lXO-87-NtJ" secondAttribute="leading" constant="16" id="NXm-qM-6CU"/>
                             <constraint firstItem="lXO-87-NtJ" firstAttribute="trailing" secondItem="OZf-Kw-rQR" secondAttribute="trailing" constant="16" id="VP0-8B-5eP"/>
                             <constraint firstItem="lXO-87-NtJ" firstAttribute="trailing" secondItem="QgA-Vr-U6S" secondAttribute="trailing" id="W2R-Y9-5si"/>
+                            <constraint firstItem="RSH-fe-vc7" firstAttribute="top" secondItem="Er9-wj-Vv5" secondAttribute="bottom" constant="20" id="Ycq-Z8-mpa"/>
                             <constraint firstItem="lXO-87-NtJ" firstAttribute="trailing" secondItem="Er9-wj-Vv5" secondAttribute="trailing" id="fIq-rB-ty3"/>
                             <constraint firstItem="JwX-rR-YXE" firstAttribute="top" secondItem="RSH-fe-vc7" secondAttribute="bottom" constant="24" id="grW-E9-piG"/>
                             <constraint firstItem="Er9-wj-Vv5" firstAttribute="leading" secondItem="8fI-VA-q3P" secondAttribute="leading" id="kVu-s3-Qw6"/>
