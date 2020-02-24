@@ -74,6 +74,7 @@
 "report_user" = "Bildir";
 "unmatch" = "Eşleşmeyi Kaldır";
 "new_message" = "Yeni Mesaj";
+"unmatch_message" = "Mesaj gönderilemiyor. Bu kullanıcı eşleşmenizi kaldırdı.";
 
 "place_finger" = "Parmak ucunuzu flash ve kameranızı kapatacak şekilde yerleştirin";
 "heartbeat_title" = "Nabzınızın aynı olduğu insanlarla eşleşeceksiniz";

@@ -12,6 +12,7 @@ import InputBarAccessoryView
 import MessageUI
 import Parse
 import ParseLiveQuery
+import PopupDialog
 
 class ChatViewController: MessagesViewController {
     
@@ -463,14 +464,22 @@ extension ChatViewController: MessageInputBarDelegate {
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         messageInputBar.sendButton.startAnimating()
         
+        let cancelButton = DefaultButton(title: Localize.Common.Close) {}
+        
         if inputBar.inputTextView.images.isEmpty {
             if let currentUser = PFUser.current(), let receiver = contactedUser, let senderId = currentUser.objectId {
                 let receiverId = receiver.receiverId
                 NetworkManager.sendTextMessage(messageText: text, senderId: senderId, receiverId: receiverId, success: { (success) in
                     self.messageInputBar.sendButton.stopAnimating()
                 }) { (error) in
-                    self.messageInputBar.sendButton.stopAnimating()
-                    self.displayError(message: error)
+                    if error.contains("141"){
+                        self.messageInputBar.sendButton.stopAnimating()
+                        self.alertMessage(message: Localize.Chat.unMatched, buttons: [cancelButton], isErrorMessage: true)
+                        
+                    }else{
+                        self.messageInputBar.sendButton.stopAnimating()
+                        self.displayError(message: error)
+                    }
                 }
             }
         }else {
@@ -483,8 +492,14 @@ extension ChatViewController: MessageInputBarDelegate {
                     NetworkManager.sendImageMessage(image: imageData, senderId: senderId, receiverId: receiverId, success: { (success) in
                         self.messageInputBar.sendButton.stopAnimating()
                     }) { (error) in
-                        self.messageInputBar.sendButton.stopAnimating()
-                        self.displayError(message: error)
+                        if error.contains("141"){
+                            self.messageInputBar.sendButton.stopAnimating()
+                            self.alertMessage(message: Localize.Chat.unMatched, buttons: [cancelButton], isErrorMessage: true)
+                            
+                        }else{
+                            self.messageInputBar.sendButton.stopAnimating()
+                            self.displayError(message: error)
+                        }
                     }
                 }
             }

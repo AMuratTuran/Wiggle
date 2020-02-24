@@ -108,6 +108,7 @@ struct Localize {
         static var Report: String { return NSLocalizedString("report_user", comment: "Chat") }
         static var Unmatch: String { return NSLocalizedString("unmatch", comment: "Chat") }
         static var NewMessage: String { return NSLocalizedString("new_message", comment: "Chat")}
+        static var unMatched: String { return NSLocalizedString("unmatch_message", comment: "Chat")}
     }
     
     struct Heartbeat {
