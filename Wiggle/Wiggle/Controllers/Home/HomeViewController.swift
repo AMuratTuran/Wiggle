@@ -393,7 +393,18 @@ extension HomeViewController: CLLocationManagerDelegate {
         fetchUsers()
         PFUser.current()?.saveInBackground(block: { (result, error) in
             if error != nil {
-                self.displayError(message: error?.localizedDescription ?? "")
+                if error.debugDescription.contains("209"){
+                    PFUser.logOutInBackground { _ in
+                        self.startAnimating(self.view, startAnimate: false)
+                        UserDefaults.standard.removeObject(forKey: AppConstants.UserDefaultsKeys.SessionToken)
+                        guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+                            return
+                        }
+                        delegate.initializeWindow()
+                    }
+                }else{
+                    self.displayError(message: error?.localizedDescription ?? "")
+                }
             }
         })
     }
