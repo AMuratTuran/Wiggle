@@ -243,7 +243,7 @@ class HomeViewController: UIViewController, userActionsDelegate {
         }
         NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: direction, success: {
         }) { (err) in
-            if err.contains("1007"){
+            if err.contains("1006") && direction != .left{
                 self.alertMessage(message: Localize.HomeScreen.likeError, buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
                 self.kolodaView.revertAction()
             }
@@ -253,15 +253,15 @@ class HomeViewController: UIViewController, userActionsDelegate {
     // MARK: Protocol Actions
     
     func likeAction(receiverObjectId: String, direction: SwipeResultDirection) {
-        swipeAction(direction: SwipeResultDirection.right, fromButton: true)
+        swipeAction(direction: direction, fromButton: true)
     }
     
     func dislikeAction(receiverObjectId: String, direction: SwipeResultDirection) {
-        swipeAction(direction: SwipeResultDirection.left, fromButton: true)
+        swipeAction(direction: direction, fromButton: true)
     }
     
     func superlikeAction(receiverObjectId: String, direction: SwipeResultDirection) {
-        swipeAction(direction: SwipeResultDirection.up, fromButton: true)
+        swipeAction(direction: direction, fromButton: true)
     }
     func revertAction(){
         let cancelButton = DefaultButton(title: Localize.Common.CancelButton) {}

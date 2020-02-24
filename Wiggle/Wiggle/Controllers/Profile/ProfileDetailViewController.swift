@@ -18,6 +18,7 @@ class ProfileDetailViewController: UIViewController {
     @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var detailView: UIView!
+    @IBOutlet weak var reportButton: UIButton!
     
     var wiggleCardModel: WiggleCardModel?
     var userData: PFUser?
@@ -68,6 +69,8 @@ class ProfileDetailViewController: UIViewController {
             }
             nameLabel.text = user.nameSurname
             bioLabel.text = user.bio
+            guard let name = user.nameSurname else {return}
+            reportButton.setTitle("Report and block \(name)", for: .normal)
         }else if let user = userData{
             let imageUrl = user.getPhotoUrl()
             if !imageUrl.isEmpty{
@@ -77,6 +80,7 @@ class ProfileDetailViewController: UIViewController {
             }
             nameLabel.text = "\(user.getFirstName()) \(user.getLastName()), \(user.getAge())"
             bioLabel.text = user.getBio()
+            reportButton.setTitle("Report and block \(user.getFirstName())", for: .normal)
         }
     }
     
@@ -98,9 +102,9 @@ class ProfileDetailViewController: UIViewController {
     }
     @IBAction func dislikeButtonAction(_ sender: Any) {
         if let receiverObjectId = wiggleCardModel?.objectId{
-            delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
+            delegate?.dislikeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
         }else if let receiverObjectId = userData?.objectId{
-            delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
+            delegate?.dislikeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
         }
         moveToHomeViewControllerFromProfileDetail()
     }
@@ -108,5 +112,22 @@ class ProfileDetailViewController: UIViewController {
     @IBAction func backAction(sender: UIButton) {
         moveToHomeViewControllerFromProfileDetail()
     }
+    
+    @IBAction func reportAction(_ sender: Any) {
+        let cancelButton = DefaultButton(title: Localize.Common.Close) {
+            if let receiverObjectId = self.wiggleCardModel?.objectId{
+                self.delegate?.dislikeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
+            }else if let receiverObjectId = self.userData?.objectId{
+                self.delegate?.dislikeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
+            }
+            self.moveToHomeViewControllerFromProfileDetail()
+        }
+        startAnimating(self.view, startAnimate: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.startAnimating(self.view, startAnimate: false)
+            self.alertMessage(message: "You succesfully reported inapropriate profile! We take care from here.", buttons: [cancelButton], isErrorMessage: false)
+        }
+    }
+    
     
 }

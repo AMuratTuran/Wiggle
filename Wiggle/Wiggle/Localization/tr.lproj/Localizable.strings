@@ -68,6 +68,7 @@
 "settings" = "Ayarlar";
 "change_photo" = "Fotoğraf Değiştir";
 "edit_profile" = "Profili Düzenle";
+"report_profile" = "Uygunsuz profili başarıyla bildirdin! Sonrasıyla biz ilgileniriz.";
 
 "chats_title" = "Sohbetler";
 "report_user" = "Bildir";

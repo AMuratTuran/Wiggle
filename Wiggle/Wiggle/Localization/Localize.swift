@@ -100,6 +100,7 @@ struct Localize {
         static var Settings: String { return NSLocalizedString("settings", comment: "Profile") }
         static var ChangePhoto: String { return NSLocalizedString("change_photo", comment: "Profile") }
         static var EditProfile: String { return NSLocalizedString("edit_profile", comment: "Profile") }
+        static var Report: String { return NSLocalizedString("report_profile", comment: "Profile") }
     }
     
     struct Chat {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mbh-ya-gwL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mbh-ya-gwL">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -310,18 +310,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="RSH-fe-vc7">
-                                <rect key="frame" x="95.5" y="611" width="184" height="40"/>
+                                <rect key="frame" x="95.5" y="569" width="184" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bob-gd-fr5">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHX-Hl-FEq">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="P2h-kW-Iam"/>
-                                            <constraint firstAttribute="width" constant="40" id="mvt-H1-TLC"/>
+                                            <constraint firstAttribute="width" constant="40" id="IEY-gY-BxJ"/>
+                                            <constraint firstAttribute="height" constant="40" id="Mzp-nD-w7X"/>
                                         </constraints>
-                                        <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" backgroundImage="likeImage"/>
+                                        <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" backgroundImage="dislikeImage"/>
                                         <connections>
-                                            <action selector="likeButtonAction:" destination="MF9-jC-nXk" eventType="touchUpInside" id="Nob-mQ-A77"/>
+                                            <action selector="dislikeButtonAction:" destination="MF9-jC-nXk" eventType="touchUpInside" id="ox3-JE-1d6"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SiX-LI-P2Y">
@@ -336,16 +336,16 @@
                                             <action selector="starButtonAction:" destination="MF9-jC-nXk" eventType="touchUpInside" id="peH-6s-PNY"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHX-Hl-FEq">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bob-gd-fr5">
                                         <rect key="frame" x="144" y="0.0" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="IEY-gY-BxJ"/>
-                                            <constraint firstAttribute="height" constant="40" id="Mzp-nD-w7X"/>
+                                            <constraint firstAttribute="height" constant="40" id="P2h-kW-Iam"/>
+                                            <constraint firstAttribute="width" constant="40" id="mvt-H1-TLC"/>
                                         </constraints>
-                                        <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" backgroundImage="dislikeImage"/>
+                                        <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" backgroundImage="likeImage"/>
                                         <connections>
-                                            <action selector="dislikeButtonAction:" destination="MF9-jC-nXk" eventType="touchUpInside" id="ox3-JE-1d6"/>
+                                            <action selector="likeButtonAction:" destination="MF9-jC-nXk" eventType="touchUpInside" id="Nob-mQ-A77"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -394,17 +394,27 @@
                                     <action selector="backActionWithSender:" destination="MF9-jC-nXk" eventType="touchUpInside" id="bKu-QV-VVI"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JwX-rR-YXE">
+                                <rect key="frame" x="16" y="633" width="343" height="30"/>
+                                <state key="normal" title="Report"/>
+                                <connections>
+                                    <action selector="reportAction:" destination="MF9-jC-nXk" eventType="touchUpInside" id="gNp-sd-jEP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="lXO-87-NtJ" firstAttribute="bottom" secondItem="JwX-rR-YXE" secondAttribute="bottom" constant="4" id="6DZ-YE-7L8"/>
                             <constraint firstItem="OZf-Kw-rQR" firstAttribute="bottom" secondItem="QgA-Vr-U6S" secondAttribute="bottom" id="MtS-FU-GFT"/>
+                            <constraint firstItem="JwX-rR-YXE" firstAttribute="leading" secondItem="lXO-87-NtJ" secondAttribute="leading" constant="16" id="NXm-qM-6CU"/>
                             <constraint firstItem="lXO-87-NtJ" firstAttribute="trailing" secondItem="OZf-Kw-rQR" secondAttribute="trailing" constant="16" id="VP0-8B-5eP"/>
                             <constraint firstItem="lXO-87-NtJ" firstAttribute="trailing" secondItem="QgA-Vr-U6S" secondAttribute="trailing" id="W2R-Y9-5si"/>
                             <constraint firstItem="lXO-87-NtJ" firstAttribute="trailing" secondItem="Er9-wj-Vv5" secondAttribute="trailing" id="fIq-rB-ty3"/>
+                            <constraint firstItem="JwX-rR-YXE" firstAttribute="top" secondItem="RSH-fe-vc7" secondAttribute="bottom" constant="24" id="grW-E9-piG"/>
                             <constraint firstItem="Er9-wj-Vv5" firstAttribute="leading" secondItem="8fI-VA-q3P" secondAttribute="leading" id="kVu-s3-Qw6"/>
                             <constraint firstItem="QgA-Vr-U6S" firstAttribute="top" secondItem="8fI-VA-q3P" secondAttribute="top" id="lEr-NB-IRm"/>
-                            <constraint firstItem="lXO-87-NtJ" firstAttribute="bottom" secondItem="RSH-fe-vc7" secondAttribute="bottom" constant="16" id="mbP-PQ-eHv"/>
                             <constraint firstItem="Er9-wj-Vv5" firstAttribute="top" secondItem="QgA-Vr-U6S" secondAttribute="bottom" id="piM-B0-xs3"/>
+                            <constraint firstItem="lXO-87-NtJ" firstAttribute="trailing" secondItem="JwX-rR-YXE" secondAttribute="trailing" constant="16" id="tYL-Q7-ArB"/>
                             <constraint firstItem="QgA-Vr-U6S" firstAttribute="leading" secondItem="lXO-87-NtJ" secondAttribute="leading" id="wRD-Kg-RG7"/>
                             <constraint firstItem="RSH-fe-vc7" firstAttribute="centerX" secondItem="lXO-87-NtJ" secondAttribute="centerX" id="x1c-EO-Fvk"/>
                         </constraints>
@@ -416,6 +426,7 @@
                         <outlet property="detailView" destination="Er9-wj-Vv5" id="tJg-Nm-iYk"/>
                         <outlet property="nameLabel" destination="Qn4-fO-hAL" id="47A-1h-Ct0"/>
                         <outlet property="profileImageView" destination="QgA-Vr-U6S" id="Gnb-x6-O9N"/>
+                        <outlet property="reportButton" destination="JwX-rR-YXE" id="X8Z-gb-JE7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KJS-ow-a7A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -337,11 +337,11 @@ struct NetworkManager {
         
         switch direction {
         case .left:
-            object.setValue("left", forKey: "direction")
+            object.setValue("Left", forKey: "direction")
         case .right:
-            object.setValue("right", forKey: "direction")
+            object.setValue("Right", forKey: "direction")
         case .up:
-            object.setValue("top", forKey: "direction")
+            object.setValue("Top", forKey: "direction")
         default:
             print("Unnecessary Direction : \(direction)")
         }
