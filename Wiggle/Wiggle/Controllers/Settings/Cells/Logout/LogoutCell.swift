@@ -11,17 +11,20 @@ import UIKit
 class LogoutCell: UITableViewCell {
 
     @IBOutlet weak var logoutLabel: UILabel!
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
-        prepareViews()
     }
 
     func prepareViews() {
         logoutLabel.text = Localize.Settings.Logout
     }
+    
+    func prepareForWebView(title: String) {
+        logoutLabel.text = title
+        
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
 }

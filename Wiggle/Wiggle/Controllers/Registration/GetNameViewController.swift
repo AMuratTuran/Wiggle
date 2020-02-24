@@ -70,6 +70,7 @@ class GetNameViewController: UIViewController {
     func openTermsWebView() {
         let storyBoard = UIStoryboard(name: "WebView", bundle: nil)
         let webViewController = storyBoard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        webViewController.isAcceptingTerms = true
         webViewController.delegate = self
         let nav = UINavigationController(rootViewController: webViewController)
         nav.modalPresentationStyle = .fullScreen

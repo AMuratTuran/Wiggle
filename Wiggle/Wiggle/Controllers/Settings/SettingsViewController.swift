@@ -75,6 +75,16 @@ class SettingsViewController: UIViewController {
         }
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func openWebView(url: String) {
+        let storyBoard = UIStoryboard(name: "WebView", bundle: nil)
+        let webViewController = storyBoard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        webViewController.webUrl = url
+        webViewController.isAcceptingTerms = false
+        let nav = UINavigationController(rootViewController: webViewController)
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
+    }
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -91,7 +101,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         }else if section == 2 {
             return 2
         }else if section == 3 {
-            return 1
+            return 3
         }else {
             return 0
         }
@@ -142,6 +152,13 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }else if indexPath.section == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: LogoutCell.reuseIdentifier, for: indexPath) as! LogoutCell
+            if indexPath.row == 0 {
+                cell.prepareForWebView(title: "Terms Of Use")
+            }else if indexPath.row == 1 {
+                cell.prepareForWebView(title: "Privacy Policy")
+            }else if indexPath.row == 2 {
+                cell.prepareViews()
+            }
             return cell
         }
         return UITableViewCell()
@@ -211,17 +228,23 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             let destionationViewController = storyboard.instantiateViewController(withIdentifier: "ShowMeGenderViewController") as! ShowMeGenderViewController
             self.navigationController?.pushViewController(destionationViewController, animated: true)
         }else if indexPath.section == 3 {
-            self.startAnimating(self.view, startAnimate: true)
-            PFUser.logOutInBackground { (error) in
-                self.startAnimating(self.view, startAnimate: false)
-                if let error = error {
-                    self.displayError(message: error.localizedDescription)
-                }else {
-                    UserDefaults.standard.removeObject(forKey: AppConstants.UserDefaultsKeys.SessionToken)
-                    guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
-                        return
+            if indexPath.row == 0 {
+                self.openWebView(url: "http://www.appwiggle.com/terms.html")
+            }else if indexPath.row == 1 {
+                self.openWebView(url: "http://www.appwiggle.com/privacy.html")
+            }else {
+                self.startAnimating(self.view, startAnimate: true)
+                PFUser.logOutInBackground { (error) in
+                    self.startAnimating(self.view, startAnimate: false)
+                    if let error = error {
+                        self.displayError(message: error.localizedDescription)
+                    }else {
+                        UserDefaults.standard.removeObject(forKey: AppConstants.UserDefaultsKeys.SessionToken)
+                        guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+                            return
+                        }
+                        delegate.initializeWindow()
                     }
-                    delegate.initializeWindow()
                 }
             }
         }
