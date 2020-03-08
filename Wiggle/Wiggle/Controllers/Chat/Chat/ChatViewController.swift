@@ -55,6 +55,7 @@ class ChatViewController: MessagesViewController {
             return
             // navigate to login
         }
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: FontHelper.bold(16)]
         hideBackBarButtonTitle()
         self.currentUser = currentUser
         imagePicker = ImagePicker(presentationController: self, delegate: self)
@@ -250,27 +251,60 @@ class ChatViewController: MessagesViewController {
         imagePicker.present(from: self.view)
     }
     
+    func reportButtonAction() {
+        self.startAnimating(self.view, startAnimate: true)
+        let cancelButton = DefaultButton(title: Localize.Common.Close) {
+            NetworkManager.deleteChat(chat: self.contactedUser!, success: {
+                self.navigationController?.popViewController(animated: true)
+            }) { (error) in
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+        NetworkManager.unMatch(myId: "", contactedUserId: self.contactedUser?.receiverId ?? "", success: {
+            self.startAnimating(self.view, startAnimate: false)
+            self.alertMessage(message: Localize.Report.SuccessMessage, buttons: [cancelButton], isErrorMessage: false)
+        }) { (error) in
+            self.startAnimating(self.view, startAnimate: false)
+            self.displayError(message: error)
+            self.alertMessage(message: Localize.Report.SuccessMessage, buttons: [cancelButton], isErrorMessage: false)
+        }
+    }
+    
+    func reportUserAction() {
+        let messageButton = DefaultButton(title: Localize.Report.Message) {
+            self.reportButtonAction()
+        }
+        let photoButton = DefaultButton(title: Localize.Report.Photo) {
+            self.reportButtonAction()
+        }
+        let spamButton = DefaultButton(title: Localize.Report.Spam) {
+            self.reportButtonAction()
+        }
+        let otherButton = DefaultButton(title: Localize.Report.Other) {
+            if let contactedUser = self.contactedUser {
+                let name = "\(contactedUser.firstName) \(contactedUser.lastName)"
+                self.sendEmail(mail: "report@appwiggle.com", with: "Report User: \(name)")
+            }
+        }
+        let cancelButton = DefaultButton(title: Localize.Common.Close) {
+            
+        }
+        self.alertMessage(title: Localize.Report.ReportTitle, message: Localize.Report.SelectReason, buttons: [messageButton, photoButton, spamButton, otherButton, cancelButton], buttonAlignment: .vertical, isErrorMessage: false)
+    }
     @objc func moreAction() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let reportAction = UIAlertAction(title: Localize.Chat.Report, style: .default) { (action) in
-            self.startAnimating(self.view, startAnimate: true)
-            delay(1.5) {
-                self.startAnimating(self.view, startAnimate: false)
-                let doneButton = DefaultButton(title: Localize.Common.OKButton) {
-                    if let contactedUser = self.contactedUser {
-                        let name = "\(contactedUser.firstName) \(contactedUser.lastName)"
-                        self.sendEmail(mail: "report@appwiggle.com", with: "Report User: \(name)")
-                    }
-                }
-                self.alertMessage(message: Localize.Chat.ReportMessage, buttons: [doneButton], isErrorMessage: false)
-            }
-            
+            self.reportUserAction()
         }
         let unmatchAction = UIAlertAction(title: Localize.Chat.Unmatch, style: .default) { (action) in
             self.startAnimating(self.view, startAnimate: true)
             NetworkManager.unMatch(myId: "", contactedUserId: self.contactedUser?.receiverId ?? "", success: {
                 self.startAnimating(self.view, startAnimate: false)
-                self.navigationController?.popViewController(animated: true)
+                NetworkManager.deleteChat(chat: self.contactedUser!, success: {
+                    self.navigationController?.popViewController(animated: true)
+                }) { (error) in
+                    self.navigationController?.popViewController(animated: true)
+                }
             }) { (error) in
                 self.startAnimating(self.view, startAnimate: false)
                 self.displayError(message: error)
@@ -701,7 +735,9 @@ extension ChatViewController: ImageMessageProtocol {
 
 extension ChatViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true, completion: nil)
+        controller.dismiss(animated: true) {
+            self.reportButtonAction()
+        }
     }
 }
 

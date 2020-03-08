@@ -32,6 +32,7 @@ struct Localize {
         static var Save: String { return NSLocalizedString("save_button", comment: "Common") }
         static var Close: String { return NSLocalizedString("close_button", comment: "Common") }
         static var Start: String { return NSLocalizedString("start_button", comment: "Common") }
+        static var Back: String { return NSLocalizedString("back_button", comment: "Common") }
     }
     
     struct DatePicker {
@@ -110,6 +111,9 @@ struct Localize {
         static var NewMessage: String { return NSLocalizedString("new_message", comment: "Chat")}
         static var unMatched: String { return NSLocalizedString("unmatch_message", comment: "Chat")}
         static var ReportMessage: String { return NSLocalizedString("report_message", comment: "Chat")}
+        static var EmptyChatScreenMessage: String { return NSLocalizedString("chat_empty_message", comment: "Chat")}
+        static var BackToHomeScreen: String { return NSLocalizedString("chat_back_home", comment: "Chat")}
+        static var DeleteChat: String { return NSLocalizedString("chat_delete", comment: "Chat")}
     }
     
     struct Heartbeat {
@@ -123,4 +127,20 @@ struct Localize {
         static var revertError: String {return NSLocalizedString("home_screen_revert_error", comment: "HomeScreen")}
         static var noUserError: String {return NSLocalizedString("home_screen_no_user_error", comment: "HomeScreen")}
     }
+    
+    struct Report {
+        static var Message: String {return NSLocalizedString("report_inappropriate_message", comment: "Report")}
+        static var Photo: String {return NSLocalizedString("report_inappropriate_photo", comment: "Report")}
+        static var Spam: String {return NSLocalizedString("report_spam", comment: "Report")}
+        static var ReportTitle: String {return NSLocalizedString("report_title", comment: "Report")}
+        static var SelectReason: String {return NSLocalizedString("report_select_reason", comment: "Report")}
+        static var SuccessMessage: String { return NSLocalizedString("report_success_message", comment: "Report")}
+        static var Other: String { return NSLocalizedString("report_other_reason", comment: "Report")}
+    }
+    
+    struct WhoLiked {
+        static var NoMatchKeepLooking: String { return NSLocalizedString("no_match_keep_looking", comment: "WhoLiked")}
+        static var Premium: String { return NSLocalizedString("who_liked_premium", comment: "WhoLiked")}
+    }
+    
 }

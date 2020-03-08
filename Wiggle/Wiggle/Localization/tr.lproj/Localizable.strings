@@ -26,6 +26,7 @@
 "save_button" = "Kaydet";
 "close_button" = "Kapat";
 "start_button" = "Başla";
+"back_button" = "Geri";
 
 "enter_sms_verification" = "Lütfen SMS ile gonderilen 4 haneli doğrulama kodunu giriniz.";
 
@@ -87,3 +88,18 @@
 "home_screen_no_user_error" = "Çevrende sana önerebileceğimiz kimse kalmadı. Ayarlardan Azami Mesafeni değiştirerek daha çok kişi ile eşleşebilirsin.";
 
 "logout" = "Çıkış Yap";
+
+"report_inappropriate_message" = "UYGUNSUZ MESAJ";
+"report_inappropriate_photo" = "UYGUNSUZ FOTOĞRAFLAR";
+"report_spam" = "SPAM GİBİ GÖRÜNÜYOR";
+"report_title" = "Bildir";
+"report_select_reason" = "Lütfen bir sebep seçiniz";
+"report_success_message" = "Kullanıcıyı başarıyla bildirdiniz. Buradan sonrasını biz hallederiz.";
+"report_other_reason" = "DİĞER";
+
+"no_match_keep_looking" = "Henüz eşleştiğin kimse bulunmuyor. Aramaya devam et!";
+"who_liked_premium" = "Kimin seni beğendiğini görmek için Wiggle Gold satın alman gerekiyor.";
+
+"chat_empty_message" = "Henüz mesajın yok ancak pes etme, uygun aday karşına kısa zamanda çıkacaktır. Ritmini ölçmeye devam et.!";
+"chat_back_home" = "Anasayfaya Dön";
+"chat_delete" = "Konuşmayı Sil";

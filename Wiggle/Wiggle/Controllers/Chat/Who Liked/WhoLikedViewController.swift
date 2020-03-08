@@ -170,10 +170,10 @@ class WhoLikedViewController: UIViewController {
                     self.switchToMatchScreen()
                 })
             }
-            let goToMatchScreen = DefaultButton(title: "Geri Dön") {
+            let goToMatchScreen = DefaultButton(title: Localize.Common.Back) {
                 self.switchToMatchScreen()
             }
-            self.alertMessage(message: "Kimin seni beğendiğini görmek için Wiggle Gold satın alman gerekiyor.", buttons: [goToStoreButton, goToMatchScreen], isErrorMessage: true, isGestureDismissal: false)
+            self.alertMessage(message: Localize.WhoLiked.Premium, buttons: [goToStoreButton, goToMatchScreen], isErrorMessage: true, isGestureDismissal: false)
         }
     }
     
@@ -262,7 +262,7 @@ extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDe
             guard let data = matchedUserData else { return UICollectionViewCell() }
             if data.isEmpty {
                 let emptyCell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.reuseIdentifier, for: indexPath) as! EmptyCollectionViewCell
-                emptyCell.prepare(description: "Henüz eşleştiğin kimse bulunmuyor. Aramaya devam et!")
+                emptyCell.prepare(description: Localize.WhoLiked.NoMatchKeepLooking)
                 return emptyCell
             }else {
                 cell.prepare(with: data[indexPath.row])
@@ -271,7 +271,7 @@ extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDe
             guard let data = usersLikedYouData else { return UICollectionViewCell() }
             if data.isEmpty {
                 let emptyCell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.reuseIdentifier, for: indexPath) as! EmptyCollectionViewCell
-                emptyCell.prepare(description: "Henüz eşleştiğin kimse bulunmuyor. Aramaya devam et!")
+                emptyCell.prepare(description: Localize.WhoLiked.NoMatchKeepLooking)
                 return emptyCell
             }else {
                 cell.prepare(with: data[indexPath.row])
@@ -311,11 +311,8 @@ extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDe
             guard let data = usersLikedYouData, !data.isEmpty else { return }
             userData = data[indexPath.row]
         }
-        
         moveToProfileDetailFromWhoLiked(data: userData, index: indexPath.row)
-    }
-    
-    
+    } 
 }
 
 

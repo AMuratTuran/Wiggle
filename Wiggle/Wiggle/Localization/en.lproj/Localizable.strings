@@ -26,6 +26,7 @@
 "save_button" = "Save";
 "close_button" = "Close";
 "start_button" = "Start";
+"back_button" = "Back";
 
 "enter_sms_verification" = "Please enter your 4-digit verification code";
 
@@ -88,6 +89,17 @@
 
 "logout" = "Logout";
 
+"report_inappropriate_message" = "INAPPROPRIATE MESSAGE";
+"report_inappropriate_photo" = "INAPPROPRIATE PHOTOS";
+"report_spam" = "LOOKS LIKE SPAM";
+"report_title" = "Report";
+"report_select_reason" = "Please select a report reason";
+"report_success_message" = "You succesfully reported inappropriate profile! We take care from here.";
+"report_other_reason" = "OTHER";
 
+"no_match_keep_looking" = "You have no match yet. Keep swiping!";
+"who_liked_premium" = "You need to purchase Wiggle Gold to see who liked your profile.";
 
-
+"chat_empty_message" = "You have no messages yet, but don't give up. Keep measuring your heart rate and keep swiping!";
+"chat_back_home" = "Homescreen";
+"chat_delete" = "Delete Chat";

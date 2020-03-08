@@ -114,6 +114,25 @@ class ProfileDetailViewController: UIViewController {
     }
     
     @IBAction func reportAction(_ sender: Any) {
+        let messageButton = DefaultButton(title: Localize.Report.Message) {
+            self.reportButtonAction()
+        }
+        let photoButton = DefaultButton(title: Localize.Report.Photo) {
+            self.reportButtonAction()
+        }
+        let spamButton = DefaultButton(title: Localize.Report.Spam) {
+            self.reportButtonAction()
+        }
+        
+        let cancelButton = DefaultButton(title: Localize.Common.Close) {
+            
+        }
+        
+        self.alertMessage(title: Localize.Report.ReportTitle, message: Localize.Report.SelectReason, buttons: [messageButton, photoButton, spamButton, cancelButton], buttonAlignment: .vertical, isErrorMessage: false)
+    }
+    
+    func reportButtonAction() {
+        self.startAnimating(self.view, startAnimate: true)
         let cancelButton = DefaultButton(title: Localize.Common.Close) {
             if let receiverObjectId = self.wiggleCardModel?.objectId{
                 self.delegate?.dislikeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
@@ -122,12 +141,12 @@ class ProfileDetailViewController: UIViewController {
             }
             self.moveToHomeViewControllerFromProfileDetail()
         }
-        startAnimating(self.view, startAnimate: true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        NetworkManager.unMatch(myId: "", contactedUserId: userData?.objectId ?? "", success: {
             self.startAnimating(self.view, startAnimate: false)
-            self.alertMessage(message: "You succesfully reported inapropriate profile! We take care from here.", buttons: [cancelButton], isErrorMessage: false)
+            self.alertMessage(message: Localize.Report.SuccessMessage, buttons: [cancelButton], isErrorMessage: false)
+        }) { (error) in
+            self.startAnimating(self.view, startAnimate: false)
+            self.alertMessage(message: Localize.Report.SuccessMessage, buttons: [cancelButton], isErrorMessage: false)
         }
     }
-    
-    
 }

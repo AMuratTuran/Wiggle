@@ -170,13 +170,9 @@ extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
         guard let data = self.tableData else { return UITableViewCell() }
         if data.count == 0 {
             let emptyCell = tableView.dequeueReusableCell(withIdentifier: EmptyCell.reuseIdentifier, for: indexPath) as! EmptyCell
-            if #available(iOS 13.0, *) {
-                emptyCell.prepare(icon: UIImage(named: "emptyCellImage") ?? UIImage(), description: "Henüz mesajın yok ancak pes etme, uygun aday karşına kısa zamanda çıkacaktır. Ritmini ölçmeye devam et.!", isButtonVisible: true, buttonText: "Anasayfaya Dön", buttonAction: {
-                    self.navigationController?.popViewController(animated: true)
-                })
-            } else {
-                // Fallback on earlier versions
-            }
+            emptyCell.prepare(icon: UIImage(named: "emptyCellImage") ?? UIImage(), description: Localize.Chat.EmptyChatScreenMessage, isButtonVisible: true, buttonText: Localize.Chat.BackToHomeScreen, buttonAction: {
+                self.navigationController?.popViewController(animated: true)
+            })
             return emptyCell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: ChatListCell.reuseIdentifier, for: indexPath) as! ChatListCell
@@ -216,7 +212,7 @@ extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         guard let data = tableData, !data.isEmpty else { return nil}
         
-        let delete = UITableViewRowAction(style: .normal, title: "Delete Chat") { (action, indexPath) in
+        let delete = UITableViewRowAction(style: .normal, title: Localize.Chat.DeleteChat) { (action, indexPath) in
             let chat: ChatListModel
             if self.isFiltering, let filteredChats = self.filteredChats {
                 chat = filteredChats[indexPath.row]
@@ -227,7 +223,7 @@ extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
             NetworkManager.deleteChat(chat: chat, success: {
                 self.getChatList()
             }) { (error) in
-                
+                self.getChatList()
             }
         }
         delete.backgroundColor = UIColor.systemRed
@@ -267,7 +263,6 @@ extension ChatListViewController: MatchViewDelegate {
             let nav = UINavigationController(rootViewController: destinationViewController)
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true, completion: nil)
-            
         }
     }
 }

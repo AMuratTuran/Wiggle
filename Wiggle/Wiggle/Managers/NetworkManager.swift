@@ -275,7 +275,7 @@ struct NetworkManager {
             fail("User not found")
             return
         }
-         let location = PFUser.current()?.getLocation()
+        let location = PFUser.current()?.getLocation()
         let parseLocation: PFGeoPoint = PFGeoPoint(latitude: location?.latitude ?? 0, longitude: location?.longitude ?? 0)
         likesQuery.whereKey("sender", equalTo: user.objectId ?? "")
         query?.limit = 10
@@ -284,6 +284,8 @@ struct NetworkManager {
         query?.whereKey("location", nearGeoPoint: parseLocation, withinKilometers: Double(AppConstants.Settings.SelectedDistance))
         if AppConstants.Settings.SelectedShowMeGender != 3 {
             query?.whereKey("gender", equalTo: AppConstants.Settings.SelectedShowMeGender)
+        }else {
+            
         }
         query?.whereKey("objectId", doesNotMatchKey: "receiver", in: likesQuery)
         query?.order(byDescending: "popular")
