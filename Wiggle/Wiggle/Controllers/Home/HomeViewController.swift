@@ -76,7 +76,7 @@ class HomeViewController: UIViewController, userActionsDelegate {
         setupLocationManager()
         
         superLikeCount = PFUser.current()?.getSuperLike() ?? 0
-
+        
         if isLaunchedFromPN {
             let transition = CATransition()
             transition.duration = 0.2
@@ -88,65 +88,77 @@ class HomeViewController: UIViewController, userActionsDelegate {
         }
         
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-//        addBannerViewToView(bannerView)
+        //        addBannerViewToView(bannerView)
         
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-4067151614085861/4960834755")
         let request = GADRequest()
         interstitial.load(request)
         checkForAdd()
+        NotificationCenter.default.addObserver(self, selector: #selector(didChangeGender), name: Notification.Name("didChangeGender"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didChangeDistance), name: Notification.Name("didChangeDistance"), object: nil)
     }
     
-       func configureBannerView() {
-           bannerView.adUnitID = "ca-app-pub-4067151614085861/4960834755"
-           bannerView.rootViewController = self
-           bannerView.load(GADRequest())
-           bannerView.delegate = self
-           bannerView.load(GADRequest())
-       }
-       
-       func addBannerViewToView(_ bannerView: GADBannerView) {
-           bannerView.translatesAutoresizingMaskIntoConstraints = false
-           view.addSubview(bannerView)
-           view.addConstraints(
-               [NSLayoutConstraint(item: bannerView,
-                                   attribute: .bottom,
-                                   relatedBy: .equal,
-                                   toItem: bottomLayoutGuide,
-                                   attribute: .top,
-                                   multiplier: 1,
-                                   constant: 0),
-                NSLayoutConstraint(item: bannerView,
-                                   attribute: .centerX,
-                                   relatedBy: .equal,
-                                   toItem: view,
-                                   attribute: .centerX,
-                                   multiplier: 1,
-                                   constant: 0),
-                NSLayoutConstraint(item: bannerView,
-                                   attribute: .leading,
-                                   relatedBy: .equal,
-                                   toItem: view,
-                                   attribute: .leading,
-                                   multiplier: 1,
-                                   constant: 0),
-                NSLayoutConstraint(item: bannerView,
-                                   attribute: .trailing,
-                                   relatedBy: .equal,
-                                   toItem: view,
-                                   attribute: .trailing,
-                                   multiplier: 1,
-                                   constant: 0)
-               ])
-       }
-       
-       func checkForAdd(){
-           let shouldShow = Bool.random()
-           DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) {
-               if self.interstitial.isReady && shouldShow && !(PFUser.current()?.getGold() ?? true){
-                   self.interstitial.present(fromRootViewController: self)
-               }
-           }
-       }
+    @objc func didChangeGender() {
+        self.skipCount = 0
+        fetchUsers()
+    }
+    
+    @objc func didChangeDistance() {
+        self.skipCount = 0
+        fetchUsers()
+    }
+    
+    func configureBannerView() {
+        bannerView.adUnitID = "ca-app-pub-4067151614085861/4960834755"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
+        bannerView.load(GADRequest())
+    }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: bottomLayoutGuide,
+                                attribute: .top,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .leading,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .leading,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .trailing,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .trailing,
+                                multiplier: 1,
+                                constant: 0)
+        ])
+    }
+    
+    func checkForAdd(){
+        let shouldShow = Bool.random()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) {
+            if self.interstitial.isReady && shouldShow && !(PFUser.current()?.getGold() ?? true){
+                self.interstitial.present(fromRootViewController: self)
+            }
+        }
+    }
     
     // MARK: Class Functions
     func createLottieAnimation() {
@@ -193,7 +205,7 @@ class HomeViewController: UIViewController, userActionsDelegate {
     
     @objc func moveToDetail(gestureRecognizer: UIGestureRecognizer) {
         guard let data = currentCardModel else {return}
-//        moveToProfileDetailViewController(data : data)
+        //        moveToProfileDetailViewController(data : data)
     }
     
     func setupLocationManager(){
@@ -286,7 +298,7 @@ class HomeViewController: UIViewController, userActionsDelegate {
     
     @IBAction func routeProfileAction(_ sender: UIButton) {
         guard let data = currentCardModel else {return}
-//        moveToProfileDetailViewController(data : data)
+        //        moveToProfileDetailViewController(data : data)
     }
     
     @IBAction func likeButtonAction(_ sender: Any) {
@@ -362,7 +374,7 @@ extension HomeViewController: KolodaViewDataSource {
                 }
             default:
                 UIView.animate(withDuration: 0.0) {
-//                    currentCard.view.superLikeImage.alpha = finishPercentage/50
+                    //                    currentCard.view.superLikeImage.alpha = finishPercentage/50
                 }
             }
         }

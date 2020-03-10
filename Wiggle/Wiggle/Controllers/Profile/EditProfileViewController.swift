@@ -22,6 +22,7 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var bioTextView: UITextView!
     @IBOutlet weak var bioTitleLabel: UILabel!
     @IBOutlet weak var pickBirthdayButton: UIButton!
+    @IBOutlet weak var birthdayLabel: UILabel!
     
     var birthday: Date?
     let nameTextFieldView = TextFieldView.load(title: "", placeholder: "")
@@ -66,16 +67,17 @@ class EditProfileViewController: UIViewController {
         components.year = -18
         pickBirthdayButton.setTitle((user.getBirthday()! as Date).prettyStringFromDate(dateFormat: "dd MMMM yyyy", localeIdentifier: Locale.current.identifier),  for: .normal)
         birthday = user.getBirthday()! as Date
+        birthdayLabel.text = Localize.Profile.Birthday
     }
     
     func configureNavigationBar() {
-        title = "Bilgileri Düzenle"
+        title = Localize.Profile.EditProfile
         
-        let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveInfos))
+        let saveButton = UIBarButtonItem(title: Localize.Common.Save, style: .plain, target: self, action: #selector(saveInfos))
         saveButton.tintColor = UIColor.systemPink
         navigationItem.rightBarButtonItem = saveButton
         
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(dismissTapped))
+        let cancelButton = UIBarButtonItem(title: Localize.Common.CancelButton, style: .plain, target: self, action: #selector(dismissTapped))
         navigationItem.leftBarButtonItem = cancelButton
     }
     

@@ -39,6 +39,8 @@ class SettingsPremiumTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
+        topLabel.text = Localize.SettingsPremium.Title
+        bottomLabel.text = Localize.SettingsPremium.SubTitle
         if #available(iOS 13.0, *) {
             self.containerView.addShadow()
         } else {

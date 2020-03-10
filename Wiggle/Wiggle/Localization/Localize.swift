@@ -33,6 +33,7 @@ struct Localize {
         static var Close: String { return NSLocalizedString("close_button", comment: "Common") }
         static var Start: String { return NSLocalizedString("start_button", comment: "Common") }
         static var Back: String { return NSLocalizedString("back_button", comment: "Common") }
+        static var Yes: String { return NSLocalizedString("yes_button", comment: "Common") }
     }
     
     struct DatePicker {
@@ -69,6 +70,8 @@ struct Localize {
         static var AccountSettings: String { return NSLocalizedString("account_settings", comment: "Settings") }
         static var Discovery: String { return NSLocalizedString("discovery", comment: "Settings") }
         static var PhoneNumber: String { return NSLocalizedString("phone_number", comment: "Settings") }
+        static var TermsOfUse: String { return NSLocalizedString("terms_of_use", comment: "Settings") }
+        static var PrivacyPolicy: String { return NSLocalizedString("privacy_policy", comment: "Settings") }
     }
     
     struct GetName {
@@ -102,6 +105,7 @@ struct Localize {
         static var ChangePhoto: String { return NSLocalizedString("change_photo", comment: "Profile") }
         static var EditProfile: String { return NSLocalizedString("edit_profile", comment: "Profile") }
         static var Report: String { return NSLocalizedString("report_profile", comment: "Profile") }
+        static var Birthday: String { return NSLocalizedString("birthday_label", comment: "Profile") }
     }
     
     struct Chat {
@@ -135,7 +139,10 @@ struct Localize {
         static var ReportTitle: String {return NSLocalizedString("report_title", comment: "Report")}
         static var SelectReason: String {return NSLocalizedString("report_select_reason", comment: "Report")}
         static var SuccessMessage: String { return NSLocalizedString("report_success_message", comment: "Report")}
+        static var BlockSuccessMessage: String { return NSLocalizedString("report_block_success_message", comment: "Report")}
         static var Other: String { return NSLocalizedString("report_other_reason", comment: "Report")}
+        static var Block: String { return NSLocalizedString("block_user", comment: "Report")}
+        static var BlockDesc: String { return NSLocalizedString("block_desc", comment: "Report")}
     }
     
     struct WhoLiked {
@@ -143,4 +150,10 @@ struct Localize {
         static var Premium: String { return NSLocalizedString("who_liked_premium", comment: "WhoLiked")}
     }
     
+    struct SettingsPremium {
+        static var Title: String { return NSLocalizedString("premium_title", comment: "SettingsPremium")}
+        static var SubTitle: String { return NSLocalizedString("premium_subtitle", comment: "SettingsPremium")}
+        static var GetBoost: String { return NSLocalizedString("premium_get_boost", comment: "SettingsPremium")}
+        static var GetSuperLike: String { return NSLocalizedString("premium_get_superlike", comment: "SettingsPremium")}
+    }
 }

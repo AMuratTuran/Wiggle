@@ -103,3 +103,22 @@
 "chat_empty_message" = "You have no messages yet, but don't give up. Keep measuring your heart rate and keep swiping!";
 "chat_back_home" = "Homescreen";
 "chat_delete" = "Delete Chat";
+
+"premium_title" = "Wiggle Gold";
+"premium_subtitle" = "Unlock premium features";
+"premium_get_boost" = "Get Boosts";
+"premium_get_superlike" = "Get Super Likes";
+
+"terms_of_use" = "Terms Of Use";
+"privacy_policy" = "Pricavy Policy";
+
+"birthday_label" = "Birthday";
+
+"block_user" = "Block";
+
+"yes_button" = "Yes";
+
+"report_block_success_message" = "You succesfully blocked this profile! We take care from here.";
+
+"block_desc" = "Are you sure you want to block this user?";
+

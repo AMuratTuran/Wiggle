@@ -15,6 +15,9 @@ class BoostSuperLikeCell: UITableViewCell {
     @IBOutlet weak var boostContainerView: UIView!
     @IBOutlet weak var starImageContainer: UIView!
     @IBOutlet weak var superLikeContainerView: UIView!
+    @IBOutlet weak var descBoostLabel: UILabel!
+    @IBOutlet weak var descLikeLabel: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,6 +42,8 @@ class BoostSuperLikeCell: UITableViewCell {
     func prepare() {
         boostContainerView.cornerRadius(12.0)
         superLikeContainerView.cornerRadius(12.0)
+        descBoostLabel.text = Localize.SettingsPremium.GetBoost
+        descLikeLabel.text = Localize.SettingsPremium.GetSuperLike
     }
     
 }

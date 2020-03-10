@@ -19,6 +19,7 @@ class ProfileDetailViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var detailView: UIView!
     @IBOutlet weak var reportButton: UIButton!
+    @IBOutlet weak var blockButton: UIButton!
     
     var wiggleCardModel: WiggleCardModel?
     var userData: PFUser?
@@ -69,8 +70,8 @@ class ProfileDetailViewController: UIViewController {
             }
             nameLabel.text = user.nameSurname
             bioLabel.text = user.bio
-            guard let name = user.nameSurname else {return}
-            reportButton.setTitle("Report and block \(name)", for: .normal)
+            reportButton.setTitle(Localize.Report.ReportTitle, for: .normal)
+            blockButton.setTitle(Localize.Report.Block, for: .normal)
         }else if let user = userData{
             let imageUrl = user.getPhotoUrl()
             if !imageUrl.isEmpty{
@@ -80,7 +81,8 @@ class ProfileDetailViewController: UIViewController {
             }
             nameLabel.text = "\(user.getFirstName()) \(user.getLastName()), \(user.getAge())"
             bioLabel.text = user.getBio()
-            reportButton.setTitle("Report and block \(user.getFirstName())", for: .normal)
+            reportButton.setTitle(Localize.Report.ReportTitle, for: .normal)
+            blockButton.setTitle(Localize.Report.Block, for: .normal)
         }
     }
     
@@ -127,11 +129,26 @@ class ProfileDetailViewController: UIViewController {
         let cancelButton = DefaultButton(title: Localize.Common.Close) {
             
         }
+        cancelButton.titleColor = .systemRed
         
         self.alertMessage(title: Localize.Report.ReportTitle, message: Localize.Report.SelectReason, buttons: [messageButton, photoButton, spamButton, cancelButton], buttonAlignment: .vertical, isErrorMessage: false)
     }
-    
-    func reportButtonAction() {
+
+    @IBAction func blockAction(_ sender: Any) {
+        let yesButton = DefaultButton(title: Localize.Common.Yes) {
+            self.reportButtonAction(isBlockAction: true)
+        }
+        
+        let cancelButton = DefaultButton(title: Localize.Common.Close) {
+            
+        }
+        
+        cancelButton.titleColor = .systemRed
+        
+        self.alertMessage(title: Localize.Report.Block, message: Localize.Report.BlockDesc, buttons: [yesButton, cancelButton], buttonAlignment: .horizontal, isErrorMessage: false)
+    }
+        
+    func reportButtonAction(isBlockAction: Bool = false) {
         self.startAnimating(self.view, startAnimate: true)
         let cancelButton = DefaultButton(title: Localize.Common.Close) {
             if let receiverObjectId = self.wiggleCardModel?.objectId{
@@ -143,7 +160,8 @@ class ProfileDetailViewController: UIViewController {
         }
         NetworkManager.unMatch(myId: "", contactedUserId: userData?.objectId ?? "", success: {
             self.startAnimating(self.view, startAnimate: false)
-            self.alertMessage(message: Localize.Report.SuccessMessage, buttons: [cancelButton], isErrorMessage: false)
+            let succesMessage = isBlockAction ? Localize.Report.BlockSuccessMessage : Localize.Report.SuccessMessage
+            self.alertMessage(message: succesMessage, buttons: [cancelButton], isErrorMessage: false)
         }) { (error) in
             self.startAnimating(self.view, startAnimate: false)
             self.alertMessage(message: Localize.Report.SuccessMessage, buttons: [cancelButton], isErrorMessage: false)

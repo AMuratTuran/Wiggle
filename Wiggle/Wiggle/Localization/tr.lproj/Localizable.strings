@@ -103,3 +103,21 @@
 "chat_empty_message" = "Henüz mesajın yok ancak pes etme, uygun aday karşına kısa zamanda çıkacaktır. Ritmini ölçmeye devam et.!";
 "chat_back_home" = "Anasayfaya Dön";
 "chat_delete" = "Konuşmayı Sil";
+
+"premium_title" = "Wiggle Gold";
+"premium_subtitle" = "Premium özelliklere erişin";
+"premium_get_boost" = "Boost Satın Al";
+"premium_get_superlike" = "Super Likes Al";
+
+"terms_of_use" = "Kullanım Koşulları";
+"privacy_policy" = "Gizlilik Sözleşmei";
+
+"birthday_label" = "Doğum Günü";
+
+"block_user" = "Engelle";
+
+"yes_button" = "Evet";
+
+"report_block_success_message" = "Kullanıcıyı başarıyla engellediniz. Buradan sonrasını biz hallederiz.";
+
+"block_desc" = "Bu kullanıcıyı engellemek istediğinize emin misiniz?";

@@ -42,7 +42,7 @@ class MatchResultsViewController: UIViewController {
     
     func getMatchData() {
         startAnimating(self.view, startAnimate: true)
-        NetworkManager.getHeartRateMatches(success: { (response) in
+        NetworkManager.getHeartRateMatches(heartRate: Int(result?.bpm ?? 0), success: { (response) in
             self.startAnimating(self.view, startAnimate: false)
             self.startUpwardsAnimation()
             self.data = response

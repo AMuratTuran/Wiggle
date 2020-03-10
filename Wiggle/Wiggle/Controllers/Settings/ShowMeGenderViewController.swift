@@ -34,6 +34,8 @@ class ShowMeGenderViewController: UIViewController {
         if let gender = self.selectedGender {
             AppConstants.Settings.SelectedShowMeGender = gender
             UserDefaults.standard.set(gender, forKey: "SelectedGender")
+            let name = Notification.Name("didChangeGender")
+            NotificationCenter.default.post(name: name, object: nil)
         }
         self.navigationController?.popViewController(animated: true)
     }
@@ -88,7 +90,8 @@ extension ShowMeGenderViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
+        let saveBarButtonItem = UIBarButtonItem(title: Localize.Common.Save, style: .plain, target: self, action: #selector(saveTapped))
+        navigationItem.rightBarButtonItem = saveBarButtonItem
         self.selectedGender = indexPath.row + 1
         if let cell = tableView.cellForRow(at: indexPath) {
             if cell.accessoryType == .none{

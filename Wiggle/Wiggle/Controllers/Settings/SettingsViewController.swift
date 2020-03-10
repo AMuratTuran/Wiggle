@@ -23,6 +23,8 @@ class SettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = Localize.Profile.Settings
+        rightBarButton.title = Localize.Common.Close
         configureViews()
         transparentNavigationBar()
         initUpwardsAnimation()
@@ -153,9 +155,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         }else if indexPath.section == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: LogoutCell.reuseIdentifier, for: indexPath) as! LogoutCell
             if indexPath.row == 0 {
-                cell.prepareForWebView(title: "Terms Of Use")
+                cell.prepareForWebView(title: Localize.Settings.TermsOfUse)
             }else if indexPath.row == 1 {
-                cell.prepareForWebView(title: "Privacy Policy")
+                cell.prepareForWebView(title: Localize.Settings.PrivacyPolicy)
             }else if indexPath.row == 2 {
                 cell.prepareViews()
             }
@@ -256,6 +258,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension SettingsViewController: DistanceChanged {
     func maxDistanceChanged(value: Int) {
+        let name = Notification.Name("didChangeDistance")
+        NotificationCenter.default.post(name: name, object: nil)
         isChanged = true
         self.selectedDistance = value
     }

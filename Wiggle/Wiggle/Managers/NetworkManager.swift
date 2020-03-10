@@ -370,14 +370,14 @@ struct NetworkManager {
         }
     }
     
-    static func getHeartRateMatches(success: @escaping([PFUser]) -> Void, fail: @escaping(String) -> Void) {
+    static func getHeartRateMatches(heartRate: Int, success: @escaping([PFUser]) -> Void, fail: @escaping(String) -> Void) {
         let query : PFQuery? = PFUser.query()
         let location = PFUser.current()?.getLocation()
         let gender = PFUser.current()?.getGender()
-        let parseLocation: PFGeoPoint = PFGeoPoint(latitude: location?.latitude ?? 0, longitude: location?.longitude ?? 0)
         query?.limit = 20
         query?.order(byDescending: "popular")
-        query?.whereKey("location", nearGeoPoint: parseLocation, withinKilometers: 100)
+        query?.whereKey("beat", greaterThan: heartRate - 20)
+        query?.whereKey("beat", lessThan: heartRate + 20)
         if AppConstants.Settings.SelectedShowMeGender != 3 {
             query?.whereKey("gender", equalTo: AppConstants.Settings.SelectedShowMeGender)
         }

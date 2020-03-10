@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -135,6 +135,8 @@
                 <outlet property="boostContainerView" destination="1cx-l8-Dam" id="pm9-Px-lfw"/>
                 <outlet property="boostImageContainer" destination="n7b-Bl-kXO" id="6a9-7y-oN9"/>
                 <outlet property="containerView" destination="etu-hS-3CE" id="1Lf-R8-Vx1"/>
+                <outlet property="descBoostLabel" destination="kFw-Df-JJ5" id="cGg-yP-Fum"/>
+                <outlet property="descLikeLabel" destination="ZQv-KK-YsU" id="dYN-aG-vcB"/>
                 <outlet property="starImageContainer" destination="Yqh-vd-C9K" id="WTh-eF-X3U"/>
                 <outlet property="superLikeContainerView" destination="70R-SI-E3Z" id="nl7-Fi-C0R"/>
             </connections>
