@@ -372,8 +372,6 @@ struct NetworkManager {
     
     static func getHeartRateMatches(heartRate: Int, success: @escaping([PFUser]) -> Void, fail: @escaping(String) -> Void) {
         let query : PFQuery? = PFUser.query()
-        let location = PFUser.current()?.getLocation()
-        let gender = PFUser.current()?.getGender()
         query?.limit = 20
         query?.order(byDescending: "popular")
         query?.whereKey("beat", greaterThan: heartRate - 20)
