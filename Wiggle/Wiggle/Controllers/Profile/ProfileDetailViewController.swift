@@ -24,6 +24,7 @@ class ProfileDetailViewController: UIViewController {
     var wiggleCardModel: WiggleCardModel?
     var userData: PFUser?
     var indexOfParentCell: Int?
+    var isHomePage: Bool = true
     
     var superLikeCount : Int = 0
     
@@ -149,6 +150,7 @@ class ProfileDetailViewController: UIViewController {
     }
         
     func reportButtonAction(isBlockAction: Bool = false) {
+        
         self.startAnimating(self.view, startAnimate: true)
         let cancelButton = DefaultButton(title: Localize.Common.Close) {
             if let receiverObjectId = self.wiggleCardModel?.objectId{
@@ -158,13 +160,25 @@ class ProfileDetailViewController: UIViewController {
             }
             self.moveToHomeViewControllerFromProfileDetail()
         }
-        NetworkManager.unMatch(myId: "", contactedUserId: userData?.objectId ?? "", success: {
-            self.startAnimating(self.view, startAnimate: false)
-            let succesMessage = isBlockAction ? Localize.Report.BlockSuccessMessage : Localize.Report.SuccessMessage
-            self.alertMessage(message: succesMessage, buttons: [cancelButton], isErrorMessage: false)
-        }) { (error) in
-            self.startAnimating(self.view, startAnimate: false)
-            self.alertMessage(message: Localize.Report.SuccessMessage, buttons: [cancelButton], isErrorMessage: false)
+        
+        if isHomePage {
+            delay(1.0) {
+                self.startAnimating(self.view, startAnimate: false)
+                let succesMessage = isBlockAction ? Localize.Report.BlockSuccessMessage : Localize.Report.SuccessMessage
+                self.alertMessage(message: succesMessage, buttons: [cancelButton], isErrorMessage: false)
+            }
+        }else {
+            if !isHomePage {
+                NetworkManager.unMatch(myId: "", contactedUserId: userData?.objectId ?? "", success: {
+                    self.startAnimating(self.view, startAnimate: false)
+                    let succesMessage = isBlockAction ? Localize.Report.BlockSuccessMessage : Localize.Report.SuccessMessage
+                    self.alertMessage(message: succesMessage, buttons: [cancelButton], isErrorMessage: false)
+                }) { (error) in
+                    self.startAnimating(self.view, startAnimate: false)
+                    let succesMessage = isBlockAction ? Localize.Report.BlockSuccessMessage : Localize.Report.SuccessMessage
+                    self.alertMessage(message: succesMessage, buttons: [cancelButton], isErrorMessage: false)
+                }
+            }
         }
     }
 }

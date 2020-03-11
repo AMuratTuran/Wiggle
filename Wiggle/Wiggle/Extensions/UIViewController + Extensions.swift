@@ -130,6 +130,7 @@ extension UIViewController {
         destinationViewController.modalPresentationStyle = .fullScreen
         destinationViewController.wiggleCardModel = data
         destinationViewController.delegate = delegate
+        destinationViewController.isHomePage = true
         self.present(destinationViewController, animated: true, completion: nil)
     }
     
@@ -140,6 +141,7 @@ extension UIViewController {
         destinationViewController.modalPresentationStyle = .fullScreen
         destinationViewController.userData = data
         destinationViewController.indexOfParentCell = index
+        destinationViewController.isHomePage = false
         self.present(destinationViewController, animated: true, completion: nil)
     }
     
