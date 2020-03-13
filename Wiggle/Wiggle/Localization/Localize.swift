@@ -143,4 +143,14 @@ struct Localize {
         static var Premium: String { return NSLocalizedString("who_liked_premium", comment: "WhoLiked")}
     }
     
+    struct Purchase {
+        static var BeGold: String { return NSLocalizedString("be_gold", comment: "Purchase")}
+        static var UnlimitedLike: String { return NSLocalizedString("unlimited_like", comment: "Purchase")}
+        static var WhoLikedYou: String { return NSLocalizedString("who_liked_you", comment: "Purchase")}
+        static var RiseWithSuperlike: String { return NSLocalizedString("rise_with_superlike", comment: "Purchase")}
+        static var Get4XLucky: String { return NSLocalizedString("get_4x_lucky", comment: "Purchase")}
+        static var PremiumError: String { return NSLocalizedString("product_error", comment: "Purchase")}
+        
+    }
+    
 }
