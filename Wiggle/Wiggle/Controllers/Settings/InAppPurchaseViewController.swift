@@ -42,6 +42,7 @@ class InAppPurchaseViewController: UIViewController {
         seperatorView.layer.cornerRadius = seperatorView.bounds.height / 2
         purchaseButton.layer.cornerRadius = 12
         
+        purchaseButton.text = Localize.Purchase.PurchaseButton
         beGoldMemberLabel.text = Localize.Purchase.BeGold
         unlimitedLikeLabel.text = Localize.Purchase.UnlimitedLike
         whoLikedYouLabel.text = Localize.Purchase.WhoLikedYou
