@@ -8,6 +8,7 @@
 
 import UIKit
 import StoreKit
+import PopupDialog
 
 class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -32,12 +33,15 @@ class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDa
     @IBOutlet weak var freeStoryLabel: UILabel!
     @IBOutlet weak var restoreButton: UIButton!
     @IBOutlet weak var bottomLabel: UILabel!
+    @IBOutlet weak var secondaryLabel: UILabel!
     
     // MARK: - Override Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         continueButton.bringSubviewToFront(continueButton.titleLabel!)
+        
+        configureViews()
         
         NotificationCenter.default.addObserver(self, selector: #selector(SuperLikeInAppPurchaseViewController.handlePurchaseNotification(_:)),
                                                name: .IAPHelperPurchaseNotification,
@@ -49,8 +53,12 @@ class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDa
                 if success {
                     let productsSorted = products?.sorted { $0.localizedTitle < $1.localizedTitle }
                     self.products = productsSorted ?? []
-                    
-                    self.collectionView.reloadData()
+                    if productsSorted?.first?.localizedDescription.isEmpty ?? true{
+                        let cancelButton = DefaultButton(title: Localize.Common.OKButton) {self.dismiss(animated: true) {}}
+                        self.alertMessage(message: Localize.Purchase.PremiumError, buttons: [cancelButton], isErrorMessage: true)
+                    }else{
+                        self.collectionView.reloadData()
+                    }
                 }
             }
         }
@@ -69,6 +77,11 @@ class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDa
     // MARK: - Class Functions
     func updateBottomLabel(){
         bottomLabel.text = "About subscriptions: You are beginning a paid auto renewing subscription. Subscription automatically renews for per month. Payment will be charged to your Apple ID account at the confirmation of purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. You can manage and cancel your subscriptions by going to your App Store account settings after purchase."
+    }
+    
+    func configureViews(){
+        freeStoryLabel.text = Localize.Purchase.RiseWithSuperlike
+        secondaryLabel.text = Localize.Purchase.Get4XLucky
     }
     
     // MARK: - IAP Functions

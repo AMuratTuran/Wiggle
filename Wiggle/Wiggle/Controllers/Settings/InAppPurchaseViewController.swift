@@ -8,11 +8,17 @@
 
 import UIKit
 import StoreKit
+import PopupDialog
 
 class InAppPurchaseViewController: UIViewController {
     @IBOutlet weak var seperatorView: UIView!
     @IBOutlet weak var purchaseButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var beGoldMemberLabel: UILabel!
+    @IBOutlet weak var unlimitedLikeLabel: UILabel!
+    @IBOutlet weak var whoLikedYouLabel: UILabel!
+    
     
     var products: [SKProduct] = []
     
@@ -28,29 +34,41 @@ class InAppPurchaseViewController: UIViewController {
         configureViews()
         
         NotificationCenter.default.addObserver(self, selector: #selector(InAppPurchaseViewController.handlePurchaseNotification(_:)),
-        name: .IAPHelperPurchaseNotification,
-        object: nil)
+                                               name: .IAPHelperPurchaseNotification,
+                                               object: nil)
     }
     
     func configureViews(){
         seperatorView.layer.cornerRadius = seperatorView.bounds.height / 2
         purchaseButton.layer.cornerRadius = 12
+        
+        purchaseButton.text = Localize.Purchase.PurchaseButton
+        beGoldMemberLabel.text = Localize.Purchase.BeGold
+        unlimitedLikeLabel.text = Localize.Purchase.UnlimitedLike
+        whoLikedYouLabel.text = Localize.Purchase.WhoLikedYou
     }
     
     @objc func reload() {
         self.startAnimating(self.view, startAnimate: true)
         WiggleProducts.store.requestProducts{ [weak self] success, products in
             guard let self = self else { return }
-            if success {
-                let productsSorted = products?.sorted { $0.localizedTitle < $1.localizedTitle }
-                self.products = productsSorted ?? []
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                if success {
+                    let productsSorted = products?.sorted { $0.localizedTitle < $1.localizedTitle }
+                    self.products = productsSorted ?? []
+                    if productsSorted?.first?.localizedDescription.isEmpty ?? true{
+                        let cancelButton = DefaultButton(title: Localize.Common.OKButton) {self.dismiss(animated: true) {}}
+                        self.alertMessage(message: Localize.Purchase.PremiumError, buttons: [cancelButton], isErrorMessage: true)
+                    }else{
+                        DispatchQueue.main.async {
+                            self.startAnimating(self.view, startAnimate: false)
+                            self.tableView.reloadData()
+                        }
+                    }
+                }else {
                     self.startAnimating(self.view, startAnimate: false)
-                    self.tableView.reloadData()
+                    self.displayError(message: "Something went wrong")
                 }
-            }else {
-                self.startAnimating(self.view, startAnimate: false)
-                self.displayError(message: "Something went wrong")
             }
         }
     }

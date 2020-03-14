@@ -216,9 +216,12 @@
                         <viewLayoutGuide key="safeArea" id="jmt-b8-7e6"/>
                     </view>
                     <connections>
+                        <outlet property="beGoldMemberLabel" destination="qBC-qA-uud" id="pAx-T2-BJ1"/>
                         <outlet property="purchaseButton" destination="0pf-ei-UMm" id="H6d-zF-1XR"/>
                         <outlet property="seperatorView" destination="g6R-b7-zAa" id="W0Q-Q3-AAe"/>
                         <outlet property="tableView" destination="mrQ-HB-qJR" id="EZ8-p5-YQx"/>
+                        <outlet property="unlimitedLikeLabel" destination="p9f-ih-v4i" id="jLW-vh-ONp"/>
+                        <outlet property="whoLikedYouLabel" destination="P2T-QO-WT5" id="Hh7-O0-sMV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sI6-ym-n4W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -551,6 +554,7 @@
                         <outlet property="freeStoryLabel" destination="RSL-um-KXJ" id="rth-cY-ZeX"/>
                         <outlet property="navItem" destination="bjp-9W-21U" id="su8-LI-gAQ"/>
                         <outlet property="restoreButton" destination="W3l-2W-wCP" id="6d4-84-bgd"/>
+                        <outlet property="secondaryLabel" destination="ff2-lV-Ojz" id="CIZ-5X-Yjt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdZ-2h-wlM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
