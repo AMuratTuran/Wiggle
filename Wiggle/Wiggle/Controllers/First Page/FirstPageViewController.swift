@@ -10,12 +10,15 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 import Parse
+import AuthenticationServices
+import PopupDialog
 
 class FirstPageViewController: UIViewController {
     
     @IBOutlet weak var facebookLoginButton: UIButton!
     @IBOutlet weak var phoneLoginButton: UIButton!
     @IBOutlet weak var acceptTermsLabel: UILabel!
+    @IBOutlet weak var buttonsStackView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +27,43 @@ class FirstPageViewController: UIViewController {
         facebookLoginButton.setTitle(Localize.LoginSignup.FacebookButton, for: .normal)
         phoneLoginButton.setTitle(Localize.LoginSignup.PhoneButton, for: .normal)
         facebookLoginButton.layer.cornerRadius = 12.0
+        prepareViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    func prepareViews() {
+        buttonsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        buttonsStackView.addArrangedSubview(facebookLoginButton)
+        buttonsStackView.addArrangedSubview(phoneLoginButton)
+        setUpSignInAppleButton()
+        buttonsStackView.addArrangedSubview(acceptTermsLabel)
+        
+    }
+    
+    func setUpSignInAppleButton() {
+        if #available(iOS 13.0, *) {
+            let authorizationButton = ASAuthorizationAppleIDButton()
+            authorizationButton.addTarget(self, action: #selector(handleAppleIdRequest), for: .touchUpInside)
+            authorizationButton.cornerRadius = 12
+            let heightConstraint = NSLayoutConstraint(item: authorizationButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 40)
+            authorizationButton.addConstraints([heightConstraint])
+            //Add button on some view or stack
+            self.buttonsStackView.addArrangedSubview(authorizationButton)
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    @objc func handleAppleIdRequest() {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.performRequests()
     }
     
     func getFacebookInfo(success: @escaping() -> Void, fail: @escaping(String) -> Void) {
@@ -80,6 +115,118 @@ class FirstPageViewController: UIViewController {
         })
     }
     
+    @available(iOS 13.0, *)
+    func startAppleLogin(userId: String, credential: ASAuthorizationAppleIDCredential) {
+        if #available(iOS 13.0, *) {
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            appleIDProvider.getCredentialState(forUserID: userId) {  (credentialState, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                switch credentialState {
+                case .authorized:
+                    // The Apple ID credential is valid.
+                    self.connectParseWithApple(credential: credential)
+                case .revoked:
+                    // The Apple ID credential is revoked.
+                    break
+                case .notFound:
+                    let okButton = DefaultButton(title: Localize.Common.OKButton, action: nil)
+                    self.alertMessage(message: "No credential was found. Please create an AppleID to use Apple Login.", buttons: [okButton], isErrorMessage: true)
+                default:
+                    break
+                }
+            }
+        } else {
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    func connectParseWithApple(credential: ASAuthorizationAppleIDCredential) {
+        guard let token = credential.identityToken else { return }
+        self.createNewAppleUser(credential: credential)
+        //        PFUser.register(AuthDelegate(), forAuthType: "apple")
+        //        PFUser.logInWithAuthType(inBackground: "apple", authData: ["token": String(data: token, encoding: .utf8)!, "id": credential.user]).continueWith { task -> Any? in
+        //            if ((task.error) != nil){
+        //                print("ERROR: \(task.error?.localizedDescription ?? "")")
+        //
+        //                self.createNewAppleUser(credential: credential)
+        //
+        //                return task
+        //
+        //            }
+        //            if task.result != nil {
+        //                DispatchQueue.main.async {
+        //                    self.moveToGetNameViewController()
+        //                }
+        //            } else {
+        //                // Failed to log in.
+        //                print("ERROR LOGGING IN IN PARSE: \(task.error?.localizedDescription ?? "")")
+        //            }
+        //            return nil
+        //        }
+    }
+    
+    @available(iOS 13.0, *)
+    func createNewAppleUser(credential: ASAuthorizationAppleIDCredential) {
+        loginUser(credential: credential)
+    }
+    
+    @available(iOS 13.0, *)
+    func signupUser(credential: ASAuthorizationAppleIDCredential) {
+        let user = PFUser()
+        user.username = credential.user
+        user.password = "myPassword"
+        user.signUpInBackground { (result, error) in
+            if let error = error {
+                self.loginUser(credential: credential)
+            }
+            
+            if result {
+                self.loginUser(credential: credential)
+            }
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    func loginUser(credential: ASAuthorizationAppleIDCredential) {
+        PFUser.logInWithUsername(inBackground: credential.user, password: "myPassword") { (user, error) in
+            if let error = error {
+                if error.localizedDescription.contains("Invalid username") {
+                    self.signupUser(credential: credential)
+                }
+            }
+            
+            guard let userInfo = user else {
+                return
+            }
+            UserDefaults.standard.set(userInfo.sessionToken, forKey: AppConstants.UserDefaultsKeys.SessionToken)
+            
+            if let _ = userInfo["gender"] as? Int, let userName = userInfo["first_name"] as? String {
+                if userName.isEmpty {
+                    DispatchQueue.main.async {
+                        self.moveToGetNameViewController()
+                    }
+                }else {
+                    DispatchQueue.main.async {
+                        guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+                            return
+                        }
+                        delegate.initializeWindow()
+                    }
+                }
+            }else {
+                DispatchQueue.main.async {
+                    guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+                        return
+                    }
+                    delegate.initializeWindow()
+                }
+                
+            }
+            
+        }
+    }
     @IBAction func facebookLoginTapped(_ sender: Any) {
         LoginManager().logOut()
         PFFacebookUtils.logInInBackground(withReadPermissions: ["public_profile","email"]) {
@@ -119,5 +266,33 @@ class FirstPageViewController: UIViewController {
         }else {
             moveToEnterPhoneViewController()
         }
+    }
+}
+
+@available(iOS 13.0, *)
+extension FirstPageViewController: ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as?  ASAuthorizationAppleIDCredential {
+            let userIdentifier = appleIDCredential.user
+            let fullName = appleIDCredential.fullName
+            let email = appleIDCredential.email
+            print("User id is \(userIdentifier) \n Full Name is \(String(describing: fullName)) \n Email id is \(String(describing: email))")
+            startAppleLogin(userId: userIdentifier, credential: appleIDCredential)
+        }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        // Handle error.
+    }
+}
+
+
+class AuthDelegate:NSObject, PFUserAuthenticationDelegate {
+    func restoreAuthentication(withAuthData authData: [String : String]?) -> Bool {
+        return true
+    }
+    
+    func restoreAuthenticationWithAuthData(authData: [String : String]?) -> Bool {
+        return true
     }
 }

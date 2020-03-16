@@ -48,80 +48,59 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="yb2-aB-rpz">
-                                <rect key="frame" x="40" y="497" width="295" height="150"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="yb2-aB-rpz">
+                                <rect key="frame" x="40" y="537" width="295" height="110"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3fJ-Sg-l0C">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uiO-cB-bVH">
                                         <rect key="frame" x="0.0" y="0.0" width="295" height="40"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uiO-cB-bVH">
-                                                <rect key="frame" x="0.0" y="0.0" width="295" height="40"/>
-                                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Facebook ile giris yap">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="12"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="facebookLoginTapped:" destination="jeg-6G-eXE" eventType="touchUpInside" id="Aoq-To-Oo8"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="uiO-cB-bVH" secondAttribute="trailing" id="Ft2-L5-EjF"/>
-                                            <constraint firstItem="uiO-cB-bVH" firstAttribute="leading" secondItem="3fJ-Sg-l0C" secondAttribute="leading" id="O8X-1Q-O6a"/>
-                                            <constraint firstItem="uiO-cB-bVH" firstAttribute="top" secondItem="3fJ-Sg-l0C" secondAttribute="top" id="nUF-bK-lml"/>
-                                            <constraint firstAttribute="bottom" secondItem="uiO-cB-bVH" secondAttribute="bottom" id="s7z-hu-lYc"/>
+                                            <constraint firstAttribute="height" constant="40" id="o4x-gq-VTO"/>
                                         </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cr-dM-Qcl">
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Facebook ile giris yap">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="facebookLoginTapped:" destination="jeg-6G-eXE" eventType="touchUpInside" id="Aoq-To-Oo8"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="klf-nq-uR0">
                                         <rect key="frame" x="0.0" y="55" width="295" height="40"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="klf-nq-uR0">
-                                                <rect key="frame" x="0.0" y="0.0" width="295" height="40"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
-                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <inset key="imageEdgeInsets" minX="-85" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Telefonum ile giris yap">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="12"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="phoneLoginTapped:" destination="jeg-6G-eXE" eventType="touchUpInside" id="Oth-Nr-W8B"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="klf-nq-uR0" firstAttribute="leading" secondItem="4cr-dM-Qcl" secondAttribute="leading" id="HJx-aS-p0f"/>
-                                            <constraint firstItem="klf-nq-uR0" firstAttribute="top" secondItem="4cr-dM-Qcl" secondAttribute="top" id="Hkd-gZ-w3I"/>
-                                            <constraint firstAttribute="trailing" secondItem="klf-nq-uR0" secondAttribute="trailing" id="RJv-iq-Vu9"/>
-                                            <constraint firstAttribute="bottom" secondItem="klf-nq-uR0" secondAttribute="bottom" id="aId-bS-CXP"/>
+                                            <constraint firstAttribute="height" constant="40" id="ulK-p9-gQe"/>
                                         </constraints>
-                                    </view>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="-85" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Telefonum ile giris yap">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="phoneLoginTapped:" destination="jeg-6G-eXE" eventType="touchUpInside" id="Oth-Nr-W8B"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dN1-oG-49M">
-                                        <rect key="frame" x="0.0" y="110" width="295" height="40"/>
+                                        <rect key="frame" x="0.0" y="110" width="295" height="0.0"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="13"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="srF-12-zRe"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -141,6 +120,7 @@
                     <navigationItem key="navigationItem" id="ALz-GI-bdb"/>
                     <connections>
                         <outlet property="acceptTermsLabel" destination="dN1-oG-49M" id="YIv-rI-qxd"/>
+                        <outlet property="buttonsStackView" destination="yb2-aB-rpz" id="gLA-tT-ipB"/>
                         <outlet property="facebookLoginButton" destination="uiO-cB-bVH" id="vZW-mO-xhs"/>
                         <outlet property="phoneLoginButton" destination="klf-nq-uR0" id="OP0-1R-WHB"/>
                     </connections>
