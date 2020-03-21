@@ -20,7 +20,7 @@ struct AppConstants {
     struct ParseConstants {
         static let ApplicationId: String = "EfuNJeqL484fqElyGcCuiTBjNHalE2BhAP2LIv7s"
         static let ClientKey: String = "L22P6I1Hxd3WMf8QT0umoy1HRuQit97Zd5i5HCjG"
-        static let Server: String = "https://parseapi.back4app.com/"
+        static let Server: String = "https://lyngl.back4app.io/"
         static let LiveQueryServer: String = "wss://lyngl.back4app.io/"
     }
     
