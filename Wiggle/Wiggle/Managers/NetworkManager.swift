@@ -20,7 +20,7 @@ protocol JsonInitializable {
 
 struct NetworkManager {
     
-    static func sendSMSCode(_ request: SMSCodeRequest, success: @escaping(Int) -> Void, fail: @escaping(String) -> Void) {
+    static func sendSMSCode(_ request: EmailLoginRequest, success: @escaping(Int) -> Void, fail: @escaping(String) -> Void) {
         PFCloud.callFunction(inBackground: "SendSMS", withParameters: request.toDict()) { (response, error) in
             if let error = error {
                 fail("Error")
@@ -31,6 +31,28 @@ struct NetworkManager {
                 return
             }
             success(smsCode)
+        }
+    }
+    
+    static func emailLogin(_ request: EmailLoginRequest, success: @escaping(Bool) -> Void, fail: @escaping(String) -> Void) {
+        PFUser.logInWithUsername(inBackground: request.email, password: request.password) {(user, error) in
+            if let error = error {
+                fail(error.localizedDescription)
+            }
+            guard let userInfo = user else {
+                return
+            }
+            UserDefaults.standard.set(userInfo.sessionToken, forKey: AppConstants.UserDefaultsKeys.SessionToken)
+            if let _ = userInfo["gender"] as? Int, let userName = userInfo["first_name"] as? String {
+                if userName.isEmpty {
+                     success(false)
+                }else {
+                    success(true)
+                }
+            }else {
+                success(true)
+            }
+            
         }
     }
     

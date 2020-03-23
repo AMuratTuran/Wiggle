@@ -105,7 +105,7 @@
 		F1645687238409CE00FC0694 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F1645689238409CE00FC0694 /* Localizable.strings */; };
 		F164568C23840A0600FC0694 /* Localize.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164568B23840A0600FC0694 /* Localize.swift */; };
 		F164568E2384157D00FC0694 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164568D2384157D00FC0694 /* NetworkManager.swift */; };
-		F16456912384160A00FC0694 /* SMSCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16456902384160A00FC0694 /* SMSCodeRequest.swift */; };
+		F16456912384160A00FC0694 /* EmailLoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16456902384160A00FC0694 /* EmailLoginRequest.swift */; };
 		F16456932384170100FC0694 /* Dictionary + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16456922384170100FC0694 /* Dictionary + Extensions.swift */; };
 		F191A56023D4F33A002CD7E0 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191A55E23D4F339002CD7E0 /* TextFieldView.swift */; };
 		F191A56123D4F33A002CD7E0 /* TextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F191A55F23D4F33A002CD7E0 /* TextFieldView.xib */; };
@@ -285,7 +285,7 @@
 		F164568A238409D100FC0694 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F164568B23840A0600FC0694 /* Localize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localize.swift; sourceTree = "<group>"; };
 		F164568D2384157D00FC0694 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		F16456902384160A00FC0694 /* SMSCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeRequest.swift; sourceTree = "<group>"; };
+		F16456902384160A00FC0694 /* EmailLoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailLoginRequest.swift; sourceTree = "<group>"; };
 		F16456922384170100FC0694 /* Dictionary + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary + Extensions.swift"; sourceTree = "<group>"; };
 		F191A55E23D4F339002CD7E0 /* TextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		F191A55F23D4F33A002CD7E0 /* TextFieldView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldView.xib; sourceTree = "<group>"; };
@@ -851,7 +851,7 @@
 		F164568F238415F900FC0694 /* SMS Code */ = {
 			isa = PBXGroup;
 			children = (
-				F16456902384160A00FC0694 /* SMSCodeRequest.swift */,
+				F16456902384160A00FC0694 /* EmailLoginRequest.swift */,
 			);
 			path = "SMS Code";
 			sourceTree = "<group>";
@@ -1132,7 +1132,7 @@
 				F191A56D23D507F2002CD7E0 /* UIWindow + Extensions.swift in Sources */,
 				DC85115523F19B3100B361EB /* ProductCellCollectionViewCell.swift in Sources */,
 				DC6C64C423D4FF4C007977A7 /* InAppPurchaseViewController.swift in Sources */,
-				F16456912384160A00FC0694 /* SMSCodeRequest.swift in Sources */,
+				F16456912384160A00FC0694 /* EmailLoginRequest.swift in Sources */,
 				F194B5F323C0E1BD00349953 /* MatchedUserView.swift in Sources */,
 				F15005F3239C4C5000E19947 /* ChatViewController.swift in Sources */,
 				F159C7BC2385240D0091AB05 /* GetBioViewController.swift in Sources */,
@@ -1373,7 +1373,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wiggleTeam.Wiggle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1401,7 +1401,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wiggleTeam.Wiggle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

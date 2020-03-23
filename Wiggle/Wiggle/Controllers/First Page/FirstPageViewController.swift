@@ -25,7 +25,7 @@ class FirstPageViewController: UIViewController {
         
         acceptTermsLabel.text = Localize.LoginSignup.AcceptTerms
         facebookLoginButton.setTitle(Localize.LoginSignup.FacebookButton, for: .normal)
-        phoneLoginButton.setTitle(Localize.LoginSignup.PhoneButton, for: .normal)
+        phoneLoginButton.setTitle(Localize.LoginSignup.EmailButton, for: .normal)
         facebookLoginButton.layer.cornerRadius = 12.0
         prepareViews()
     }

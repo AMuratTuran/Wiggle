@@ -74,14 +74,14 @@ class EnterVerificationCodeViewController: UIViewController {
     @IBAction func sendAgainAction(_ sender: UIButton) {
         startAnimating(self.view, startAnimate: true)
 
-        let smsCodeRequest = SMSCodeRequest(countryCode: self.countryCode ?? "", phoneNumber: phoneNumber ?? "")
-        NetworkManager.sendSMSCode(smsCodeRequest, success: { (smsCode) in
-            self.startAnimating(self.view, startAnimate: false)
-            self.sentSMSCode = smsCode
-        }) { (error) in
-            self.startAnimating(self.view, startAnimate: false)
-            print(error)
-        }
+//        let smsCodeRequest = EmailLoginRequest(email: self.countryCode ?? "", phoneNumber: phoneNumber ?? "")
+//        NetworkManager.sendSMSCode(smsCodeRequest, success: { (smsCode) in
+//            self.startAnimating(self.view, startAnimate: false)
+//            self.sentSMSCode = smsCode
+//        }) { (error) in
+//            self.startAnimating(self.view, startAnimate: false)
+//            print(error)
+//        }
     }
 }
 

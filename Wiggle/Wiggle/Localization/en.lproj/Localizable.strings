@@ -9,10 +9,14 @@
 
 "login_accept_terms" = "By logging in, you agree to our Terms of Service and Privacy Policy.";
 "facebook_button" = "Login with Facebook";
-"phone_button" = "Login with Phone Number";
+"email_button" = "Login with Email";
 "send_again_button" = "Send Again";
+"password_placeholder" = "Password";
+"email_desc_label" = "Please login with your email and password to activate your account";
+"email_valid_error" = "Invalid Email!";
+"email_login_success" = "You have successfully created your account. Press OK to continue!";
 
-"sms_login_title" = "SMS Login";
+"sms_login_title" = "Email Login";
 
 "continue_button" = "Continue";
 "ok_button" = "OK";

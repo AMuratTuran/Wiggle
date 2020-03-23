@@ -13,9 +13,14 @@ struct Localize {
     struct LoginSignup {
         static var AcceptTerms: String { return NSLocalizedString("login_accept_terms", comment: "LoginSignup") }
         static var FacebookButton: String { return NSLocalizedString("facebook_button", comment: "LoginSignup") }
-        static var PhoneButton: String { return NSLocalizedString("phone_button", comment: "LoginSignup") }
+        static var EmailButton: String { return NSLocalizedString("email_button", comment: "LoginSignup") }
         static var SMSLoginTitle: String { return NSLocalizedString("sms_login_title", comment: "LoginSignup") }
         static var SendAgain: String { return NSLocalizedString("send_again_button", comment: "LoginSignup") }
+        static var PasswordTF: String { return NSLocalizedString("password_placeholder", comment: "LoginSignup") }
+        static var EmailDesc: String { return NSLocalizedString("email_desc_label", comment: "LoginSignup") }
+        static var EmailValidError: String { return NSLocalizedString("email_valid_error", comment: "LoginSignup") }
+        static var SignupSuccess: String { return NSLocalizedString("email_login_success", comment: "LoginSignup") }
+        
     }
     
     struct Common {

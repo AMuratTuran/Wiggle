@@ -9,10 +9,14 @@
 
 "login_accept_terms" = "Giriş yaparak kullanıcı sözleşmemizi ve gizlilik politikamızı kabul etmiş olursunuz.";
 "facebook_button" = "Facebook ile giriş yap";
-"phone_button" = "Telefon ile giriş yap";
+"email_button" = "E-posta ile giriş yap";
 "send_again_button" = "Tekrar Gönder";
+"password_placeholder" = "Parola";
+"email_desc_label" = "Hesabınızı aktive etmek için lütfen e-posta ve şifren ile giriş yap";
+"email_valid_error" = "Hatalı Email!";
+"email_login_success" = "Hesabın başarıyla oluşturuldu. Giriş yapmak için Tamam'a bas!";
 
-"sms_login_title" = "SMS ile Giriş";
+"sms_login_title" = "Eposta ile Giriş";
 
 "continue_button" = "Devam";
 "ok_button" = "Tamam";
