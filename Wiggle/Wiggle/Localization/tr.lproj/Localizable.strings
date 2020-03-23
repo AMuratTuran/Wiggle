@@ -114,6 +114,9 @@
 
 "birthday_label" = "Doğum Günü";
 
+"like_toast_title" = "Beğendin";
+"like_toast_body" = "Karşı taraf da beğenirse eşleşeceksin";
+
 "block_user" = "Engelle";
 
 "yes_button" = "Evet";

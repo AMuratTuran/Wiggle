@@ -106,6 +106,8 @@ struct Localize {
         static var EditProfile: String { return NSLocalizedString("edit_profile", comment: "Profile") }
         static var Report: String { return NSLocalizedString("report_profile", comment: "Profile") }
         static var Birthday: String { return NSLocalizedString("birthday_label", comment: "Profile") }
+        static var LikeToastTitle: String { return NSLocalizedString("like_toast_title", comment: "Profile") }
+        static var LikeToastBody: String { return NSLocalizedString("like_toast_body", comment: "Profile") }
     }
     
     struct Chat {

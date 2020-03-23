@@ -110,9 +110,11 @@
 "premium_get_superlike" = "Get Super Likes";
 
 "terms_of_use" = "Terms Of Use";
-"privacy_policy" = "Pricavy Policy";
+"privacy_policy" = "Privacy Policy";
 
 "birthday_label" = "Birthday";
+"like_toast_title" = "Liked";
+"like_toast_body" = "You will match when other person likes you";
 
 "block_user" = "Block";
 

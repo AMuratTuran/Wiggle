@@ -91,6 +91,7 @@ class ProfileDetailViewController: UIViewController {
         if let receiverObjectId = wiggleCardModel?.objectId{
             delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down)
         }else if let receiverObjectId = userData?.objectId{
+            showToastMessage(title: Localize.Profile.LikeToastTitle, body: Localize.Profile.LikeToastBody)
             delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down)
         }
         moveToHomeViewControllerFromProfileDetail()
