@@ -15,6 +15,13 @@ class InAppPurchaseTableViewCell: UITableViewCell {
     @IBOutlet weak var discountView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
     
+    override func awakeFromNib() {
+        self.cornerRadius(self.frame.height / 2)
+        durationLabel.textColor = UIColor.white
+        priceLabel.textColor = UIColor.white
+        discountView.isHidden = true
+    }
+    
     var product : SKProduct?{
         didSet{
             setUI()
@@ -31,14 +38,13 @@ class InAppPurchaseTableViewCell: UITableViewCell {
     }()
     
     func setUI(){
+        
         guard let product = product else {return}
         
         InAppPurchaseTableViewCell.priceFormatter.locale = product.priceLocale
         priceLabel.text = InAppPurchaseTableViewCell.priceFormatter.string(from: product.price)
         
         durationLabel.text = product.localizedTitle
-        
-        discountView.isHidden = true
     }
 
 }

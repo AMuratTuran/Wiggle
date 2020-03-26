@@ -31,4 +31,13 @@ extension UIColor {
 
         self.init(red:red, green:green, blue:blue, alpha:alpha)
     }
+    
+    @nonobjc class var goldenColor: UIColor {
+        return UIColor(red: 217.0 / 255.0, green: 179.0 / 255.0, blue: 114.0 / 255.0, alpha: 1.0)
+    }
+    
+    @nonobjc class var shadowColor: UIColor {
+        return UIColor(hexString: "A2834D")
+    }
+    
 }

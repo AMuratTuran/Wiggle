@@ -14,7 +14,9 @@ class InAppPurchaseViewController: UIViewController {
     @IBOutlet weak var seperatorView: UIView!
     @IBOutlet weak var purchaseButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var closeButton: UIButton!
     
+    @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var beGoldMemberLabel: UILabel!
     @IBOutlet weak var unlimitedLikeLabel: UILabel!
     @IBOutlet weak var whoLikedYouLabel: UILabel!
@@ -23,6 +25,10 @@ class InAppPurchaseViewController: UIViewController {
     var products: [SKProduct] = []
     
     var selectedProduct : SKProduct?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.view.setGradientBackground()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,13 +45,27 @@ class InAppPurchaseViewController: UIViewController {
     }
     
     func configureViews(){
-        seperatorView.layer.cornerRadius = seperatorView.bounds.height / 2
-        purchaseButton.layer.cornerRadius = 12
+        topLabel.textColor = UIColor.goldenColor
         
+        closeButton.setTitle(Localize.Common.Close, for: .normal)
+        
+        purchaseButton.layer.cornerRadius = purchaseButton.frame.height / 2
         purchaseButton.setTitle(Localize.Purchase.PurchaseButton, for: .normal)
+        purchaseButton.backgroundColor = UIColor.goldenColor
+        purchaseButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)
+        
+        seperatorView.layer.cornerRadius = seperatorView.bounds.height / 2
+        seperatorView.backgroundColor = UIColor.goldenColor
+        
         beGoldMemberLabel.text = Localize.Purchase.BeGold
+        beGoldMemberLabel.textColor = UIColor.white
+        
         unlimitedLikeLabel.text = Localize.Purchase.UnlimitedLike
+        unlimitedLikeLabel.textColor = UIColor.white
+        
         whoLikedYouLabel.text = Localize.Purchase.WhoLikedYou
+        whoLikedYouLabel.textColor = UIColor.white
+        
     }
     
     @objc func reload() {
@@ -54,7 +74,7 @@ class InAppPurchaseViewController: UIViewController {
             guard let self = self else { return }
             DispatchQueue.main.async {
                 if success {
-                    let productsSorted = products?.sorted { $0.localizedTitle < $1.localizedTitle }
+                    let productsSorted = products?.sorted { Int($0.price) < Int($1.price) }
                     self.products = productsSorted ?? []
                     if productsSorted?.first?.localizedDescription.isEmpty ?? true{
                         let cancelButton = DefaultButton(title: Localize.Common.OKButton) {self.dismiss(animated: true) {}}

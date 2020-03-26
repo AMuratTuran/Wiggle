@@ -21,7 +21,7 @@ class SettingWithSliderCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        slider.thumbTintColor = UIColor.goldenColor
         // Initialization code
     }
 

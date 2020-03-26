@@ -50,7 +50,7 @@ class ProfileViewController: UIViewController {
         settingsButton.setWhiteGradient()
         
         changePhotoButton.cornerRadius(changePhotoButton.frame.height / 2)
-        changePhotoButton.layer.applyShadow(color: UIColor(hexString: "A2834D"), alpha: 0.48, x: 0, y: 5, blur: 20)
+        changePhotoButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)
         
         editProfileButton.cornerRadius(editProfileButton.frame.height / 2)
         editProfileButton.setWhiteGradient()
@@ -61,7 +61,7 @@ class ProfileViewController: UIViewController {
         
         profilePhoto.addBorder(UIColor(hexString: "D9B372"), width: 3)
         
-        storeButton.layer.applyShadow(color: UIColor(hexString: "A2834D"), alpha: 0.48, x: 0, y: 5, blur: 20)
+        storeButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)
         
         navigationController?.setNavigationBarHidden(true, animated: true)
         
