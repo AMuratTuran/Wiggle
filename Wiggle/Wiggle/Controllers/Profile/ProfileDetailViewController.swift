@@ -20,6 +20,7 @@ class ProfileDetailViewController: UIViewController {
     @IBOutlet weak var detailView: UIView!
     @IBOutlet weak var reportButton: UIButton!
     @IBOutlet weak var blockButton: UIButton!
+    @IBOutlet weak var aboutMeLabel: UILabel!
     
     var wiggleCardModel: WiggleCardModel?
     var userData: PFUser?
@@ -56,6 +57,8 @@ class ProfileDetailViewController: UIViewController {
     
     func prepareViews() {
         self.backButton.addShadow(UIColor(named: "shadowColor")!, shadowRadiues: 2.0, shadowOpacity: 0.4)
+        self.view.setGradientBackground()
+        aboutMeLabel.text = "About Me"
         if let user = wiggleCardModel{
             profileImageView.heroID = "fromHomeProfilePicture"
             nameLabel.heroID = "fromHomeName"

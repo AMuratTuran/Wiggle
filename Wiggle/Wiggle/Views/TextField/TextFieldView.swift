@@ -167,9 +167,9 @@ class TextFieldView: UIView {
     fileprivate func prepareError(_ isHidden: Bool) {
         if isHidden { errorLabel?.text = "" }
         if #available(iOS 13.0, *) {
-            lineView.backgroundColor = isHidden ? UIColor.separator : UIColor.red
+            lineView.backgroundColor = isHidden ? UIColor.white.withAlphaComponent(0.6) : UIColor.red
         } else {
-            lineView.backgroundColor = isHidden ? UIColor.lightGray : UIColor.red
+            lineView.backgroundColor = isHidden ? UIColor.white.withAlphaComponent(0.6) : UIColor.red
         }
     }
 

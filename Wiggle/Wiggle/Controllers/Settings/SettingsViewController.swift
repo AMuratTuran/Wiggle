@@ -56,6 +56,7 @@ class SettingsViewController: UIViewController {
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: FontHelper.medium(18)]
         self.view.setGradientBackground()
+        hideBackBarButtonTitle()
         
         tableView.delegate = self
         tableView.dataSource = self

@@ -40,14 +40,21 @@ class EditProfileViewController: UIViewController {
         guard let user = PFUser.current() else {
             return
         }
+        self.view.setGradientBackground()
+        transparentNavigationBar()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         
         self.imageBackgroundView.addShadow(UIColor(named: "shadowColor")!, shadowRadiues: 2.0, shadowOpacity: 0.4)
         let imageUrl = user.getPhotoUrl()
         profileImageView.kf.indicatorType = .activity
         profileImageView.kf.setImage(with: URL(string: imageUrl))
         
+        nameTextFieldView.getTextField().textColor = UIColor.white
         nameTextFieldView.text = user.getFirstName()
         nameStackView.addArrangedSubview(nameTextFieldView)
+        
+        lastnameTextFieldView.getTextField().textColor = UIColor.white
         lastnameTextFieldView.text = user.getLastName()
         nameStackView.addArrangedSubview(lastnameTextFieldView)
         prepareForValidation()
@@ -56,6 +63,7 @@ class EditProfileViewController: UIViewController {
         bioTextView.layer.borderColor = UIColor.systemGray.cgColor
         bioTextView.layer.borderWidth = 0.5
         bioTextView.layer.cornerRadius = 12.0
+        bioTextView.textColor = UIColor.white.withAlphaComponent(0.6)
         bioTextView.text = user.getBio()
         bioTextView.inputAccessoryView = InputAccessoryView(field: bioTextView, resignFunc: {
             self.bioTextView.endEditing(true)

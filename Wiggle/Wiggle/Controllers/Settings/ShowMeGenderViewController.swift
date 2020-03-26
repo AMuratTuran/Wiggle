@@ -22,8 +22,9 @@ class ShowMeGenderViewController: UIViewController {
     }
     
     func configureViews() {
-        self.title = "Show Me"
+        self.title = Localize.Gender.ShowMe
         self.selectedGender = AppConstants.Settings.SelectedShowMeGender
+        self.view.setGradientBackground()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "LabelWithCheckmarkCell", bundle: nil), forCellReuseIdentifier: "LabelWithCheckmarkCell")
@@ -67,7 +68,7 @@ extension ShowMeGenderViewController: UITableViewDelegate, UITableViewDataSource
         let label = UILabel(frame: CGRect(x: 15.0, y: 30, width: tableView.bounds.size.width, height: 21))
         headerView.addSubview(label)
         if #available(iOS 13.0, *) {
-            label.textColor = .secondaryLabel
+            label.textColor = UIColor.white.withAlphaComponent(0.6)
         } else {
             label.textColor = UIColor(hexString: "4a4a4a")
         }

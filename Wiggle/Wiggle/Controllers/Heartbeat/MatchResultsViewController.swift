@@ -32,6 +32,7 @@ class MatchResultsViewController: UIViewController {
     
     func prepare() {
         navigationController?.setNavigationBarHidden(false, animated: false)
+        self.view.setGradientBackground()
         heartBeatLabel.text = "\(Int(result?.bpm ?? 0)) BPM"
         collectionView.register(UINib(nibName: HeartbeatMatchCell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: HeartbeatMatchCell.reuseIdentifier)
         collectionView.delegate = self
@@ -87,7 +88,7 @@ extension MatchResultsViewController: UICollectionViewDataSource, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let windowWidth = collectionView.frame.width - 40
         let cellWidth = windowWidth / 2
-        return CGSize(width: cellWidth, height: cellWidth + 70)
+        return CGSize(width: cellWidth, height: cellWidth + 100)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

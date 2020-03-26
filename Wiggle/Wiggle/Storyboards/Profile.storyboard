@@ -14,6 +14,9 @@
         <array key="OpenSans-Regular.ttf">
             <string>OpenSans-Regular</string>
         </array>
+        <array key="OpenSans-SemiBold.ttf">
+            <string>OpenSans-SemiBold</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Profile View Controller-->
@@ -76,19 +79,19 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ath-Og-egU">
-                                <rect key="frame" x="62" y="324" width="56" height="17.5"/>
+                                <rect key="frame" x="62" y="324" width="56" height="20.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJq-kD-D0j">
-                                <rect key="frame" x="249" y="324" width="72.5" height="17.5"/>
+                                <rect key="frame" x="247" y="324" width="76" height="20.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Photo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xx0-tC-V4v">
-                                <rect key="frame" x="139.5" y="374" width="96.5" height="17.5"/>
+                                <rect key="frame" x="138.5" y="374" width="98.5" height="20.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -100,10 +103,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K3C-S1-peb">
-                                <rect key="frame" x="0.0" y="401.5" width="375" height="216.5"/>
+                                <rect key="frame" x="0.0" y="404.5" width="375" height="213.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPf-lm-3uf">
-                                        <rect key="frame" x="87.5" y="146.5" width="200" height="50"/>
+                                        <rect key="frame" x="87.5" y="143.5" width="200" height="50"/>
                                         <color key="backgroundColor" red="0.85098039215686272" green="0.70196078431372544" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="i7c-l8-noZ"/>
@@ -215,20 +218,20 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZf-PV-arD">
                                 <rect key="frame" x="20" y="175" width="29" height="25"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIh-k7-MEF">
                                 <rect key="frame" x="20" y="350" width="78" height="25"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62r-Qd-0Uj">
+                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62r-Qd-0Uj">
                                 <rect key="frame" x="20" y="385" width="335" height="36"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                 <state key="normal" title="Button">
-                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="pickBirthdayAction:" destination="BDF-fJ-k5s" eventType="touchUpInside" id="rxs-bo-Gkb"/>
@@ -236,25 +239,25 @@
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hWa-Aw-FMX">
                                 <rect key="frame" x="20" y="210" width="335" height="120"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="cQa-xx-6Hw"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. a qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ETy-GZ-Z61">
+                            <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ETy-GZ-Z61">
                                 <rect key="frame" x="20" y="422" width="335" height="2"/>
-                                <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="Jaj-eu-mLv"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hWa-Aw-FMX" firstAttribute="leading" secondItem="fls-Vs-QqP" secondAttribute="leading" id="3Z0-d2-yff"/>
                             <constraint firstItem="anV-ju-WQf" firstAttribute="height" secondItem="fls-Vs-QqP" secondAttribute="height" constant="-30" id="4ub-xU-2G1"/>
@@ -364,25 +367,33 @@
                                 <rect key="frame" x="0.0" y="375" width="375" height="177"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Murat Turan, 25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qn4-fO-hAL">
-                                        <rect key="frame" x="16" y="20" width="186" height="30"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="25"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="16" y="15" width="200" height="34.5"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="25"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Developer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWO-32-Ptu">
-                                        <rect key="frame" x="16" y="58" width="343" height="20"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="16" y="98" width="343" height="18"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uty-Yf-dXK">
+                                        <rect key="frame" x="16" y="64.5" width="44.5" height="23.5"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Qn4-fO-hAL" firstAttribute="top" secondItem="Er9-wj-Vv5" secondAttribute="top" constant="20" id="AbY-mW-Vsm"/>
+                                    <constraint firstItem="Qn4-fO-hAL" firstAttribute="top" secondItem="Er9-wj-Vv5" secondAttribute="top" constant="15" id="AbY-mW-Vsm"/>
                                     <constraint firstItem="Qn4-fO-hAL" firstAttribute="leading" secondItem="Er9-wj-Vv5" secondAttribute="leading" constant="16" id="CmR-EZ-eVS"/>
                                     <constraint firstItem="OWO-32-Ptu" firstAttribute="leading" secondItem="Er9-wj-Vv5" secondAttribute="leading" constant="16" id="M7Q-9F-KjK"/>
-                                    <constraint firstItem="OWO-32-Ptu" firstAttribute="top" secondItem="Qn4-fO-hAL" secondAttribute="bottom" constant="8" id="X2O-4l-xDE"/>
+                                    <constraint firstItem="uty-Yf-dXK" firstAttribute="leading" secondItem="Qn4-fO-hAL" secondAttribute="leading" id="XKk-bT-qr1"/>
                                     <constraint firstAttribute="trailing" secondItem="OWO-32-Ptu" secondAttribute="trailing" constant="16" id="YPu-hm-qTA"/>
+                                    <constraint firstItem="OWO-32-Ptu" firstAttribute="top" secondItem="uty-Yf-dXK" secondAttribute="bottom" constant="10" id="fQH-Vs-jot"/>
+                                    <constraint firstItem="uty-Yf-dXK" firstAttribute="top" secondItem="Qn4-fO-hAL" secondAttribute="bottom" constant="15" id="gY8-nU-R5B"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZf-Kw-rQR">
@@ -408,7 +419,9 @@
                                             <constraint firstAttribute="height" constant="30" id="xC6-pW-aHh"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
-                                        <state key="normal" title="Report"/>
+                                        <state key="normal" title="Report">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="reportAction:" destination="MF9-jC-nXk" eventType="touchUpInside" id="gNp-sd-jEP"/>
                                         </connections>
@@ -419,7 +432,9 @@
                                             <constraint firstAttribute="width" constant="60" id="Quo-Jn-dgW"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
-                                        <state key="normal" title="Engelle"/>
+                                        <state key="normal" title="Engelle">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="blockAction:" destination="MF9-jC-nXk" eventType="touchUpInside" id="3oj-QN-D3X"/>
                                         </connections>
@@ -431,7 +446,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="lXO-87-NtJ" firstAttribute="bottom" secondItem="Dmc-pv-zp3" secondAttribute="bottom" constant="5" id="MLm-KR-IIC"/>
                             <constraint firstItem="OZf-Kw-rQR" firstAttribute="bottom" secondItem="QgA-Vr-U6S" secondAttribute="bottom" id="MtS-FU-GFT"/>
@@ -450,6 +465,7 @@
                         <viewLayoutGuide key="safeArea" id="lXO-87-NtJ"/>
                     </view>
                     <connections>
+                        <outlet property="aboutMeLabel" destination="uty-Yf-dXK" id="cIO-tg-BsY"/>
                         <outlet property="backButton" destination="OZf-Kw-rQR" id="AJj-ec-EJf"/>
                         <outlet property="bioLabel" destination="OWO-32-Ptu" id="iYb-sS-gYl"/>
                         <outlet property="blockButton" destination="Zad-Hz-Nch" id="6gy-IU-Z5j"/>

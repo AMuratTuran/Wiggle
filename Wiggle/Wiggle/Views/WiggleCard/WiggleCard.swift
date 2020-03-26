@@ -12,7 +12,6 @@ import Kingfisher
 public class WiggleCardView : UIView{
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var nameSurname: UILabel!
-    @IBOutlet weak var location: UILabel!
     @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var bio: UILabel!
     @IBOutlet weak var likeImage: UIImageView!
@@ -80,7 +79,6 @@ class WiggleCard: WiggleCardComponent {
             view.profilePicture.image = UIImage(named: "profilePicture")
         }
         view.nameSurname.text = model.nameSurname
-        view.location.text = model.location
         view.distance.text = model.distance
         view.bio.text = model.bio
         view.profilePicture.heroID = "fromHomeProfilePicture"

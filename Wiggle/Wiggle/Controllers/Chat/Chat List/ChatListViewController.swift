@@ -199,7 +199,7 @@ extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
         if data.count == 0 {
             return self.tableView.frame.height
         }
-        return 70
+        return 110
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
