@@ -133,6 +133,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                     if let user = PFUser.current() {
                         let phone = user.getUsername()
                         cell.prepareCell(title: Localize.Settings.PhoneNumber, detail: phone)
+                        cell.arrowImage.isHidden = true
+                        cell.selectionStyle = .none
                     }
                 }
             }
@@ -142,9 +144,11 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier:  "SettingWithSliderCell", for: indexPath) as! SettingWithSliderCell
                 cell.delegate = self
                 cell.prepareCell(title: Localize.Settings.MaxDistance)
+                cell.selectionStyle = .none
                 return cell 
             }else if indexPath.row == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier:  "SettingWithLabelCell", for: indexPath) as! SettingWithLabelCell
+                cell.arrowImage.isHidden = false
                 if AppConstants.Settings.SelectedShowMeGender == 1 {
                     cell.prepareCell(title: Localize.Gender.ShowMe, detail: Localize.Gender.Male)
                 }else if AppConstants.Settings.SelectedShowMeGender == 2{

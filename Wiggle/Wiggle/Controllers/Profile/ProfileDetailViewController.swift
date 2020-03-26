@@ -56,6 +56,7 @@ class ProfileDetailViewController: UIViewController {
     }
     
     func prepareViews() {
+        self.view.setGradientBackground()
         self.backButton.addShadow(UIColor(named: "shadowColor")!, shadowRadiues: 2.0, shadowOpacity: 0.4)
         self.view.setGradientBackground()
         aboutMeLabel.text = "About Me"

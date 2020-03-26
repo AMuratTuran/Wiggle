@@ -11,12 +11,15 @@ import Parse
 
 class SettingWithLabelCell: UITableViewCell {
     
+    @IBOutlet weak var stackView: UIStackView!
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var arrowImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        stackView.setCustomSpacing(4, after: detailLabel)
         // Initialization code
     }
     
