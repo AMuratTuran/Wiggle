@@ -118,3 +118,25 @@ extension CALayer {
       }
     }
 }
+
+extension UIView {
+    func setGradientBackground(colorOne: UIColor = UIColor(hexString: "223C53"), colorTwo: UIColor = UIColor(hexString: "071930")) {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = bounds
+        gradientLayer.colors = [colorOne.cgColor, colorTwo.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.05)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.95)
+        layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    func setWhiteGradient() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = bounds
+        gradientLayer.colors = [UIColor.white.withAlphaComponent(0.21).cgColor, UIColor.white.withAlphaComponent(0.06).cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.05)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.95)
+        layer.insertSublayer(gradientLayer, at: 0)
+    }
+}
+
+

@@ -257,7 +257,6 @@ extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDe
         cell.imageView.hero.id = profileImageHeroId
         cell.nameAndAgeLabel.hero.id = nameHeroId
         cell.locationLabel.hero.id = subLabelId
-        cell.shadowView?.hero.id = contentViewId
         if matchedButton.isSelected {
             guard let data = matchedUserData else { return UICollectionViewCell() }
             if data.isEmpty {

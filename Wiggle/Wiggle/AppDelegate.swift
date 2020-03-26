@@ -56,7 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate {
         }else {
             UserDefaults.standard.set(1, forKey: "SelectedGender")
         }
-        UITabBar.appearance().unselectedItemTintColor = UIColor.lightGray
+        UITabBar.appearance().unselectedItemTintColor = UIColor.white
+        UITabBar.appearance().backgroundColor = .clear
     }
     
     func registerForPushNotifications(_ application: UIApplication) {

@@ -170,7 +170,7 @@ extension UIViewController {
     
     
     func addMessageIconToNavigationBar() {
-        let messageImage = UIImage(named: "chatImage")
+        let messageImage = UIImage(named: "chat-bubble")
         let messageBT = UIBarButtonItem(image: messageImage, style: .plain, target: self, action: #selector(messageTapped))
         navigationItem.rightBarButtonItems = [messageBT]
     }
@@ -455,7 +455,14 @@ extension UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont(name: "Cochin-BoldItalic", size: 20)!]
+        self.navigationController?.view.backgroundColor = .clear
+    }
+    
+    func transparentTabBar() {
+        self.tabBarController?.tabBar.backgroundImage = UIImage()
+        self.tabBarController?.tabBar.isTranslucent = true
+        self.tabBarController?.view.backgroundColor = .clear
     }
     
     func addProductLogoToNavigationBar(selector: Selector? = nil, logoName: String = "labeled-wiggle-logo", isItalicTitle: Bool = false) {

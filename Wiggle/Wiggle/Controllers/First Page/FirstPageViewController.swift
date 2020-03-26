@@ -22,11 +22,6 @@ class FirstPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        acceptTermsLabel.text = Localize.LoginSignup.AcceptTerms
-        facebookLoginButton.setTitle(Localize.LoginSignup.FacebookButton, for: .normal)
-        phoneLoginButton.setTitle(Localize.LoginSignup.EmailButton, for: .normal)
-        facebookLoginButton.layer.cornerRadius = 12.0
         prepareViews()
     }
     
@@ -36,12 +31,18 @@ class FirstPageViewController: UIViewController {
     }
     
     func prepareViews() {
+        self.view.setGradientBackground()
+        
+        facebookLoginButton.setTitle(Localize.LoginSignup.FacebookButton, for: .normal)
+        phoneLoginButton.setTitle(Localize.LoginSignup.EmailButton, for: .normal)
+        facebookLoginButton.layer.cornerRadius = 12.0
+        acceptTermsLabel.text = Localize.LoginSignup.AcceptTerms
+        
         buttonsStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         buttonsStackView.addArrangedSubview(facebookLoginButton)
         buttonsStackView.addArrangedSubview(phoneLoginButton)
         setUpSignInAppleButton()
         buttonsStackView.addArrangedSubview(acceptTermsLabel)
-        
     }
     
     func setUpSignInAppleButton() {
@@ -51,7 +52,6 @@ class FirstPageViewController: UIViewController {
             authorizationButton.cornerRadius = 12
             let heightConstraint = NSLayoutConstraint(item: authorizationButton, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 40)
             authorizationButton.addConstraints([heightConstraint])
-            //Add button on some view or stack
             self.buttonsStackView.addArrangedSubview(authorizationButton)
         }
     }
@@ -117,7 +117,6 @@ class FirstPageViewController: UIViewController {
     
     @available(iOS 13.0, *)
     func startAppleLogin(userId: String, credential: ASAuthorizationAppleIDCredential) {
-        if #available(iOS 13.0, *) {
             let appleIDProvider = ASAuthorizationAppleIDProvider()
             appleIDProvider.getCredentialState(forUserID: userId) {  (credentialState, error) in
                 if let error = error {
@@ -137,8 +136,6 @@ class FirstPageViewController: UIViewController {
                     break
                 }
             }
-        } else {
-        }
     }
     
     @available(iOS 13.0, *)

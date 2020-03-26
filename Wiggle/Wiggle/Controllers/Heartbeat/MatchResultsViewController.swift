@@ -80,7 +80,6 @@ extension MatchResultsViewController: UICollectionViewDataSource, UICollectionVi
         cell.imageView.hero.id = profileImageHeroId
         cell.nameAndAgeLabel.hero.id = nameHeroId
         cell.locationLabel.hero.id = subLabelId
-        cell.shadowView?.hero.id = contentViewId
         cell.prepare(with: data[indexPath.row])
         return cell
     }

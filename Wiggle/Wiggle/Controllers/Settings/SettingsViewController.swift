@@ -26,7 +26,6 @@ class SettingsViewController: UIViewController {
         self.title = Localize.Profile.Settings
         rightBarButton.title = Localize.Common.Close
         configureViews()
-        transparentNavigationBar()
         initUpwardsAnimation()
     }
     
@@ -53,6 +52,11 @@ class SettingsViewController: UIViewController {
     }
     
     func configureViews() {
+        transparentNavigationBar()
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: FontHelper.medium(18)]
+        self.view.setGradientBackground()
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: SettingsPremiumTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: SettingsPremiumTableViewCell.reuseIdentifier)
@@ -61,7 +65,6 @@ class SettingsViewController: UIViewController {
         tableView.register(UINib(nibName: CellWithToggleCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: CellWithToggleCell.reuseIdentifier)
         tableView.register(UINib(nibName: SettingWithSliderCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: SettingWithSliderCell.reuseIdentifier)
         tableView.register(UINib(nibName: LogoutCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: LogoutCell.reuseIdentifier)
-        
     }
     
     func saveDistanceInfo() {
@@ -204,11 +207,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let label = UILabel(frame: CGRect(x: 15.0, y: 0, width: tableView.bounds.size.width, height: 60))
         headerView.addSubview(label)
         label.font = FontHelper.regular(16)
-        if #available(iOS 13.0, *) {
-            label.textColor = .secondaryLabel
-        } else {
-            label.textColor = UIColor.gray
-        }
+        label.textColor = UIColor.white.withAlphaComponent(0.6)
         if section == 1 {
             label.text = Localize.Settings.AccountSettings
         }else if section == 2 {

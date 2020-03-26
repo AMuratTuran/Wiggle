@@ -33,85 +33,42 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         configureViews()
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
-
-        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-4067151614085861/4960834755")
-        let request = GADRequest()
-//        interstitial.load(request)
-//        checkForAdd()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        configureBannerView()
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
     }
 
-    
-    func configureBannerView() {
-        bannerView.adUnitID = "ca-app-pub-4067151614085861/4960834755"
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
-        bannerView.delegate = self
-        bannerView.load(GADRequest())
-    }
-    
-    func addBannerViewToView(_ bannerView: GADBannerView) {
-        bannerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bannerView)
-        view.addConstraints(
-            [NSLayoutConstraint(item: bannerView,
-                                attribute: .bottom,
-                                relatedBy: .equal,
-                                toItem: bottomLayoutGuide,
-                                attribute: .top,
-                                multiplier: 1,
-                                constant: 0),
-             NSLayoutConstraint(item: bannerView,
-                                attribute: .centerX,
-                                relatedBy: .equal,
-                                toItem: view,
-                                attribute: .centerX,
-                                multiplier: 1,
-                                constant: 0),
-             NSLayoutConstraint(item: bannerView,
-                                attribute: .leading,
-                                relatedBy: .equal,
-                                toItem: view,
-                                attribute: .leading,
-                                multiplier: 1,
-                                constant: 0),
-             NSLayoutConstraint(item: bannerView,
-                                attribute: .trailing,
-                                relatedBy: .equal,
-                                toItem: view,
-                                attribute: .trailing,
-                                multiplier: 1,
-                                constant: 0)
-            ])
-    }
-    
-    func checkForAdd(){
-        let shouldShow = Bool.random()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) {
-            if self.interstitial.isReady && shouldShow && !(PFUser.current()?.getGold() ?? true){
-                self.interstitial.present(fromRootViewController: self)
-            }
-        }
-    }
     func configureViews() {
+        
         guard PFUser.current() != nil else {
             return
         }
+
+        transparentTabBar()
+        self.view.setGradientBackground()
+        
         settingsButton.cornerRadius(settingsButton.frame.height / 2)
+        settingsButton.setWhiteGradient()
+        
         changePhotoButton.cornerRadius(changePhotoButton.frame.height / 2)
+        changePhotoButton.layer.applyShadow(color: UIColor(hexString: "A2834D"), alpha: 0.48, x: 0, y: 5, blur: 20)
+        
         editProfileButton.cornerRadius(editProfileButton.frame.height / 2)
+        editProfileButton.setWhiteGradient()
+
         profilePhoto.cornerRadius(profilePhoto.frame.height / 2)
         imageBackgroundView.cornerRadius(imageBackgroundView.frame.height / 2)
         imageBackgroundView.clipsToBounds = false
+        
+        profilePhoto.addBorder(UIColor(hexString: "D9B372"), width: 3)
+        
+        storeButton.layer.applyShadow(color: UIColor(hexString: "A2834D"), alpha: 0.48, x: 0, y: 5, blur: 20)
+        
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
         settingsLabel.text = Localize.Profile.Settings
         changePhotoLabel.text = Localize.Profile.ChangePhoto
         editProfileLabel.text = Localize.Profile.EditProfile
+        
         updateViews()
     }
     
@@ -133,11 +90,7 @@ class ProfileViewController: UIViewController {
     }
     
     func prepareViews() {
-        self.settingsButton.addShadow(UIColor(named: "shadowColor")!)
-        self.changePhotoButton.addShadow(UIColor(named: "shadowColor")!)
-        self.editProfileButton.addShadow(UIColor(named: "shadowColor")!)
-        self.imageBackgroundView.addShadow(UIColor(named: "shadowColor")!, shadowRadiues: 2.0, shadowOpacity: 0.4)
-        self.storeButton.addShadow(UIColor(named: "shadowColor")!, shadowRadiues: 2.0, shadowOpacity: 0.4)
+        
     }
     
     func updateImage() {

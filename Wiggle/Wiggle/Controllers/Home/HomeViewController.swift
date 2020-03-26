@@ -49,16 +49,6 @@ class HomeViewController: UIViewController, userActionsDelegate {
         configureBannerView()
     }
     
-    func testModel(){
-        let user1 = WiggleCardModel(profilePicture: "", nameSurname: "Tolga Tas", location: "", distance: "", bio: "", objectId: "")
-        let user2 = WiggleCardModel(profilePicture: "", nameSurname: "Tolga Tas", location: "", distance: "", bio: "", objectId: "")
-        let user3 = WiggleCardModel(profilePicture: "", nameSurname: "Tolga Tas", location: "", distance: "", bio: "", objectId: "")
-        let user4 = WiggleCardModel(profilePicture: "", nameSurname: "Tolga Tas", location: "", distance: "", bio: "", objectId: "")
-        let user5 = WiggleCardModel(profilePicture: "", nameSurname: "Tolga Tas", location: "", distance: "", bio: "", objectId: "")
-        
-        cardArray = [user1, user2, user3, user4, user5]
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         WiggleProducts.store.verifyReceipt { _, _ in
@@ -185,6 +175,9 @@ class HomeViewController: UIViewController, userActionsDelegate {
     }
     
     func configureViews() {
+        transparentNavigationBar()
+        transparentTabBar()
+        self.view.setGradientBackground()
         kolodaView.cornerRadius(12.0)
         kolodaView.clipsToBounds = true
         addTapGesture()

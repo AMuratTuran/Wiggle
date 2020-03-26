@@ -15,7 +15,6 @@ class HeartbeatMatchCell: UICollectionViewCell {
     @IBOutlet weak var nameAndAgeLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var containerView: UIView?
-    @IBOutlet weak var shadowView: UIView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,10 +31,8 @@ class HeartbeatMatchCell: UICollectionViewCell {
       UIView.animate(withDuration: 0.3) {
         if down {
             self.containerView?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-            self.shadowView?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
         } else {
             self.containerView?.transform = .identity
-            self.shadowView?.transform = .identity
         }
       }
     }
@@ -45,7 +42,6 @@ class HeartbeatMatchCell: UICollectionViewCell {
     }
     
     func prepare() {
-        shadowView?.layer.applyShadow(color: UIColor(named: "shadowColor")!, alpha: 0.3, x: 0, y: 10, blur: 25, spread: 0)
     }
     
     func prepare(with data: PFUser) {

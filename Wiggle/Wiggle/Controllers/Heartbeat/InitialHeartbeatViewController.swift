@@ -20,9 +20,17 @@ class InitialHeartbeatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        initializeViews()
+    }
+    
+    func initializeViews() {
         hideBackBarButtonTitle()
+        transparentTabBar()
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        view.setGradientBackground()
+                
         startButton.setTitle(Localize.Common.Start, for: .normal)
+        startButton.layer.applyShadow(color: UIColor(hexString: "A2834D"), alpha: 0.48, x: 0, y: 5, blur: 20)
         titleLabel.text = Localize.Heartbeat.Title
         instructionLabel.text = Localize.Heartbeat.PlaceFinger
     }

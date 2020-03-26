@@ -39,7 +39,7 @@ class ChatListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = Localize.Chat.Chats
+        initializeView()
         guard let currentUser = PFUser.current() else {
             self.navigationController?.popViewController(animated: true)
             return
@@ -60,6 +60,14 @@ class ChatListViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         getChatList()
         getMatchedUsers()
+    }
+    
+    func initializeView() {
+        self.title = Localize.Chat.Chats
+        self.view.setGradientBackground()
+        transparentNavigationBar()
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     func getMatchedUsers() {

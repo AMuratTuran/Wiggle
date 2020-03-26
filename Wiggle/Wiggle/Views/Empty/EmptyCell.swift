@@ -27,7 +27,7 @@ class EmptyCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func prepare(icon: UIImage, description: String, isButtonVisible:Bool = false, buttonText: String, buttonColor: UIColor = UIColor.systemPink, buttonAction: (() -> Void)?) {
+    func prepare(icon: UIImage, description: String, isButtonVisible:Bool = false, buttonText: String, buttonColor: UIColor = UIColor(hexString: "D9B372"), buttonAction: (() -> Void)?) {
         iconImageView.image = icon
         descriptionLabel.text = description
         actionButton.isHidden = !isButtonVisible
