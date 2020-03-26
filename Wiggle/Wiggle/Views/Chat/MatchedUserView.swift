@@ -36,6 +36,7 @@ class MatchedUserView: UIView  {
     
     func prepare(with data: PFUser, delegate: MatchViewDelegate) {
         self.data = data
+        imageView.changeBorderWidth(0)
         let imageUrl = data.getPhotoUrl()
         imageView.kf.indicatorType = .activity
         imageView.kf.setImage(with: URL(string: imageUrl))
@@ -46,11 +47,7 @@ class MatchedUserView: UIView  {
     
     func prepareForMatchScreen() {
         nameLabel.isHidden = true
-        if #available(iOS 13.0, *) {
-            imageView.image = UIImage(named: "chatDummy")
-        } else {
-            // Fallback on earlier versions
-        }
+        imageView.addBorder(UIColor(hexString: "D9B372"), width: 2)
     }
     
     @IBAction func viewTapped(_ sender: Any) {

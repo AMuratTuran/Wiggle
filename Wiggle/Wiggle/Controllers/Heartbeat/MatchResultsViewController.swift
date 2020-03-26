@@ -26,12 +26,13 @@ class MatchResultsViewController: UIViewController {
         super.viewDidLoad()
         prepare()
         getMatchData()
-        addProductLogoToNavigationBar()
         // Do any additional setup after loading the view.
     }
     
     func prepare() {
         navigationController?.setNavigationBarHidden(false, animated: false)
+        transparentNavigationBar()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: FontHelper.bold(18)]
         self.view.setGradientBackground()
         heartBeatLabel.text = "\(Int(result?.bpm ?? 0)) BPM"
         collectionView.register(UINib(nibName: HeartbeatMatchCell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: HeartbeatMatchCell.reuseIdentifier)

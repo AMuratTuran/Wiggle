@@ -55,7 +55,9 @@ class ChatViewController: MessagesViewController {
             return
             // navigate to login
         }
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: FontHelper.bold(16)]
+        self.view.setGradientBackground()
+        transparentNavigationBar()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: FontHelper.bold(16), NSAttributedString.Key.foregroundColor: UIColor.white]
         hideBackBarButtonTitle()
         self.currentUser = currentUser
         imagePicker = ImagePicker(presentationController: self, delegate: self)
@@ -67,7 +69,6 @@ class ChatViewController: MessagesViewController {
         } else {
             // Fallback on earlier versions
         }
-        self.navigationItem.backBarButtonItem?.title = ""
         self.hidesBottomBarWhenPushed = true
         addProfilePhotoNavigationBar()
         configureMessageCollectionView()
@@ -81,11 +82,7 @@ class ChatViewController: MessagesViewController {
         
         messagesCollectionView.contentInset.bottom = messageInputBar.frame.height
         messagesCollectionView.scrollIndicatorInsets.bottom = messageInputBar.frame.height
-        if #available(iOS 13.0, *) {
-            messagesCollectionView.backgroundColor = .systemBackground
-        } else {
-            messagesCollectionView.backgroundColor = .white
-        }
+        messagesCollectionView.backgroundColor = .clear
     }
     
     override func viewWillLayoutSubviews() {
@@ -192,7 +189,6 @@ class ChatViewController: MessagesViewController {
         messagesCollectionView.messageCellDelegate = self
         messagesCollectionView.messagesDataSource = self
         messageInputBar.delegate = self
-        messagesCollectionView.backgroundColor = UIColor.white
     }
     
     func configureMessageCollectionViewLayout() {
@@ -219,26 +215,30 @@ class ChatViewController: MessagesViewController {
     func configureMessageInputBar() {
         messageInputBar.setLeftStackViewWidthConstant(to: 38, animated: false)
         messageInputBar.setStackViewItems([addButton, InputBarButtonItem.fixedSpace(2)], forStack: .left, animated: false)
+        messageInputBar.leftStackView.backgroundColor = .clear
+        messageInputBar.backgroundView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
         addButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         addButton.setSize(CGSize(width: 36, height: 36), animated: false)
         addButton.title = nil
         addButton.imageView?.layer.cornerRadius = 16
         addButton.backgroundColor = .clear
-        addButton.imageView?.backgroundColor = .systemPink
-        addButton.tintColor = .systemPink
+        addButton.imageView?.backgroundColor = .white
+        addButton.tintColor = .white
         addButton.image = UIImage(named: "add")
         addButton.addTarget(self, action: #selector(addImageTapped), for: .touchUpInside)
         messageInputBar.isTranslucent = true
         messageInputBar.separatorLine.isHidden = true
+        messageInputBar.inputTextView.backgroundColor = .clear
+        messageInputBar.contentView.backgroundColor = .clear
         messageInputBar.inputTextView.tintColor =  UIColor(red: 178/255, green: 178/255, blue: 178/255, alpha: 1)
         messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 12, left: 16, bottom: 8, right: 36)
         messageInputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 12, left: 20, bottom: 8, right: 36)
         messageInputBar.shouldAutoUpdateMaxTextViewHeight = false
-        messageInputBar.inputTextView.textColor = UIColor(red: 52/255, green: 52/255, blue: 52/255, alpha: 1)
+        messageInputBar.inputTextView.textColor = UIColor.white
         messageInputBar.maxTextViewHeight = 100
-        messageInputBar.inputTextView.font = FontHelper.regular(16.0)
+        messageInputBar.inputTextView.font = FontHelper.regular(15.0)
         messageInputBar.inputTextView.placeholder = ""
-        messageInputBar.inputTextView.layer.borderColor = UIColor(red: 141/255, green: 141/255, blue: 141/255, alpha: 1).cgColor
+        messageInputBar.inputTextView.layer.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
         messageInputBar.inputTextView.layer.borderWidth = 0.5
         messageInputBar.inputTextView.layer.cornerRadius = 20.0
         messageInputBar.inputTextView.layer.masksToBounds = true
@@ -320,7 +320,7 @@ class ChatViewController: MessagesViewController {
     }
     
     private func configureInputBarItems() {
-        messageInputBar.sendButton.backgroundColor = UIColor.gray
+        messageInputBar.sendButton.backgroundColor = UIColor(hexString: "D9B372")
         messageInputBar.setRightStackViewWidthConstant(to: 40, animated: false)
         messageInputBar.sendButton.setSize(CGSize(width: 40, height: 40), animated: false)
         messageInputBar.sendButton.image = UIImage(named: "icon_smartsearch_message")
@@ -333,11 +333,11 @@ class ChatViewController: MessagesViewController {
         messageInputBar.sendButton
             .onEnabled { item in
                 UIView.animate(withDuration: 0.2, animations: {
-                    item.backgroundColor = UIColor.systemPink
+                    item.backgroundColor = UIColor(hexString: "D9B372")
                 })
         }.onDisabled { item in
             UIView.animate(withDuration: 0.2, animations: {
-                item.backgroundColor = UIColor.gray
+                item.backgroundColor = UIColor(hexString: "BC9A5F")
             })
         }
     }
@@ -345,7 +345,7 @@ class ChatViewController: MessagesViewController {
     
     func addProfilePhotoNavigationBar() {
         circleView = UIView(frame: CGRect(x: 0, y: 0, width: 36, height: 36))
-        circleView.layer.borderColor = UIColor.systemPink.cgColor
+        circleView.layer.borderColor = UIColor(hexString: "D9B372").cgColor
         circleView.layer.borderWidth = 2
         circleView.layer.cornerRadius = circleView.frame.width / 2
         // user image
@@ -391,7 +391,7 @@ class ChatViewController: MessagesViewController {
 extension ChatViewController: MessagesDisplayDelegate {
     
     func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return UIColor(red: 52/255, green: 52/255, blue: 52/255, alpha: 1)
+        return UIColor.white
     }
     
     func detectorAttributes(for detector: DetectorType, and message: MessageType, at indexPath: IndexPath) -> [NSAttributedString.Key: Any] {
@@ -425,7 +425,7 @@ extension ChatViewController: MessagesDisplayDelegate {
     }
     
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? UIColor(red: 228/255, green: 233/255, blue: 252/255, alpha: 1) : UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+        return isFromCurrentSender(message: message) ? UIColor(hexString: "D9B372") : UIColor.white.withAlphaComponent(0.1)
     }
     
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
@@ -499,7 +499,7 @@ extension ChatViewController: MessagesDataSource {
     
     func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         if isTimeLabelVisible(at: indexPath) {
-            return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate), attributes: [NSAttributedString.Key.font: FontHelper.regular(10), NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+            return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate), attributes: [NSAttributedString.Key.font: FontHelper.regular(12), NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.6)])
         }
         return nil
     }

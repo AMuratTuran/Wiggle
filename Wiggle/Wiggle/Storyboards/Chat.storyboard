@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8at-pz-eGu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8at-pz-eGu">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,7 +24,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gZo-Bv-Jxf">
                                 <rect key="frame" x="0.0" y="98" width="375" height="569"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YI7-AD-C9e">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -47,14 +47,14 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AgG-wq-IQR">
                                         <rect key="frame" x="137.5" y="25" width="100" height="40"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="20"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gz1-52-N4G">
+                                    <view clipsSubviews="YES" alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gz1-52-N4G">
                                         <rect key="frame" x="137.5" y="25" width="100" height="40"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1PL-vy-lUa">
@@ -62,7 +62,7 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F74-h2-aq6">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="40"/>
-                                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="heart.fill" catalog="system"/>
                                                         <connections>
@@ -71,7 +71,7 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDG-YM-bFb">
                                                         <rect key="frame" x="50" y="0.0" width="50" height="40"/>
-                                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" image="bolt.fill" catalog="system"/>
                                                         <connections>
@@ -79,13 +79,14 @@
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="ZMh-Fu-IEq"/>
                                                     <constraint firstAttribute="height" constant="40" id="k08-tT-CLK"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="1PL-vy-lUa" secondAttribute="trailing" id="1V1-m1-11K"/>
                                             <constraint firstItem="1PL-vy-lUa" firstAttribute="leading" secondItem="Gz1-52-N4G" secondAttribute="leading" id="6At-Da-HCq"/>
@@ -101,15 +102,15 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dbc-cd-7Qs">
-                                        <rect key="frame" x="15" y="28" width="34.5" height="34.5"/>
-                                        <color key="tintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" image="icon_smartsearch_message"/>
+                                        <rect key="frame" x="15" y="34" width="21" height="22"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="chat-bubble"/>
                                         <connections>
                                             <action selector="messageButtonTapped:" destination="mao-2p-mRM" eventType="touchUpInside" id="ROL-3n-4oA"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Gz1-52-N4G" firstAttribute="centerY" secondItem="lqs-yf-Aqi" secondAttribute="centerY" id="05H-bZ-psS"/>
                                     <constraint firstAttribute="height" constant="90" id="59D-q5-iFH"/>
@@ -123,7 +124,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="lqs-yf-Aqi" firstAttribute="trailing" secondItem="0sX-jU-9Ed" secondAttribute="trailing" id="8ep-S8-8ol"/>
                             <constraint firstAttribute="trailing" secondItem="gZo-Bv-Jxf" secondAttribute="trailing" id="9yi-Ot-Uqg"/>
@@ -137,6 +138,7 @@
                         <viewLayoutGuide key="safeArea" id="0sX-jU-9Ed"/>
                     </view>
                     <connections>
+                        <outlet property="buttonContainerView" destination="Gz1-52-N4G" id="ZMQ-aH-GTv"/>
                         <outlet property="buttonShadowView" destination="AgG-wq-IQR" id="Bf9-vY-ACa"/>
                         <outlet property="buttonsStackView" destination="1PL-vy-lUa" id="XaL-lI-pkj"/>
                         <outlet property="collectionView" destination="gZo-Bv-Jxf" id="dpE-YN-HMi"/>
@@ -283,10 +285,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bolt.fill" catalog="system" width="101" height="128"/>
-        <image name="bubble.left.fill" catalog="system" width="128" height="110"/>
-        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="bolt.fill" catalog="system" width="50" height="64"/>
+        <image name="bubble.left.fill" catalog="system" width="64" height="54"/>
+        <image name="chat-bubble" width="21" height="20"/>
+        <image name="heart.fill" catalog="system" width="64" height="54"/>
         <image name="icon_smartsearch_message" width="34.5" height="34.5"/>
-        <image name="x.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="x.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>

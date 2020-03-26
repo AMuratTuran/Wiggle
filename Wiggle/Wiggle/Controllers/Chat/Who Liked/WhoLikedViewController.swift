@@ -19,6 +19,7 @@ class WhoLikedViewController: UIViewController {
     @IBOutlet weak var buttonsStackView: UIStackView!
     @IBOutlet weak var messagesButton: UIButton!
     @IBOutlet weak var buttonShadowView: UIView!
+    @IBOutlet weak var buttonContainerView: UIView!
     
     
     var matchedUserData: [PFUser]? {
@@ -110,11 +111,13 @@ class WhoLikedViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        buttonShadowView.layer.applyShadow(color: UIColor(named: "shadowColor")!, alpha: 0.3, x: 0, y: 10, blur: 25, spread: 0)
+        buttonShadowView.layer.applyShadow(color: UIColor(hexString: "A2834D"), alpha: 0.48, x: 0, y: 5, blur: 20)
     }
     
     func prepareViews() {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.view.setGradientBackground()
+        buttonContainerView.setWhiteGradient()
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 20, right: 0)
@@ -123,8 +126,7 @@ class WhoLikedViewController: UIViewController {
         buttonsStackView.cornerRadius(25.0)
         buttonsStackView.clipsToBounds = true
         matchedButton.isSelected = true
-        matchedButton.backgroundColor = .systemPink
-        let image = UIImage(named: "icon_smartsearch_message")?.withRenderingMode(.alwaysTemplate)
+        let image = UIImage(named: "chat-bubble")?.withRenderingMode(.alwaysTemplate)
         messagesButton.setImage(image, for: .normal)
     }
     
@@ -197,12 +199,8 @@ class WhoLikedViewController: UIViewController {
     fileprivate func switchToMatchScreen() {
         self.matchedButton.isSelected = true
         self.likedButton.isSelected = false
-        self.matchedButton.backgroundColor = .systemPink
-        if #available(iOS 13.0, *) {
-            self.likedButton.backgroundColor = .secondarySystemBackground
-        } else {
-            // Fallback on earlier versions
-        }
+        self.matchedButton.setGradientBackground(colorOne: UIColor(hexString: "BC9A5F"), colorTwo: UIColor(hexString: "A2834D"))
+        self.likedButton.backgroundColor = .clear
         self.getMatchData()
     }
     
@@ -213,12 +211,8 @@ class WhoLikedViewController: UIViewController {
     @IBAction func likedButtonTapped(_ sender: UIButton) {
         sender.isSelected = true
         matchedButton.isSelected = false
-        likedButton.backgroundColor = .systemPink
-        if #available(iOS 13.0, *) {
-            matchedButton.backgroundColor = .secondarySystemBackground
-        } else {
-            // Fallback on earlier versions
-        }
+        likedButton.backgroundColor = UIColor(hexString: "D9B372")
+        matchedButton.backgroundColor = UIColor.clear
         collectionView.reloadData()
         getWhoLiked()
     }
@@ -287,7 +281,7 @@ extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDe
             }else {
                 let windowWidth = collectionView.frame.width - 40
                 let cellWidth = windowWidth / 2
-                return CGSize(width: cellWidth, height: cellWidth + 70)
+                return CGSize(width: cellWidth, height: cellWidth + 100)
             }
         }else {
             guard let data = usersLikedYouData else { return  .zero}
@@ -296,7 +290,7 @@ extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDe
             }else {
                 let windowWidth = collectionView.frame.width - 40
                 let cellWidth = windowWidth / 2
-                return CGSize(width: cellWidth, height: cellWidth + 70)
+                return CGSize(width: cellWidth, height: cellWidth + 100)
             }
         }
     }

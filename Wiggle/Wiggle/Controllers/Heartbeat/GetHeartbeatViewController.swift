@@ -23,9 +23,10 @@ protocol HeartRateDelegate {
 class GetHeartbeatViewController: UIViewController {
     // MARK: Heartbeat variables
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var dismissButton: UIButton!
     
     var shouldAbortAfterSeconds:Int = 20
-    var timeToDetermineBPMFinalResultInSeconds:Double = 0.5
+    var timeToDetermineBPMFinalResultInSeconds:Double = 0.2
     
     // MARK: AVFoundation variables
     var session: AVCaptureSession?
@@ -58,6 +59,10 @@ class GetHeartbeatViewController: UIViewController {
     
     
     func prepare() {
+        self.view.setGradientBackground()
+        dismissButton.cornerRadius(dismissButton.frame.height / 2)
+        dismissButton.setWhiteGradient()
+        
         algorithm = HeartRateKitAlgorithm()
         algorithm?.windowSize = 9
         algorithm?.filterWindowSize = 45
