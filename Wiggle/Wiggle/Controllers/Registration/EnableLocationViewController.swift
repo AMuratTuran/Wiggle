@@ -27,6 +27,8 @@ class EnableLocationViewController: UIViewController {
         prepareViews()
     }
     func prepareViews() {
+        self.view.setGradientBackground()
+        enableButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)
         enableButton.setTitle(Localize.EnableLocation.EnableButton, for: .normal)
         topLabel.text = Localize.EnableLocation.EnableLocation
         descriptionLabel.text = Localize.EnableLocation.Description

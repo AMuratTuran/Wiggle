@@ -19,9 +19,13 @@ class EnableNotificationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareViews()
+        
     }
     
     func prepareViews() {
+        self.view.setGradientBackground()
+        enableButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)
+        enableButton.setTitle(Localize.EnableLocation.EnableButton, for: .normal)
         topLabel.text = Localize.EnableNotifications.EnableNotification
         descriptionLabel.text = Localize.EnableNotifications.Description
         enableButton.setTitle(Localize.EnableNotifications.EnableButton, for: .normal)

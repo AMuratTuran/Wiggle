@@ -25,6 +25,7 @@ class EnterPhoneViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         prepareViews()
         enableValidations()
         hideBackBarButtonTitle()
@@ -35,7 +36,7 @@ class EnterPhoneViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         continueButton.isUserInteractionEnabled = true
-        passwordTextField.placeholder = Localize.LoginSignup.PasswordTF
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: Localize.LoginSignup.PasswordTF, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
         descriptionLabel.text = Localize.LoginSignup.EmailDesc
     }
     
@@ -45,8 +46,13 @@ class EnterPhoneViewController: UIViewController {
     }
     
     func prepareViews() {
+        self.view.setGradientBackground()
+        whiteAndTransparentLabelNavigationBar()
+        continueButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)
         continueButton.setTitle(Localize.Common.ContinueButton, for: .normal)
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
         emailTextField.delegate = self
+        self.navigationController?.navigationBar.tintColor = .white
     }
     
     @IBAction func continueTapped(_ sender: Any) {

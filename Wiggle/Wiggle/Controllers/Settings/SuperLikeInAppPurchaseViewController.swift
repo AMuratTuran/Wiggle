@@ -39,6 +39,7 @@ class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.setGradientBackground()
         continueButton.bringSubviewToFront(continueButton.titleLabel!)
         
         configureViews()

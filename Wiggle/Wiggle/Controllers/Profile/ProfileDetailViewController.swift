@@ -47,6 +47,7 @@ class ProfileDetailViewController: UIViewController {
         bioLabel.hero.id = "subLabel\(indexOfParentCell ?? 0)"
         self.view.hero.id = "contentView\(indexOfParentCell ?? 0)"
         backButton.cornerRadius(backButton.frame.height / 2)
+        backButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)
         superLikeCount = PFUser.current()?.getSuperLike() ?? 0
     }
     

@@ -32,7 +32,7 @@ class FirstPageViewController: UIViewController {
     
     func prepareViews() {
         self.view.setGradientBackground()
-        
+        hideBackBarButtonTitle()
         facebookLoginButton.setTitle(Localize.LoginSignup.FacebookButton, for: .normal)
         phoneLoginButton.setTitle(Localize.LoginSignup.EmailButton, for: .normal)
         facebookLoginButton.layer.cornerRadius = 12.0

@@ -43,12 +43,14 @@ class GetNameViewController: UIViewController {
     }
     
     func prepareViews() {
+        self.view.setGradientBackground()
+        continueButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)
         continueButton.setTitle(Localize.Common.ContinueButton, for: .normal)
         topLabel.text = Localize.GetName.Title
         nameTextField.delegate = self
-        nameTextField.placeholder = Localize.Placeholder.FirstNamePlaceholder
         lastnameTextField.delegate = self
-        lastnameTextField.placeholder = Localize.Placeholder.LastNamePlaceholder
+        nameTextField.attributedPlaceholder = NSAttributedString(string: Localize.Placeholder.FirstNamePlaceholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        lastnameTextField.attributedPlaceholder = NSAttributedString(string: Localize.Placeholder.LastNamePlaceholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
         
         if let user = PFUser.current() {
             let firstName = user.getFirstName()

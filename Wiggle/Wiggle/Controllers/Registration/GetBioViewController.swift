@@ -22,6 +22,8 @@ class GetBioViewController: UIViewController {
     }
     
     func prepareViews() {
+        self.view.setGradientBackground()
+        continueButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)
         continueButton.setTitle(Localize.Common.ContinueButton, for: .normal)
         bioTextView.layer.borderColor = UIColor.systemGray.cgColor
         bioTextView.layer.borderWidth = 0.5

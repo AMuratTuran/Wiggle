@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,15 +28,24 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTI-yj-5zZ">
                                 <rect key="frame" x="10" y="174.5" width="395" height="23.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-data-icon-1" translatesAutoresizingMaskIntoConstraints="NO" id="7HM-I9-6VE">
+                                <rect key="frame" x="187.5" y="104.5" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="12g-kE-2Kc"/>
+                                    <constraint firstAttribute="height" constant="40" id="Pj5-ts-ad5"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="NTI-yj-5zZ" firstAttribute="leading" secondItem="FFo-8P-A0Q" secondAttribute="leading" constant="10" id="MVf-Xt-F0G"/>
+                            <constraint firstItem="NTI-yj-5zZ" firstAttribute="top" secondItem="7HM-I9-6VE" secondAttribute="bottom" constant="30" id="SV1-qk-mei"/>
                             <constraint firstItem="NTI-yj-5zZ" firstAttribute="centerY" secondItem="FFo-8P-A0Q" secondAttribute="centerY" id="eau-81-ajL"/>
                             <constraint firstItem="NTI-yj-5zZ" firstAttribute="centerX" secondItem="FFo-8P-A0Q" secondAttribute="centerX" id="jY2-Ow-6gk"/>
+                            <constraint firstItem="7HM-I9-6VE" firstAttribute="centerX" secondItem="FFo-8P-A0Q" secondAttribute="centerX" id="zj5-kM-f5O"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -55,4 +64,7 @@
             <point key="canvasLocation" x="402.17391304347831" y="227.67857142857142"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="no-data-icon-1" width="40" height="40"/>
+    </resources>
 </document>

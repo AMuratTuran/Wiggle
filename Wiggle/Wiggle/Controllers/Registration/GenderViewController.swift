@@ -27,6 +27,8 @@ class GenderViewController: UIViewController {
     
     func prepareViews() {
         visibleBorders(view: maleView)
+        self.view.setGradientBackground()
+        continueButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)
         continueButton.setTitle(Localize.Common.ContinueButton, for: .normal)
         titleLabel.text = Localize.Gender.Title
         maleLabel.text = Localize.Gender.Male

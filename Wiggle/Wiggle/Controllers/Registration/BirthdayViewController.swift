@@ -28,8 +28,10 @@ class BirthdayViewController: UIViewController {
     }
     
     func prepareViews() {
+        self.view.setGradientBackground()
+        continueButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)
+        continueButton.setTitle(Localize.Common.ContinueButton, for: .normal)
         topLabel.text = Localize.BirthdayPicker.TopLabel
-        continueButton.setTitle(Localize.Common.CompleteButton, for: .normal)
         let calendar = Calendar(identifier: .gregorian)
         let currentDate = Date()
         var components = DateComponents()

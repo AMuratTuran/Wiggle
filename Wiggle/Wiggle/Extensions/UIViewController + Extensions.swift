@@ -465,20 +465,28 @@ extension UIViewController {
         self.tabBarController?.view.backgroundColor = .clear
     }
     
+    func whiteAndTransparentLabelNavigationBar() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    }
+    
     func addProductLogoToNavigationBar(selector: Selector? = nil, logoName: String = "labeled-wiggle-logo", isItalicTitle: Bool = false) {
-//        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
-//        let image = UIImage(named: logoName)
-//        button.setImage(image, for: .normal)
-//        button.setImage(image, for: .highlighted)
-//        button.setImage(image, for: .disabled)
-//        button.imageView?.contentMode = .scaleAspectFit
-//        button.isEnabled = false
-//
-//        if let selector = selector {
-//            button.isEnabled = true
-//            button.addTarget(self, action: selector, for: .touchUpInside)
-//        }
-//        navigationItem.titleView = button
+        //        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+        //        let image = UIImage(named: logoName)
+        //        button.setImage(image, for: .normal)
+        //        button.setImage(image, for: .highlighted)
+        //        button.setImage(image, for: .disabled)
+        //        button.imageView?.contentMode = .scaleAspectFit
+        //        button.isEnabled = false
+        //
+        //        if let selector = selector {
+        //            button.isEnabled = true
+        //            button.addTarget(self, action: selector, for: .touchUpInside)
+        //        }
+        //        navigationItem.titleView = button
         
         if isItalicTitle {
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Cochin-BoldItalic", size: 20)!]
