@@ -52,7 +52,7 @@ class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDa
             guard let self = self else { return }
             DispatchQueue.main.async {
                 if success {
-                    let productsSorted = products?.sorted { $0.localizedTitle < $1.localizedTitle }
+                    let productsSorted = products?.sorted { Int($0.price) < Int($1.price) }
                     self.products = productsSorted ?? []
                     if productsSorted?.first?.localizedDescription.isEmpty ?? true{
                         let cancelButton = DefaultButton(title: Localize.Common.OKButton) {self.dismiss(animated: true) {}}
@@ -66,9 +66,10 @@ class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDa
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.view.setGradientBackground()
         
-        collectionView.dataSource = self
-        collectionView.delegate = self
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -81,8 +82,16 @@ class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDa
     }
     
     func configureViews(){
+        freeStoryLabel.textColor = UIColor.goldenColor
         freeStoryLabel.text = Localize.Purchase.RiseWithSuperlike
+        
+        secondaryLabel.textColor = UIColor.goldenColor
         secondaryLabel.text = Localize.Purchase.Get4XLucky
+        
+        continueButton.layer.cornerRadius = continueButton.frame.height / 2
+        continueButton.setTitle(Localize.Purchase.PurchaseButton, for: .normal)
+        continueButton.backgroundColor = UIColor.goldenColor
+        continueButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)
     }
     
     // MARK: - IAP Functions

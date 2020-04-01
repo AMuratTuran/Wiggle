@@ -14,8 +14,6 @@ class ProductCell: UICollectionViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var productLabel: UILabel!
-    @IBOutlet weak var background: UIView!
-    @IBOutlet weak var backgroundImage: UIImageView!
     
     static let priceFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -32,11 +30,7 @@ class ProductCell: UICollectionViewCell {
     func setUI(){
         guard let product = product else { return }
         
-        priceLabel.bringSubviewToFront(self)
-        descriptionLabel.bringSubviewToFront(self)
-        priceLabel.bringSubviewToFront(self)
-        
-        var array = product.localizedTitle.components(separatedBy: " ")
+        let array = product.localizedTitle.components(separatedBy: " ")
         
         productLabel.text = array[0]
         descriptionLabel.text = array[1]
@@ -47,16 +41,16 @@ class ProductCell: UICollectionViewCell {
         layer.borderWidth = 1
         layer.cornerRadius = 12
         if isSelectedProduct {
-            backgroundImage.image = UIImage(named: "productCellBackground")
-            priceLabel.textColor = UIColor.white
-            descriptionLabel.textColor = UIColor.white
-            productLabel.textColor = UIColor.white
+            priceLabel.textColor = UIColor.goldenColor
+            descriptionLabel.textColor = UIColor.goldenColor
+            productLabel.textColor = UIColor.goldenColor
+            layer.borderColor = UIColor.goldenColor.cgColor
             return
         }
-        backgroundImage.image = nil
-        priceLabel.textColor = UIColor(red: 238/255, green: 74/255, blue: 131/255, alpha: 1.0)
-        descriptionLabel.textColor = UIColor(red: 238/255, green: 74/255, blue: 131/255, alpha: 1.0)
-        productLabel.textColor = UIColor(red: 238/255, green: 74/255, blue: 131/255, alpha: 1.0)
+        layer.borderColor = UIColor.white.cgColor
+        priceLabel.textColor = UIColor.white
+        descriptionLabel.textColor = UIColor.white
+        productLabel.textColor = UIColor.white
     }
     
     override func prepareForReuse() {
