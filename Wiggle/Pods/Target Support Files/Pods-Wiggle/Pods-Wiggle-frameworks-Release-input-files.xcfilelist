@@ -1,4 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-Wiggle/Pods-Wiggle-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework
 ${BUILT_PRODUCTS_DIR}/Bolts-Swift/BoltsSwift.framework
 ${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework

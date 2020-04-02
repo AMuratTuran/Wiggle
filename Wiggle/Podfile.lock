@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.0.4)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
@@ -107,6 +108,7 @@ PODS:
   - SwiftyStoreKit (0.15.0)
 
 DEPENDENCIES:
+  - Alamofire
   - FacebookCore
   - FacebookLogin
   - FacebookShare
@@ -129,6 +131,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Bolts
     - Bolts-Swift
     - DynamicBlurView
@@ -174,6 +177,7 @@ CHECKOUT OPTIONS:
     :tag: 4.2.0
 
 SPEC CHECKSUMS:
+  Alamofire: 0fe5fd24b4298dc377a6550da7d5f1b30e286fcb
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Bolts-Swift: afbbaf8c8186e7f769be4afa656949c14087ba44
   DynamicBlurView: ccf9acd2b20c883cc2c72e3524a04d8d3ee20533
@@ -205,6 +209,6 @@ SPEC CHECKSUMS:
   SwiftValidator: 249b6b3ae3b294266c5b9de134d94f18f2d5aa47
   SwiftyStoreKit: 033d06b6f87955405d3f844a18a7687c2438592a
 
-PODFILE CHECKSUM: 33c68f5e932e58f3dff5766268014a9c22777625
+PODFILE CHECKSUM: 65f380174d15806a5c8b4ae7a033f04014d6071c
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.8.4

@@ -8,6 +8,8 @@
 
 import UIKit
 import Parse
+import Alamofire
+
 struct AppConstants {
     
     static var objectId : String = ""
@@ -40,5 +42,16 @@ struct AppConstants {
     struct Settings {
         static var SelectedDistance: Int = 0
         static var SelectedShowMeGender: Int = 0 
+    }
+    
+    static var ApiHeaders: HTTPHeaders {
+
+        var headers: HTTPHeaders = [:]
+        
+        if let token = UserDefaults.standard.string(forKey: "token") {
+            headers["Authorization"] = token
+        }
+    
+        return headers
     }
 }

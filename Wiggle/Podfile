@@ -25,4 +25,5 @@ target 'Wiggle' do
   pod 'SwiftMessages'
   pod 'SwiftyStoreKit'
   pod 'Google-Mobile-Ads-SDK'
+  pod 'Alamofire'  
 end
