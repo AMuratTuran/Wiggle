@@ -22,6 +22,7 @@ class PickImageViewController: UIViewController {
     
     var imagePicker: ImagePicker!
     var selectedImage: UIImage?
+    var registerRequest: RegisterRequest?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +32,10 @@ class PickImageViewController: UIViewController {
     
     func prepareViews() {
         self.view.setGradientBackground()
+        
         continueButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)
         continueButton.setTitle(Localize.Common.ContinueButton, for: .normal)
+        
         tapAgainLabel.text = Localize.PickImage.TapAgain
         topLabel.text = Localize.PickImage.Title
         skipButton.setTitle(Localize.Common.SkipButton, for: .normal)
@@ -47,37 +50,17 @@ class PickImageViewController: UIViewController {
     }
     
     @IBAction func continueAction(_ sender: UIButton) {
-        sender.isUserInteractionEnabled = false
-        startAnimating(self.view, startAnimate: true)
-        if let image = selectedImage {
-            do {
-                let imageData: NSData = image.jpegData(compressionQuality: 1.0)! as NSData
-                let imageFile: PFFileObject = PFFileObject(name:"image.jpg", data:imageData as Data)!
-                try imageFile.save()
-                
-                let user = PFUser.current()
-                user?.setObject(imageFile, forKey: "photo")
-                user?.saveInBackground { (success, error) -> Void in
-                    sender.isUserInteractionEnabled = true
-                    self.startAnimating(self.view, startAnimate: false)
-                    if error != nil {
-                        self.displayError(message: error?.localizedDescription ?? "")
-                    }else {
-                        self.moveToBirthdayViewController(navigationController: self.navigationController ?? UINavigationController())
-                    }
-                }
-            }catch {
-                
-            }
-        }else {
-            self.startAnimating(self.view, startAnimate: false)
-            sender.isUserInteractionEnabled = true
-            print("Empty Image")
+        if let image = selectedImage, let request = registerRequest {
+            let imageData: NSData = image.jpegData(compressionQuality: 1.0)! as NSData
+            request.image = imageData
+            moveToBirthdayViewController(request: request)
         }
     }
     
+    
     @IBAction func skipButton(_ sender: UIButton) {
-        moveToBirthdayViewController(navigationController: self.navigationController ?? UINavigationController())
+        guard let request = registerRequest else { return }
+        moveToBirthdayViewController(request: request)
     }
     
     func roundButton() {

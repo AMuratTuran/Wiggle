@@ -43,6 +43,10 @@ struct Localize {
         static var Yes: String { return NSLocalizedString("yes_button", comment: "Common") }
     }
     
+    struct Error {
+        static var Generic: String { return NSLocalizedString("error_generic", comment: "Error") }
+    }
+    
     struct DatePicker {
         static var PickDate: String { return NSLocalizedString("date_picker_title", comment: "DatePicker") }
     }

@@ -16,6 +16,8 @@ class GetBioViewController: UIViewController {
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
     
+    var registerRequest: RegisterRequest?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareViews()
@@ -34,20 +36,14 @@ class GetBioViewController: UIViewController {
     }
     
     @IBAction func continueAction(_ sender: Any) {
-        startAnimating(self.view, startAnimate: true)
-        let bio = bioTextView.text
-        PFUser.current()?.setValue(bio, forKey: "bio")
-        PFUser.current()?.saveInBackground(block: { (result, error) in
-            self.startAnimating(self.view, startAnimate: false)
-            if error != nil {
-                self.displayError(message: error?.localizedDescription ?? "")
-            }else {
-                self.moveToPickImageViewController(navigationController: self.navigationController ?? UINavigationController())
-            }
-        })
+        guard let request = registerRequest else { return }
+        request.bio = bioTextView.text
+        moveToPickImageViewController(request: request)
     }
+    
     @IBAction func skipAction(_ sender: UIButton) {
-        moveToPickImageViewController(navigationController: self.navigationController ?? UINavigationController())
+        guard let request = registerRequest else { return }
+        moveToPickImageViewController(request: request)
     }
     
     @IBAction func backAction(_ sender: UIButton) {

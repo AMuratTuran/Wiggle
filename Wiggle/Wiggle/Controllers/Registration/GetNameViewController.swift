@@ -21,7 +21,7 @@ class GetNameViewController: UIViewController {
     @IBOutlet weak var lastNameRequiredText: UILabel!
     
     let validator = Validator()
-    
+    var registerRequest = RegisterRequest()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,24 +32,23 @@ class GetNameViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
     func enableValidations() {
+        
         validator.registerField(nameTextField, errorLabel: nameRequiredText, rules: [RequiredRule()])
         validator.registerField(lastnameTextField, errorLabel: lastNameRequiredText,  rules: [RequiredRule()])
     }
     
     func prepareViews() {
         self.view.setGradientBackground()
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
         continueButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)
         continueButton.setTitle(Localize.Common.ContinueButton, for: .normal)
+        
         topLabel.text = Localize.GetName.Title
         nameTextField.delegate = self
-        lastnameTextField.delegate = self
         nameTextField.attributedPlaceholder = NSAttributedString(string: Localize.Placeholder.FirstNamePlaceholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+        lastnameTextField.delegate = self
         lastnameTextField.attributedPlaceholder = NSAttributedString(string: Localize.Placeholder.LastNamePlaceholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
         
         if let user = PFUser.current() {
@@ -58,10 +57,9 @@ class GetNameViewController: UIViewController {
             nameTextField.text = firstName
             lastnameTextField.text = lastName
         }
-        // cevirileri yap
     }
+    
     @IBAction func continueAction(_ sender: Any) {
-        startAnimating(self.view, startAnimate: true)
         validator.validate(self)
     }
     
@@ -96,23 +94,13 @@ extension GetNameViewController: ValidationDelegate {
     func validationSuccessful() {
         nameRequiredText.isHidden = true
         lastNameRequiredText.isHidden = true
-        let firstname = nameTextField.text
-        let lastname = lastnameTextField.text
-        PFUser.current()?.setValue(firstname, forKey: "first_name")
-        PFUser.current()?.setValue(lastname, forKey: "last_name")
-        PFUser.current()?.saveInBackground(block: { (result, error) in
-            self.startAnimating(self.view, startAnimate: false)
-            if error != nil {
-                self.displayError(message: error?.localizedDescription ?? "")
-            }else {
-                self.moveToGenderViewController(navigationController: self.navigationController ?? UINavigationController())
-            }
-        })
+        registerRequest.firstName = nameTextField.text ?? ""
+        registerRequest.lastName = lastnameTextField.text ?? ""
+        moveToGenderViewController(request: self.registerRequest)
     }
     
     func validationFailed(_ errors: [(Validatable, ValidationError)]) {
         for (_, error) in errors {
-            self.startAnimating(self.view, startAnimate: false)
             error.errorLabel?.text = error.errorMessage
             error.errorLabel?.isHidden = false
         }

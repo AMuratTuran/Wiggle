@@ -11,28 +11,9 @@ import Parse
 import PromiseKit
 import ParseLiveQuery
 import Koloda
-
-typealias JSON = [String: AnyObject]
-
-protocol JsonInitializable {
-    init (json: JSON) throws
-}
+import PopupDialog
 
 struct NetworkManager {
-    
-    static func sendSMSCode(_ request: EmailLoginRequest, success: @escaping(Int) -> Void, fail: @escaping(String) -> Void) {
-        PFCloud.callFunction(inBackground: "SendSMS", withParameters: request.toDict()) { (response, error) in
-            if let error = error {
-                fail("Error")
-                return
-            }
-            guard let smsCode = response as? Int else {
-                fail(Localize.Common.GeneralError)
-                return
-            }
-            success(smsCode)
-        }
-    }
     
     static func emailLogin(_ request: EmailLoginRequest, success: @escaping(Bool) -> Void, fail: @escaping(String) -> Void) {
         PFUser.logInWithUsername(inBackground: request.email, password: request.password) {(user, error) in
@@ -457,3 +438,95 @@ struct NetworkManager {
 }
 
 
+extension NetworkManager {
+    
+    static func promise<T: JsonInitializable>(_ method: Alamofire.HTTPMethod, path: String, parameters: [String: AnyObject]? = nil, encoding: ParameterEncoding = JSONEncoding.default, customUrl: URL? = nil) -> Promise<T> {
+        return Promise<AnyObject?> { seal in
+            
+            let baseUrl = customUrl == nil ? Router.baseURL : customUrl!
+            
+            guard let encodePath = path.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),
+                let url = URL(string: encodePath, relativeTo: baseUrl) else {
+                throw RouterError.serverError(message: Localize.Error.Generic)
+            }
+            
+            let metric = HTTPMetric(url: url, httpMethod: method.getFirebaseHttpMethod())
+            metric?.start()
+            
+            Alamofire.request(url, method: method, parameters: parameters, encoding: encoding, headers: AppConstants.ApiHeaders)
+                .responseJSON { response in
+                    apiResultLogToFabric(response: response)
+                    
+                    // Check 401 Unauthorized Error
+                    if let statusCode = response.response?.statusCode, statusCode == 401 {
+                        prepareUnauthorizedError(data: response.result.value as? [String: AnyObject])
+                        seal.reject(RouterError.hiddenError)
+                        return
+                    }
+                    
+                    switch response.result {
+                    case .success:
+                        seal.fulfill(response.result.value as AnyObject?)
+                    case .failure(let error):
+                        seal.reject(error)
+                    }
+                    
+                    if let statusCode = response.response?.statusCode {
+                        metric?.responseCode = statusCode
+                    }
+                    metric?.stop()
+            }
+        }.compactMap { data -> T in
+            return try apiSuccessWithErrorRecover(data: data)
+        }.recover { error -> Promise<T> in
+            throw apiErrorRecovery(error: error, parameters: ["class": String(describing: T.self), "path": path, "method": method.rawValue])
+        }
+    }
+    
+    static func cancelRequest(_ path: String) {
+        guard let encodePath = path.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) else {
+                return
+        }
+        
+        Alamofire.SessionManager.default.session.getAllTasks { tasks in
+            tasks.forEach({ task in
+                if let url = task.originalRequest?.url?.absoluteString, url.contains(encodePath) {
+                    task.cancel()
+                }
+            })
+        }
+    }
+    
+    func apiSuccessWithErrorRecover<T: JsonInitializable>(data: AnyObject?) throws -> T {
+        if let error = data?["error"] as? [String: AnyObject], let message = error["message"] as? String {
+            
+            guard let returnUrl = error["returnUrl"] as? String, !returnUrl.isEmpty else {
+                throw RouterError.serverError(message: message)
+            }
+                        
+            throw RouterError.hiddenError
+        }
+        
+        var jsonData: [String: AnyObject]?
+        
+        if let j = data?["Result"] as? [String: AnyObject] {
+            jsonData = j
+        }
+        
+        if let j = data?["result"] as? [String: AnyObject] {
+            jsonData = j
+        }
+        
+        if let j = data?["data"] as? [String: AnyObject] {
+            jsonData = j
+        }
+        
+        guard let json = jsonData else {
+            throw RouterError.dataTypeMismatch
+        }
+        
+        return try T(json: json)
+    }
+    
+
+}

@@ -54,49 +54,54 @@ extension UIViewController {
         self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
     
-    func moveToGenderViewController(navigationController: UINavigationController) {
+    func moveToGenderViewController(request: RegisterRequest) {
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "GenderViewController") as! GenderViewController
         destinationViewController.modalPresentationStyle = .fullScreen
-        navigationController.pushViewController(destinationViewController, animated: true)
+        destinationViewController.registerRequest = request
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
     
-    func moveToGetBioViewController(navigationController: UINavigationController) {
+    func moveToGetBioViewController(request: RegisterRequest) {
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "GetBioViewController") as! GetBioViewController
         destinationViewController.modalPresentationStyle = .fullScreen
-        navigationController.pushViewController(destinationViewController, animated: true)
+        destinationViewController.registerRequest = request
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
     
-    func moveToPickImageViewController(navigationController: UINavigationController) {
+    func moveToPickImageViewController(request: RegisterRequest) {
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "PickImageViewController") as! PickImageViewController
         destinationViewController.modalPresentationStyle = .fullScreen
-        navigationController.pushViewController(destinationViewController, animated: true)
+        destinationViewController.registerRequest = request
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
     
-    func moveToBirthdayViewController(navigationController: UINavigationController) {
+    func moveToBirthdayViewController(request: RegisterRequest) {
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "BirthdayViewController") as! BirthdayViewController
         destinationViewController.modalPresentationStyle = .fullScreen
-        navigationController.pushViewController(destinationViewController, animated: true)
+        destinationViewController.registerRequest = request
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
     
-    func moveToEnableLocationViewController(navigationController: UINavigationController) {
+    func moveToEnableLocationViewController(request: RegisterRequest) {
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "EnableLocationViewController") as! EnableLocationViewController
         destinationViewController.modalPresentationStyle = .fullScreen
-        navigationController.pushViewController(destinationViewController, animated: true)
+        destinationViewController.registerRequest = request
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
     
-    func moveToEnableNotificationsViewController(navigationController: UINavigationController) {
+    func moveToEnableNotificationsViewController() {
         let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
         let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "EnableNotificationsViewController") as! EnableNotificationsViewController
         destinationViewController.modalPresentationStyle = .fullScreen
-        navigationController.pushViewController(destinationViewController, animated: true)
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
     
-    func moveToHomeViewController(navigationController: UINavigationController) {
+    func moveToHomeViewController() {
         let homeStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let destinationViewController = homeStoryboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
         self.navigationController?.pushViewController(destinationViewController, animated: true)

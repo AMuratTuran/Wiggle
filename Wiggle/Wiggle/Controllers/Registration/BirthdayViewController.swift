@@ -16,22 +16,21 @@ class BirthdayViewController: UIViewController {
     @IBOutlet weak var continueButton: UIButton!
     
     var birthday: Date?
+    var registerRequest: RegisterRequest?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         prepareViews()
     }
-    
+
     func prepareViews() {
         self.view.setGradientBackground()
+        
         continueButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)
         continueButton.setTitle(Localize.Common.ContinueButton, for: .normal)
+        
         topLabel.text = Localize.BirthdayPicker.TopLabel
+        
         let calendar = Calendar(identifier: .gregorian)
         let currentDate = Date()
         var components = DateComponents()
@@ -70,19 +69,10 @@ class BirthdayViewController: UIViewController {
     }
     
     @IBAction func continueAction(_ sender: UIButton) {
-        sender.isUserInteractionEnabled = false
-        startAnimating(self.view, startAnimate: true)
+        guard let request = registerRequest else { return }
         if let birthday = birthday {
-            PFUser.current()?.setValue(birthday, forKey: "birthday")
-            PFUser.current()?.saveEventually({ (result, error) in
-                self.startAnimating(self.view, startAnimate: false)
-                sender.isUserInteractionEnabled = true
-                if error != nil {
-                    self.displayError(message: error?.localizedDescription ?? "")
-                }else {
-                    self.moveToEnableLocationViewController(navigationController: self.navigationController ?? UINavigationController())
-                }
-            })
+            request.birthday = birthday
+            moveToEnableLocationViewController(request: request)
         }
     }
     

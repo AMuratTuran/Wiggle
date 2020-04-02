@@ -253,7 +253,7 @@ class FirstPageViewController: UIViewController {
     @IBAction func phoneLoginTapped(_ sender: Any) {
         PFUser.logOut()
         if PFUser.current() != nil {
-            self.moveToHomeViewController(navigationController: self.navigationController ?? UINavigationController())
+            self.moveToHomeViewController()
             //            PFUser.logOutInBackground { (error) in
             //                if error != nil {
             //                    self.displayError(message: "Lutfen tekrar deneyiniz.")

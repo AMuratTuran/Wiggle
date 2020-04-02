@@ -13,6 +13,9 @@
 		84B7A13E243600C400A68C5B /* Login + Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A13D243600C400A68C5B /* Login + Parse.swift */; };
 		84B7A1402436085C00A68C5B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A13F2436085C00A68C5B /* RegisterViewController.swift */; };
 		84B7A1422436087200A68C5B /* Register + Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A1412436087200A68C5B /* Register + Parse.swift */; };
+		84B7A145243685A000A68C5B /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A144243685A000A68C5B /* LoginRequest.swift */; };
+		84B7A147243685F300A68C5B /* NetworkUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A146243685F300A68C5B /* NetworkUtility.swift */; };
+		84B7A1492436871100A68C5B /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A1482436871100A68C5B /* RegisterRequest.swift */; };
 		A6B8A42AC3E4C0E8C384C2E7 /* Pods_Wiggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5526736EFB884D70162BB41 /* Pods_Wiggle.framework */; };
 		DC0557AA23DDE9C400F77383 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0557A923DDE9C400F77383 /* IAPHelper.swift */; };
 		DC10995423AFBEB600068054 /* HeartbeatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC10995323AFBEB600068054 /* HeartbeatView.xib */; };
@@ -186,6 +189,9 @@
 		84B7A13D243600C400A68C5B /* Login + Parse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login + Parse.swift"; sourceTree = "<group>"; };
 		84B7A13F2436085C00A68C5B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		84B7A1412436087200A68C5B /* Register + Parse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Register + Parse.swift"; sourceTree = "<group>"; };
+		84B7A144243685A000A68C5B /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		84B7A146243685F300A68C5B /* NetworkUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtility.swift; sourceTree = "<group>"; };
+		84B7A1482436871100A68C5B /* RegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequest.swift; sourceTree = "<group>"; };
 		DC0557A923DDE9C400F77383 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		DC10995323AFBEB600068054 /* HeartbeatView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeartbeatView.xib; sourceTree = "<group>"; };
 		DC10995523AFBEF800068054 /* HeartbeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartbeatView.swift; sourceTree = "<group>"; };
@@ -381,6 +387,15 @@
 				84B7A13D243600C400A68C5B /* Login + Parse.swift */,
 				84B7A13F2436085C00A68C5B /* RegisterViewController.swift */,
 				84B7A1412436087200A68C5B /* Register + Parse.swift */,
+			);
+			path = "Login-Register";
+			sourceTree = "<group>";
+		};
+		84B7A1432436858B00A68C5B /* Login-Register */ = {
+			isa = PBXGroup;
+			children = (
+				84B7A144243685A000A68C5B /* LoginRequest.swift */,
+				84B7A1482436871100A68C5B /* RegisterRequest.swift */,
 			);
 			path = "Login-Register";
 			sourceTree = "<group>";
@@ -680,6 +695,7 @@
 		F1585AEC238406CB0062A681 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				84B7A1432436858B00A68C5B /* Login-Register */,
 				F10038AA239D758A00829A65 /* Chat */,
 				F1378F50238A891600622B3C /* Common */,
 				F159C7B5238492F90091AB05 /* User */,
@@ -829,6 +845,7 @@
 				F150FCF22393EDC0002FD404 /* Delay.swift */,
 				F100023723AC151900D4DD22 /* FontHelper.swift */,
 				F191A57123D8E140002CD7E0 /* SafariDelegate.swift */,
+				84B7A146243685F300A68C5B /* NetworkUtility.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1140,6 +1157,8 @@
 				F1585AF6238407430062A681 /* FirstPageViewController.swift in Sources */,
 				DC166ED623ACB1AF0000E745 /* WiggleCardComponent.swift in Sources */,
 				F19A48CB238F0C700045C0BC /* UIColor + Extensions.swift in Sources */,
+				84B7A147243685F300A68C5B /* NetworkUtility.swift in Sources */,
+				84B7A1492436871100A68C5B /* RegisterRequest.swift in Sources */,
 				F16456932384170100FC0694 /* Dictionary + Extensions.swift in Sources */,
 				F19A48C7238F05220045C0BC /* WiggleHUD.swift in Sources */,
 				F14A1EFA23AEB9BC00FF2C09 /* GenderViewController.swift in Sources */,
@@ -1204,6 +1223,7 @@
 				F150FD13239C2EF0002FD404 /* ChatListViewController.swift in Sources */,
 				F150FCF32393EDC0002FD404 /* Delay.swift in Sources */,
 				F1378F5E238B012100622B3C /* ProfileDetailViewController.swift in Sources */,
+				84B7A145243685A000A68C5B /* LoginRequest.swift in Sources */,
 				F1D407162385E641002350BE /* EnableLocationViewController.swift in Sources */,
 				F191A56523D4F474002CD7E0 /* UILabel + Extensions.swift in Sources */,
 				DC10995623AFBEF800068054 /* HeartbeatView.swift in Sources */,

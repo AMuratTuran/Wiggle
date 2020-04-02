@@ -19,6 +19,7 @@ class GenderViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     
     var selectedGender: Int = 1
+    var registerRequest: RegisterRequest?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,27 +29,24 @@ class GenderViewController: UIViewController {
     func prepareViews() {
         visibleBorders(view: maleView)
         self.view.setGradientBackground()
+        
         continueButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)
         continueButton.setTitle(Localize.Common.ContinueButton, for: .normal)
+        
         titleLabel.text = Localize.Gender.Title
         maleLabel.text = Localize.Gender.Male
         femaleLabel.text = Localize.Gender.Female
     }
     
     @IBAction func continueAction(_ sender: Any) {
-        self.startAnimating(self.view, startAnimate: true)
-        PFUser.current()?.setValue(selectedGender, forKey: "gender")
+        guard let request = registerRequest else { return }
+        request.gender = selectedGender
+        
         AppConstants.gender = selectedGender
         AppConstants.Settings.SelectedShowMeGender = selectedGender == 1 ? 2 : 1
         UserDefaults.standard.set(self.selectedGender, forKey: "SelectedGender")
-        PFUser.current()?.saveInBackground(block: { (result, error) in
-            self.startAnimating(self.view, startAnimate: false)
-            if error != nil {
-                self.displayError(message: error?.localizedDescription ?? "")
-            }else {
-                self.moveToGetBioViewController(navigationController: self.navigationController ?? UINavigationController())
-            }
-        })
+        
+        moveToGetBioViewController(request: request)
     }
     
     @IBAction func backAction(_ sender: Any) {
