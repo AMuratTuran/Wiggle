@@ -26,9 +26,15 @@ extension UIViewController {
         self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
     
-    func moveToEnterPhoneViewController() {
-        let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-        let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "EnterPhoneViewController") as! EnterPhoneViewController
+    func moveToLoginViewController() {
+        let mainStoryBoard = UIStoryboard(name: "LoginRegister", bundle: nil)
+        let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "ParseLoginViewController") as! ParseLoginViewController
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
+    }
+    
+    func moveToRegisterViewController() {
+        let mainStoryBoard = UIStoryboard(name: "LoginRegister", bundle: nil)
+        let destinationViewController = mainStoryBoard.instantiateViewController(withIdentifier: "ParseRegisterViewController") as! ParseRegisterViewController
         self.navigationController?.pushViewController(destinationViewController, animated: true)
     }
     
@@ -469,6 +475,7 @@ extension UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.tintColor = .white
         self.navigationController?.view.backgroundColor = .clear
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }

@@ -251,6 +251,7 @@ class FirstPageViewController: UIViewController {
         }
     }
     @IBAction func phoneLoginTapped(_ sender: Any) {
+        PFUser.logOut()
         if PFUser.current() != nil {
             self.moveToHomeViewController(navigationController: self.navigationController ?? UINavigationController())
             //            PFUser.logOutInBackground { (error) in
@@ -261,7 +262,7 @@ class FirstPageViewController: UIViewController {
             //                }
             //            }
         }else {
-            moveToEnterPhoneViewController()
+            moveToLoginViewController()
         }
     }
 }

@@ -20,7 +20,7 @@ struct AppConstants {
     struct ParseConstants {
         static let ApplicationId: String = "EfuNJeqL484fqElyGcCuiTBjNHalE2BhAP2LIv7s"
         static let ClientKey: String = "L22P6I1Hxd3WMf8QT0umoy1HRuQit97Zd5i5HCjG"
-        static let Server: String = "https://lyngl.back4app.io/"
+        static let Server: String = "https://parseapi.back4app.com/"
         static let LiveQueryServer: String = "wss://lyngl.back4app.io/"
     }
     
@@ -29,6 +29,8 @@ struct AppConstants {
         static let mainSubtitleColor: UIColor = UIColor(hexString: "797686")
         static let mainComplementaryColor: UIColor = UIColor(hexString: "2DFFD7")
         static let mainPinkColor: UIColor = UIColor.systemPink
+        static let GradientBackgroundFirstColor = UIColor(hexString: "223C53")
+        static let GradientBackgroundSecondColor = UIColor(hexString: "071930")
     }
     
     struct UserDefaultsKeys {

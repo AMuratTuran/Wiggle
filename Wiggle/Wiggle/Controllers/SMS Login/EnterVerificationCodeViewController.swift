@@ -37,7 +37,7 @@ class EnterVerificationCodeViewController: UIViewController {
     }
     
     func prepareViews() {
-        self.title = Localize.LoginSignup.SMSLoginTitle
+        self.title = Localize.LoginSignup.EmailLoginTitle
         continueButton.setTitle(Localize.Common.ContinueButton, for: .normal)
         sendAgainButton.setTitle(Localize.LoginSignup.SendAgain, for: .normal)
         if #available(iOS 12.0, *) {

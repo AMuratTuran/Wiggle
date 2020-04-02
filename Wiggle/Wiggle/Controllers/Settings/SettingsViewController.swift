@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PopupDialog
 import Parse
 
 class SettingsViewController: UIViewController {
@@ -107,7 +108,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         }else if section == 2 {
             return 2
         }else if section == 3 {
-            return 3
+            return 4
         }else {
             return 0
         }
@@ -168,6 +169,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.prepareForWebView(title: Localize.Settings.PrivacyPolicy)
             }else if indexPath.row == 2 {
                 cell.prepareViews()
+            }else if indexPath.row == 3{
+                cell.prepareForDeleteAccount()
             }
             return cell
         }
@@ -238,7 +241,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 self.openWebView(url: "http://www.appwiggle.com/terms.html")
             }else if indexPath.row == 1 {
                 self.openWebView(url: "http://www.appwiggle.com/privacy.html")
-            }else {
+            }else if indexPath.row == 2 {
                 self.startAnimating(self.view, startAnimate: true)
                 PFUser.logOutInBackground { (error) in
                     self.startAnimating(self.view, startAnimate: false)
@@ -252,6 +255,22 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                         delegate.initializeWindow()
                     }
                 }
+            }else if indexPath.row == 3 {
+                self.startAnimating(self.view, startAnimate: true)
+                PFUser.current()?.deleteInBackground(block: { (result, error) in
+                    if let error = error {
+                        self.alertMessage(message: error.localizedDescription, buttons: [DefaultButton(title: Localize.Common.OKButton, action: nil)], isErrorMessage: true)
+                    }
+                    
+                    else {
+                        PFUser.logOut()
+                        UserDefaults.standard.removeObject(forKey: AppConstants.UserDefaultsKeys.SessionToken)
+                        guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+                            return
+                        }
+                            delegate.initializeWindow()
+                    }
+                })
             }
         }
         tableView.deselectRow(at: indexPath, animated: true)

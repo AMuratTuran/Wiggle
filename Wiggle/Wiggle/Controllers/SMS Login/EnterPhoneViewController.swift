@@ -29,7 +29,7 @@ class EnterPhoneViewController: UIViewController {
         prepareViews()
         enableValidations()
         hideBackBarButtonTitle()
-        self.title = Localize.LoginSignup.SMSLoginTitle
+        self.title = Localize.LoginSignup.EmailLoginTitle
     }
     
     override func viewWillAppear(_ animated: Bool) {

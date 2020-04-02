@@ -15,8 +15,11 @@
 "email_desc_label" = "Hesabınızı aktive etmek için lütfen e-posta ve şifren ile giriş yap";
 "email_valid_error" = "Hatalı Email!";
 "email_login_success" = "Hesabın başarıyla oluşturuldu. Giriş yapmak için Tamam'a bas!";
+"register_login_page_button" = "Hemen Kaydol!";
+"login_button" = "Giriş Yap";
+"register_button" = "Kayıt Ol";
 
-"sms_login_title" = "Eposta ile Giriş";
+"email_login_title" = "Eposta ile Giriş";
 
 "continue_button" = "Devam";
 "ok_button" = "Tamam";

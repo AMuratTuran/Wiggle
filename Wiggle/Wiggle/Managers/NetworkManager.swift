@@ -52,7 +52,6 @@ struct NetworkManager {
             }else {
                 success(true)
             }
-            
         }
     }
     

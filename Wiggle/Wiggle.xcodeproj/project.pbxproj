@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84B7A1362435F4D900A68C5B /* LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B7A1352435F4D900A68C5B /* LoginRegister.storyboard */; };
+		84B7A13A2435F50E00A68C5B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A1392435F50E00A68C5B /* LoginViewController.swift */; };
+		84B7A13C2435FC9900A68C5B /* UIViewController + Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A13B2435FC9900A68C5B /* UIViewController + Appearance.swift */; };
+		84B7A13E243600C400A68C5B /* Login + Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A13D243600C400A68C5B /* Login + Parse.swift */; };
+		84B7A1402436085C00A68C5B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A13F2436085C00A68C5B /* RegisterViewController.swift */; };
+		84B7A1422436087200A68C5B /* Register + Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A1412436087200A68C5B /* Register + Parse.swift */; };
 		A6B8A42AC3E4C0E8C384C2E7 /* Pods_Wiggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5526736EFB884D70162BB41 /* Pods_Wiggle.framework */; };
 		DC0557AA23DDE9C400F77383 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0557A923DDE9C400F77383 /* IAPHelper.swift */; };
 		DC10995423AFBEB600068054 /* HeartbeatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC10995323AFBEB600068054 /* HeartbeatView.xib */; };
@@ -174,6 +180,12 @@
 /* Begin PBXFileReference section */
 		44BB3C201FFEF9A359F53C04 /* Pods-Wiggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.debug.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.debug.xcconfig"; sourceTree = "<group>"; };
 		4E39BF0A09E61170AE4D6F33 /* Pods-Wiggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.release.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.release.xcconfig"; sourceTree = "<group>"; };
+		84B7A1352435F4D900A68C5B /* LoginRegister.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginRegister.storyboard; sourceTree = "<group>"; };
+		84B7A1392435F50E00A68C5B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		84B7A13B2435FC9900A68C5B /* UIViewController + Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Appearance.swift"; sourceTree = "<group>"; };
+		84B7A13D243600C400A68C5B /* Login + Parse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login + Parse.swift"; sourceTree = "<group>"; };
+		84B7A13F2436085C00A68C5B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		84B7A1412436087200A68C5B /* Register + Parse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Register + Parse.swift"; sourceTree = "<group>"; };
 		DC0557A923DDE9C400F77383 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		DC10995323AFBEB600068054 /* HeartbeatView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeartbeatView.xib; sourceTree = "<group>"; };
 		DC10995523AFBEF800068054 /* HeartbeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartbeatView.swift; sourceTree = "<group>"; };
@@ -360,6 +372,17 @@
 				F5526736EFB884D70162BB41 /* Pods_Wiggle.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		84B7A1372435F4E200A68C5B /* Login-Register */ = {
+			isa = PBXGroup;
+			children = (
+				84B7A1392435F50E00A68C5B /* LoginViewController.swift */,
+				84B7A13D243600C400A68C5B /* Login + Parse.swift */,
+				84B7A13F2436085C00A68C5B /* RegisterViewController.swift */,
+				84B7A1412436087200A68C5B /* Register + Parse.swift */,
+			);
+			path = "Login-Register";
 			sourceTree = "<group>";
 		};
 		C0A7BAAFF9D38BFEDD116339 /* Pods */ = {
@@ -638,6 +661,7 @@
 		F1585AEB238406C50062A681 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				84B7A1372435F4E200A68C5B /* Login-Register */,
 				F10167F12404666200E52FE2 /* Web View */,
 				F1DBCA2823EAE26000AE3247 /* Tabbar */,
 				F159FCD523CBD1C70042429E /* Heartbeat */,
@@ -703,6 +727,7 @@
 				F150FD0E239C2E77002FD404 /* Chat.storyboard */,
 				F159FCD223CBCDE50042429E /* Heartbeat.storyboard */,
 				F10167EF2404658A00E52FE2 /* WebView.storyboard */,
+				84B7A1352435F4D900A68C5B /* LoginRegister.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -737,6 +762,7 @@
 				F191A56423D4F474002CD7E0 /* UILabel + Extensions.swift */,
 				F191A56623D4F4A7002CD7E0 /* UIKit + Validation.swift */,
 				F191A56C23D507F2002CD7E0 /* UIWindow + Extensions.swift */,
+				84B7A13B2435FC9900A68C5B /* UIViewController + Appearance.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1022,6 +1048,7 @@
 				F1C794BD23AC0E1400D9FEFC /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				F10038A9239D711C00829A65 /* LogoutCell.xib in Resources */,
 				F150FD012394074C002FD404 /* SettingWithSliderCell.xib in Resources */,
+				84B7A1362435F4D900A68C5B /* LoginRegister.storyboard in Resources */,
 				F1645687238409CE00FC0694 /* Localizable.strings in Resources */,
 				F10167EC23F33DC100E52FE2 /* sad_heart.json in Resources */,
 				F1585AE1238406560062A681 /* Assets.xcassets in Resources */,
@@ -1128,6 +1155,8 @@
 				F1DBCA2123EAB6D000AE3247 /* EmptyCollectionViewCell.swift in Sources */,
 				F191A57223D8E140002CD7E0 /* SafariDelegate.swift in Sources */,
 				F152170323885C0B0027C6D4 /* SettingsViewController.swift in Sources */,
+				84B7A13C2435FC9900A68C5B /* UIViewController + Appearance.swift in Sources */,
+				84B7A1422436087200A68C5B /* Register + Parse.swift in Sources */,
 				DC166ED823ACB5240000E745 /* WiggleCard.swift in Sources */,
 				F191A56D23D507F2002CD7E0 /* UIWindow + Extensions.swift in Sources */,
 				DC85115523F19B3100B361EB /* ProductCellCollectionViewCell.swift in Sources */,
@@ -1155,6 +1184,7 @@
 				F191A57D23DDC929002CD7E0 /* WhoLikedViewController.swift in Sources */,
 				F194B5E223BF8BFC00349953 /* UIViewController + Alerts.swift in Sources */,
 				F123855423D18F660062ABC8 /* UIImage + Extensions.swift in Sources */,
+				84B7A13E243600C400A68C5B /* Login + Parse.swift in Sources */,
 				F191A56023D4F33A002CD7E0 /* TextFieldView.swift in Sources */,
 				F103654323E6D8210095DB52 /* EmptyCell.swift in Sources */,
 				F150FD0523940B31002FD404 /* CellWithToggleCell.swift in Sources */,
@@ -1197,10 +1227,12 @@
 				F19A48C9238F0BD80045C0BC /* UIViewController + Activity.swift in Sources */,
 				F159FCE923CBD89D0042429E /* HRKButterworth.cpp in Sources */,
 				F1C794AC23AAD46300D9FEFC /* Date + Extensions.swift in Sources */,
+				84B7A1402436085C00A68C5B /* RegisterViewController.swift in Sources */,
 				F194B5E423BF94CE00349953 /* AppDelegate + Notification.swift in Sources */,
 				F159C7B323848CB70091AB05 /* PhoneAuthRequest.swift in Sources */,
 				F1378F5C238ADD8300622B3C /* ProfileViewController.swift in Sources */,
 				F152170F2389D5290027C6D4 /* SettingsPremiumTableViewCell.swift in Sources */,
+				84B7A13A2435F50E00A68C5B /* LoginViewController.swift in Sources */,
 				F159FCE823CBD89D0042429E /* UIView+HeartRateKit.m in Sources */,
 				F159C7BA2384991E0091AB05 /* GetNameViewController.swift in Sources */,
 				F159FCEA23CBD89D0042429E /* HeartRateKitController.m in Sources */,

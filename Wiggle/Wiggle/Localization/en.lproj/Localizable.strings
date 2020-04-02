@@ -15,8 +15,11 @@
 "email_desc_label" = "Please login with your email and password to activate your account";
 "email_valid_error" = "Invalid Email!";
 "email_login_success" = "You have successfully created your account. Press OK to continue!";
+"register_login_page_button" = "Register now!";
+"login_button" = "Login";
+"register_button" = "Register";
 
-"sms_login_title" = "Email Login";
+"email_login_title" = "Email Login";
 
 "continue_button" = "Continue";
 "ok_button" = "OK";

@@ -22,8 +22,12 @@ class LogoutCell: UITableViewCell {
     
     func prepareForWebView(title: String) {
         logoutLabel.text = title
-        
     }
+    
+    func prepareForDeleteAccount() {
+        logoutLabel.text = "Hesabimi Sil"
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
