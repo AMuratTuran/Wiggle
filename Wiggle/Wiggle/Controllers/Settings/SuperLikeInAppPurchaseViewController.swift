@@ -82,10 +82,10 @@ class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDa
     }
     
     func configureViews(){
-        freeStoryLabel.textColor = UIColor.goldenColor
+        freeStoryLabel.textColor = UIColor.white
         freeStoryLabel.text = Localize.Purchase.RiseWithSuperlike
         
-        secondaryLabel.textColor = UIColor.goldenColor
+        secondaryLabel.textColor = UIColor.white
         secondaryLabel.text = Localize.Purchase.Get4XLucky
         
         continueButton.layer.cornerRadius = continueButton.frame.height / 2

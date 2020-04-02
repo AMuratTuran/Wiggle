@@ -174,7 +174,7 @@ class HomeViewController: UIViewController, userActionsDelegate {
         let cancelButton = DefaultButton(title: Localize.Common.CancelButton) {}
         let goToStoreButton = DefaultButton(title: "WStore") {
             let storyboard = UIStoryboard(name: "Settings", bundle: nil)
-            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
+            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "SuperLikeInAppPurchaseViewController") as! SuperLikeInAppPurchaseViewController
             self.navigationController?.present(destionationViewController, animated: true, completion: {})
         }
         guard let receiverObjectId = currentCardModel?.objectId else {return}
@@ -213,7 +213,7 @@ class HomeViewController: UIViewController, userActionsDelegate {
         let cancelButton = DefaultButton(title: Localize.Common.CancelButton) {}
         let goToStoreButton = DefaultButton(title: "WStore") {
             let storyboard = UIStoryboard(name: "Settings", bundle: nil)
-            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
+            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "SuperLikeInAppPurchaseViewController") as! SuperLikeInAppPurchaseViewController
             self.navigationController?.present(destionationViewController, animated: true, completion: {})
         }
         guard let user = PFUser.current() else {

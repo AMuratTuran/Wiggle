@@ -167,7 +167,7 @@ class WhoLikedViewController: UIViewController {
         }else {
             let goToStoreButton = DefaultButton(title: "WStore") {
                 let storyboard = UIStoryboard(name: "Settings", bundle: nil)
-                let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
+                let destionationViewController = storyboard.instantiateViewController(withIdentifier: "SuperLikeInAppPurchaseViewController") as! SuperLikeInAppPurchaseViewController
                 self.navigationController?.present(destionationViewController, animated: true, completion: {
                     self.switchToMatchScreen()
                 })
