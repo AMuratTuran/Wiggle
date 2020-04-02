@@ -61,8 +61,6 @@ class SettingsViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: SettingsPremiumTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: SettingsPremiumTableViewCell.reuseIdentifier)
-        tableView.register(UINib(nibName: BoostSuperLikeCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: BoostSuperLikeCell.reuseIdentifier)
         tableView.register(UINib(nibName: SettingWithLabelCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: SettingWithLabelCell.reuseIdentifier)
         tableView.register(UINib(nibName: CellWithToggleCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: CellWithToggleCell.reuseIdentifier)
         tableView.register(UINib(nibName: SettingWithSliderCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: SettingWithSliderCell.reuseIdentifier)
@@ -97,17 +95,15 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 2
-        }else if section == 1 {
             return 1
-        }else if section == 2 {
+        }else if section == 1 {
             return 2
-        }else if section == 3 {
+        }else if section == 2 {
             return 4
         }else {
             return 0
@@ -115,16 +111,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier:  "SettingsPremiumTableViewCell", for: indexPath) as! SettingsPremiumTableViewCell
-                cell.prepare(type: .plus)
-                return cell
-            }else {
-                let cell = tableView.dequeueReusableCell(withIdentifier:  "BoostSuperLikeCell", for: indexPath) as! BoostSuperLikeCell
-                return cell
-            }
-        }else if indexPath.section == 1 {
+         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier:  "SettingWithLabelCell", for: indexPath) as! SettingWithLabelCell
             if indexPath.row == 0 {
                 if let user = PFUser.current(), user.isFacebookLogin() {
@@ -140,7 +127,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
             return cell
-        }else if indexPath.section == 2 {
+        }else if indexPath.section == 1 {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier:  "SettingWithSliderCell", for: indexPath) as! SettingWithSliderCell
                 cell.delegate = self
@@ -161,7 +148,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             }else {
                 return UITableViewCell()
             }
-        }else if indexPath.section == 3 {
+        }else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: LogoutCell.reuseIdentifier, for: indexPath) as! LogoutCell
             if indexPath.row == 0 {
                 cell.prepareForWebView(title: Localize.Settings.TermsOfUse)
@@ -177,18 +164,8 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 1 {
-            return Localize.Settings.AccountSettings
-        }else if section == 2 {
-            return Localize.Settings.Discovery
-        }else {
-            return nil
-        }
-    }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 1 || section == 2 || section == 3 {
+        if section == 1 || section == 2{
             return 50
         }else {
             return 0
@@ -196,9 +173,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 75.0
-        }else if indexPath.section == 2 {
+        if indexPath.section == 1 {
             if indexPath.row == 0 {
                 return 80.0
             }else {
@@ -216,9 +191,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         headerView.addSubview(label)
         label.font = FontHelper.regular(16)
         label.textColor = UIColor.white.withAlphaComponent(0.6)
-        if section == 1 {
+        if section == 0 {
             label.text = Localize.Settings.AccountSettings
-        }else if section == 2 {
+        }else if section == 1 {
             label.text = Localize.Settings.Discovery
         }
         headerView.backgroundColor = UIColor.clear
@@ -227,16 +202,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Settings", bundle: nil)
-        if indexPath.section == 0 && indexPath.row == 0{
-            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
-            self.navigationController?.present(destionationViewController, animated: true, completion: {})
-        }else if indexPath.section == 0 && indexPath.row == 1{
-            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "SuperLikeInAppPurchase") as! SuperLikeInAppPurchaseViewController
-            self.navigationController?.present(destionationViewController, animated: true, completion: {})
-        }else if indexPath.section == 2 && indexPath.row == 1 {
+        if indexPath.section == 1 && indexPath.row == 1 {
             let destionationViewController = storyboard.instantiateViewController(withIdentifier: "ShowMeGenderViewController") as! ShowMeGenderViewController
             self.navigationController?.pushViewController(destionationViewController, animated: true)
-        }else if indexPath.section == 3 {
+        }else if indexPath.section == 2 {
             if indexPath.row == 0 {
                 self.openWebView(url: "http://www.appwiggle.com/terms.html")
             }else if indexPath.row == 1 {
