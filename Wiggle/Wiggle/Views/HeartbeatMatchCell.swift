@@ -47,7 +47,7 @@ class HeartbeatMatchCell: UICollectionViewCell {
     func prepare(with data: PFUser) {
         let imageUrl = data.getPhotoUrl()
         imageView.kf.indicatorType = .activity
-        imageView.kf.setImage(with: URL(string: imageUrl))
+        imageView.kf.setImage(with: URL(string: imageUrl ?? ""))
         let age = "\(data.getAge())"
         let name = "\(data.getFirstName()) \(data.getLastName())"
         nameAndAgeLabel.text = "\(name), \(age)"

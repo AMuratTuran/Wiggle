@@ -26,7 +26,7 @@ class ParseLoginViewController: LoginViewController {
             UserDefaults.standard.set(userInfo.sessionToken, forKey: AppConstants.UserDefaultsKeys.SessionToken)
             
             if let _ = userInfo["gender"] as? Int, let _ = userInfo["first_name"] as? String, let _ = userInfo["birthday"] as? Date {
-                self.moveToRegisterViewController()
+                self.moveToHomeViewController()
             }else {
                 //anasayfaya yonlendir
             }

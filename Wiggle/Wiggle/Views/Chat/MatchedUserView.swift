@@ -39,7 +39,7 @@ class MatchedUserView: UIView  {
         imageView.changeBorderWidth(0)
         let imageUrl = data.getPhotoUrl()
         imageView.kf.indicatorType = .activity
-        imageView.kf.setImage(with: URL(string: imageUrl))
+        imageView.kf.setImage(with: URL(string: imageUrl ?? ""))
         let name = "\(data.getFirstName())"
         nameLabel.text = "\(name)"
         self.delegate = delegate

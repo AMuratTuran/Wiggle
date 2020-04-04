@@ -9,17 +9,12 @@
 import UIKit
 import Parse
 import PopupDialog
-import GoogleMobileAds
 
 class WhoLikedViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var likedButton: UIButton!
-    @IBOutlet weak var matchedButton: UIButton!
-    @IBOutlet weak var buttonsStackView: UIStackView!
     @IBOutlet weak var messagesButton: UIButton!
-    @IBOutlet weak var buttonShadowView: UIView!
-    @IBOutlet weak var buttonContainerView: UIView!
+    @IBOutlet weak var switchButton: UISwitch!
     
     
     var matchedUserData: [PFUser]? {
@@ -36,96 +31,28 @@ class WhoLikedViewController: UIViewController {
         }
     }
     
-    var bannerView: GADBannerView!
-    var interstitial: GADInterstitial!
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareViews()
         getMatchData()
-        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
-        addBannerViewToView(bannerView)
-        
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-4067151614085861/4960834755")
-        let request = GADRequest()
-        interstitial.load(request)
-        checkForAdd()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        configureBannerView()
-    }
-    
-    func configureBannerView() {
-        bannerView.adUnitID = "ca-app-pub-4067151614085861/4960834755"
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
-        bannerView.delegate = self
-        bannerView.load(GADRequest())
-    }
-    
-    func addBannerViewToView(_ bannerView: GADBannerView) {
-        bannerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bannerView)
-        view.addConstraints(
-            [NSLayoutConstraint(item: bannerView,
-                                attribute: .bottom,
-                                relatedBy: .equal,
-                                toItem: bottomLayoutGuide,
-                                attribute: .top,
-                                multiplier: 1,
-                                constant: 0),
-             NSLayoutConstraint(item: bannerView,
-                                attribute: .centerX,
-                                relatedBy: .equal,
-                                toItem: view,
-                                attribute: .centerX,
-                                multiplier: 1,
-                                constant: 0),
-             NSLayoutConstraint(item: bannerView,
-                                attribute: .leading,
-                                relatedBy: .equal,
-                                toItem: view,
-                                attribute: .leading,
-                                multiplier: 1,
-                                constant: 0),
-             NSLayoutConstraint(item: bannerView,
-                                attribute: .trailing,
-                                relatedBy: .equal,
-                                toItem: view,
-                                attribute: .trailing,
-                                multiplier: 1,
-                                constant: 0)
-            ])
-    }
-    
-    func checkForAdd(){
-        let shouldShow = Bool.random()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 8.0) {
-            if self.interstitial.isReady && shouldShow && !(PFUser.current()?.getGold() ?? true){
-                self.interstitial.present(fromRootViewController: self)
-            }
-        }
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        buttonShadowView.layer.applyShadow(color: UIColor(hexString: "A2834D"), alpha: 0.48, x: 0, y: 5, blur: 20)
-    }
-    
+
     func prepareViews() {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.view.setGradientBackground()
-        buttonContainerView.setWhiteGradient()
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 20, right: 0)
         collectionView.register(UINib(nibName: HeartbeatMatchCell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: HeartbeatMatchCell.reuseIdentifier)
         collectionView.register(UINib(nibName: EmptyCollectionViewCell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: EmptyCollectionViewCell.reuseIdentifier)
-        buttonsStackView.cornerRadius(25.0)
-        buttonsStackView.clipsToBounds = true
-        matchedButton.isSelected = true
+        
+        switchButton.isOn = true
+        switchButton.onTintColor = UIColor(hexString: "BC9A5F")
+        switchButton.tintColor = UIColor(hexString: "BC9A5F")
+        switchButton.thumbTintColor = UIColor.white
+        switchButton.backgroundColor = UIColor(hexString: "BC9A5F")
+        switchButton.layer.cornerRadius = 16
+        
         let image = UIImage(named: "chat-bubble")?.withRenderingMode(.alwaysTemplate)
         messagesButton.setImage(image, for: .normal)
     }
@@ -147,7 +74,7 @@ class WhoLikedViewController: UIViewController {
     }
     
     func getWhoLiked() {
-        if let user = PFUser.current(), user.getGold() {
+        if let user = PFUser.current() {
             if likedYouData == nil {
                 startAnimating(self.view, startAnimate: true)
                 NetworkManager.getWhoLikedYou(success: { (response) in
@@ -197,10 +124,7 @@ class WhoLikedViewController: UIViewController {
     }
     
     fileprivate func switchToMatchScreen() {
-        self.matchedButton.isSelected = true
-        self.likedButton.isSelected = false
-        self.matchedButton.setGradientBackground(colorOne: UIColor(hexString: "BC9A5F"), colorTwo: UIColor(hexString: "A2834D"))
-        self.likedButton.backgroundColor = .clear
+
         self.getMatchData()
     }
     
@@ -210,9 +134,7 @@ class WhoLikedViewController: UIViewController {
     
     @IBAction func likedButtonTapped(_ sender: UIButton) {
         sender.isSelected = true
-        matchedButton.isSelected = false
-        likedButton.backgroundColor = UIColor(hexString: "D9B372")
-        matchedButton.backgroundColor = UIColor.clear
+
         collectionView.reloadData()
         getWhoLiked()
     }
@@ -221,11 +143,18 @@ class WhoLikedViewController: UIViewController {
         switchToMatchScreen()
         collectionView.reloadData()
     }
+    @IBAction func switchChanged(_ sender: UISwitch) {
+        if switchButton.isOn {
+            getWhoLiked()
+        }else {
+            getMatchData()
+        }
+    }
 }
 
 extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if matchedButton.isSelected {
+        if !switchButton.isOn {
             guard let data = matchedUserData else { return 0 }
             if data.isEmpty {
                 return 1
@@ -251,7 +180,7 @@ extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDe
         cell.imageView.hero.id = profileImageHeroId
         cell.nameAndAgeLabel.hero.id = nameHeroId
         cell.locationLabel.hero.id = subLabelId
-        if matchedButton.isSelected {
+        if !switchButton.isOn {
             guard let data = matchedUserData else { return UICollectionViewCell() }
             if data.isEmpty {
                 let emptyCell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.reuseIdentifier, for: indexPath) as! EmptyCollectionViewCell
@@ -274,7 +203,7 @@ extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if matchedButton.isSelected {
+        if !switchButton.isOn {
             guard let data = matchedUserData else { return  .zero}
             if data.isEmpty {
                 return collectionView.frame.size
@@ -297,7 +226,7 @@ extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var userData: PFUser!
-        if matchedButton.isSelected {
+        if !switchButton.isOn {
             guard let data = matchedUserData, !data.isEmpty else { return }
             userData = data[indexPath.row]
         }else {
@@ -308,12 +237,3 @@ extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDe
     } 
 }
 
-
-extension WhoLikedViewController: GADBannerViewDelegate {
-    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-        bannerView.alpha = 0
-        UIView.animate(withDuration: 1.0) {
-            bannerView.alpha = 1
-        }
-    }
-}

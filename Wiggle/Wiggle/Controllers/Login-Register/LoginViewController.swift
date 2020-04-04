@@ -68,7 +68,6 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonTapped(_ sender: Any) {
         startAnimating(self.view, startAnimate: true)
         validator.validate(self)
-        login()
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {

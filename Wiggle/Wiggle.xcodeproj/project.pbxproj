@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84AA0C722437E6CC00EB7D2F /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA0C712437E6CC00EB7D2F /* DiscoverViewController.swift */; };
+		84AA0C742437E71100EB7D2F /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84AA0C732437E71100EB7D2F /* Discover.storyboard */; };
+		84AA0C762437E86D00EB7D2F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA0C752437E86D00EB7D2F /* User.swift */; };
+		84AA0C7A2437F19200EB7D2F /* DiscoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA0C782437F19200EB7D2F /* DiscoverCell.swift */; };
+		84AA0C7B2437F19200EB7D2F /* DiscoverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84AA0C792437F19200EB7D2F /* DiscoverCell.xib */; };
+		84AA0C7F2438D39600EB7D2F /* like.json in Resources */ = {isa = PBXBuildFile; fileRef = 84AA0C7E2438D39600EB7D2F /* like.json */; };
 		84B7A1362435F4D900A68C5B /* LoginRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B7A1352435F4D900A68C5B /* LoginRegister.storyboard */; };
 		84B7A13A2435F50E00A68C5B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A1392435F50E00A68C5B /* LoginViewController.swift */; };
 		84B7A13C2435FC9900A68C5B /* UIViewController + Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A13B2435FC9900A68C5B /* UIViewController + Appearance.swift */; };
@@ -183,6 +189,12 @@
 /* Begin PBXFileReference section */
 		44BB3C201FFEF9A359F53C04 /* Pods-Wiggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.debug.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.debug.xcconfig"; sourceTree = "<group>"; };
 		4E39BF0A09E61170AE4D6F33 /* Pods-Wiggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.release.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.release.xcconfig"; sourceTree = "<group>"; };
+		84AA0C712437E6CC00EB7D2F /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		84AA0C732437E71100EB7D2F /* Discover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
+		84AA0C752437E86D00EB7D2F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		84AA0C782437F19200EB7D2F /* DiscoverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCell.swift; sourceTree = "<group>"; };
+		84AA0C792437F19200EB7D2F /* DiscoverCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoverCell.xib; sourceTree = "<group>"; };
+		84AA0C7E2438D39600EB7D2F /* like.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = like.json; sourceTree = "<group>"; };
 		84B7A1352435F4D900A68C5B /* LoginRegister.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginRegister.storyboard; sourceTree = "<group>"; };
 		84B7A1392435F50E00A68C5B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		84B7A13B2435FC9900A68C5B /* UIViewController + Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Appearance.swift"; sourceTree = "<group>"; };
@@ -380,6 +392,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		84AA0C702437E6B400EB7D2F /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				84AA0C712437E6CC00EB7D2F /* DiscoverViewController.swift */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		84AA0C772437F17000EB7D2F /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				84AA0C782437F19200EB7D2F /* DiscoverCell.swift */,
+				84AA0C792437F19200EB7D2F /* DiscoverCell.xib */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
 		84B7A1372435F4E200A68C5B /* Login-Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -470,6 +499,7 @@
 		F10167DA23F33CB400E52FE2 /* Json Animations */ = {
 			isa = PBXGroup;
 			children = (
+				84AA0C7E2438D39600EB7D2F /* like.json */,
 				F10167E123F33DC000E52FE2 /* brain.json */,
 				F10167E323F33DC100E52FE2 /* business.json */,
 				F10167DE23F33DBF00E52FE2 /* eye.json */,
@@ -676,6 +706,7 @@
 		F1585AEB238406C50062A681 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				84AA0C702437E6B400EB7D2F /* Discover */,
 				84B7A1372435F4E200A68C5B /* Login-Register */,
 				F10167F12404666200E52FE2 /* Web View */,
 				F1DBCA2823EAE26000AE3247 /* Tabbar */,
@@ -709,6 +740,7 @@
 		F1585AED238406D00062A681 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				84AA0C772437F17000EB7D2F /* Discover */,
 				F103653E23E6D7550095DB52 /* Empty */,
 				F191A56E23D59581002CD7E0 /* Common */,
 				F191A55D23D4F32F002CD7E0 /* TextField */,
@@ -744,6 +776,7 @@
 				F159FCD223CBCDE50042429E /* Heartbeat.storyboard */,
 				F10167EF2404658A00E52FE2 /* WebView.storyboard */,
 				84B7A1352435F4D900A68C5B /* LoginRegister.storyboard */,
+				84AA0C732437E71100EB7D2F /* Discover.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -820,6 +853,7 @@
 			isa = PBXGroup;
 			children = (
 				F159C7B6238493100091AB05 /* WiggleUser.swift */,
+				84AA0C752437E86D00EB7D2F /* User.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1063,6 +1097,7 @@
 				F1C794C323AC0E1400D9FEFC /* OpenSans-SemiBold.ttf in Resources */,
 				F10167E723F33DC100E52FE2 /* star.json in Resources */,
 				F1C794BD23AC0E1400D9FEFC /* OpenSans-SemiBoldItalic.ttf in Resources */,
+				84AA0C7F2438D39600EB7D2F /* like.json in Resources */,
 				F10038A9239D711C00829A65 /* LogoutCell.xib in Resources */,
 				F150FD012394074C002FD404 /* SettingWithSliderCell.xib in Resources */,
 				84B7A1362435F4D900A68C5B /* LoginRegister.storyboard in Resources */,
@@ -1077,6 +1112,8 @@
 				F10167ED23F33DC100E52FE2 /* business.json in Resources */,
 				F1C794C123AC0E1400D9FEFC /* OpenSans-LightItalic.ttf in Resources */,
 				F1585ADF2384064F0062A681 /* Main.storyboard in Resources */,
+				84AA0C742437E71100EB7D2F /* Discover.storyboard in Resources */,
+				84AA0C7B2437F19200EB7D2F /* DiscoverCell.xib in Resources */,
 				F194B5F523C0E1C900349953 /* MatchedUserView.xib in Resources */,
 				F10167EB23F33DC100E52FE2 /* brain.json in Resources */,
 				F159FCD323CBCDE50042429E /* Heartbeat.storyboard in Resources */,
@@ -1161,6 +1198,7 @@
 				84B7A1492436871100A68C5B /* RegisterRequest.swift in Sources */,
 				F16456932384170100FC0694 /* Dictionary + Extensions.swift in Sources */,
 				F19A48C7238F05220045C0BC /* WiggleHUD.swift in Sources */,
+				84AA0C722437E6CC00EB7D2F /* DiscoverViewController.swift in Sources */,
 				F14A1EFA23AEB9BC00FF2C09 /* GenderViewController.swift in Sources */,
 				F1DBCA2A23EAE27C00AE3247 /* WiggleTabBarController.swift in Sources */,
 				F1585AFA2384077A0062A681 /* EnterVerificationCodeViewController.swift in Sources */,
@@ -1181,6 +1219,8 @@
 				DC85115523F19B3100B361EB /* ProductCellCollectionViewCell.swift in Sources */,
 				DC6C64C423D4FF4C007977A7 /* InAppPurchaseViewController.swift in Sources */,
 				F16456912384160A00FC0694 /* EmailLoginRequest.swift in Sources */,
+				84AA0C762437E86D00EB7D2F /* User.swift in Sources */,
+				84AA0C7A2437F19200EB7D2F /* DiscoverCell.swift in Sources */,
 				F194B5F323C0E1BD00349953 /* MatchedUserView.swift in Sources */,
 				F15005F3239C4C5000E19947 /* ChatViewController.swift in Sources */,
 				F159C7BC2385240D0091AB05 /* GetBioViewController.swift in Sources */,

@@ -19,7 +19,12 @@ class SplashViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         createLottieAnimation()
         if isLoggedIn() {
-            
+            delay(2.0) {
+                guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+                    return
+                }
+                delegate.initializeWindow(isLaunchedFromPN: self.isLaunchedFromPN)
+            }
         }
     }
     
@@ -34,17 +39,11 @@ class SplashViewController: UIViewController {
         
         //view.addSubview(animationView)
         //animationView.play()
-        
-        delay(2.0) {
-            guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
-                return
-            }
-            delegate.initializeWindow(isLaunchedFromPN: self.isLaunchedFromPN)
-        }
     }
     
     func isLoggedIn() -> Bool {
-        if PFUser.current() != nil {
+        if let user = PFUser.current() {
+            User.current = User(parseUser: user)
             return true
         }else {
             return false

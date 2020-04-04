@@ -78,7 +78,7 @@ class ProfileViewController: UIViewController {
         }
         let imageUrl = user.getPhotoUrl()
         profilePhoto.kf.indicatorType = .activity
-        profilePhoto.kf.setImage(with: URL(string: imageUrl))
+        profilePhoto.kf.setImage(with: URL(string: imageUrl ?? ""))
         let age = "\(user.getAge())"
         let name = "\(user.getFirstName()) \(user.getLastName())"
         nameAndAgeLabel.text = "\(name), \(age)"
@@ -99,7 +99,7 @@ class ProfileViewController: UIViewController {
         }
         let imageUrl = user.getPhotoUrl()
         profilePhoto.kf.indicatorType = .activity
-        profilePhoto.kf.setImage(with: URL(string: imageUrl))
+        profilePhoto.kf.setImage(with: URL(string: imageUrl ?? ""))
     }
     
     @IBAction func routeSettingsAction(_ sender: UIButton) {

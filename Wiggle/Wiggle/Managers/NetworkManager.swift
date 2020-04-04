@@ -278,13 +278,13 @@ struct NetworkManager {
             fail("User not found")
             return
         }
-        //let location = PFUser.current()?.getLocation()
-        //let parseLocation: PFGeoPoint = PFGeoPoint(latitude: location?.latitude ?? 0, longitude: location?.longitude ?? 0)
+        let location = PFUser.current()?.getLocation()
+        let parseLocation: PFGeoPoint = PFGeoPoint(latitude: location?.latitude ?? 0, longitude: location?.longitude ?? 0)
         likesQuery.whereKey("sender", equalTo: user.objectId ?? "")
         query?.limit = 10
         query?.skip = withSkip
         query?.whereKey("objectId", notEqualTo: user.objectId ?? "")
-        //query?.whereKey("location", nearGeoPoint: parseLocation, withinKilometers: Double(AppConstants.Settings.SelectedDistance))
+        query?.whereKey("location", nearGeoPoint: parseLocation, withinKilometers: Double(AppConstants.Settings.SelectedDistance))
         if AppConstants.Settings.SelectedShowMeGender != 3 {
             query?.whereKey("gender", equalTo: AppConstants.Settings.SelectedShowMeGender)
         }else {
@@ -304,6 +304,41 @@ struct NetworkManager {
             }
             let wiggleCardModels = ModelParser.PFUserToWiggleCardModel(user: userResponse as? [PFUser] ?? [])
             success(wiggleCardModels)
+        }
+    }
+    
+    static func getDiscoveryUsers(withSkip : Int, success: @escaping([PFUser]) -> Void, fail: @escaping(String) -> Void) {
+        let likesQuery : PFQuery = PFQuery(className:"Likes")
+        let query : PFQuery? = PFUser.query()
+        guard let user = PFUser.current() else {
+            fail("User not found")
+            return
+        }
+        //let location = PFUser.current()?.getLocation()
+        //let parseLocation: PFGeoPoint = PFGeoPoint(latitude: location?.latitude ?? 0, longitude: location?.longitude ?? 0)
+        likesQuery.whereKey("sender", equalTo: user.objectId ?? "")
+        query?.limit = 50
+        query?.skip = withSkip
+        query?.whereKey("objectId", notEqualTo: user.objectId ?? "")
+        //query?.whereKey("location", nearGeoPoint: parseLocation, withinKilometers: Double(AppConstants.Settings.SelectedDistance))
+        if AppConstants.Settings.SelectedShowMeGender != 3 {
+            query?.whereKey("gender", equalTo: AppConstants.Settings.SelectedShowMeGender)
+        }else {
+            
+        }
+        query?.whereKey("objectId", doesNotMatchKey: "receiver", in: likesQuery)
+        query?.order(byDescending: "popular")
+        
+        query?.findObjectsInBackground { (response, error) in
+            if let error = error {
+                fail(error.localizedDescription)
+            }
+            
+            guard let userResponse = response as? [PFUser] else {
+                fail(Localize.Error.Generic)
+                return
+            }
+            success(userResponse)
         }
     }
     
@@ -423,7 +458,7 @@ struct NetworkManager {
             return
         }
         likesQuery.whereKey("receiver", equalTo: myId)
-        likesQuery.whereKey("direction", equalTo: "left")
+        likesQuery.whereKey("direction", equalTo: "Right")
         likesQuery.addDescendingOrder("createdAt")
         likesQuery.findObjectsInBackground { (response, error) in
             if let error = error {

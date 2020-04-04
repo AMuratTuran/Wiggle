@@ -48,7 +48,7 @@ class EditProfileViewController: UIViewController {
         self.imageBackgroundView.addShadow(UIColor(named: "shadowColor")!, shadowRadiues: 2.0, shadowOpacity: 0.4)
         let imageUrl = user.getPhotoUrl()
         profileImageView.kf.indicatorType = .activity
-        profileImageView.kf.setImage(with: URL(string: imageUrl))
+        profileImageView.kf.setImage(with: URL(string: imageUrl ?? ""))
         
         nameTextFieldView.getTextField().textColor = UIColor.white
         nameTextFieldView.text = user.getFirstName()
@@ -73,8 +73,8 @@ class EditProfileViewController: UIViewController {
         var components = DateComponents()
         components.calendar = calendar
         components.year = -18
-        pickBirthdayButton.setTitle((user.getBirthday()! as Date).prettyStringFromDate(dateFormat: "dd MMMM yyyy", localeIdentifier: Locale.current.identifier),  for: .normal)
-        birthday = user.getBirthday()! as Date
+        pickBirthdayButton.setTitle((user.getBirthday() as Date).prettyStringFromDate(dateFormat: "dd MMMM yyyy", localeIdentifier: Locale.current.identifier),  for: .normal)
+        birthday = user.getBirthday() as Date?
         birthdayLabel.text = Localize.Profile.Birthday
     }
     
@@ -119,11 +119,11 @@ class EditProfileViewController: UIViewController {
         guard let user = PFUser.current() else {
             return
         }
-        let startDate = user.getBirthday()! as Date
+        let startDate = user.getBirthday()
         
         let alert = UIAlertController(style: .actionSheet, title: Localize.DatePicker.PickDate)
         
-        alert.addDatePicker(mode: .date, date: startDate, minimumDate: minDate, maximumDate: maxDate) { date in
+        alert.addDatePicker(mode: .date, date: startDate as Date?, minimumDate: minDate, maximumDate: maxDate) { date in
             self.birthday = date.adding(.hour, value: 3)
             self.pickBirthdayButton.setTitle(date.dateString(), for: .normal)
         }

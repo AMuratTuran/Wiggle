@@ -1092,10 +1092,10 @@
             </objects>
             <point key="canvasLocation" x="9937" y="182"/>
         </scene>
-        <!--Home-->
+        <!--Discover-->
         <scene sceneID="zaO-yP-7rV">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="XEb-gd-ST0" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Discover" id="XEb-gd-ST0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="7Cz-aS-H2f"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Y8-CE-wDv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

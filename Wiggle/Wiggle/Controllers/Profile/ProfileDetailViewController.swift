@@ -80,8 +80,8 @@ class ProfileDetailViewController: UIViewController {
             blockButton.setTitle(Localize.Report.Block, for: .normal)
         }else if let user = userData{
             let imageUrl = user.getPhotoUrl()
-            if !imageUrl.isEmpty{
-                profileImageView.kf.setImage(with: URL(string: imageUrl))
+            if !(imageUrl?.isEmpty ?? false) {
+                profileImageView.kf.setImage(with: URL(string: imageUrl ?? ""))
             }else{
                 profileImageView.image = UIImage(named: "profilePicture")
             }

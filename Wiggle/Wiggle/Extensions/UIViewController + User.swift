@@ -26,13 +26,13 @@ extension PFUser {
         return bio
     }
     
-    func getPhotoUrl() -> String{
+    func getPhotoUrl() -> String? {
         guard let photo = self.object(forKey: "photo") as? PFFileObject else {return ""}
-        return photo.url ?? ""
+        return photo.url
     }
     
-    func getBirthday() -> NSDate? {
-        let birthday = self.object(forKey: "birthday") as? NSDate
+    func getBirthday() -> NSDate {
+        guard let birthday = self.object(forKey: "birthday") as? NSDate else { return NSDate() }
         return birthday
     }
     
@@ -53,14 +53,14 @@ extension PFUser {
         return relation
     }
     
-    func getGender() -> Int? {
-        let gender = self.object(forKey: "gender") as? Int
+    func getGender() -> Int {
+        guard let gender = self.object(forKey: "gender") as? Int else { return 0 }
         return gender
     }
     
     func getAge() -> Int {
         let now = Date()
-        let birthday: Date = getBirthday() as! Date
+        let birthday: Date = getBirthday() as Date
         let calendar = Calendar.current
 
         let ageComponents = calendar.dateComponents([.year], from: birthday, to: now)

@@ -16,7 +16,7 @@ class ModelParser{
         user.forEach { user in
             if let objectId = user.objectId{
                 let name = "\(user.getFirstName()) \(user.getLastName())"
-                let wiggleCardModel = WiggleCardModel(profilePicture: user.getPhotoUrl(), nameSurname: name, location: "", distance: "", bio: user.getBio(), objectId : objectId)
+                let wiggleCardModel = WiggleCardModel(profilePicture: user.getPhotoUrl() ?? "", nameSurname: name, location: "", distance: "", bio: user.getBio(), objectId : objectId)
                 wiggleCardModels.append(wiggleCardModel)
             }
         }
