@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		846A5A9C243A163F00DDF8E9 /* superlike.json in Resources */ = {isa = PBXBuildFile; fileRef = 846A5A9B243A163F00DDF8E9 /* superlike.json */; };
+		846A5A9E243A204C00DDF8E9 /* Confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A5A9D243A204C00DDF8E9 /* Confetti.swift */; };
 		84AA0C722437E6CC00EB7D2F /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA0C712437E6CC00EB7D2F /* DiscoverViewController.swift */; };
 		84AA0C742437E71100EB7D2F /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84AA0C732437E71100EB7D2F /* Discover.storyboard */; };
 		84AA0C762437E86D00EB7D2F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA0C752437E86D00EB7D2F /* User.swift */; };
@@ -191,6 +192,7 @@
 		44BB3C201FFEF9A359F53C04 /* Pods-Wiggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.debug.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.debug.xcconfig"; sourceTree = "<group>"; };
 		4E39BF0A09E61170AE4D6F33 /* Pods-Wiggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.release.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.release.xcconfig"; sourceTree = "<group>"; };
 		846A5A9B243A163F00DDF8E9 /* superlike.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = superlike.json; sourceTree = "<group>"; };
+		846A5A9D243A204C00DDF8E9 /* Confetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Confetti.swift; sourceTree = "<group>"; };
 		84AA0C712437E6CC00EB7D2F /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		84AA0C732437E71100EB7D2F /* Discover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		84AA0C752437E86D00EB7D2F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -883,6 +885,7 @@
 				F100023723AC151900D4DD22 /* FontHelper.swift */,
 				F191A57123D8E140002CD7E0 /* SafariDelegate.swift */,
 				84B7A146243685F300A68C5B /* NetworkUtility.swift */,
+				846A5A9D243A204C00DDF8E9 /* Confetti.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1242,6 +1245,7 @@
 				F191A56723D4F4A7002CD7E0 /* UIKit + Validation.swift in Sources */,
 				F1585AFC238407A30062A681 /* UIViewController + Extensions.swift in Sources */,
 				F159C8D32385CA460091AB05 /* PickImageViewController.swift in Sources */,
+				846A5A9E243A204C00DDF8E9 /* Confetti.swift in Sources */,
 				F164568E2384157D00FC0694 /* NetworkManager.swift in Sources */,
 				F1378F57238A983100622B3C /* HomeViewController.swift in Sources */,
 				F191A57D23DDC929002CD7E0 /* WhoLikedViewController.swift in Sources */,

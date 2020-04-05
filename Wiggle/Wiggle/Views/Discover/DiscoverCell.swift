@@ -32,6 +32,7 @@ class DiscoverCell: UICollectionViewCell {
     
     var likeAnimationView: AnimationView?
     var superLikeAnimationView: AnimationView?
+    var confettiLayer: CAEmitterLayer?
     
     override var isHighlighted: Bool {
         didSet {
@@ -130,6 +131,14 @@ class DiscoverCell: UICollectionViewCell {
         nameLabel.text = "\(name), \(age)"
         distanceLabel.text = "\(String(format: "%.1f", getDistance())) km"
         
+        if confettiLayer == nil {
+            self.confettiLayer = Confetti.prepare(width: self.containerView.frame.width)
+            if let confettiLayer = self.confettiLayer {
+                self.containerView.layer.addSublayer(confettiLayer)
+            }
+            confettiLayer?.isHidden = true
+        }
+        confettiLayer?.isHidden = false
         blurView.alpha = 0
         superLikeButton.isHidden = false
         dislikeButton.isHidden = false
