@@ -78,7 +78,7 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="star.fill" catalog="system"/>
                                         <connections>
-                                            <action selector="likeTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="GSb-Wu-JeM"/>
+                                            <action selector="superLikeTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="GSb-Wu-JeM"/>
                                         </connections>
                                     </button>
                                 </subviews>

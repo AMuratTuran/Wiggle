@@ -92,11 +92,23 @@ class DiscoverViewController: UIViewController {
         }
     }
     
+    func superLikeAction(indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
+        data[indexPath.row].isLiked = true
+        _ = cell.prepareSuperLike().done { _ in
+            self.data.remove(at: indexPath.row)
+            self.collectionView.performBatchUpdates({
+                self.collectionView.deleteItems(at: [indexPath])
+            }) { (finished) in
+                self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+            }
+        }
+    }
+    
     func likeAction(indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
         data[indexPath.row].isLiked = true
-        cell.isLiked = true
-        _ = cell.prepareSuperLike().done { _ in
+        _ = cell.prepareLike().done { _ in
             self.data.remove(at: indexPath.row)
             self.collectionView.performBatchUpdates({
                 self.collectionView.deleteItems(at: [indexPath])
@@ -136,13 +148,17 @@ extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        // open profile
     }
 }
 
 extension DiscoverViewController: DiscoverCellDelegate {
     func likeTapped(at indexPath: IndexPath) {
         self.likeAction(indexPath: indexPath)
+    }
+    
+    func superLikeTapped(at indexPath: IndexPath) {
+        self.superLikeAction(indexPath: indexPath)
     }
     
     func dislikeTapped(at indexPath: IndexPath) {
