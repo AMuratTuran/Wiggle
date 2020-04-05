@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		846A5A9C243A163F00DDF8E9 /* superlike.json in Resources */ = {isa = PBXBuildFile; fileRef = 846A5A9B243A163F00DDF8E9 /* superlike.json */; };
 		84AA0C722437E6CC00EB7D2F /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA0C712437E6CC00EB7D2F /* DiscoverViewController.swift */; };
 		84AA0C742437E71100EB7D2F /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84AA0C732437E71100EB7D2F /* Discover.storyboard */; };
 		84AA0C762437E86D00EB7D2F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA0C752437E86D00EB7D2F /* User.swift */; };
@@ -189,6 +190,7 @@
 /* Begin PBXFileReference section */
 		44BB3C201FFEF9A359F53C04 /* Pods-Wiggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.debug.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.debug.xcconfig"; sourceTree = "<group>"; };
 		4E39BF0A09E61170AE4D6F33 /* Pods-Wiggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wiggle.release.xcconfig"; path = "Target Support Files/Pods-Wiggle/Pods-Wiggle.release.xcconfig"; sourceTree = "<group>"; };
+		846A5A9B243A163F00DDF8E9 /* superlike.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = superlike.json; sourceTree = "<group>"; };
 		84AA0C712437E6CC00EB7D2F /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		84AA0C732437E71100EB7D2F /* Discover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		84AA0C752437E86D00EB7D2F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 			children = (
 				84AA0C7E2438D39600EB7D2F /* like.json */,
 				F10167E123F33DC000E52FE2 /* brain.json */,
+				846A5A9B243A163F00DDF8E9 /* superlike.json */,
 				F10167E323F33DC100E52FE2 /* business.json */,
 				F10167DE23F33DBF00E52FE2 /* eye.json */,
 				F10167DB23F33DBE00E52FE2 /* heart.json */,
@@ -1090,6 +1093,7 @@
 				F1378F59238ADC7900622B3C /* Profile.storyboard in Resources */,
 				F1C794BE23AC0E1400D9FEFC /* OpenSans-BoldItalic.ttf in Resources */,
 				F10167F02404658A00E52FE2 /* WebView.storyboard in Resources */,
+				846A5A9C243A163F00DDF8E9 /* superlike.json in Resources */,
 				F191A56123D4F33A002CD7E0 /* TextFieldView.xib in Resources */,
 				F191A57923D8FABE002CD7E0 /* FullScreenImageView.xib in Resources */,
 				F194B5E823C09BCB00349953 /* InAppBannerView.xib in Resources */,

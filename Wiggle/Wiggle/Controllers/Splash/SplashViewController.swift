@@ -19,12 +19,13 @@ class SplashViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         createLottieAnimation()
         if isLoggedIn() {
-            delay(2.0) {
-                guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
-                    return
-                }
-                delegate.initializeWindow(isLaunchedFromPN: self.isLaunchedFromPN)
+            
+        }
+        delay(2.0) {
+            guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
             }
+            delegate.initializeWindow(isLaunchedFromPN: self.isLaunchedFromPN)
         }
     }
     

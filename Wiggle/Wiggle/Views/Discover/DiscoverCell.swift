@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import Lottie
+import PromiseKit
 
 protocol DiscoverCellDelegate {
     func likeTapped(at indexPath: IndexPath)
@@ -21,26 +22,14 @@ class DiscoverCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var dislikeButton: UIButton!
-    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var superLikeButton: UIButton!
     @IBOutlet weak var blurView: UIVisualEffectView!
     
     var data: User?
     var delegate: DiscoverCellDelegate?
     var indexPath: IndexPath?
-    var isLiked: Bool = false {
-        didSet {
-            if isLiked {
-                prepareLike()
-            }
-        }
-    }
-    var isSuperliked: Bool = false {
-        didSet {
-            if isSuperliked {
-                prepareSuperLike()
-            }
-        }
-    }
+    var isLiked: Bool = false
+    var isSuperliked: Bool = false
     
     var likeAnimationView: AnimationView?
     
@@ -72,30 +61,32 @@ class DiscoverCell: UICollectionViewCell {
         dislikeButton.cornerRadius(dislikeButton.frame.height / 2)
         dislikeButton.setWhiteGradient()
         
-        likeButton.cornerRadius(likeButton.frame.height / 2)
-        likeButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)
+        superLikeButton.cornerRadius(superLikeButton.frame.height / 2)
+        superLikeButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)
         
         blurView.alpha = 0
-        likeButton.isHidden = false
+        superLikeButton.isHidden = false
         dislikeButton.isHidden = false
-        likeAnimationView = AnimationView(name: "like")
-        createLikeAnimation()
+        likeAnimationView = AnimationView(name: "superlike")
+        DispatchQueue.main.async {
+            self.createLikeAnimation()
+        }
     }
     
     func createLikeAnimation() {
         likeAnimationView?.isHidden = true
-        
+        likeAnimationView?.frame = containerView.frame
         likeAnimationView?.loopMode = .playOnce
-        likeAnimationView?.contentMode = .scaleAspectFill
+        likeAnimationView?.contentMode = .scaleAspectFit
         likeAnimationView?.animationSpeed = 1
         
         containerView.addSubview(likeAnimationView ?? UIView())
         
         NSLayoutConstraint.activate([
-            likeAnimationView!.widthAnchor.constraint(equalToConstant: 80),
-            likeAnimationView!.heightAnchor.constraint(equalToConstant: 80),
-            likeAnimationView!.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            likeAnimationView!.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
+            likeAnimationView!.widthAnchor.constraint(equalToConstant: containerView.frame.width),
+            likeAnimationView!.heightAnchor.constraint(equalToConstant: containerView.frame.height),
+            likeAnimationView!.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            likeAnimationView!.topAnchor.constraint(equalTo: containerView.topAnchor)
         ])
     }
     
@@ -117,28 +108,23 @@ class DiscoverCell: UICollectionViewCell {
         distanceLabel.text = "\(String(format: "%.1f", getDistance())) km"
         
         blurView.alpha = isLiked || isSuperliked ? 0.2 : 0
-        likeButton.isHidden = isLiked || isSuperliked
+        superLikeButton.isHidden = isLiked || isSuperliked
         dislikeButton.isHidden = isLiked || isSuperliked
         likeAnimationView?.isHidden = !isLiked
     }
     
-    func prepareLike() {
-        likeAnimationView?.isHidden = false
-        self.likeButton.isHidden = true
-        self.dislikeButton.isHidden = true
-        likeAnimationView?.play(completion: { _ in
-            self.blurView.backgroundColor = UIColor.systemPink
-            self.containerView.addBorder(UIColor.systemPink, width: 0.5)
-            self.blurView.alpha = 0.2
-        })
-    }
-    
-    func prepareSuperLike() {
-        likeButton.isHidden = true
-        dislikeButton.isHidden = true
-        blurView.backgroundColor = UIColor(hexString: "D9B372")
-        containerView.addBorder(UIColor(hexString: "D9B372"), width: 0.5)
-        blurView.alpha = 0.2
+    func prepareSuperLike() -> Promise<()> {
+        return Promise { seal in
+            self.likeAnimationView?.isHidden = false
+            self.superLikeButton.isHidden = true
+            self.dislikeButton.isHidden = true
+            self.likeAnimationView?.play(completion: { _ in
+                self.blurView.backgroundColor = UIColor(hexString: "D9B372")
+                self.containerView.addBorder(UIColor(hexString: "D9B372"), width: 1)
+                self.blurView.alpha = 0.2
+                seal.fulfill_()
+            })
+        }
     }
     
     func getDistance() -> Double {

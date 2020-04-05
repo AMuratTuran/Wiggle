@@ -29,6 +29,9 @@ class DiscoverViewController: UIViewController {
     func initializeViews() {
         setDefaultGradientBackground()
         navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.tintColor = .white
+        addMessageIconToNavigationBar()
         addProductLogoToNavigationBar(selector: nil, logoName: "", isItalicTitle: true)
         transparentNavigationBar()
         transparentTabBar()
@@ -93,6 +96,14 @@ class DiscoverViewController: UIViewController {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
         data[indexPath.row].isLiked = true
         cell.isLiked = true
+        _ = cell.prepareSuperLike().done { _ in
+            self.data.remove(at: indexPath.row)
+            self.collectionView.performBatchUpdates({
+                self.collectionView.deleteItems(at: [indexPath])
+            }) { (finished) in
+                self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+            }
+        }
     }
 }
 
