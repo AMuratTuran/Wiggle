@@ -27,7 +27,9 @@ class InitialHeartbeatViewController: UIViewController {
         hideBackBarButtonTitle()
         transparentTabBar()
         navigationController?.setNavigationBarHidden(true, animated: false)
-        view.setGradientBackground()
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.largeTitleDisplayMode = .never
+        setDefaultGradientBackground()
                 
         startButton.setTitle(Localize.Common.Start, for: .normal)
         startButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)

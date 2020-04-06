@@ -24,6 +24,9 @@
 		84B7A145243685A000A68C5B /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A144243685A000A68C5B /* LoginRequest.swift */; };
 		84B7A147243685F300A68C5B /* NetworkUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A146243685F300A68C5B /* NetworkUtility.swift */; };
 		84B7A1492436871100A68C5B /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7A1482436871100A68C5B /* RegisterRequest.swift */; };
+		84F08A31243B95B800435CC6 /* MasterMatchesLikedYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F08A30243B95B800435CC6 /* MasterMatchesLikedYouViewController.swift */; };
+		84F08A33243B969900435CC6 /* LikedYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F08A32243B969900435CC6 /* LikedYouViewController.swift */; };
+		84F08A35243B96CF00435CC6 /* MatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F08A34243B96CF00435CC6 /* MatchesViewController.swift */; };
 		A6B8A42AC3E4C0E8C384C2E7 /* Pods_Wiggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5526736EFB884D70162BB41 /* Pods_Wiggle.framework */; };
 		DC0557AA23DDE9C400F77383 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0557A923DDE9C400F77383 /* IAPHelper.swift */; };
 		DC10995423AFBEB600068054 /* HeartbeatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC10995323AFBEB600068054 /* HeartbeatView.xib */; };
@@ -208,6 +211,9 @@
 		84B7A144243685A000A68C5B /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		84B7A146243685F300A68C5B /* NetworkUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtility.swift; sourceTree = "<group>"; };
 		84B7A1482436871100A68C5B /* RegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequest.swift; sourceTree = "<group>"; };
+		84F08A30243B95B800435CC6 /* MasterMatchesLikedYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterMatchesLikedYouViewController.swift; sourceTree = "<group>"; };
+		84F08A32243B969900435CC6 /* LikedYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedYouViewController.swift; sourceTree = "<group>"; };
+		84F08A34243B96CF00435CC6 /* MatchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesViewController.swift; sourceTree = "<group>"; };
 		DC0557A923DDE9C400F77383 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		DC10995323AFBEB600068054 /* HeartbeatView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeartbeatView.xib; sourceTree = "<group>"; };
 		DC10995523AFBEF800068054 /* HeartbeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartbeatView.swift; sourceTree = "<group>"; };
@@ -431,6 +437,16 @@
 				84B7A1482436871100A68C5B /* RegisterRequest.swift */,
 			);
 			path = "Login-Register";
+			sourceTree = "<group>";
+		};
+		84F08A2F243B958800435CC6 /* Matches - WhoLiked */ = {
+			isa = PBXGroup;
+			children = (
+				84F08A30243B95B800435CC6 /* MasterMatchesLikedYouViewController.swift */,
+				84F08A32243B969900435CC6 /* LikedYouViewController.swift */,
+				84F08A34243B96CF00435CC6 /* MatchesViewController.swift */,
+			);
+			path = "Matches - WhoLiked";
 			sourceTree = "<group>";
 		};
 		C0A7BAAFF9D38BFEDD116339 /* Pods */ = {
@@ -711,6 +727,7 @@
 		F1585AEB238406C50062A681 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				84F08A2F243B958800435CC6 /* Matches - WhoLiked */,
 				84AA0C702437E6B400EB7D2F /* Discover */,
 				84B7A1372435F4E200A68C5B /* Login-Register */,
 				F10167F12404666200E52FE2 /* Web View */,
@@ -1214,6 +1231,7 @@
 				F123854F23D094BB0062ABC8 /* HeartbeatMatchCell.swift in Sources */,
 				F150FCFB2393FA50002FD404 /* SettingWithLabelCell.swift in Sources */,
 				F1935EFE23A657E500431DE2 /* Match.swift in Sources */,
+				84F08A33243B969900435CC6 /* LikedYouViewController.swift in Sources */,
 				F191A56B23D4F63E002CD7E0 /* EditProfileViewController.swift in Sources */,
 				F150FD0C239413CD002FD404 /* LabelWithCheckmarkCell.swift in Sources */,
 				F1DBCA2123EAB6D000AE3247 /* EmptyCollectionViewCell.swift in Sources */,
@@ -1246,6 +1264,7 @@
 				F1585AFC238407A30062A681 /* UIViewController + Extensions.swift in Sources */,
 				F159C8D32385CA460091AB05 /* PickImageViewController.swift in Sources */,
 				846A5A9E243A204C00DDF8E9 /* Confetti.swift in Sources */,
+				84F08A35243B96CF00435CC6 /* MatchesViewController.swift in Sources */,
 				F164568E2384157D00FC0694 /* NetworkManager.swift in Sources */,
 				F1378F57238A983100622B3C /* HomeViewController.swift in Sources */,
 				F191A57D23DDC929002CD7E0 /* WhoLikedViewController.swift in Sources */,
@@ -1287,6 +1306,7 @@
 				F1D407182385EE7A002350BE /* EnableNotificationsViewController.swift in Sources */,
 				F10167F32404667A00E52FE2 /* WebViewController.swift in Sources */,
 				DC264A8A23C0D57C00ADE806 /* ModelParser.swift in Sources */,
+				84F08A31243B95B800435CC6 /* MasterMatchesLikedYouViewController.swift in Sources */,
 				DCE3969E23D79781008D8F5D /* InAppPurchaseTableViewCell.swift in Sources */,
 				F1C794AE23AAD6DA00D9FEFC /* String + Extensions.swift in Sources */,
 				F150FD002394074C002FD404 /* SettingWithSliderCell.swift in Sources */,

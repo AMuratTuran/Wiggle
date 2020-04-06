@@ -267,7 +267,7 @@ extension ChatListViewController: MatchViewDelegate {
             self.navigationController?.pushViewController(destinationViewController, animated: true)
         }else {
             let storyBoard = UIStoryboard(name: "Chat", bundle: nil)
-            let destinationViewController = storyBoard.instantiateViewController(withIdentifier: "WhoLikedViewController") as! WhoLikedViewController
+            let destinationViewController = storyBoard.instantiateViewController(withIdentifier: "MasterMatchesLikedYouViewController") as! MasterMatchesLikedYouViewController
             let nav = UINavigationController(rootViewController: destinationViewController)
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true, completion: nil)

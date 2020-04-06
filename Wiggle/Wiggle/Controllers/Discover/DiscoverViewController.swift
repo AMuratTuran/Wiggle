@@ -26,15 +26,18 @@ class DiscoverViewController: UIViewController {
         getUsers()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
     func initializeViews() {
         setDefaultGradientBackground()
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.tintColor = .white
         addMessageIconToNavigationBar()
         addProductLogoToNavigationBar(selector: nil, logoName: "", isItalicTitle: true)
         transparentNavigationBar()
         transparentTabBar()
+        hideBackBarButtonTitle()
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -95,7 +98,7 @@ class DiscoverViewController: UIViewController {
     func superLikeAction(indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
         data[indexPath.row].isLiked = true
-        _ = cell.prepareSuperLike().done { _ in
+        _ = cell.playSuperLikeAnimation().done { _ in
             self.data.remove(at: indexPath.row)
             self.collectionView.performBatchUpdates({
                 self.collectionView.deleteItems(at: [indexPath])
@@ -108,7 +111,7 @@ class DiscoverViewController: UIViewController {
     func likeAction(indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
         data[indexPath.row].isLiked = true
-        _ = cell.prepareLike().done { _ in
+        _ = cell.playLikeAnimation().done { _ in
             self.data.remove(at: indexPath.row)
             self.collectionView.performBatchUpdates({
                 self.collectionView.deleteItems(at: [indexPath])
@@ -136,6 +139,8 @@ extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewDele
         
         cell.prepare(with: data[indexPath.row])
         cell.delegate = self
+        cell.createBoostView()
+        cell.showBoostView()
         cell.indexPath = indexPath
         
         return cell

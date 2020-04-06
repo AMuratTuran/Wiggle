@@ -17,26 +17,17 @@ class WhoLikedViewController: UIViewController {
     @IBOutlet weak var switchButton: UISwitch!
     
     
-    var matchedUserData: [PFUser]? {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+    var matchedUserData: [User] = []
     var likedYouData: [PFObject]?
-    
-    var usersLikedYouData: [PFUser]? {
-        didSet {
-            self.startAnimating(self.view, startAnimate: false)
-            collectionView.reloadData()
-        }
-    }
+    var usersLikedYouData: [User] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         prepareViews()
         getMatchData()
     }
-
+    
     func prepareViews() {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.view.setGradientBackground()
@@ -59,17 +50,21 @@ class WhoLikedViewController: UIViewController {
     
     
     func getMatchData() {
-        if matchedUserData == nil {
-            startAnimating(self.view, startAnimate: true)
-            NetworkManager.getMatchedUsers(success: { (response) in
-                self.startAnimating(self.view, startAnimate: false)
-                self.matchedUserData = response
-            }) { (error) in
-                self.startAnimating(self.view, startAnimate: false)
-                self.displayError(message: error)
+        startAnimating(self.view, startAnimate: true)
+        NetworkManager.getMatchedUsers(success: { (response) in
+            self.startAnimating(self.view, startAnimate: false)
+            response.forEach { user in
+                let userModel = User(parseUser: user)
+                self.matchedUserData.append(userModel)
             }
-        }else {
-            collectionView.reloadData()
+            DispatchQueue.main.async {
+                delay(0.3) {
+                    self.collectionView.reloadData()
+                }
+            }
+        }) { (error) in
+            self.startAnimating(self.view, startAnimate: false)
+            self.displayError(message: error)
         }
     }
     
@@ -108,11 +103,12 @@ class WhoLikedViewController: UIViewController {
     
     func getUserInfo() {
         guard let data = likedYouData else { return }
-        var collectionViewData: [PFUser] = []
+        var collectionViewData: [User] = []
         data.forEach { like in
             let id = like["sender"] as! String
             NetworkManager.queryUsersById(id, success: { (user) in
-                collectionViewData.append(user)
+                let userModel = User(parseUser: user)
+                collectionViewData.append(userModel)
                 if collectionViewData.count == data.count {
                     self.startAnimating(self.view, startAnimate: false)
                     self.usersLikedYouData = collectionViewData
@@ -124,7 +120,7 @@ class WhoLikedViewController: UIViewController {
     }
     
     fileprivate func switchToMatchScreen() {
-
+        
         self.getMatchData()
     }
     
@@ -134,7 +130,7 @@ class WhoLikedViewController: UIViewController {
     
     @IBAction func likedButtonTapped(_ sender: UIButton) {
         sender.isSelected = true
-
+        
         collectionView.reloadData()
         getWhoLiked()
     }
@@ -150,23 +146,56 @@ class WhoLikedViewController: UIViewController {
             getMatchData()
         }
     }
+    
+    func dislikeAndRemove(indexPath: IndexPath) {
+        self.usersLikedYouData.remove(at: indexPath.row)
+        self.collectionView.performBatchUpdates({
+            self.collectionView.deleteItems(at: [indexPath])
+        }) { (finished) in
+            self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+        }
+    }
+    
+    func superLikeAction(indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
+        usersLikedYouData[indexPath.row].isLiked = true
+        _ = cell.playSuperLikeAnimation().done { _ in
+            self.usersLikedYouData.remove(at: indexPath.row)
+            self.collectionView.performBatchUpdates({
+                self.collectionView.deleteItems(at: [indexPath])
+            }) { (finished) in
+                self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+            }
+        }
+    }
+    
+    func likeAction(indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
+        usersLikedYouData[indexPath.row].isLiked = true
+        _ = cell.playLikeAnimation().done { _ in
+            self.usersLikedYouData.remove(at: indexPath.row)
+            self.collectionView.performBatchUpdates({
+                self.collectionView.deleteItems(at: [indexPath])
+            }) { (finished) in
+                self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+            }
+        }
+    }
 }
 
 extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if !switchButton.isOn {
-            guard let data = matchedUserData else { return 0 }
-            if data.isEmpty {
+            if matchedUserData.isEmpty {
                 return 1
             }else {
-                return data.count
+                return matchedUserData.count
             }
         }else {
-            guard let data = usersLikedYouData else { return 0 }
-            if data.isEmpty {
+            if usersLikedYouData.isEmpty {
                 return 1
             }else {
-                return data.count
+                return usersLikedYouData.count
             }
         }
     }
@@ -181,22 +210,20 @@ extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDe
         cell.nameAndAgeLabel.hero.id = nameHeroId
         cell.locationLabel.hero.id = subLabelId
         if !switchButton.isOn {
-            guard let data = matchedUserData else { return UICollectionViewCell() }
-            if data.isEmpty {
+            if matchedUserData.isEmpty {
                 let emptyCell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.reuseIdentifier, for: indexPath) as! EmptyCollectionViewCell
                 emptyCell.prepare(description: Localize.WhoLiked.NoMatchKeepLooking)
                 return emptyCell
             }else {
-                cell.prepare(with: data[indexPath.row])
+                cell.prepare(with: matchedUserData[indexPath.row])
             }
         }else {
-            guard let data = usersLikedYouData else { return UICollectionViewCell() }
-            if data.isEmpty {
+            if usersLikedYouData.isEmpty {
                 let emptyCell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.reuseIdentifier, for: indexPath) as! EmptyCollectionViewCell
                 emptyCell.prepare(description: Localize.WhoLiked.NoMatchKeepLooking)
                 return emptyCell
             }else {
-                cell.prepare(with: data[indexPath.row])
+                cell.prepare(with: usersLikedYouData[indexPath.row])
             }
         }
         return cell
@@ -204,8 +231,7 @@ extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if !switchButton.isOn {
-            guard let data = matchedUserData else { return  .zero}
-            if data.isEmpty {
+            if matchedUserData.isEmpty {
                 return collectionView.frame.size
             }else {
                 let windowWidth = collectionView.frame.width - 40
@@ -213,8 +239,7 @@ extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDe
                 return CGSize(width: cellWidth, height: cellWidth + 100)
             }
         }else {
-            guard let data = usersLikedYouData else { return  .zero}
-            if data.isEmpty {
+            if usersLikedYouData.isEmpty {
                 return collectionView.frame.size
             }else {
                 let windowWidth = collectionView.frame.width - 40
@@ -225,15 +250,28 @@ extension WhoLikedViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var userData: PFUser!
+        var userData: User!
         if !switchButton.isOn {
-            guard let data = matchedUserData, !data.isEmpty else { return }
-            userData = data[indexPath.row]
+            guard !matchedUserData.isEmpty else { return }
+            userData = matchedUserData[indexPath.row]
         }else {
-            guard let data = usersLikedYouData, !data.isEmpty else { return }
-            userData = data[indexPath.row]
+            guard !usersLikedYouData.isEmpty else { return }
+            userData = usersLikedYouData[indexPath.row]
         }
-        moveToProfileDetailFromWhoLiked(data: userData, index: indexPath.row)
+        //moveToProfileDetailFromWhoLiked(data: userData, index: indexPath.row)
     } 
 }
 
+extension WhoLikedViewController: DiscoverCellDelegate {
+    func likeTapped(at indexPath: IndexPath) {
+        self.likeAction(indexPath: indexPath)
+    }
+    
+    func superLikeTapped(at indexPath: IndexPath) {
+        self.superLikeAction(indexPath: indexPath)
+    }
+    
+    func dislikeTapped(at indexPath: IndexPath) {
+        self.dislikeAndRemove(indexPath: indexPath)
+    }
+}

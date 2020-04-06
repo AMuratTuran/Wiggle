@@ -16,6 +16,7 @@ protocol DiscoverCellDelegate {
     func dislikeTapped(at indexPath: IndexPath)
     func likeTapped(at indexPath: IndexPath)
 }
+
 class DiscoverCell: UICollectionViewCell {
 
     @IBOutlet weak var containerView: UIView!
@@ -115,6 +116,16 @@ class DiscoverCell: UICollectionViewCell {
         ])
     }
     
+    func createBoostView() {
+        if confettiLayer == nil {
+            self.confettiLayer = Confetti.prepare(width: self.containerView.frame.width)
+            if let confettiLayer = self.confettiLayer {
+                self.containerView.layer.addSublayer(confettiLayer)
+            }
+            confettiLayer?.isHidden = true
+        }
+    }
+        
     func prepare(with data: User) {
         self.data = data
         containerView.addBorder(UIColor(hexString: "D9B372"), width: 0.5)
@@ -131,14 +142,7 @@ class DiscoverCell: UICollectionViewCell {
         nameLabel.text = "\(name), \(age)"
         distanceLabel.text = "\(String(format: "%.1f", getDistance())) km"
         
-        if confettiLayer == nil {
-            self.confettiLayer = Confetti.prepare(width: self.containerView.frame.width)
-            if let confettiLayer = self.confettiLayer {
-                self.containerView.layer.addSublayer(confettiLayer)
-            }
-            confettiLayer?.isHidden = true
-        }
-        confettiLayer?.isHidden = false
+        confettiLayer?.isHidden = true
         blurView.alpha = 0
         superLikeButton.isHidden = false
         dislikeButton.isHidden = false
@@ -146,7 +150,7 @@ class DiscoverCell: UICollectionViewCell {
         superLikeAnimationView?.isHidden = true
     }
     
-    func prepareSuperLike() -> Promise<()> {
+    func playSuperLikeAnimation() -> Promise<()> {
         return Promise { seal in
             self.superLikeAnimationView?.isHidden = false
             self.superLikeButton.isHidden = true
@@ -159,14 +163,8 @@ class DiscoverCell: UICollectionViewCell {
             })
         }
     }
-    
-    @objc func likeAction() {
-        if let indexPath = self.indexPath {
-            delegate?.likeTapped(at: indexPath)
-        }
-    }
-    
-    func prepareLike() -> Promise<()> {
+        
+    func playLikeAnimation() -> Promise<()> {
         return Promise { seal in
             self.likeAnimationView?.isHidden = false
             self.superLikeButton.isHidden = true
@@ -177,6 +175,12 @@ class DiscoverCell: UICollectionViewCell {
             self.likeAnimationView?.play(completion: { _ in
                 seal.fulfill_()
             })
+        }
+    }
+    
+    @objc func likeAction() {
+        if let indexPath = self.indexPath {
+            delegate?.likeTapped(at: indexPath)
         }
     }
     
@@ -191,6 +195,7 @@ class DiscoverCell: UICollectionViewCell {
             return 0
         }
     }
+    
     @IBAction func dislikeButtonTapped(_ sender: Any) {
         if let indexPath = self.indexPath {
             delegate?.dislikeTapped(at: indexPath)
@@ -201,5 +206,42 @@ class DiscoverCell: UICollectionViewCell {
         if let indexPath = self.indexPath {
             delegate?.superLikeTapped(at: indexPath)
         }
+    }
+}
+
+// Helpers
+extension DiscoverCell {
+    func showDislikeButton() {
+        dislikeButton.isHidden = false
+    }
+    
+    func hideDislikeButton() {
+        dislikeButton.isHidden = true
+    }
+    
+    func showSuperLikeButton() {
+        superLikeButton.isHidden = false
+    }
+    
+    func hideSuperLikeButton() {
+        superLikeButton.isHidden = true
+    }
+    
+    func showButtons() {
+        showDislikeButton()
+        showSuperLikeButton()
+    }
+    
+    func hideButtons() {
+        hideDislikeButton()
+        hideSuperLikeButton()
+    }
+    
+    func showBoostView() {
+        confettiLayer?.isHidden = false
+    }
+    
+    func hideBoostView() {
+        confettiLayer?.isHidden = true
     }
 }

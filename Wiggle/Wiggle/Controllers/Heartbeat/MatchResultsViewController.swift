@@ -16,29 +16,30 @@ class MatchResultsViewController: UIViewController {
     
     
     var result: HeartRateKitResult?
-    var data: [PFUser]? {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+    var data: [User] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepare()
         getMatchData()
-        // Do any additional setup after loading the view.
     }
     
     func prepare() {
         navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.tintColor = .white
         transparentNavigationBar()
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: FontHelper.bold(18)]
-        self.view.setGradientBackground()
+        setDefaultGradientBackground()
+        
         heartBeatLabel.text = "\(Int(result?.bpm ?? 0)) BPM"
-        collectionView.register(UINib(nibName: HeartbeatMatchCell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: HeartbeatMatchCell.reuseIdentifier)
+        
+        collectionView.register(UINib(nibName: DiscoverCell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: DiscoverCell.reuseIdentifier)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 20, right: 0)
+        
         initUpwardsAnimation()
     }
     
@@ -47,7 +48,17 @@ class MatchResultsViewController: UIViewController {
         NetworkManager.getHeartRateMatches(heartRate: Int(result?.bpm ?? 0), success: { (response) in
             self.startAnimating(self.view, startAnimate: false)
             self.startUpwardsAnimation()
-            self.data = response
+            
+            response.forEach { user in
+                let userModel = User(parseUser: user)
+                self.data.append(userModel)
+            }
+            
+            DispatchQueue.main.async {
+                delay(0.3) {
+                    self.collectionView.reloadData()
+                }
+            }
         }) { (error) in
             self.displayError(message: error)
         }
@@ -64,25 +75,60 @@ class MatchResultsViewController: UIViewController {
             self.collectionView.transform = CGAffineTransform.identity
         })
     }
+    
+    func dislikeAndRemove(indexPath: IndexPath) {
+        self.data.remove(at: indexPath.row)
+        self.collectionView.performBatchUpdates({
+            self.collectionView.deleteItems(at: [indexPath])
+        }) { (finished) in
+            self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+        }
+    }
+    
+    func superLikeAction(indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
+        data[indexPath.row].isLiked = true
+        _ = cell.playSuperLikeAnimation().done { _ in
+            self.data.remove(at: indexPath.row)
+            self.collectionView.performBatchUpdates({
+                self.collectionView.deleteItems(at: [indexPath])
+            }) { (finished) in
+                self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+            }
+        }
+    }
+    
+    func likeAction(indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
+        data[indexPath.row].isLiked = true
+        _ = cell.playLikeAnimation().done { _ in
+            self.data.remove(at: indexPath.row)
+            self.collectionView.performBatchUpdates({
+                self.collectionView.deleteItems(at: [indexPath])
+            }) { (finished) in
+                self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+            }
+        }
+    }
 }
 
 extension MatchResultsViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let data = data else { return 0 }
         return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let data = data else { return UICollectionViewCell() }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeartbeatMatchCell.reuseIdentifier, for: indexPath) as! HeartbeatMatchCell
-        let profileImageHeroId = "profileImage\(indexPath.row)"
-        let nameHeroId = "name\(indexPath.row)"
-        let subLabelId = "subLabel\(indexPath.row)"
-        let contentViewId = "contentView\(indexPath.row)"
-        cell.imageView.hero.id = profileImageHeroId
-        cell.nameAndAgeLabel.hero.id = nameHeroId
-        cell.locationLabel.hero.id = subLabelId
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoverCell.reuseIdentifier, for: indexPath) as! DiscoverCell
+//        let profileImageHeroId = "profileImage\(indexPath.row)"
+//        let nameHeroId = "name\(indexPath.row)"
+//        let subLabelId = "subLabel\(indexPath.row)"
+//        let contentViewId = "contentView\(indexPath.row)"
+//        cell.imageView.hero.id = profileImageHeroId
+//        cell.nameAndAgeLabel.hero.id = nameHeroId
+//        cell.locationLabel.hero.id = subLabelId
         cell.prepare(with: data[indexPath.row])
+        cell.delegate = self
+        cell.indexPath = indexPath
         return cell
     }
     
@@ -93,8 +139,21 @@ extension MatchResultsViewController: UICollectionViewDataSource, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let data = data else { return }
-        moveToProfileDetailFromWhoLiked(data: data[indexPath.row], index: indexPath.row)
+        guard !data.isEmpty else { return }
+        //moveToProfileDetailFromWhoLiked(data: data[indexPath.row], index: indexPath.row)
     }
 }
 
+extension MatchResultsViewController: DiscoverCellDelegate {
+    func likeTapped(at indexPath: IndexPath) {
+        self.likeAction(indexPath: indexPath)
+    }
+    
+    func superLikeTapped(at indexPath: IndexPath) {
+        self.superLikeAction(indexPath: indexPath)
+    }
+    
+    func dislikeTapped(at indexPath: IndexPath) {
+        self.dislikeAndRemove(indexPath: indexPath)
+    }
+}

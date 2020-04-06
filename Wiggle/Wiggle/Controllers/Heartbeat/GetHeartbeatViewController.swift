@@ -59,7 +59,10 @@ class GetHeartbeatViewController: UIViewController {
     
     
     func prepare() {
-        self.view.setGradientBackground()
+        setDefaultGradientBackground()
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.largeTitleDisplayMode = .never
+        
         dismissButton.cornerRadius(dismissButton.frame.height / 2)
         dismissButton.setWhiteGradient()
         
