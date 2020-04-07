@@ -139,20 +139,17 @@ extension UIViewController {
         let destinationViewController = profileStoryboard.instantiateViewController(withIdentifier: "ProfileDetailViewController") as! ProfileDetailViewController
         destinationViewController.isHeroEnabled = true
         destinationViewController.modalPresentationStyle = .fullScreen
-        destinationViewController.wiggleCardModel = data
         destinationViewController.delegate = delegate
-        destinationViewController.isHomePage = true
         self.present(destinationViewController, animated: true, completion: nil)
     }
     
-    func moveToProfileDetailFromWhoLiked(data: PFUser, index: Int) {
+    func moveToProfileDetailFromWhoLiked(data: PFUser, index: IndexPath) {
         let profileStoryboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
         let destinationViewController = profileStoryboard.instantiateViewController(withIdentifier: "ProfileDetailViewController") as! ProfileDetailViewController
         destinationViewController.hero.isEnabled = true
         destinationViewController.modalPresentationStyle = .fullScreen
-        destinationViewController.userData = data
+        //destinationViewController.userData = data
         destinationViewController.indexOfParentCell = index
-        destinationViewController.isHomePage = false
         self.present(destinationViewController, animated: true, completion: nil)
     }
     
@@ -181,7 +178,7 @@ extension UIViewController {
     
     
     func addMessageIconToNavigationBar() {
-        let messageImage = UIImage(named: "chat-bubble")
+        let messageImage = UIImage(named: "comments")
         let messageBT = UIBarButtonItem(image: messageImage, style: .plain, target: self, action: #selector(messageTapped))
         navigationItem.rightBarButtonItems = [messageBT]
     }

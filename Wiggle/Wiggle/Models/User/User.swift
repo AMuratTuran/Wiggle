@@ -12,6 +12,7 @@ import Parse
 class User: JsonInitializable {
     static var current: User?
     
+    var objectId: String
     var firstName: String
     var lastName: String
     var gender: Int
@@ -23,7 +24,8 @@ class User: JsonInitializable {
     var age: Int?
     var isLiked: Bool = false
     
-    init(firstName: String, lastName: String, gender: Int, bio: String, birthdate: Date, image: String, longitude: Double?, latitude: Double?) {
+    init(objectId: String, firstName: String, lastName: String, gender: Int, bio: String, birthdate: Date, image: String, longitude: Double?, latitude: Double?) {
+        self.objectId = objectId
         self.firstName = firstName
         self.lastName = lastName
         self.gender = gender
@@ -35,6 +37,7 @@ class User: JsonInitializable {
     }
     
     init(parseUser: PFUser) {
+        self.objectId = parseUser.objectId ?? ""
         self.firstName = parseUser.getFirstName()
         self.lastName = parseUser.getLastName()
         self.gender = parseUser.getGender()
@@ -47,6 +50,7 @@ class User: JsonInitializable {
     }
     
     required init(json: JSON) throws {
+        objectId = try json.get("objectId") 
         firstName = try json.get("firstName")
         lastName = try json.get("lastName")
         gender = try json.get("gender")

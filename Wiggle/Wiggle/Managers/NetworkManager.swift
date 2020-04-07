@@ -327,7 +327,7 @@ struct NetworkManager {
             
         }
         query?.whereKey("objectId", doesNotMatchKey: "receiver", in: likesQuery)
-        query?.order(byDescending: "popular")
+        query?.order(byDescending: "updatedAt")
         
         query?.findObjectsInBackground { (response, error) in
             if let error = error {

@@ -119,6 +119,7 @@ struct Localize {
         static var Birthday: String { return NSLocalizedString("birthday_label", comment: "Profile") }
         static var LikeToastTitle: String { return NSLocalizedString("like_toast_title", comment: "Profile") }
         static var LikeToastBody: String { return NSLocalizedString("like_toast_body", comment: "Profile") }
+        static var Bio: String { return NSLocalizedString("profile_about_me", comment: "Profile") }
     }
     
     struct Chat {

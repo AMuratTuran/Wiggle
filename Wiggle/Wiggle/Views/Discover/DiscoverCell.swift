@@ -33,6 +33,7 @@ class DiscoverCell: UICollectionViewCell {
     
     var likeAnimationView: AnimationView?
     var superLikeAnimationView: AnimationView?
+    var dislikeAnimationView: AnimationView?
     var confettiLayer: CAEmitterLayer?
     
     override var isHighlighted: Bool {
@@ -76,9 +77,11 @@ class DiscoverCell: UICollectionViewCell {
         dislikeButton.isHidden = false
         likeAnimationView = AnimationView(name: "like")
         superLikeAnimationView = AnimationView(name: "superlike")
+        dislikeAnimationView = AnimationView(name: "dislike")
         DispatchQueue.main.async {
             self.createLikeAnimation()
             self.createSuperLikeAnimation()
+            self.createDislikeAnimation()
         }
     }
     
@@ -116,6 +119,23 @@ class DiscoverCell: UICollectionViewCell {
         ])
     }
     
+    func createDislikeAnimation() {
+        dislikeAnimationView?.isHidden = true
+        dislikeAnimationView?.frame = containerView.frame
+        dislikeAnimationView?.loopMode = .playOnce
+        dislikeAnimationView?.contentMode = .scaleAspectFit
+        dislikeAnimationView?.animationSpeed = 1.5
+        
+        containerView.addSubview(dislikeAnimationView ?? UIView())
+        
+        NSLayoutConstraint.activate([
+            dislikeAnimationView!.widthAnchor.constraint(equalToConstant: containerView.frame.width),
+            dislikeAnimationView!.heightAnchor.constraint(equalToConstant: containerView.frame.height),
+            dislikeAnimationView!.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            dislikeAnimationView!.topAnchor.constraint(equalTo: containerView.topAnchor)
+        ])
+    }
+    
     func createBoostView() {
         if confettiLayer == nil {
             self.confettiLayer = Confetti.prepare(width: self.containerView.frame.width)
@@ -148,6 +168,7 @@ class DiscoverCell: UICollectionViewCell {
         dislikeButton.isHidden = false
         likeAnimationView?.isHidden = true
         superLikeAnimationView?.isHidden = true
+        dislikeAnimationView?.isHidden = true
     }
     
     func playSuperLikeAnimation() -> Promise<()> {
@@ -173,6 +194,20 @@ class DiscoverCell: UICollectionViewCell {
             self.containerView.addBorder(UIColor.systemPink, width: 1)
             self.blurView.alpha = 0.2
             self.likeAnimationView?.play(completion: { _ in
+                seal.fulfill_()
+            })
+        }
+    }
+    
+    func playDislikeAnimation() -> Promise<()> {
+        return Promise { seal in
+            self.dislikeAnimationView?.isHidden = false
+            self.superLikeButton.isHidden = true
+            self.dislikeButton.isHidden = true
+            self.blurView.backgroundColor = UIColor.systemRed
+            self.containerView.addBorder(UIColor.systemRed, width: 1)
+            self.blurView.alpha = 0.2
+            self.dislikeAnimationView?.play(completion: { _ in
                 seal.fulfill_()
             })
         }

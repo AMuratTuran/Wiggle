@@ -15,7 +15,7 @@ class LikedYouViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var likedYouData: [PFObject]?
-    var usersLikedYouData: [User] = []
+    var usersLikedYouData: [User]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,7 +93,7 @@ class LikedYouViewController: UIViewController {
     }
     
     func dislikeAndRemove(indexPath: IndexPath) {
-        self.usersLikedYouData.remove(at: indexPath.row)
+        self.usersLikedYouData?.remove(at: indexPath.row)
         self.collectionView.performBatchUpdates({
             self.collectionView.deleteItems(at: [indexPath])
         }) { (finished) in
@@ -103,9 +103,9 @@ class LikedYouViewController: UIViewController {
     
     func superLikeAction(indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
-        usersLikedYouData[indexPath.row].isLiked = true
+        usersLikedYouData?[indexPath.row].isLiked = true
         _ = cell.playSuperLikeAnimation().done { _ in
-            self.usersLikedYouData.remove(at: indexPath.row)
+            self.usersLikedYouData?.remove(at: indexPath.row)
             self.collectionView.performBatchUpdates({
                 self.collectionView.deleteItems(at: [indexPath])
             }) { (finished) in
@@ -116,9 +116,9 @@ class LikedYouViewController: UIViewController {
     
     func likeAction(indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
-        usersLikedYouData[indexPath.row].isLiked = true
+        usersLikedYouData?[indexPath.row].isLiked = true
         _ = cell.playLikeAnimation().done { _ in
-            self.usersLikedYouData.remove(at: indexPath.row)
+            self.usersLikedYouData?.remove(at: indexPath.row)
             self.collectionView.performBatchUpdates({
                 self.collectionView.deleteItems(at: [indexPath])
             }) { (finished) in
@@ -131,15 +131,17 @@ class LikedYouViewController: UIViewController {
 
 extension LikedYouViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if usersLikedYouData.isEmpty {
+        guard let data = usersLikedYouData else { return 0 }
+        
+        if data.isEmpty {
             return 1
         }else {
-            return usersLikedYouData.count
+            return data.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoverCell.reuseIdentifier, for: indexPath) as! DiscoverCell
+        guard let data = usersLikedYouData, let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoverCell.reuseIdentifier, for: indexPath) as? DiscoverCell else { return UICollectionViewCell() }
         //           let profileImageHeroId = "profileImage\(indexPath.row)"
         //           let nameHeroId = "name\(indexPath.row)"
         //           let subLabelId = "subLabel\(indexPath.row)"
@@ -147,12 +149,12 @@ extension LikedYouViewController: UICollectionViewDataSource, UICollectionViewDe
         //           cell.imageView.hero.id = profileImageHeroId
         //           cell.nameAndAgeLabel.hero.id = nameHeroId
         //           cell.locationLabel.hero.id = subLabelId
-        if usersLikedYouData.isEmpty {
+        if data.isEmpty {
             let emptyCell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.reuseIdentifier, for: indexPath) as! EmptyCollectionViewCell
             emptyCell.prepare(description: Localize.WhoLiked.NoMatchKeepLooking)
             return emptyCell
         }else {
-            cell.prepare(with: usersLikedYouData[indexPath.row])
+            cell.prepare(with: data[indexPath.row])
             cell.delegate = self
             cell.indexPath = indexPath
         }
@@ -161,8 +163,9 @@ extension LikedYouViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let data = usersLikedYouData else { return .zero }
         
-        if usersLikedYouData.isEmpty {
+        if data.isEmpty {
             return collectionView.frame.size
         }else {
             let windowWidth = collectionView.frame.width - 40
@@ -172,10 +175,11 @@ extension LikedYouViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let data = usersLikedYouData else { return }
         var userData: User!
         
-        guard !usersLikedYouData.isEmpty else { return }
-        userData = usersLikedYouData[indexPath.row]
+        guard !data.isEmpty else { return }
+        userData = data[indexPath.row]
         
         //moveToProfileDetailFromWhoLiked(data: userData, index: indexPath.row)
     }

@@ -10,13 +10,17 @@ import UIKit
 import Parse
 import Lottie
 import PopupDialog
+import PromiseKit
 
 class DiscoverViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var data: [User] = []
+    var data: [User]?
     fileprivate var skipCount : Int = 0
+    fileprivate var lastScrollOffsetY: CGFloat = 0.0
+    fileprivate var lastScrollAmount: CGFloat = 0.0
+    fileprivate var isLoading: Bool = false
     
     let animationView = AnimationView(name: "sensor_fingerprint")
     
@@ -47,7 +51,9 @@ class DiscoverViewController: UIViewController {
     }
     
     func getUsers() {
+        isLoading = true
         NetworkManager.getDiscoveryUsers(withSkip: skipCount, success: { (users) in
+            self.isLoading = false
             if users.count == 0 {
                 self.animationView.isHidden = false
                 self.animationView.play()
@@ -60,17 +66,35 @@ class DiscoverViewController: UIViewController {
                 self.animationView.isHidden = true
                 self.skipCount += 50
             }
+            var tempData: [User] = []
             users.forEach { user in
                 let userModel = User(parseUser: user)
-                self.data.append(userModel)
+                tempData.append(userModel)
             }
+            self.data = tempData
             DispatchQueue.main.async {
                 delay(0.3) {
                     self.collectionView.reloadData()
                 }
             }
-        }) { fail in
-            self.alertMessage(message: fail, buttons: [DefaultButton(title: Localize.Common.Close, action: nil)], isErrorMessage: true)
+        }) { error in
+            self.isLoading = false
+            self.alertMessage(message: error, buttons: [DefaultButton(title: Localize.Common.Close, action: nil)], isErrorMessage: true)
+        }
+    }
+    
+    func loadMore() {
+        NetworkManager.getDiscoveryUsers(withSkip: self.skipCount, success: { (users) in
+            self.isLoading = false
+            self.skipCount += 50
+            users.forEach { user in
+                let userModel = User(parseUser: user)
+                self.data?.append(userModel)
+            }
+            self.collectionView.reloadData()
+        }) { (error) in
+            self.isLoading = false
+            self.alertMessage(message: error, buttons: [DefaultButton(title: Localize.Common.Close, action: nil)], isErrorMessage: true)
         }
     }
     
@@ -87,19 +111,22 @@ class DiscoverViewController: UIViewController {
     }
     
     func dislikeAndRemove(indexPath: IndexPath) {
-        self.data.remove(at: indexPath.row)
-        self.collectionView.performBatchUpdates({
-            self.collectionView.deleteItems(at: [indexPath])
-        }) { (finished) in
-            self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+        guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
+        _ = cell.playDislikeAnimation().done { _ in
+            self.data?.remove(at: indexPath.row)
+            self.collectionView.performBatchUpdates({
+                self.collectionView.deleteItems(at: [indexPath])
+            }) { (finished) in
+                self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+            }
         }
     }
     
     func superLikeAction(indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
-        data[indexPath.row].isLiked = true
+        data?[indexPath.row].isLiked = true
         _ = cell.playSuperLikeAnimation().done { _ in
-            self.data.remove(at: indexPath.row)
+            self.data?.remove(at: indexPath.row)
             self.collectionView.performBatchUpdates({
                 self.collectionView.deleteItems(at: [indexPath])
             }) { (finished) in
@@ -110,9 +137,9 @@ class DiscoverViewController: UIViewController {
     
     func likeAction(indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
-        data[indexPath.row].isLiked = true
+        data?[indexPath.row].isLiked = true
         _ = cell.playLikeAnimation().done { _ in
-            self.data.remove(at: indexPath.row)
+            self.data?.remove(at: indexPath.row)
             self.collectionView.performBatchUpdates({
                 self.collectionView.deleteItems(at: [indexPath])
             }) { (finished) in
@@ -124,18 +151,19 @@ class DiscoverViewController: UIViewController {
 
 extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let data = self.data else { return 0 }
         return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoverCell.reuseIdentifier, for: indexPath) as? DiscoverCell else { return UICollectionViewCell() }
+        guard let data = self.data, let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoverCell.reuseIdentifier, for: indexPath) as? DiscoverCell else { return UICollectionViewCell() }
         
-        //        let profileImageHeroId = "profileImage\(indexPath.row)"
-        //        let nameHeroId = "name\(indexPath.row)"
-        //        let subLabelId = "subLabel\(indexPath.row)"
-        //        cell.imageView.hero.id = profileImageHeroId
-        //        cell.nameAndAgeLabel.hero.id = nameHeroId
-        //        cell.locationLabel.hero.id = subLabelId
+        let profileImageHeroId = "profileImage\(indexPath.row)"
+        let nameHeroId = "name\(indexPath.row)"
+        let subLabelId = "subLabel\(indexPath.row)"
+        cell.profileImageView.hero.id = profileImageHeroId
+        cell.nameLabel.hero.id = nameHeroId
+        cell.distanceLabel.hero.id = subLabelId
         
         cell.prepare(with: data[indexPath.row])
         cell.delegate = self
@@ -147,13 +175,23 @@ extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard self.data != nil else { return .zero }
+        
         let availableWidth = collectionView.frame.width - 40
         let cellWidth = availableWidth / 2
         return CGSize(width: cellWidth, height: cellWidth + 100)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // open profile
+        guard let data = data else { return }
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        guard let dest = storyboard.instantiateViewController(withIdentifier: "ProfileDetailViewController") as? ProfileDetailViewController else { return }
+        dest.userData = data[indexPath.row]
+        dest.isHeroEnabled = true
+        dest.indexOfParentCell = indexPath
+        dest.discoverDelegate = self
+        dest.modalPresentationStyle = .fullScreen
+        self.present(dest, animated: true, completion: nil)
     }
 }
 
@@ -170,3 +208,24 @@ extension DiscoverViewController: DiscoverCellDelegate {
         self.dislikeAndRemove(indexPath: indexPath)
     }
 }
+
+extension DiscoverViewController {
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.lastScrollAmount = 0.0
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard data != nil else { return }
+        if lastScrollOffsetY < scrollView.contentOffset.y, !isLoading {
+            let offset = scrollView.contentOffset.y
+            let maxOffset = scrollView.contentSize.height - scrollView.bounds.size.height
+            if (maxOffset - offset) <= 40 && scrollView.isDragging {
+                isLoading = true
+                loadMore()
+            }
+        }
+        lastScrollOffsetY = scrollView.contentOffset.y
+    }
+}
+

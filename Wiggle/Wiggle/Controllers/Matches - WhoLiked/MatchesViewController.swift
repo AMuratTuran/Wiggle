@@ -12,7 +12,7 @@ class MatchesViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var matchedUserData: [User] = []
+    var matchedUserData: [User]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +35,14 @@ class MatchesViewController: UIViewController {
     
     func getMatchData() {
         startAnimating(self.view, startAnimate: true)
+        var data: [User] = []
         NetworkManager.getMatchedUsers(success: { (response) in
             self.startAnimating(self.view, startAnimate: false)
             response.forEach { user in
                 let userModel = User(parseUser: user)
-                self.matchedUserData.append(userModel)
+                data.append(userModel)
             }
+            self.matchedUserData = data
             DispatchQueue.main.async {
                 delay(0.3) {
                     self.collectionView.reloadData()
@@ -51,33 +53,36 @@ class MatchesViewController: UIViewController {
             self.displayError(message: error)
         }
     }
-    
 }
 
 extension MatchesViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if matchedUserData.isEmpty {
+        guard let data = self.matchedUserData else { return 0 }
+        
+        if data.isEmpty {
             return 1
         }else {
-            return matchedUserData.count
+            return data.count
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoverCell.reuseIdentifier, for: indexPath) as! DiscoverCell
-        //        let profileImageHeroId = "profileImage\(indexPath.row)"
-        //        let nameHeroId = "name\(indexPath.row)"
-        //        let subLabelId = "subLabel\(indexPath.row)"
-        //        let contentViewId = "contentView\(indexPath.row)"
-        //        cell.imageView.hero.id = profileImageHeroId
-        //        cell.nameAndAgeLabel.hero.id = nameHeroId
-        //        cell.locationLabel.hero.id = subLabelId
-        if matchedUserData.isEmpty {
+        
+        guard let data = self.matchedUserData, let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DiscoverCell.reuseIdentifier, for: indexPath) as? DiscoverCell else { return UICollectionViewCell() }
+        
+        let profileImageHeroId = "profileImage\(indexPath.row)"
+        let nameHeroId = "name\(indexPath.row)"
+        let subLabelId = "subLabel\(indexPath.row)"
+        cell.profileImageView.hero.id = profileImageHeroId
+        cell.nameLabel.hero.id = nameHeroId
+        cell.distanceLabel.hero.id = subLabelId
+        
+        if data.isEmpty {
             let emptyCell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.reuseIdentifier, for: indexPath) as! EmptyCollectionViewCell
             emptyCell.prepare(description: Localize.WhoLiked.NoMatchKeepLooking)
             return emptyCell
         }else {
-            cell.prepare(with: matchedUserData[indexPath.row])
+            cell.prepare(with: data[indexPath.row])
             cell.hideButtons()
         }
         
@@ -85,7 +90,8 @@ extension MatchesViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if matchedUserData.isEmpty {
+        guard let data = self.matchedUserData else { return .zero }
+        if data.isEmpty {
             return collectionView.frame.size
         }else {
             let windowWidth = collectionView.frame.width - 40
@@ -95,9 +101,13 @@ extension MatchesViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var userData: User!
-        guard !matchedUserData.isEmpty else { return }
-        userData = matchedUserData[indexPath.row]
-        //moveToProfileDetailFromWhoLiked(data: userData, index: indexPath.row)
+        guard let data = matchedUserData else { return }
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        guard let dest = storyboard.instantiateViewController(withIdentifier: "ProfileDetailViewController") as? ProfileDetailViewController else { return }
+        dest.userData = data[indexPath.row]
+        dest.isHeroEnabled = true
+        dest.indexOfParentCell = indexPath
+        dest.modalPresentationStyle = .fullScreen
+        self.present(dest, animated: true, completion: nil)
     }
 }
