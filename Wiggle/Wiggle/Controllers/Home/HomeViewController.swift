@@ -171,29 +171,29 @@ class HomeViewController: UIViewController, userActionsDelegate {
     }
     
     func swipeAction(direction : SwipeResultDirection, fromButton : Bool){
-        let cancelButton = DefaultButton(title: Localize.Common.CancelButton) {}
-        let goToStoreButton = DefaultButton(title: "WStore") {
-            let storyboard = UIStoryboard(name: "Settings", bundle: nil)
-            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "SuperLikeInAppPurchaseViewController") as! SuperLikeInAppPurchaseViewController
-            self.navigationController?.present(destionationViewController, animated: true, completion: {})
-        }
-        guard let receiverObjectId = currentCardModel?.objectId else {return}
-        if fromButton{
-            kolodaView.swipe(direction)
-        }
-        if direction == .up && superLikeCount <= 0{
-            self.alertMessage(message: Localize.HomeScreen.superLikeError, buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
-            kolodaView.revertAction()
-        }else if direction == .up{
-            superLikeCount -= 1
-        }
-        NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: direction, success: {
-        }) { (err) in
-            if err.contains("1006") && direction != .left{
-                self.alertMessage(message: Localize.HomeScreen.likeError, buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
-                self.kolodaView.revertAction()
-            }
-        }
+//        let cancelButton = DefaultButton(title: Localize.Common.CancelButton) {}
+//        let goToStoreButton = DefaultButton(title: "WStore") {
+//            let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+//            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "SuperLikeInAppPurchaseViewController") as! SuperLikeInAppPurchaseViewController
+//            self.navigationController?.present(destionationViewController, animated: true, completion: {})
+//        }
+//        guard let receiverObjectId = currentCardModel?.objectId else {return}
+//        if fromButton{
+//            kolodaView.swipe(direction)
+//        }
+//        if direction == .up && superLikeCount <= 0{
+//            self.alertMessage(message: Localize.HomeScreen.superLikeError, buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
+//            kolodaView.revertAction()
+//        }else if direction == .up{
+//            superLikeCount -= 1
+//        }
+//        NetworkManager.swipeActionWithDirection(receiver: receiverObjectId, direction: direction, success: {
+//        }) { (err) in
+//            if err.contains("1006") && direction != .left{
+//                self.alertMessage(message: Localize.HomeScreen.likeError, buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
+//                self.kolodaView.revertAction()
+//            }
+//        }
     }
     
     // MARK: Protocol Actions

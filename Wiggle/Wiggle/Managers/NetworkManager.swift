@@ -374,20 +374,18 @@ struct NetworkManager {
         }
     }
     
-    static func swipeActionWithDirection(receiver : String, direction : SwipeResultDirection, success: @escaping() -> Void, fail: @escaping(String) -> Void){
+    static func swipeActionWithDirection(receiver : String, action : ActionType, success: @escaping() -> Void, fail: @escaping(String) -> Void){
         let object = PFObject(className: "Likes")
         object.setValue(AppConstants.objectId, forKey: "sender")
         object.setValue(receiver, forKey: "receiver")
         
-        switch direction {
-        case .left:
+        switch action {
+        case .dislike:
             object.setValue("Left", forKey: "direction")
-        case .right:
+        case .like:
             object.setValue("Right", forKey: "direction")
-        case .up:
+        case .superlike:
             object.setValue("Top", forKey: "direction")
-        default:
-            print("Unnecessary Direction : \(direction)")
         }
         
         object.saveInBackground { (result, err) in

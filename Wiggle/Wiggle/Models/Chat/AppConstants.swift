@@ -55,3 +55,9 @@ struct AppConstants {
         return headers
     }
 }
+
+public enum ActionType : String {
+    case like
+    case dislike
+    case superlike
+}

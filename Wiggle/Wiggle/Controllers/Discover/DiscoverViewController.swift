@@ -22,6 +22,7 @@ class DiscoverViewController: UIViewController {
     fileprivate var lastScrollOffsetY: CGFloat = 0.0
     fileprivate var lastScrollAmount: CGFloat = 0.0
     fileprivate var isLoading: Bool = false
+    private var superLikeCount : Int = 0
     
     let locationManager = CLLocationManager()
     
@@ -30,6 +31,8 @@ class DiscoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeViews()
+        
+        superLikeCount = PFUser.current()?.getSuperLike() ?? 0
         
         checkLocationAuth()
     }
@@ -141,6 +144,9 @@ class DiscoverViewController: UIViewController {
     
     func dislikeAndRemove(indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
+        guard let receiver = self.data?[indexPath.row].objectId else {return}
+        guard self.swipeAction(action: .dislike, receiver: receiver) else {return}
+        
         _ = cell.playDislikeAnimation().done { _ in
             self.data?.remove(at: indexPath.row)
             self.collectionView.performBatchUpdates({
@@ -153,6 +159,9 @@ class DiscoverViewController: UIViewController {
     
     func superLikeAction(indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
+        guard let receiver = self.data?[indexPath.row].objectId else {return}
+        guard self.swipeAction(action: .superlike, receiver: receiver) else {return}
+        
         data?[indexPath.row].isLiked = true
         _ = cell.playSuperLikeAnimation().done { _ in
             self.data?.remove(at: indexPath.row)
@@ -166,6 +175,9 @@ class DiscoverViewController: UIViewController {
     
     func likeAction(indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
+        guard let receiver = self.data?[indexPath.row].objectId else {return}
+        guard self.swipeAction(action: .like, receiver: receiver) else {return}
+        
         data?[indexPath.row].isLiked = true
         _ = cell.playLikeAnimation().done { _ in
             self.data?.remove(at: indexPath.row)
@@ -176,6 +188,31 @@ class DiscoverViewController: UIViewController {
             }
         }
     }
+    
+    func swipeAction(action : ActionType, receiver : String) -> Bool{
+        let cancelButton = DefaultButton(title: Localize.Common.CancelButton) {}
+        let goToStoreButton = DefaultButton(title: "WStore") {
+            let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "SuperLikeInAppPurchaseViewController") as! SuperLikeInAppPurchaseViewController
+            self.navigationController?.present(destionationViewController, animated: true, completion: {})
+        }
+        if action == .superlike && superLikeCount <= 0{
+            self.alertMessage(message: Localize.HomeScreen.superLikeError, buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
+            return false
+        }else if action == .superlike{
+            superLikeCount -= 1
+        }
+        NetworkManager.swipeActionWithDirection(receiver: receiver, action: action, success: {
+        }) { (err) in
+            if err.contains("1006") && action != .dislike{
+                self.alertMessage(message: Localize.HomeScreen.likeError, buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
+                //TODO : ISLEMI NASIL GERI ALMALIYIZ ??
+            }else{
+            }
+        }
+        return true
+    }
+    
 }
 
 extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
