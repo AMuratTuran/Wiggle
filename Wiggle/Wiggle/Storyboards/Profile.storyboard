@@ -374,6 +374,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePhoto" translatesAutoresizingMaskIntoConstraints="NO" id="QgA-Vr-U6S">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="QgA-Vr-U6S" secondAttribute="height" multiplier="1:1" id="V5F-me-lZW"/>
@@ -544,6 +545,7 @@
                         <outlet property="aboutMeStackView" destination="7sb-Oh-cnk" id="yFb-KI-urL"/>
                         <outlet property="backButton" destination="1fl-HG-oXg" id="tvS-Pq-q1p"/>
                         <outlet property="bioLabel" destination="OWO-32-Ptu" id="iYb-sS-gYl"/>
+                        <outlet property="buttonsStackView" destination="RSH-fe-vc7" id="4rU-aF-88D"/>
                         <outlet property="detailView" destination="Er9-wj-Vv5" id="tJg-Nm-iYk"/>
                         <outlet property="dislikeButton" destination="tHX-Hl-FEq" id="UZT-p7-mhA"/>
                         <outlet property="distanceLabel" destination="3Kq-2z-Ic0" id="7vA-91-QdQ"/>

@@ -108,6 +108,7 @@ extension MatchesViewController: UICollectionViewDataSource, UICollectionViewDel
         dest.isHeroEnabled = true
         dest.indexOfParentCell = indexPath
         dest.modalPresentationStyle = .fullScreen
+        dest.isMatchesPages = true
         self.present(dest, animated: true, completion: nil)
     }
 }

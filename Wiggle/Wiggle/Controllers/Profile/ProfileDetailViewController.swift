@@ -25,10 +25,12 @@ class ProfileDetailViewController: UIViewController {
     @IBOutlet weak var dislikeButton: UIButton!
     @IBOutlet weak var superlikeButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var buttonsStackView: UIStackView!
     
     var userData: User?
     var indexOfParentCell: IndexPath?
     var isHomePage: Bool = true
+    var isMatchesPages: Bool = false
     var superLikeCount : Int = 0
     var delegate: userActionsDelegate?
     var discoverDelegate: DiscoverCellDelegate?
@@ -56,9 +58,11 @@ class ProfileDetailViewController: UIViewController {
     
     func prepareViews() {
         self.backButton.addShadow(UIColor(named: "shadowColor")!, shadowRadiues: 2.0, shadowOpacity: 0.4)
-        setDefaultGradientBackground()
+        self.view.backgroundColor = UIColor(hexString: "223C53")
         aboutMeLabel.text = Localize.Profile.Bio
         
+        buttonsStackView.isHidden = isMatchesPages
+                                                     
         backButton.alpha = 0
         backButton.cornerRadius(backButton.frame.height / 2)
         backButton.setWhiteGradient()
@@ -71,9 +75,6 @@ class ProfileDetailViewController: UIViewController {
         
         dislikeButton.cornerRadius(dislikeButton.frame.height / 2)
         dislikeButton.setWhiteGradient()
-        
-        //reportButton.setTitle(Localize.Report.ReportTitle, for: .normal)
-        //blockButton.setTitle(Localize.Report.Block, for: .normal)
         
         superLikeCount = PFUser.current()?.getSuperLike() ?? 0
         
@@ -93,46 +94,46 @@ class ProfileDetailViewController: UIViewController {
         }
     }
     
-        @IBAction func likeButtonAction(_ sender: Any) {
-//            if let receiverObjectId = wiggleCardModel?.objectId{
-//                delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down)
-//            }else if let receiverObjectId = userData?.objectId{
-//                showToastMessage(title: Localize.Profile.LikeToastTitle, body: Localize.Profile.LikeToastBody)
-//                delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down)
-//            }
-//            moveToHomeViewControllerFromProfileDetail()
-            self.dismiss(animated: true) {
-                if let indexPath = self.indexOfParentCell {
-                    self.discoverDelegate?.likeTapped(at: indexPath)
-                }
+    @IBAction func likeButtonAction(_ sender: Any) {
+        //            if let receiverObjectId = wiggleCardModel?.objectId{
+        //                delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down)
+        //            }else if let receiverObjectId = userData?.objectId{
+        //                showToastMessage(title: Localize.Profile.LikeToastTitle, body: Localize.Profile.LikeToastBody)
+        //                delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down)
+        //            }
+        //            moveToHomeViewControllerFromProfileDetail()
+        self.dismiss(animated: true) {
+            if let indexPath = self.indexOfParentCell {
+                self.discoverDelegate?.likeTapped(at: indexPath)
             }
         }
-        @IBAction func starButtonAction(_ sender: Any) {
-//            if let receiverObjectId = wiggleCardModel?.objectId{
-//                delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "up") ?? .down)
-//            }else if let receiverObjectId = userData?.objectId{
-//                delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "up") ?? .down)
-//            }
-//            moveToHomeViewControllerFromProfileDetail()
-            self.dismiss(animated: true) {
-                if let indexPath = self.indexOfParentCell {
-                    self.discoverDelegate?.superLikeTapped(at: indexPath)
-                }
+    }
+    @IBAction func starButtonAction(_ sender: Any) {
+        //            if let receiverObjectId = wiggleCardModel?.objectId{
+        //                delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "up") ?? .down)
+        //            }else if let receiverObjectId = userData?.objectId{
+        //                delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "up") ?? .down)
+        //            }
+        //            moveToHomeViewControllerFromProfileDetail()
+        self.dismiss(animated: true) {
+            if let indexPath = self.indexOfParentCell {
+                self.discoverDelegate?.superLikeTapped(at: indexPath)
             }
         }
-        @IBAction func dislikeButtonAction(_ sender: Any) {
-//            if let receiverObjectId = wiggleCardModel?.objectId{
-//                delegate?.dislikeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
-//            }else if let receiverObjectId = userData?.objectId{
-//                delegate?.dislikeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
-//            }
-//            moveToHomeViewControllerFromProfileDetail()
-            self.dismiss(animated: true) {
-                if let indexPath = self.indexOfParentCell {
-                    self.discoverDelegate?.dislikeTapped(at: indexPath)
-                }
+    }
+    @IBAction func dislikeButtonAction(_ sender: Any) {
+        //            if let receiverObjectId = wiggleCardModel?.objectId{
+        //                delegate?.dislikeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
+        //            }else if let receiverObjectId = userData?.objectId{
+        //                delegate?.dislikeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
+        //            }
+        //            moveToHomeViewControllerFromProfileDetail()
+        self.dismiss(animated: true) {
+            if let indexPath = self.indexOfParentCell {
+                self.discoverDelegate?.dislikeTapped(at: indexPath)
             }
         }
+    }
     
     func getDistance() -> Double {
         if let user = User.current, let data = self.userData {
@@ -187,7 +188,7 @@ class ProfileDetailViewController: UIViewController {
         
         self.alertMessage(title: Localize.Report.ReportTitle, message: Localize.Report.SelectReason, buttons: [messageButton, photoButton, spamButton, cancelButton], buttonAlignment: .vertical, isErrorMessage: false)
     }
-
+    
     func blockAction() {
         let yesButton = DefaultButton(title: Localize.Common.Yes) {
             self.reportButtonAction(isBlockAction: true)
