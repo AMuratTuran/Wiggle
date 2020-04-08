@@ -25,7 +25,7 @@ class LogoutCell: UITableViewCell {
     }
     
     func prepareForDeleteAccount() {
-        logoutLabel.text = "Hesabimi Sil"
+        logoutLabel.text = "Hesabımı Sil"
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

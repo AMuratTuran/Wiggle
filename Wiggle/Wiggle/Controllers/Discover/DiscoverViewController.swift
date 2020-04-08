@@ -191,13 +191,18 @@ class DiscoverViewController: UIViewController {
     
     func swipeAction(action : ActionType, receiver : String) -> Bool{
         let cancelButton = DefaultButton(title: Localize.Common.CancelButton) {}
-        let goToStoreButton = DefaultButton(title: "WStore") {
+        let goToSuperLikeStoreButton = DefaultButton(title: "WStore") {
             let storyboard = UIStoryboard(name: "Settings", bundle: nil)
             let destionationViewController = storyboard.instantiateViewController(withIdentifier: "SuperLikeInAppPurchaseViewController") as! SuperLikeInAppPurchaseViewController
             self.navigationController?.present(destionationViewController, animated: true, completion: {})
         }
+        let goToIAPStoreButton = DefaultButton(title: "WStore") {
+            let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
+            self.navigationController?.present(destionationViewController, animated: true, completion: {})
+        }
         if action == .superlike && superLikeCount <= 0{
-            self.alertMessage(message: Localize.HomeScreen.superLikeError, buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
+            self.alertMessage(message: Localize.HomeScreen.superLikeError, buttons: [goToSuperLikeStoreButton, cancelButton], isErrorMessage: true)
             return false
         }else if action == .superlike{
             superLikeCount -= 1
@@ -205,9 +210,7 @@ class DiscoverViewController: UIViewController {
         NetworkManager.swipeActionWithDirection(receiver: receiver, action: action, success: {
         }) { (err) in
             if err.contains("1006") && action != .dislike{
-                self.alertMessage(message: Localize.HomeScreen.likeError, buttons: [goToStoreButton, cancelButton], isErrorMessage: true)
-                //TODO : ISLEMI NASIL GERI ALMALIYIZ ??
-            }else{
+                self.alertMessage(message: Localize.HomeScreen.likeError, buttons: [goToIAPStoreButton, cancelButton], isErrorMessage: true)
             }
         }
         return true
