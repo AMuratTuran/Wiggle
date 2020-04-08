@@ -77,7 +77,7 @@ class EnableLocationViewController: UIViewController {
         locationManager.delegate = self
         sender.isUserInteractionEnabled = false
         self.locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways {
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.requestLocation()
         }else {

@@ -314,13 +314,17 @@ struct NetworkManager {
             fail("User not found")
             return
         }
-        //let location = PFUser.current()?.getLocation()
-        //let parseLocation: PFGeoPoint = PFGeoPoint(latitude: location?.latitude ?? 0, longitude: location?.longitude ?? 0)
+        
+        if let latitude = User.current?.latitude, let longitude = User.current?.longitude {
+            let parseLocation: PFGeoPoint = PFGeoPoint(latitude: latitude, longitude: longitude)
+            query?.whereKey("location", nearGeoPoint: parseLocation, withinKilometers: Double(AppConstants.Settings.SelectedDistance))
+        }
+        
         likesQuery.whereKey("sender", equalTo: user.objectId ?? "")
         query?.limit = 50
         query?.skip = withSkip
         query?.whereKey("objectId", notEqualTo: user.objectId ?? "")
-        //query?.whereKey("location", nearGeoPoint: parseLocation, withinKilometers: Double(AppConstants.Settings.SelectedDistance))
+        
         if AppConstants.Settings.SelectedShowMeGender != 3 {
             query?.whereKey("gender", equalTo: AppConstants.Settings.SelectedShowMeGender)
         }else {

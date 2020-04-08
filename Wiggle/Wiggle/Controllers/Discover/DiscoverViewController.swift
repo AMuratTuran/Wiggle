@@ -11,6 +11,7 @@ import Parse
 import Lottie
 import PopupDialog
 import PromiseKit
+import CoreLocation
 
 class DiscoverViewController: UIViewController {
     
@@ -22,12 +23,15 @@ class DiscoverViewController: UIViewController {
     fileprivate var lastScrollAmount: CGFloat = 0.0
     fileprivate var isLoading: Bool = false
     
+    let locationManager = CLLocationManager()
+    
     let animationView = AnimationView(name: "sensor_fingerprint")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeViews()
-        getUsers()
+        
+        checkLocationAuth()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +39,8 @@ class DiscoverViewController: UIViewController {
     }
     
     func initializeViews() {
+        locationManager.delegate = self
+
         setDefaultGradientBackground()
         navigationController?.navigationBar.tintColor = .white
         addMessageIconToNavigationBar()
@@ -48,6 +54,29 @@ class DiscoverViewController: UIViewController {
         collectionView.register(UINib(nibName: DiscoverCell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: DiscoverCell.reuseIdentifier)
         collectionView.contentInset = UIEdgeInsets(top: 5, left: 0, bottom: 20, right: 0)
         createLottieAnimation()
+    }
+    
+    func checkLocationAuth() {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedAlways, .authorizedWhenInUse:
+            getUsers()
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.requestLocation()
+        default:
+            let requestAuthButton = DefaultButton(title: "Settings") {
+                self.openSettings()
+            }
+            self.alertMessage(message: "Lokasyon izni yok", buttons: [DestructiveButton(title: Localize.Common.Close, action: nil),  requestAuthButton], isErrorMessage: true)
+        }
+    }
+    
+    func openSettings() {
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+            return
+        }
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+            UIApplication.shared.open(settingsUrl, completionHandler: nil)
+        }
     }
     
     func getUsers() {
@@ -229,3 +258,24 @@ extension DiscoverViewController {
     }
 }
 
+extension DiscoverViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location?.coordinate ?? CLLocationCoordinate2D()
+        let point = PFGeoPoint(latitude: locValue.latitude, longitude: locValue.longitude)
+        PFUser.current()?.setValue(point, forKey: "location")
+        PFUser.current()?.saveInBackground()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        alertMessage(message: error.localizedDescription, buttons: [DefaultButton(title: Localize.Common.Close, action: nil)], isErrorMessage: true)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            self.getUsers()
+        default:
+            return
+        }
+    }
+}
