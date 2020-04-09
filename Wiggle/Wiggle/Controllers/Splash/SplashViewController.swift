@@ -44,7 +44,16 @@ class SplashViewController: UIViewController {
     
     func isLoggedIn() -> Bool {
         if let user = PFUser.current() {
-            User.current = User(parseUser: user)
+            user.fetchInBackground(block: { (object, error) in
+                if error != nil {
+                    return
+                }
+                guard let user = object as? PFUser else {
+                    return
+                }
+                User.current = User(parseUser: user)
+                AppConstants.objectId = user.objectId ?? ""
+            })
             return true
         }else {
             return false

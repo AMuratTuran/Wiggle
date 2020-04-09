@@ -16,10 +16,11 @@ class LikedYouViewController: UIViewController {
     
     var likedYouData: [PFObject]?
     var usersLikedYouData: [User]?
+    private var superLikeCount : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getSuperlikeCount()
         prepareViews()
         getWhoLiked()
     }
@@ -92,8 +93,26 @@ class LikedYouViewController: UIViewController {
         }
     }
     
+    func getSuperlikeCount() {
+        if let user = PFUser.current() {
+            user.fetchInBackground(block: { (object, error) in
+                if let error = error {
+                    self.alertMessage(message: error.localizedDescription, buttons: [DefaultButton(title: Localize.Common.Close, action: nil)], isErrorMessage: true)
+                    return
+                }
+                guard let user = object as? PFUser else {
+                    return
+                }
+                self.superLikeCount = user.object(forKey: "super_like") as! Int
+            })
+        }
+    }
+    
     func dislikeAndRemove(indexPath: IndexPath) {
         self.usersLikedYouData?.remove(at: indexPath.row)
+        guard let receiver = self.usersLikedYouData?[indexPath.row].objectId else {return}
+        guard self.likeDislikeAction(action: .dislike, receiver: receiver) else {return}
+        
         self.collectionView.performBatchUpdates({
             self.collectionView.deleteItems(at: [indexPath])
         }) { (finished) in
@@ -103,6 +122,9 @@ class LikedYouViewController: UIViewController {
     
     func superLikeAction(indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
+        guard let receiver = self.usersLikedYouData?[indexPath.row].objectId else {return}
+        guard self.likeDislikeAction(action: .superlike, receiver: receiver) else {return}
+        
         usersLikedYouData?[indexPath.row].isLiked = true
         _ = cell.playSuperLikeAnimation().done { _ in
             self.usersLikedYouData?.remove(at: indexPath.row)
@@ -116,6 +138,9 @@ class LikedYouViewController: UIViewController {
     
     func likeAction(indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
+        guard let receiver = self.usersLikedYouData?[indexPath.row].objectId else {return}
+        guard self.likeDislikeAction(action: .like, receiver: receiver) else {return}
+        
         usersLikedYouData?[indexPath.row].isLiked = true
         _ = cell.playLikeAnimation().done { _ in
             self.usersLikedYouData?.remove(at: indexPath.row)
@@ -125,6 +150,33 @@ class LikedYouViewController: UIViewController {
                 self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
             }
         }
+    }
+    
+    func likeDislikeAction(action : ActionType, receiver : String) -> Bool{
+        let cancelButton = DefaultButton(title: Localize.Common.CancelButton) {}
+        let goToSuperLikeStoreButton = DefaultButton(title: "WStore") {
+            let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "SuperLikeInAppPurchaseViewController") as! SuperLikeInAppPurchaseViewController
+            self.navigationController?.present(destionationViewController, animated: true, completion: {})
+        }
+        let goToIAPStoreButton = DefaultButton(title: "WStore") {
+            let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
+            self.navigationController?.present(destionationViewController, animated: true, completion: {})
+        }
+        if action == .superlike && superLikeCount <= 0{
+            self.alertMessage(message: Localize.HomeScreen.superLikeError, buttons: [goToSuperLikeStoreButton, cancelButton], isErrorMessage: true)
+            return false
+        }else if action == .superlike{
+            superLikeCount -= 1
+        }
+        NetworkManager.swipeActionWithDirection(receiver: receiver, action: action, success: {
+        }) { (err) in
+            if err.contains("1006") && action != .dislike{
+                self.alertMessage(message: Localize.HomeScreen.likeError, buttons: [goToIAPStoreButton, cancelButton], isErrorMessage: true)
+            }
+        }
+        return true
     }
 }
 

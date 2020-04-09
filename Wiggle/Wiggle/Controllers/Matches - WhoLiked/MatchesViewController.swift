@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import PopupDialog
 
 class MatchesViewController: UIViewController {
     
@@ -53,6 +55,32 @@ class MatchesViewController: UIViewController {
             self.displayError(message: error)
         }
     }
+    
+    func dislikeAndRemove(indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
+        guard let receiver = self.matchedUserData?[indexPath.row].objectId else {return}
+        self.unmatch(receiverId: receiver)
+        
+        _ = cell.playDislikeAnimation().done { _ in
+            self.matchedUserData?.remove(at: indexPath.row)
+            self.collectionView.performBatchUpdates({
+                self.collectionView.deleteItems(at: [indexPath])
+            }) { (finished) in
+                self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+            }
+        }
+    }
+    
+    func unmatch(receiverId: String) {
+        let cancelButton = DefaultButton(title: Localize.Common.Close) {
+        }
+        
+        NetworkManager.unMatch(myId: AppConstants.objectId, contactedUserId: receiverId, success: {
+            
+        }) { (error) in
+            self.alertMessage(message: error, buttons: [cancelButton], isErrorMessage: false)
+        }
+    }
 }
 
 extension MatchesViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -84,6 +112,9 @@ extension MatchesViewController: UICollectionViewDataSource, UICollectionViewDel
         }else {
             cell.prepare(with: data[indexPath.row])
             cell.hideButtons()
+            cell.showDislikeButton()
+            cell.indexPath = indexPath
+            cell.delegate = self
         }
         
         return cell
@@ -110,5 +141,19 @@ extension MatchesViewController: UICollectionViewDataSource, UICollectionViewDel
         dest.modalPresentationStyle = .fullScreen
         dest.isMatchesPages = true
         self.present(dest, animated: true, completion: nil)
+    }
+}
+
+extension MatchesViewController: DiscoverCellDelegate {
+    func likeTapped(at indexPath: IndexPath) {
+        
+    }
+    
+    func superLikeTapped(at indexPath: IndexPath) {
+        
+    }
+    
+    func dislikeTapped(at indexPath: IndexPath) {
+        self.dislikeAndRemove(indexPath: indexPath)
     }
 }

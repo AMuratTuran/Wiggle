@@ -215,21 +215,19 @@ class ChatViewController: MessagesViewController {
     func configureMessageInputBar() {
         messageInputBar.setLeftStackViewWidthConstant(to: 38, animated: false)
         messageInputBar.setStackViewItems([addButton, InputBarButtonItem.fixedSpace(2)], forStack: .left, animated: false)
-        messageInputBar.leftStackView.backgroundColor = .clear
-        messageInputBar.backgroundView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+        messageInputBar.leftStackView.backgroundColor = UIColor(hexString: "223C53")
+        messageInputBar.backgroundView.backgroundColor = UIColor(hexString: "223C53")
         addButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         addButton.setSize(CGSize(width: 36, height: 36), animated: false)
         addButton.title = nil
         addButton.imageView?.layer.cornerRadius = 16
         addButton.backgroundColor = .clear
-        addButton.imageView?.backgroundColor = .white
+        addButton.imageView?.backgroundColor = .clear
         addButton.tintColor = .white
         addButton.image = UIImage(named: "add")
         addButton.addTarget(self, action: #selector(addImageTapped), for: .touchUpInside)
         messageInputBar.isTranslucent = true
         messageInputBar.separatorLine.isHidden = true
-        messageInputBar.inputTextView.backgroundColor = .clear
-        messageInputBar.contentView.backgroundColor = .clear
         messageInputBar.inputTextView.tintColor =  UIColor(red: 178/255, green: 178/255, blue: 178/255, alpha: 1)
         messageInputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 12, left: 16, bottom: 8, right: 36)
         messageInputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 12, left: 20, bottom: 8, right: 36)
@@ -238,7 +236,7 @@ class ChatViewController: MessagesViewController {
         messageInputBar.maxTextViewHeight = 100
         messageInputBar.inputTextView.font = FontHelper.regular(15.0)
         messageInputBar.inputTextView.placeholder = ""
-        messageInputBar.inputTextView.layer.borderColor = UIColor.white.withAlphaComponent(0.5).cgColor
+        messageInputBar.inputTextView.layer.borderColor = UIColor.white.withAlphaComponent(0.6).cgColor
         messageInputBar.inputTextView.layer.borderWidth = 0.5
         messageInputBar.inputTextView.layer.cornerRadius = 20.0
         messageInputBar.inputTextView.layer.masksToBounds = true
