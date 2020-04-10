@@ -347,15 +347,11 @@ struct NetworkManager {
     }
     
     static func updateSuperLikeCount(count : Int){
-        guard let user = PFUser.current() else {
-            return
-        }
-        let object = PFObject(className:"User")
-        let final = user.getSuperLike() + count
+        let final = PFUser.current()?.getSuperLike() ?? 0 + count
         
-        object.setValue(final, forKey: "super_like")
+        PFUser.current()?.setValue(final, forKey: "super_like")
         
-        object.saveInBackground { (result, err) in
+        PFUser.current()?.saveInBackground { (result, err) in
             print(result)
         }
     }
@@ -364,12 +360,11 @@ struct NetworkManager {
         guard let user = PFUser.current() else {
             return
         }
-        let object : PFObject = PFObject(className: "Subscriptions")
         
-        object.setValue(user.objectId, forKey: "userId")
-        object.setValue(sku, forKey: "sku")
+        PFUser.current()?.setValue(user.objectId, forKey: "userId")
+        PFUser.current()?.setValue(sku, forKey: "sku")
         
-        object.saveInBackground { (result, err) in
+        PFUser.current()?.saveInBackground { (result, err) in
             print(result)
         }
     }

@@ -117,7 +117,7 @@ class ProfileViewController: UIViewController {
     }
     @IBAction func storeButtonAction(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Settings", bundle: nil)
-        let destionationViewController = storyboard.instantiateViewController(withIdentifier: "SuperLikeInAppPurchaseViewController") as! SuperLikeInAppPurchaseViewController
+        let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
         self.navigationController?.present(destionationViewController, animated: true, completion: {})
     }
 }

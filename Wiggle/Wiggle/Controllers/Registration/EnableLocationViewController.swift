@@ -42,6 +42,7 @@ class EnableLocationViewController: UIViewController {
             PFUser.current()?.setValue(request.bio, forKey: "bio")
             PFUser.current()?.setValue(request.gender, forKey: "gender")
             PFUser.current()?.setValue(request.birthday, forKey: "birthday")
+            PFUser.current()?.setValue(5, forKey: "super_like")
             
             if let lat = request.latitude, let long = request.longtitude {
                 let point = PFGeoPoint(latitude: lat, longitude: long)

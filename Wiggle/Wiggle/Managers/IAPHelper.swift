@@ -35,7 +35,6 @@ open class IAPHelper: NSObject  {
                     print("\(productIds) is valid until \(expiryDate)\n\(items)\n")
                     PFUser.current()?.setValue(true, forKey: "isGold")
                     PFUser.current()?.saveInBackground()
-                    NetworkManager.updateSubstriction(sku: productIds.first ?? "")
                     completion(true, items[0].productId)
                 case .expired, .notPurchased:
                     completion(false, "")
@@ -199,6 +198,8 @@ extension IAPHelper: SKPaymentTransactionObserver {
             }else if identifier == WiggleProducts.twentyFiveSuperLikes{
                 NetworkManager.updateSuperLikeCount(count : 25)
             }
+        }else{
+            NetworkManager.updateSubstriction(sku: identifier)
         }
         
         purchasedProductIdentifiers.insert(identifier)
