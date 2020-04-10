@@ -23,6 +23,8 @@ class User: JsonInitializable {
     var latitude: Double?
     var age: Int?
     var isLiked: Bool = false
+    var trend: Date?
+    var boostCount: Int = 0
     
     init(objectId: String, firstName: String, lastName: String, gender: Int, bio: String, birthdate: Date, image: String, longitude: Double?, latitude: Double?) {
         self.objectId = objectId
@@ -47,6 +49,12 @@ class User: JsonInitializable {
         self.longitude = parseUser.getLocation().longitude
         self.latitude = parseUser.getLocation().latitude
         self.age = parseUser.getAge()
+        if let trend = parseUser.object(forKey: "trend") as? Date {
+            self.trend = trend
+        }
+        if let boostCount = parseUser.object(forKey: "boost") as? Int {
+            self.boostCount = boostCount
+        }
     }
     
     required init(json: JSON) throws {

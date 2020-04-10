@@ -106,6 +106,7 @@
 
 "no_match_keep_looking" = "You have no match yet. Keep swiping!";
 "who_liked_premium" = "You need to purchase Wiggle Gold to see who liked your profile.";
+"no_liked_you_keep_looking" = "No one liked your profile yet. Increase your chance by using Wiggle Boost!";
 
 "chat_empty_message" = "You have no messages yet, but don't give up. Keep measuring your heart rate and keep swiping!";
 "chat_back_home" = "Homescreen";

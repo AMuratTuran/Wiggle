@@ -30,6 +30,7 @@ class DiscoverViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeViews()
+        addObservers()
         checkLocationAuth()
     }
     
@@ -71,12 +72,31 @@ class DiscoverViewController: UIViewController {
         createLottieAnimation()
     }
     
+    func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didChangeGender), name: Notification.Name("didChangeGender"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didChangeDistance), name: Notification.Name("didChangeDistance"), object: nil)
+    }
+    
+    @objc func didChangeGender() {
+        self.skipCount = 0
+        self.data = []
+        getUsers()
+    }
+    
+    @objc func didChangeDistance() {
+        self.skipCount = 0
+        self.data = []
+        getUsers()
+    }
+    
     func checkLocationAuth() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways, .authorizedWhenInUse:
             getUsers()
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.requestLocation()
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
         default:
             let requestAuthButton = DefaultButton(title: "Settings") {
                 self.openSettings()
@@ -249,7 +269,6 @@ extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewDele
         cell.prepare(with: data[indexPath.row])
         cell.delegate = self
         cell.createBoostView()
-        cell.showBoostView()
         cell.indexPath = indexPath
         
         return cell

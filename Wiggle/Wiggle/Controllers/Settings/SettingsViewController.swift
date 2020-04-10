@@ -70,6 +70,8 @@ class SettingsViewController: UIViewController {
     func saveDistanceInfo() {
         if let distance = self.selectedDistance {
             AppConstants.Settings.SelectedDistance = distance
+            let name = Notification.Name("didChangeDistance")
+            NotificationCenter.default.post(name: name, object: nil)
             UserDefaults.standard.set(distance, forKey: "MaximumDistance")
         }
     }
@@ -250,8 +252,6 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension SettingsViewController: DistanceChanged {
     func maxDistanceChanged(value: Int) {
-        let name = Notification.Name("didChangeDistance")
-        NotificationCenter.default.post(name: name, object: nil)
         isChanged = true
         self.selectedDistance = value
     }

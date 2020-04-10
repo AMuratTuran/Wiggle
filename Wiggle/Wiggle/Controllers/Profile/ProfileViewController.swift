@@ -21,6 +21,10 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var settingsLabel: UILabel!
     @IBOutlet weak var changePhotoLabel: UILabel!
     @IBOutlet weak var editProfileLabel: UILabel!
+    @IBOutlet weak var boostView: UIView!
+    @IBOutlet weak var useBoostButton: UIButton!
+    @IBOutlet weak var remainingBoostDescLabel: UILabel!
+    @IBOutlet weak var remainingBoostLabel: UILabel!
     
     
     var slides:[SwipablePremiumView] = []
@@ -28,6 +32,16 @@ class ProfileViewController: UIViewController {
     var selectedImage: UIImage?
     var bannerView: GADBannerView!
     var interstitial: GADInterstitial!
+    var boostCount: Int = 0 {
+        didSet {
+            self.remainingBoostLabel.text = "\(boostCount)"
+            if boostCount != 0 {
+                self.useBoostButton.setTitle("Kullan", for: .normal)
+            }else {
+                self.useBoostButton.setTitle("Satın Al", for: .normal)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +50,30 @@ class ProfileViewController: UIViewController {
         
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        getBoostCount()
+    }
+    
+    func getBoostCount() {
+        PFUser.current()?.fetchInBackground(block: { (object, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            
+            guard let user = object as? PFUser else {
+                self.boostCount = 0
+                return
+            }
+            
+            if let count = user.object(forKey: "boost") as? Int {
+                self.boostCount = count
+            }else {
+                self.boostCount = 0
+            }
+        })
+    }
     func configureViews() {
         
         guard PFUser.current() != nil else {
@@ -54,7 +91,12 @@ class ProfileViewController: UIViewController {
         
         editProfileButton.cornerRadius(editProfileButton.frame.height / 2)
         editProfileButton.setWhiteGradient()
+        
+        boostView.cornerRadius(boostView.frame.height / 2)
+        boostView.addBorder(UIColor(hexString: "D9B372"), width: 1)
 
+        useBoostButton.cornerRadius(useBoostButton.frame.height / 2)
+        
         profilePhoto.cornerRadius(profilePhoto.frame.height / 2)
         imageBackgroundView.cornerRadius(imageBackgroundView.frame.height / 2)
         imageBackgroundView.clipsToBounds = false
@@ -119,6 +161,9 @@ class ProfileViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Settings", bundle: nil)
         let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
         self.navigationController?.present(destionationViewController, animated: true, completion: {})
+    }
+    @IBAction func useBoost(_ sender: Any) {
+        
     }
 }
 

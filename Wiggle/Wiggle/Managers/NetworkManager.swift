@@ -392,7 +392,7 @@ struct NetworkManager {
         }
     }
     
-    static func unMatch(myId: String, contactedUserId: String, success: @escaping() -> Void, fail: @escaping(String) -> Void) {
+    static func unMatch(myId: String, contactedUserId: String, success: @escaping() -> Void, fail: @escaping(Error?) -> Void) {
         let object = PFObject(className: "Unmatches")
         object.setValue(AppConstants.objectId, forKey: "userId")
         object.setValue(contactedUserId, forKey: "peerId")
@@ -400,7 +400,7 @@ struct NetworkManager {
             if result {
                 success()
             }else {
-                fail(err?.localizedDescription ?? "")
+                fail(err)
             }
         }
     }

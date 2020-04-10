@@ -106,6 +106,7 @@
 
 "no_match_keep_looking" = "Henüz eşleştiğin kimse bulunmuyor. Aramaya devam et!";
 "who_liked_premium" = "Kimin seni beğendiğini görmek için Wiggle Gold satın alman gerekiyor.";
+"no_liked_you_keep_looking" = "Profilini henüz kimse beğenmedi. Wiggle Boost kullanarak beğeni alma şansını yükseltebilirsin!";
 
 "chat_empty_message" = "Henüz mesajın yok ancak pes etme, uygun aday karşına kısa zamanda çıkacaktır. Ritmini ölçmeye devam et.!";
 "chat_back_home" = "Anasayfaya Dön";

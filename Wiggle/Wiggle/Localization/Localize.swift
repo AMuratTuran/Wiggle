@@ -161,6 +161,7 @@ struct Localize {
     
     struct WhoLiked {
         static var NoMatchKeepLooking: String { return NSLocalizedString("no_match_keep_looking", comment: "WhoLiked")}
+        static var NoLikedYouKeepLooking: String { return NSLocalizedString("no_liked_you_keep_looking", comment: "WhoLiked")}
         static var Premium: String { return NSLocalizedString("who_liked_premium", comment: "WhoLiked")}
     }
     

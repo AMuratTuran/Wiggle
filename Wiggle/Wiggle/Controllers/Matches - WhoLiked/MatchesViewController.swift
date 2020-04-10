@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import PopupDialog
+import PromiseKit
 
 class MatchesViewController: UIViewController {
     
@@ -78,7 +79,7 @@ class MatchesViewController: UIViewController {
         NetworkManager.unMatch(myId: AppConstants.objectId, contactedUserId: receiverId, success: {
             
         }) { (error) in
-            self.alertMessage(message: error, buttons: [cancelButton], isErrorMessage: false)
+            self.alertMessage(message: error?.localizedDescription ?? "", buttons: [cancelButton], isErrorMessage: false)
         }
     }
 }
@@ -132,15 +133,22 @@ extension MatchesViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let data = matchedUserData else { return }
+        guard let data = self.matchedUserData else { return }
+        _ = promiseOpenProfileDetail(data: data, indexPath: indexPath).done { _ in
+            self.getMatchData()
+        }
+    }
+    
+    func promiseOpenProfileDetail(data: [User],indexPath: IndexPath) -> Promise<()> {
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-        guard let dest = storyboard.instantiateViewController(withIdentifier: "ProfileDetailViewController") as? ProfileDetailViewController else { return }
+        let dest = storyboard.instantiateViewController(withIdentifier: "ProfileDetailViewController") as! ProfileDetailViewController
         dest.userData = data[indexPath.row]
         dest.isHeroEnabled = true
         dest.indexOfParentCell = indexPath
         dest.modalPresentationStyle = .fullScreen
         dest.isMatchesPages = true
         self.present(dest, animated: true, completion: nil)
+        return dest.promise
     }
 }
 

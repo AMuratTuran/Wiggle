@@ -263,7 +263,7 @@ class ChatViewController: MessagesViewController {
             self.alertMessage(message: Localize.Report.SuccessMessage, buttons: [cancelButton], isErrorMessage: false)
         }) { (error) in
             self.startAnimating(self.view, startAnimate: false)
-            self.displayError(message: error)
+            self.displayError(message: error?.localizedDescription ?? "")
             self.alertMessage(message: Localize.Report.SuccessMessage, buttons: [cancelButton], isErrorMessage: false)
         }
     }
@@ -305,7 +305,7 @@ class ChatViewController: MessagesViewController {
                 }
             }) { (error) in
                 self.startAnimating(self.view, startAnimate: false)
-                self.displayError(message: error)
+                self.displayError(message: error?.localizedDescription ?? "")
             }
         }
         let cancelAction = UIAlertAction(title: Localize.Common.CancelButton, style: .cancel) { (action) in

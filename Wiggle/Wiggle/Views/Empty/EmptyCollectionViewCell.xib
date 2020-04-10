@@ -8,6 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
         <array key="OpenSans-Regular.ttf">
             <string>OpenSans-Regular</string>
         </array>
@@ -38,11 +41,34 @@
                                     <constraint firstAttribute="height" constant="40" id="Pj5-ts-ad5"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQ9-87-bba">
+                                <rect key="frame" x="20" y="238" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.85098039215686272" green="0.70196078431372544" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8En-aU-ifU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="20"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="buttonAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="F2M-w7-DWQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gQ9-87-bba" secondAttribute="trailing" constant="20" id="MPY-aJ-Jt5"/>
                             <constraint firstItem="NTI-yj-5zZ" firstAttribute="leading" secondItem="FFo-8P-A0Q" secondAttribute="leading" constant="10" id="MVf-Xt-F0G"/>
                             <constraint firstItem="NTI-yj-5zZ" firstAttribute="top" secondItem="7HM-I9-6VE" secondAttribute="bottom" constant="30" id="SV1-qk-mei"/>
+                            <constraint firstItem="gQ9-87-bba" firstAttribute="leading" secondItem="FFo-8P-A0Q" secondAttribute="leading" constant="20" id="SzZ-9R-6Mn"/>
+                            <constraint firstItem="gQ9-87-bba" firstAttribute="centerX" secondItem="FFo-8P-A0Q" secondAttribute="centerX" id="WsU-Gv-b5V"/>
+                            <constraint firstItem="gQ9-87-bba" firstAttribute="top" secondItem="NTI-yj-5zZ" secondAttribute="bottom" constant="40" id="XGR-cc-Xbf"/>
                             <constraint firstItem="NTI-yj-5zZ" firstAttribute="centerY" secondItem="FFo-8P-A0Q" secondAttribute="centerY" id="eau-81-ajL"/>
                             <constraint firstItem="NTI-yj-5zZ" firstAttribute="centerX" secondItem="FFo-8P-A0Q" secondAttribute="centerX" id="jY2-Ow-6gk"/>
                             <constraint firstItem="7HM-I9-6VE" firstAttribute="centerX" secondItem="FFo-8P-A0Q" secondAttribute="centerX" id="zj5-kM-f5O"/>
@@ -59,6 +85,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="415" height="372"/>
             <connections>
+                <outlet property="actionButton" destination="gQ9-87-bba" id="5R5-XM-TuC"/>
                 <outlet property="descriptionLabel" destination="NTI-yj-5zZ" id="bkd-7N-n9G"/>
             </connections>
             <point key="canvasLocation" x="402.17391304347831" y="227.67857142857142"/>

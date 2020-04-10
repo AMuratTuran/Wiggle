@@ -35,6 +35,7 @@ class DiscoverCell: UICollectionViewCell {
     var superLikeAnimationView: AnimationView?
     var dislikeAnimationView: AnimationView?
     var confettiLayer: CAEmitterLayer?
+    var isBoostActive: Bool = false
     
     override var isHighlighted: Bool {
         didSet {
@@ -78,11 +79,12 @@ class DiscoverCell: UICollectionViewCell {
         likeAnimationView = AnimationView(name: "like")
         superLikeAnimationView = AnimationView(name: "superlike")
         dislikeAnimationView = AnimationView(name: "dislike")
-        DispatchQueue.main.async {
-            self.createLikeAnimation()
-            self.createSuperLikeAnimation()
-            self.createDislikeAnimation()
-        }
+        
+        self.createLikeAnimation()
+        self.createSuperLikeAnimation()
+        self.createDislikeAnimation()
+        self.createBoostView()
+        
     }
     
     func createLikeAnimation() {
@@ -142,7 +144,6 @@ class DiscoverCell: UICollectionViewCell {
             if let confettiLayer = self.confettiLayer {
                 self.containerView.layer.addSublayer(confettiLayer)
             }
-            confettiLayer?.isHidden = true
         }
     }
         
@@ -161,8 +162,8 @@ class DiscoverCell: UICollectionViewCell {
         let name = "\(data.firstName) \(data.lastName)"
         nameLabel.text = "\(name), \(age)"
         distanceLabel.text = "\(String(format: "%.1f", getDistance())) km"
-        
-        confettiLayer?.isHidden = true
+        self.isBoostActive = (data.trend ?? Date()) > Date()
+        confettiLayer?.isHidden = !isBoostActive
         blurView.alpha = 0
         superLikeButton.isHidden = false
         dislikeButton.isHidden = false

@@ -108,18 +108,6 @@ class LikedYouViewController: UIViewController {
         }
     }
     
-    func dislikeAndRemove(indexPath: IndexPath) {
-        self.usersLikedYouData?.remove(at: indexPath.row)
-        guard let receiver = self.usersLikedYouData?[indexPath.row].objectId else {return}
-        guard self.likeDislikeAction(action: .dislike, receiver: receiver) else {return}
-        
-        self.collectionView.performBatchUpdates({
-            self.collectionView.deleteItems(at: [indexPath])
-        }) { (finished) in
-            self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
-        }
-    }
-    
     func superLikeAction(indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
         guard let receiver = self.usersLikedYouData?[indexPath.row].objectId else {return}
@@ -203,12 +191,19 @@ extension LikedYouViewController: UICollectionViewDataSource, UICollectionViewDe
         //           cell.locationLabel.hero.id = subLabelId
         if data.isEmpty {
             let emptyCell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.reuseIdentifier, for: indexPath) as! EmptyCollectionViewCell
-            emptyCell.prepare(description: Localize.WhoLiked.NoMatchKeepLooking)
+            emptyCell.prepare(description: Localize.WhoLiked.NoLikedYouKeepLooking)
+            emptyCell.action = {
+                let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+                let destionationViewController = storyboard.instantiateViewController(withIdentifier: "SuperLikeInAppPurchaseViewController") as! SuperLikeInAppPurchaseViewController
+                self.navigationController?.present(destionationViewController, animated: true, completion: {})
+            }
+            emptyCell.actionButton.setTitle("WSTORE", for: .normal)
             return emptyCell
         }else {
             cell.prepare(with: data[indexPath.row])
             cell.delegate = self
             cell.indexPath = indexPath
+            cell.hideDislikeButton()
         }
         
         return cell
@@ -228,12 +223,16 @@ extension LikedYouViewController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let data = usersLikedYouData else { return }
-        var userData: User!
         
-        guard !data.isEmpty else { return }
-        userData = data[indexPath.row]
-        
-        //moveToProfileDetailFromWhoLiked(data: userData, index: indexPath.row)
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        guard let dest = storyboard.instantiateViewController(withIdentifier: "ProfileDetailViewController") as? ProfileDetailViewController else { return }
+        dest.userData = data[indexPath.row]
+        dest.isHeroEnabled = true
+        dest.indexOfParentCell = indexPath
+        dest.modalPresentationStyle = .fullScreen
+        self.present(dest, animated: true, completion: {
+            dest.hideDislikeButton()
+        })
     }
 }
 
@@ -243,7 +242,7 @@ extension LikedYouViewController: DiscoverCellDelegate {
     }
     
     func dislikeTapped(at indexPath: IndexPath) {
-        self.dislikeAndRemove(indexPath: indexPath)
+        
     }
     
     func likeTapped(at indexPath: IndexPath) {

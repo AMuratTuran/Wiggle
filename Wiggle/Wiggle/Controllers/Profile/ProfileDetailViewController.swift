@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import Koloda
 import PopupDialog
+import PromiseKit
 
 class ProfileDetailViewController: UIViewController {
     
@@ -31,9 +32,11 @@ class ProfileDetailViewController: UIViewController {
     var indexOfParentCell: IndexPath?
     var isHomePage: Bool = true
     var isMatchesPages: Bool = false
+    var likedYouPage: Bool = false
     var superLikeCount : Int = 0
     var delegate: userActionsDelegate?
     var discoverDelegate: DiscoverCellDelegate?
+    let (promise, seal) = Promise<()>.pending()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -62,7 +65,7 @@ class ProfileDetailViewController: UIViewController {
         aboutMeLabel.text = Localize.Profile.Bio
         
         buttonsStackView.isHidden = isMatchesPages
-                                                     
+        
         backButton.alpha = 0
         backButton.cornerRadius(backButton.frame.height / 2)
         backButton.setWhiteGradient()
@@ -149,6 +152,10 @@ class ProfileDetailViewController: UIViewController {
     
     func moreActions() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let unmatchAction = UIAlertAction(title: Localize.Chat.Unmatch, style: .default) { (action) in
+            self.unmatchAction()
+        }
         let reportAction = UIAlertAction(title: Localize.Chat.Report, style: .default) { (action) in
             self.reportAction()
         }
@@ -158,12 +165,30 @@ class ProfileDetailViewController: UIViewController {
         let cancelAction = UIAlertAction(title: Localize.Common.CancelButton, style: .cancel) { (action) in
             
         }
-        
+        if isMatchesPages {
+            alertController.addAction(unmatchAction)
+        }
         alertController.addAction(reportAction)
         alertController.addAction(blockAction)
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func unmatchAction() {
+        if let user = userData {
+            let cancelButton = DefaultButton(title: Localize.Common.Close) {
+            }
+            
+            NetworkManager.unMatch(myId: AppConstants.objectId, contactedUserId: user.objectId, success: {
+                self.dismiss(animated: true) {
+                    self.seal.fulfill(())
+                }
+            }) { (error) in
+                self.seal.reject(error!)
+                self.alertMessage(message: error?.localizedDescription ?? "", buttons: [cancelButton], isErrorMessage: false)
+            }
+        }
     }
     
     @IBAction func backAction(sender: UIButton) {
@@ -235,5 +260,12 @@ class ProfileDetailViewController: UIViewController {
             }
         }
     }
+    
+    func hideDislikeButton() {
+        self.dislikeButton.isHidden = true
+    }
+    
+    func hideButtons() {
+        self.buttonsStackView.isHidden = true
+    }
 }
-
