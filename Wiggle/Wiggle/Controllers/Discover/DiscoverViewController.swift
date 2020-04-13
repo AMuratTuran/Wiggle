@@ -16,16 +16,20 @@ import CoreLocation
 class DiscoverViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var heartRateView: UIView!
+    @IBOutlet weak var heartRateLabel: UILabel!
     
     var data: [User]?
+    
     fileprivate var skipCount : Int = 0
     fileprivate var lastScrollOffsetY: CGFloat = 0.0
     fileprivate var lastScrollAmount: CGFloat = 0.0
     fileprivate var isLoading: Bool = false
     private var superLikeCount : Int = 0
-    
+    var heartRateResult : HeartRateKitResult?
     let locationManager = CLLocationManager()
     let animationView = AnimationView(name: "sensor_fingerprint")
+    fileprivate var lastSelectedIndexPath: IndexPath = IndexPath(row: 0, section: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +60,7 @@ class DiscoverViewController: UIViewController {
     
     func initializeViews() {
         locationManager.delegate = self
-
+        
         setDefaultGradientBackground()
         navigationController?.navigationBar.tintColor = .white
         addMessageIconToNavigationBar()
@@ -64,6 +68,13 @@ class DiscoverViewController: UIViewController {
         transparentNavigationBar()
         transparentTabBar()
         hideBackBarButtonTitle()
+        
+        if let heartRateResult = heartRateResult {
+            heartRateView.isHidden = false
+            heartRateLabel.text = "\(Int(heartRateResult.bpm)) BPM"
+        }else {
+            heartRateView.isHidden = true
+        }
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -80,19 +91,27 @@ class DiscoverViewController: UIViewController {
     @objc func didChangeGender() {
         self.skipCount = 0
         self.data = []
-        getUsers()
+        getUsers(heartRate: Int(self.heartRateResult?.bpm ?? 0))
     }
     
     @objc func didChangeDistance() {
         self.skipCount = 0
         self.data = []
-        getUsers()
+        if let heartRate = self.heartRateResult {
+            getUsers(heartRate: Int(heartRate.bpm))
+        }else {
+            getUsers()
+        }
     }
     
     func checkLocationAuth() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways, .authorizedWhenInUse:
-            getUsers()
+            if let heartRate = self.heartRateResult {
+                getUsers(heartRate: Int(heartRate.bpm))
+            }else {
+                getUsers()
+            }
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.requestLocation()
         case .notDetermined:
@@ -114,9 +133,9 @@ class DiscoverViewController: UIViewController {
         }
     }
     
-    func getUsers() {
+    func getUsers(heartRate: Int? = nil) {
         isLoading = true
-        NetworkManager.getDiscoveryUsers(withSkip: skipCount, success: { (users) in
+        NetworkManager.getDiscoveryUsers(heartRate: heartRate, withSkip: skipCount, success: { (users) in
             self.isLoading = false
             if users.count == 0 {
                 self.animationView.isHidden = false
@@ -174,51 +193,53 @@ class DiscoverViewController: UIViewController {
         animationView.play()
     }
     
-    func dislikeAndRemove(indexPath: IndexPath) {
+    func performAction(actionType: ActionType, indexPath: IndexPath) {
+        if lastSelectedIndexPath.row < indexPath.row {
+            disableVisibleCells()
+        }
+        
+        self.lastSelectedIndexPath = indexPath
+        
         guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
         guard let receiver = self.data?[indexPath.row].objectId else {return}
-        guard self.likeDislikeAction(action: .dislike, receiver: receiver) else {return}
+        guard self.likeDislikeAction(action: actionType, receiver: receiver) else {return}
         
-        _ = cell.playDislikeAnimation().done { _ in
-            self.data?.remove(at: indexPath.row)
-            self.collectionView.performBatchUpdates({
-                self.collectionView.deleteItems(at: [indexPath])
-            }) { (finished) in
-                self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+        switch actionType {
+        case .dislike:
+            _ = cell.playDislikeAnimation().done { _ in
+                self.updateCollectionView(indexPath: indexPath)
+            }
+        case .like:
+            _ = cell.playLikeAnimation().done { _ in
+                self.updateCollectionView(indexPath: indexPath)
+            }
+        case .superlike:
+            _ = cell.playSuperLikeAnimation().done { _ in
+                self.updateCollectionView(indexPath: indexPath)
             }
         }
+    }                                                                                                                                                                
+    
+    func updateCollectionView(indexPath: IndexPath) {
+        self.data?.remove(at: indexPath.row)
+        self.collectionView.performBatchUpdates({
+            self.collectionView.deleteItems(at: [indexPath])
+        }) { (finished) in
+            self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+            self.enableVisibleCells()
+        }
+    }
+    
+    func dislikeAndRemove(indexPath: IndexPath) {
+        performAction(actionType: .dislike, indexPath: indexPath)
     }
     
     func superLikeAction(indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
-        guard let receiver = self.data?[indexPath.row].objectId else {return}
-        guard self.likeDislikeAction(action: .superlike, receiver: receiver) else {return}
-        
-        data?[indexPath.row].isLiked = true
-        _ = cell.playSuperLikeAnimation().done { _ in
-            self.data?.remove(at: indexPath.row)
-            self.collectionView.performBatchUpdates({
-                self.collectionView.deleteItems(at: [indexPath])
-            }) { (finished) in
-                self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
-            }
-        }
+        performAction(actionType: .superlike, indexPath: indexPath)
     }
     
     func likeAction(indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? DiscoverCell else { return }
-        guard let receiver = self.data?[indexPath.row].objectId else {return}
-        guard self.likeDislikeAction(action: .like, receiver: receiver) else {return}
-        
-        data?[indexPath.row].isLiked = true
-        _ = cell.playLikeAnimation().done { _ in
-            self.data?.remove(at: indexPath.row)
-            self.collectionView.performBatchUpdates({
-                self.collectionView.deleteItems(at: [indexPath])
-            }) { (finished) in
-                self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
-            }
-        }
+        performAction(actionType: .like, indexPath: indexPath)
     }
     
     func likeDislikeAction(action : ActionType, receiver : String) -> Bool{
@@ -233,10 +254,10 @@ class DiscoverViewController: UIViewController {
             let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
             self.navigationController?.present(destionationViewController, animated: true, completion: {})
         }
-        if action == .superlike && superLikeCount <= 0{
+        if action == .superlike && superLikeCount <= 0 {
             self.alertMessage(message: Localize.HomeScreen.superLikeError, buttons: [goToSuperLikeStoreButton, cancelButton], isErrorMessage: true)
             return false
-        }else if action == .superlike{
+        }else if action == .superlike {
             superLikeCount -= 1
         }
         NetworkManager.swipeActionWithDirection(receiver: receiver, action: action, success: {
@@ -248,6 +269,17 @@ class DiscoverViewController: UIViewController {
         return true
     }
     
+    func disableVisibleCells() {
+        self.collectionView.visibleCells.forEach {
+            $0.isUserInteractionEnabled = false
+        }
+    }
+    
+    func enableVisibleCells() {
+        self.collectionView.visibleCells.forEach {
+            $0.isUserInteractionEnabled = true
+        }
+    }
 }
 
 extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -266,6 +298,7 @@ extension DiscoverViewController: UICollectionViewDelegate, UICollectionViewDele
         cell.nameLabel.hero.id = nameHeroId
         cell.distanceLabel.hero.id = subLabelId
         
+        cell.isUserInteractionEnabled = true
         cell.prepare(with: data[indexPath.row])
         cell.delegate = self
         cell.createBoostView()
@@ -344,7 +377,11 @@ extension DiscoverViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
-            self.getUsers()
+            if let heartRate = self.heartRateResult {
+                getUsers(heartRate: Int(heartRate.bpm))
+            }else {
+                getUsers()
+            }
         default:
             return
         }

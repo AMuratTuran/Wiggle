@@ -80,11 +80,12 @@ class DiscoverCell: UICollectionViewCell {
         superLikeAnimationView = AnimationView(name: "superlike")
         dislikeAnimationView = AnimationView(name: "dislike")
         
-        self.createLikeAnimation()
-        self.createSuperLikeAnimation()
-        self.createDislikeAnimation()
+        DispatchQueue.main.async {
+            self.createLikeAnimation()
+            self.createSuperLikeAnimation()
+            self.createDislikeAnimation()
+        }
         self.createBoostView()
-        
     }
     
     func createLikeAnimation() {
@@ -92,7 +93,7 @@ class DiscoverCell: UICollectionViewCell {
         likeAnimationView?.frame = containerView.frame
         likeAnimationView?.loopMode = .playOnce
         likeAnimationView?.contentMode = .scaleAspectFit
-        likeAnimationView?.animationSpeed = 1
+        likeAnimationView?.animationSpeed = 2
         
         containerView.addSubview(likeAnimationView ?? UIView())
         
@@ -109,7 +110,7 @@ class DiscoverCell: UICollectionViewCell {
         superLikeAnimationView?.frame = containerView.frame
         superLikeAnimationView?.loopMode = .playOnce
         superLikeAnimationView?.contentMode = .scaleAspectFit
-        superLikeAnimationView?.animationSpeed = 1
+        superLikeAnimationView?.animationSpeed = 2
         
         containerView.addSubview(superLikeAnimationView ?? UIView())
         
@@ -126,7 +127,7 @@ class DiscoverCell: UICollectionViewCell {
         dislikeAnimationView?.frame = containerView.frame
         dislikeAnimationView?.loopMode = .playOnce
         dislikeAnimationView?.contentMode = .scaleAspectFit
-        dislikeAnimationView?.animationSpeed = 1.5
+        dislikeAnimationView?.animationSpeed = 2.5
         
         containerView.addSubview(dislikeAnimationView ?? UIView())
         

@@ -170,12 +170,11 @@ extension UIViewController {
     }
     
     func moveToMatchResultsViewController(result: HeartRateKitResult) {
-        let storyboard = UIStoryboard(name: "Heartbeat", bundle: nil)
-        let destinationVC = storyboard.instantiateViewController(withIdentifier: "MatchResultsViewController") as! MatchResultsViewController
-        destinationVC.result = result 
+        let storyboard = UIStoryboard(name: "Discover", bundle: nil)
+        let destinationVC = storyboard.instantiateViewController(withIdentifier: "DiscoverViewController") as! DiscoverViewController
+        destinationVC.heartRateResult = result
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
-    
     
     func addMessageIconToNavigationBar() {
         let messageImage = UIImage(named: "comments")

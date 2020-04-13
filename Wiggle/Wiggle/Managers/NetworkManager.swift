@@ -307,19 +307,14 @@ struct NetworkManager {
         }
     }
     
-    static func getDiscoveryUsers(withSkip : Int, success: @escaping([PFUser]) -> Void, fail: @escaping(String) -> Void) {
+    static func getDiscoveryUsers(heartRate: Int? = nil, withSkip : Int, success: @escaping([PFUser]) -> Void, fail: @escaping(String) -> Void) {
         let likesQuery : PFQuery = PFQuery(className:"Likes")
         let query : PFQuery? = PFUser.query()
         guard let user = PFUser.current() else {
             fail("User not found")
             return
         }
-        
-        if let latitude = User.current?.latitude, let longitude = User.current?.longitude {
-            let parseLocation: PFGeoPoint = PFGeoPoint(latitude: latitude, longitude: longitude)
-            query?.whereKey("location", nearGeoPoint: parseLocation, withinKilometers: Double(AppConstants.Settings.SelectedDistance))
-        }
-        
+            
         likesQuery.whereKey("sender", equalTo: user.objectId ?? "")
         query?.limit = 50
         query?.skip = withSkip
@@ -330,6 +325,17 @@ struct NetworkManager {
         }else {
             
         }
+        
+        if let heartRate = heartRate {
+            query?.whereKey("beat", greaterThan: heartRate - 20)
+            query?.whereKey("beat", lessThan: heartRate + 20)
+        }else {
+            if let latitude = User.current?.latitude, let longitude = User.current?.longitude {
+                let parseLocation: PFGeoPoint = PFGeoPoint(latitude: latitude, longitude: longitude)
+                query?.whereKey("location", nearGeoPoint: parseLocation, withinKilometers: Double(AppConstants.Settings.SelectedDistance))
+            }
+        }
+        
         query?.whereKey("objectId", doesNotMatchKey: "receiver", in: likesQuery)
         query?.order(byDescending: "updatedAt")
         

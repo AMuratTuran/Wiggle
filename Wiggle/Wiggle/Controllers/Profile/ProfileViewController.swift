@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import GoogleMobileAds
+import PopupDialog
 
 class ProfileViewController: UIViewController {
     @IBOutlet weak var settingsButton: UIButton!
@@ -128,11 +129,6 @@ class ProfileViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        prepareViews()
-    }
-    
-    func prepareViews() {
-        
     }
     
     func updateImage() {
@@ -147,9 +143,11 @@ class ProfileViewController: UIViewController {
     @IBAction func routeSettingsAction(_ sender: UIButton) {
         moveToSettingsViewController()
     }
+    
     @IBAction func changePhotoTapped(_ sender: UIButton) {
         self.imagePicker.present(from: sender)
     }
+    
     @IBAction func editProfileAction(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
         let destinationVC = storyboard.instantiateViewController(withIdentifier: "EditProfileViewController") as! EditProfileViewController
@@ -157,13 +155,30 @@ class ProfileViewController: UIViewController {
         let nav = UINavigationController(rootViewController: destinationVC)
         self.present(nav, animated: true, completion: nil)
     }
+    
     @IBAction func storeButtonAction(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Settings", bundle: nil)
         let destionationViewController = storyboard.instantiateViewController(withIdentifier: "InAppPurchaseViewController") as! InAppPurchaseViewController
         self.navigationController?.present(destionationViewController, animated: true, completion: {})
     }
+    
     @IBAction func useBoost(_ sender: Any) {
-        
+        if boostCount > 0 {
+            let boost = PFObject(className: "Boost")
+            boost.setValue("userId", forKey: User.current?.objectId ?? "")
+            boost.saveInBackground { (result, error) in
+                if let error = error {
+                    self.alertMessage(message: error.localizedDescription, buttons: [DefaultButton(title: Localize.Common.Close, action: nil)], isErrorMessage: true)
+                }
+                
+                if result {
+                    self.alertMessage(message: "Boost başarıyla kullanıldı! Yarım saat boyunca diğer kullanıcılara en üst sırada gösterileceksiniz.", buttons: [DefaultButton(title: Localize.Common.Close, action: nil)], isErrorMessage: true)
+                    self.getBoostCount()
+                }
+            }
+        }else {
+            // magazayi ac
+        }
     }
 }
 

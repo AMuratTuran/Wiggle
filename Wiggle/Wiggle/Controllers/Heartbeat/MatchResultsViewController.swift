@@ -110,6 +110,18 @@ class MatchResultsViewController: UIViewController {
             }
         }
     }
+    
+    func disableVisibleCells() {
+        self.collectionView.visibleCells.forEach {
+            $0.isUserInteractionEnabled = false
+        }
+    }
+    
+    func enableVisibleCells() {
+        self.collectionView.visibleCells.forEach {
+            $0.isUserInteractionEnabled = true
+        }
+    }
 }
 
 extension MatchResultsViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -126,6 +138,7 @@ extension MatchResultsViewController: UICollectionViewDataSource, UICollectionVi
 //        cell.imageView.hero.id = profileImageHeroId
 //        cell.nameAndAgeLabel.hero.id = nameHeroId
 //        cell.locationLabel.hero.id = subLabelId
+        cell.isUserInteractionEnabled = true
         cell.prepare(with: data[indexPath.row])
         cell.delegate = self
         cell.indexPath = indexPath
