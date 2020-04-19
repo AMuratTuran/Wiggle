@@ -91,4 +91,9 @@ extension PFUser {
         guard let superlike = self.object(forKey: "super_like") as? Int else {return 0}
         return superlike
     }
+    
+    func getBoosts() -> Int{
+        guard let boosts = self.object(forKey: "boost") as? Int else {return 0}
+        return boosts
+    }
 }

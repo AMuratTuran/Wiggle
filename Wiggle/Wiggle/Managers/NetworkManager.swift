@@ -362,6 +362,16 @@ struct NetworkManager {
         }
     }
     
+    static func updateBoostCount(count : Int){
+        let final = PFUser.current()?.getBoosts() ?? 0 + count
+        
+        PFUser.current()?.setValue(final, forKey: "boost")
+        
+        PFUser.current()?.saveInBackground { (result, err) in
+            print(result)
+        }
+    }
+    
     static func updateSubstriction(sku : String){
         guard let user = PFUser.current() else {
             return

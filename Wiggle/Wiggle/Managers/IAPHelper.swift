@@ -190,13 +190,15 @@ extension IAPHelper: SKPaymentTransactionObserver {
     private func deliverPurchaseNotificationFor(identifier: String?) {
         guard let identifier = identifier else { return }
         
-        if identifier == WiggleProducts.fiveSuperLikes || identifier == WiggleProducts.oneSuperLike || identifier == WiggleProducts.twentyFiveSuperLikes{
+        if identifier == WiggleProducts.fiveSuperLikes || identifier == WiggleProducts.oneSuperLike || identifier == WiggleProducts.twentyFiveSuperLikes || identifier == WiggleProducts.boost{
             if identifier == WiggleProducts.oneSuperLike{
                 NetworkManager.updateSuperLikeCount(count : 1)
             }else if identifier == WiggleProducts.fiveSuperLikes{
                 NetworkManager.updateSuperLikeCount(count : 5)
             }else if identifier == WiggleProducts.twentyFiveSuperLikes{
                 NetworkManager.updateSuperLikeCount(count : 25)
+            }else if identifier == WiggleProducts.boost{
+                NetworkManager.updateBoostCount(count : 1)
             }
         }else{
             NetworkManager.updateSubstriction(sku: identifier)
