@@ -82,6 +82,7 @@ class ProfileDetailViewController: UIViewController {
         superLikeCount = PFUser.current()?.getSuperLike() ?? 0
         
         moreActionsButton.setWhiteGradient()
+        moreActionsButton.setTitle(Localize.Profile.MoreActions, for: .normal)
         
         if let user = userData {
             let imageUrl = user.image
@@ -237,9 +238,17 @@ class ProfileDetailViewController: UIViewController {
         self.startAnimating(self.view, startAnimate: true)
         let cancelButton = DefaultButton(title: Localize.Common.Close) {
             if let receiverObjectId = self.userData?.objectId {
-                self.delegate?.dislikeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
+                if self.isHomePage {
+                    self.dismiss(animated: true) {
+                        if let indexPath = self.indexOfParentCell {
+                            self.discoverDelegate?.dislikeTapped(at: indexPath)
+                        }
+                    }
+                }else {
+                    self.delegate?.dislikeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
+                    self.moveToHomeViewControllerFromProfileDetail()
+                }
             }
-            self.moveToHomeViewControllerFromProfileDetail()
         }
         
         if isHomePage {

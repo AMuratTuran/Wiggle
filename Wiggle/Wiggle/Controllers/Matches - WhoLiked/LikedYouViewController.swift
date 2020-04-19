@@ -10,6 +10,10 @@ import UIKit
 import Parse
 import PopupDialog
 
+protocol MatchesSegmentControlDelegate {
+    func openMatchesViewController()
+}
+
 class LikedYouViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -17,18 +21,37 @@ class LikedYouViewController: UIViewController {
     var likedYouData: [PFObject]?
     var usersLikedYouData: [User]?
     private var superLikeCount : Int = 0
+    var delegate: MatchesSegmentControlDelegate?
+    var showSuperLikedYou: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getSuperlikeCount()
         prepareViews()
-        getWhoLiked()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: FontHelper.bold(14)]
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if showSuperLikedYou {
+            getSuperlikedYou()
+        }else {
+            getIsGold()
+        }
     }
     
     func prepareViews() {
         setDefaultGradientBackground()
         transparentNavigationBar()
+        
         navigationController?.navigationBar.tintColor = .white
+        
+        if showSuperLikedYou {
+            self.title = Localize.WhoLiked.SuperlikedYouTitle
+        }
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -37,36 +60,74 @@ class LikedYouViewController: UIViewController {
         collectionView.register(UINib(nibName: EmptyCollectionViewCell.reuseIdentifier, bundle: nil), forCellWithReuseIdentifier: EmptyCollectionViewCell.reuseIdentifier)
     }
     
-    func getWhoLiked() {
-        if PFUser.current() != nil {
-            if likedYouData == nil {
-                startAnimating(self.view, startAnimate: true)
-                NetworkManager.getWhoLikedYou(success: { (response) in
-                    self.likedYouData = response
-                    if !response.isEmpty {
-                        self.getUserInfo()
-                    }else {
-                        self.startAnimating(self.view, startAnimate: false)
-                    }
-                }) { (error) in
-                    self.startAnimating(self.view, startAnimate: false)
-                    self.displayError(message: error)
+    func getIsGold() {
+        if let user = PFUser.current() {
+            user.fetchInBackground(block: { (object, error) in
+                if let error = error {
+                    self.alertMessage(message: error.localizedDescription, buttons: [DefaultButton(title: Localize.Common.Close, action: nil)], isErrorMessage: true)
+                    return
                 }
-            }else {
-                collectionView.reloadData()
+                
+                guard let user = object as? PFUser else {
+                    return
+                }
+                
+                if let isGold = user.object(forKey: "isGold") as? Bool, isGold {
+                    self.getWhoLiked()
+                }else {
+                    let goToStoreButton = DefaultButton(title: "WStore") {
+                        let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+                        let destionationViewController = storyboard.instantiateViewController(withIdentifier: "SuperLikeInAppPurchaseViewController") as! SuperLikeInAppPurchaseViewController
+                        self.navigationController?.present(destionationViewController, animated: true, completion: {
+                            self.delegate?.openMatchesViewController()
+                        })
+                    }
+                    let goToMatchScreen = DefaultButton(title: Localize.Common.Back) {
+                        self.delegate?.openMatchesViewController()
+                    }
+                    self.alertMessage(message: Localize.WhoLiked.Premium, buttons: [goToStoreButton, goToMatchScreen], isErrorMessage: true, isGestureDismissal: false)
+                }
+            })
+        }
+    }
+    
+    func getWhoLiked() {
+        if likedYouData == nil {
+            startAnimating(self.view, startAnimate: true)
+            NetworkManager.getWhoLikedYou(success: { (response) in
+                self.likedYouData = response
+                if !response.isEmpty {
+                    self.getUserInfo()
+                }else {
+                    self.startAnimating(self.view, startAnimate: false)
+                }
+            }) { (error) in
+                self.startAnimating(self.view, startAnimate: false)
+                self.displayError(message: error)
             }
         }else {
-            let goToStoreButton = DefaultButton(title: "WStore") {
-                let storyboard = UIStoryboard(name: "Settings", bundle: nil)
-                let destionationViewController = storyboard.instantiateViewController(withIdentifier: "SuperLikeInAppPurchaseViewController") as! SuperLikeInAppPurchaseViewController
-                self.navigationController?.present(destionationViewController, animated: true, completion: {
-                    //self.switchToMatchScreen()
-                })
+            collectionView.reloadData()
+        }
+    }
+    
+    func getSuperlikedYou() {
+        if likedYouData == nil {
+            startAnimating(self.view, startAnimate: true)
+            NetworkManager.getWhoSuperLikedYou(success: { (response) in
+                self.likedYouData = response
+                if !response.isEmpty {
+                    self.getUserInfo()
+                }else {
+                    self.startAnimating(self.view, startAnimate: false)
+                    self.usersLikedYouData = []
+                    self.collectionView.reloadData()
+                }
+            }) { (error) in
+                self.startAnimating(self.view, startAnimate: false)
+                self.displayError(message: error)
             }
-            let goToMatchScreen = DefaultButton(title: Localize.Common.Back) {
-                //self.switchToMatchScreen()
-            }
-            self.alertMessage(message: Localize.WhoLiked.Premium, buttons: [goToStoreButton, goToMatchScreen], isErrorMessage: true, isGestureDismissal: false)
+        }else {
+            collectionView.reloadData()
         }
     }
     
@@ -115,6 +176,7 @@ class LikedYouViewController: UIViewController {
         
         usersLikedYouData?[indexPath.row].isLiked = true
         _ = cell.playSuperLikeAnimation().done { _ in
+            guard !self.showSuperLikedYou else { return }
             self.usersLikedYouData?.remove(at: indexPath.row)
             self.collectionView.performBatchUpdates({
                 self.collectionView.deleteItems(at: [indexPath])
@@ -131,6 +193,7 @@ class LikedYouViewController: UIViewController {
         
         usersLikedYouData?[indexPath.row].isLiked = true
         _ = cell.playLikeAnimation().done { _ in
+            guard !self.showSuperLikedYou else { return }
             self.usersLikedYouData?.remove(at: indexPath.row)
             self.collectionView.performBatchUpdates({
                 self.collectionView.deleteItems(at: [indexPath])
@@ -229,6 +292,7 @@ extension LikedYouViewController: UICollectionViewDataSource, UICollectionViewDe
         dest.userData = data[indexPath.row]
         dest.isHeroEnabled = true
         dest.indexOfParentCell = indexPath
+        dest.discoverDelegate = self
         dest.modalPresentationStyle = .fullScreen
         self.present(dest, animated: true, completion: {
             dest.hideDislikeButton()
@@ -248,6 +312,4 @@ extension LikedYouViewController: DiscoverCellDelegate {
     func likeTapped(at indexPath: IndexPath) {
        self.likeAction(indexPath: indexPath)
     }
-    
-    
 }

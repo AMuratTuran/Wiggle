@@ -141,3 +141,20 @@
 "get_4x_lucky" = "Match-up chance increases 4x!";
 "product_error" = "We are having a problem with premium items.";
 "product_buy" = "Purchase";
+
+"error_location_permission" = "You can't see other users until you give location usage permission.";
+
+
+"onboarding_doubleTap_desc" = "Double tap on an user to send Like";
+"onboarding_buttons_desc" = "Press star icon to send a SuperLike, and press X button to dislike.";
+"done_button" = "Done";
+"next_button" = "Next";
+
+"profile_boost_used" = "Boost successfuly used. Other user will see you at top.";
+"remaining_boost" = "Remaining Boost:";
+"use_boost" = "Use now";
+"buy_boost" = "Buy more";
+"superliked_title" = "Superliked You";
+"all_matches" = "Matches";
+"all_liked_you" = "Liked You";
+"more_actions" = "More Actions";

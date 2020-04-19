@@ -37,9 +37,9 @@ class ProfileViewController: UIViewController {
         didSet {
             self.remainingBoostLabel.text = "\(boostCount)"
             if boostCount != 0 {
-                self.useBoostButton.setTitle("Kullan", for: .normal)
+                self.useBoostButton.setTitle(Localize.Profile.UseBoostButton, for: .normal)
             }else {
-                self.useBoostButton.setTitle("Satın Al", for: .normal)
+                self.useBoostButton.setTitle(Localize.Profile.BuyBoostButton, for: .normal)
             }
         }
     }
@@ -112,6 +112,8 @@ class ProfileViewController: UIViewController {
         changePhotoLabel.text = Localize.Profile.ChangePhoto
         editProfileLabel.text = Localize.Profile.EditProfile
         
+        remainingBoostDescLabel.text = Localize.Profile.RemainingBoost
+        
         updateViews()
     }
     
@@ -172,12 +174,14 @@ class ProfileViewController: UIViewController {
                 }
                 
                 if result {
-                    self.alertMessage(message: "Boost başarıyla kullanıldı! Yarım saat boyunca diğer kullanıcılara en üst sırada gösterileceksiniz.", buttons: [DefaultButton(title: Localize.Common.Close, action: nil)], isErrorMessage: true)
+                    self.alertMessage(message: Localize.Profile.BoostUsedText, buttons: [DefaultButton(title: Localize.Common.Close, action: nil)], isErrorMessage: true)
                     self.getBoostCount()
                 }
             }
         }else {
-            // magazayi ac
+            let storyboard = UIStoryboard(name: "Settings", bundle: nil)
+            let destionationViewController = storyboard.instantiateViewController(withIdentifier: "SuperLikeInAppPurchaseViewController") as! SuperLikeInAppPurchaseViewController
+            self.navigationController?.present(destionationViewController, animated: true, completion: {})
         }
     }
 }

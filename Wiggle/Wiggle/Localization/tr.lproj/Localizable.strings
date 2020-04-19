@@ -141,3 +141,20 @@
 "get_4x_lucky" = "Eşleşme şansın 4 kat daha fazla!";
 "product_error" = "Premium içeriklerle alakalı bir sorun yaşıyoruz.";
 "product_buy" = "Satın al";
+
+
+"error_location_permission" = "Konum kullanma izni vermeden diğer kullanıcıları görüntüleyemezsiniz.";
+
+"onboarding_doubleTap_desc" = "Kullanıcıyı beğenmek için üzerine çift tıklayın.";
+"onboarding_buttons_desc" = "Yıldız'a basarak Superlike atabilir, Çarpıya basarak kullanıcıyı Dislike'layabilirsiniz.";
+"done_button" = "Bitti";
+"next_button" = "Sonraki";
+
+"profile_boost_used" = "Boost başarıyla kullanıldı! Yarım saat boyunca diğer kullanıcılara en üst sırada gösterileceksiniz.";
+"remaining_boost" = "Kalan Boost:";
+"use_boost" = "Kullan";
+"buy_boost" = "Satın Al";
+"superliked_title" = "Seni Superlike'layanlar";
+"all_matches" = "Eşleşmeler";
+"all_liked_you" = "Beğenenler";
+"more_actions" = "Seçenekler";

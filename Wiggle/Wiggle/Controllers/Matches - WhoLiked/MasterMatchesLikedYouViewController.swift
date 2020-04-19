@@ -33,6 +33,7 @@ class MasterMatchesLikedYouViewController: UIViewController {
         // Instantiate View Controller
         var viewController = storyboard.instantiateViewController(withIdentifier: "LikedYouViewController") as! LikedYouViewController
 
+        viewController.delegate = self
         // Add View Controller as Child View Controller
         self.add(asChildViewController: viewController)
         
@@ -68,8 +69,8 @@ class MasterMatchesLikedYouViewController: UIViewController {
     private func setupSegmentedControl() {
         // Configure Segmented Control
         segmentedControl.removeAllSegments()
-        segmentedControl.insertSegment(withTitle: "Matches", at: 0, animated: false)
-        segmentedControl.insertSegment(withTitle: "Liked You", at: 1, animated: false)
+        segmentedControl.insertSegment(withTitle: Localize.WhoLiked.MatchesTitle, at: 0, animated: false)
+        segmentedControl.insertSegment(withTitle: Localize.WhoLiked.LikedYouTitle, at: 1, animated: false)
         segmentedControl.addTarget(self, action: #selector(selectionDidChange(_:)), for: .valueChanged)
 
         // Select First Segment
@@ -111,5 +112,13 @@ class MasterMatchesLikedYouViewController: UIViewController {
     }
     @IBAction func backToChats(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+
+extension MasterMatchesLikedYouViewController: MatchesSegmentControlDelegate {
+    func openMatchesViewController() {
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.sendActions(for: UIControl.Event.valueChanged)
     }
 }

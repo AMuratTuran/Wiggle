@@ -36,10 +36,14 @@ class DiscoverViewController: UIViewController {
         initializeViews()
         addObservers()
         checkLocationAuth()
+        if !UserDefaults.standard.bool(forKey: "isOnboardingCompleted") {
+            openOnboarding()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         getSuperlikeCount()
+        addProductLogoToNavigationBar(selector: nil, logoName: "", isItalicTitle: true)
         navigationController?.navigationBar.prefersLargeTitles = false
     }
     
@@ -64,7 +68,7 @@ class DiscoverViewController: UIViewController {
         setDefaultGradientBackground()
         navigationController?.navigationBar.tintColor = .white
         addMessageIconToNavigationBar()
-        addProductLogoToNavigationBar(selector: nil, logoName: "", isItalicTitle: true)
+        addSuperLikeIcon()
         transparentNavigationBar()
         transparentTabBar()
         hideBackBarButtonTitle()
@@ -83,9 +87,24 @@ class DiscoverViewController: UIViewController {
         createLottieAnimation()
     }
     
+    func openOnboarding() {
+        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        let navigationViewController = storyboard.instantiateInitialViewController() as? UINavigationController
+        let firstViewController = navigationViewController?.viewControllers.first as? OnboardingDoubleTapViewController
+        navigationViewController?.modalPresentationStyle = .fullScreen
+        if let nav = navigationViewController {
+            self.present(nav, animated: true, completion: nil)
+        }
+    }
+    
     func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeGender), name: Notification.Name("didChangeGender"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeDistance), name: Notification.Name("didChangeDistance"), object: nil)
+    }
+    
+    func addSuperLikeIcon() {
+        let superLikedYouButton = UIBarButtonItem(image: UIImage(named: "superlike-icon"), style: .plain, target: self, action: #selector(superLikedYouTapped))
+        navigationItem.leftBarButtonItem = superLikedYouButton
     }
     
     @objc func didChangeGender() {
@@ -104,6 +123,13 @@ class DiscoverViewController: UIViewController {
         }
     }
     
+    @objc func superLikedYouTapped() {
+        let storyboard = UIStoryboard(name: "Chat", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "LikedYouViewController") as! LikedYouViewController
+        viewController.showSuperLikedYou = true
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
     func checkLocationAuth() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways, .authorizedWhenInUse:
@@ -120,7 +146,7 @@ class DiscoverViewController: UIViewController {
             let requestAuthButton = DefaultButton(title: "Settings") {
                 self.openSettings()
             }
-            self.alertMessage(message: "Lokasyon izni yok", buttons: [DestructiveButton(title: Localize.Common.Close, action: nil),  requestAuthButton], isErrorMessage: true)
+            self.alertMessage(message: Localize.Error.NoLocationPermission, buttons: [DestructiveButton(title: Localize.Common.Close, action: nil),  requestAuthButton], isErrorMessage: true)
         }
     }
     

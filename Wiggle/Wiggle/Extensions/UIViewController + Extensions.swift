@@ -497,7 +497,8 @@ extension UIViewController {
         //        navigationItem.titleView = button
         
         if isItalicTitle {
-            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Cochin-BoldItalic", size: 20)!]
+            self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Cochin-BoldItalic", size: 20)!,
+                                                                            NSAttributedString.Key.foregroundColor: UIColor(hexString: "D9B372")]
         }else {
             self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: FontHelper.bold(20)]
         }

@@ -41,10 +41,13 @@ struct Localize {
         static var Start: String { return NSLocalizedString("start_button", comment: "Common") }
         static var Back: String { return NSLocalizedString("back_button", comment: "Common") }
         static var Yes: String { return NSLocalizedString("yes_button", comment: "Common") }
+        static var Next: String { return NSLocalizedString("next_button", comment: "Common") }
+        static var Done: String { return NSLocalizedString("done_button", comment: "Common") }
     }
     
     struct Error {
         static var Generic: String { return NSLocalizedString("error_generic", comment: "Error") }
+        static var NoLocationPermission: String { return NSLocalizedString("error_location_permission", comment: "Error") }
     }
     
     struct DatePicker {
@@ -120,6 +123,11 @@ struct Localize {
         static var LikeToastTitle: String { return NSLocalizedString("like_toast_title", comment: "Profile") }
         static var LikeToastBody: String { return NSLocalizedString("like_toast_body", comment: "Profile") }
         static var Bio: String { return NSLocalizedString("profile_about_me", comment: "Profile") }
+        static var BoostUsedText: String { return NSLocalizedString("profile_boost_used", comment: "Profile") }
+        static var RemainingBoost: String { return NSLocalizedString("remaining_boost", comment: "Profile") }
+        static var UseBoostButton: String { return NSLocalizedString("use_boost", comment: "Profile") }
+        static var BuyBoostButton: String { return NSLocalizedString("buy_boost", comment: "Profile") }
+        static var MoreActions: String { return NSLocalizedString("more_actions", comment: "Profile") }
     }
     
     struct Chat {
@@ -163,6 +171,9 @@ struct Localize {
         static var NoMatchKeepLooking: String { return NSLocalizedString("no_match_keep_looking", comment: "WhoLiked")}
         static var NoLikedYouKeepLooking: String { return NSLocalizedString("no_liked_you_keep_looking", comment: "WhoLiked")}
         static var Premium: String { return NSLocalizedString("who_liked_premium", comment: "WhoLiked")}
+        static var SuperlikedYouTitle: String { return NSLocalizedString("superliked_title", comment: "WhoLiked")}
+        static var LikedYouTitle: String { return NSLocalizedString("all_liked_you", comment: "WhoLiked")}
+        static var MatchesTitle: String { return NSLocalizedString("all_matches", comment: "WhoLiked")}
     }
     
     struct SettingsPremium {
@@ -181,4 +192,8 @@ struct Localize {
         static var PurchaseButton: String { return NSLocalizedString("product_buy", comment: "Purchase")}
     }
     
+    struct Onboarding {
+        static var DoubleTapDesc: String { return NSLocalizedString("onboarding_doubleTap_desc", comment: "Purchase")}
+        static var ButtonsDesc: String { return NSLocalizedString("onboarding_buttons_desc", comment: "Purchase")}
+    }
 }
