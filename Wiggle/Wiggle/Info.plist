@@ -29,8 +29,6 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>FacebookAppID</key>
 	<string>190849435356094</string>
-    <key>NSCalendarsUsageDescription</key>
-    <string>Some ad content may access calendar</string>
 	<key>FacebookDisplayName</key>
 	<string>Wiggle</string>
 	<key>GADApplicationIdentifier</key>
@@ -61,6 +59,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Some ad content may access calendar</string>
 	<key>NSCameraUsageDescription</key>
 	<string>We need to access your camera to calculate your pulse and send images to your match. </string>
 	<key>NSContactsUsageDescription</key>
