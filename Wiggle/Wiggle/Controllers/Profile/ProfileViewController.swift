@@ -26,7 +26,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var useBoostButton: UIButton!
     @IBOutlet weak var remainingBoostDescLabel: UILabel!
     @IBOutlet weak var remainingBoostLabel: UILabel!
-    
+    @IBOutlet weak var remainingSuperLikeDescLabel: UILabel!
+    @IBOutlet weak var remainingSuperLikeLabel: UILabel!
     
     var slides:[SwipablePremiumView] = []
     var imagePicker: ImagePicker!
@@ -43,6 +44,11 @@ class ProfileViewController: UIViewController {
             }
         }
     }
+    private var superLikeCount : Int = 0 {
+        didSet {
+            self.remainingSuperLikeLabel.text = "\(superLikeCount)"
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +61,22 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         getBoostCount()
+        getSuperlikeCount()
+    }
+    
+    func getSuperlikeCount() {
+        if let user = PFUser.current() {
+            user.fetchInBackground(block: { (object, error) in
+                if let error = error {
+                    self.alertMessage(message: error.localizedDescription, buttons: [DefaultButton(title: Localize.Common.Close, action: nil)], isErrorMessage: true)
+                    return
+                }
+                guard let user = object as? PFUser else {
+                    return
+                }
+                self.superLikeCount = user.object(forKey: "super_like") as! Int
+            })
+        }
     }
     
     func getBoostCount() {
