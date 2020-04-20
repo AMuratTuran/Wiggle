@@ -14,6 +14,18 @@
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>Copyright 2016
+Admost Mediation Limited.
+</string>
+			<key>License</key>
+			<string>Copyright</string>
+			<key>Title</key>
+			<string>AMRSDK</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>Copyright (c) 2014-2020 Alamofire Software Foundation (http://alamofire.org/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -672,6 +684,18 @@ SOFTWARE.
 			<string>MIT</string>
 			<key>Title</key>
 			<string>Kingfisher</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
+			<string>Copyright 2016
+KOKTEYL Bilgi Teknolojisi Hizmetleri A.S.. 
+</string>
+			<key>License</key>
+			<string>Copyright</string>
+			<key>Title</key>
+			<string>KokteylLog</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

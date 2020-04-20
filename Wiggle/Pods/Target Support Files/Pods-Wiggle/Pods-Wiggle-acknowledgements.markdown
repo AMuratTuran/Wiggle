@@ -1,6 +1,12 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
+## AMRSDK
+
+Copyright 2016
+Admost Mediation Limited.
+
+
 ## Alamofire
 
 Copyright (c) 2014-2020 Alamofire Software Foundation (http://alamofire.org/)
@@ -560,6 +566,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+
+
+## KokteylLog
+
+Copyright 2016
+KOKTEYL Bilgi Teknolojisi Hizmetleri A.S.. 
 
 
 ## Koloda

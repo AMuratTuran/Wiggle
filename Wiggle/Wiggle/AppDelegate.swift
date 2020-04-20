@@ -12,6 +12,7 @@ import FBSDKCoreKit
 import SwiftMessages
 import UserNotifications
 import GoogleMobileAds
+import AMRSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate {
@@ -35,6 +36,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate {
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         self.getNotificationSettings()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
+        //GDPR COMPLIANCE
+        AMRSDK.setUserConsent(true)
+        AMRSDK.subject(toGDPR: false)
+
+        AMRSDK.start(withAppId:"b8634efc-618e-4df6-8a44-d51b113ffebd")
         
         let notificationOption = launchOptions?[.remoteNotification]
         if let notification = notificationOption as? [String: AnyObject],

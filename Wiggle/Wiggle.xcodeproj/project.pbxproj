@@ -1077,14 +1077,13 @@
 				F1585AD22384064F0062A681 /* Resources */,
 				DE4CD51BC3893089951A3495 /* [CP] Embed Pods Frameworks */,
 				F1CF618523EC9D1F0029BA3D /* Embed App Extensions */,
+				ED1DE7444AAA132B7A5A6270 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Wiggle;
-			packageProductDependencies = (
-			);
 			productName = Wiggle;
 			productReference = F1585AD42384064F0062A681 /* Wiggle.app */;
 			productType = "com.apple.product-type.application";
@@ -1115,8 +1114,6 @@
 				tr,
 			);
 			mainGroup = F1585ACB2384064F0062A681;
-			packageReferences = (
-			);
 			productRefGroup = F1585AD52384064F0062A681 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1234,6 +1231,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wiggle/Pods-Wiggle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED1DE7444AAA132B7A5A6270 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wiggle/Pods-Wiggle-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wiggle/Pods-Wiggle-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wiggle/Pods-Wiggle-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

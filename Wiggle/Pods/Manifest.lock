@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (5.0.4)
+  - AMRSDK (1.4.32):
+    - KokteylLog (~> 1.0.8)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
@@ -65,6 +67,7 @@ PODS:
   - Kingfisher (5.10.1):
     - Kingfisher/Core (= 5.10.1)
   - Kingfisher/Core (5.10.1)
+  - KokteylLog (1.0.8)
   - Koloda (5.0):
     - pop (~> 1.0)
   - lottie-ios (3.1.5)
@@ -113,6 +116,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - AMRSDK (~> 1.4)
   - FacebookCore
   - FacebookLogin
   - FacebookShare
@@ -137,6 +141,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AMRSDK
     - Bolts
     - Bolts-Swift
     - DynamicBlurView
@@ -153,6 +158,7 @@ SPEC REPOS:
     - ImageSlideshow
     - InputBarAccessoryView
     - Kingfisher
+    - KokteylLog
     - lottie-ios
     - MessageKit
     - nanopb
@@ -184,6 +190,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 0fe5fd24b4298dc377a6550da7d5f1b30e286fcb
+  AMRSDK: 452cfa2c0025a43a73db26a043430063cb3295a3
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Bolts-Swift: afbbaf8c8186e7f769be4afa656949c14087ba44
   DynamicBlurView: ccf9acd2b20c883cc2c72e3524a04d8d3ee20533
@@ -200,6 +207,7 @@ SPEC CHECKSUMS:
   ImageSlideshow: 4694d7d699a1549582e7cc631fb392d8f91630f3
   InputBarAccessoryView: 2b937602598e2fab3149f37f51dd7ad795653812
   Kingfisher: eb36b7dfcc78d60877051c92c119a2865972961a
+  KokteylLog: 5e776068ae4a8456052e8df5d42f2bbd8c08c852
   Koloda: 75302d21882cc3e274c1561b1155805ea5919dab
   lottie-ios: 32bf84389337d86fbc8b12266e88452e0abf1dee
   MessageKit: e892a9ca49ebe6d82684d3a93ad84021fa23e2c6
@@ -216,6 +224,6 @@ SPEC CHECKSUMS:
   SwiftValidator: 249b6b3ae3b294266c5b9de134d94f18f2d5aa47
   SwiftyStoreKit: 033d06b6f87955405d3f844a18a7687c2438592a
 
-PODFILE CHECKSUM: a5553ace266c6ac991a27e7baf21e49450aecbfa
+PODFILE CHECKSUM: 234951af8f77f2284b23fa41acc24e02dfae1a73
 
 COCOAPODS: 1.8.4

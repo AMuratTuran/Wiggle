@@ -27,6 +27,7 @@ target 'Wiggle' do
   pod 'Google-Mobile-Ads-SDK'
   pod 'Alamofire'
   pod "ImageSlideshow/Kingfisher"
+  pod 'AMRSDK', '~> 1.4'
 end
 
 post_install do |installer|

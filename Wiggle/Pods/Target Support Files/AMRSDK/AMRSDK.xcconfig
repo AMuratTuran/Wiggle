@@ -1,0 +1,11 @@
+CONFIGURATION_BUILD_DIR = ${PODS_CONFIGURATION_BUILD_DIR}/AMRSDK
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/AMRSDK/AMRSDK" "${PODS_ROOT}/KokteylLog/KKLog"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+OTHER_LDFLAGS = $(inherited) -ObjC -l"c++" -l"sqlite3" -l"z" -framework "AVFoundation" -framework "AVKit" -framework "AdSupport" -framework "AddressBook" -framework "AddressBookUI" -framework "AudioToolbox" -framework "CFNetwork" -framework "CoreGraphics" -framework "CoreLocation" -framework "CoreMedia" -framework "CoreMotion" -framework "CoreTelephony" -framework "EventKit" -framework "EventKitUI" -framework "JavaScriptCore" -framework "MediaPlayer" -framework "QuartzCore" -framework "SafariServices" -framework "SystemConfiguration" -framework "Twitter" -weak_framework "Foundation" -weak_framework "StoreKit" -weak_framework "UIKit" -weak_framework "WebKit"
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_ROOT = ${SRCROOT}
+PODS_TARGET_SRCROOT = ${PODS_ROOT}/AMRSDK
+PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.${PRODUCT_NAME:rfc1034identifier}
+SKIP_INSTALL = YES
+USE_RECURSIVE_SCRIPT_INPUTS_IN_SCRIPT_PHASES = YES

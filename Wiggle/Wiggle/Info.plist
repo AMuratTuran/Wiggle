@@ -29,6 +29,8 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>FacebookAppID</key>
 	<string>190849435356094</string>
+    <key>NSCalendarsUsageDescription</key>
+    <string>Some ad content may access calendar</string>
 	<key>FacebookDisplayName</key>
 	<string>Wiggle</string>
 	<key>GADApplicationIdentifier</key>
