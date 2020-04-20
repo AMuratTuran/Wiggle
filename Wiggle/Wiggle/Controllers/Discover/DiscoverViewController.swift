@@ -110,7 +110,11 @@ class DiscoverViewController: UIViewController {
     @objc func didChangeGender() {
         self.skipCount = 0
         self.data = []
-        getUsers(heartRate: Int(self.heartRateResult?.bpm ?? 0))
+        if let heartRate = self.heartRateResult {
+            getUsers(heartRate: Int(heartRate.bpm))
+        }else {
+            getUsers()
+        }
     }
     
     @objc func didChangeDistance() {

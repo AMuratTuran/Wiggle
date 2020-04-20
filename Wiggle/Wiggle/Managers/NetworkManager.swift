@@ -506,6 +506,54 @@ struct NetworkManager {
         }
     }
     
+    static func getImages(by id: String, success: @escaping([String]) -> Void, fail: @escaping(String) -> Void) {
+        let query: PFQuery = PFQuery(className: "Photos")
+        query.whereKey("userid", equalTo: id)
+        
+        query.findObjectsInBackground { (response, error) in
+            if let error = error {
+                fail(error.localizedDescription)
+            }
+            if let response = response {
+                var imageUrls: [String] = []
+                response.forEach { photoObject in
+                    if let imageData = photoObject.object(forKey: "photo") as? PFFileObject, let url = imageData.url {
+                        imageUrls.append(url)
+                    }else {
+                        print("Failed to get image url for object with id: \(photoObject.objectId ?? "")")
+                    }
+                }
+                success(imageUrls)
+            }else {
+                fail(Localize.Common.GeneralError)
+                return
+            }
+        }
+    }
+    
+    static func getImageObject(by id: String, success: @escaping([PFObject]) -> Void, fail: @escaping(String) -> Void) {
+        let query: PFQuery = PFQuery(className: "Photos")
+        query.whereKey("userid", equalTo: id)
+        
+        query.findObjectsInBackground { (response, error) in
+            if let error = error {
+                fail(error.localizedDescription)
+            }
+            if let response = response {
+                var imageObjects: [PFObject] = []
+                response.forEach { photoObject in
+                    if let imageData = photoObject as? PFObject {
+                        imageObjects.append(imageData)
+                    }
+                }
+                success(imageObjects)
+            }else {
+                fail(Localize.Common.GeneralError)
+                return
+            }
+        }
+    }
+    
     static var baseURL = URL(string: "/v1/")
 }
 

@@ -167,7 +167,7 @@ class ProfileViewController: UIViewController {
     @IBAction func useBoost(_ sender: Any) {
         if boostCount > 0 {
             let boost = PFObject(className: "Boost")
-            boost.setValue("userId", forKey: User.current?.objectId ?? "")
+            boost.setValue(User.current?.objectId ?? "", forKey: "userId")
             boost.saveInBackground { (result, error) in
                 if let error = error {
                     self.alertMessage(message: error.localizedDescription, buttons: [DefaultButton(title: Localize.Common.Close, action: nil)], isErrorMessage: true)

@@ -307,8 +307,9 @@
                                     <constraint firstAttribute="height" constant="2" id="Jaj-eu-mLv"/>
                                 </constraints>
                             </view>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image-icon" translatesAutoresizingMaskIntoConstraints="NO" id="Cyf-jL-hEg">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image-icon" translatesAutoresizingMaskIntoConstraints="NO" id="Cyf-jL-hEg">
                                 <rect key="frame" x="160" y="60" width="80" height="80"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="aaK-vt-Yl6"/>
                                     <constraint firstAttribute="width" constant="80" id="ebe-5H-3du"/>
@@ -326,9 +327,13 @@
                                     <constraint firstAttribute="width" constant="25" id="Vpk-qd-TxD"/>
                                 </constraints>
                                 <state key="normal" image="delete-icon"/>
+                                <connections>
+                                    <action selector="secondImageDeleteTapped:" destination="BDF-fJ-k5s" eventType="touchUpInside" id="EEQ-d5-qeR"/>
+                                </connections>
                             </button>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image-icon" translatesAutoresizingMaskIntoConstraints="NO" id="1lF-ms-uqN">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image-icon" translatesAutoresizingMaskIntoConstraints="NO" id="1lF-ms-uqN">
                                 <rect key="frame" x="260" y="60" width="80" height="80"/>
+                                <gestureRecognizers/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
@@ -350,6 +355,9 @@
                                     <constraint firstAttribute="height" constant="25" id="CiJ-hN-LSo"/>
                                 </constraints>
                                 <state key="normal" image="delete-icon"/>
+                                <connections>
+                                    <action selector="thirdImageDeleteTapped:" destination="BDF-fJ-k5s" eventType="touchUpInside" id="zX4-g5-t2N"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -406,6 +414,10 @@
                         <outlet property="nameStackView" destination="anV-ju-WQf" id="gVk-ad-tZs"/>
                         <outlet property="pickBirthdayButton" destination="62r-Qd-0Uj" id="JcZ-Fg-WuE"/>
                         <outlet property="profileImageView" destination="fls-Vs-QqP" id="OXJ-n6-tsZ"/>
+                        <outlet property="secondImageDeleteButton" destination="cfU-Of-6he" id="zUZ-Es-4SI"/>
+                        <outlet property="secondImageView" destination="Cyf-jL-hEg" id="ZLF-x3-e1h"/>
+                        <outlet property="thirdImageDeleteButton" destination="R3I-Pk-6fZ" id="wkT-Op-cPY"/>
+                        <outlet property="thirdImageView" destination="1lF-ms-uqN" id="G4H-Eh-qKa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fL6-TH-CWP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -420,16 +432,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePhoto" translatesAutoresizingMaskIntoConstraints="NO" id="QgA-Vr-U6S">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Uw-go-N95" customClass="ImageSlideshow" customModule="ImageSlideshow">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="374"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="QgA-Vr-U6S" secondAttribute="height" multiplier="1:1" id="V5F-me-lZW"/>
+                                    <constraint firstAttribute="width" secondItem="6Uw-go-N95" secondAttribute="height" multiplier="1:1" constant="1" id="Fsc-JS-5jL"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                             <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8I-jq-Qwc">
-                                <rect key="frame" x="0.0" y="375" width="375" height="1"/>
+                                <rect key="frame" x="0.0" y="374" width="375" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="z1g-fU-FE7"/>
@@ -531,7 +542,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fl-HG-oXg">
-                                <rect key="frame" x="319" y="352" width="40" height="40"/>
+                                <rect key="frame" x="319" y="351" width="40" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="308-hK-FIy"/>
@@ -572,19 +583,19 @@
                             <constraint firstItem="RSH-fe-vc7" firstAttribute="trailing" secondItem="1fl-HG-oXg" secondAttribute="trailing" id="Ccu-p7-ODN"/>
                             <constraint firstItem="Q8I-jq-Qwc" firstAttribute="leading" secondItem="lXO-87-NtJ" secondAttribute="leading" id="EIh-QF-43t"/>
                             <constraint firstItem="UH5-Ba-B1o" firstAttribute="trailing" secondItem="RSH-fe-vc7" secondAttribute="leading" constant="-20" id="KS3-Ch-dbp"/>
-                            <constraint firstItem="lXO-87-NtJ" firstAttribute="trailing" secondItem="QgA-Vr-U6S" secondAttribute="trailing" id="W2R-Y9-5si"/>
-                            <constraint firstItem="Q8I-jq-Qwc" firstAttribute="top" secondItem="QgA-Vr-U6S" secondAttribute="bottom" id="X0w-wc-yua"/>
-                            <constraint firstItem="1fl-HG-oXg" firstAttribute="bottom" secondItem="QgA-Vr-U6S" secondAttribute="bottom" constant="17" id="XPu-Zd-kJu"/>
+                            <constraint firstItem="6Uw-go-N95" firstAttribute="top" secondItem="lXO-87-NtJ" secondAttribute="top" id="Rfz-YA-GJH"/>
+                            <constraint firstItem="Q8I-jq-Qwc" firstAttribute="top" secondItem="6Uw-go-N95" secondAttribute="bottom" id="TLe-7O-ywz"/>
                             <constraint firstItem="lXO-87-NtJ" firstAttribute="trailing" secondItem="1fl-HG-oXg" secondAttribute="trailing" constant="16" id="ZYf-be-rU0"/>
                             <constraint firstItem="lXO-87-NtJ" firstAttribute="trailing" secondItem="Er9-wj-Vv5" secondAttribute="trailing" id="fIq-rB-ty3"/>
                             <constraint firstItem="Er9-wj-Vv5" firstAttribute="leading" secondItem="8fI-VA-q3P" secondAttribute="leading" id="kVu-s3-Qw6"/>
                             <constraint firstItem="UH5-Ba-B1o" firstAttribute="top" secondItem="Er9-wj-Vv5" secondAttribute="bottom" constant="5" id="lDh-Oz-0cv"/>
-                            <constraint firstItem="QgA-Vr-U6S" firstAttribute="top" secondItem="8fI-VA-q3P" secondAttribute="top" id="lEr-NB-IRm"/>
+                            <constraint firstItem="lXO-87-NtJ" firstAttribute="trailing" secondItem="6Uw-go-N95" secondAttribute="trailing" id="la3-Mw-2wW"/>
                             <constraint firstItem="lXO-87-NtJ" firstAttribute="bottom" secondItem="UH5-Ba-B1o" secondAttribute="bottom" constant="8" id="m2j-FA-4PV"/>
-                            <constraint firstItem="Er9-wj-Vv5" firstAttribute="top" secondItem="QgA-Vr-U6S" secondAttribute="bottom" id="piM-B0-xs3"/>
+                            <constraint firstItem="1fl-HG-oXg" firstAttribute="bottom" secondItem="6Uw-go-N95" secondAttribute="bottom" constant="17" id="mWd-u4-yv5"/>
+                            <constraint firstItem="6Uw-go-N95" firstAttribute="leading" secondItem="lXO-87-NtJ" secondAttribute="leading" id="mhB-xk-ALX"/>
                             <constraint firstItem="UH5-Ba-B1o" firstAttribute="centerX" secondItem="8fI-VA-q3P" secondAttribute="centerX" id="rmq-qg-ZBY"/>
                             <constraint firstItem="Q8I-jq-Qwc" firstAttribute="trailing" secondItem="lXO-87-NtJ" secondAttribute="trailing" id="tsZ-QX-zb4"/>
-                            <constraint firstItem="QgA-Vr-U6S" firstAttribute="leading" secondItem="lXO-87-NtJ" secondAttribute="leading" id="wRD-Kg-RG7"/>
+                            <constraint firstItem="Er9-wj-Vv5" firstAttribute="top" secondItem="6Uw-go-N95" secondAttribute="bottom" constant="1" id="uGL-T3-kWg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lXO-87-NtJ"/>
                     </view>
@@ -597,10 +608,10 @@
                         <outlet property="detailView" destination="Er9-wj-Vv5" id="tJg-Nm-iYk"/>
                         <outlet property="dislikeButton" destination="tHX-Hl-FEq" id="UZT-p7-mhA"/>
                         <outlet property="distanceLabel" destination="3Kq-2z-Ic0" id="7vA-91-QdQ"/>
+                        <outlet property="imageSlideShowView" destination="6Uw-go-N95" id="bgp-4A-IRz"/>
                         <outlet property="likeButton" destination="Bob-gd-fr5" id="dT8-ZL-8Zu"/>
                         <outlet property="moreActionsButton" destination="UH5-Ba-B1o" id="CbQ-vA-p6W"/>
                         <outlet property="nameLabel" destination="Qn4-fO-hAL" id="47A-1h-Ct0"/>
-                        <outlet property="profileImageView" destination="QgA-Vr-U6S" id="Gnb-x6-O9N"/>
                         <outlet property="superlikeButton" destination="SiX-LI-P2Y" id="SO0-qB-k30"/>
                     </connections>
                 </viewController>

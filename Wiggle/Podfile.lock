@@ -57,6 +57,10 @@ PODS:
   - GoogleUtilities/Reachability (6.3.2):
     - GoogleUtilities/Logger
   - Hero (1.5.0)
+  - ImageSlideshow/Core (1.8.3)
+  - ImageSlideshow/Kingfisher (1.8.3):
+    - ImageSlideshow/Core
+    - Kingfisher (> 3.0)
   - InputBarAccessoryView (4.2.2)
   - Kingfisher (5.10.1):
     - Kingfisher/Core (= 5.10.1)
@@ -114,6 +118,7 @@ DEPENDENCIES:
   - FacebookShare
   - Google-Mobile-Ads-SDK
   - Hero
+  - ImageSlideshow/Kingfisher
   - Kingfisher
   - Koloda (from `https://github.com/Yalantis/Koloda.git`)
   - lottie-ios
@@ -145,6 +150,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUtilities
     - Hero
+    - ImageSlideshow
     - InputBarAccessoryView
     - Kingfisher
     - lottie-ios
@@ -191,6 +197,7 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: dfe55efa543e899d906309eaaac6ca26d249862f
   GoogleUtilities: 547a86735c6f0ee30ad17e94df4fc21f616b71cb
   Hero: b7385b75e7259da62f4f85462f59a5082d66b058
+  ImageSlideshow: 4694d7d699a1549582e7cc631fb392d8f91630f3
   InputBarAccessoryView: 2b937602598e2fab3149f37f51dd7ad795653812
   Kingfisher: eb36b7dfcc78d60877051c92c119a2865972961a
   Koloda: 75302d21882cc3e274c1561b1155805ea5919dab
@@ -209,6 +216,6 @@ SPEC CHECKSUMS:
   SwiftValidator: 249b6b3ae3b294266c5b9de134d94f18f2d5aa47
   SwiftyStoreKit: 033d06b6f87955405d3f844a18a7687c2438592a
 
-PODFILE CHECKSUM: 65f380174d15806a5c8b4ae7a033f04014d6071c
+PODFILE CHECKSUM: a5553ace266c6ac991a27e7baf21e49450aecbfa
 
 COCOAPODS: 1.8.4

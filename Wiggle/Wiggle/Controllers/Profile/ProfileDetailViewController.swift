@@ -11,10 +11,11 @@ import Parse
 import Koloda
 import PopupDialog
 import PromiseKit
+import Kingfisher
+import ImageSlideshow
 
 class ProfileDetailViewController: UIViewController {
     
-    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
@@ -27,6 +28,7 @@ class ProfileDetailViewController: UIViewController {
     @IBOutlet weak var superlikeButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var buttonsStackView: UIStackView!
+    @IBOutlet weak var imageSlideShowView: ImageSlideshow!
     
     var userData: User?
     var indexOfParentCell: IndexPath?
@@ -37,6 +39,7 @@ class ProfileDetailViewController: UIViewController {
     var delegate: userActionsDelegate?
     var discoverDelegate: DiscoverCellDelegate?
     let (promise, seal) = Promise<()>.pending()
+    var slideShowUrls: [String]?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -51,10 +54,12 @@ class ProfileDetailViewController: UIViewController {
         super.viewDidLoad()
         prepareViews()
         prepareHeroValues()
+        prepareSlideShow()
+        getImages()
     }
     
     func prepareHeroValues() {
-        profileImageView.hero.id = "profileImage\(indexOfParentCell?.row ?? 0)"
+        imageSlideShowView.hero.id = "profileImage\(indexOfParentCell?.row ?? 0)"
         nameLabel.hero.id = "name\(indexOfParentCell?.row ?? 0)"
         distanceLabel.hero.id = "subLabel\(indexOfParentCell?.row ?? 0)"
     }
@@ -85,12 +90,6 @@ class ProfileDetailViewController: UIViewController {
         moreActionsButton.setTitle(Localize.Profile.MoreActions, for: .normal)
         
         if let user = userData {
-            let imageUrl = user.image
-            if !(imageUrl?.isEmpty ?? false) {
-                profileImageView.kf.setImage(with: URL(string: imageUrl ?? ""))
-            }else {
-                profileImageView.image = UIImage(named: "profilePicture")
-            }
             aboutMeStackView.isHidden = user.bio.isEmpty
             bioLabel.text = user.bio
             nameLabel.text = "\(user.firstName) \(user.lastName), \(user.age ?? 0)"
@@ -98,14 +97,62 @@ class ProfileDetailViewController: UIViewController {
         }
     }
     
+    func prepareSlideShow() {
+        imageSlideShowView.pageIndicatorPosition = .init(horizontal: .center, vertical: .under)
+        imageSlideShowView.contentScaleMode = .scaleAspectFit
+        let pageControl = UIPageControl()
+        pageControl.currentPageIndicatorTintColor = UIColor.lightGray
+        pageControl.pageIndicatorTintColor = UIColor.black
+        imageSlideShowView.pageIndicator = pageControl
+        
+        imageSlideShowView.activityIndicator = DefaultActivityIndicator()
+        imageSlideShowView.delegate = self
+        
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(didTap))
+        imageSlideShowView.addGestureRecognizer(recognizer)
+    }
+    
+    @objc func didTap() {
+        let fullScreenController = imageSlideShowView.presentFullScreenController(from: self)
+        fullScreenController.slideshow.activityIndicator = DefaultActivityIndicator(style: .white, color: nil)
+    }
+    
+    func getImages() {
+        if let user = userData {
+            NetworkManager.getImages(by: user.objectId, success: { (response) in
+                self.slideShowUrls = response
+                self.setSlideShowImages()
+            }) { (error) in
+                
+            }
+        }
+    }
+    
+    func setSlideShowImages() {
+        var inputSources: [InputSource] = []
+        if let user = userData {
+            let imageUrl = user.image
+            if let imageUrl = imageUrl, !imageUrl.isEmpty {
+                if let source = KingfisherSource(urlString: imageUrl) {
+                    inputSources.append(source)
+                }
+            }
+        }
+        
+        guard let imageUrls = self.slideShowUrls else {
+            imageSlideShowView.setImageInputs(inputSources)
+            return
+        }
+        
+        imageUrls.forEach { url in
+            if let source = KingfisherSource(urlString: url) {
+                inputSources.append(source)
+            }
+        }
+        imageSlideShowView.setImageInputs(inputSources)
+    }
+    
     @IBAction func likeButtonAction(_ sender: Any) {
-        //            if let receiverObjectId = wiggleCardModel?.objectId{
-        //                delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down)
-        //            }else if let receiverObjectId = userData?.objectId{
-        //                showToastMessage(title: Localize.Profile.LikeToastTitle, body: Localize.Profile.LikeToastBody)
-        //                delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "right") ?? .down)
-        //            }
-        //            moveToHomeViewControllerFromProfileDetail()
         self.dismiss(animated: true) {
             if let indexPath = self.indexOfParentCell {
                 self.discoverDelegate?.likeTapped(at: indexPath)
@@ -113,12 +160,6 @@ class ProfileDetailViewController: UIViewController {
         }
     }
     @IBAction func starButtonAction(_ sender: Any) {
-        //            if let receiverObjectId = wiggleCardModel?.objectId{
-        //                delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "up") ?? .down)
-        //            }else if let receiverObjectId = userData?.objectId{
-        //                delegate?.likeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "up") ?? .down)
-        //            }
-        //            moveToHomeViewControllerFromProfileDetail()
         self.dismiss(animated: true) {
             if let indexPath = self.indexOfParentCell {
                 self.discoverDelegate?.superLikeTapped(at: indexPath)
@@ -126,12 +167,6 @@ class ProfileDetailViewController: UIViewController {
         }
     }
     @IBAction func dislikeButtonAction(_ sender: Any) {
-        //            if let receiverObjectId = wiggleCardModel?.objectId{
-        //                delegate?.dislikeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
-        //            }else if let receiverObjectId = userData?.objectId{
-        //                delegate?.dislikeAction(receiverObjectId: receiverObjectId, direction: SwipeResultDirection(rawValue: "left") ?? .down)
-        //            }
-        //            moveToHomeViewControllerFromProfileDetail()
         self.dismiss(animated: true) {
             if let indexPath = self.indexOfParentCell {
                 self.discoverDelegate?.dislikeTapped(at: indexPath)
@@ -276,5 +311,11 @@ class ProfileDetailViewController: UIViewController {
     
     func hideButtons() {
         self.buttonsStackView.isHidden = true
+    }
+}
+
+extension ProfileDetailViewController: ImageSlideshowDelegate {
+    func imageSlideshow(_ imageSlideshow: ImageSlideshow, didChangeCurrentPageTo page: Int) {
+        
     }
 }
