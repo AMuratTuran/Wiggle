@@ -33,6 +33,7 @@ class DiscoverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        WiggleProducts.store.verifyReceipt { _, _ in}
         initializeViews()
         addObservers()
         checkLocationAuth()
@@ -90,7 +91,6 @@ class DiscoverViewController: UIViewController {
     func openOnboarding() {
         let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
         let navigationViewController = storyboard.instantiateInitialViewController() as? UINavigationController
-        let firstViewController = navigationViewController?.viewControllers.first as? OnboardingDoubleTapViewController
         navigationViewController?.modalPresentationStyle = .fullScreen
         if let nav = navigationViewController {
             self.present(nav, animated: true, completion: nil)
