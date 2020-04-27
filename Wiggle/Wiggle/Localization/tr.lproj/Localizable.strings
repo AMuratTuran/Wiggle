@@ -95,6 +95,7 @@
 "home_screen_no_user_error" = "Çevrende sana önerebileceğimiz kimse kalmadı. Ayarlardan Azami Mesafeni değiştirerek daha çok kişi ile eşleşebilirsin.";
 
 "logout" = "Çıkış Yap";
+"delete_account" = "Hesabımı Sil";
 
 "report_inappropriate_message" = "UYGUNSUZ MESAJ";
 "report_inappropriate_photo" = "UYGUNSUZ FOTOĞRAFLAR";

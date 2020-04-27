@@ -95,6 +95,7 @@
 "home_screen_no_user_error" = "There’s no one around. Expand your discovery settings to see more people.";
 
 "logout" = "Logout";
+"delete_account" = "Delete Account";
 
 "report_inappropriate_message" = "INAPPROPRIATE MESSAGE";
 "report_inappropriate_photo" = "INAPPROPRIATE PHOTOS";

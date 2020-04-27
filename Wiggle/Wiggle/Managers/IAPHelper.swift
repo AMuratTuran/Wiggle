@@ -221,12 +221,34 @@ public struct WiggleProducts {
     public static let twentyFiveSuperLikes = "Wiggle25SuperLikes"
     public static let boost = "WiggleBoost"
     
-    private static let productIdentifiers: Set<ProductIdentifier> = [WiggleProducts.oneMonthSubs, WiggleProducts.threeMonthsSubs, WiggleProducts.sixMonthsSubs, WiggleProducts.twelveMonthsSubs]
+    public static let tenSuperLikes = "Wiggle10Superlikes"
+    public static let twentySuperLikes = "Wiggle20Superlikes"
+    public static let fiftySuperLikes = "Wiggle50Superlikes"
+    public static let hundredSuperLikes = "Wiggle100Superlikes"
+    
+    public static let tenBoosts = "Wiggle10Boosts"
+    public static let twentyBoosts = "Wiggle20Boosts"
+    public static let fiftyBoosts = "Wiggle50Boosts"
+    public static let hundredBoosts = "Wiggle100Boosts"
+    
+    public static let tenBoostSuperlike = "Wiggle10BoostSuperlike"
+    public static let twentyBoostSuperlike = "Wiggle20BoostSuperlike"
+    public static let fiftyBoostSuperlike = "Wiggle50BoostSuperlike"
+    public static let hundledBoostSuperlike = "Wiggle100BoostSuperlike"
+    
+    
+    private static let productIdentifiers : Set<ProductIdentifier> = [WiggleProducts.oneMonthSubs, WiggleProducts.threeMonthsSubs, WiggleProducts.sixMonthsSubs, WiggleProducts.twelveMonthsSubs]
     
     private static let superLikeProductIdentifiers: Set<ProductIdentifier> = [WiggleProducts.oneSuperLike, WiggleProducts.fiveSuperLikes, WiggleProducts.twentyFiveSuperLikes, WiggleProducts.boost]
     
+    private static let superlikeProductIdentifiers : Set<ProductIdentifier> = [WiggleProducts.tenSuperLikes, WiggleProducts.twentySuperLikes, WiggleProducts.fiveSuperLikes, WiggleProducts.hundredSuperLikes]
+    private static let boostProductIdentifiers : Set<ProductIdentifier> = [WiggleProducts.tenBoosts, WiggleProducts.twentyBoosts, WiggleProducts.fiftyBoosts, WiggleProducts.hundredBoosts]
+    private static let boostAndSuperlikeProductIdentifiers : Set<ProductIdentifier> = [WiggleProducts.tenBoostSuperlike, WiggleProducts.tenBoostSuperlike, WiggleProducts.fiftyBoostSuperlike, WiggleProducts.hundledBoostSuperlike]
+    
+    private static let superlikeAndBoostStoreProductIdentifiers = superlikeProductIdentifiers.union(boostProductIdentifiers).union(boostAndSuperlikeProductIdentifiers)
+    
     public static let store = IAPHelper(productIds: WiggleProducts.productIdentifiers)
-    public static let superLikeStore = IAPHelper(productIds: WiggleProducts.superLikeProductIdentifiers)
+    public static let superLikeStore = IAPHelper(productIds: WiggleProducts.superlikeAndBoostStoreProductIdentifiers)
 }
 
 func resourceNameForProductIdentifier(_ productIdentifier: String) -> String? {

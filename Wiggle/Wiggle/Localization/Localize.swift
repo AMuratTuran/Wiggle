@@ -78,6 +78,7 @@ struct Localize {
     
     struct Settings {
         static var Logout: String { return NSLocalizedString("logout", comment: "Settings") }
+        static var DeleteAccount: String { return NSLocalizedString("delete_account", comment: "Settings") }
         static var FacebookProfile: String { return NSLocalizedString("facebook_profile", comment: "Settings") }
         static var Location: String { return NSLocalizedString("location", comment: "Settings") }
         static var MaxDistance: String { return NSLocalizedString("max_distance", comment: "Settings") }

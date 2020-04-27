@@ -56,6 +56,9 @@ class ProfileDetailViewController: UIViewController {
         prepareHeroValues()
         prepareSlideShow()
         getImages()
+        delay(0) {
+            self.setGradients()
+        }
     }
     
     func prepareHeroValues() {
@@ -73,7 +76,6 @@ class ProfileDetailViewController: UIViewController {
         
         backButton.alpha = 0
         backButton.cornerRadius(backButton.frame.height / 2)
-        backButton.setWhiteGradient()
         
         superlikeButton.cornerRadius(dislikeButton.frame.height / 2)
         superlikeButton.layer.applyShadow(color: UIColor(hexString: "BC9A5F"), alpha: 0.48, x: 0, y: 5, blur: 20)
@@ -82,11 +84,9 @@ class ProfileDetailViewController: UIViewController {
         likeButton.layer.applyShadow(color: UIColor.systemPink, alpha: 0.48, x: 0, y: 5, blur: 20)
         
         dislikeButton.cornerRadius(dislikeButton.frame.height / 2)
-        dislikeButton.setWhiteGradient()
         
         superLikeCount = PFUser.current()?.getSuperLike() ?? 0
         
-        moreActionsButton.setWhiteGradient()
         moreActionsButton.setTitle(Localize.Profile.MoreActions, for: .normal)
         
         if let user = userData {
@@ -95,6 +95,12 @@ class ProfileDetailViewController: UIViewController {
             nameLabel.text = "\(user.firstName) \(user.lastName), \(user.age ?? 0)"
             distanceLabel.text = "\(String(format: "%.1f", getDistance())) km"
         }
+    }
+    
+    func setGradients(){
+        backButton.setWhiteGradient()
+        dislikeButton.setWhiteGradient()
+        moreActionsButton.setWhiteGradient()
     }
     
     func prepareSlideShow() {

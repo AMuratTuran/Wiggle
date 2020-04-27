@@ -273,7 +273,6 @@ struct NetworkManager {
     static func getUsersForSwipe(withSkip : Int, success: @escaping([WiggleCardModel]) -> Void, fail: @escaping(String) -> Void) {
         let likesQuery : PFQuery = PFQuery(className:"Likes")
         let query : PFQuery? = PFUser.query()
-        let gender = PFUser.current()?.getGender()
         guard let user = PFUser.current() else {
             fail("User not found")
             return
