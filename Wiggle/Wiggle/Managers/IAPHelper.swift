@@ -241,14 +241,18 @@ public struct WiggleProducts {
     
     private static let superLikeProductIdentifiers: Set<ProductIdentifier> = [WiggleProducts.oneSuperLike, WiggleProducts.fiveSuperLikes, WiggleProducts.twentyFiveSuperLikes, WiggleProducts.boost]
     
-    private static let superlikeProductIdentifiers : Set<ProductIdentifier> = [WiggleProducts.tenSuperLikes, WiggleProducts.twentySuperLikes, WiggleProducts.fiveSuperLikes, WiggleProducts.hundredSuperLikes]
+    private static let superlikeProductIdentifiers : Set<ProductIdentifier> = [WiggleProducts.tenSuperLikes, WiggleProducts.twentySuperLikes, WiggleProducts.fiftySuperLikes, WiggleProducts.hundredSuperLikes]
     private static let boostProductIdentifiers : Set<ProductIdentifier> = [WiggleProducts.tenBoosts, WiggleProducts.twentyBoosts, WiggleProducts.fiftyBoosts, WiggleProducts.hundredBoosts]
-    private static let boostAndSuperlikeProductIdentifiers : Set<ProductIdentifier> = [WiggleProducts.tenBoostSuperlike, WiggleProducts.tenBoostSuperlike, WiggleProducts.fiftyBoostSuperlike, WiggleProducts.hundledBoostSuperlike]
+    private static let boostAndSuperlikeProductIdentifiers : Set<ProductIdentifier> = [WiggleProducts.tenBoostSuperlike, WiggleProducts.twentyBoostSuperlike, WiggleProducts.fiftyBoostSuperlike, WiggleProducts.hundledBoostSuperlike]
     
     private static let superlikeAndBoostStoreProductIdentifiers = superlikeProductIdentifiers.union(boostProductIdentifiers).union(boostAndSuperlikeProductIdentifiers)
     
     public static let store = IAPHelper(productIds: WiggleProducts.productIdentifiers)
     public static let superLikeStore = IAPHelper(productIds: WiggleProducts.superlikeAndBoostStoreProductIdentifiers)
+    
+    public static let superlikeProducts = IAPHelper(productIds: WiggleProducts.superlikeProductIdentifiers)
+    public static let boostProducts = IAPHelper(productIds: WiggleProducts.boostProductIdentifiers)
+    public static let boostAndSuperlikeProducts = IAPHelper(productIds: WiggleProducts.boostAndSuperlikeProductIdentifiers)
 }
 
 func resourceNameForProductIdentifier(_ productIdentifier: String) -> String? {

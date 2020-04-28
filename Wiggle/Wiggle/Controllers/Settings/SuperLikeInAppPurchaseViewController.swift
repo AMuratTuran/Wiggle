@@ -13,16 +13,13 @@ import PopupDialog
 class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Variables
-    var products: [SKProduct] = []
+    var superlikeProducts: [SKProduct] = []
+    var boostProducts: [SKProduct] = []
+    var boostAndSuperlikeProducts: [SKProduct] = []
     var purchasedProduct : String = ""
     var selectedProduct : SKProduct?{
         didSet{
             collectionView.reloadData()
-        }
-    }
-    var selectedProductPrice = ""{
-        didSet{
-            updateBottomLabel()
         }
     }
     
@@ -32,7 +29,6 @@ class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDa
     @IBOutlet weak var continueButton: UIButton!
     @IBOutlet weak var freeStoryLabel: UILabel!
     @IBOutlet weak var restoreButton: UIButton!
-    @IBOutlet weak var bottomLabel: UILabel!
     @IBOutlet weak var secondaryLabel: UILabel!
     
     // MARK: - Override Functions
@@ -47,22 +43,7 @@ class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDa
         NotificationCenter.default.addObserver(self, selector: #selector(SuperLikeInAppPurchaseViewController.handlePurchaseNotification(_:)),
                                                name: .IAPHelperPurchaseNotification,
                                                object: nil)
-        
-        WiggleProducts.superLikeStore.requestProducts{ [weak self] success, products in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                if success {
-                    let productsSorted = products?.sorted { Int($0.price) < Int($1.price) }
-                    self.products = productsSorted ?? []
-                    if productsSorted?.first?.localizedDescription.isEmpty ?? true{
-                        let cancelButton = DefaultButton(title: Localize.Common.OKButton) {self.dismiss(animated: true) {}}
-                        self.alertMessage(message: Localize.Purchase.PremiumError, buttons: [cancelButton], isErrorMessage: true)
-                    }else{
-                        self.collectionView.reloadData()
-                    }
-                }
-            }
-        }
+        requestProducts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,8 +58,40 @@ class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDa
     }
     
     // MARK: - Class Functions
-    func updateBottomLabel(){
-        bottomLabel.text = "About subscriptions: You are beginning a paid auto renewing subscription. Subscription automatically renews for per month. Payment will be charged to your Apple ID account at the confirmation of purchase. The subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. You can manage and cancel your subscriptions by going to your App Store account settings after purchase."
+    func requestProducts(){
+        WiggleProducts.boostAndSuperlikeProducts.requestProducts{ [weak self] success, products in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                if success {
+                    let productsSorted = products?.sorted { Int($0.price) < Int($1.price) }
+                    self.boostAndSuperlikeProducts = productsSorted ?? []
+                    WiggleProducts.boostProducts.requestProducts{ [weak self] success, products in
+                        guard let self = self else { return }
+                        DispatchQueue.main.async {
+                            if success {
+                                let productsSorted = products?.sorted { Int($0.price) < Int($1.price) }
+                                self.boostProducts = productsSorted ?? []
+                                WiggleProducts.superlikeProducts.requestProducts{ [weak self] success, products in
+                                    guard let self = self else { return }
+                                    DispatchQueue.main.async {
+                                        if success {
+                                            let productsSorted = products?.sorted { Int($0.price) < Int($1.price) }
+                                            self.superlikeProducts = productsSorted ?? []
+                                            if productsSorted?.first?.localizedDescription.isEmpty ?? true{
+                                                let cancelButton = DefaultButton(title: Localize.Common.OKButton) {self.dismiss(animated: true) {}}
+                                                self.alertMessage(message: Localize.Purchase.PremiumError, buttons: [cancelButton], isErrorMessage: true)
+                                            }else{
+                                                self.collectionView.reloadData()
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func configureViews(){
@@ -94,20 +107,27 @@ class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDa
         continueButton.layer.applyShadow(color: UIColor.shadowColor, alpha: 0.48, x: 0, y: 5, blur: 20)
     }
     
+    @objc func handlePurchaseNotification(_ notification: Notification) {
+        guard let productId = notification.object as? String else {return}
+        
+        if let index = superlikeProducts.firstIndex(where: { (product) -> Bool in
+            product.productIdentifier == productId
+        }){
+            collectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
+        }else if let index = boostProducts.firstIndex(where: { (product) -> Bool in
+            product.productIdentifier == productId
+        }){
+            collectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
+        }else if let index = boostAndSuperlikeProducts.firstIndex(where: { (product) -> Bool in
+            product.productIdentifier == productId
+        }){
+            collectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
+        }
+    }
+    
     // MARK: - IAP Functions
     @IBAction func dismissAction(_ sender: Any) {
         self.dismiss(animated: true) {}
-    }
-    
-    @objc func handlePurchaseNotification(_ notification: Notification) {
-        guard
-            let productID = notification.object as? String,
-            let index = products.firstIndex(where: { product -> Bool in
-                product.productIdentifier == productID
-            })
-            else { return }
-        
-        collectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
     }
     
     // MARK: - Button Actions
@@ -138,21 +158,41 @@ class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDa
 extension SuperLikeInAppPurchaseViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return products.count
+        return superlikeProducts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return products.count
+        return superlikeProducts.count
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedProduct = products[(indexPath as NSIndexPath).row]
-        selectedProductPrice = selectedProduct?.localizedPrice ?? "0"
+        var product = SKProduct()
+        switch indexPath.section {
+        case 0:
+            product = superlikeProducts[(indexPath as NSIndexPath).row]
+        case 1:
+            product = boostProducts[(indexPath as NSIndexPath).row]
+        case 2:
+            product = boostAndSuperlikeProducts[(indexPath as NSIndexPath).row]
+        default:
+            product = superlikeProducts[(indexPath as NSIndexPath).row]
+        }
+        
+        selectedProduct = product
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ProductCell
-        
-        let product = products[(indexPath as NSIndexPath).row]
+        var product = SKProduct()
+        switch indexPath.section {
+        case 0:
+            product = superlikeProducts[(indexPath as NSIndexPath).row]
+        case 1:
+            product = boostProducts[(indexPath as NSIndexPath).row]
+        case 2:
+            product = boostAndSuperlikeProducts[(indexPath as NSIndexPath).row]
+        default:
+            product = superlikeProducts[(indexPath as NSIndexPath).row]
+        }
         
         cell.product = product
         selectedProduct == product ? (cell.isSelectedProduct = true) : (cell.isSelectedProduct = false)
@@ -164,9 +204,12 @@ extension SuperLikeInAppPurchaseViewController {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let screenSize = self.view.frame.width
         let spacing = 10
-        let totalSpace: CGFloat = CGFloat(20 + ((products.count - 1) * spacing))
+        let totalSpace: CGFloat = CGFloat(20 + ((superlikeProducts.count - 1) * spacing))
         let available = screenSize - totalSpace
-        let cellWidth = (available / CGFloat(products.count))
+        let cellWidth = (available / CGFloat(superlikeProducts.count))
         return CGSize(width: cellWidth, height: 100)
+    }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 3
     }
 }

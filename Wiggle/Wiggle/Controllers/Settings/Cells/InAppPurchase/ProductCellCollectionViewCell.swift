@@ -32,12 +32,12 @@ class ProductCell: UICollectionViewCell {
         
         let array = product.localizedTitle.components(separatedBy: " ")
         
-        productLabel.text = array[0]
-        descriptionLabel.text = array[1]
+        productLabel.text = array[1]
+        descriptionLabel.text = array[2]
+        
         ProductCell.priceFormatter.locale = product.priceLocale
         priceLabel.text = "\(product.price) \(product.priceLocale.currencySymbol ?? "")"
-        let monthlyPrice = Double(product.price) / 7.0
-       
+        
         layer.borderWidth = 1
         layer.cornerRadius = 12
         if isSelectedProduct {
