@@ -61,29 +61,25 @@ class SuperLikeInAppPurchaseViewController: UIViewController, UICollectionViewDa
     func requestProducts(){
         WiggleProducts.boostAndSuperlikeProducts.requestProducts{ [weak self] success, products in
             guard let self = self else { return }
-            DispatchQueue.main.async {
-                if success {
-                    let productsSorted = products?.sorted { Int($0.price) < Int($1.price) }
-                    self.boostAndSuperlikeProducts = productsSorted ?? []
-                    WiggleProducts.boostProducts.requestProducts{ [weak self] success, products in
-                        guard let self = self else { return }
-                        DispatchQueue.main.async {
+            if success {
+                let productsSorted = products?.sorted { Int($0.price) < Int($1.price) }
+                self.boostAndSuperlikeProducts = productsSorted ?? []
+                WiggleProducts.boostProducts.requestProducts{ [weak self] success, products in
+                    guard let self = self else { return }
+                    if success {
+                        let productsSorted = products?.sorted { Int($0.price) < Int($1.price) }
+                        self.boostProducts = productsSorted ?? []
+                        WiggleProducts.superlikeProducts.requestProducts{ [weak self] success, products in
+                            guard let self = self else { return }
                             if success {
                                 let productsSorted = products?.sorted { Int($0.price) < Int($1.price) }
-                                self.boostProducts = productsSorted ?? []
-                                WiggleProducts.superlikeProducts.requestProducts{ [weak self] success, products in
-                                    guard let self = self else { return }
+                                self.superlikeProducts = productsSorted ?? []
+                                if productsSorted?.first?.localizedDescription.isEmpty ?? true{
+                                    let cancelButton = DefaultButton(title: Localize.Common.OKButton) {self.dismiss(animated: true) {}}
+                                    self.alertMessage(message: Localize.Purchase.PremiumError, buttons: [cancelButton], isErrorMessage: true)
+                                }else{
                                     DispatchQueue.main.async {
-                                        if success {
-                                            let productsSorted = products?.sorted { Int($0.price) < Int($1.price) }
-                                            self.superlikeProducts = productsSorted ?? []
-                                            if productsSorted?.first?.localizedDescription.isEmpty ?? true{
-                                                let cancelButton = DefaultButton(title: Localize.Common.OKButton) {self.dismiss(animated: true) {}}
-                                                self.alertMessage(message: Localize.Purchase.PremiumError, buttons: [cancelButton], isErrorMessage: true)
-                                            }else{
-                                                self.collectionView.reloadData()
-                                            }
-                                        }
+                                        self.collectionView.reloadData()
                                     }
                                 }
                             }
