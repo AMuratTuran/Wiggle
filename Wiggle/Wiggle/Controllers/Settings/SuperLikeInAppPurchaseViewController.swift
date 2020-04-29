@@ -203,7 +203,7 @@ extension SuperLikeInAppPurchaseViewController {
         let totalSpace: CGFloat = CGFloat(20 + ((superlikeProducts.count - 1) * spacing))
         let available = screenSize - totalSpace
         let cellWidth = (available / CGFloat(superlikeProducts.count))
-        return CGSize(width: cellWidth, height: 100)
+        return CGSize(width: cellWidth, height: 110)
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3

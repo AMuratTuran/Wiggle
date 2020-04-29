@@ -14,6 +14,7 @@ class ProductCell: UICollectionViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var productLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!
     
     static let priceFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -38,16 +39,16 @@ class ProductCell: UICollectionViewCell {
         ProductCell.priceFormatter.locale = product.priceLocale
         priceLabel.text = "\(product.price) \(product.priceLocale.currencySymbol ?? "")"
         
-        layer.borderWidth = 1
-        layer.cornerRadius = 12
+        containerView.layer.borderWidth = 1
+        containerView.layer.cornerRadius = 12
         if isSelectedProduct {
             priceLabel.textColor = UIColor.goldenColor
             descriptionLabel.textColor = UIColor.goldenColor
             productLabel.textColor = UIColor.goldenColor
-            layer.borderColor = UIColor.goldenColor.cgColor
+            containerView.layer.borderColor = UIColor.goldenColor.cgColor
             return
         }
-        layer.borderColor = UIColor.white.cgColor
+        containerView.layer.borderColor = UIColor.white.cgColor
         priceLabel.textColor = UIColor.white
         descriptionLabel.textColor = UIColor.white
         productLabel.textColor = UIColor.white
